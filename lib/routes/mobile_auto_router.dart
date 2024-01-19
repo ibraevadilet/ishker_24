@@ -6,7 +6,7 @@ class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: SplashRoute.page),
-        AutoRoute(page: BottomNavigatorRoute.page),
+        AutoRoute(page: BottomNavigatorRoute.page, initial: true),
         AutoRoute(page: AuthRoute.page),
         AutoRoute(page: AuthSendConfirmRoute.page),
         AutoRoute(page: AuthConfirmCodeRoute.page),
@@ -32,7 +32,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: RegisterIPRoute.page),
         AutoRoute(page: RegisterIPNextRoute.page),
         AutoRoute(page: RegisterIPConfirmOepRoute.page),
-        AutoRoute(page: RegisterIPMainRoute.page, initial: true),
+        AutoRoute(page: RegisterIPMainRoute.page),
         AutoRoute(page: RegisterIPTypeOfActivityRoute.page),
       ];
 }

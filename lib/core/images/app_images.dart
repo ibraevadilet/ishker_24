@@ -10,6 +10,8 @@ class AppImages {
   
   static const String bankIcon = 'assets/images/bank_icon.svg';  
   static const String cesImage = 'assets/images/ces_image.png';  
+  static const String copyIconSvg = 'assets/images/copy_icon_svg.svg';  
+  static const String empyListIconSvg = 'assets/images/empy_list_icon_svg.svg';  
   static const String esiErrorIcon = 'assets/images/esi_error_icon.png';  
   static const String esiLogoImage = 'assets/images/esi_logo_image.png';  
   static const String esiMainPageIcon = 'assets/images/esi_main_page_icon.png';  
@@ -25,6 +27,7 @@ class AppImages {
   static const String logo = 'assets/images/logo.png';  
   static const String moreIcon = 'assets/images/more_icon.svg';  
   static const String myIpIcon = 'assets/images/my_ip_icon.svg';  
+  static const String notificationIconSvg = 'assets/images/notification_icon_svg.svg';  
   static const String passwordIconSvg = 'assets/images/password_icon_svg.svg';  
   static const String personIconSvg = 'assets/images/person_icon_svg.svg';  
   static const String personWarningIconSvg = 'assets/images/person_warning_icon_svg.svg';  

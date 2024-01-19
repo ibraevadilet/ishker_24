@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit/bottom_navigator_cubit.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
 import 'package:ishker_24/features/register_oep/data/repo_implements/get_terms_repo_impl.dart';
 import 'package:ishker_24/features/register_oep/data/repo_implements/register_oep_repo_impl.dart';
 import 'package:ishker_24/features/register_oep/domain/repositories/get_terms_repository.dart';
@@ -49,4 +50,5 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<BottomNavigatorCubit>(() => BottomNavigatorCubit());
   sl.registerFactory<RegisterOepCubit>(() => RegisterOepCubit(useCase: sl()));
   sl.registerFactory<GetTermsCubit>(() => GetTermsCubit(useCase: sl()));
+  sl.registerFactory<CheckHasIpCubit>(() => CheckHasIpCubit());
 }

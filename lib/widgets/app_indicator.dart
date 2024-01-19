@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ishker_24/theme/app_colors.dart';
 
 class AppIndicator extends StatelessWidget {
   const AppIndicator({
     Key? key,
-    this.color = Colors.black,
+    this.color = AppColors.color54B25AMain,
     this.strokeWidth = 2.5,
     this.radius = 24,
   }) : super(key: key);
