@@ -13,6 +13,8 @@ import 'package:camera/camera.dart' as _i30;
 import 'package:flutter/material.dart' as _i29;
 import 'package:ishker_24/features/bottom_navigator/bottom_navigator_screen.dart'
     as _i4;
+import 'package:ishker_24/features/my_ip/presentation/my_certificate_screen/my_certficate_screen.dart'
+    as _i7;
 import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart'
     as _i31;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_confirm_oep_screen.dart'
@@ -27,6 +29,10 @@ import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_
     as _i25;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_type_of_activity_screen.dart'
     as _i22;
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_signin_screen.dart'
+    as _i25;
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_type_of_activity_screen.dart'
+    as _i23;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/ces_selfie_ident_screen.dart'
     as _i5;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/oep_camera_screen.dart'
@@ -35,7 +41,9 @@ import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/s
     as _i26;
 import 'package:ishker_24/features/register_oep/presentation/oep_finish_screen/oep_finish_screen.dart'
     as _i8;
-import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/oep_register_screen.dart'
+import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/selife_preview_screen.dart'
+    as _i26;
+import 'package:ishker_24/features/register_oep/presentation/oep_finish_screen/oep_finish_screen.dart'
     as _i9;
 import 'package:ishker_24/features/splash/splash_screen.dart' as _i27;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_confirm_code_screen/auth_confirm_code_screen.dart'
@@ -47,25 +55,25 @@ import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/error_screen/error_screen.dart'
     as _i6;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_create_screen/pin_code_create_screen.dart'
-    as _i10;
-import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/pin_code_enter_screen.dart'
     as _i11;
-import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_repeat_screen/pin_code_repeat_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/pin_code_enter_screen.dart'
     as _i12;
-import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_choise_type_screen/recovery_password_choise_type_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_repeat_screen/pin_code_repeat_screen.dart'
     as _i13;
-import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_inn_screen/recovery_password_enter_inn_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_choise_type_screen/recovery_password_choise_type_screen.dart'
     as _i14;
-import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_new_password_screen/recovery_password_enter_new_password_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_inn_screen/recovery_password_enter_inn_screen.dart'
     as _i15;
-import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_sms_code_screen/recovery_password_enter_sms_code_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_new_password_screen/recovery_password_enter_new_password_screen.dart'
     as _i16;
-import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_choise_type_screen/recovery_pin_code_choise_type_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_sms_code_screen/recovery_password_enter_sms_code_screen.dart'
     as _i17;
-import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_esi_password_screen/recovery_pin_code_enter_esi_password_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_choise_type_screen/recovery_pin_code_choise_type_screen.dart'
     as _i18;
-import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_sms_code_screen/recovery_pin_code_enter_sms_code_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_esi_password_screen/recovery_pin_code_enter_esi_password_screen.dart'
     as _i19;
+import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_sms_code_screen/recovery_pin_code_enter_sms_code_screen.dart'
+    as _i20;
 
 abstract class $AppRouter extends _i28.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -108,11 +116,17 @@ abstract class $AppRouter extends _i28.RootStackRouter {
         child: const _i6.EsiErrorScreen(),
       );
     },
+    MyCertficateRoute.name: (routeData) {
+      return _i30.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i7.MyCertficateScreen(),
+      );
+    },
     OEPCameraRoute.name: (routeData) {
       final args = routeData.argsAs<OEPCameraRouteArgs>();
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i7.OEPCameraScreen(
+        child: _i8.OEPCameraScreen(
           key: args.key,
           description: args.description,
         ),
@@ -121,13 +135,13 @@ abstract class $AppRouter extends _i28.RootStackRouter {
     OEPFinishRoute.name: (routeData) {
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i8.OEPFinishScreen(),
+        child: const _i9.OEPFinishScreen(),
       );
     },
     OEPRegisterRoute.name: (routeData) {
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.OEPRegisterScreen(),
+        child: const _i10.OEPRegisterScreen(),
       );
     },
     PinCodeCreateRoute.name: (routeData) {
@@ -135,7 +149,7 @@ abstract class $AppRouter extends _i28.RootStackRouter {
           orElse: () => const PinCodeCreateRouteArgs());
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.PinCodeCreateScreen(
+        child: _i11.PinCodeCreateScreen(
           key: args.key,
           isNewPin: args.isNewPin,
         ),
@@ -144,14 +158,14 @@ abstract class $AppRouter extends _i28.RootStackRouter {
     PinCodeEnterRoute.name: (routeData) {
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i11.PinCodeEnterScreen(),
+        child: const _i12.PinCodeEnterScreen(),
       );
     },
     PinCodeRepeatRoute.name: (routeData) {
       final args = routeData.argsAs<PinCodeRepeatRouteArgs>();
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i12.PinCodeRepeatScreen(
+        child: _i13.PinCodeRepeatScreen(
           key: args.key,
           firstPin: args.firstPin,
         ),
@@ -160,7 +174,7 @@ abstract class $AppRouter extends _i28.RootStackRouter {
     RecoveryPasswordChoiseTypeRoute.name: (routeData) {
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i13.RecoveryPasswordChoiseTypeScreen(),
+        child: const _i14.RecoveryPasswordChoiseTypeScreen(),
       );
     },
     RecoveryPasswordEnterInnRoute.name: (routeData) {
@@ -168,7 +182,7 @@ abstract class $AppRouter extends _i28.RootStackRouter {
           orElse: () => const RecoveryPasswordEnterInnRouteArgs());
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i14.RecoveryPasswordEnterInnScreen(
+        child: _i15.RecoveryPasswordEnterInnScreen(
           key: args.key,
           isSmsRecovery: args.isSmsRecovery,
         ),
@@ -177,7 +191,7 @@ abstract class $AppRouter extends _i28.RootStackRouter {
     RecoveryPasswordEnterNewPasswordRoute.name: (routeData) {
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i15.RecoveryPasswordEnterNewPasswordScreen(),
+        child: const _i16.RecoveryPasswordEnterNewPasswordScreen(),
       );
     },
     RecoveryPasswordEnterSmsCodeRoute.name: (routeData) {
@@ -185,7 +199,7 @@ abstract class $AppRouter extends _i28.RootStackRouter {
           orElse: () => const RecoveryPasswordEnterSmsCodeRouteArgs());
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i16.RecoveryPasswordEnterSmsCodeScreen(
+        child: _i17.RecoveryPasswordEnterSmsCodeScreen(
           key: args.key,
           isSmsRecovery: args.isSmsRecovery,
         ),
@@ -194,32 +208,32 @@ abstract class $AppRouter extends _i28.RootStackRouter {
     RecoveryPinCodeChoiseTypeRoute.name: (routeData) {
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i17.RecoveryPinCodeChoiseTypeScreen(),
+        child: const _i18.RecoveryPinCodeChoiseTypeScreen(),
       );
     },
     RecoveryPinCodeEnterEsiPasswordRoute.name: (routeData) {
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i18.RecoveryPinCodeEnterEsiPasswordScreen(),
+        child: const _i19.RecoveryPinCodeEnterEsiPasswordScreen(),
       );
     },
     RecoveryPinCodeEnterSmsCodeRoute.name: (routeData) {
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i19.RecoveryPinCodeEnterSmsCodeScreen(),
+        child: const _i20.RecoveryPinCodeEnterSmsCodeScreen(),
       );
     },
     RegisterIPMainRoute.name: (routeData) {
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i20.RegisterIPMainScreen(),
+        child: const _i21.RegisterIPMainScreen(),
       );
     },
     RegisterIPNextRoute.name: (routeData) {
       final args = routeData.argsAs<RegisterIPNextRouteArgs>();
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i21.RegisterIPNextScreen(
+        child: _i22.RegisterIPNextScreen(
           key: args.key,
           isPatent: args.isPatent,
         ),
@@ -229,7 +243,7 @@ abstract class $AppRouter extends _i28.RootStackRouter {
       final args = routeData.argsAs<RegisterIPTypeOfActivityRouteArgs>();
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.RegisterIPTypeOfActivityScreen(
+        child: _i23.RegisterIPTypeOfActivityScreen(
           key: args.key,
           models: args.models,
         ),
@@ -238,7 +252,7 @@ abstract class $AppRouter extends _i28.RootStackRouter {
     RegisterIpConfirmOepRoute.name: (routeData) {
       return _i28.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i23.RegisterIpConfirmOepScreen(),
+        child: const _i24.RegisterIpConfirmOepScreen(),
       );
     },
     RegisterIpSelectModesRoute.name: (routeData) {
@@ -532,7 +546,7 @@ class RecoveryPasswordChoiseTypeRoute extends _i28.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i14.RecoveryPasswordEnterInnScreen]
+/// [_i15.RecoveryPasswordEnterInnScreen]
 class RecoveryPasswordEnterInnRoute
     extends _i28.PageRouteInfo<RecoveryPasswordEnterInnRouteArgs> {
   RecoveryPasswordEnterInnRoute({
@@ -586,7 +600,7 @@ class RecoveryPasswordEnterNewPasswordRoute extends _i28.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i16.RecoveryPasswordEnterSmsCodeScreen]
+/// [_i17.RecoveryPasswordEnterSmsCodeScreen]
 class RecoveryPasswordEnterSmsCodeRoute
     extends _i28.PageRouteInfo<RecoveryPasswordEnterSmsCodeRouteArgs> {
   RecoveryPasswordEnterSmsCodeRoute({
@@ -720,7 +734,7 @@ class RegisterIPNextRouteArgs {
 }
 
 /// generated route for
-/// [_i22.RegisterIPTypeOfActivityScreen]
+/// [_i23.RegisterIPTypeOfActivityScreen]
 class RegisterIPTypeOfActivityRoute
     extends _i28.PageRouteInfo<RegisterIPTypeOfActivityRouteArgs> {
   RegisterIPTypeOfActivityRoute({

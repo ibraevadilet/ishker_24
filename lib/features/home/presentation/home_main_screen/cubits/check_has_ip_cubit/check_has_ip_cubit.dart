@@ -13,7 +13,7 @@ class CheckHasIpCubit extends Cubit<CheckHasIpState> {
     emit(const CheckHasIpState.loading());
     await Future.delayed(const Duration(seconds: 1));
     try {
-      emit(const CheckHasIpState.emptyIp());
+      emit(const CheckHasIpState.fullHas());
     } catch (e) {
       emit(CheckHasIpState.error(e.toString()));
     }

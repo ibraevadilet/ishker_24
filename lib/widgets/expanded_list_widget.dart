@@ -104,7 +104,7 @@ class _ExpandedListState extends State<ExpandedList>
                         Transform.scale(
                           scale: _scaleImage.value,
                           child: Container(
-                            margin: const EdgeInsets.only(right: 16),
+                            margin: const EdgeInsets.only(left: 16, right: 8),
                             child: widget.image,
                           ),
                         ),
