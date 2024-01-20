@@ -76,10 +76,9 @@ class RegisterIpConfirmOepScreen extends StatelessWidget {
                                       ? Colors.white
                                       : AppColors.color54B25AMain,
                                   onPress: () {
-                                    smsConfirmSheet(context);
-                                    // context
-                                    //     .read<SendOtpCubit>()
-                                    //     .sendOtp(model.first.authType);
+                                    context
+                                        .read<SendOtpCubit>()
+                                        .sendOtp(model.first.authType);
                                   },
                                   text: model.first.authType == 'email'
                                       ? 'Получить код на почту'

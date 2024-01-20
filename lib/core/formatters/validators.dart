@@ -10,7 +10,7 @@ class AppInputValidators {
     if (val!.isEmpty) {
       return 'Поле обязательно для заполнения';
     }
-    if (val.length != 9) {
+    if (val.length != 13) {
       return 'Введите корректный номер телефона';
     } else {
       return null;
@@ -30,7 +30,6 @@ class AppInputValidators {
       return null;
     }
   }
-  
 
   static String? anIdValidator(String? val) {
     if (val!.isEmpty) {

@@ -13,6 +13,12 @@ class GetUserInfoUseCase {
   final numberController = TextEditingController();
   final emailController = TextEditingController();
 
+  String activityCode = '';
+  bool isHaveWageEarners = false;
+  int taxMode = 0;
+  int entrepreneurType = 0;
+  List<int> selectedModes = [];
+
   Future<void> getUserInfo() async {
     try {
       final userInfo = await repo.getUserInfo();

@@ -15,7 +15,7 @@ class CatchException {
       } else if (error.response == null) {
         return CatchException(message: LocaleKeys.catchExNoInternet.tr());
       } else if (error.response!.statusCode == 405) {
-        return CatchException(message: LocaleKeys.catchExRequestDenied.tr());
+        return CatchException(message: error.response!.data['error']);
       } else if (error.response!.statusCode == 400) {
         return CatchException(message: error.response!.data['error']);
       } else if (error.response!.statusCode == 409) {

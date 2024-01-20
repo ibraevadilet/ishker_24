@@ -52,6 +52,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
       ),
       child: TextFormField(
+        style: AppTextStyles.s15W600(),
         cursorColor: AppColors.color7A7A7AGrey,
         maxLength: widget.maxLength,
         inputFormatters: widget.inputFormatters,
@@ -75,6 +76,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           counter: const SizedBox(),
           hintText: widget.hintText,
           labelText: widget.labelText,
+          prefixStyle: AppTextStyles.s15W600(),
           border: InputBorder.none,
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,

@@ -20,6 +20,7 @@ import 'package:ishker_24/features/register_ip/domain/use_cases/get_pin_code_rec
 import 'package:ishker_24/features/register_ip/domain/use_cases/get_user_info_usecase.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/send_otp_usecase.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/tax_and_selected_modes_usecase.dart';
+import 'package:ishker_24/features/register_ip/presentation/cubits/confirm_otp_cubit/confirm_otp_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/get_gns_pdf_cubit/get_gns_pdf_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/get_pin_code_receiving_cubit/get_pin_code_receiving_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/get_user_info_cubit/get_user_info_cubit.dart';
@@ -96,4 +97,5 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetPinCodeReceivingCubit>(
       () => GetPinCodeReceivingCubit(useCase: sl()));
   sl.registerFactory<SendOtpCubit>(() => SendOtpCubit(useCase: sl()));
+  sl.registerFactory<ConfirmOtpCubit>(() => ConfirmOtpCubit(useCase: sl()));
 }

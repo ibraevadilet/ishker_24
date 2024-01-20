@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart';
+import 'package:ishker_24/features/register_ip/domain/use_cases/get_user_info_usecase.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/tax_and_selected_modes_cubit/tax_and_selected_modes_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
@@ -279,19 +280,26 @@ class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
                         color: AppColors.color54B25AMain,
                         onPress: () {
                           if (selectedVidDeatelnost != null &&
-                              selectedIndex != null &&
-                              selectedIndex != 2) {
-                            AppRouting.pushFunction(
-                              const RegisterIpSigninRoute(),
-                            );
-                          }
-                          if (selectedVidDeatelnost != null &&
-                              selectedIndex != null &&
-                              selectedIndex == 2 &&
-                              nalogTypeIds.isNotEmpty) {
-                            AppRouting.pushFunction(
-                              const RegisterIpSigninRoute(),
-                            );
+                              selectedIndex != null) {
+                            ///save in use case
+                            final userCase = sl<GetUserInfoUseCase>();
+                            userCase.activityCode = selectedVidDeatelnost!.id;
+                            userCase.isHaveWageEarners = selectedRadioValue;
+                            userCase.taxMode =
+                                int.parse(model.nalogTypes[selectedIndex!].id);
+                            userCase.entrepreneurType = widget.isPatent ? 0 : 1;
+                            userCase.selectedModes =
+                                nalogTypeIds.map((e) => int.parse(e)).toList();
+                            if (selectedIndex != 2) {
+                              AppRouting.pushFunction(
+                                const RegisterIpSigninRoute(),
+                              );
+                            } else if (selectedIndex == 2 &&
+                                nalogTypeIds.isNotEmpty) {
+                              AppRouting.pushFunction(
+                                const RegisterIpSigninRoute(),
+                              );
+                            }
                           }
                         },
                       ),

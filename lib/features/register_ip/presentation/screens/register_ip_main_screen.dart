@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ishker_24/core/formatters/input_formatters.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/get_user_info_cubit/get_user_info_cubit.dart';
@@ -109,7 +109,7 @@ class _RegisterIPMainScreenState extends State<RegisterIPMainScreen> {
                                       .numberController,
                                   keyboardType: TextInputType.number,
                                   inputFormatters: [
-                                    LengthLimitingTextInputFormatter(9),
+                                    AppInputFormatters.phoneFormatter,
                                   ],
                                   validator: AppInputValidators.phoneValidator,
                                 ),

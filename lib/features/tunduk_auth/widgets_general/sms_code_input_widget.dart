@@ -13,6 +13,7 @@ class SmsCodeInputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PinCodeTextField(
+      keyboardType: TextInputType.number,
       autoFocus: true,
       appContext: context,
       length: 6,
