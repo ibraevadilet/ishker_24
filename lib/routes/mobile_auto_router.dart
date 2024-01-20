@@ -34,5 +34,8 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: RegisterIPMainRoute.page),
         AutoRoute(page: RegisterIPTypeOfActivityRoute.page),
         AutoRoute(page: RegisterIpConfirmOepRoute.page),
+        AutoRoute(page: SettingsAboutRoute.page),
+        AutoRoute(page: SettingsHelpRoute.page),
+        AutoRoute(page: MyCertficateRoute.page),
       ];
 }

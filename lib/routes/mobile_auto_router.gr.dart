@@ -8,34 +8,40 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i27;
-import 'package:camera/camera.dart' as _i29;
-import 'package:flutter/material.dart' as _i28;
+import 'package:auto_route/auto_route.dart' as _i30;
+import 'package:camera/camera.dart' as _i32;
+import 'package:flutter/material.dart' as _i31;
 import 'package:ishker_24/features/bottom_navigator/bottom_navigator_screen.dart'
     as _i4;
+import 'package:ishker_24/features/my_ip/presentation/my_certificate_screen/my_certficate_screen.dart'
+    as _i7;
 import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart'
-    as _i30;
+    as _i33;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_confirm_oep_screen.dart'
-    as _i23;
-import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_main_screen.dart'
-    as _i20;
-import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_next_screen.dart'
-    as _i21;
-import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_signin_screen.dart'
     as _i24;
-import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_type_of_activity_screen.dart'
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_main_screen.dart'
+    as _i21;
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_next_screen.dart'
     as _i22;
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_signin_screen.dart'
+    as _i25;
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_type_of_activity_screen.dart'
+    as _i23;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/ces_selfie_ident_screen.dart'
     as _i5;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/oep_camera_screen.dart'
-    as _i7;
-import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/selife_preview_screen.dart'
-    as _i25;
-import 'package:ishker_24/features/register_oep/presentation/oep_finish_screen/oep_finish_screen.dart'
     as _i8;
-import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/oep_register_screen.dart'
+import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/selife_preview_screen.dart'
+    as _i26;
+import 'package:ishker_24/features/register_oep/presentation/oep_finish_screen/oep_finish_screen.dart'
     as _i9;
-import 'package:ishker_24/features/splash/splash_screen.dart' as _i26;
+import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/oep_register_screen.dart'
+    as _i10;
+import 'package:ishker_24/features/settings/presentation/settings_about_screen/settings_about_screen.dart'
+    as _i27;
+import 'package:ishker_24/features/settings/presentation/settings_help_screen/settings_help_screen.dart'
+    as _i28;
+import 'package:ishker_24/features/splash/splash_screen.dart' as _i29;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_confirm_code_screen/auth_confirm_code_screen.dart'
     as _i1;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/auth_screen.dart'
@@ -45,179 +51,185 @@ import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/error_screen/error_screen.dart'
     as _i6;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_create_screen/pin_code_create_screen.dart'
-    as _i10;
-import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/pin_code_enter_screen.dart'
     as _i11;
-import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_repeat_screen/pin_code_repeat_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/pin_code_enter_screen.dart'
     as _i12;
-import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_choise_type_screen/recovery_password_choise_type_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_repeat_screen/pin_code_repeat_screen.dart'
     as _i13;
-import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_inn_screen/recovery_password_enter_inn_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_choise_type_screen/recovery_password_choise_type_screen.dart'
     as _i14;
-import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_new_password_screen/recovery_password_enter_new_password_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_inn_screen/recovery_password_enter_inn_screen.dart'
     as _i15;
-import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_sms_code_screen/recovery_password_enter_sms_code_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_new_password_screen/recovery_password_enter_new_password_screen.dart'
     as _i16;
-import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_choise_type_screen/recovery_pin_code_choise_type_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_sms_code_screen/recovery_password_enter_sms_code_screen.dart'
     as _i17;
-import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_esi_password_screen/recovery_pin_code_enter_esi_password_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_choise_type_screen/recovery_pin_code_choise_type_screen.dart'
     as _i18;
-import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_sms_code_screen/recovery_pin_code_enter_sms_code_screen.dart'
+import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_esi_password_screen/recovery_pin_code_enter_esi_password_screen.dart'
     as _i19;
+import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_sms_code_screen/recovery_pin_code_enter_sms_code_screen.dart'
+    as _i20;
 
-abstract class $AppRouter extends _i27.RootStackRouter {
+abstract class $AppRouter extends _i30.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i27.PageFactory> pagesMap = {
+  final Map<String, _i30.PageFactory> pagesMap = {
     AuthConfirmCodeRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.AuthConfirmCodeScreen(),
       );
     },
     AuthRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i2.AuthScreen(),
       );
     },
     AuthSendConfirmRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i3.AuthSendConfirmScreen(),
       );
     },
     BottomNavigatorRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i4.BottomNavigatorScreen(),
       );
     },
     CesSelfieRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i5.CesSelfieScreen(),
       );
     },
     EsiErrorRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i6.EsiErrorScreen(),
       );
     },
+    MyCertficateRoute.name: (routeData) {
+      return _i30.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i7.MyCertficateScreen(),
+      );
+    },
     OEPCameraRoute.name: (routeData) {
       final args = routeData.argsAs<OEPCameraRouteArgs>();
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i7.OEPCameraScreen(
+        child: _i8.OEPCameraScreen(
           key: args.key,
           description: args.description,
         ),
       );
     },
     OEPFinishRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i8.OEPFinishScreen(),
+        child: const _i9.OEPFinishScreen(),
       );
     },
     OEPRegisterRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.OEPRegisterScreen(),
+        child: const _i10.OEPRegisterScreen(),
       );
     },
     PinCodeCreateRoute.name: (routeData) {
       final args = routeData.argsAs<PinCodeCreateRouteArgs>(
           orElse: () => const PinCodeCreateRouteArgs());
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i10.PinCodeCreateScreen(
+        child: _i11.PinCodeCreateScreen(
           key: args.key,
           isNewPin: args.isNewPin,
         ),
       );
     },
     PinCodeEnterRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i11.PinCodeEnterScreen(),
+        child: const _i12.PinCodeEnterScreen(),
       );
     },
     PinCodeRepeatRoute.name: (routeData) {
       final args = routeData.argsAs<PinCodeRepeatRouteArgs>();
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i12.PinCodeRepeatScreen(
+        child: _i13.PinCodeRepeatScreen(
           key: args.key,
           firstPin: args.firstPin,
         ),
       );
     },
     RecoveryPasswordChoiseTypeRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i13.RecoveryPasswordChoiseTypeScreen(),
+        child: const _i14.RecoveryPasswordChoiseTypeScreen(),
       );
     },
     RecoveryPasswordEnterInnRoute.name: (routeData) {
       final args = routeData.argsAs<RecoveryPasswordEnterInnRouteArgs>(
           orElse: () => const RecoveryPasswordEnterInnRouteArgs());
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i14.RecoveryPasswordEnterInnScreen(
+        child: _i15.RecoveryPasswordEnterInnScreen(
           key: args.key,
           isSmsRecovery: args.isSmsRecovery,
         ),
       );
     },
     RecoveryPasswordEnterNewPasswordRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i15.RecoveryPasswordEnterNewPasswordScreen(),
+        child: const _i16.RecoveryPasswordEnterNewPasswordScreen(),
       );
     },
     RecoveryPasswordEnterSmsCodeRoute.name: (routeData) {
       final args = routeData.argsAs<RecoveryPasswordEnterSmsCodeRouteArgs>(
           orElse: () => const RecoveryPasswordEnterSmsCodeRouteArgs());
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i16.RecoveryPasswordEnterSmsCodeScreen(
+        child: _i17.RecoveryPasswordEnterSmsCodeScreen(
           key: args.key,
           isSmsRecovery: args.isSmsRecovery,
         ),
       );
     },
     RecoveryPinCodeChoiseTypeRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i17.RecoveryPinCodeChoiseTypeScreen(),
+        child: const _i18.RecoveryPinCodeChoiseTypeScreen(),
       );
     },
     RecoveryPinCodeEnterEsiPasswordRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i18.RecoveryPinCodeEnterEsiPasswordScreen(),
+        child: const _i19.RecoveryPinCodeEnterEsiPasswordScreen(),
       );
     },
     RecoveryPinCodeEnterSmsCodeRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i19.RecoveryPinCodeEnterSmsCodeScreen(),
+        child: const _i20.RecoveryPinCodeEnterSmsCodeScreen(),
       );
     },
     RegisterIPMainRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i20.RegisterIPMainScreen(),
+        child: const _i21.RegisterIPMainScreen(),
       );
     },
     RegisterIPNextRoute.name: (routeData) {
       final args = routeData.argsAs<RegisterIPNextRouteArgs>();
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i21.RegisterIPNextScreen(
+        child: _i22.RegisterIPNextScreen(
           key: args.key,
           isPatent: args.isPatent,
         ),
@@ -225,41 +237,53 @@ abstract class $AppRouter extends _i27.RootStackRouter {
     },
     RegisterIPTypeOfActivityRoute.name: (routeData) {
       final args = routeData.argsAs<RegisterIPTypeOfActivityRouteArgs>();
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.RegisterIPTypeOfActivityScreen(
+        child: _i23.RegisterIPTypeOfActivityScreen(
           key: args.key,
           models: args.models,
         ),
       );
     },
     RegisterIpConfirmOepRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i23.RegisterIpConfirmOepScreen(),
+        child: const _i24.RegisterIpConfirmOepScreen(),
       );
     },
     RegisterIpSigninRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i24.RegisterIpSigninScreen(),
+        child: const _i25.RegisterIpSigninScreen(),
       );
     },
     SelfiePreviewRoute.name: (routeData) {
       final args = routeData.argsAs<SelfiePreviewRouteArgs>();
-      return _i27.AutoRoutePage<dynamic>(
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i25.SelfiePreviewScreen(
+        child: _i26.SelfiePreviewScreen(
           args.path,
           args.onCheck,
           key: args.key,
         ),
       );
     },
-    SplashRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
+    SettingsAboutRoute.name: (routeData) {
+      return _i30.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i26.SplashScreen(),
+        child: const _i27.SettingsAboutScreen(),
+      );
+    },
+    SettingsHelpRoute.name: (routeData) {
+      return _i30.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i28.SettingsHelpScreen(),
+      );
+    },
+    SplashRoute.name: (routeData) {
+      return _i30.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i29.SplashScreen(),
       );
     },
   };
@@ -267,8 +291,8 @@ abstract class $AppRouter extends _i27.RootStackRouter {
 
 /// generated route for
 /// [_i1.AuthConfirmCodeScreen]
-class AuthConfirmCodeRoute extends _i27.PageRouteInfo<void> {
-  const AuthConfirmCodeRoute({List<_i27.PageRouteInfo>? children})
+class AuthConfirmCodeRoute extends _i30.PageRouteInfo<void> {
+  const AuthConfirmCodeRoute({List<_i30.PageRouteInfo>? children})
       : super(
           AuthConfirmCodeRoute.name,
           initialChildren: children,
@@ -276,13 +300,13 @@ class AuthConfirmCodeRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'AuthConfirmCodeRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.AuthScreen]
-class AuthRoute extends _i27.PageRouteInfo<void> {
-  const AuthRoute({List<_i27.PageRouteInfo>? children})
+class AuthRoute extends _i30.PageRouteInfo<void> {
+  const AuthRoute({List<_i30.PageRouteInfo>? children})
       : super(
           AuthRoute.name,
           initialChildren: children,
@@ -290,13 +314,13 @@ class AuthRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'AuthRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i3.AuthSendConfirmScreen]
-class AuthSendConfirmRoute extends _i27.PageRouteInfo<void> {
-  const AuthSendConfirmRoute({List<_i27.PageRouteInfo>? children})
+class AuthSendConfirmRoute extends _i30.PageRouteInfo<void> {
+  const AuthSendConfirmRoute({List<_i30.PageRouteInfo>? children})
       : super(
           AuthSendConfirmRoute.name,
           initialChildren: children,
@@ -304,13 +328,13 @@ class AuthSendConfirmRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'AuthSendConfirmRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i4.BottomNavigatorScreen]
-class BottomNavigatorRoute extends _i27.PageRouteInfo<void> {
-  const BottomNavigatorRoute({List<_i27.PageRouteInfo>? children})
+class BottomNavigatorRoute extends _i30.PageRouteInfo<void> {
+  const BottomNavigatorRoute({List<_i30.PageRouteInfo>? children})
       : super(
           BottomNavigatorRoute.name,
           initialChildren: children,
@@ -318,13 +342,13 @@ class BottomNavigatorRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'BottomNavigatorRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i5.CesSelfieScreen]
-class CesSelfieRoute extends _i27.PageRouteInfo<void> {
-  const CesSelfieRoute({List<_i27.PageRouteInfo>? children})
+class CesSelfieRoute extends _i30.PageRouteInfo<void> {
+  const CesSelfieRoute({List<_i30.PageRouteInfo>? children})
       : super(
           CesSelfieRoute.name,
           initialChildren: children,
@@ -332,13 +356,13 @@ class CesSelfieRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'CesSelfieRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i6.EsiErrorScreen]
-class EsiErrorRoute extends _i27.PageRouteInfo<void> {
-  const EsiErrorRoute({List<_i27.PageRouteInfo>? children})
+class EsiErrorRoute extends _i30.PageRouteInfo<void> {
+  const EsiErrorRoute({List<_i30.PageRouteInfo>? children})
       : super(
           EsiErrorRoute.name,
           initialChildren: children,
@@ -346,16 +370,30 @@ class EsiErrorRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'EsiErrorRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i7.OEPCameraScreen]
-class OEPCameraRoute extends _i27.PageRouteInfo<OEPCameraRouteArgs> {
+/// [_i7.MyCertficateScreen]
+class MyCertficateRoute extends _i30.PageRouteInfo<void> {
+  const MyCertficateRoute({List<_i30.PageRouteInfo>? children})
+      : super(
+          MyCertficateRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MyCertficateRoute';
+
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i8.OEPCameraScreen]
+class OEPCameraRoute extends _i30.PageRouteInfo<OEPCameraRouteArgs> {
   OEPCameraRoute({
-    _i28.Key? key,
-    required _i29.CameraDescription description,
-    List<_i27.PageRouteInfo>? children,
+    _i31.Key? key,
+    required _i32.CameraDescription description,
+    List<_i30.PageRouteInfo>? children,
   }) : super(
           OEPCameraRoute.name,
           args: OEPCameraRouteArgs(
@@ -367,8 +405,8 @@ class OEPCameraRoute extends _i27.PageRouteInfo<OEPCameraRouteArgs> {
 
   static const String name = 'OEPCameraRoute';
 
-  static const _i27.PageInfo<OEPCameraRouteArgs> page =
-      _i27.PageInfo<OEPCameraRouteArgs>(name);
+  static const _i30.PageInfo<OEPCameraRouteArgs> page =
+      _i30.PageInfo<OEPCameraRouteArgs>(name);
 }
 
 class OEPCameraRouteArgs {
@@ -377,9 +415,9 @@ class OEPCameraRouteArgs {
     required this.description,
   });
 
-  final _i28.Key? key;
+  final _i31.Key? key;
 
-  final _i29.CameraDescription description;
+  final _i32.CameraDescription description;
 
   @override
   String toString() {
@@ -388,9 +426,9 @@ class OEPCameraRouteArgs {
 }
 
 /// generated route for
-/// [_i8.OEPFinishScreen]
-class OEPFinishRoute extends _i27.PageRouteInfo<void> {
-  const OEPFinishRoute({List<_i27.PageRouteInfo>? children})
+/// [_i9.OEPFinishScreen]
+class OEPFinishRoute extends _i30.PageRouteInfo<void> {
+  const OEPFinishRoute({List<_i30.PageRouteInfo>? children})
       : super(
           OEPFinishRoute.name,
           initialChildren: children,
@@ -398,13 +436,13 @@ class OEPFinishRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'OEPFinishRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i9.OEPRegisterScreen]
-class OEPRegisterRoute extends _i27.PageRouteInfo<void> {
-  const OEPRegisterRoute({List<_i27.PageRouteInfo>? children})
+/// [_i10.OEPRegisterScreen]
+class OEPRegisterRoute extends _i30.PageRouteInfo<void> {
+  const OEPRegisterRoute({List<_i30.PageRouteInfo>? children})
       : super(
           OEPRegisterRoute.name,
           initialChildren: children,
@@ -412,16 +450,16 @@ class OEPRegisterRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'OEPRegisterRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i10.PinCodeCreateScreen]
-class PinCodeCreateRoute extends _i27.PageRouteInfo<PinCodeCreateRouteArgs> {
+/// [_i11.PinCodeCreateScreen]
+class PinCodeCreateRoute extends _i30.PageRouteInfo<PinCodeCreateRouteArgs> {
   PinCodeCreateRoute({
-    _i28.Key? key,
+    _i31.Key? key,
     bool isNewPin = false,
-    List<_i27.PageRouteInfo>? children,
+    List<_i30.PageRouteInfo>? children,
   }) : super(
           PinCodeCreateRoute.name,
           args: PinCodeCreateRouteArgs(
@@ -433,8 +471,8 @@ class PinCodeCreateRoute extends _i27.PageRouteInfo<PinCodeCreateRouteArgs> {
 
   static const String name = 'PinCodeCreateRoute';
 
-  static const _i27.PageInfo<PinCodeCreateRouteArgs> page =
-      _i27.PageInfo<PinCodeCreateRouteArgs>(name);
+  static const _i30.PageInfo<PinCodeCreateRouteArgs> page =
+      _i30.PageInfo<PinCodeCreateRouteArgs>(name);
 }
 
 class PinCodeCreateRouteArgs {
@@ -443,7 +481,7 @@ class PinCodeCreateRouteArgs {
     this.isNewPin = false,
   });
 
-  final _i28.Key? key;
+  final _i31.Key? key;
 
   final bool isNewPin;
 
@@ -454,9 +492,9 @@ class PinCodeCreateRouteArgs {
 }
 
 /// generated route for
-/// [_i11.PinCodeEnterScreen]
-class PinCodeEnterRoute extends _i27.PageRouteInfo<void> {
-  const PinCodeEnterRoute({List<_i27.PageRouteInfo>? children})
+/// [_i12.PinCodeEnterScreen]
+class PinCodeEnterRoute extends _i30.PageRouteInfo<void> {
+  const PinCodeEnterRoute({List<_i30.PageRouteInfo>? children})
       : super(
           PinCodeEnterRoute.name,
           initialChildren: children,
@@ -464,16 +502,16 @@ class PinCodeEnterRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'PinCodeEnterRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i12.PinCodeRepeatScreen]
-class PinCodeRepeatRoute extends _i27.PageRouteInfo<PinCodeRepeatRouteArgs> {
+/// [_i13.PinCodeRepeatScreen]
+class PinCodeRepeatRoute extends _i30.PageRouteInfo<PinCodeRepeatRouteArgs> {
   PinCodeRepeatRoute({
-    _i28.Key? key,
+    _i31.Key? key,
     required String firstPin,
-    List<_i27.PageRouteInfo>? children,
+    List<_i30.PageRouteInfo>? children,
   }) : super(
           PinCodeRepeatRoute.name,
           args: PinCodeRepeatRouteArgs(
@@ -485,8 +523,8 @@ class PinCodeRepeatRoute extends _i27.PageRouteInfo<PinCodeRepeatRouteArgs> {
 
   static const String name = 'PinCodeRepeatRoute';
 
-  static const _i27.PageInfo<PinCodeRepeatRouteArgs> page =
-      _i27.PageInfo<PinCodeRepeatRouteArgs>(name);
+  static const _i30.PageInfo<PinCodeRepeatRouteArgs> page =
+      _i30.PageInfo<PinCodeRepeatRouteArgs>(name);
 }
 
 class PinCodeRepeatRouteArgs {
@@ -495,7 +533,7 @@ class PinCodeRepeatRouteArgs {
     required this.firstPin,
   });
 
-  final _i28.Key? key;
+  final _i31.Key? key;
 
   final String firstPin;
 
@@ -506,9 +544,9 @@ class PinCodeRepeatRouteArgs {
 }
 
 /// generated route for
-/// [_i13.RecoveryPasswordChoiseTypeScreen]
-class RecoveryPasswordChoiseTypeRoute extends _i27.PageRouteInfo<void> {
-  const RecoveryPasswordChoiseTypeRoute({List<_i27.PageRouteInfo>? children})
+/// [_i14.RecoveryPasswordChoiseTypeScreen]
+class RecoveryPasswordChoiseTypeRoute extends _i30.PageRouteInfo<void> {
+  const RecoveryPasswordChoiseTypeRoute({List<_i30.PageRouteInfo>? children})
       : super(
           RecoveryPasswordChoiseTypeRoute.name,
           initialChildren: children,
@@ -516,17 +554,17 @@ class RecoveryPasswordChoiseTypeRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'RecoveryPasswordChoiseTypeRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i14.RecoveryPasswordEnterInnScreen]
+/// [_i15.RecoveryPasswordEnterInnScreen]
 class RecoveryPasswordEnterInnRoute
-    extends _i27.PageRouteInfo<RecoveryPasswordEnterInnRouteArgs> {
+    extends _i30.PageRouteInfo<RecoveryPasswordEnterInnRouteArgs> {
   RecoveryPasswordEnterInnRoute({
-    _i28.Key? key,
+    _i31.Key? key,
     bool isSmsRecovery = false,
-    List<_i27.PageRouteInfo>? children,
+    List<_i30.PageRouteInfo>? children,
   }) : super(
           RecoveryPasswordEnterInnRoute.name,
           args: RecoveryPasswordEnterInnRouteArgs(
@@ -538,8 +576,8 @@ class RecoveryPasswordEnterInnRoute
 
   static const String name = 'RecoveryPasswordEnterInnRoute';
 
-  static const _i27.PageInfo<RecoveryPasswordEnterInnRouteArgs> page =
-      _i27.PageInfo<RecoveryPasswordEnterInnRouteArgs>(name);
+  static const _i30.PageInfo<RecoveryPasswordEnterInnRouteArgs> page =
+      _i30.PageInfo<RecoveryPasswordEnterInnRouteArgs>(name);
 }
 
 class RecoveryPasswordEnterInnRouteArgs {
@@ -548,7 +586,7 @@ class RecoveryPasswordEnterInnRouteArgs {
     this.isSmsRecovery = false,
   });
 
-  final _i28.Key? key;
+  final _i31.Key? key;
 
   final bool isSmsRecovery;
 
@@ -559,10 +597,10 @@ class RecoveryPasswordEnterInnRouteArgs {
 }
 
 /// generated route for
-/// [_i15.RecoveryPasswordEnterNewPasswordScreen]
-class RecoveryPasswordEnterNewPasswordRoute extends _i27.PageRouteInfo<void> {
+/// [_i16.RecoveryPasswordEnterNewPasswordScreen]
+class RecoveryPasswordEnterNewPasswordRoute extends _i30.PageRouteInfo<void> {
   const RecoveryPasswordEnterNewPasswordRoute(
-      {List<_i27.PageRouteInfo>? children})
+      {List<_i30.PageRouteInfo>? children})
       : super(
           RecoveryPasswordEnterNewPasswordRoute.name,
           initialChildren: children,
@@ -570,17 +608,17 @@ class RecoveryPasswordEnterNewPasswordRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'RecoveryPasswordEnterNewPasswordRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i16.RecoveryPasswordEnterSmsCodeScreen]
+/// [_i17.RecoveryPasswordEnterSmsCodeScreen]
 class RecoveryPasswordEnterSmsCodeRoute
-    extends _i27.PageRouteInfo<RecoveryPasswordEnterSmsCodeRouteArgs> {
+    extends _i30.PageRouteInfo<RecoveryPasswordEnterSmsCodeRouteArgs> {
   RecoveryPasswordEnterSmsCodeRoute({
-    _i28.Key? key,
+    _i31.Key? key,
     bool isSmsRecovery = false,
-    List<_i27.PageRouteInfo>? children,
+    List<_i30.PageRouteInfo>? children,
   }) : super(
           RecoveryPasswordEnterSmsCodeRoute.name,
           args: RecoveryPasswordEnterSmsCodeRouteArgs(
@@ -592,8 +630,8 @@ class RecoveryPasswordEnterSmsCodeRoute
 
   static const String name = 'RecoveryPasswordEnterSmsCodeRoute';
 
-  static const _i27.PageInfo<RecoveryPasswordEnterSmsCodeRouteArgs> page =
-      _i27.PageInfo<RecoveryPasswordEnterSmsCodeRouteArgs>(name);
+  static const _i30.PageInfo<RecoveryPasswordEnterSmsCodeRouteArgs> page =
+      _i30.PageInfo<RecoveryPasswordEnterSmsCodeRouteArgs>(name);
 }
 
 class RecoveryPasswordEnterSmsCodeRouteArgs {
@@ -602,7 +640,7 @@ class RecoveryPasswordEnterSmsCodeRouteArgs {
     this.isSmsRecovery = false,
   });
 
-  final _i28.Key? key;
+  final _i31.Key? key;
 
   final bool isSmsRecovery;
 
@@ -613,9 +651,9 @@ class RecoveryPasswordEnterSmsCodeRouteArgs {
 }
 
 /// generated route for
-/// [_i17.RecoveryPinCodeChoiseTypeScreen]
-class RecoveryPinCodeChoiseTypeRoute extends _i27.PageRouteInfo<void> {
-  const RecoveryPinCodeChoiseTypeRoute({List<_i27.PageRouteInfo>? children})
+/// [_i18.RecoveryPinCodeChoiseTypeScreen]
+class RecoveryPinCodeChoiseTypeRoute extends _i30.PageRouteInfo<void> {
+  const RecoveryPinCodeChoiseTypeRoute({List<_i30.PageRouteInfo>? children})
       : super(
           RecoveryPinCodeChoiseTypeRoute.name,
           initialChildren: children,
@@ -623,14 +661,14 @@ class RecoveryPinCodeChoiseTypeRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'RecoveryPinCodeChoiseTypeRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i18.RecoveryPinCodeEnterEsiPasswordScreen]
-class RecoveryPinCodeEnterEsiPasswordRoute extends _i27.PageRouteInfo<void> {
+/// [_i19.RecoveryPinCodeEnterEsiPasswordScreen]
+class RecoveryPinCodeEnterEsiPasswordRoute extends _i30.PageRouteInfo<void> {
   const RecoveryPinCodeEnterEsiPasswordRoute(
-      {List<_i27.PageRouteInfo>? children})
+      {List<_i30.PageRouteInfo>? children})
       : super(
           RecoveryPinCodeEnterEsiPasswordRoute.name,
           initialChildren: children,
@@ -638,13 +676,13 @@ class RecoveryPinCodeEnterEsiPasswordRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'RecoveryPinCodeEnterEsiPasswordRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i19.RecoveryPinCodeEnterSmsCodeScreen]
-class RecoveryPinCodeEnterSmsCodeRoute extends _i27.PageRouteInfo<void> {
-  const RecoveryPinCodeEnterSmsCodeRoute({List<_i27.PageRouteInfo>? children})
+/// [_i20.RecoveryPinCodeEnterSmsCodeScreen]
+class RecoveryPinCodeEnterSmsCodeRoute extends _i30.PageRouteInfo<void> {
+  const RecoveryPinCodeEnterSmsCodeRoute({List<_i30.PageRouteInfo>? children})
       : super(
           RecoveryPinCodeEnterSmsCodeRoute.name,
           initialChildren: children,
@@ -652,13 +690,13 @@ class RecoveryPinCodeEnterSmsCodeRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'RecoveryPinCodeEnterSmsCodeRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i20.RegisterIPMainScreen]
-class RegisterIPMainRoute extends _i27.PageRouteInfo<void> {
-  const RegisterIPMainRoute({List<_i27.PageRouteInfo>? children})
+/// [_i21.RegisterIPMainScreen]
+class RegisterIPMainRoute extends _i30.PageRouteInfo<void> {
+  const RegisterIPMainRoute({List<_i30.PageRouteInfo>? children})
       : super(
           RegisterIPMainRoute.name,
           initialChildren: children,
@@ -666,16 +704,16 @@ class RegisterIPMainRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'RegisterIPMainRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i21.RegisterIPNextScreen]
-class RegisterIPNextRoute extends _i27.PageRouteInfo<RegisterIPNextRouteArgs> {
+/// [_i22.RegisterIPNextScreen]
+class RegisterIPNextRoute extends _i30.PageRouteInfo<RegisterIPNextRouteArgs> {
   RegisterIPNextRoute({
-    _i28.Key? key,
+    _i31.Key? key,
     required bool isPatent,
-    List<_i27.PageRouteInfo>? children,
+    List<_i30.PageRouteInfo>? children,
   }) : super(
           RegisterIPNextRoute.name,
           args: RegisterIPNextRouteArgs(
@@ -687,8 +725,8 @@ class RegisterIPNextRoute extends _i27.PageRouteInfo<RegisterIPNextRouteArgs> {
 
   static const String name = 'RegisterIPNextRoute';
 
-  static const _i27.PageInfo<RegisterIPNextRouteArgs> page =
-      _i27.PageInfo<RegisterIPNextRouteArgs>(name);
+  static const _i30.PageInfo<RegisterIPNextRouteArgs> page =
+      _i30.PageInfo<RegisterIPNextRouteArgs>(name);
 }
 
 class RegisterIPNextRouteArgs {
@@ -697,7 +735,7 @@ class RegisterIPNextRouteArgs {
     required this.isPatent,
   });
 
-  final _i28.Key? key;
+  final _i31.Key? key;
 
   final bool isPatent;
 
@@ -708,13 +746,13 @@ class RegisterIPNextRouteArgs {
 }
 
 /// generated route for
-/// [_i22.RegisterIPTypeOfActivityScreen]
+/// [_i23.RegisterIPTypeOfActivityScreen]
 class RegisterIPTypeOfActivityRoute
-    extends _i27.PageRouteInfo<RegisterIPTypeOfActivityRouteArgs> {
+    extends _i30.PageRouteInfo<RegisterIPTypeOfActivityRouteArgs> {
   RegisterIPTypeOfActivityRoute({
-    _i28.Key? key,
-    required List<_i30.TaxModel> models,
-    List<_i27.PageRouteInfo>? children,
+    _i31.Key? key,
+    required List<_i33.TaxModel> models,
+    List<_i30.PageRouteInfo>? children,
   }) : super(
           RegisterIPTypeOfActivityRoute.name,
           args: RegisterIPTypeOfActivityRouteArgs(
@@ -726,8 +764,8 @@ class RegisterIPTypeOfActivityRoute
 
   static const String name = 'RegisterIPTypeOfActivityRoute';
 
-  static const _i27.PageInfo<RegisterIPTypeOfActivityRouteArgs> page =
-      _i27.PageInfo<RegisterIPTypeOfActivityRouteArgs>(name);
+  static const _i30.PageInfo<RegisterIPTypeOfActivityRouteArgs> page =
+      _i30.PageInfo<RegisterIPTypeOfActivityRouteArgs>(name);
 }
 
 class RegisterIPTypeOfActivityRouteArgs {
@@ -736,9 +774,9 @@ class RegisterIPTypeOfActivityRouteArgs {
     required this.models,
   });
 
-  final _i28.Key? key;
+  final _i31.Key? key;
 
-  final List<_i30.TaxModel> models;
+  final List<_i33.TaxModel> models;
 
   @override
   String toString() {
@@ -747,9 +785,9 @@ class RegisterIPTypeOfActivityRouteArgs {
 }
 
 /// generated route for
-/// [_i23.RegisterIpConfirmOepScreen]
-class RegisterIpConfirmOepRoute extends _i27.PageRouteInfo<void> {
-  const RegisterIpConfirmOepRoute({List<_i27.PageRouteInfo>? children})
+/// [_i24.RegisterIpConfirmOepScreen]
+class RegisterIpConfirmOepRoute extends _i30.PageRouteInfo<void> {
+  const RegisterIpConfirmOepRoute({List<_i30.PageRouteInfo>? children})
       : super(
           RegisterIpConfirmOepRoute.name,
           initialChildren: children,
@@ -757,13 +795,13 @@ class RegisterIpConfirmOepRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'RegisterIpConfirmOepRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i24.RegisterIpSigninScreen]
-class RegisterIpSigninRoute extends _i27.PageRouteInfo<void> {
-  const RegisterIpSigninRoute({List<_i27.PageRouteInfo>? children})
+/// [_i25.RegisterIpSigninScreen]
+class RegisterIpSigninRoute extends _i30.PageRouteInfo<void> {
+  const RegisterIpSigninRoute({List<_i30.PageRouteInfo>? children})
       : super(
           RegisterIpSigninRoute.name,
           initialChildren: children,
@@ -771,17 +809,17 @@ class RegisterIpSigninRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'RegisterIpSigninRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i25.SelfiePreviewScreen]
-class SelfiePreviewRoute extends _i27.PageRouteInfo<SelfiePreviewRouteArgs> {
+/// [_i26.SelfiePreviewScreen]
+class SelfiePreviewRoute extends _i30.PageRouteInfo<SelfiePreviewRouteArgs> {
   SelfiePreviewRoute({
     required String? path,
     required Function onCheck,
-    _i28.Key? key,
-    List<_i27.PageRouteInfo>? children,
+    _i31.Key? key,
+    List<_i30.PageRouteInfo>? children,
   }) : super(
           SelfiePreviewRoute.name,
           args: SelfiePreviewRouteArgs(
@@ -794,8 +832,8 @@ class SelfiePreviewRoute extends _i27.PageRouteInfo<SelfiePreviewRouteArgs> {
 
   static const String name = 'SelfiePreviewRoute';
 
-  static const _i27.PageInfo<SelfiePreviewRouteArgs> page =
-      _i27.PageInfo<SelfiePreviewRouteArgs>(name);
+  static const _i30.PageInfo<SelfiePreviewRouteArgs> page =
+      _i30.PageInfo<SelfiePreviewRouteArgs>(name);
 }
 
 class SelfiePreviewRouteArgs {
@@ -809,7 +847,7 @@ class SelfiePreviewRouteArgs {
 
   final Function onCheck;
 
-  final _i28.Key? key;
+  final _i31.Key? key;
 
   @override
   String toString() {
@@ -818,9 +856,37 @@ class SelfiePreviewRouteArgs {
 }
 
 /// generated route for
-/// [_i26.SplashScreen]
-class SplashRoute extends _i27.PageRouteInfo<void> {
-  const SplashRoute({List<_i27.PageRouteInfo>? children})
+/// [_i27.SettingsAboutScreen]
+class SettingsAboutRoute extends _i30.PageRouteInfo<void> {
+  const SettingsAboutRoute({List<_i30.PageRouteInfo>? children})
+      : super(
+          SettingsAboutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsAboutRoute';
+
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i28.SettingsHelpScreen]
+class SettingsHelpRoute extends _i30.PageRouteInfo<void> {
+  const SettingsHelpRoute({List<_i30.PageRouteInfo>? children})
+      : super(
+          SettingsHelpRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsHelpRoute';
+
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i29.SplashScreen]
+class SplashRoute extends _i30.PageRouteInfo<void> {
+  const SplashRoute({List<_i30.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -828,5 +894,5 @@ class SplashRoute extends _i27.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i30.PageInfo<void> page = _i30.PageInfo<void>(name);
 }
