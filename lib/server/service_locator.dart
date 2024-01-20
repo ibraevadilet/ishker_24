@@ -8,19 +8,23 @@ import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/che
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_gns_pdf_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_pin_code_receiving_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_user_info_repo_impl.dart';
+import 'package:ishker_24/features/register_ip/data/repo_implements/send_otp_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/tax_and_selected_modes_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/get_gns_pdf_repository.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/get_pin_code_receiving_repository.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/get_user_info_repository.dart';
+import 'package:ishker_24/features/register_ip/domain/repositories/send_otp_repository.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/tax_and_selected_modes_repository.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/get_gns_pdf_usecase.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/get_pin_code_receiving_usecase.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/get_user_info_usecase.dart';
+import 'package:ishker_24/features/register_ip/domain/use_cases/send_otp_usecase.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/tax_and_selected_modes_usecase.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/get_gns_pdf_cubit/get_gns_pdf_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/get_pin_code_receiving_cubit/get_pin_code_receiving_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/get_user_info_cubit/get_user_info_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/search_vid_deatelnost_cubit/search_vid_deatelnost_cubit.dart';
+import 'package:ishker_24/features/register_ip/presentation/cubits/send_otp_cubit/send_otp_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/tax_and_selected_modes_cubit/tax_and_selected_modes_cubit.dart';
 import 'package:ishker_24/features/register_oep/data/repo_implements/get_terms_repo_impl.dart';
 import 'package:ishker_24/features/register_oep/data/repo_implements/register_oep_repo_impl.dart';
@@ -61,6 +65,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetGnsPdfRepo>(() => GetGnsPdfRepoImpl(dio: sl()));
   sl.registerFactory<GetPinCodeReceivingRepo>(
       () => GetPinCodeReceivingRepoImpl(dio: sl()));
+  sl.registerFactory<SendOtpRepo>(() => SendOtpRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -73,6 +78,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetGnsPdfUseCase>(() => GetGnsPdfUseCase(repo: sl()));
   sl.registerFactory<GetPinCodeReceivingUseCase>(
       () => GetPinCodeReceivingUseCase(repo: sl()));
+  sl.registerFactory<SendOtpUseCase>(() => SendOtpUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -89,4 +95,5 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetGnsPdfCubit>(() => GetGnsPdfCubit(useCase: sl()));
   sl.registerFactory<GetPinCodeReceivingCubit>(
       () => GetPinCodeReceivingCubit(useCase: sl()));
+  sl.registerFactory<SendOtpCubit>(() => SendOtpCubit(useCase: sl()));
 }

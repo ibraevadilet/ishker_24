@@ -23,10 +23,22 @@ abstract class AppTextStyles {
         fontWeight: FontWeight.w400,
         decoration: decoration,
       );
+  static TextStyle s14W500({Color? color, TextDecoration? decoration}) =>
+      TextStyle(
+        color: color ?? Colors.black,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        decoration: decoration,
+      );
   static TextStyle s14W600({Color? color}) => TextStyle(
         color: color ?? Colors.black,
         fontSize: 14,
         fontWeight: FontWeight.w600,
+      );
+  static TextStyle s14W700({Color? color}) => TextStyle(
+        color: color ?? Colors.black,
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
       );
   static TextStyle s15W400({Color? color}) => TextStyle(
         color: color ?? Colors.black,

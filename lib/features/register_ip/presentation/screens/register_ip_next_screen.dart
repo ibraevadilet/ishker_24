@@ -24,10 +24,13 @@ class RegisterIPNextScreen extends StatefulWidget {
 }
 
 class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
-  bool selectedRadioValue = true;
   int? selectedIndex;
   List<String> nalogTypes = [];
+
+  ///For back
   TaxModel? selectedVidDeatelnost;
+  bool selectedRadioValue = true;
+  List<String> nalogTypeIds = [];
 
   @override
   Widget build(BuildContext context) {
@@ -199,7 +202,19 @@ class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
                               const SizedBox(height: 8),
                               if (selectedIndex != null && selectedIndex == 2)
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () async {
+                                    nalogTypeIds.clear();
+                                    List<String>? result =
+                                        await context.router.push(
+                                      RegisterIpSelectModesRoute(
+                                        models: model.ediniyNalog,
+                                      ),
+                                    ) as List<String>?;
+                                    if (result != null) {
+                                      nalogTypeIds.addAll(result);
+                                    }
+                                    setState(() {});
+                                  },
                                   child: Container(
                                     padding: const EdgeInsets.all(16),
                                     decoration: BoxDecoration(
@@ -208,18 +223,48 @@ class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
                                         10,
                                       ),
                                     ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                    child: Column(
                                       children: [
-                                        Expanded(
-                                          child: Text(
-                                            'Ставки к единому\nналоговому режиму',
-                                            style: AppTextStyles.s16W400(),
-                                          ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                nalogTypeIds.isEmpty
+                                                    ? 'Ставки к единому\nналоговому режиму'
+                                                    : 'Выбранные по Единому налоговому режиму',
+                                                style: AppTextStyles.s16W400(),
+                                              ),
+                                            ),
+                                            Icon(
+                                              nalogTypeIds.isEmpty
+                                                  ? Icons.arrow_forward_ios
+                                                  : Icons
+                                                      .keyboard_arrow_down_rounded,
+                                            )
+                                          ],
                                         ),
-                                        const Icon(
-                                          Icons.arrow_forward_ios,
+                                        const SizedBox(height: 12),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: model.ediniyNalog
+                                              .where(
+                                                (e) =>
+                                                    nalogTypeIds.contains(e.id),
+                                              )
+                                              .map<Widget>(
+                                                (e) => Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          bottom: 10),
+                                                  child: Text(
+                                                    '- ${e.text}',
+                                                  ),
+                                                ),
+                                              )
+                                              .toList(),
                                         )
                                       ],
                                     ),
@@ -233,8 +278,21 @@ class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
                         text: 'Далее',
                         color: AppColors.color54B25AMain,
                         onPress: () {
-                          AppRouting.pushFunction(
-                              const RegisterIpSigninRoute());
+                          if (selectedVidDeatelnost != null &&
+                              selectedIndex != null &&
+                              selectedIndex != 2) {
+                            AppRouting.pushFunction(
+                              const RegisterIpSigninRoute(),
+                            );
+                          }
+                          if (selectedVidDeatelnost != null &&
+                              selectedIndex != null &&
+                              selectedIndex == 2 &&
+                              nalogTypeIds.isNotEmpty) {
+                            AppRouting.pushFunction(
+                              const RegisterIpSigninRoute(),
+                            );
+                          }
                         },
                       ),
                     ],

@@ -8,6 +8,7 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     this.text,
     this.color = AppColors.color54B25AMain,
+    this.loadingColor = Colors.white,
     required this.onPress,
     Key? key,
     this.width = double.infinity,
@@ -28,6 +29,7 @@ class CustomButton extends StatelessWidget {
   final double contentPadding;
   final EdgeInsetsGeometry aroundButtonPadding;
   final Color color;
+  final Color loadingColor;
   final Color textColor;
   final Color? borderColor;
   final bool isFullFilled;
@@ -60,7 +62,7 @@ class CustomButton extends StatelessWidget {
                 : null,
           ),
           child: isLoading
-              ? const AppIndicator(color: Colors.white)
+              ? AppIndicator(color: loadingColor)
               : child ??
                   Text(
                     text!,
