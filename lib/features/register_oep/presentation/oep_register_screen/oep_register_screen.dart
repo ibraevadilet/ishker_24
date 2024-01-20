@@ -6,7 +6,7 @@ import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/cubits/get_terms_cubit/get_terms_cubit.dart';
 import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/cubits/register_oep_cubit/register_oep_cubit.dart';
-import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/widgets/register_check_box_widget.dart';
+import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/widgets/register_oep_check_box_widget.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
@@ -123,7 +123,7 @@ class OEPRegisterScreen extends StatelessWidget {
                                 validator: AppInputValidators.emptyValidator,
                               ),
                               const SizedBox(height: 16),
-                              const RegisterCheckBoxWidget(),
+                              const RegisterOEPCheckBoxWidget(),
                             ],
                           ),
                         ),

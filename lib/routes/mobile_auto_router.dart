@@ -29,10 +29,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: OEPCameraRoute.page),
         AutoRoute(page: SelfiePreviewRoute.page),
         AutoRoute(page: OEPFinishRoute.page),
-        AutoRoute(page: RegisterIPRoute.page),
         AutoRoute(page: RegisterIPNextRoute.page),
-        AutoRoute(page: RegisterIPConfirmOepRoute.page),
+        AutoRoute(page: RegisterIpSigninRoute.page),
         AutoRoute(page: RegisterIPMainRoute.page),
         AutoRoute(page: RegisterIPTypeOfActivityRoute.page),
+        AutoRoute(page: RegisterIpConfirmOepRoute.page),
       ];
 }

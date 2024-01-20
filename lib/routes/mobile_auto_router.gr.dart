@@ -13,16 +13,18 @@ import 'package:camera/camera.dart' as _i29;
 import 'package:flutter/material.dart' as _i28;
 import 'package:ishker_24/features/bottom_navigator/bottom_navigator_screen.dart'
     as _i4;
-import 'package:ishker_24/features/register_ip/presentation/register_ip_confirm_oep_screen/register_ip_confirm_oep_screen.dart'
-    as _i20;
-import 'package:ishker_24/features/register_ip/presentation/register_ip_detail_screen/register_ip_detail_screen.dart'
+import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart'
+    as _i30;
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_confirm_oep_screen.dart'
     as _i23;
-import 'package:ishker_24/features/register_ip/presentation/register_ip_detail_screen/register_ip_next_screen.dart'
-    as _i22;
-import 'package:ishker_24/features/register_ip/presentation/register_ip_detail_screen/register_ip_type_of_activity_screen.dart'
-    as _i24;
-import 'package:ishker_24/features/register_ip/presentation/register_ip_main_screen/register_ip_main_screen.dart'
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_main_screen.dart'
+    as _i20;
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_next_screen.dart'
     as _i21;
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_signin_screen.dart'
+    as _i24;
+import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_type_of_activity_screen.dart'
+    as _i22;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/ces_selfie_ident_screen.dart'
     as _i5;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/oep_camera_screen.dart'
@@ -205,34 +207,42 @@ abstract class $AppRouter extends _i27.RootStackRouter {
         child: const _i19.RecoveryPinCodeEnterSmsCodeScreen(),
       );
     },
-    RegisterIPConfirmOepRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i20.RegisterIPConfirmOepScreen(),
-      );
-    },
     RegisterIPMainRoute.name: (routeData) {
       return _i27.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i21.RegisterIPMainScreen(),
+        child: const _i20.RegisterIPMainScreen(),
       );
     },
     RegisterIPNextRoute.name: (routeData) {
+      final args = routeData.argsAs<RegisterIPNextRouteArgs>();
       return _i27.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i22.RegisterIPNextScreen(),
-      );
-    },
-    RegisterIPRoute.name: (routeData) {
-      return _i27.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i23.RegisterIPScreen(),
+        child: _i21.RegisterIPNextScreen(
+          key: args.key,
+          isPatent: args.isPatent,
+        ),
       );
     },
     RegisterIPTypeOfActivityRoute.name: (routeData) {
+      final args = routeData.argsAs<RegisterIPTypeOfActivityRouteArgs>();
       return _i27.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i24.RegisterIPTypeOfActivityScreen(),
+        child: _i22.RegisterIPTypeOfActivityScreen(
+          key: args.key,
+          models: args.models,
+        ),
+      );
+    },
+    RegisterIpConfirmOepRoute.name: (routeData) {
+      return _i27.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i23.RegisterIpConfirmOepScreen(),
+      );
+    },
+    RegisterIpSigninRoute.name: (routeData) {
+      return _i27.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i24.RegisterIpSigninScreen(),
       );
     },
     SelfiePreviewRoute.name: (routeData) {
@@ -646,21 +656,7 @@ class RecoveryPinCodeEnterSmsCodeRoute extends _i27.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i20.RegisterIPConfirmOepScreen]
-class RegisterIPConfirmOepRoute extends _i27.PageRouteInfo<void> {
-  const RegisterIPConfirmOepRoute({List<_i27.PageRouteInfo>? children})
-      : super(
-          RegisterIPConfirmOepRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'RegisterIPConfirmOepRoute';
-
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i21.RegisterIPMainScreen]
+/// [_i20.RegisterIPMainScreen]
 class RegisterIPMainRoute extends _i27.PageRouteInfo<void> {
   const RegisterIPMainRoute({List<_i27.PageRouteInfo>? children})
       : super(
@@ -674,43 +670,106 @@ class RegisterIPMainRoute extends _i27.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i22.RegisterIPNextScreen]
-class RegisterIPNextRoute extends _i27.PageRouteInfo<void> {
-  const RegisterIPNextRoute({List<_i27.PageRouteInfo>? children})
-      : super(
+/// [_i21.RegisterIPNextScreen]
+class RegisterIPNextRoute extends _i27.PageRouteInfo<RegisterIPNextRouteArgs> {
+  RegisterIPNextRoute({
+    _i28.Key? key,
+    required bool isPatent,
+    List<_i27.PageRouteInfo>? children,
+  }) : super(
           RegisterIPNextRoute.name,
+          args: RegisterIPNextRouteArgs(
+            key: key,
+            isPatent: isPatent,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'RegisterIPNextRoute';
 
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+  static const _i27.PageInfo<RegisterIPNextRouteArgs> page =
+      _i27.PageInfo<RegisterIPNextRouteArgs>(name);
+}
+
+class RegisterIPNextRouteArgs {
+  const RegisterIPNextRouteArgs({
+    this.key,
+    required this.isPatent,
+  });
+
+  final _i28.Key? key;
+
+  final bool isPatent;
+
+  @override
+  String toString() {
+    return 'RegisterIPNextRouteArgs{key: $key, isPatent: $isPatent}';
+  }
 }
 
 /// generated route for
-/// [_i23.RegisterIPScreen]
-class RegisterIPRoute extends _i27.PageRouteInfo<void> {
-  const RegisterIPRoute({List<_i27.PageRouteInfo>? children})
-      : super(
-          RegisterIPRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'RegisterIPRoute';
-
-  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i24.RegisterIPTypeOfActivityScreen]
-class RegisterIPTypeOfActivityRoute extends _i27.PageRouteInfo<void> {
-  const RegisterIPTypeOfActivityRoute({List<_i27.PageRouteInfo>? children})
-      : super(
+/// [_i22.RegisterIPTypeOfActivityScreen]
+class RegisterIPTypeOfActivityRoute
+    extends _i27.PageRouteInfo<RegisterIPTypeOfActivityRouteArgs> {
+  RegisterIPTypeOfActivityRoute({
+    _i28.Key? key,
+    required List<_i30.TaxModel> models,
+    List<_i27.PageRouteInfo>? children,
+  }) : super(
           RegisterIPTypeOfActivityRoute.name,
+          args: RegisterIPTypeOfActivityRouteArgs(
+            key: key,
+            models: models,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'RegisterIPTypeOfActivityRoute';
+
+  static const _i27.PageInfo<RegisterIPTypeOfActivityRouteArgs> page =
+      _i27.PageInfo<RegisterIPTypeOfActivityRouteArgs>(name);
+}
+
+class RegisterIPTypeOfActivityRouteArgs {
+  const RegisterIPTypeOfActivityRouteArgs({
+    this.key,
+    required this.models,
+  });
+
+  final _i28.Key? key;
+
+  final List<_i30.TaxModel> models;
+
+  @override
+  String toString() {
+    return 'RegisterIPTypeOfActivityRouteArgs{key: $key, models: $models}';
+  }
+}
+
+/// generated route for
+/// [_i23.RegisterIpConfirmOepScreen]
+class RegisterIpConfirmOepRoute extends _i27.PageRouteInfo<void> {
+  const RegisterIpConfirmOepRoute({List<_i27.PageRouteInfo>? children})
+      : super(
+          RegisterIpConfirmOepRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RegisterIpConfirmOepRoute';
+
+  static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i24.RegisterIpSigninScreen]
+class RegisterIpSigninRoute extends _i27.PageRouteInfo<void> {
+  const RegisterIpSigninRoute({List<_i27.PageRouteInfo>? children})
+      : super(
+          RegisterIpSigninRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RegisterIpSigninRoute';
 
   static const _i27.PageInfo<void> page = _i27.PageInfo<void>(name);
 }

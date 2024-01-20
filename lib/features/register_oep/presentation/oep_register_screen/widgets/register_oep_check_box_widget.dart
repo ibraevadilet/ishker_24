@@ -5,13 +5,13 @@ import 'package:ishker_24/features/register_oep/presentation/oep_register_screen
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 
-class RegisterCheckBoxWidget extends StatefulWidget {
-  const RegisterCheckBoxWidget({super.key});
+class RegisterOEPCheckBoxWidget extends StatefulWidget {
+  const RegisterOEPCheckBoxWidget({super.key});
   @override
-  State<RegisterCheckBoxWidget> createState() => _RegisterCheckBoxWidgetState();
+  State<RegisterOEPCheckBoxWidget> createState() => _RegisterOEPCheckBoxWidgetState();
 }
 
-class _RegisterCheckBoxWidgetState extends State<RegisterCheckBoxWidget> {
+class _RegisterOEPCheckBoxWidgetState extends State<RegisterOEPCheckBoxWidget> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {

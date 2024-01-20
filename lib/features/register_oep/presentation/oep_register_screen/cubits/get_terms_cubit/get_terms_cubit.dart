@@ -15,7 +15,6 @@ class GetTermsCubit extends Cubit<GetTermsState> {
   void getTerms() async {
     try {
       final terms = await useCase.getTerms();
-      print(terms);
       OpenFilex.open(terms);
       emit(const GetTermsState.success());
     } catch (e) {

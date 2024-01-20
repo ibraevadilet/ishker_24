@@ -1,0 +1,175 @@
+
+
+# **************************************************************************
+# * ArchitectureGenerator - Simpler FLutter Generator -
+# **************************************************************************
+
+#? --> For Info
+# showInputBox replacing 
+# For Example:
+#
+#---> NAME
+#
+#   - writing "settings" to showInputBox
+#
+#   - before -> settings
+#        - NAME_page.dart
+#        - NAME_bloc.dart
+#        - NAME_repository.dart
+#
+#   - after -> 
+#        - settings_page.dart
+#        - settings_bloc.dart
+#        - settings_repository.dart
+#
+#---> funcCase
+#
+#   - writing "get_test" to showInputBox
+#   - before -> get_test
+#        Future<void> funcCase()
+#
+#   - after -> 
+#        Future<void> getTest()
+#
+#
+#
+#
+#---> LOWER_CASE
+#
+#   - before -> pay_login
+#       - part 'LOWER_CASE_model.freezed.dart';
+#       - part 'LOWER_CASE_model.g.dart';
+#
+#   - after ->
+#       - part 'pay_login_model.freezed.dart';
+#       - part 'pay_login_model.g.dart';
+# 
+# 
+#---> to use Custom Dart Code
+#   - should paste to false
+#       - dataSource
+#       - dataModels
+#       - dataRepository
+#       - entityModels
+#       - domainRepository
+#       - usecase
+#       - stateWidget
+# 
+
+# ********************* Created Extension For Fun 😜 ************************
+
+
+dataSource: false
+
+dataModel: false
+
+dataRepository: false
+
+entityModel: false
+
+domainRepository: false
+
+usecase: false
+
+# ----M.V.P-------------------------------------------------------> start
+generate:
+# ---Data------------------------------------------------------
+  - category: data
+    contents:
+      - folder: models
+        contents:
+          - file: NAME_model.dart
+      - folder: repo_implements
+        contents:
+          - file: NAME_repo_impl.dart
+            code: |
+              import 'package:ishker_24/server/catch_exception.dart';
+              import 'package:dio/dio.dart';
+
+
+              class NAMERepoImpl implements NAMERepo {
+                final Dio dio;
+                NAMERepoImpl({required this.dio});
+
+                @override
+                Future<List<NAMEModel>> funcCase() async {
+                  try {
+                    final response = await dio.get(
+                      'url',
+                      data: {},
+                    );
+                    return  response.data.map<NAMEModel>((e) => NAMEModel.fromJson(e)).toList();
+                  } catch (e) {
+                    throw CatchException.convertException(e).message;
+                  }
+                }
+              }
+# ---Domain----------------------------------------------------          
+  - category: domain
+    contents:
+      - folder: repositories
+        contents:
+          - file: NAME_repository.dart
+            code: |
+              abstract class NAMERepo {
+                Future<void> funcCase();
+              }
+      - folder: use_cases
+        contents:
+          - file: NAME_usecase.dart
+            code: |
+              class NAMEUseCase {
+                final NAMERepo repo;
+                NAMEUseCase({
+                  required this.repo,
+                });
+
+                Future<void> funcCase() async {
+                  try {
+                    return  await repo.funcCase();
+                  } catch (e) {
+                    rethrow;
+                  }
+                }
+              }
+# ---Presentation----------------------------------------------
+  # - category: presentation
+  #   contents:
+  #     - folder: widgets
+  #     - folder: bloc
+  #       contents:
+  #         - file: NAME_bloc.dart
+  #         - file: NAME_event.dart
+  #         - file: NAME_state.dart
+  #     - folder: pages
+  #       contents:
+  #         - file: NAME_page.dart
+  #           code: |
+  #             import 'package:flutter/material.dart';
+
+  #             class NAMEPage extends StatefulWidget {
+  #               const NAMEPage({super.key});
+  #               @override
+  #               State<NAMEPage> createState() => _NAMEPageState();
+  #             }
+
+  #             class _NAMEPageState extends State<NAMEPage> {
+  #               @override
+  #               Widget build(BuildContext context) {
+  #                 return Scaffold(
+  #                   appBar: AppBar(
+  #                     title: const Text('NAMEPage'),
+  #                   ),
+  #                   body: Column(
+  #                     children: [
+  #                       Container(),
+  #                     ],
+  #                   ),
+  #                 );
+  #               }
+  #             }
+
+
+
+# ------------------------------------------------------------- end
+
