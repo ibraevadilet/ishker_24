@@ -13,7 +13,6 @@ class GetPinCodeReceivingRepoImpl implements GetPinCodeReceivingRepo {
       final response = await dio.get(
         'gns/pin-code-receiving',
       );
-      print(response.data['data']);
       return response.data['data']
           .map<PinCodeTypesModel>((e) => PinCodeTypesModel.fromJson(e))
           .toList();

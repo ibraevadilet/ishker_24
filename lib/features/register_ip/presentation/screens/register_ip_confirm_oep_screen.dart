@@ -56,7 +56,18 @@ class RegisterIpConfirmOepScreen extends StatelessWidget {
                         listener: (context, state) {
                           state.whenOrNull(
                             error: (error) => AppSnackBar.showSnackBar(error),
-                            success: () => smsConfirmSheet(context),
+                            success: (authType, isNewOpen) {
+                              if (isNewOpen) {
+                                smsConfirmSheet(
+                                  context,
+                                  () {
+                                    context
+                                        .read<SendOtpCubit>()
+                                        .sendOtp(authType, false);
+                                  },
+                                );
+                              }
+                            },
                           );
                         },
                         builder: (context, state) {

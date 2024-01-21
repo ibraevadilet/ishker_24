@@ -39,12 +39,6 @@ class RegisterOepCubit extends Cubit<RegisterOepState> {
   }
 
   void getPhoto(String photoFrom) {
-    print(useCase.innController.text);
-    print(useCase.phoneNumber.text);
-    print(useCase.idController.text);
-    print(useCase.passNumberController.text);
-    print(useCase.emailController.text);
-    print(photoFrom);
     useCase.photo = photoFrom;
   }
 

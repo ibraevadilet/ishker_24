@@ -27,11 +27,12 @@ class SendOtpRepoImpl implements SendOtpRepo {
     UserNalogTypesModel registerModel,
   ) async {
     try {
-      final response = await dio.get(
+      final response = await dio.post(
         'gns/verify-code-and-register',
         queryParameters: {'byPin': pinCode},
         data: registerModel.toJson(),
       );
+      print('resulttttt -- ${response.data['status'] == 'ERROR'}');
       if (response.data['status'] == 'ERROR') {
         return response.data['message'];
       } else {

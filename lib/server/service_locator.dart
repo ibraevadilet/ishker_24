@@ -27,6 +27,7 @@ import 'package:ishker_24/features/register_ip/presentation/cubits/get_user_info
 import 'package:ishker_24/features/register_ip/presentation/cubits/search_vid_deatelnost_cubit/search_vid_deatelnost_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/send_otp_cubit/send_otp_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/tax_and_selected_modes_cubit/tax_and_selected_modes_cubit.dart';
+import 'package:ishker_24/features/register_ip/presentation/cubits/timer_cubit/timer_cubit.dart';
 import 'package:ishker_24/features/register_oep/data/repo_implements/get_terms_repo_impl.dart';
 import 'package:ishker_24/features/register_oep/data/repo_implements/register_oep_repo_impl.dart';
 import 'package:ishker_24/features/register_oep/domain/repositories/get_terms_repository.dart';
@@ -98,4 +99,5 @@ Future<void> initServiceLocator() async {
       () => GetPinCodeReceivingCubit(useCase: sl()));
   sl.registerFactory<SendOtpCubit>(() => SendOtpCubit(useCase: sl()));
   sl.registerFactory<ConfirmOtpCubit>(() => ConfirmOtpCubit(useCase: sl()));
+  sl.registerFactory<TimerCubit>(() => TimerCubit());
 }

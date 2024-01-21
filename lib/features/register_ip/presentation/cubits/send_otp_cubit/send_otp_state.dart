@@ -6,7 +6,8 @@ class SendOtpState with _$SendOtpState {
   const factory SendOtpState.smsLoading() = _SmsLoading;
   const factory SendOtpState.emailLoading() = _EmailLoading;
   const factory SendOtpState.error(String error) = _Error;
-  const factory SendOtpState.success() = _Success;
+  const factory SendOtpState.success(String authType, bool isNewOpen) =
+      _Success;
 
   const SendOtpState._();
 

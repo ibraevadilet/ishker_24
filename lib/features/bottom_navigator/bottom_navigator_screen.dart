@@ -46,7 +46,7 @@ class BottomNavigatorScreen extends StatelessWidget {
                 icon: SvgPicture.asset(AppImages.homeIcon),
                 activeIcon: SvgPicture.asset(
                   AppImages.homeIcon,
-                  colorFilter: ColorFilter.mode(
+                  colorFilter: const ColorFilter.mode(
                     AppColors.color54B25AMain,
                     BlendMode.srcIn,
                   ),
@@ -57,7 +57,7 @@ class BottomNavigatorScreen extends StatelessWidget {
                 icon: SvgPicture.asset(AppImages.bankIcon),
                 activeIcon: SvgPicture.asset(
                   AppImages.bankIcon,
-                  colorFilter: ColorFilter.mode(
+                  colorFilter: const ColorFilter.mode(
                     AppColors.color54B25AMain,
                     BlendMode.srcIn,
                   ),
@@ -68,7 +68,7 @@ class BottomNavigatorScreen extends StatelessWidget {
                 icon: SvgPicture.asset(AppImages.qrIcon),
                 activeIcon: SvgPicture.asset(
                   AppImages.qrIcon,
-                  colorFilter: ColorFilter.mode(
+                  colorFilter: const ColorFilter.mode(
                     AppColors.color54B25AMain,
                     BlendMode.srcIn,
                   ),
@@ -79,7 +79,7 @@ class BottomNavigatorScreen extends StatelessWidget {
                 icon: SvgPicture.asset(AppImages.myIpIcon),
                 activeIcon: SvgPicture.asset(
                   AppImages.myIpIcon,
-                  colorFilter: ColorFilter.mode(
+                  colorFilter: const ColorFilter.mode(
                     AppColors.color54B25AMain,
                     BlendMode.srcIn,
                   ),
@@ -90,7 +90,7 @@ class BottomNavigatorScreen extends StatelessWidget {
                 icon: SvgPicture.asset(AppImages.moreIcon),
                 activeIcon: SvgPicture.asset(
                   AppImages.moreIcon,
-                  colorFilter: ColorFilter.mode(
+                  colorFilter: const ColorFilter.mode(
                     AppColors.color54B25AMain,
                     BlendMode.srcIn,
                   ),

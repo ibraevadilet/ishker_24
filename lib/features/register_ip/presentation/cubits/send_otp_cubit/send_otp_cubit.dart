@@ -10,7 +10,7 @@ class SendOtpCubit extends Cubit<SendOtpState> {
 
   final SendOtpUseCase useCase;
 
-  Future<void> sendOtp(String authType) async {
+  Future<void> sendOtp(String authType, [bool isNewOpen = true]) async {
     if (authType == 'email') {
       emit(const SendOtpState.emailLoading());
     } else {
@@ -18,7 +18,7 @@ class SendOtpCubit extends Cubit<SendOtpState> {
     }
     try {
       await useCase.sendOtp(authType);
-      emit(const SendOtpState.success());
+      emit(SendOtpState.success(authType, isNewOpen));
     } catch (e) {
       emit(SendOtpState.error(e.toString()));
     }

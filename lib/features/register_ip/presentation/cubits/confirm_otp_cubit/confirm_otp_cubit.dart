@@ -20,7 +20,6 @@ class ConfirmOtpCubit extends Cubit<ConfirmOtpState> {
       } else {
         emit(ConfirmOtpState.error(result));
       }
-      emit(const ConfirmOtpState.success());
     } catch (e) {
       emit(ConfirmOtpState.error(e.toString()));
     }

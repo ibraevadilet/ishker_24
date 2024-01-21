@@ -22,7 +22,7 @@ mixin _$SendOtpState {
     required TResult Function() smsLoading,
     required TResult Function() emailLoading,
     required TResult Function(String error) error,
-    required TResult Function() success,
+    required TResult Function(String authType, bool isNewOpen) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +31,7 @@ mixin _$SendOtpState {
     TResult? Function()? smsLoading,
     TResult? Function()? emailLoading,
     TResult? Function(String error)? error,
-    TResult? Function()? success,
+    TResult? Function(String authType, bool isNewOpen)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$SendOtpState {
     TResult Function()? smsLoading,
     TResult Function()? emailLoading,
     TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function(String authType, bool isNewOpen)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,7 +134,7 @@ class _$InitialImpl extends _Initial {
     required TResult Function() smsLoading,
     required TResult Function() emailLoading,
     required TResult Function(String error) error,
-    required TResult Function() success,
+    required TResult Function(String authType, bool isNewOpen) success,
   }) {
     return initial();
   }
@@ -146,7 +146,7 @@ class _$InitialImpl extends _Initial {
     TResult? Function()? smsLoading,
     TResult? Function()? emailLoading,
     TResult? Function(String error)? error,
-    TResult? Function()? success,
+    TResult? Function(String authType, bool isNewOpen)? success,
   }) {
     return initial?.call();
   }
@@ -158,7 +158,7 @@ class _$InitialImpl extends _Initial {
     TResult Function()? smsLoading,
     TResult Function()? emailLoading,
     TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function(String authType, bool isNewOpen)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -255,7 +255,7 @@ class _$SmsLoadingImpl extends _SmsLoading {
     required TResult Function() smsLoading,
     required TResult Function() emailLoading,
     required TResult Function(String error) error,
-    required TResult Function() success,
+    required TResult Function(String authType, bool isNewOpen) success,
   }) {
     return smsLoading();
   }
@@ -267,7 +267,7 @@ class _$SmsLoadingImpl extends _SmsLoading {
     TResult? Function()? smsLoading,
     TResult? Function()? emailLoading,
     TResult? Function(String error)? error,
-    TResult? Function()? success,
+    TResult? Function(String authType, bool isNewOpen)? success,
   }) {
     return smsLoading?.call();
   }
@@ -279,7 +279,7 @@ class _$SmsLoadingImpl extends _SmsLoading {
     TResult Function()? smsLoading,
     TResult Function()? emailLoading,
     TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function(String authType, bool isNewOpen)? success,
     required TResult orElse(),
   }) {
     if (smsLoading != null) {
@@ -376,7 +376,7 @@ class _$EmailLoadingImpl extends _EmailLoading {
     required TResult Function() smsLoading,
     required TResult Function() emailLoading,
     required TResult Function(String error) error,
-    required TResult Function() success,
+    required TResult Function(String authType, bool isNewOpen) success,
   }) {
     return emailLoading();
   }
@@ -388,7 +388,7 @@ class _$EmailLoadingImpl extends _EmailLoading {
     TResult? Function()? smsLoading,
     TResult? Function()? emailLoading,
     TResult? Function(String error)? error,
-    TResult? Function()? success,
+    TResult? Function(String authType, bool isNewOpen)? success,
   }) {
     return emailLoading?.call();
   }
@@ -400,7 +400,7 @@ class _$EmailLoadingImpl extends _EmailLoading {
     TResult Function()? smsLoading,
     TResult Function()? emailLoading,
     TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function(String authType, bool isNewOpen)? success,
     required TResult orElse(),
   }) {
     if (emailLoading != null) {
@@ -523,7 +523,7 @@ class _$ErrorImpl extends _Error {
     required TResult Function() smsLoading,
     required TResult Function() emailLoading,
     required TResult Function(String error) error,
-    required TResult Function() success,
+    required TResult Function(String authType, bool isNewOpen) success,
   }) {
     return error(this.error);
   }
@@ -535,7 +535,7 @@ class _$ErrorImpl extends _Error {
     TResult? Function()? smsLoading,
     TResult? Function()? emailLoading,
     TResult? Function(String error)? error,
-    TResult? Function()? success,
+    TResult? Function(String authType, bool isNewOpen)? success,
   }) {
     return error?.call(this.error);
   }
@@ -547,7 +547,7 @@ class _$ErrorImpl extends _Error {
     TResult Function()? smsLoading,
     TResult Function()? emailLoading,
     TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function(String authType, bool isNewOpen)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -612,6 +612,8 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String authType, bool isNewOpen});
 }
 
 /// @nodoc
@@ -621,26 +623,60 @@ class __$$SuccessImplCopyWithImpl<$Res>
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? authType = null,
+    Object? isNewOpen = null,
+  }) {
+    return _then(_$SuccessImpl(
+      null == authType
+          ? _value.authType
+          : authType // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == isNewOpen
+          ? _value.isNewOpen
+          : isNewOpen // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl extends _Success {
-  const _$SuccessImpl() : super._();
+  const _$SuccessImpl(this.authType, this.isNewOpen) : super._();
+
+  @override
+  final String authType;
+  @override
+  final bool isNewOpen;
 
   @override
   String toString() {
-    return 'SendOtpState.success()';
+    return 'SendOtpState.success(authType: $authType, isNewOpen: $isNewOpen)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl &&
+            (identical(other.authType, authType) ||
+                other.authType == authType) &&
+            (identical(other.isNewOpen, isNewOpen) ||
+                other.isNewOpen == isNewOpen));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, authType, isNewOpen);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -649,9 +685,9 @@ class _$SuccessImpl extends _Success {
     required TResult Function() smsLoading,
     required TResult Function() emailLoading,
     required TResult Function(String error) error,
-    required TResult Function() success,
+    required TResult Function(String authType, bool isNewOpen) success,
   }) {
-    return success();
+    return success(authType, isNewOpen);
   }
 
   @override
@@ -661,9 +697,9 @@ class _$SuccessImpl extends _Success {
     TResult? Function()? smsLoading,
     TResult? Function()? emailLoading,
     TResult? Function(String error)? error,
-    TResult? Function()? success,
+    TResult? Function(String authType, bool isNewOpen)? success,
   }) {
-    return success?.call();
+    return success?.call(authType, isNewOpen);
   }
 
   @override
@@ -673,11 +709,11 @@ class _$SuccessImpl extends _Success {
     TResult Function()? smsLoading,
     TResult Function()? emailLoading,
     TResult Function(String error)? error,
-    TResult Function()? success,
+    TResult Function(String authType, bool isNewOpen)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(authType, isNewOpen);
     }
     return orElse();
   }
@@ -724,6 +760,13 @@ class _$SuccessImpl extends _Success {
 }
 
 abstract class _Success extends SendOtpState {
-  const factory _Success() = _$SuccessImpl;
+  const factory _Success(final String authType, final bool isNewOpen) =
+      _$SuccessImpl;
   const _Success._() : super._();
+
+  String get authType;
+  bool get isNewOpen;
+  @JsonKey(ignore: true)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
