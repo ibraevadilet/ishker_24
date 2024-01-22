@@ -36,13 +36,6 @@ class AuthScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               const EsiTextFiled(
-                keyboardType: TextInputType.number,
-                hintText: 'Номер паспорта',
-                prfixIcon: AppImages.personIconSvg,
-                suffixIcon: true,
-              ),
-              const SizedBox(height: 12),
-              const EsiTextFiled(
                 hintText: 'Пароль',
                 prfixIcon: AppImages.passwordIconSvg,
                 obscureText: true,
