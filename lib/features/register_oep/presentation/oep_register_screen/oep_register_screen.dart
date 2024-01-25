@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ishker_24/core/formatters/input_formatters.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/cubits/get_terms_cubit/get_terms_cubit.dart';
@@ -108,7 +109,7 @@ class OEPRegisterScreen extends StatelessWidget {
                                 labelText: 'Номер телефона',
                                 keyboardType: TextInputType.number,
                                 inputFormatters: [
-                                  LengthLimitingTextInputFormatter(9),
+                                  AppInputFormatters.phoneFormatter,
                                 ],
                                 validator: AppInputValidators.phoneValidator,
                               ),
