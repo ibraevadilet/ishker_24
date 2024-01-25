@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/core/images/app_images.dart';
+import 'package:ishker_24/core/utils/text_scaler.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 
@@ -113,6 +114,7 @@ class FullHasWidget extends StatelessWidget {
                         child: Text(
                           '5234',
                           style: AppTextStyles.s10Bold(color: Colors.white),
+                          textScaler: CustomTextScaler.freezed(context),
                         ),
                       ),
                     ],
