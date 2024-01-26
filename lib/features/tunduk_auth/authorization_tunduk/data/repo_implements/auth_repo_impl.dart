@@ -12,8 +12,10 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<AuthModel> auth(SendForAuthModel model) async {
+    String username = 'user';
+    String password = 'user';
     String basicAuth =
-        'Basic ${base64Encode(utf8.encode('${model.username}${model.password}'))}';
+        'Basic ${base64Encode(utf8.encode('$username:$password'))}';
 
     try {
       final response = await dio.post(
