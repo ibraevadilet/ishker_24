@@ -20,21 +20,20 @@ class DioSettings {
   );
   void initialSettings() {
     final interceptors = dio.interceptors;
-    dio.interceptors.add(
+    interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           final token = prefs.getString(SharedKeys.token) ?? '';
           if (token != '') {
             options.headers['auth'] = token;
           }
-          options.headers["langId"] = 2;
 
           return handler.next(options);
         },
         onResponse: (response, handler) {
           return handler.next(response);
         },
-        onError: (DioError e, handler) {
+        onError: (DioException e, handler) {
           return handler.next(e);
         },
       ),

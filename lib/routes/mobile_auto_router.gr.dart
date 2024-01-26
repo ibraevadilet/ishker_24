@@ -9,14 +9,14 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i31;
-import 'package:camera/camera.dart' as _i33;
+import 'package:camera/camera.dart' as _i34;
 import 'package:flutter/material.dart' as _i32;
 import 'package:ishker_24/features/bottom_navigator/bottom_navigator_screen.dart'
     as _i4;
 import 'package:ishker_24/features/my_ip/presentation/my_certificate_screen/my_certficate_screen.dart'
     as _i7;
 import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart'
-    as _i34;
+    as _i35;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_confirm_oep_screen.dart'
     as _i24;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_main_screen.dart'
@@ -44,6 +44,8 @@ import 'package:ishker_24/features/settings/presentation/settings_about_screen/s
 import 'package:ishker_24/features/settings/presentation/settings_help_screen/settings_help_screen.dart'
     as _i29;
 import 'package:ishker_24/features/splash/splash_screen.dart' as _i30;
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/models/auth_model.dart'
+    as _i33;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_confirm_code_screen/auth_confirm_code_screen.dart'
     as _i1;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/auth_screen.dart'
@@ -91,9 +93,13 @@ abstract class $AppRouter extends _i31.RootStackRouter {
       );
     },
     AuthSendConfirmRoute.name: (routeData) {
+      final args = routeData.argsAs<AuthSendConfirmRouteArgs>();
       return _i31.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.AuthSendConfirmScreen(),
+        child: _i3.AuthSendConfirmScreen(
+          key: args.key,
+          authModel: args.authModel,
+        ),
       );
     },
     BottomNavigatorRoute.name: (routeData) {
@@ -331,16 +337,41 @@ class AuthRoute extends _i31.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.AuthSendConfirmScreen]
-class AuthSendConfirmRoute extends _i31.PageRouteInfo<void> {
-  const AuthSendConfirmRoute({List<_i31.PageRouteInfo>? children})
-      : super(
+class AuthSendConfirmRoute
+    extends _i31.PageRouteInfo<AuthSendConfirmRouteArgs> {
+  AuthSendConfirmRoute({
+    _i32.Key? key,
+    required _i33.AuthModel authModel,
+    List<_i31.PageRouteInfo>? children,
+  }) : super(
           AuthSendConfirmRoute.name,
+          args: AuthSendConfirmRouteArgs(
+            key: key,
+            authModel: authModel,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AuthSendConfirmRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i31.PageInfo<AuthSendConfirmRouteArgs> page =
+      _i31.PageInfo<AuthSendConfirmRouteArgs>(name);
+}
+
+class AuthSendConfirmRouteArgs {
+  const AuthSendConfirmRouteArgs({
+    this.key,
+    required this.authModel,
+  });
+
+  final _i32.Key? key;
+
+  final _i33.AuthModel authModel;
+
+  @override
+  String toString() {
+    return 'AuthSendConfirmRouteArgs{key: $key, authModel: $authModel}';
+  }
 }
 
 /// generated route for
@@ -404,7 +435,7 @@ class MyCertficateRoute extends _i31.PageRouteInfo<void> {
 class OEPCameraRoute extends _i31.PageRouteInfo<OEPCameraRouteArgs> {
   OEPCameraRoute({
     _i32.Key? key,
-    required _i33.CameraDescription description,
+    required _i34.CameraDescription description,
     List<_i31.PageRouteInfo>? children,
   }) : super(
           OEPCameraRoute.name,
@@ -429,7 +460,7 @@ class OEPCameraRouteArgs {
 
   final _i32.Key? key;
 
-  final _i33.CameraDescription description;
+  final _i34.CameraDescription description;
 
   @override
   String toString() {
@@ -763,7 +794,7 @@ class RegisterIPTypeOfActivityRoute
     extends _i31.PageRouteInfo<RegisterIPTypeOfActivityRouteArgs> {
   RegisterIPTypeOfActivityRoute({
     _i32.Key? key,
-    required List<_i34.TaxModel> models,
+    required List<_i35.TaxModel> models,
     List<_i31.PageRouteInfo>? children,
   }) : super(
           RegisterIPTypeOfActivityRoute.name,
@@ -788,7 +819,7 @@ class RegisterIPTypeOfActivityRouteArgs {
 
   final _i32.Key? key;
 
-  final List<_i34.TaxModel> models;
+  final List<_i35.TaxModel> models;
 
   @override
   String toString() {
@@ -816,7 +847,7 @@ class RegisterIpSelectModesRoute
     extends _i31.PageRouteInfo<RegisterIpSelectModesRouteArgs> {
   RegisterIpSelectModesRoute({
     _i32.Key? key,
-    required List<_i34.TaxModel> models,
+    required List<_i35.TaxModel> models,
     List<_i31.PageRouteInfo>? children,
   }) : super(
           RegisterIpSelectModesRoute.name,
@@ -841,7 +872,7 @@ class RegisterIpSelectModesRouteArgs {
 
   final _i32.Key? key;
 
-  final List<_i34.TaxModel> models;
+  final List<_i35.TaxModel> models;
 
   @override
   String toString() {

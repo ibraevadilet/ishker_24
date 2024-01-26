@@ -37,6 +37,10 @@ import 'package:ishker_24/features/register_oep/domain/use_cases/register_oep_us
 import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/cubits/get_terms_cubit/get_terms_cubit.dart';
 import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/cubits/register_oep_cubit/register_oep_cubit.dart';
 import 'package:ishker_24/features/splash/splash_cubit/splash_cubit.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/auth_repo_impl.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/auth_repository.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/auth_usecase.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.dart';
 import 'package:ishker_24/server/dio_settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -68,6 +72,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetPinCodeReceivingRepo>(
       () => GetPinCodeReceivingRepoImpl(dio: sl()));
   sl.registerFactory<SendOtpRepo>(() => SendOtpRepoImpl(dio: sl()));
+  sl.registerFactory<AuthRepo>(() => AuthRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -81,6 +86,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetPinCodeReceivingUseCase>(
       () => GetPinCodeReceivingUseCase(repo: sl()));
   sl.registerFactory<SendOtpUseCase>(() => SendOtpUseCase(repo: sl()));
+  sl.registerFactory<AuthUseCase>(() => AuthUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -100,4 +106,5 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<SendOtpCubit>(() => SendOtpCubit(useCase: sl()));
   sl.registerFactory<ConfirmOtpCubit>(() => ConfirmOtpCubit(useCase: sl()));
   sl.registerFactory<TimerCubit>(() => TimerCubit());
+  sl.registerFactory<AuthCubit>(() => AuthCubit(useCase: sl()));
 }

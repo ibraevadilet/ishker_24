@@ -49,6 +49,7 @@ class _EsiTextFiledState extends State<EsiTextFiled> {
         keyboardType: widget.keyboardType,
         obscureText: isObscure,
         validator: widget.validator,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
           suffixIcon: widget.suffixIcon
               ? Padding(

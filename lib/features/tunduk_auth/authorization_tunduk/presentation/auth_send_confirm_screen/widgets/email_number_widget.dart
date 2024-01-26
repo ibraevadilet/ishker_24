@@ -3,7 +3,10 @@ import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 
 class EmailNumberWidget extends StatelessWidget {
-  const EmailNumberWidget({super.key});
+  const EmailNumberWidget(
+      {super.key, required this.email, required this.number});
+  final String email;
+  final String number;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,11 +30,11 @@ class EmailNumberWidget extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'g***************k@gmail.com',
+            email,
             style: AppTextStyles.s14W600(),
           ),
           Text(
-            '+996 555 ** ** *5',
+            number,
             style: AppTextStyles.s14W600(),
           ),
         ],

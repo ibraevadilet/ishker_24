@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/models/auth_model.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_send_confirm_screen/widgets/email_number_widget.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/esi_background_image_widget.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/top_title_widget.dart';
@@ -11,7 +12,9 @@ import 'package:ishker_24/widgets/custom_button.dart';
 
 @RoutePage()
 class AuthSendConfirmScreen extends StatelessWidget {
-  const AuthSendConfirmScreen({super.key});
+  const AuthSendConfirmScreen({super.key, required this.authModel});
+  final AuthModel authModel;
+
   @override
   Widget build(BuildContext context) {
     return ScaffoldBackgroundImageWidget(
@@ -23,36 +26,66 @@ class AuthSendConfirmScreen extends StatelessWidget {
             subTitle:
                 'Для этого выберите один из предложенных способов и введите сгенерированный одноразовый пароль в специальное окно.',
           ),
-          const EmailNumberWidget(),
+          EmailNumberWidget(
+            email: authModel.body
+                    .where((e) => e.method == 'Email')
+                    .first
+                    .emailFragment ??
+                '',
+            number: authModel.body
+                    .where((e) => e.method == 'Sms')
+                    .first
+                    .phoneNumberFragment ??
+                '',
+          ),
           const SizedBox(height: 42),
-          CustomButton(
-            color: AppColors.esiMainBlueColor,
-            onPress: () {
-              AppRouting.pushFunction(const AuthConfirmCodeRoute());
-            },
-            text: 'Получить код через почту',
+          Expanded(
+            child: Column(
+              children: authModel.body
+                  .where((e) => e.enabled)
+                  .map<Widget>(
+                    (e) => Expanded(
+                      child: Column(
+                        children: [
+                          CustomButton(
+                            textColor: e.method == 'Telegram'
+                                ? AppColors.esiMainBlueColor
+                                : Colors.white,
+                            borderColor: e.method == 'Telegram'
+                                ? AppColors.esiMainBlueColor
+                                : Colors.white,
+                            color: e.method == 'Telegram'
+                                ? Colors.white
+                                : AppColors.esiMainBlueColor,
+                            onPress: () {
+                              AppRouting.pushFunction(
+                                  const AuthConfirmCodeRoute());
+                            },
+                            text: getText(e.method),
+                          ),
+                          const Spacer(),
+                        ],
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
           ),
-          const Spacer(),
-          CustomButton(
-            color: AppColors.esiMainBlueColor,
-            onPress: () {
-              AppRouting.pushFunction(const AuthConfirmCodeRoute());
-            },
-            text: 'Получить код через СМС',
-          ),
-          const Spacer(),
-          CustomButton(
-            color: Colors.white,
-            onPress: () {
-              AppRouting.pushFunction(const AuthConfirmCodeRoute());
-            },
-            text: 'Получить код через Telegram',
-            textColor: AppColors.esiMainBlueColor,
-            borderColor: AppColors.esiMainBlueColor,
-          ),
-          const Spacer(flex: 2),
         ],
       ),
     );
+  }
+}
+
+String getText(String method) {
+  switch (method) {
+    case 'Telegram':
+      return 'Получить код через Telegram';
+    case 'Email':
+      return 'Получить код через почту';
+    case 'Sms':
+      return 'Получить код через СМС';
+    default:
+      return '';
   }
 }
