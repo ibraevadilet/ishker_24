@@ -70,17 +70,7 @@ class AuthScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 32),
-                    CustomButton(
-                      borderColor: AppColors.esiMainBlueColor,
-                      color: Colors.white,
-                      textColor: AppColors.esiMainBlueColor,
-                      onPress: () {
-                        AppRouting.pushFunction(const OEPRegisterRoute());
-                      },
-                      text: 'Получить ОЭП',
-                    ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 40),
                     Text.rich(
                       TextSpan(
                         text:
@@ -99,7 +89,7 @@ class AuthScreen extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 24),
                     BlocBuilder<AuthCubit, AuthState>(
                       builder: (context, state) {
                         return CustomButton(
@@ -145,7 +135,16 @@ class AuthScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 24),
+                    CustomButton(
+                      borderColor: AppColors.esiMainBlueColor,
+                      color: Colors.white,
+                      textColor: AppColors.esiMainBlueColor,
+                      onPress: () {
+                        AppRouting.pushFunction(const OEPRegisterRoute());
+                      },
+                      text: 'Получить ОЭП',
+                    ),
                   ],
                 ),
               ),
