@@ -38,5 +38,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: SettingsAboutRoute.page),
         AutoRoute(page: SettingsHelpRoute.page),
         AutoRoute(page: MyCertficateRoute.page),
+        AutoRoute(page: BlackListCheckRoute.page),
       ];
 }
