@@ -15,8 +15,8 @@ class AuthCubit extends Cubit<AuthState> {
   final AuthUseCase useCase;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final loginController = TextEditingController(text: '21605200001255');
-  final passwordController = TextEditingController(text: 'wefaf');
+  final loginController = TextEditingController();
+  final passwordController = TextEditingController();
 
   getAuth() async {
     if (formKey.currentState!.validate()) {
@@ -26,7 +26,14 @@ class AuthCubit extends Cubit<AuthState> {
           loginController.text,
           passwordController.text,
         );
-        AppRouting.pushFunction(AuthSendConfirmRoute(authModel: result));
+        AppRouting.pushFunction(
+          AuthSendConfirmRoute(
+            authModel: result.copyWith(
+              body: result.body.where((e) => e.enabled).toList(),
+            ),
+          ),
+        );
+        emit(const AuthState.success());
       } catch (e) {
         AppSnackBar.showSnackBar(e.toString());
         emit(AuthState.error(e.toString()));

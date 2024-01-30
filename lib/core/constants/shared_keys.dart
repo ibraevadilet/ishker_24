@@ -1,4 +1,4 @@
 abstract class SharedKeys {
-  static const String token = 'token';
-  static const String isBiometric = 'isBiometric';
+  static const String accessToken = 'accessToken';
+  static const String pinCode = 'pinCode';
 }

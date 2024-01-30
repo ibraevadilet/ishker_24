@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ishker_24/core/formatters/shapes.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
@@ -8,6 +10,7 @@ import 'package:ishker_24/widgets/spaces.dart';
 
 Future<void> showSuccessDialog(BuildContext context) async {
   await showDialog(
+    barrierDismissible: false,
     context: context,
     builder: (context) => AlertDialog(
       insetPadding: const EdgeInsets.symmetric(horizontal: 20),
@@ -31,7 +34,7 @@ Future<void> showSuccessDialog(BuildContext context) async {
             CustomButton(
               color: AppColors.esiMainBlueColor,
               onPress: () {
-                Navigator.pop(context);
+                AppRouting.pushAndPopUntilFunction(const AuthRoute());
               },
               text: 'OK',
             )

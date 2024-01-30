@@ -17,6 +17,17 @@ class AppInputValidators {
     }
   }
 
+  static String? phoneValidatorWith996(String? val) {
+    if (val!.isEmpty) {
+      return 'Поле обязательно для заполнения';
+    }
+    if (val.length != 18) {
+      return 'Введите корректный номер телефона';
+    } else {
+      return null;
+    }
+  }
+
   static String? innValidator(String? val) {
     var regexp = RegExp(r'^[0-9]*$');
     if (val!.isEmpty) {

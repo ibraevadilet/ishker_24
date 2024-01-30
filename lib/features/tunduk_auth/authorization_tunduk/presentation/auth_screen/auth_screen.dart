@@ -106,39 +106,6 @@ class AuthScreen extends StatelessWidget {
                           isLoading: state.isLoading,
                           color: AppColors.esiMainBlueColor,
                           onPress: () {
-                            // AppRouting.pushFunction(
-                            //   AuthSendConfirmRoute(
-                            //     authModel: AuthModel(
-                            //       requestId:
-                            //           'a85220fe-7369-43ec-8454-fbaacb65c4ac',
-                            //       body: [
-                            //         Body(
-                            //           method: 'Telegram',
-                            //           enabled: true,
-                            //           phoneNumberFragment: null,
-                            //           emailFragment: null,
-                            //         ),
-                            //         Body(
-                            //           method: 'Email',
-                            //           enabled: true,
-                            //           phoneNumberFragment: null,
-                            //           emailFragment:
-                            //               'j*****************2@gmail.com',
-                            //         ),
-                            //         Body(
-                            //           method: 'Sms',
-                            //           enabled: true,
-                            //           phoneNumberFragment: '+99699*****23',
-                            //           emailFragment: null,
-                            //         ),
-                            //       ],
-                            //       errors: null,
-                            //       succeeded: true,
-                            //       twoFactorSessionToken:
-                            //           'CfDJ8DVWRrhIBSdLuSzJI7yO2I2rpH-BZidrkqfa73qOryrZtDO0b7PJpnHqFpr7UwlhyHZ2XrBp9mMhPGeVFR09j4RIhfd9zcrbT0SXZYWVfagRElyiGGQ',
-                            //     ),
-                            //   ),
-                            // );
                             context.read<AuthCubit>().getAuth();
                           },
                           text: 'Далее',

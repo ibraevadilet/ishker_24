@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class AuthModel {
   final String requestId;
   final List<Body> body;
@@ -28,6 +29,23 @@ class AuthModel {
         "succeeded": succeeded,
         "twoFactorSessionToken": twoFactorSessionToken,
       };
+
+  AuthModel copyWith({
+    String? requestId,
+    List<Body>? body,
+    dynamic errors,
+    bool? succeeded,
+    String? twoFactorSessionToken,
+  }) {
+    return AuthModel(
+      requestId: requestId ?? this.requestId,
+      body: body ?? this.body,
+      errors: errors ?? this.errors,
+      succeeded: succeeded ?? this.succeeded,
+      twoFactorSessionToken:
+          twoFactorSessionToken ?? this.twoFactorSessionToken,
+    );
+  }
 }
 
 class Body {
@@ -56,4 +74,18 @@ class Body {
         "phoneNumberFragment": phoneNumberFragment,
         "emailFragment": emailFragment,
       };
+
+  Body copyWith({
+    String? method,
+    bool? enabled,
+    String? phoneNumberFragment,
+    String? emailFragment,
+  }) {
+    return Body(
+      method: method ?? this.method,
+      enabled: enabled ?? this.enabled,
+      phoneNumberFragment: phoneNumberFragment ?? this.phoneNumberFragment,
+      emailFragment: emailFragment ?? this.emailFragment,
+    );
+  }
 }

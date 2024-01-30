@@ -8,11 +8,13 @@ class AuthUseCase {
   AuthUseCase({
     required this.repo,
   });
-
+  String inn = '';
   Future<AuthModel> auth(String login, String password) async {
+    inn = login;
     try {
       final deviceId = await AppDeviceInfo.deviceId();
       final deviceName = await AppDeviceInfo.deviceName();
+
       return await repo.auth(
         SendForAuthModel(
           username: login,

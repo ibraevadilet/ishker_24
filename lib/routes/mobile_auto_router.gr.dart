@@ -172,6 +172,7 @@ abstract class $AppRouter extends _i31.RootStackRouter {
         child: _i13.PinCodeRepeatScreen(
           key: args.key,
           firstPin: args.firstPin,
+          isNewPin: args.isNewPin,
         ),
       );
     },
@@ -199,20 +200,24 @@ abstract class $AppRouter extends _i31.RootStackRouter {
       );
     },
     RecoveryPasswordEnterSmsCodeRoute.name: (routeData) {
-      final args = routeData.argsAs<RecoveryPasswordEnterSmsCodeRouteArgs>(
-          orElse: () => const RecoveryPasswordEnterSmsCodeRouteArgs());
+      final args = routeData.argsAs<RecoveryPasswordEnterSmsCodeRouteArgs>();
       return _i31.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i17.RecoveryPasswordEnterSmsCodeScreen(
           key: args.key,
           isSmsRecovery: args.isSmsRecovery,
+          contact: args.contact,
         ),
       );
     },
     RecoveryPinCodeChoiseTypeRoute.name: (routeData) {
+      final args = routeData.argsAs<RecoveryPinCodeChoiseTypeRouteArgs>();
       return _i31.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i18.RecoveryPinCodeChoiseTypeScreen(),
+        child: _i18.RecoveryPinCodeChoiseTypeScreen(
+          key: args.key,
+          password: args.password,
+        ),
       );
     },
     RecoveryPinCodeEnterEsiPasswordRoute.name: (routeData) {
@@ -222,9 +227,14 @@ abstract class $AppRouter extends _i31.RootStackRouter {
       );
     },
     RecoveryPinCodeEnterSmsCodeRoute.name: (routeData) {
+      final args = routeData.argsAs<RecoveryPinCodeEnterSmsCodeRouteArgs>();
       return _i31.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i20.RecoveryPinCodeEnterSmsCodeScreen(),
+        child: _i20.RecoveryPinCodeEnterSmsCodeScreen(
+          key: args.key,
+          method: args.method,
+          userId: args.userId,
+        ),
       );
     },
     RegisterIPMainRoute.name: (routeData) {
@@ -554,12 +564,14 @@ class PinCodeRepeatRoute extends _i31.PageRouteInfo<PinCodeRepeatRouteArgs> {
   PinCodeRepeatRoute({
     _i32.Key? key,
     required String firstPin,
+    required bool isNewPin,
     List<_i31.PageRouteInfo>? children,
   }) : super(
           PinCodeRepeatRoute.name,
           args: PinCodeRepeatRouteArgs(
             key: key,
             firstPin: firstPin,
+            isNewPin: isNewPin,
           ),
           initialChildren: children,
         );
@@ -574,15 +586,18 @@ class PinCodeRepeatRouteArgs {
   const PinCodeRepeatRouteArgs({
     this.key,
     required this.firstPin,
+    required this.isNewPin,
   });
 
   final _i32.Key? key;
 
   final String firstPin;
 
+  final bool isNewPin;
+
   @override
   String toString() {
-    return 'PinCodeRepeatRouteArgs{key: $key, firstPin: $firstPin}';
+    return 'PinCodeRepeatRouteArgs{key: $key, firstPin: $firstPin, isNewPin: $isNewPin}';
   }
 }
 
@@ -661,12 +676,14 @@ class RecoveryPasswordEnterSmsCodeRoute
   RecoveryPasswordEnterSmsCodeRoute({
     _i32.Key? key,
     bool isSmsRecovery = false,
+    required String contact,
     List<_i31.PageRouteInfo>? children,
   }) : super(
           RecoveryPasswordEnterSmsCodeRoute.name,
           args: RecoveryPasswordEnterSmsCodeRouteArgs(
             key: key,
             isSmsRecovery: isSmsRecovery,
+            contact: contact,
           ),
           initialChildren: children,
         );
@@ -681,30 +698,58 @@ class RecoveryPasswordEnterSmsCodeRouteArgs {
   const RecoveryPasswordEnterSmsCodeRouteArgs({
     this.key,
     this.isSmsRecovery = false,
+    required this.contact,
   });
 
   final _i32.Key? key;
 
   final bool isSmsRecovery;
 
+  final String contact;
+
   @override
   String toString() {
-    return 'RecoveryPasswordEnterSmsCodeRouteArgs{key: $key, isSmsRecovery: $isSmsRecovery}';
+    return 'RecoveryPasswordEnterSmsCodeRouteArgs{key: $key, isSmsRecovery: $isSmsRecovery, contact: $contact}';
   }
 }
 
 /// generated route for
 /// [_i18.RecoveryPinCodeChoiseTypeScreen]
-class RecoveryPinCodeChoiseTypeRoute extends _i31.PageRouteInfo<void> {
-  const RecoveryPinCodeChoiseTypeRoute({List<_i31.PageRouteInfo>? children})
-      : super(
+class RecoveryPinCodeChoiseTypeRoute
+    extends _i31.PageRouteInfo<RecoveryPinCodeChoiseTypeRouteArgs> {
+  RecoveryPinCodeChoiseTypeRoute({
+    _i32.Key? key,
+    required String password,
+    List<_i31.PageRouteInfo>? children,
+  }) : super(
           RecoveryPinCodeChoiseTypeRoute.name,
+          args: RecoveryPinCodeChoiseTypeRouteArgs(
+            key: key,
+            password: password,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'RecoveryPinCodeChoiseTypeRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i31.PageInfo<RecoveryPinCodeChoiseTypeRouteArgs> page =
+      _i31.PageInfo<RecoveryPinCodeChoiseTypeRouteArgs>(name);
+}
+
+class RecoveryPinCodeChoiseTypeRouteArgs {
+  const RecoveryPinCodeChoiseTypeRouteArgs({
+    this.key,
+    required this.password,
+  });
+
+  final _i32.Key? key;
+
+  final String password;
+
+  @override
+  String toString() {
+    return 'RecoveryPinCodeChoiseTypeRouteArgs{key: $key, password: $password}';
+  }
 }
 
 /// generated route for
@@ -724,16 +769,46 @@ class RecoveryPinCodeEnterEsiPasswordRoute extends _i31.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i20.RecoveryPinCodeEnterSmsCodeScreen]
-class RecoveryPinCodeEnterSmsCodeRoute extends _i31.PageRouteInfo<void> {
-  const RecoveryPinCodeEnterSmsCodeRoute({List<_i31.PageRouteInfo>? children})
-      : super(
+class RecoveryPinCodeEnterSmsCodeRoute
+    extends _i31.PageRouteInfo<RecoveryPinCodeEnterSmsCodeRouteArgs> {
+  RecoveryPinCodeEnterSmsCodeRoute({
+    _i32.Key? key,
+    required String method,
+    required String userId,
+    List<_i31.PageRouteInfo>? children,
+  }) : super(
           RecoveryPinCodeEnterSmsCodeRoute.name,
+          args: RecoveryPinCodeEnterSmsCodeRouteArgs(
+            key: key,
+            method: method,
+            userId: userId,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'RecoveryPinCodeEnterSmsCodeRoute';
 
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+  static const _i31.PageInfo<RecoveryPinCodeEnterSmsCodeRouteArgs> page =
+      _i31.PageInfo<RecoveryPinCodeEnterSmsCodeRouteArgs>(name);
+}
+
+class RecoveryPinCodeEnterSmsCodeRouteArgs {
+  const RecoveryPinCodeEnterSmsCodeRouteArgs({
+    this.key,
+    required this.method,
+    required this.userId,
+  });
+
+  final _i32.Key? key;
+
+  final String method;
+
+  final String userId;
+
+  @override
+  String toString() {
+    return 'RecoveryPinCodeEnterSmsCodeRouteArgs{key: $key, method: $method, userId: $userId}';
+  }
 }
 
 /// generated route for

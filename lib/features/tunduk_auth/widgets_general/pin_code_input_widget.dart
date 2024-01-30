@@ -8,10 +8,12 @@ class PinCodeInputWidget extends StatelessWidget {
     super.key,
     this.controller,
     this.onCompleted,
+    this.onChanged,
     this.validator,
   });
   final TextEditingController? controller;
   final Function(String)? onCompleted;
+  final Function(String)? onChanged;
   final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class PinCodeInputWidget extends StatelessWidget {
       animationDuration: const Duration(milliseconds: 300),
       enableActiveFill: true,
       controller: controller,
-      onChanged: (value) {},
+      onChanged: onChanged ?? (val) {},
       onCompleted: onCompleted,
     );
   }

@@ -27,8 +27,8 @@ class AppDeviceInfo {
       var iosDeviceInfo = await deviceInfo.iosInfo;
       deviceName = iosDeviceInfo.name;
     } else if (Platform.isAndroid) {
-      var androidDeviceInfo = await deviceInfo.iosInfo;
-      deviceName = androidDeviceInfo.name;
+      var androidDeviceInfo = await deviceInfo.androidInfo;
+      deviceName = androidDeviceInfo.brand;
     }
     return deviceName;
   }

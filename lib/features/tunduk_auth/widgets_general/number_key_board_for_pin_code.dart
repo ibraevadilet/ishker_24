@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/core/constants/pin_code_numbers.dart';
-import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
-import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/biometric_cubit/biometric_cubit.dart';
+import 'package:ishker_24/features/tunduk_auth/widgets_general/exit_button.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:local_auth/local_auth.dart';
 
 class NumberKeyBoardForPinCode extends StatelessWidget {
   const NumberKeyBoardForPinCode({
     required this.pinPutController,
     this.isBiometric = false,
+    this.type = BiometricType.fingerprint,
     Key? key,
   }) : super(key: key);
 
   final TextEditingController pinPutController;
   final bool isBiometric;
+  final BiometricType type;
 
   @override
   Widget build(BuildContext context) {
@@ -49,15 +53,7 @@ class NumberKeyBoardForPinCode extends StatelessWidget {
             );
           },
         ),
-        TextButton(
-          onPressed: () {
-            AppRouting.pushAndPopUntilFunction(const AuthRoute());
-          },
-          child: Text(
-            'Выйти',
-            style: AppTextStyles.s18W400(color: AppColors.color36424BGrey),
-          ),
-        ),
+        const ExitButton(),
         TextButton(
           onPressed: () {
             if (pinPutController.text.length >= 4) {
@@ -72,8 +68,14 @@ class NumberKeyBoardForPinCode extends StatelessWidget {
         ),
         isBiometric
             ? IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(AppImages.fingerPrintIconSvg),
+                onPressed: () {
+                  context.read<BiometricCubit>().checkBio();
+                },
+                icon: SvgPicture.asset(
+                  type == BiometricType.fingerprint
+                      ? AppImages.fingerPrintIconSvg
+                      : AppImages.faceIdIconSvg,
+                ),
               )
             : IconButton(
                 onPressed: () {
@@ -82,7 +84,7 @@ class NumberKeyBoardForPinCode extends StatelessWidget {
                         .substring(0, pinPutController.text.length - 1);
                   }
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.backspace,
                   color: AppColors.esiMainBlueColor,
                   size: 40,

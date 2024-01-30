@@ -45,7 +45,12 @@ class _PinCodeCreateScreenState extends State<PinCodeCreateScreen> {
             PinCodeInputWidget(
               controller: pinController,
               onCompleted: (val) {
-                AppRouting.pushFunction(PinCodeRepeatRoute(firstPin: val));
+                AppRouting.pushFunction(
+                  PinCodeRepeatRoute(
+                    firstPin: val,
+                    isNewPin: widget.isNewPin,
+                  ),
+                );
               },
             ),
             const SizedBox(height: 20),
