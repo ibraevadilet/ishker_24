@@ -8,7 +8,7 @@ class ExistsUserUseCase {
     required this.repo,
   });
 
-  Future<ExistsUserModel> existsUser() async {
+  Future<ExistsUserModel?> existsUser() async {
     final deviceId = await AppDeviceInfo.deviceId();
     try {
       return await repo.existsUser(deviceId);

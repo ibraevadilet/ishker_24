@@ -24,12 +24,9 @@ class DioSettings {
     interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          final token = prefs.getString(SharedKeys.accessToken) ?? '';
-          final accessToken =
-              prefs.getString(SharedKeys.ishekrAccessToken) ?? '';
-          if (token != '' && accessToken != '') {
-            options.headers['auth'] = token;
-            options.headers['ishker_auth'] = accessToken;
+          final accessToken = prefs.getString(SharedKeys.accessToken) ?? '';
+          if (accessToken != '') {
+            options.headers['authorization'] = 'Bearer $accessToken';
           }
 
           return handler.next(options);

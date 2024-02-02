@@ -23,7 +23,7 @@ class SplashCubit extends Cubit<SplashState> {
     final accessToken = prefs.getString(SharedKeys.accessToken) ?? '';
     try {
       final result = await useCase.existsUser();
-      if (result.persistentSessionToken.isNotEmpty) {
+      if (result != null) {
         prefs.setString(SharedKeys.pin, result.pin);
         AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
       } else {

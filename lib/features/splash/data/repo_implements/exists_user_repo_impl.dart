@@ -8,8 +8,10 @@ class ExistsUserRepoImpl implements ExistsUserRepo {
   final Dio dio;
   ExistsUserRepoImpl({required this.dio});
 
+  ExistsUserModel? model;
+
   @override
-  Future<ExistsUserModel> existsUser(String deviceId) async {
+  Future<ExistsUserModel?> existsUser(String deviceId) async {
     try {
       final response = await dio.get(
         options: AppDioHeader.dioHeader(),
@@ -18,7 +20,10 @@ class ExistsUserRepoImpl implements ExistsUserRepo {
           'deviceId': deviceId,
         },
       );
-      return ExistsUserModel.fromJson(response.data);
+      if (response.data != '') {
+        model = ExistsUserModel.fromJson(response.data);
+      }
+      return model;
     } catch (e) {
       throw CatchException.convertException(e).message;
     }
