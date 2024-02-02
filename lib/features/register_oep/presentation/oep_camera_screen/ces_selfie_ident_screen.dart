@@ -32,13 +32,7 @@ class CesSelfieScreen extends StatelessWidget {
               bkgColor: AppColors.color54B25AMain,
               title: 'Сделать фото',
               onTap: () async {
-                var permissionsGranted =
-                    await Permission.camera.request().isGranted;
-                if (permissionsGranted && Platform.isAndroid) {
-                  permissionsGranted =
-                      await Permission.microphone.request().isGranted;
-                }
-                if (permissionsGranted) {
+                if (Platform.isIOS) {
                   AppRouting.pushFunction(
                     OEPCameraRoute(
                       description: await ScannerUtils.getCamera(
@@ -46,6 +40,22 @@ class CesSelfieScreen extends StatelessWidget {
                       ),
                     ),
                   );
+                } else {
+                  var permissionsGranted =
+                      await Permission.camera.request().isGranted;
+                  if (permissionsGranted && Platform.isAndroid) {
+                    permissionsGranted =
+                        await Permission.microphone.request().isGranted;
+                  }
+                  if (permissionsGranted) {
+                    AppRouting.pushFunction(
+                      OEPCameraRoute(
+                        description: await ScannerUtils.getCamera(
+                          CameraLensDirection.front,
+                        ),
+                      ),
+                    );
+                  }
                 }
               },
             ),
