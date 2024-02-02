@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/declined_ip_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_bank_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_ip_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/full_has_widget.dart';
+import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/widgets/app_error_text.dart';
 import 'package:ishker_24/widgets/app_indicator.dart';
 
@@ -12,7 +14,7 @@ class HomeMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CheckHasIpCubit(),
+      create: (context) => sl<CheckHasIpCubit>()..checkIp(),
       child: Scaffold(
         body: SafeArea(
           child: Padding(
@@ -25,6 +27,7 @@ class HomeMainScreen extends StatelessWidget {
                   emptyIp: () => const EmptyIpWidget(),
                   emptyBank: () => const EmptyBankWidget(),
                   fullHas: () => const FullHasWidget(),
+                  declinedIp: (reason) => DeclinedIPWidget(reason: reason),
                 );
               },
             ),
