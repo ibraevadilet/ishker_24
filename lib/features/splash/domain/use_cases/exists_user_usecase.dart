@@ -1,5 +1,4 @@
 import 'package:ishker_24/core/app_helpers/app_device_info.dart';
-import 'package:ishker_24/features/splash/data/models/ishker_auth_model.dart';
 import 'package:ishker_24/features/splash/data/models/exists_user_model.dart';
 import 'package:ishker_24/features/splash/domain/repositories/exists_user_repository.dart';
 
@@ -18,12 +17,12 @@ class ExistsUserUseCase {
     }
   }
 
-  Future<IshkerAuthModel> getToken(String pin) async {
-    final deviceId = await AppDeviceInfo.deviceId();
-    try {
-      return await repo.getToken(deviceId, pin);
-    } catch (e) {
-      rethrow;
-    }
-  }
+  // Future<IshkerAuthModel> getToken(String pin) async {
+  //   final deviceId = await AppDeviceInfo.deviceId();
+  //   try {
+  //     return await repo.getToken(deviceId, pin);
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 }

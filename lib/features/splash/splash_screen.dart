@@ -11,17 +11,10 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: MultiBlocProvider(
-        providers: [
-          BlocProvider<SplashCubit>(
-            create: (context) => sl<SplashCubit>()..getFirstOpenStatus(),
-          ),
-          BlocProvider<SplashCubit>(
-            create: (context) => sl<SplashCubit>()..getToken(),
-          ),
-        ],
-        child: BlocBuilder<SplashCubit, SplashState>(
+    return BlocProvider<SplashCubit>(
+      create: (context) => sl<SplashCubit>()..getFirstOpenStatus(),
+      child: Scaffold(
+        body: BlocBuilder<SplashCubit, SplashState>(
           builder: (context, state) {
             return Center(
               child: Padding(

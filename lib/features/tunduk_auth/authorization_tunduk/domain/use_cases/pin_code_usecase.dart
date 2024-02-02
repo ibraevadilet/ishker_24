@@ -17,7 +17,9 @@ class PinCodeUseCase {
     try {
       final persistentSessionToken =
           sl<ConfirmReceivedCodeUseCase>().persistentSessionToken;
-      return await repo.setPinCode(persistentSessionToken, pin);
+      final result = await repo.setPinCode(persistentSessionToken, pin);
+      prefs.setString(SharedKeys.accessToken, result.accessToken);
+      prefs.setString(SharedKeys.refreshToken, result.refreshToken);
     } catch (e) {
       rethrow;
     }
@@ -26,7 +28,8 @@ class PinCodeUseCase {
   Future<void> enterPinCode(String pin) async {
     try {
       final result = await repo.enterPinCode(pin);
-      prefs.setString(SharedKeys.accessToken, result);
+      prefs.setString(SharedKeys.accessToken, result.accessToken);
+      prefs.setString(SharedKeys.refreshToken, result.refreshToken);
     } catch (e) {
       rethrow;
     }
@@ -36,7 +39,8 @@ class PinCodeUseCase {
     final resetPinCodeToken = sl<ResetPinCodeTokenUseCase>().resetPinCodeToken;
     try {
       final result = await repo.setNewPinCode(resetPinCodeToken, pin);
-      prefs.setString(SharedKeys.accessToken, result);
+      prefs.setString(SharedKeys.accessToken, result.accessToken);
+      prefs.setString(SharedKeys.refreshToken, result.refreshToken);
     } catch (e) {
       rethrow;
     }

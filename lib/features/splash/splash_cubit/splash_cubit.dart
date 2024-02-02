@@ -24,7 +24,7 @@ class SplashCubit extends Cubit<SplashState> {
     try {
       final result = await useCase.existsUser();
       if (result.persistentSessionToken.isNotEmpty) {
-        prefs.setString(SharedKeys.accessToken, result.persistentSessionToken);
+        prefs.setString(SharedKeys.pin, result.pin);
         AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
       } else {
         AppRouting.pushAndPopUntilFunction(const AuthRoute());
@@ -39,24 +39,24 @@ class SplashCubit extends Cubit<SplashState> {
     }
   }
 
-  Future<void> getToken() async {
-    final token = prefs.getString(SharedKeys.ishekrAccessToken) ?? '';
-    final pin = prefs.getString(SharedKeys.pin) ?? '';
-    try {
-      final result = await useCase.getToken(pin);
-      if (result.accessToken.isNotEmpty) {
-        prefs.setString(SharedKeys.ishekrAccessToken, result.accessToken);
-        AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
-      } else {
-        AppRouting.pushAndPopUntilFunction(const AuthRoute());
-      }
-    } catch (e) {
-      if (token.isEmpty) {
-        AppRouting.pushAndPopUntilFunction(const AuthRoute());
-      } else {
-        AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
-      }
-      AppSnackBar.showSnackBar(e.toString());
-    }
-  }
+  // Future<void> getToken() async {
+  //   final token = prefs.getString(SharedKeys.ishekrAccessToken) ?? '';
+  //   final pin = prefs.getString(SharedKeys.pin) ?? '';
+  //   try {
+  //     final result = await useCase.getToken(pin);
+  //     if (result.accessToken.isNotEmpty) {
+  //       prefs.setString(SharedKeys.ishekrAccessToken, result.accessToken);
+  //       AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
+  //     } else {
+  //       AppRouting.pushAndPopUntilFunction(const AuthRoute());
+  //     }
+  //   } catch (e) {
+  //     if (token.isEmpty) {
+  //       AppRouting.pushAndPopUntilFunction(const AuthRoute());
+  //     } else {
+  //       AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
+  //     }
+  //     AppSnackBar.showSnackBar(e.toString());
+  //   }
+  // }
 }
