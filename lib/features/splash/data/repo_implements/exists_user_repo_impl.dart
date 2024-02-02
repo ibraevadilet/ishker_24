@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/app_helpers/dio_header.dart';
-import 'package:ishker_24/features/splash/data/models/exists_user_model.dart';
 import 'package:ishker_24/features/splash/domain/repositories/exists_user_repository.dart';
 import 'package:ishker_24/server/catch_exception.dart';
 
@@ -8,10 +7,10 @@ class ExistsUserRepoImpl implements ExistsUserRepo {
   final Dio dio;
   ExistsUserRepoImpl({required this.dio});
 
-  ExistsUserModel? model;
+  String pin = '';
 
   @override
-  Future<ExistsUserModel?> existsUser(String deviceId) async {
+  Future<String> existsUser(String deviceId) async {
     try {
       final response = await dio.get(
         options: AppDioHeader.dioHeader(),
@@ -21,12 +20,10 @@ class ExistsUserRepoImpl implements ExistsUserRepo {
         },
       );
 
-      print(response.data.toString() != '');
-      if (response.data.toString() != '') {
-        print('dataaa - - ${model!.pin}');
-        model = ExistsUserModel.fromJson(response.data);
+      if (response.data != '') {
+        pin = response.data['pin'];
       }
-      return model;
+      return pin;
     } catch (e) {
       throw CatchException.convertException(e).message;
     }

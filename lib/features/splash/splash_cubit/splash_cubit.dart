@@ -21,10 +21,9 @@ class SplashCubit extends Cubit<SplashState> {
     prefs.clear();
     await Future.delayed(const Duration(seconds: 1));
     try {
-      final result = await useCase.existsUser();
-      if (result != null) {
-        print(result.pin);
-        prefs.setString(SharedKeys.pin, result.pin);
+      final resultPin = await useCase.existsUser();
+      if (resultPin.isNotEmpty) {
+        prefs.setString(SharedKeys.pin, resultPin);
         AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
       } else {
         AppRouting.pushAndPopUntilFunction(const AuthRoute());
