@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
@@ -137,9 +138,12 @@ class _OEPCameraScreenState extends State<OEPCameraScreen>
                               ),
                               onPressed: () async {
                                 final photo = await _controller.takePicture();
+                                List<int> imageBytes =
+                                    await File(photo.path).readAsBytes();
+                                String photoBase64 = base64Encode(imageBytes);
                                 context
                                     .read<RegisterOepCubit>()
-                                    .getPhoto(photo.path);
+                                    .getPhoto(photoBase64);
                                 AppRouting.pushFunction(
                                   SelfiePreviewRoute(
                                     path: photo.path,

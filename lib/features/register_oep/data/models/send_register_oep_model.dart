@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-
 class SendRegisterOEPModel {
   final String pin;
   final String phone;
@@ -18,26 +16,13 @@ class SendRegisterOEPModel {
     required this.photo,
   });
 
-  FormData toJson() {
-    FormData formData = FormData.fromMap({
-      "pin": pin,
-      "phone": phone,
-      "esiaAccepted": esiaAccepted,
-      "passportSeries": passportSeries,
-      "passportNumber": passportNumber,
-      "email": email,
-    });
-
-    formData.files.add(
-      MapEntry(
-        "photo",
-        MultipartFile.fromFileSync(
-          photo,
-          filename: "photo.jpg",
-        ),
-      ),
-    );
-
-    return formData;
-  }
+  Map<String, dynamic> toJson() => {
+        "pin": pin,
+        "phone": phone,
+        "esiaAccepted": esiaAccepted,
+        "passportSeries": passportSeries,
+        "passportNumber": passportNumber,
+        "email": email,
+        "photo": photo,
+      };
 }
