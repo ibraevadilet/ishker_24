@@ -1,6 +1,5 @@
 import 'package:ishker_24/core/app_helpers/app_device_info.dart';
 import 'package:ishker_24/features/splash/data/models/ishker_auth_model.dart';
-import 'package:ishker_24/features/splash/data/models/exists_user_model.dart';
 import 'package:ishker_24/features/splash/domain/repositories/exists_user_repository.dart';
 
 class ExistsUserUseCase {
@@ -9,7 +8,7 @@ class ExistsUserUseCase {
     required this.repo,
   });
 
-  Future<ExistsUserModel> existsUser() async {
+  Future<String?> existsUser() async {
     final deviceId = await AppDeviceInfo.deviceId();
     try {
       return await repo.existsUser(deviceId);

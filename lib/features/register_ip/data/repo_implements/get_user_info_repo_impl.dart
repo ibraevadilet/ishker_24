@@ -12,7 +12,7 @@ class GetUserInfoRepoImpl implements GetUserInfoRepo {
 
   @override
   Future<GetUserInfoModel> getUserInfo() async {
-    final token = pref.getString(SharedKeys.ishekrAccessToken) ?? '';
+    final token = pref.getString(SharedKeys.ishkerAccessToken) ?? '';
     try {
       final response = await dio.get(
         'gns/get-user-info',

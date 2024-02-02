@@ -21,37 +21,19 @@ class SplashCubit extends Cubit<SplashState> {
   Future<void> getFirstOpenStatus() async {
     await Future.delayed(const Duration(seconds: 1));
     final accessToken = prefs.getString(SharedKeys.accessToken) ?? '';
+    final pin = prefs.getString(SharedKeys.pin) ?? '';
     try {
       final result = await useCase.existsUser();
-      if (result.persistentSessionToken.isNotEmpty) {
-        prefs.setString(SharedKeys.accessToken, result.persistentSessionToken);
+      final token = await useCase.getToken(pin);
+      if (result!.isNotEmpty) {
+        prefs.setString(SharedKeys.ishkerAccessToken, token.accessToken);
+        prefs.setString(SharedKeys.accessToken, result);
         AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
       } else {
         AppRouting.pushAndPopUntilFunction(const AuthRoute());
       }
     } catch (e) {
       if (accessToken.isEmpty) {
-        AppRouting.pushAndPopUntilFunction(const AuthRoute());
-      } else {
-        AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
-      }
-      AppSnackBar.showSnackBar(e.toString());
-    }
-  }
-
-  Future<void> getToken() async {
-    final token = prefs.getString(SharedKeys.ishekrAccessToken) ?? '';
-    final pin = prefs.getString(SharedKeys.pin) ?? '';
-    try {
-      final result = await useCase.getToken(pin);
-      if (result.accessToken.isNotEmpty) {
-        prefs.setString(SharedKeys.ishekrAccessToken, result.accessToken);
-        AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
-      } else {
-        AppRouting.pushAndPopUntilFunction(const AuthRoute());
-      }
-    } catch (e) {
-      if (token.isEmpty) {
         AppRouting.pushAndPopUntilFunction(const AuthRoute());
       } else {
         AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());

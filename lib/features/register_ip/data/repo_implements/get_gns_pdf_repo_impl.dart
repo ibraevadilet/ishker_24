@@ -28,7 +28,7 @@ class GetGnsPdfRepoImpl implements GetGnsPdfRepo {
           method: 'POST',
           headers: {
             'authorization': 'Bearer ${pref.getString(
-                  SharedKeys.ishekrAccessToken,
+                  SharedKeys.ishkerAccessToken,
                 ) ?? ''} ',
           },
         ),

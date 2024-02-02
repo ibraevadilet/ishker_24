@@ -26,7 +26,7 @@ class DioSettings {
         onRequest: (options, handler) async {
           final token = prefs.getString(SharedKeys.accessToken) ?? '';
           final accessToken =
-              prefs.getString(SharedKeys.ishekrAccessToken) ?? '';
+              prefs.getString(SharedKeys.ishkerAccessToken) ?? '';
           if (token != '' && accessToken != '') {
             options.headers['auth'] = token;
             options.headers['ishker_auth'] = accessToken;
