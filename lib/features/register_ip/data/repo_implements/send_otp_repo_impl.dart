@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ishker_24/core/app_helpers/app_device_info.dart';
 import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/features/register_ip/data/models/user_nalog_types_model.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/send_otp_repository.dart';
@@ -12,11 +13,13 @@ class SendOtpRepoImpl implements SendOtpRepo {
 
   @override
   Future<void> sendOtp(String authType) async {
+    final deviceId = await AppDeviceInfo.deviceId();
     try {
       await dio.get(
         'gns/send-otp',
         queryParameters: {
           'authType': authType,
+          'deviceId': deviceId,
         },
       );
     } catch (e) {
@@ -42,7 +45,6 @@ class SendOtpRepoImpl implements SendOtpRepo {
         ),
         data: registerModel.toJson(),
       );
-      print('resulttttt -- ${response.data['status'] == 'ERROR'}');
       if (response.data['status'] == 'ERROR') {
         return response.data['message'];
       } else {
