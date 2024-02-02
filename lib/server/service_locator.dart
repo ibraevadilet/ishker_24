@@ -106,13 +106,16 @@ Future<void> initServiceLocator() async {
   /// Repository
   sl.registerFactory<RegisterOEPRepo>(() => RegisterOEPRepoImpl(dio: sl()));
   sl.registerFactory<GetTermsRepo>(() => GetTermsRepoImpl(dio: sl()));
-  sl.registerFactory<GetUserInfoRepo>(() => GetUserInfoRepoImpl(dio: sl()));
+  sl.registerFactory<GetUserInfoRepo>(
+    () => GetUserInfoRepoImpl(dio: sl(), pref: sl()),
+  );
   sl.registerFactory<TaxAndSelectedModesRepo>(
-      () => TaxAndSelectedModesRepoImpl(dio: sl()));
-  sl.registerFactory<GetGnsPdfRepo>(() => GetGnsPdfRepoImpl(dio: sl()));
+      () => TaxAndSelectedModesRepoImpl(dio: sl(), pref: sl()));
+  sl.registerFactory<GetGnsPdfRepo>(
+      () => GetGnsPdfRepoImpl(dio: sl(), pref: sl()));
   sl.registerFactory<GetPinCodeReceivingRepo>(
-      () => GetPinCodeReceivingRepoImpl(dio: sl()));
-  sl.registerFactory<SendOtpRepo>(() => SendOtpRepoImpl(dio: sl()));
+      () => GetPinCodeReceivingRepoImpl(dio: sl(), pref: sl()));
+  sl.registerFactory<SendOtpRepo>(() => SendOtpRepoImpl(dio: sl(), pref: sl()));
   sl.registerFactory<AuthRepo>(() => AuthRepoImpl(dio: sl()));
   sl.registerFactory<GetConfirmCodeRepo>(
       () => GetConfirmCodeRepoImpl(dio: sl()));
@@ -183,7 +186,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<SendOtpCubit>(() => SendOtpCubit(useCase: sl()));
   sl.registerFactory<ConfirmOtpCubit>(() => ConfirmOtpCubit(useCase: sl()));
   sl.registerFactory<TimerCubit>(() => TimerCubit());
-  sl.registerFactory<AuthCubit>(() => AuthCubit(useCase: sl()));
+  sl.registerFactory<AuthCubit>(() => AuthCubit(useCase: sl(), prefs: sl()));
   sl.registerFactory<GetConfirmCodeCubit>(
       () => GetConfirmCodeCubit(useCase: sl()));
   sl.registerFactory<ConfirmReceivedCodeCubit>(

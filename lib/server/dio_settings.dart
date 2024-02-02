@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ishker_24/core/app_helpers/dio_header.dart';
 import 'package:ishker_24/core/constants/app_text_constants.dart';
 import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,8 +15,8 @@ class DioSettings {
       baseUrl: AppTextConstants.mainServer,
       responseType: ResponseType.json,
       contentType: "application/json; charset=utf-8",
-      connectTimeout: const Duration(milliseconds: 2500),
-      receiveTimeout: const Duration(milliseconds: 2500),
+      connectTimeout: const Duration(milliseconds: 50000),
+      receiveTimeout: const Duration(milliseconds: 50000),
     ),
   );
   void initialSettings() {
@@ -24,8 +25,11 @@ class DioSettings {
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           final token = prefs.getString(SharedKeys.accessToken) ?? '';
-          if (token != '') {
+          final accessToken =
+              prefs.getString(SharedKeys.ishekrAccessToken) ?? '';
+          if (token != '' && accessToken != '') {
             options.headers['auth'] = token;
+            options.headers['ishker_auth'] = accessToken;
           }
 
           return handler.next(options);
@@ -34,6 +38,12 @@ class DioSettings {
           return handler.next(response);
         },
         onError: (DioException e, handler) {
+          if (e.response?.statusCode == 401) {
+            dio.post(
+              'security/auth/access',
+              options: AppDioHeader.dioHeader(),
+            );
+          }
           return handler.next(e);
         },
       ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:ishker_24/core/app_helpers/encode_base_64.dart';
 import 'package:ishker_24/core/constants/app_text_constants.dart';
 import 'package:ishker_24/features/register_oep/domain/repositories/get_terms_repository.dart';
 import 'package:ishker_24/server/catch_exception.dart';
@@ -22,7 +23,12 @@ class GetTermsRepoImpl implements GetTermsRepo {
       await dio.download(
         '${AppTextConstants.userStatement}$locale',
         file.path,
-        options: Options(method: 'GET'),
+        options: Options(
+          method: 'GET',
+          headers: {
+            'Authorization': AppEncode.encode64Basic(),
+          },
+        ),
       );
 
       return file.path;

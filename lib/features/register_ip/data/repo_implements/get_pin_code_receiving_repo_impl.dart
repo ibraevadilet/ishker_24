@@ -1,17 +1,27 @@
 import 'package:dio/dio.dart';
+import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/features/register_ip/data/models/pin_code_types_model.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/get_pin_code_receiving_repository.dart';
 import 'package:ishker_24/server/catch_exception.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GetPinCodeReceivingRepoImpl implements GetPinCodeReceivingRepo {
   final Dio dio;
-  GetPinCodeReceivingRepoImpl({required this.dio});
+  final SharedPreferences pref;
+  GetPinCodeReceivingRepoImpl({required this.dio, required this.pref});
 
   @override
   Future<List<PinCodeTypesModel>> getPinCodeReceiving() async {
     try {
       final response = await dio.get(
         'gns/pin-code-receiving',
+        options: Options(
+          headers: {
+            'authorization': 'Bearer ${pref.getString(
+                  SharedKeys.ishekrAccessToken,
+                ) ?? ''} ',
+          },
+        ),
       );
       return response.data['data']
           .map<PinCodeTypesModel>((e) => PinCodeTypesModel.fromJson(e))

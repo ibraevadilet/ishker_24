@@ -1,14 +1,17 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/features/register_ip/data/models/get_gns_pdf_model.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/get_gns_pdf_repository.dart';
 import 'package:ishker_24/server/catch_exception.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GetGnsPdfRepoImpl implements GetGnsPdfRepo {
   final Dio dio;
-  GetGnsPdfRepoImpl({required this.dio});
+  final SharedPreferences pref;
+  GetGnsPdfRepoImpl({required this.dio, required this.pref});
 
   @override
   Future<String> getGnsPdf(GetGnsPdfModel model) async {
@@ -23,6 +26,11 @@ class GetGnsPdfRepoImpl implements GetGnsPdfRepo {
         file.path,
         options: Options(
           method: 'POST',
+          headers: {
+            'authorization': 'Bearer ${pref.getString(
+                  SharedKeys.ishekrAccessToken,
+                ) ?? ''} ',
+          },
         ),
         data: model.toJson(),
       );
