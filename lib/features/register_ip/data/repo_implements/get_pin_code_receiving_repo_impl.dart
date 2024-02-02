@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/features/register_ip/data/models/pin_code_types_model.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/get_pin_code_receiving_repository.dart';
 import 'package:ishker_24/server/catch_exception.dart';
@@ -15,13 +14,6 @@ class GetPinCodeReceivingRepoImpl implements GetPinCodeReceivingRepo {
     try {
       final response = await dio.get(
         'gns/pin-code-receiving',
-        options: Options(
-          headers: {
-            'authorization': 'Bearer ${pref.getString(
-                  SharedKeys.accessToken,
-                ) ?? ''} ',
-          },
-        ),
       );
       return response.data['data']
           .map<PinCodeTypesModel>((e) => PinCodeTypesModel.fromJson(e))

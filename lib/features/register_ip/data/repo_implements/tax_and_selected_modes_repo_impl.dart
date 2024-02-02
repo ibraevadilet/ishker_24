@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/tax_and_selected_modes_repository.dart';
 import 'package:ishker_24/server/catch_exception.dart';
@@ -18,13 +17,6 @@ class TaxAndSelectedModesRepoImpl implements TaxAndSelectedModesRepo {
         queryParameters: {
           'isPatent': isPatent,
         },
-        options: Options(
-          headers: {
-            'authorization': 'Bearer ${pref.getString(
-                  SharedKeys.accessToken,
-                ) ?? ''} ',
-          },
-        ),
       );
       return TaxAndSelectedModesModels.fromJson(response.data['data']);
     } catch (e) {

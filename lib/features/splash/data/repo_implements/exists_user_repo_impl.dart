@@ -7,8 +7,6 @@ class ExistsUserRepoImpl implements ExistsUserRepo {
   final Dio dio;
   ExistsUserRepoImpl({required this.dio});
 
-  String pin = '';
-
   @override
   Future<String> existsUser(String deviceId) async {
     try {
@@ -20,10 +18,7 @@ class ExistsUserRepoImpl implements ExistsUserRepo {
         },
       );
 
-      if (response.data != '') {
-        pin = response.data['pin'];
-      }
-      return pin;
+      return response.data;
     } catch (e) {
       throw CatchException.convertException(e).message;
     }

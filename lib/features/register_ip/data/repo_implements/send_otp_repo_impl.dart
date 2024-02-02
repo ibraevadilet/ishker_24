@@ -12,18 +12,12 @@ class SendOtpRepoImpl implements SendOtpRepo {
 
   @override
   Future<void> sendOtp(String authType) async {
-    final token = pref.getString(SharedKeys.accessToken) ?? '';
     try {
       await dio.get(
         'gns/send-otp',
         queryParameters: {
           'authType': authType,
         },
-        options: Options(
-          headers: {
-            'authorization': 'Bearer $token ',
-          },
-        ),
       );
     } catch (e) {
       throw CatchException.convertException(e).message;

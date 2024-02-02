@@ -18,7 +18,7 @@ class SplashCubit extends Cubit<SplashState> {
   final SharedPreferences prefs;
 
   Future<void> getFirstOpenStatus() async {
-    prefs.clear();
+    prefs.remove(SharedKeys.accessToken);
     await Future.delayed(const Duration(seconds: 1));
     try {
       final resultPin = await useCase.existsUser();
