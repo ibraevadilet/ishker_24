@@ -1,7 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/register_oep/data/models/send_register_oep_model.dart';
 import 'package:ishker_24/features/register_oep/domain/use_cases/register_oep_use_case.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
+import 'package:ishker_24/widgets/styled_toasts.dart';
 
 part 'register_oep_cubit.freezed.dart';
 part 'register_oep_state.dart';
@@ -16,10 +19,15 @@ class RegisterOepCubit extends Cubit<RegisterOepState> {
     if (useCase.formKey.currentState!.validate()) {
       emit(const RegisterOepState.loading());
       try {
-        await useCase.registerOEP(
+        final phone = useCase.passNumberController.text
+            .replaceAll(' ', '')
+            .replaceAll('-', '')
+            .replaceAll(')', '')
+            .replaceAll('(', '');
+        final result = await useCase.registerOEP(
           SendRegisterOEPModel(
             pin: useCase.innController.text,
-            phone: useCase.phoneNumber.text,
+            phone: '996$phone',
             esiaAccepted: true,
             passportSeries: useCase.idController.text,
             passportNumber: useCase.passNumberController.text,
@@ -27,7 +35,13 @@ class RegisterOepCubit extends Cubit<RegisterOepState> {
             photo: useCase.photo,
           ),
         );
-        emit(const RegisterOepState.success());
+
+        if (result.isNotEmpty) {
+          AppSnackBar.showSnackBar(result, seconds: 5);
+          AppRouting.pushAndPopUntilFunction(const AuthRoute());
+        } else {
+          emit(const RegisterOepState.success());
+        }
       } catch (e) {
         emit(RegisterOepState.error(e.toString()));
       }
@@ -40,15 +54,5 @@ class RegisterOepCubit extends Cubit<RegisterOepState> {
 
   void getPhoto(String photoFrom) {
     useCase.photo = photoFrom;
-  }
-
-  @override
-  Future<void> close() {
-    useCase.emailController.dispose();
-    useCase.passNumberController.dispose();
-    useCase.innController.dispose();
-    useCase.phoneNumber.dispose();
-    useCase.idController.dispose();
-    return super.close();
   }
 }

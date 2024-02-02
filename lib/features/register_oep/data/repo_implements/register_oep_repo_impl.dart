@@ -7,14 +7,22 @@ import 'package:ishker_24/server/catch_exception.dart';
 class RegisterOEPRepoImpl implements RegisterOEPRepo {
   RegisterOEPRepoImpl({required this.dio});
   final Dio dio;
+
+  String result = '';
   @override
-  Future<void> registerOEP(SendRegisterOEPModel registerOEPModel) async {
+  Future<String> registerOEP(SendRegisterOEPModel registerOEPModel) async {
     try {
-      await dio.post(
+      final response = await dio.post(
         'oep-service/register/generate',
         data: registerOEPModel.toJson(),
         options: AppDioHeader.dioHeader(),
       );
+      print(response.data['code'] != null && response.data['code'] == 409);
+      if (response.data['code'] != null && response.data['code'] == 409) {
+        result =
+            'Сертификат на физическое лицо 21605200001255 уже зарегистрирован. Учётная запись активна до 2024-09-17 18:34:01';
+      }
+      return result;
     } catch (e) {
       throw CatchException.convertException(e).message;
     }

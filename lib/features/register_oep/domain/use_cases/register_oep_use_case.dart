@@ -16,7 +16,7 @@ class RegisterOEPUseCase {
   bool isChecked = false;
   bool get isCheckedGetter => isChecked;
 
-  Future<void> registerOEP(SendRegisterOEPModel registerOEPModel) async {
+  Future<String> registerOEP(SendRegisterOEPModel registerOEPModel) async {
     try {
       return await repo.registerOEP(registerOEPModel);
     } catch (e) {
