@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:ishker_24/core/app_helpers/dio_header.dart';
 import 'package:ishker_24/core/constants/app_text_constants.dart';
 import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -35,12 +34,12 @@ class DioSettings {
           return handler.next(response);
         },
         onError: (DioException e, handler) {
-          if (e.response?.statusCode == 401) {
-            dio.post(
-              'security/auth/access',
-              options: AppDioHeader.dioHeader(),
-            );
-          }
+          // if (e.response?.statusCode == 401) {
+          //   dio.post(
+          //     'security/auth/access',
+          //     options: AppDioHeader.dioHeader(),
+          //   );
+          // }
           return handler.next(e);
         },
       ),

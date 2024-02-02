@@ -4,7 +4,6 @@ import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/splash/domain/use_cases/exists_user_usecase.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
-import 'package:ishker_24/widgets/styled_toasts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'splash_cubit.freezed.dart';
@@ -19,23 +18,19 @@ class SplashCubit extends Cubit<SplashState> {
   final SharedPreferences prefs;
 
   Future<void> getFirstOpenStatus() async {
+    prefs.clear();
     await Future.delayed(const Duration(seconds: 1));
-    final accessToken = prefs.getString(SharedKeys.accessToken) ?? '';
     try {
       final result = await useCase.existsUser();
       if (result != null) {
+        print(result.pin);
         prefs.setString(SharedKeys.pin, result.pin);
         AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
       } else {
         AppRouting.pushAndPopUntilFunction(const AuthRoute());
       }
     } catch (e) {
-      if (accessToken.isEmpty) {
-        AppRouting.pushAndPopUntilFunction(const AuthRoute());
-      } else {
-        AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
-      }
-      AppSnackBar.showSnackBar(e.toString());
+      AppRouting.pushAndPopUntilFunction(const AuthRoute());
     }
   }
 

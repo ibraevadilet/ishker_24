@@ -20,7 +20,10 @@ class ExistsUserRepoImpl implements ExistsUserRepo {
           'deviceId': deviceId,
         },
       );
-      if (response.data != '') {
+
+      print(response.data.toString() != '');
+      if (response.data.toString() != '') {
+        print('dataaa - - ${model!.pin}');
         model = ExistsUserModel.fromJson(response.data);
       }
       return model;

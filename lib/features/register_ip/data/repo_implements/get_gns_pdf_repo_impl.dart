@@ -20,17 +20,14 @@ class GetGnsPdfRepoImpl implements GetGnsPdfRepo {
           ? await getTemporaryDirectory()
           : await getExternalStorageDirectory();
       final file = File('${temp?.path}/GNS.pdf');
+      final token = pref.getString(SharedKeys.accessToken)!;
 
       await dio.download(
         'gns/get-pdf',
         file.path,
         options: Options(
           method: 'POST',
-          headers: {
-            'authorization': 'Bearer ${pref.getString(
-                  SharedKeys.accessToken,
-                ) ?? ''} ',
-          },
+          headers: {'authorization': 'Bearer $token'},
         ),
         data: model.toJson(),
       );
