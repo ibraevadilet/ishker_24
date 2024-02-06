@@ -38,6 +38,7 @@ dependencies:
   android_id: ^0.3.4
   local_auth_android: ^1.0.36
   local_auth_ios: ^1.1.6
+  qr_flutter: ^4.1.0
   
   
 

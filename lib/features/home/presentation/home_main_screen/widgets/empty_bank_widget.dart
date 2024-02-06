@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 
@@ -31,7 +33,7 @@ class EmptyBankWidget extends StatelessWidget {
         ),
         const Spacer(),
         CustomButton(
-          onPress: () {},
+          onPress: () => AppRouting.pushFunction(const CreateAccountRoute()),
           text: 'Открыть счет',
         ),
         const Spacer(),

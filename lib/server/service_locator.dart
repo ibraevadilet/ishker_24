@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit/bottom_navigator_cubit.dart';
+import 'package:ishker_24/features/home/data/repositories_impl/check_has_ip_repo_impl.dart';
+import 'package:ishker_24/features/home/domain/repository/check_has_ip_repository.dart';
+import 'package:ishker_24/features/home/domain/use_cases/check_has_ip_use_case.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_gns_pdf_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_pin_code_receiving_repo_impl.dart';
@@ -107,7 +110,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<RegisterOEPRepo>(() => RegisterOEPRepoImpl(dio: sl()));
   sl.registerFactory<GetTermsRepo>(() => GetTermsRepoImpl(dio: sl()));
   sl.registerFactory<GetUserInfoRepo>(
-    () => GetUserInfoRepoImpl(dio: sl(), pref: sl()),
+    () => GetUserInfoRepoImpl(dio: sl()),
   );
   sl.registerFactory<TaxAndSelectedModesRepo>(
       () => TaxAndSelectedModesRepoImpl(dio: sl(), pref: sl()));
@@ -133,6 +136,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<SetNewPasswordRepo>(
       () => SetNewPasswordRepoImpl(dio: sl()));
   sl.registerFactory<ExitRepo>(() => ExitRepoImpl(dio: sl()));
+  sl.registerFactory<CheckHasIPRepo>(() => CheckHasIPRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -166,6 +170,8 @@ Future<void> initServiceLocator() async {
       () => SetNewPasswordUseCase(repo: sl()));
   sl.registerLazySingleton<ExitUseCase>(
       () => ExitUseCase(repo: sl(), prefs: sl()));
+  sl.registerLazySingleton<CheckHasIPUseCase>(
+      () => CheckHasIPUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -174,7 +180,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<BottomNavigatorCubit>(() => BottomNavigatorCubit());
   sl.registerFactory<RegisterOepCubit>(() => RegisterOepCubit(useCase: sl()));
   sl.registerFactory<GetTermsCubit>(() => GetTermsCubit(useCase: sl()));
-  sl.registerFactory<CheckHasIpCubit>(() => CheckHasIpCubit());
+  sl.registerFactory<CheckHasIpCubit>(() => CheckHasIpCubit(useCase: sl()));
   sl.registerFactory<GetUserInfoCubit>(() => GetUserInfoCubit(useCase: sl()));
   sl.registerFactory<TaxAndSelectedModesCubit>(
       () => TaxAndSelectedModesCubit(useCase: sl()));

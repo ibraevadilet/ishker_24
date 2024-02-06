@@ -13,4 +13,20 @@ abstract class AppColors {
   static const Color color1EA31EGreen = Color(0xff1EA31E);
   static const Color color34C759Green = Color(0xff34C759);
   static const Color backgroundColor = Color(0xffFAFAFA);
+  static const LinearGradient billGradient = LinearGradient(
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+    colors: [
+      Color(0xffBBD9B9),
+      color54B25AMain,
+    ],
+  );
+  static const LinearGradient goldCardGradient = LinearGradient(
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+    colors: [
+      Color(0xffE3D0A9),
+      Color(0xffCF9931),
+    ],
+  );
 }
