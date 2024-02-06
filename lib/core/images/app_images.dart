@@ -12,10 +12,16 @@ class AppImages {
   static const String arrowForwardIcon = 'assets/images/arrow_forward_icon.svg';  
   static const String bankAcoountIcon = 'assets/images/bank_acoount_icon.svg';  
   static const String bankIcon = 'assets/images/bank_icon.svg';  
+  static const String bankImage = 'assets/images/bank_image.svg';  
   static const String cardIcon = 'assets/images/card_icon.svg';  
   static const String cesImage = 'assets/images/ces_image.png';  
   static const String copyIconSvg = 'assets/images/copy_icon_svg.svg';  
+  static const String creditIcon = 'assets/images/credit_icon.svg';  
+  static const String depositIcon = 'assets/images/deposit_icon.svg';  
+  static const String editIcon = 'assets/images/edit_icon.svg';  
+  static const String emptyAccontIcon = 'assets/images/empty_accont_icon.svg';  
   static const String empyListIconSvg = 'assets/images/empy_list_icon_svg.svg';  
+  static const String errorIcon = 'assets/images/error_icon.svg';  
   static const String esiErrorIcon = 'assets/images/esi_error_icon.png';  
   static const String esiLogoImage = 'assets/images/esi_logo_image.png';  
   static const String esiMainPageIcon = 'assets/images/esi_main_page_icon.png';  
@@ -39,6 +45,7 @@ class AppImages {
   static const String logo = 'assets/images/logo.png';  
   static const String moreIcon = 'assets/images/more_icon.svg';  
   static const String myIpIcon = 'assets/images/my_ip_icon.svg';  
+  static const String noInternetError = 'assets/images/no_internet_error.svg';  
   static const String notificationIconSvg = 'assets/images/notification_icon_svg.svg';  
   static const String passwordIconSvg = 'assets/images/password_icon_svg.svg';  
   static const String paymentIcon = 'assets/images/payment_icon.svg';  
@@ -48,12 +55,18 @@ class AppImages {
   static const String qrIcon = 'assets/images/qr_icon.svg';  
   static const String recoveryEmailIconSvg = 'assets/images/recovery_email_icon_svg.svg';  
   static const String recoverySmsIconSvg = 'assets/images/recovery_sms_icon_svg.svg';  
+  static const String replenishIcon = 'assets/images/replenish_icon.svg';  
+  static const String requisitesIcon = 'assets/images/requisites_icon.svg';  
   static const String ruLangIcon = 'assets/images/ru_lang_icon.svg';  
   static const String searchIcon = 'assets/images/search_icon.svg';  
   static const String securityIcon = 'assets/images/security_icon.svg';  
   static const String selfieAttentionIconSvg = 'assets/images/selfie_attention_icon_svg.svg';  
   static const String selfieIdentIconSvg = 'assets/images/selfie_ident_icon_svg.svg';  
+  static const String shareButtonIcon = 'assets/images/share_button_icon.svg';  
   static const String shareIcon = 'assets/images/share_icon.svg';  
   static const String signatureImage = 'assets/images/signature_image.svg';  
+  static const String successCreatedAccountIcon = 'assets/images/success_created_account_icon.svg';  
   static const String transferIcon = 'assets/images/transfer_icon.svg';  
+  static const String unselectedCardIcon = 'assets/images/unselected_card_icon.svg';  
+  static const String visaLogo = 'assets/images/visa_logo.svg';  
 }
