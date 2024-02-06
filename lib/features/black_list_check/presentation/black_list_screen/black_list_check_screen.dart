@@ -86,7 +86,7 @@ class BlackListCheckScreen extends StatelessWidget {
                       color: AppColors.color1EA31EGreen,
                       onPress: () {
                         AppRouting.pushAndPopUntilFunction(
-                          const BottomNavigatorRoute(),
+                          const BlackListSelfieRoute(),
                         );
                       },
                       child: Text(
