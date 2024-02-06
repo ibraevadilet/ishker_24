@@ -20,13 +20,6 @@ class ConfirmReceivedCodeRepoImpl implements ConfirmReceivedCodeRepo {
       );
       return GetConfirmCodeModel.fromJson(response.data['body']);
     } catch (e) {
-      if (e is DioException) {
-        if (e.response!.statusCode == 400) {
-          throw CatchException(
-            message: e.response!.data['body']['signInResult'],
-          ).message;
-        }
-      }
       throw CatchException.convertException(e).message;
     }
   }

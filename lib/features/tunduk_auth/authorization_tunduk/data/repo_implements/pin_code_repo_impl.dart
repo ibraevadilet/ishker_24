@@ -27,12 +27,20 @@ class PinCodeRepoImpl implements PinCodeRepo {
       );
       return getToken(deviceId, pin);
     } catch (e) {
+      if (e is DioException) {
+        if (e.response!.data['error'] == 'invalid username or password') {
+          throw CatchException(message: 'Неверный пин код').message;
+        } else {
+          throw CatchException(message: e.response!.data['error']).message;
+        }
+      }
       throw CatchException.convertException(e).message;
     }
   }
 
   @override
-  Future<IshkerAuthModel> setPinCode(String persistentSessionToken, String pin) async {
+  Future<IshkerAuthModel> setPinCode(
+      String persistentSessionToken, String pin) async {
     try {
       await dio.post(
         options: AppDioHeader.dioHeader(),
@@ -50,7 +58,8 @@ class PinCodeRepoImpl implements PinCodeRepo {
   }
 
   @override
-  Future<IshkerAuthModel> setNewPinCode(String resetPinCodeToken, String pinCode) async {
+  Future<IshkerAuthModel> setNewPinCode(
+      String resetPinCodeToken, String pinCode) async {
     final deviceId = await AppDeviceInfo.deviceId();
 
     try {

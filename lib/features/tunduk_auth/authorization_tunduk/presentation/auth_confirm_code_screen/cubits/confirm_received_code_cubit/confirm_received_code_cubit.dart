@@ -15,19 +15,29 @@ class ConfirmReceivedCodeCubit extends Cubit<ConfirmReceivedCodeState> {
 
   final ConfirmReceivedCodeUseCase useCase;
   final smsCodeController = TextEditingController();
+  int attemptCount = 0;
+  int attemptCountAll = 5;
 
   Future<void> confirmCode() async {
-    emit(const ConfirmReceivedCodeState.loading());
-    try {
-      final result = await useCase.confirmReceivedCode(smsCodeController.text);
-      if (result.signInResult == 'Succeeded') {
-        AppRouting.pushFunction(const PinCodeEnterRoute());
-      } else {
-        AppRouting.pushFunction(PinCodeCreateRoute());
+    if (smsCodeController.text.length == 6) {
+      attemptCount++;
+      emit(const ConfirmReceivedCodeState.loading());
+      try {
+        final result =
+            await useCase.confirmReceivedCode(smsCodeController.text);
+        if (result.signInResult == 'Succeeded') {
+          AppRouting.pushFunction(const PinCodeEnterRoute());
+        } else {
+          AppRouting.pushFunction(PinCodeCreateRoute());
+        }
+      } catch (e) {
+        AppSnackBar.showSnackBar(
+          e.toString() == 'Пользователь заблокирован'
+              ? e.toString()
+              : '${e.toString()}\n Осталось попыток: ${attemptCountAll - attemptCount}',
+        );
+        emit(ConfirmReceivedCodeState.error(e.toString()));
       }
-    } catch (e) {
-      AppSnackBar.showSnackBar(e.toString());
-      emit(ConfirmReceivedCodeState.error(e.toString()));
     }
   }
 }

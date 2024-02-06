@@ -14,7 +14,11 @@ class SendResetPinCodeCubit extends Cubit<SendResetPinCodeState> {
 
   final SendResetPinCodeUseCase useCase;
 
+  int attemptCount = 0;
+  int attemptCountAll = 3;
+
   sendResetPassword(String password, String method) async {
+    attemptCount++;
     if (method == 'SMS') {
       emit(const SendResetPinCodeState.loadingSms());
     } else {
@@ -26,9 +30,13 @@ class SendResetPinCodeCubit extends Cubit<SendResetPinCodeState> {
       AppRouting.pushFunction(
         RecoveryPinCodeEnterSmsCodeRoute(method: method, userId: userId),
       );
-      const SendResetPinCodeState.success();
+      emit(const SendResetPinCodeState.initial());
     } catch (e) {
-      AppSnackBar.showSnackBar(e.toString());
+      AppSnackBar.showSnackBar(
+        e.toString() == 'Неверный пароль'
+            ? '${e.toString()}\n Осталось попыток: ${attemptCountAll - attemptCount}'
+            : e.toString(),
+      );
       emit(const SendResetPinCodeState.error());
     }
   }

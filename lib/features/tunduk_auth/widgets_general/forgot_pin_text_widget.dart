@@ -16,7 +16,8 @@ class ForgotPinTextWidget extends StatelessWidget {
           TextButton(
             onPressed: () {
               AppRouting.pushFunction(
-                  const RecoveryPinCodeEnterEsiPasswordRoute());
+                const RecoveryPinCodeEnterEsiPasswordRoute(),
+              );
             },
             child: Text(
               'Забыли пин-код?',

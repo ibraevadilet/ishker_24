@@ -25,8 +25,14 @@ class GetConfirmCodeCubit extends Cubit<GetConfirmCodeState> {
         twoFactorSessionToken: twoFactorSessionToken,
       );
       AppRouting.pushFunction(const AuthConfirmCodeRoute());
+      emit(const GetConfirmCodeState.initial());
     } catch (e) {
-      AppSnackBar.showSnackBar(e.toString());
+      if (e.toString() == 'sms code был отправлен') {
+        AppRouting.pushFunction(const AuthConfirmCodeRoute());
+        AppSnackBar.showSnackBar(e.toString());
+      } else {
+        AppSnackBar.showSnackBar(e.toString());
+      }
       emit(GetConfirmCodeState.error(e.toString()));
     }
   }

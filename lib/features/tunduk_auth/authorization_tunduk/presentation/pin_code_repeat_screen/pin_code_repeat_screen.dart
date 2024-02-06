@@ -5,7 +5,6 @@ import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_repeat_screen/cubits/set_pin_code_cubit/set_pin_code_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/esi_background_image_widget.dart';
-import 'package:ishker_24/features/tunduk_auth/widgets_general/forgot_pin_text_widget.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/number_key_board_for_pin_code.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/pin_code_input_widget.dart';
 import 'package:ishker_24/server/service_locator.dart';
@@ -67,8 +66,8 @@ class _PinCodeRepeatScreenState extends State<PinCodeRepeatScreen> {
               const SizedBox(height: 20),
               NumberKeyBoardForPinCode(
                 pinPutController: pinController,
+                onTapExit: () => Navigator.pop(context),
               ),
-              const ForgotPinTextWidget(),
             ],
           ),
         ),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/esi_background_image_widget.dart';
-import 'package:ishker_24/features/tunduk_auth/widgets_general/forgot_pin_text_widget.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/number_key_board_for_pin_code.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/pin_code_input_widget.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
@@ -33,12 +32,14 @@ class _PinCodeCreateScreenState extends State<PinCodeCreateScreen> {
               height: 36,
             ),
             const SizedBox(height: 32),
-            Text(
-              widget.isNewPin
-                  ? 'Придумайте новый пин-код'
-                  : 'Придумайте пин-код',
-              style: AppTextStyles.s22W400(
-                color: AppColors.color36424BGrey,
+            FittedBox(
+              child: Text(
+                widget.isNewPin
+                    ? 'Придумайте новый пин-код'
+                    : 'Придумайте пин-код',
+                style: AppTextStyles.s22W400(
+                  color: AppColors.color36424BGrey,
+                ),
               ),
             ),
             const SizedBox(height: 12),
@@ -56,8 +57,10 @@ class _PinCodeCreateScreenState extends State<PinCodeCreateScreen> {
             const SizedBox(height: 20),
             NumberKeyBoardForPinCode(
               pinPutController: pinController,
+              onTapExit: () {
+                AppRouting.pushAndPopUntilFunction(const AuthRoute());
+              },
             ),
-            const ForgotPinTextWidget(),
           ],
         ),
       ),

@@ -21,6 +21,13 @@ class GetConfirmCodeRepoImpl implements GetConfirmCodeRepo {
         },
       );
     } catch (e) {
+      if (e is DioException) {
+        if (e.response!.statusCode == 400) {
+          if (e.response!.data['errors'][0]['code'] == 'SmsHasBeenSended') {
+            throw CatchException(message: 'sms code был отправлен').message;
+          }
+        }
+      }
       throw CatchException.convertException(e).message;
     }
   }

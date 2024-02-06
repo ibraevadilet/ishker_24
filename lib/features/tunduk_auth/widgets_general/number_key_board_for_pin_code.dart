@@ -14,12 +14,14 @@ class NumberKeyBoardForPinCode extends StatelessWidget {
     required this.pinPutController,
     this.isBiometric = false,
     this.type = BiometricType.fingerprint,
+    this.onTapExit,
     Key? key,
   }) : super(key: key);
 
   final TextEditingController pinPutController;
   final bool isBiometric;
   final BiometricType type;
+  final Function()? onTapExit;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class NumberKeyBoardForPinCode extends StatelessWidget {
             );
           },
         ),
-        const ExitButton(),
+        ExitButton(onTap: onTapExit),
         TextButton(
           onPressed: () {
             if (pinPutController.text.length >= 4) {

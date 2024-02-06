@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
@@ -44,6 +45,10 @@ class AuthScreen extends StatelessWidget {
                       suffixIcon: true,
                       controller: context.read<AuthCubit>().loginController,
                       validator: AppInputValidators.innValidator,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(14),
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
                     ),
                     const SizedBox(height: 12),
                     EsiTextFiled(

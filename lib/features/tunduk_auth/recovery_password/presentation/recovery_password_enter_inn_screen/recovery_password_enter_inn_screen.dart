@@ -1,5 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/formatters/input_formatters.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
@@ -38,6 +39,10 @@ class RecoveryPasswordEnterInnScreen extends StatelessWidget {
                   prfixIcon: AppImages.personIconSvg,
                   validator: AppInputValidators.innValidator,
                   controller: context.read<ResetPasswordCubit>().pinController,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(14),
+                    FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                  ],
                 ),
                 const SizedBox(height: 12),
                 isSmsRecovery

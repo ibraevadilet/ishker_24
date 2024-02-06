@@ -11,13 +11,21 @@ class EnterPinCodeCubit extends Cubit<EnterPinCodeState> {
       : super(const EnterPinCodeState.initial());
   final PinCodeUseCase useCase;
 
+  int attemptCount = 0;
+  int attemptCountAll = 3;
   Future<void> enterPinCode(String pinCode) async {
+    attemptCount++;
+
     emit(const EnterPinCodeState.loading());
     try {
       await useCase.enterPinCode(pinCode);
       emit(const EnterPinCodeState.success());
     } catch (e) {
-      AppSnackBar.showSnackBar(e.toString());
+      AppSnackBar.showSnackBar(
+        e.toString() == 'user is blocked'
+            ? 'Пользователь заблокирован'
+            : '${e.toString()}\n Осталось попыток: ${attemptCountAll - attemptCount}',
+      );
       emit(EnterPinCodeState.error(e.toString()));
     }
   }

@@ -7,7 +7,8 @@ import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/app_indicator.dart';
 
 class ExitButton extends StatelessWidget {
-  const ExitButton({super.key});
+  const ExitButton({super.key, this.onTap});
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -17,9 +18,7 @@ class ExitButton extends StatelessWidget {
           return state.isLoading
               ? const AppIndicator(color: AppColors.esiMainBlueColor)
               : TextButton(
-                  onPressed: () {
-                    context.read<ExitCubit>().exit();
-                  },
+                  onPressed: onTap ?? () => context.read<ExitCubit>().exit(),
                   child: Text(
                     'Выйти',
                     style:
