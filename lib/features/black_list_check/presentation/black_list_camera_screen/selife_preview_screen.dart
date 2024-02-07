@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/cubits/register_oep_cubit/register_oep_cubit.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 
 @RoutePage()
@@ -72,7 +72,9 @@ class _BlackListSelfiePreviewScreenState
                     ),
                     GestureDetector(
                       onTap: () async {
-                        context.read<RegisterOepCubit>().register();
+                        AppRouting.pushAndPopUntilFunction(
+                            const BottomNavigatorRoute());
+                        // context.read<RegisterOepCubit>().register();
                       },
                       child: Container(
                         alignment: Alignment.center,
@@ -93,6 +95,10 @@ class _BlackListSelfiePreviewScreenState
                         margin: const EdgeInsets.only(
                           top: 24,
                           left: 28,
+                        ),
+                        child: const Icon(
+                          Icons.check,
+                          color: Colors.white,
                         ),
                       ),
                     )

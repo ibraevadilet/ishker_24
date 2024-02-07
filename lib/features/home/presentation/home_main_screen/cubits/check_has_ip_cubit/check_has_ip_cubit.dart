@@ -11,18 +11,18 @@ class CheckHasIpCubit extends Cubit<CheckHasIpState> {
   final CheckHasIPUseCase useCase;
   Future<void> checkIp() async {
     emit(const CheckHasIpState.loading());
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(microseconds: 300));
     try {
-      final result = await useCase.checkIp();
-      if (result.status == 1) {
-        emit(const CheckHasIpState.emptyBank());
-      } else if (result.status == 2) {
-        emit(const CheckHasIpState.emptyBank());
-      } else if (result.status == 3) {
-        emit(
-          CheckHasIpState.declinedIp(result.declinedReason ?? ''),
-        );
-      }
+      // final result = await useCase.checkIp();
+      // if (result.status == 1) {
+      //   emit(const CheckHasIpState.emptyBank());
+      // } else if (result.status == 2) {
+      //   emit(const CheckHasIpState.emptyBank());
+      // } else if (result.status == 3) {
+      //   emit(
+      //     CheckHasIpState.declinedIp(result.declinedReason ?? ''),
+      //   );
+      // }
       emit(const CheckHasIpState.emptyIp());
     } catch (e) {
       emit(CheckHasIpState.error(e.toString()));

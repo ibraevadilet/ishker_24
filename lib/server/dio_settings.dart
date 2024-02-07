@@ -12,6 +12,16 @@ class DioSettings {
   }
   final SharedPreferences prefs;
 
+  Dio dioForNewTokens = Dio(
+    BaseOptions(
+      baseUrl: AppTextConstants.mainServer,
+      responseType: ResponseType.json,
+      contentType: "application/json; charset=utf-8",
+      connectTimeout: const Duration(milliseconds: 50000),
+      receiveTimeout: const Duration(milliseconds: 50000),
+    ),
+  );
+
   Dio dio = Dio(
     BaseOptions(
       baseUrl: AppTextConstants.mainServer,
@@ -38,7 +48,7 @@ class DioSettings {
         },
         onError: (DioException e, handler) async {
           if (e.response?.statusCode == 401) {
-            _newAccessToken();
+            await _newAccessToken();
             dio.fetch(e.requestOptions);
           }
           return handler.next(e);
@@ -56,11 +66,15 @@ class DioSettings {
     );
   }
 
-  _newAccessToken() async {
+  Future<void> _newAccessToken() async {
+    final refreshToken = prefs.getString(SharedKeys.refreshToken);
     try {
-      final result = await dio.post(
+      final result = await dioForNewTokens.post(
         'security/auth/access',
         options: AppDioHeader.dioHeader(),
+        data: {
+          'refreshToken': refreshToken,
+        },
       );
       prefs.setString(SharedKeys.accessToken, result.data['accessToken']);
     } catch (e) {
@@ -73,7 +87,7 @@ class DioSettings {
     }
   }
 
-  _newRefreshToken() async {
+  Future<void> _newRefreshToken() async {
     final refreshToken = prefs.getString(SharedKeys.refreshToken);
     try {
       final result = await dio.post(

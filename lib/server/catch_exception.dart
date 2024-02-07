@@ -22,7 +22,10 @@ class CatchException {
           return CatchException(message: 'Неверный код');
         } else if (error.response!.data['body']?['status'] ==
             'EmailIncorrect') {
-          return CatchException(message: 'Указан не верный e-mail');
+          return CatchException(message: 'Указан неверный e-mail');
+        } else if (error.response!.data['body']?['status'] ==
+            'PhoneNumberEmptyOrIncorrect') {
+          return CatchException(message: 'Указан неверный номер');
         } else if (error.response!.data['body']?['signInResult'] ==
             'IsLockedOut') {
           return CatchException(message: 'Пользователь заблокирован');

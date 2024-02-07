@@ -155,7 +155,8 @@ Future<void> initServiceLocator() async {
       () => GetConfirmCodeUseCase(repo: sl()));
   sl.registerLazySingleton<ConfirmReceivedCodeUseCase>(
       () => ConfirmReceivedCodeUseCase(repo: sl()));
-  sl.registerFactory<ExistsUserUseCase>(() => ExistsUserUseCase(repo: sl()));
+  sl.registerLazySingleton<ExistsUserUseCase>(
+      () => ExistsUserUseCase(repo: sl()));
   sl.registerFactory<PinCodeUseCase>(
       () => PinCodeUseCase(repo: sl(), prefs: sl()));
   sl.registerFactory<SendResetPinCodeUseCase>(

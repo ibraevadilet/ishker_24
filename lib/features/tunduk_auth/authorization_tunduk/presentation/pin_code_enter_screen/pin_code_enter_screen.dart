@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
+import 'package:ishker_24/features/splash/domain/use_cases/exists_user_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/biometric_cubit/biometric_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/enter_pin_code_cubit/enter_pin_code_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/widgets/show_alert_dialog.dart';
@@ -61,9 +62,16 @@ class _PinCodeEnterScreenState extends State<PinCodeEnterScreen> {
                   state.whenOrNull(
                     success: () async {
                       await showBioDialog(context, pinController.text);
-                      AppRouting.pushAndPopUntilFunction(
-                        const BottomNavigatorRoute(),
-                      );
+                      final isSavedPin = sl<ExistsUserUseCase>().pin.isEmpty;
+                      if (isSavedPin) {
+                        AppRouting.pushAndPopUntilFunction(
+                          const BlackListCheckRoute(),
+                        );
+                      } else {
+                        AppRouting.pushAndPopUntilFunction(
+                          const BottomNavigatorRoute(),
+                        );
+                      }
                     },
                     error: (error) {
                       pinController.clear();

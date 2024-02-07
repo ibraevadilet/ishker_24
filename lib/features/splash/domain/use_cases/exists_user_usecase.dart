@@ -7,10 +7,13 @@ class ExistsUserUseCase {
     required this.repo,
   });
 
+  String pin = '';
+
   Future<String> existsUser() async {
     final deviceId = await AppDeviceInfo.deviceId();
     try {
-      return await repo.existsUser(deviceId);
+      pin = await repo.existsUser(deviceId);
+      return pin;
     } catch (e) {
       rethrow;
     }
