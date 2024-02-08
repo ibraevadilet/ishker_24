@@ -9,6 +9,7 @@ import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/widgets/styled_toasts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @RoutePage()
 class GrnpSelfiePreviewScreen extends StatefulWidget {
@@ -79,8 +80,11 @@ class _GrnpSelfiePreviewScreenState extends State<GrnpSelfiePreviewScreen>
                       BlocConsumer<GRNPCubit, GRNPState>(
                         listener: (context, state) {
                           state.whenOrNull(
-                            error: (error) {
+                            error: (error) async {
                               AppSnackBar.showSnackBar(error);
+                              AppRouting.pushAndPopUntilFunction(
+                                  const AuthRoute());
+                              await sl<SharedPreferences>().clear();
                             },
                             success: () async {
                               await context.router.pop();
@@ -91,8 +95,6 @@ class _GrnpSelfiePreviewScreenState extends State<GrnpSelfiePreviewScreen>
                         builder: (context, state) {
                           return GestureDetector(
                             onTap: () async {
-                              AppRouting.pushAndPopUntilFunction(
-                                  const BottomNavigatorRoute());
                               context.read<GRNPCubit>().check();
                             },
                             child: Container(
