@@ -14,31 +14,31 @@ import 'package:flutter/material.dart' as _i45;
 import 'package:ishker_24/features/bank/presentation/account_detail_screen/account_detail_screen.dart'
     as _i1;
 import 'package:ishker_24/features/bank/presentation/card_detail_screen/card_detail_screen.dart'
-    as _i10;
+    as _i6;
 import 'package:ishker_24/features/bank/presentation/card_detail_screen/card_operation_history_screen/card_operation_history_screen.dart'
-    as _i11;
+    as _i7;
 import 'package:ishker_24/features/bank/presentation/create_account_screen/create_account_finish_screen.dart'
-    as _i13;
+    as _i9;
 import 'package:ishker_24/features/bank/presentation/create_account_screen/create_account_last_screen.dart'
-    as _i14;
+    as _i10;
 import 'package:ishker_24/features/bank/presentation/create_account_screen/create_account_next_screen.dart'
-    as _i15;
+    as _i11;
 import 'package:ishker_24/features/bank/presentation/create_account_screen/create_account_screen.dart'
-    as _i16;
+    as _i12;
 import 'package:ishker_24/features/bank/presentation/create_account_screen/go_bank_screen.dart'
-    as _i18;
+    as _i14;
 import 'package:ishker_24/features/bank/presentation/create_account_screen/open_account_screen.dart'
     as _i23;
-import 'package:ishker_24/features/black_list_check/presentation/black_list_camera_screen/black_list_camera_screen.dart'
-    as _i5;
-import 'package:ishker_24/features/black_list_check/presentation/black_list_camera_screen/black_list_selfie_ident_screen.dart'
-    as _i8;
-import 'package:ishker_24/features/black_list_check/presentation/black_list_camera_screen/selife_preview_screen.dart'
-    as _i7;
-import 'package:ishker_24/features/black_list_check/presentation/black_list_screen/black_list_check_screen.dart'
-    as _i6;
 import 'package:ishker_24/features/bottom_navigator/bottom_navigator_screen.dart'
-    as _i9;
+    as _i5;
+import 'package:ishker_24/features/grnp_check/presentation/grnp_camera_screen/grnp_camera_screen.dart'
+    as _i15;
+import 'package:ishker_24/features/grnp_check/presentation/grnp_camera_screen/grnp_selfie_ident_screen.dart'
+    as _i18;
+import 'package:ishker_24/features/grnp_check/presentation/grnp_camera_screen/grnp_selife_preview_screen.dart'
+    as _i17;
+import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/grnp_screen.dart'
+    as _i16;
 import 'package:ishker_24/features/my_ip/presentation/my_certificate_screen/my_certficate_screen.dart'
     as _i19;
 import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart'
@@ -56,7 +56,7 @@ import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_type_of_activity_screen.dart'
     as _i36;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/ces_selfie_ident_screen.dart'
-    as _i12;
+    as _i8;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/oep_camera_screen.dart'
     as _i20;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/selife_preview_screen.dart'
@@ -79,7 +79,7 @@ import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_send_confirm_screen/auth_send_confirm_screen.dart'
     as _i4;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/error_screen/error_screen.dart'
-    as _i17;
+    as _i13;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_create_screen/pin_code_create_screen.dart'
     as _i24;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/pin_code_enter_screen.dart'
@@ -134,97 +134,97 @@ abstract class $AppRouter extends _i44.RootStackRouter {
         ),
       );
     },
-    BlackListCameraRoute.name: (routeData) {
-      final args = routeData.argsAs<BlackListCameraRouteArgs>();
+    BottomNavigatorRoute.name: (routeData) {
       return _i44.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.BlackListCameraScreen(
+        child: const _i5.BottomNavigatorScreen(),
+      );
+    },
+    CardDetailRoute.name: (routeData) {
+      return _i44.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i6.CardDetailScreen(),
+      );
+    },
+    CardOperationHistoryRoute.name: (routeData) {
+      return _i44.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i7.CardOperationHistoryScreen(),
+      );
+    },
+    CesSelfieRoute.name: (routeData) {
+      return _i44.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i8.CesSelfieScreen(),
+      );
+    },
+    CreateAccountFinishRoute.name: (routeData) {
+      return _i44.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i9.CreateAccountFinishScreen(),
+      );
+    },
+    CreateAccountLastRoute.name: (routeData) {
+      return _i44.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i10.CreateAccountLastScreen(),
+      );
+    },
+    CreateAccountNextRoute.name: (routeData) {
+      return _i44.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i11.CreateAccountNextScreen(),
+      );
+    },
+    CreateAccountRoute.name: (routeData) {
+      return _i44.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i12.CreateAccountScreen(),
+      );
+    },
+    EsiErrorRoute.name: (routeData) {
+      return _i44.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i13.EsiErrorScreen(),
+      );
+    },
+    GoBankRoute.name: (routeData) {
+      return _i44.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i14.GoBankScreen(),
+      );
+    },
+    GrnpCameraRoute.name: (routeData) {
+      final args = routeData.argsAs<GrnpCameraRouteArgs>();
+      return _i44.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i15.GrnpCameraScreen(
           key: args.key,
           description: args.description,
         ),
       );
     },
-    BlackListCheckRoute.name: (routeData) {
+    GrnpCheckRoute.name: (routeData) {
       return _i44.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.BlackListCheckScreen(),
+        child: const _i16.GrnpCheckScreen(),
       );
     },
-    BlackListSelfiePreviewRoute.name: (routeData) {
-      final args = routeData.argsAs<BlackListSelfiePreviewRouteArgs>();
+    GrnpSelfiePreviewRoute.name: (routeData) {
+      final args = routeData.argsAs<GrnpSelfiePreviewRouteArgs>();
       return _i44.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i7.BlackListSelfiePreviewScreen(
+        child: _i17.GrnpSelfiePreviewScreen(
           args.path,
           args.onCheck,
           key: args.key,
         ),
       );
     },
-    BlackListSelfieRoute.name: (routeData) {
+    GrnpSelfieRoute.name: (routeData) {
       return _i44.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i8.BlackListSelfieScreen(),
-      );
-    },
-    BottomNavigatorRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i9.BottomNavigatorScreen(),
-      );
-    },
-    CardDetailRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i10.CardDetailScreen(),
-      );
-    },
-    CardOperationHistoryRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i11.CardOperationHistoryScreen(),
-      );
-    },
-    CesSelfieRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i12.CesSelfieScreen(),
-      );
-    },
-    CreateAccountFinishRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i13.CreateAccountFinishScreen(),
-      );
-    },
-    CreateAccountLastRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i14.CreateAccountLastScreen(),
-      );
-    },
-    CreateAccountNextRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i15.CreateAccountNextScreen(),
-      );
-    },
-    CreateAccountRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i16.CreateAccountScreen(),
-      );
-    },
-    EsiErrorRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i17.EsiErrorScreen(),
-      );
-    },
-    GoBankRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i18.GoBankScreen(),
+        child: const _i18.GrnpSelfieScreen(),
       );
     },
     MyCertficateRoute.name: (routeData) {
@@ -512,118 +512,7 @@ class AuthSendConfirmRouteArgs {
 }
 
 /// generated route for
-/// [_i5.BlackListCameraScreen]
-class BlackListCameraRoute
-    extends _i44.PageRouteInfo<BlackListCameraRouteArgs> {
-  BlackListCameraRoute({
-    _i45.Key? key,
-    required _i47.CameraDescription description,
-    List<_i44.PageRouteInfo>? children,
-  }) : super(
-          BlackListCameraRoute.name,
-          args: BlackListCameraRouteArgs(
-            key: key,
-            description: description,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'BlackListCameraRoute';
-
-  static const _i44.PageInfo<BlackListCameraRouteArgs> page =
-      _i44.PageInfo<BlackListCameraRouteArgs>(name);
-}
-
-class BlackListCameraRouteArgs {
-  const BlackListCameraRouteArgs({
-    this.key,
-    required this.description,
-  });
-
-  final _i45.Key? key;
-
-  final _i47.CameraDescription description;
-
-  @override
-  String toString() {
-    return 'BlackListCameraRouteArgs{key: $key, description: $description}';
-  }
-}
-
-/// generated route for
-/// [_i6.BlackListCheckScreen]
-class BlackListCheckRoute extends _i44.PageRouteInfo<void> {
-  const BlackListCheckRoute({List<_i44.PageRouteInfo>? children})
-      : super(
-          BlackListCheckRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'BlackListCheckRoute';
-
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i7.BlackListSelfiePreviewScreen]
-class BlackListSelfiePreviewRoute
-    extends _i44.PageRouteInfo<BlackListSelfiePreviewRouteArgs> {
-  BlackListSelfiePreviewRoute({
-    required String? path,
-    required Function onCheck,
-    _i45.Key? key,
-    List<_i44.PageRouteInfo>? children,
-  }) : super(
-          BlackListSelfiePreviewRoute.name,
-          args: BlackListSelfiePreviewRouteArgs(
-            path: path,
-            onCheck: onCheck,
-            key: key,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'BlackListSelfiePreviewRoute';
-
-  static const _i44.PageInfo<BlackListSelfiePreviewRouteArgs> page =
-      _i44.PageInfo<BlackListSelfiePreviewRouteArgs>(name);
-}
-
-class BlackListSelfiePreviewRouteArgs {
-  const BlackListSelfiePreviewRouteArgs({
-    required this.path,
-    required this.onCheck,
-    this.key,
-  });
-
-  final String? path;
-
-  final Function onCheck;
-
-  final _i45.Key? key;
-
-  @override
-  String toString() {
-    return 'BlackListSelfiePreviewRouteArgs{path: $path, onCheck: $onCheck, key: $key}';
-  }
-}
-
-/// generated route for
-/// [_i8.BlackListSelfieScreen]
-class BlackListSelfieRoute extends _i44.PageRouteInfo<void> {
-  const BlackListSelfieRoute({List<_i44.PageRouteInfo>? children})
-      : super(
-          BlackListSelfieRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'BlackListSelfieRoute';
-
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i9.BottomNavigatorScreen]
+/// [_i5.BottomNavigatorScreen]
 class BottomNavigatorRoute extends _i44.PageRouteInfo<void> {
   const BottomNavigatorRoute({List<_i44.PageRouteInfo>? children})
       : super(
@@ -637,7 +526,7 @@ class BottomNavigatorRoute extends _i44.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i10.CardDetailScreen]
+/// [_i6.CardDetailScreen]
 class CardDetailRoute extends _i44.PageRouteInfo<void> {
   const CardDetailRoute({List<_i44.PageRouteInfo>? children})
       : super(
@@ -651,7 +540,7 @@ class CardDetailRoute extends _i44.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i11.CardOperationHistoryScreen]
+/// [_i7.CardOperationHistoryScreen]
 class CardOperationHistoryRoute extends _i44.PageRouteInfo<void> {
   const CardOperationHistoryRoute({List<_i44.PageRouteInfo>? children})
       : super(
@@ -665,7 +554,7 @@ class CardOperationHistoryRoute extends _i44.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i12.CesSelfieScreen]
+/// [_i8.CesSelfieScreen]
 class CesSelfieRoute extends _i44.PageRouteInfo<void> {
   const CesSelfieRoute({List<_i44.PageRouteInfo>? children})
       : super(
@@ -679,7 +568,7 @@ class CesSelfieRoute extends _i44.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i13.CreateAccountFinishScreen]
+/// [_i9.CreateAccountFinishScreen]
 class CreateAccountFinishRoute extends _i44.PageRouteInfo<void> {
   const CreateAccountFinishRoute({List<_i44.PageRouteInfo>? children})
       : super(
@@ -693,7 +582,7 @@ class CreateAccountFinishRoute extends _i44.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i14.CreateAccountLastScreen]
+/// [_i10.CreateAccountLastScreen]
 class CreateAccountLastRoute extends _i44.PageRouteInfo<void> {
   const CreateAccountLastRoute({List<_i44.PageRouteInfo>? children})
       : super(
@@ -707,7 +596,7 @@ class CreateAccountLastRoute extends _i44.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i15.CreateAccountNextScreen]
+/// [_i11.CreateAccountNextScreen]
 class CreateAccountNextRoute extends _i44.PageRouteInfo<void> {
   const CreateAccountNextRoute({List<_i44.PageRouteInfo>? children})
       : super(
@@ -721,7 +610,7 @@ class CreateAccountNextRoute extends _i44.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i16.CreateAccountScreen]
+/// [_i12.CreateAccountScreen]
 class CreateAccountRoute extends _i44.PageRouteInfo<void> {
   const CreateAccountRoute({List<_i44.PageRouteInfo>? children})
       : super(
@@ -735,7 +624,7 @@ class CreateAccountRoute extends _i44.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i17.EsiErrorScreen]
+/// [_i13.EsiErrorScreen]
 class EsiErrorRoute extends _i44.PageRouteInfo<void> {
   const EsiErrorRoute({List<_i44.PageRouteInfo>? children})
       : super(
@@ -749,7 +638,7 @@ class EsiErrorRoute extends _i44.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i18.GoBankScreen]
+/// [_i14.GoBankScreen]
 class GoBankRoute extends _i44.PageRouteInfo<void> {
   const GoBankRoute({List<_i44.PageRouteInfo>? children})
       : super(
@@ -758,6 +647,116 @@ class GoBankRoute extends _i44.PageRouteInfo<void> {
         );
 
   static const String name = 'GoBankRoute';
+
+  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i15.GrnpCameraScreen]
+class GrnpCameraRoute extends _i44.PageRouteInfo<GrnpCameraRouteArgs> {
+  GrnpCameraRoute({
+    _i45.Key? key,
+    required _i47.CameraDescription description,
+    List<_i44.PageRouteInfo>? children,
+  }) : super(
+          GrnpCameraRoute.name,
+          args: GrnpCameraRouteArgs(
+            key: key,
+            description: description,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'GrnpCameraRoute';
+
+  static const _i44.PageInfo<GrnpCameraRouteArgs> page =
+      _i44.PageInfo<GrnpCameraRouteArgs>(name);
+}
+
+class GrnpCameraRouteArgs {
+  const GrnpCameraRouteArgs({
+    this.key,
+    required this.description,
+  });
+
+  final _i45.Key? key;
+
+  final _i47.CameraDescription description;
+
+  @override
+  String toString() {
+    return 'GrnpCameraRouteArgs{key: $key, description: $description}';
+  }
+}
+
+/// generated route for
+/// [_i16.GrnpCheckScreen]
+class GrnpCheckRoute extends _i44.PageRouteInfo<void> {
+  const GrnpCheckRoute({List<_i44.PageRouteInfo>? children})
+      : super(
+          GrnpCheckRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'GrnpCheckRoute';
+
+  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i17.GrnpSelfiePreviewScreen]
+class GrnpSelfiePreviewRoute
+    extends _i44.PageRouteInfo<GrnpSelfiePreviewRouteArgs> {
+  GrnpSelfiePreviewRoute({
+    required String? path,
+    required Function onCheck,
+    _i45.Key? key,
+    List<_i44.PageRouteInfo>? children,
+  }) : super(
+          GrnpSelfiePreviewRoute.name,
+          args: GrnpSelfiePreviewRouteArgs(
+            path: path,
+            onCheck: onCheck,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'GrnpSelfiePreviewRoute';
+
+  static const _i44.PageInfo<GrnpSelfiePreviewRouteArgs> page =
+      _i44.PageInfo<GrnpSelfiePreviewRouteArgs>(name);
+}
+
+class GrnpSelfiePreviewRouteArgs {
+  const GrnpSelfiePreviewRouteArgs({
+    required this.path,
+    required this.onCheck,
+    this.key,
+  });
+
+  final String? path;
+
+  final Function onCheck;
+
+  final _i45.Key? key;
+
+  @override
+  String toString() {
+    return 'GrnpSelfiePreviewRouteArgs{path: $path, onCheck: $onCheck, key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i18.GrnpSelfieScreen]
+class GrnpSelfieRoute extends _i44.PageRouteInfo<void> {
+  const GrnpSelfieRoute({List<_i44.PageRouteInfo>? children})
+      : super(
+          GrnpSelfieRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'GrnpSelfieRoute';
 
   static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
 }

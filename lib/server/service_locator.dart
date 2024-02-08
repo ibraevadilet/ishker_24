@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit/bottom_navigator_cubit.dart';
+import 'package:ishker_24/features/grnp_check/data/repositories_impl/grnp_repo_impl.dart';
+import 'package:ishker_24/features/grnp_check/domain/repositories/grnp_repository.dart';
+import 'package:ishker_24/features/grnp_check/domain/use_case%20/grnp_use_case.dart';
+import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/grnp_cubit/grnp_cubit.dart';
 import 'package:ishker_24/features/home/data/repositories_impl/check_has_ip_repo_impl.dart';
 import 'package:ishker_24/features/home/domain/repository/check_has_ip_repository.dart';
 import 'package:ishker_24/features/home/domain/use_cases/check_has_ip_use_case.dart';
@@ -137,6 +141,7 @@ Future<void> initServiceLocator() async {
       () => SetNewPasswordRepoImpl(dio: sl()));
   sl.registerFactory<ExitRepo>(() => ExitRepoImpl(dio: sl()));
   sl.registerFactory<CheckHasIPRepo>(() => CheckHasIPRepoImpl(dio: sl()));
+  sl.registerFactory<GRNPRepo>(() => GRNPRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -173,6 +178,7 @@ Future<void> initServiceLocator() async {
       () => ExitUseCase(repo: sl(), prefs: sl()));
   sl.registerLazySingleton<CheckHasIPUseCase>(
       () => CheckHasIPUseCase(repo: sl()));
+  sl.registerLazySingleton<GRNPUseCase>(() => GRNPUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -213,4 +219,5 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<SetNewPasswordCubit>(
       () => SetNewPasswordCubit(useCase: sl()));
   sl.registerFactory<ExitCubit>(() => ExitCubit(useCase: sl()));
+  sl.registerFactory<GRNPCubit>(() => GRNPCubit(useCase: sl()));
 }

@@ -16,8 +16,8 @@ import 'package:ishker_24/widgets/floating_button.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 @RoutePage()
-class BlackListSelfieScreen extends StatelessWidget {
-  const BlackListSelfieScreen({
+class GrnpSelfieScreen extends StatelessWidget {
+  const GrnpSelfieScreen({
     Key? key,
   }) : super(key: key);
   @override
@@ -34,7 +34,7 @@ class BlackListSelfieScreen extends StatelessWidget {
               onTap: () async {
                 if (Platform.isIOS) {
                   AppRouting.pushFunction(
-                    BlackListCameraRoute(
+                    GrnpCameraRoute(
                       description: await ScannerUtils.getCamera(
                         CameraLensDirection.front,
                       ),
@@ -49,7 +49,7 @@ class BlackListSelfieScreen extends StatelessWidget {
                   }
                   if (permissionsGranted) {
                     AppRouting.pushFunction(
-                      BlackListCameraRoute(
+                      GrnpCameraRoute(
                         description: await ScannerUtils.getCamera(
                           CameraLensDirection.front,
                         ),
