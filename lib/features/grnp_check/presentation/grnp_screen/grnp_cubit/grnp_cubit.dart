@@ -30,8 +30,8 @@ class GRNPCubit extends Cubit<GRNPState> {
           ),
           phone: '996$phone',
         );
-        emit(const GRNPState.success());
         AppRouting.pushAndPopUntilFunction(const BottomNavigatorRoute());
+        emit(const GRNPState.success());
       } catch (e) {
         emit(GRNPState.error(e.toString()));
       }
