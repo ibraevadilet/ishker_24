@@ -13,7 +13,7 @@ class CheckHasIpCubit extends Cubit<CheckHasIpState> {
     emit(const CheckHasIpState.loading());
     await Future.delayed(const Duration(microseconds: 300));
     try {
-      // final result = await useCase.checkIp();
+      final bankResult = await useCase.checkHasBank();
       // if (result.status == 1) {
       //   emit(const CheckHasIpState.emptyBank());
       // } else if (result.status == 2) {
@@ -23,7 +23,11 @@ class CheckHasIpCubit extends Cubit<CheckHasIpState> {
       //     CheckHasIpState.declinedIp(result.declinedReason ?? ''),
       //   );
       // }
-      emit(const CheckHasIpState.emptyIp());
+      if (bankResult) {
+        emit(const CheckHasIpState.fullHas());
+      } else {
+        emit(const CheckHasIpState.emptyBank());
+      }
     } catch (e) {
       emit(CheckHasIpState.error(e.toString()));
     }
