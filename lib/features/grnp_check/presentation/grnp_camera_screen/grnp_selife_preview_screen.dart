@@ -83,9 +83,6 @@ class _GrnpSelfiePreviewScreenState extends State<GrnpSelfiePreviewScreen>
                           state.whenOrNull(
                             error: (error) async {
                               AppSnackBar.showSnackBar(error);
-                              AppRouting.pushAndPopUntilFunction(
-                                  const AuthRoute());
-                              await sl<SharedPreferences>().clear();
                             },
                             success: () async {
                               await context.router.pop();
