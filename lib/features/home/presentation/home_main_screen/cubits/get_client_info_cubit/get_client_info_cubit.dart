@@ -8,7 +8,9 @@ part 'get_client_info_state.dart';
 
 class GetClientInfoCubit extends Cubit<GetClientInfoState> {
   GetClientInfoCubit({required this.useCase})
-      : super(const GetClientInfoState.loading());
+      : super(const GetClientInfoState.loading()) {
+    getClientInfo();
+  }
 
   final GetClientInfoUseCase useCase;
 

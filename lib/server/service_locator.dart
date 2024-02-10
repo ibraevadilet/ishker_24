@@ -3,15 +3,30 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ishker_24/features/bank/data/repo_implements/create_account_repo_impl.dart';
+import 'package:ishker_24/features/bank/data/repo_implements/register_client_repo_impl.dart';
+import 'package:ishker_24/features/bank/domain/repositories/create_account_repository.dart';
+import 'package:ishker_24/features/bank/domain/repositories/register_client_repository.dart';
+import 'package:ishker_24/features/bank/domain/use_cases/create_account_usecase.dart';
+import 'package:ishker_24/features/bank/domain/use_cases/register_client_usecase.dart';
+import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/create_account_cubit/create_account_cubit.dart';
 import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit/bottom_navigator_cubit.dart';
-import 'package:ishker_24/features/home/data/repo_implements/check_has_ip_repo_impl.dart';
-import 'package:ishker_24/features/home/domain/repositories/check_has_ip_repository.dart';
 import 'package:ishker_24/features/grnp_check/data/repositories_impl/grnp_repo_impl.dart';
 import 'package:ishker_24/features/grnp_check/domain/repositories/grnp_repository.dart';
 import 'package:ishker_24/features/grnp_check/domain/use_case%20/grnp_use_case.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/grnp_cubit/grnp_cubit.dart';
+import 'package:ishker_24/features/home/data/repo_implements/check_has_ip_repo_impl.dart';
+import 'package:ishker_24/features/home/data/repo_implements/get_client_info_repo_impl.dart';
+import 'package:ishker_24/features/home/domain/repositories/check_has_ip_repository.dart';
+import 'package:ishker_24/features/home/domain/repositories/get_client_info_repository.dart';
 import 'package:ishker_24/features/home/domain/use_cases/check_has_ip_use_case.dart';
+import 'package:ishker_24/features/home/domain/use_cases/get_client_info_usecase.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/get_client_info_cubit/get_client_info_cubit.dart';
+import 'package:ishker_24/features/qr/data/repo_implements/generate_qr_repo_impl.dart';
+import 'package:ishker_24/features/qr/domain/repositories/generate_qr_repository.dart';
+import 'package:ishker_24/features/qr/domain/use_cases/generate_qr_usecase.dart';
+import 'package:ishker_24/features/qr/presentation/qr_main_screen/cubits/generate_qr_cubit/generate_qr_cubit.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_gns_pdf_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_pin_code_receiving_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_user_info_repo_impl.dart';
@@ -142,6 +157,11 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<ExitRepo>(() => ExitRepoImpl(dio: sl()));
   sl.registerFactory<CheckHasIPRepo>(() => CheckHasIPRepoImpl(dio: sl()));
   sl.registerFactory<GRNPRepo>(() => GRNPRepoImpl(dio: sl()));
+  sl.registerFactory<GetClientInfoRepo>(() => GetClientInfoRepoImpl(dio: sl()));
+  sl.registerFactory<CreateAccountRepo>(() => CreateAccountRepoImpl(dio: sl()));
+  sl.registerFactory<RegisterClientRepo>(
+      () => RegisterClientRepoImpl(dio: sl()));
+  sl.registerFactory<GenerateQrRepo>(() => GenerateQrRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -179,6 +199,14 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<CheckHasIPUseCase>(
       () => CheckHasIPUseCase(repo: sl()));
   sl.registerLazySingleton<GRNPUseCase>(() => GRNPUseCase(repo: sl()));
+  sl.registerLazySingleton<GetClientInfoUseCase>(
+      () => GetClientInfoUseCase(repo: sl()));
+  sl.registerLazySingleton<CreateAccountUseCase>(
+      () => CreateAccountUseCase(repo: sl()));
+  sl.registerLazySingleton<RegisterClientUseCase>(
+      () => RegisterClientUseCase(repo: sl()));
+  sl.registerLazySingleton<GenerateQrUseCase>(
+      () => GenerateQrUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -220,4 +248,9 @@ Future<void> initServiceLocator() async {
       () => SetNewPasswordCubit(useCase: sl()));
   sl.registerFactory<ExitCubit>(() => ExitCubit(useCase: sl()));
   sl.registerFactory<GRNPCubit>(() => GRNPCubit(useCase: sl()));
+  sl.registerFactory<GetClientInfoCubit>(
+      () => GetClientInfoCubit(useCase: sl()));
+  sl.registerFactory<CreateAccountCubit>(
+      () => CreateAccountCubit(useCase: sl()));
+  sl.registerFactory<GenerateQrCubit>(() => GenerateQrCubit(useCase: sl()));
 }
