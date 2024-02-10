@@ -12,7 +12,7 @@ class GenerateQrRepoImpl implements GenerateQrRepo {
     try {
       final response = await dio.post(
         'rsk-service/qr/generate',
-        data: {},
+        data: model.toJson(),
       );
       return response.data['data']['link'];
     } catch (e) {

@@ -6,4 +6,10 @@ class RegitserClientState with _$RegitserClientState {
   const factory RegitserClientState.loading() = _Loading;
   const factory RegitserClientState.error(String error) = _Error;
   const factory RegitserClientState.success() = _Success;
+
+  const RegitserClientState._();
+  bool get isLoading => maybeWhen(
+        orElse: () => false,
+        loading: () => true,
+      );
 }

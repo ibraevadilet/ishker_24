@@ -4,12 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/create_account_repo_impl.dart';
+import 'package:ishker_24/features/bank/data/repo_implements/get_client_passport_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/register_client_repo_impl.dart';
 import 'package:ishker_24/features/bank/domain/repositories/create_account_repository.dart';
+import 'package:ishker_24/features/bank/domain/repositories/get_client_passport_repository.dart';
 import 'package:ishker_24/features/bank/domain/repositories/register_client_repository.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/create_account_usecase.dart';
+import 'package:ishker_24/features/bank/domain/use_cases/get_client_passport_usecase.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/register_client_usecase.dart';
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/create_account_cubit/create_account_cubit.dart';
+import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/get_client_passport_cubit/get_client_passport_cubit.dart';
+import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/regitser_client_cubit/regitser_client_cubit.dart';
 import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit/bottom_navigator_cubit.dart';
 import 'package:ishker_24/features/grnp_check/data/repositories_impl/grnp_repo_impl.dart';
 import 'package:ishker_24/features/grnp_check/domain/repositories/grnp_repository.dart';
@@ -162,6 +167,8 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<RegisterClientRepo>(
       () => RegisterClientRepoImpl(dio: sl()));
   sl.registerFactory<GenerateQrRepo>(() => GenerateQrRepoImpl(dio: sl()));
+  sl.registerFactory<GetClientPassportRepo>(
+      () => GetClientPassportRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -207,6 +214,8 @@ Future<void> initServiceLocator() async {
       () => RegisterClientUseCase(repo: sl()));
   sl.registerLazySingleton<GenerateQrUseCase>(
       () => GenerateQrUseCase(repo: sl()));
+  sl.registerLazySingleton<GetClientPassportUseCase>(
+      () => GetClientPassportUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -252,5 +261,9 @@ Future<void> initServiceLocator() async {
       () => GetClientInfoCubit(useCase: sl()));
   sl.registerFactory<CreateAccountCubit>(
       () => CreateAccountCubit(useCase: sl()));
+  sl.registerFactory<RegitserClientCubit>(
+      () => RegitserClientCubit(useCase: sl(), accountUseCase: sl()));
   sl.registerFactory<GenerateQrCubit>(() => GenerateQrCubit(useCase: sl()));
+  sl.registerFactory<GetClientPassportCubit>(
+      () => GetClientPassportCubit(useCase: sl()));
 }

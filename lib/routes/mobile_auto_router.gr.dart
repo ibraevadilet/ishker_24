@@ -256,9 +256,13 @@ abstract class $AppRouter extends _i44.RootStackRouter {
       );
     },
     OpenAccountRoute.name: (routeData) {
+      final args = routeData.argsAs<OpenAccountRouteArgs>();
       return _i44.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i23.OpenAccountScreen(),
+        child: _i23.OpenAccountScreen(
+          key: args.key,
+          partyId: args.partyId,
+        ),
       );
     },
     PinCodeCreateRoute.name: (routeData) {
@@ -843,16 +847,40 @@ class OEPRegisterRoute extends _i44.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i23.OpenAccountScreen]
-class OpenAccountRoute extends _i44.PageRouteInfo<void> {
-  const OpenAccountRoute({List<_i44.PageRouteInfo>? children})
-      : super(
+class OpenAccountRoute extends _i44.PageRouteInfo<OpenAccountRouteArgs> {
+  OpenAccountRoute({
+    _i45.Key? key,
+    required String partyId,
+    List<_i44.PageRouteInfo>? children,
+  }) : super(
           OpenAccountRoute.name,
+          args: OpenAccountRouteArgs(
+            key: key,
+            partyId: partyId,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'OpenAccountRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i44.PageInfo<OpenAccountRouteArgs> page =
+      _i44.PageInfo<OpenAccountRouteArgs>(name);
+}
+
+class OpenAccountRouteArgs {
+  const OpenAccountRouteArgs({
+    this.key,
+    required this.partyId,
+  });
+
+  final _i45.Key? key;
+
+  final String partyId;
+
+  @override
+  String toString() {
+    return 'OpenAccountRouteArgs{key: $key, partyId: $partyId}';
+  }
 }
 
 /// generated route for

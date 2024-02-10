@@ -27,19 +27,27 @@ class RegisterClientPostModel {
     required this.docDate,
   });
 
+  // Map<String, dynamic> toJson() {
+  //   return <String, dynamic>{
+  //     'pasportTypeAnId': pasportTypeAnId,
+  //     'pasportNumber': pasportNumber,
+  //     'phoneNumber': phoneNumber,
+  //     'emailAdress': emailAdress,
+  //     'vidDeatelnosty': vidDeatelnosty,
+  //     'okpo': okpo,
+  //     'ogrn': ogrn,
+  //     'seriesDocNumber': seriesDocNumber,
+  //     'docNumber': docNumber,
+  //     'docPlace': docPlace,
+  //     'docDate': docDate,
+  //   };
+  // }
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'pasportTypeAnId': pasportTypeAnId,
-      'pasportNumber': pasportNumber,
-      'phoneNumber': phoneNumber,
-      'emailAdress': emailAdress,
-      'vidDeatelnosty': vidDeatelnosty,
-      'okpo': okpo,
-      'ogrn': ogrn,
-      'seriesDocNumber': seriesDocNumber,
-      'docNumber': docNumber,
-      'docPlace': docPlace,
-      'docDate': docDate,
+      'pin': '21605200001255',
+      'email': 'ibraevadilet3@gmail.com',
+      'mobilePhone': '+996554160500',
+      'note372': 'Adilet my code word',
     };
   }
 }

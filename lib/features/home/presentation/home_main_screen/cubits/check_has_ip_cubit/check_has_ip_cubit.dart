@@ -23,11 +23,11 @@ class CheckHasIpCubit extends Cubit<CheckHasIpState> {
       //     CheckHasIpState.declinedIp(result.declinedReason ?? ''),
       //   );
       // }
-      if (bankResult) {
-        emit(const CheckHasIpState.fullHas());
-      } else {
-        emit(const CheckHasIpState.emptyBank());
-      }
+      // if (bankResult) {
+      //   emit(const CheckHasIpState.fullHas());
+      // } else {
+      emit(const CheckHasIpState.emptyIp());
+      // }
     } catch (e) {
       emit(CheckHasIpState.error(e.toString()));
     }

@@ -103,8 +103,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl() : super._();
 
   @override
   String toString() {
@@ -195,8 +195,9 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements GRNPState {
+abstract class _Initial extends GRNPState {
   const factory _Initial() = _$InitialImpl;
+  const _Initial._() : super._();
 }
 
 /// @nodoc
@@ -217,8 +218,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
@@ -309,8 +310,9 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements GRNPState {
+abstract class _Loading extends GRNPState {
   const factory _Loading() = _$LoadingImpl;
+  const _Loading._() : super._();
 }
 
 /// @nodoc
@@ -346,8 +348,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(this.error);
+class _$ErrorImpl extends _Error {
+  const _$ErrorImpl(this.error) : super._();
 
   @override
   final String error;
@@ -449,8 +451,9 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements GRNPState {
+abstract class _Error extends GRNPState {
   const factory _Error(final String error) = _$ErrorImpl;
+  const _Error._() : super._();
 
   String get error;
   @JsonKey(ignore: true)
@@ -476,8 +479,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl();
+class _$SuccessImpl extends _Success {
+  const _$SuccessImpl() : super._();
 
   @override
   String toString() {
@@ -568,6 +571,7 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements GRNPState {
+abstract class _Success extends GRNPState {
   const factory _Success() = _$SuccessImpl;
+  const _Success._() : super._();
 }

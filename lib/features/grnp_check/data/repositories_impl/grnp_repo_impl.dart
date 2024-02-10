@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/grnp_check/data/models/send_grnp_model.dart';
 import 'package:ishker_24/features/grnp_check/domain/repositories/grnp_repository.dart';
-import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/catch_exception.dart';
 
 class GRNPRepoImpl implements GRNPRepo {
@@ -24,8 +22,10 @@ class GRNPRepoImpl implements GRNPRepo {
 
       return response.data;
     } catch (e) {
-      if (e == 403) {
-        AppRouting.pushAndPopUntilFunction(const AuthRoute());
+      if (e is DioException) {
+        if (e.response!.statusCode == 403) {
+          throw CatchException(message: e.response!.data).message;
+        }
       }
       throw CatchException.convertException(e).message;
     }

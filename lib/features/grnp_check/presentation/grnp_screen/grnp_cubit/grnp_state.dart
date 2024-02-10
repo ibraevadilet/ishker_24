@@ -6,4 +6,10 @@ class GRNPState with _$GRNPState {
   const factory GRNPState.loading() = _Loading;
   const factory GRNPState.error(String error) = _Error;
   const factory GRNPState.success() = _Success;
+
+  const GRNPState._();
+  bool get isLoading => maybeWhen(
+        orElse: () => false,
+        loading: () => true,
+      );
 }

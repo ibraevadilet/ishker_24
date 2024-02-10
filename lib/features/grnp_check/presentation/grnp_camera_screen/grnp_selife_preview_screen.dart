@@ -8,6 +8,7 @@ import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/grnp_cubi
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
+import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/styled_toasts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -117,10 +118,12 @@ class _GrnpSelfiePreviewScreenState extends State<GrnpSelfiePreviewScreen>
                                 top: 24,
                                 left: 28,
                               ),
-                              child: const Icon(
-                                Icons.check,
-                                color: Colors.white,
-                              ),
+                              child: state.isLoading
+                                  ? const AppIndicator(color: Colors.white)
+                                  : const Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                    ),
                             ),
                           );
                         },

@@ -6,4 +6,10 @@ class CreateAccountState with _$CreateAccountState {
   const factory CreateAccountState.loading() = _Loading;
   const factory CreateAccountState.error(String error) = _Error;
   const factory CreateAccountState.success() = _Success;
+
+  const CreateAccountState._();
+  bool get isLoading => maybeWhen(
+        orElse: () => false,
+        loading: () => true,
+      );
 }

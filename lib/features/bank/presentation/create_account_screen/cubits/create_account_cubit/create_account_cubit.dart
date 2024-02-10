@@ -13,11 +13,11 @@ class CreateAccountCubit extends Cubit<CreateAccountState> {
 
   final CreateAccountUseCase useCase;
 
-  Future<void> createAccount() async {
+  Future<void> createAccount(String partyId) async {
     emit(const CreateAccountState.loading());
     try {
-      await useCase.createAccount();
-      AppRouting.pushAndPopUntilFunction(const BottomNavigatorRoute());
+      await useCase.createAccount(partyId);
+      AppRouting.pushAndPopUntilFunction(const CreateAccountFinishRoute());
       emit(const CreateAccountState.success());
     } catch (e) {
       emit(CreateAccountState.error(e.toString()));

@@ -7,7 +7,7 @@ class RegisterClientUseCase {
     required this.repo,
   });
 
-  Future<void> registerClient(RegisterClientPostModel model) async {
+  Future<String> registerClient(RegisterClientPostModel model) async {
     try {
       return await repo.registerClient(model);
     } catch (e) {

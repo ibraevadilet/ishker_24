@@ -8,21 +8,23 @@ part 'generate_qr_state.dart';
 
 class GenerateQrCubit extends Cubit<GenerateQrState> {
   GenerateQrCubit({required this.useCase})
-      : super(const GenerateQrState.loading());
+      : super(const GenerateQrState.loading()) {
+    generateQr(0);
+  }
 
   final GenerateQrUseCase useCase;
 
-  Future<void> generateQr() async {
+  Future<void> generateQr(int amount) async {
     try {
       final postModel = GenerateQrPostModel(
-        account: 'account',
-        tspName: 'tspName',
-        serviceName: 'serviceName',
-        comments: 'comments',
-        mcc: 'mcc',
-        currency: 'currency',
-        amount: 'amount',
-        payerNameLat: 'payerNameLat',
+        account: '1290583310033866',
+        tspName: 'example_tsp_name',
+        serviceName: 'example_service_name',
+        comments: 'example_comments',
+        mcc: 'example_mcc',
+        currency: 'example_currency',
+        amount: amount.toString(),
+        payerNameLat: 'example_payer_name_lat',
       );
       final result = await useCase.generateQr(postModel);
       emit(GenerateQrState.success(result));
