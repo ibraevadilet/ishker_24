@@ -65,7 +65,7 @@ class _PinCodeEnterScreenState extends State<PinCodeEnterScreen> {
                       final isSavedPin = sl<ExistsUserUseCase>().pin.isEmpty;
                       if (isSavedPin) {
                         AppRouting.pushAndPopUntilFunction(
-                          const BlackListCheckRoute(),
+                          const GrnpCheckRoute(),
                         );
                       } else {
                         AppRouting.pushAndPopUntilFunction(

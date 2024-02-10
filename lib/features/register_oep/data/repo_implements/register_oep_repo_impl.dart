@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/app_helpers/dio_header.dart';
 import 'package:ishker_24/features/register_oep/data/models/send_register_oep_model.dart';

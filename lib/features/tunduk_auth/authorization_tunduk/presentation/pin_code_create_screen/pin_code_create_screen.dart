@@ -6,8 +6,10 @@ import 'package:ishker_24/features/tunduk_auth/widgets_general/esi_background_im
 import 'package:ishker_24/features/tunduk_auth/widgets_general/number_key_board_for_pin_code.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/pin_code_input_widget.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
+import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @RoutePage()
 class PinCodeCreateScreen extends StatefulWidget {
@@ -57,8 +59,9 @@ class _PinCodeCreateScreenState extends State<PinCodeCreateScreen> {
             const SizedBox(height: 20),
             NumberKeyBoardForPinCode(
               pinPutController: pinController,
-              onTapExit: () {
+              onTapExit: () async {
                 AppRouting.pushAndPopUntilFunction(const AuthRoute());
+                await sl<SharedPreferences>().clear();
               },
             ),
           ],

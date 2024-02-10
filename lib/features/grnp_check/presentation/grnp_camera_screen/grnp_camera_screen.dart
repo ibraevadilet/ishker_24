@@ -10,24 +10,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
-import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/cubits/register_oep_cubit/register_oep_cubit.dart';
+import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/grnp_cubit/grnp_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 
 @RoutePage()
-class OEPCameraScreen extends StatefulWidget {
-  const OEPCameraScreen({
+class GrnpCameraScreen extends StatefulWidget {
+  const GrnpCameraScreen({
     Key? key,
     required this.description,
   }) : super(key: key);
   final CameraDescription description;
 
   @override
-  State<OEPCameraScreen> createState() => _OEPCameraScreenState();
+  State<GrnpCameraScreen> createState() => _GrnpCameraScreenState();
 }
 
-class _OEPCameraScreenState extends State<OEPCameraScreen>
+class _GrnpCameraScreenState extends State<GrnpCameraScreen>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
@@ -75,7 +75,7 @@ class _OEPCameraScreenState extends State<OEPCameraScreen>
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: sl<RegisterOepCubit>(),
+      value: sl<GRNPCubit>(),
       child: Scaffold(
         key: _scaffoldKey,
         backgroundColor: Colors.black,
@@ -143,16 +143,14 @@ class _OEPCameraScreenState extends State<OEPCameraScreen>
                                 List<int> imageBytes =
                                     await File(photo.path).readAsBytes();
                                 String photoBase64 = base64Encode(imageBytes);
-                                context
-                                    .read<RegisterOepCubit>()
-                                    .getPhoto(photoBase64);
+                                context.read<GRNPCubit>().getPhoto(photoBase64);
                                 AppRouting.pushFunction(
-                                  SelfiePreviewRoute(
+                                  GrnpSelfiePreviewRoute(
                                     path: photo.path,
                                     onCheck: (check) {
                                       if (check == true) {
                                         AppRouting.pushFunction(
-                                          const OEPFinishRoute(),
+                                          const BottomNavigatorRoute(),
                                         );
                                       }
                                     },

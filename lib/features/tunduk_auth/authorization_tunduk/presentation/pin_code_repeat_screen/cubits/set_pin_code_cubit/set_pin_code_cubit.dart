@@ -29,7 +29,7 @@ class SetPinCodeCubit extends Cubit<SetPinCodeState> {
     emit(const SetPinCodeState.loading());
     try {
       await useCase.setNewPinCode(pinCode);
-      AppRouting.pushAndPopUntilFunction(const BlackListCheckRoute());
+      AppRouting.pushAndPopUntilFunction(const GrnpCheckRoute());
       emit(const SetPinCodeState.success());
     } catch (e) {
       AppSnackBar.showSnackBar(e.toString());
