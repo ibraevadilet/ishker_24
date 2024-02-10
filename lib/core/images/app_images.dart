@@ -52,6 +52,7 @@ class AppImages {
   static const String personIconSvg = 'assets/images/person_icon_svg.svg';  
   static const String personWarningIconSvg = 'assets/images/person_warning_icon_svg.svg';  
   static const String phoneIconSvg = 'assets/images/phone_icon_svg.svg';  
+  static const String qrCenterIcon = 'assets/images/qr_center_icon.png';  
   static const String qrIcon = 'assets/images/qr_icon.svg';  
   static const String recoveryEmailIconSvg = 'assets/images/recovery_email_icon_svg.svg';  
   static const String recoverySmsIconSvg = 'assets/images/recovery_sms_icon_svg.svg';  

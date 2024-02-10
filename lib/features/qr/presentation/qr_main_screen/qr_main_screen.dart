@@ -56,7 +56,8 @@ class QrMainScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       QrImageView(
-                        data: 'fkvkfdvdfvdfvf',
+                        embeddedImage: const AssetImage(AppImages.qrCenterIcon),
+                        data: image,
                         size: 200,
                       ),
                       const SizedBox(height: 32),
@@ -70,7 +71,7 @@ class QrMainScreen extends StatelessWidget {
                         labelText: 'Сумма к зачислению',
                         onChanged: (val) {
                           context.read<GenerateQrCubit>().generateQr(
-                                int.parse(val),
+                                int.tryParse(val) ?? 0,
                               );
                         },
                       ),
@@ -78,8 +79,7 @@ class QrMainScreen extends StatelessWidget {
                       CustomButton(
                         onPress: () async {
                           await Share.shareUri(
-                            Uri.parse(
-                                'https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg'),
+                            Uri.parse(image),
                           );
                         },
                         borderColor: AppColors.color54B25AMain,
