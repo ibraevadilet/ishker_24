@@ -1,7 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ishker_24/core/formatters/input_formatters.dart';
+import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
+import 'package:ishker_24/features/bank/domain/use_cases/register_client_usecase.dart';
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/get_client_passport_cubit/get_client_passport_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
@@ -34,6 +37,7 @@ class CreateAccountScreen extends StatelessWidget {
                 loading: () => const AppIndicator(),
                 error: (error) => AppErrorText(error: error),
                 success: (model) => Form(
+                  key: sl<RegisterClientUseCase>().formKey,
                   child: Column(
                     children: [
                       Expanded(
@@ -102,12 +106,23 @@ class CreateAccountScreen extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(height: 8),
-                              const CustomTextField(
+                              CustomTextField(
+                                prefixText: '+996 ',
+                                keyboardType: TextInputType.number,
                                 labelText: 'Номер телефона',
+                                controller: sl<RegisterClientUseCase>()
+                                    .numberController,
+                                inputFormatters: [
+                                  AppInputFormatters.phoneFormatter,
+                                ],
+                                validator: AppInputValidators.phoneValidator,
                               ),
                               const SizedBox(height: 8),
-                              const CustomTextField(
+                              CustomTextField(
+                                validator: AppInputValidators.emptyValidator,
                                 labelText: 'Адрес электронной почты',
+                                controller:
+                                    sl<RegisterClientUseCase>().emailController,
                               ),
                               const SizedBox(height: 8),
                               Container(
@@ -135,8 +150,15 @@ class CreateAccountScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: CustomButton(
-                          onPress: () => AppRouting.pushFunction(
-                              const CreateAccountNextRoute()),
+                          onPress: () {
+                            if (sl<RegisterClientUseCase>()
+                                .formKey
+                                .currentState!
+                                .validate()) {
+                              AppRouting.pushFunction(
+                                  const CreateAccountNextRoute());
+                            }
+                          },
                           text: 'Далее',
                         ),
                       )

@@ -37,7 +37,7 @@ class CheckHasIPRepoImpl implements CheckHasIPRepo {
       final response = await dio.post(
         'rsk-service/client/check',
         data: {
-          'pin': '20708199432405',
+          'pin': isSavedPin,
         },
       );
       return response.data['data']['clientExists'];
