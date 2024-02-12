@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
-import 'package:ishker_24/features/splash/domain/use_cases/exists_user_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/biometric_cubit/biometric_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/enter_pin_code_cubit/enter_pin_code_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/widgets/show_alert_dialog.dart';
@@ -20,7 +19,8 @@ import 'package:ishker_24/theme/app_text_styles.dart';
 
 @RoutePage()
 class PinCodeEnterScreen extends StatefulWidget {
-  const PinCodeEnterScreen({super.key});
+  const PinCodeEnterScreen({super.key, this.isPushed = false});
+  final bool isPushed;
 
   @override
   State<PinCodeEnterScreen> createState() => _PinCodeEnterScreenState();
@@ -60,13 +60,15 @@ class _PinCodeEnterScreenState extends State<PinCodeEnterScreen> {
               BlocConsumer<EnterPinCodeCubit, EnterPinCodeState>(
                 listener: (context, state) {
                   state.whenOrNull(
+                    isNotGrnp: () {
+                      AppRouting.pushAndPopUntilFunction(
+                        const GrnpCheckRoute(),
+                      );
+                    },
                     success: () async {
                       await showBioDialog(context, pinController.text);
-                      final isSavedPin = sl<ExistsUserUseCase>().pin.isEmpty;
-                      if (isSavedPin) {
-                        AppRouting.pushAndPopUntilFunction(
-                          const GrnpCheckRoute(),
-                        );
+                      if (widget.isPushed) {
+                        Navigator.pop(context);
                       } else {
                         AppRouting.pushAndPopUntilFunction(
                           const BottomNavigatorRoute(),

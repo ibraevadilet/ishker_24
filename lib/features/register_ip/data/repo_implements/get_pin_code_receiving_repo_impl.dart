@@ -20,7 +20,7 @@ class GetPinCodeReceivingRepoImpl implements GetPinCodeReceivingRepo {
           'deviceId': deviceId,
         },
       );
-      return response.data['data']
+      return response.data['data']['userAuthMethodList']
           .map<PinCodeTypesModel>((e) => PinCodeTypesModel.fromJson(e))
           .toList();
     } catch (e) {

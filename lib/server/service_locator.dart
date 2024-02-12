@@ -12,6 +12,7 @@ import 'package:ishker_24/features/bank/domain/repositories/register_client_repo
 import 'package:ishker_24/features/bank/domain/use_cases/create_account_usecase.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/get_client_passport_usecase.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/register_client_usecase.dart';
+import 'package:ishker_24/features/bank/presentation/bank_main_screen/check_bank_cubit/check_bank_cubit.dart';
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/create_account_cubit/create_account_cubit.dart';
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/get_client_passport_cubit/get_client_passport_cubit.dart';
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/regitser_client_cubit/regitser_client_cubit.dart';
@@ -28,6 +29,7 @@ import 'package:ishker_24/features/home/domain/use_cases/check_has_ip_use_case.d
 import 'package:ishker_24/features/home/domain/use_cases/get_client_info_usecase.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/get_client_info_cubit/get_client_info_cubit.dart';
+import 'package:ishker_24/features/my_ip/presentation/my_ip_main_screen/get_my_ip_cubit/get_my_ip_cubit.dart';
 import 'package:ishker_24/features/qr/data/repo_implements/generate_qr_repo_impl.dart';
 import 'package:ishker_24/features/qr/domain/repositories/generate_qr_repository.dart';
 import 'package:ishker_24/features/qr/domain/use_cases/generate_qr_usecase.dart';
@@ -68,16 +70,19 @@ import 'package:ishker_24/features/splash/domain/repositories/exists_user_reposi
 import 'package:ishker_24/features/splash/domain/use_cases/exists_user_usecase.dart';
 import 'package:ishker_24/features/splash/splash_cubit/splash_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/auth_repo_impl.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/check_grnp_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/confirm_received_code_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/exit_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/get_confirm_code_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/pin_code_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/auth_repository.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/check_grnp_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/confirm_received_code_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/exit_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/get_confirm_code_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/pin_code_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/auth_usecase.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/check_grnp_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/confirm_received_code_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/exit_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/get_confirm_code_usecase.dart';
@@ -169,6 +174,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GenerateQrRepo>(() => GenerateQrRepoImpl(dio: sl()));
   sl.registerFactory<GetClientPassportRepo>(
       () => GetClientPassportRepoImpl(dio: sl()));
+  sl.registerFactory<CheckGrnpRepo>(() => CheckGrnpRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -216,6 +222,7 @@ Future<void> initServiceLocator() async {
       () => GenerateQrUseCase(repo: sl()));
   sl.registerLazySingleton<GetClientPassportUseCase>(
       () => GetClientPassportUseCase(repo: sl()));
+  sl.registerFactory<CheckGrnpUseCase>(() => CheckGrnpUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -242,7 +249,10 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<ConfirmReceivedCodeCubit>(
       () => ConfirmReceivedCodeCubit(useCase: sl()));
   sl.registerFactory<SetPinCodeCubit>(() => SetPinCodeCubit(useCase: sl()));
-  sl.registerFactory<EnterPinCodeCubit>(() => EnterPinCodeCubit(useCase: sl()));
+  sl.registerFactory<EnterPinCodeCubit>(() => EnterPinCodeCubit(
+        useCase: sl(),
+        grnpUseCase: sl(),
+      ));
   sl.registerFactory<SendResetPinCodeCubit>(
       () => SendResetPinCodeCubit(useCase: sl()));
   sl.registerFactory<BiometricCubit>(
@@ -266,4 +276,6 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GenerateQrCubit>(() => GenerateQrCubit(useCase: sl()));
   sl.registerFactory<GetClientPassportCubit>(
       () => GetClientPassportCubit(useCase: sl()));
+  sl.registerFactory<GetMyIpCubit>(() => GetMyIpCubit(useCase: sl()));
+  sl.registerFactory<CheckBankCubit>(() => CheckBankCubit(useCase: sl()));
 }

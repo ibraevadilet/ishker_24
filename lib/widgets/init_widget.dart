@@ -1,17 +1,50 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ishker_24/core/constants/shared_keys.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit/bottom_navigator_cubit.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/translations/codegen_loader.g.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class InitWidget extends StatelessWidget {
+class InitWidget extends StatefulWidget {
   const InitWidget({
     required this.child,
     Key? key,
   }) : super(key: key);
 
   final Widget child;
+
+  @override
+  State<InitWidget> createState() => _InitWidgetState();
+}
+
+class _InitWidgetState extends State<InitWidget> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    final token =
+        sl<SharedPreferences>().getString(SharedKeys.accessToken) ?? '';
+    if (state == AppLifecycleState.paused) {
+      if (token.isNotEmpty) {
+        sl<SharedPreferences>().remove(SharedKeys.accessToken);
+        AppRouting.pushFunction(PinCodeEnterRoute());
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +62,7 @@ class InitWidget extends StatelessWidget {
             create: (context) => sl<BottomNavigatorCubit>(),
           ),
         ],
-        child: child,
+        child: widget.child,
       ),
     );
   }

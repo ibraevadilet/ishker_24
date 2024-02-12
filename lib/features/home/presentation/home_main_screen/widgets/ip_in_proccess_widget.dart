@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
-import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
-import 'package:ishker_24/widgets/custom_button.dart';
 
-class DeclinedIPWidget extends StatelessWidget {
-  const DeclinedIPWidget({super.key, required this.reason});
-  final String reason;
+class IpInProccessWidget extends StatelessWidget {
+  const IpInProccessWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,18 +15,12 @@ class DeclinedIPWidget extends StatelessWidget {
         const SizedBox(height: 24),
         Center(
           child: Text(
-            reason,
+            'Ваша заявка на получение ИП в обработке',
             style: AppTextStyles.s16W500(),
             textAlign: TextAlign.center,
           ),
         ),
         const SizedBox(height: 24),
-        CustomButton(
-          onPress: () {
-            AppRouting.pushFunction(const RegisterIPMainRoute());
-          },
-          text: 'Регистрация ИП',
-        ),
         const Spacer(),
       ],
     );

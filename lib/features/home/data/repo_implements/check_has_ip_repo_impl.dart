@@ -11,7 +11,7 @@ class CheckHasIPRepoImpl implements CheckHasIPRepo {
   final Dio dio;
   CheckHasIPRepoImpl({required this.dio});
   @override
-  Future<CheckHasIPModel> checkHasIP() async {
+  Future<CheckHasIPModel?> checkHasIP() async {
     final deviceId = await AppDeviceInfo.deviceId();
     try {
       final response = await dio.get(
@@ -20,7 +20,9 @@ class CheckHasIPRepoImpl implements CheckHasIPRepo {
           'deviceId': deviceId,
         },
       );
-      return response.data;
+      return response.data.isEmpty
+          ? null
+          : CheckHasIPModel.fromJson(response.data['data']);
     } catch (e) {
       throw CatchException.convertException(e).message;
     }

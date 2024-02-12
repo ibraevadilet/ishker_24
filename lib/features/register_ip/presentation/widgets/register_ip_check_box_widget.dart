@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/get_gns_pdf_cubit/get_gns_pdf_cubit.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/app_error_text.dart';
 import 'package:ishker_24/widgets/app_indicator.dart';
-import 'package:open_filex/open_filex.dart';
 
 class RegisterIPCheckBoxWidget extends StatefulWidget {
   const RegisterIPCheckBoxWidget({super.key, required this.onTap});
@@ -49,7 +50,7 @@ class _RegisterIPCheckBoxWidgetState extends State<RegisterIPCheckBoxWidget> {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    OpenFilex.open(path);
+                    AppRouting.pushFunction(PdfViewRoute(path: path));
                   },
                   child: Text(
                     'Заявление (на Согласие/Отзыв) субъекта на сбор и обработку его персональных данных сведений, составляющих налоговую тайну',

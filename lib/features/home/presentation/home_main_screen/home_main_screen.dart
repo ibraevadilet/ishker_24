@@ -5,6 +5,7 @@ import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/de
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_bank_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_ip_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/full_has_widget.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/ip_in_proccess_widget.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/widgets/app_error_text.dart';
 import 'package:ishker_24/widgets/app_indicator.dart';
@@ -22,6 +23,7 @@ class HomeMainScreen extends StatelessWidget {
             child: BlocBuilder<CheckHasIpCubit, CheckHasIpState>(
               builder: (context, state) {
                 return state.when(
+                  ipInProccess: () => const IpInProccessWidget(),
                   loading: () => const AppIndicator(),
                   error: (error) => AppErrorText(error: error),
                   emptyIp: () => const EmptyIpWidget(),

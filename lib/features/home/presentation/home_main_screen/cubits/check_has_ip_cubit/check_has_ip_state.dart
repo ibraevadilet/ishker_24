@@ -7,5 +7,6 @@ class CheckHasIpState with _$CheckHasIpState {
   const factory CheckHasIpState.emptyIp() = _EmptyIp;
   const factory CheckHasIpState.emptyBank() = _EmptyBank;
   const factory CheckHasIpState.declinedIp(String reason) = _DeclinedIP;
+  const factory CheckHasIpState.ipInProccess() = _ipInProcess;
   const factory CheckHasIpState.fullHas() = _FullHas;
 }

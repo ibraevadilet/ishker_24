@@ -5,7 +5,7 @@ class CheckHasIPUseCase {
   CheckHasIPUseCase({required this.repo});
   final CheckHasIPRepo repo;
 
-  Future<CheckHasIPModel> checkIp() async {
+  Future<CheckHasIPModel?> checkIp() async {
     try {
       return await repo.checkHasIP();
     } catch (e) {

@@ -9,6 +9,8 @@ class AppImages {
   AppImages._();
   
   static const String aboutIcon = 'assets/images/about_icon.svg';  
+  static const String accountIconComCurrancy = 'assets/images/account_icon_com_currancy.svg';  
+  static const String accountIconDollarCurrancy = 'assets/images/account_icon_dollar_currancy.svg';  
   static const String arrowForwardIcon = 'assets/images/arrow_forward_icon.svg';  
   static const String bankAcoountIcon = 'assets/images/bank_acoount_icon.svg';  
   static const String bankIcon = 'assets/images/bank_icon.svg';  

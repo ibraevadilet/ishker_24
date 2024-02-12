@@ -20,7 +20,7 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
         account: '1290583310033866',
         tspName: 'example_tsp_name',
         serviceName: 'example_service_name',
-        comments: 'example_comments',
+        comments: '',
         mcc: 'example_mcc',
         currency: 'example_currency',
         amount: amount.toString(),

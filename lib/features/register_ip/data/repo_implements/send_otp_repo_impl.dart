@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/app_helpers/app_device_info.dart';
-import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/features/register_ip/data/models/user_nalog_types_model.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/send_otp_repository.dart';
 import 'package:ishker_24/server/catch_exception.dart';
@@ -36,13 +35,6 @@ class SendOtpRepoImpl implements SendOtpRepo {
       final response = await dio.post(
         'gns/verify-code-and-register',
         queryParameters: {'byPin': pinCode},
-        options: Options(
-          headers: {
-            'authorization': 'Bearer ${pref.getString(
-                  SharedKeys.accessToken,
-                ) ?? ''} ',
-          },
-        ),
         data: registerModel.toJson(),
       );
       if (response.data['status'] == 'ERROR') {

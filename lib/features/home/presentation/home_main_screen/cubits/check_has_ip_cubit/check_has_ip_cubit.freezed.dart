@@ -23,6 +23,7 @@ mixin _$CheckHasIpState {
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
     required TResult Function(String reason) declinedIp,
+    required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) =>
       throw _privateConstructorUsedError;
@@ -33,6 +34,7 @@ mixin _$CheckHasIpState {
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
     TResult? Function(String reason)? declinedIp,
+    TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +45,7 @@ mixin _$CheckHasIpState {
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
     TResult Function(String reason)? declinedIp,
+    TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
   }) =>
@@ -54,6 +57,7 @@ mixin _$CheckHasIpState {
     required TResult Function(_EmptyIp value) emptyIp,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_DeclinedIP value) declinedIp,
+    required TResult Function(_ipInProcess value) ipInProccess,
     required TResult Function(_FullHas value) fullHas,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +68,7 @@ mixin _$CheckHasIpState {
     TResult? Function(_EmptyIp value)? emptyIp,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_DeclinedIP value)? declinedIp,
+    TResult? Function(_ipInProcess value)? ipInProccess,
     TResult? Function(_FullHas value)? fullHas,
   }) =>
       throw _privateConstructorUsedError;
@@ -74,6 +79,7 @@ mixin _$CheckHasIpState {
     TResult Function(_EmptyIp value)? emptyIp,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_DeclinedIP value)? declinedIp,
+    TResult Function(_ipInProcess value)? ipInProccess,
     TResult Function(_FullHas value)? fullHas,
     required TResult orElse(),
   }) =>
@@ -141,6 +147,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
     required TResult Function(String reason) declinedIp,
+    required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
     return loading();
@@ -154,6 +161,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
     TResult? Function(String reason)? declinedIp,
+    TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
     return loading?.call();
@@ -167,6 +175,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
     TResult Function(String reason)? declinedIp,
+    TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
   }) {
@@ -184,6 +193,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_EmptyIp value) emptyIp,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_DeclinedIP value) declinedIp,
+    required TResult Function(_ipInProcess value) ipInProccess,
     required TResult Function(_FullHas value) fullHas,
   }) {
     return loading(this);
@@ -197,6 +207,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_EmptyIp value)? emptyIp,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_DeclinedIP value)? declinedIp,
+    TResult? Function(_ipInProcess value)? ipInProccess,
     TResult? Function(_FullHas value)? fullHas,
   }) {
     return loading?.call(this);
@@ -210,6 +221,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_EmptyIp value)? emptyIp,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_DeclinedIP value)? declinedIp,
+    TResult Function(_ipInProcess value)? ipInProccess,
     TResult Function(_FullHas value)? fullHas,
     required TResult orElse(),
   }) {
@@ -293,6 +305,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
     required TResult Function(String reason) declinedIp,
+    required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
     return error(this.error);
@@ -306,6 +319,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
     TResult? Function(String reason)? declinedIp,
+    TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
     return error?.call(this.error);
@@ -319,6 +333,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
     TResult Function(String reason)? declinedIp,
+    TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
   }) {
@@ -336,6 +351,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_EmptyIp value) emptyIp,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_DeclinedIP value) declinedIp,
+    required TResult Function(_ipInProcess value) ipInProccess,
     required TResult Function(_FullHas value) fullHas,
   }) {
     return error(this);
@@ -349,6 +365,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_EmptyIp value)? emptyIp,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_DeclinedIP value)? declinedIp,
+    TResult? Function(_ipInProcess value)? ipInProccess,
     TResult? Function(_FullHas value)? fullHas,
   }) {
     return error?.call(this);
@@ -362,6 +379,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_EmptyIp value)? emptyIp,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_DeclinedIP value)? declinedIp,
+    TResult Function(_ipInProcess value)? ipInProccess,
     TResult Function(_FullHas value)? fullHas,
     required TResult orElse(),
   }) {
@@ -424,6 +442,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
     required TResult Function(String reason) declinedIp,
+    required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
     return emptyIp();
@@ -437,6 +456,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
     TResult? Function(String reason)? declinedIp,
+    TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
     return emptyIp?.call();
@@ -450,6 +470,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
     TResult Function(String reason)? declinedIp,
+    TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
   }) {
@@ -467,6 +488,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     required TResult Function(_EmptyIp value) emptyIp,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_DeclinedIP value) declinedIp,
+    required TResult Function(_ipInProcess value) ipInProccess,
     required TResult Function(_FullHas value) fullHas,
   }) {
     return emptyIp(this);
@@ -480,6 +502,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     TResult? Function(_EmptyIp value)? emptyIp,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_DeclinedIP value)? declinedIp,
+    TResult? Function(_ipInProcess value)? ipInProccess,
     TResult? Function(_FullHas value)? fullHas,
   }) {
     return emptyIp?.call(this);
@@ -493,6 +516,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     TResult Function(_EmptyIp value)? emptyIp,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_DeclinedIP value)? declinedIp,
+    TResult Function(_ipInProcess value)? ipInProccess,
     TResult Function(_FullHas value)? fullHas,
     required TResult orElse(),
   }) {
@@ -550,6 +574,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
     required TResult Function(String reason) declinedIp,
+    required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
     return emptyBank();
@@ -563,6 +588,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
     TResult? Function(String reason)? declinedIp,
+    TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
     return emptyBank?.call();
@@ -576,6 +602,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
     TResult Function(String reason)? declinedIp,
+    TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
   }) {
@@ -593,6 +620,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     required TResult Function(_EmptyIp value) emptyIp,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_DeclinedIP value) declinedIp,
+    required TResult Function(_ipInProcess value) ipInProccess,
     required TResult Function(_FullHas value) fullHas,
   }) {
     return emptyBank(this);
@@ -606,6 +634,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult? Function(_EmptyIp value)? emptyIp,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_DeclinedIP value)? declinedIp,
+    TResult? Function(_ipInProcess value)? ipInProccess,
     TResult? Function(_FullHas value)? fullHas,
   }) {
     return emptyBank?.call(this);
@@ -619,6 +648,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult Function(_EmptyIp value)? emptyIp,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_DeclinedIP value)? declinedIp,
+    TResult Function(_ipInProcess value)? ipInProccess,
     TResult Function(_FullHas value)? fullHas,
     required TResult orElse(),
   }) {
@@ -702,6 +732,7 @@ class _$DeclinedIPImpl implements _DeclinedIP {
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
     required TResult Function(String reason) declinedIp,
+    required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
     return declinedIp(reason);
@@ -715,6 +746,7 @@ class _$DeclinedIPImpl implements _DeclinedIP {
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
     TResult? Function(String reason)? declinedIp,
+    TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
     return declinedIp?.call(reason);
@@ -728,6 +760,7 @@ class _$DeclinedIPImpl implements _DeclinedIP {
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
     TResult Function(String reason)? declinedIp,
+    TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
   }) {
@@ -745,6 +778,7 @@ class _$DeclinedIPImpl implements _DeclinedIP {
     required TResult Function(_EmptyIp value) emptyIp,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_DeclinedIP value) declinedIp,
+    required TResult Function(_ipInProcess value) ipInProccess,
     required TResult Function(_FullHas value) fullHas,
   }) {
     return declinedIp(this);
@@ -758,6 +792,7 @@ class _$DeclinedIPImpl implements _DeclinedIP {
     TResult? Function(_EmptyIp value)? emptyIp,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_DeclinedIP value)? declinedIp,
+    TResult? Function(_ipInProcess value)? ipInProccess,
     TResult? Function(_FullHas value)? fullHas,
   }) {
     return declinedIp?.call(this);
@@ -771,6 +806,7 @@ class _$DeclinedIPImpl implements _DeclinedIP {
     TResult Function(_EmptyIp value)? emptyIp,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_DeclinedIP value)? declinedIp,
+    TResult Function(_ipInProcess value)? ipInProccess,
     TResult Function(_FullHas value)? fullHas,
     required TResult orElse(),
   }) {
@@ -788,6 +824,138 @@ abstract class _DeclinedIP implements CheckHasIpState {
   @JsonKey(ignore: true)
   _$$DeclinedIPImplCopyWith<_$DeclinedIPImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ipInProcessImplCopyWith<$Res> {
+  factory _$$ipInProcessImplCopyWith(
+          _$ipInProcessImpl value, $Res Function(_$ipInProcessImpl) then) =
+      __$$ipInProcessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ipInProcessImplCopyWithImpl<$Res>
+    extends _$CheckHasIpStateCopyWithImpl<$Res, _$ipInProcessImpl>
+    implements _$$ipInProcessImplCopyWith<$Res> {
+  __$$ipInProcessImplCopyWithImpl(
+      _$ipInProcessImpl _value, $Res Function(_$ipInProcessImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ipInProcessImpl implements _ipInProcess {
+  const _$ipInProcessImpl();
+
+  @override
+  String toString() {
+    return 'CheckHasIpState.ipInProccess()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ipInProcessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function() emptyIp,
+    required TResult Function() emptyBank,
+    required TResult Function(String reason) declinedIp,
+    required TResult Function() ipInProccess,
+    required TResult Function() fullHas,
+  }) {
+    return ipInProccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function()? emptyIp,
+    TResult? Function()? emptyBank,
+    TResult? Function(String reason)? declinedIp,
+    TResult? Function()? ipInProccess,
+    TResult? Function()? fullHas,
+  }) {
+    return ipInProccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function()? emptyIp,
+    TResult Function()? emptyBank,
+    TResult Function(String reason)? declinedIp,
+    TResult Function()? ipInProccess,
+    TResult Function()? fullHas,
+    required TResult orElse(),
+  }) {
+    if (ipInProccess != null) {
+      return ipInProccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_EmptyIp value) emptyIp,
+    required TResult Function(_EmptyBank value) emptyBank,
+    required TResult Function(_DeclinedIP value) declinedIp,
+    required TResult Function(_ipInProcess value) ipInProccess,
+    required TResult Function(_FullHas value) fullHas,
+  }) {
+    return ipInProccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_EmptyIp value)? emptyIp,
+    TResult? Function(_EmptyBank value)? emptyBank,
+    TResult? Function(_DeclinedIP value)? declinedIp,
+    TResult? Function(_ipInProcess value)? ipInProccess,
+    TResult? Function(_FullHas value)? fullHas,
+  }) {
+    return ipInProccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_EmptyIp value)? emptyIp,
+    TResult Function(_EmptyBank value)? emptyBank,
+    TResult Function(_DeclinedIP value)? declinedIp,
+    TResult Function(_ipInProcess value)? ipInProccess,
+    TResult Function(_FullHas value)? fullHas,
+    required TResult orElse(),
+  }) {
+    if (ipInProccess != null) {
+      return ipInProccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ipInProcess implements CheckHasIpState {
+  const factory _ipInProcess() = _$ipInProcessImpl;
 }
 
 /// @nodoc
@@ -833,6 +1001,7 @@ class _$FullHasImpl implements _FullHas {
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
     required TResult Function(String reason) declinedIp,
+    required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
     return fullHas();
@@ -846,6 +1015,7 @@ class _$FullHasImpl implements _FullHas {
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
     TResult? Function(String reason)? declinedIp,
+    TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
     return fullHas?.call();
@@ -859,6 +1029,7 @@ class _$FullHasImpl implements _FullHas {
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
     TResult Function(String reason)? declinedIp,
+    TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
   }) {
@@ -876,6 +1047,7 @@ class _$FullHasImpl implements _FullHas {
     required TResult Function(_EmptyIp value) emptyIp,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_DeclinedIP value) declinedIp,
+    required TResult Function(_ipInProcess value) ipInProccess,
     required TResult Function(_FullHas value) fullHas,
   }) {
     return fullHas(this);
@@ -889,6 +1061,7 @@ class _$FullHasImpl implements _FullHas {
     TResult? Function(_EmptyIp value)? emptyIp,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_DeclinedIP value)? declinedIp,
+    TResult? Function(_ipInProcess value)? ipInProccess,
     TResult? Function(_FullHas value)? fullHas,
   }) {
     return fullHas?.call(this);
@@ -902,6 +1075,7 @@ class _$FullHasImpl implements _FullHas {
     TResult Function(_EmptyIp value)? emptyIp,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_DeclinedIP value)? declinedIp,
+    TResult Function(_ipInProcess value)? ipInProccess,
     TResult Function(_FullHas value)? fullHas,
     required TResult orElse(),
   }) {

@@ -16,7 +16,6 @@ import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/esi_text_filed.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class AuthScreen extends StatelessWidget {
@@ -89,9 +88,13 @@ class AuthScreen extends StatelessWidget {
                                 'Пользовательским соглашением и Политикой конфиденциальности',
                             recognizer: TapGestureRecognizer()
                               ..onTap = () async {
-                                await launchUrl(
-                                  Uri.parse(
-                                      'https://esia.tunduk.kg/docs/iis_conditions_and_policy_ru.pdf'),
+                                const url =
+                                    'https://esia.tunduk.kg/docs/iis_conditions_and_policy_ru.pdf';
+                                AppRouting.pushFunction(
+                                  PdfViewRoute(
+                                    path: url,
+                                    isNetwork: true,
+                                  ),
                                 );
                               },
                             style: AppTextStyles.s12W500(

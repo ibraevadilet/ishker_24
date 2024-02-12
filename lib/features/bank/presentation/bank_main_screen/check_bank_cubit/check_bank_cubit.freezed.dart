@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'enter_pin_code_cubit.dart';
+part of 'check_bank_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,201 +15,75 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$EnterPinCodeState {
+mixin _$CheckBankState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String error) error,
+    required TResult Function() emptyBank,
     required TResult Function() success,
-    required TResult Function() isNotGrnp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String error)? error,
+    TResult? Function()? emptyBank,
     TResult? Function()? success,
-    TResult? Function()? isNotGrnp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String error)? error,
+    TResult Function()? emptyBank,
     TResult Function()? success,
-    TResult Function()? isNotGrnp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_Success value) success,
-    required TResult Function(_isNotGrnp value) isNotGrnp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
+    TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_Success value)? success,
-    TResult? Function(_isNotGrnp value)? isNotGrnp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_Success value)? success,
-    TResult Function(_isNotGrnp value)? isNotGrnp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EnterPinCodeStateCopyWith<$Res> {
-  factory $EnterPinCodeStateCopyWith(
-          EnterPinCodeState value, $Res Function(EnterPinCodeState) then) =
-      _$EnterPinCodeStateCopyWithImpl<$Res, EnterPinCodeState>;
+abstract class $CheckBankStateCopyWith<$Res> {
+  factory $CheckBankStateCopyWith(
+          CheckBankState value, $Res Function(CheckBankState) then) =
+      _$CheckBankStateCopyWithImpl<$Res, CheckBankState>;
 }
 
 /// @nodoc
-class _$EnterPinCodeStateCopyWithImpl<$Res, $Val extends EnterPinCodeState>
-    implements $EnterPinCodeStateCopyWith<$Res> {
-  _$EnterPinCodeStateCopyWithImpl(this._value, this._then);
+class _$CheckBankStateCopyWithImpl<$Res, $Val extends CheckBankState>
+    implements $CheckBankStateCopyWith<$Res> {
+  _$CheckBankStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$EnterPinCodeStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'EnterPinCodeState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function() success,
-    required TResult Function() isNotGrnp,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String error)? error,
-    TResult? Function()? success,
-    TResult? Function()? isNotGrnp,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function()? success,
-    TResult Function()? isNotGrnp,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
-    required TResult Function(_isNotGrnp value) isNotGrnp,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_isNotGrnp value)? isNotGrnp,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
-    TResult Function(_isNotGrnp value)? isNotGrnp,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements EnterPinCodeState {
-  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
@@ -221,7 +95,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$EnterPinCodeStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$CheckBankStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -235,7 +109,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'EnterPinCodeState.loading()';
+    return 'CheckBankState.loading()';
   }
 
   @override
@@ -250,11 +124,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String error) error,
+    required TResult Function() emptyBank,
     required TResult Function() success,
-    required TResult Function() isNotGrnp,
   }) {
     return loading();
   }
@@ -262,11 +135,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String error)? error,
+    TResult? Function()? emptyBank,
     TResult? Function()? success,
-    TResult? Function()? isNotGrnp,
   }) {
     return loading?.call();
   }
@@ -274,11 +146,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String error)? error,
+    TResult Function()? emptyBank,
     TResult Function()? success,
-    TResult Function()? isNotGrnp,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -290,11 +161,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_Success value) success,
-    required TResult Function(_isNotGrnp value) isNotGrnp,
   }) {
     return loading(this);
   }
@@ -302,11 +172,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
+    TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_Success value)? success,
-    TResult? Function(_isNotGrnp value)? isNotGrnp,
   }) {
     return loading?.call(this);
   }
@@ -314,11 +183,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_Success value)? success,
-    TResult Function(_isNotGrnp value)? isNotGrnp,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -328,7 +196,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements EnterPinCodeState {
+abstract class _Loading implements CheckBankState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -343,7 +211,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$EnterPinCodeStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$CheckBankStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -373,7 +241,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'EnterPinCodeState.error(error: $error)';
+    return 'CheckBankState.error(error: $error)';
   }
 
   @override
@@ -396,11 +264,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String error) error,
+    required TResult Function() emptyBank,
     required TResult Function() success,
-    required TResult Function() isNotGrnp,
   }) {
     return error(this.error);
   }
@@ -408,11 +275,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String error)? error,
+    TResult? Function()? emptyBank,
     TResult? Function()? success,
-    TResult? Function()? isNotGrnp,
   }) {
     return error?.call(this.error);
   }
@@ -420,11 +286,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String error)? error,
+    TResult Function()? emptyBank,
     TResult Function()? success,
-    TResult Function()? isNotGrnp,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -436,11 +301,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_Success value) success,
-    required TResult Function(_isNotGrnp value) isNotGrnp,
   }) {
     return error(this);
   }
@@ -448,11 +312,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
+    TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_Success value)? success,
-    TResult? Function(_isNotGrnp value)? isNotGrnp,
   }) {
     return error?.call(this);
   }
@@ -460,11 +323,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_Success value)? success,
-    TResult Function(_isNotGrnp value)? isNotGrnp,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -474,13 +336,127 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements EnterPinCodeState {
+abstract class _Error implements CheckBankState {
   const factory _Error(final String error) = _$ErrorImpl;
 
   String get error;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EmptyBankImplCopyWith<$Res> {
+  factory _$$EmptyBankImplCopyWith(
+          _$EmptyBankImpl value, $Res Function(_$EmptyBankImpl) then) =
+      __$$EmptyBankImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EmptyBankImplCopyWithImpl<$Res>
+    extends _$CheckBankStateCopyWithImpl<$Res, _$EmptyBankImpl>
+    implements _$$EmptyBankImplCopyWith<$Res> {
+  __$$EmptyBankImplCopyWithImpl(
+      _$EmptyBankImpl _value, $Res Function(_$EmptyBankImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EmptyBankImpl implements _EmptyBank {
+  const _$EmptyBankImpl();
+
+  @override
+  String toString() {
+    return 'CheckBankState.emptyBank()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EmptyBankImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function() emptyBank,
+    required TResult Function() success,
+  }) {
+    return emptyBank();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function()? emptyBank,
+    TResult? Function()? success,
+  }) {
+    return emptyBank?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function()? emptyBank,
+    TResult Function()? success,
+    required TResult orElse(),
+  }) {
+    if (emptyBank != null) {
+      return emptyBank();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_EmptyBank value) emptyBank,
+    required TResult Function(_Success value) success,
+  }) {
+    return emptyBank(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_EmptyBank value)? emptyBank,
+    TResult? Function(_Success value)? success,
+  }) {
+    return emptyBank?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_EmptyBank value)? emptyBank,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (emptyBank != null) {
+      return emptyBank(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmptyBank implements CheckBankState {
+  const factory _EmptyBank() = _$EmptyBankImpl;
 }
 
 /// @nodoc
@@ -492,7 +468,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$EnterPinCodeStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$CheckBankStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -506,7 +482,7 @@ class _$SuccessImpl implements _Success {
 
   @override
   String toString() {
-    return 'EnterPinCodeState.success()';
+    return 'CheckBankState.success()';
   }
 
   @override
@@ -521,11 +497,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String error) error,
+    required TResult Function() emptyBank,
     required TResult Function() success,
-    required TResult Function() isNotGrnp,
   }) {
     return success();
   }
@@ -533,11 +508,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String error)? error,
+    TResult? Function()? emptyBank,
     TResult? Function()? success,
-    TResult? Function()? isNotGrnp,
   }) {
     return success?.call();
   }
@@ -545,11 +519,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String error)? error,
+    TResult Function()? emptyBank,
     TResult Function()? success,
-    TResult Function()? isNotGrnp,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -561,11 +534,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_Success value) success,
-    required TResult Function(_isNotGrnp value) isNotGrnp,
   }) {
     return success(this);
   }
@@ -573,11 +545,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
+    TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_Success value)? success,
-    TResult? Function(_isNotGrnp value)? isNotGrnp,
   }) {
     return success?.call(this);
   }
@@ -585,11 +556,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_Success value)? success,
-    TResult Function(_isNotGrnp value)? isNotGrnp,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -599,126 +569,6 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements EnterPinCodeState {
+abstract class _Success implements CheckBankState {
   const factory _Success() = _$SuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$isNotGrnpImplCopyWith<$Res> {
-  factory _$$isNotGrnpImplCopyWith(
-          _$isNotGrnpImpl value, $Res Function(_$isNotGrnpImpl) then) =
-      __$$isNotGrnpImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$isNotGrnpImplCopyWithImpl<$Res>
-    extends _$EnterPinCodeStateCopyWithImpl<$Res, _$isNotGrnpImpl>
-    implements _$$isNotGrnpImplCopyWith<$Res> {
-  __$$isNotGrnpImplCopyWithImpl(
-      _$isNotGrnpImpl _value, $Res Function(_$isNotGrnpImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$isNotGrnpImpl implements _isNotGrnp {
-  const _$isNotGrnpImpl();
-
-  @override
-  String toString() {
-    return 'EnterPinCodeState.isNotGrnp()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$isNotGrnpImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String error) error,
-    required TResult Function() success,
-    required TResult Function() isNotGrnp,
-  }) {
-    return isNotGrnp();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String error)? error,
-    TResult? Function()? success,
-    TResult? Function()? isNotGrnp,
-  }) {
-    return isNotGrnp?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function()? success,
-    TResult Function()? isNotGrnp,
-    required TResult orElse(),
-  }) {
-    if (isNotGrnp != null) {
-      return isNotGrnp();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
-    required TResult Function(_isNotGrnp value) isNotGrnp,
-  }) {
-    return isNotGrnp(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_isNotGrnp value)? isNotGrnp,
-  }) {
-    return isNotGrnp?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
-    TResult Function(_isNotGrnp value)? isNotGrnp,
-    required TResult orElse(),
-  }) {
-    if (isNotGrnp != null) {
-      return isNotGrnp(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _isNotGrnp implements EnterPinCodeState {
-  const factory _isNotGrnp() = _$isNotGrnpImpl;
 }

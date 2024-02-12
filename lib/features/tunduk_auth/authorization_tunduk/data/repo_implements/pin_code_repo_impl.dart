@@ -25,7 +25,8 @@ class PinCodeRepoImpl implements PinCodeRepo {
           'pinCode': pinCode,
         },
       );
-      return getToken(deviceId, pin);
+
+      return await getToken(deviceId, pin);
     } catch (e) {
       if (e is DioException) {
         if (e.response!.data['error'] == 'invalid username or password') {

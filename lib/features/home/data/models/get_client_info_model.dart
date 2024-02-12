@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class ClientInfoModel {
   final String absId;
   final String idDocSeries;
@@ -9,6 +10,7 @@ class ClientInfoModel {
   final String regDocNumber;
   final String regDocPlace;
   final String regDocDate;
+  final List<AccountChetModel> accountsList;
 
   ClientInfoModel({
     required this.absId,
@@ -21,21 +23,24 @@ class ClientInfoModel {
     required this.regDocNumber,
     required this.regDocPlace,
     required this.regDocDate,
+    required this.accountsList,
   });
 
   factory ClientInfoModel.fromJson(Map<String, dynamic> json) =>
       ClientInfoModel(
-        absId: json["absId"],
-        idDocSeries: json["idDocSeries"],
-        idDocNumber: json["idDocNumber"],
-        email: json["email"],
-        mobilePhone: json["mobilePhone"],
-        pin: json["pin"],
-        regDocSeries: json["regDocSeries"],
-        regDocNumber: json["regDocNumber"],
-        regDocPlace: json["regDocPlace"],
-        regDocDate: json["regDocDate"],
-      );
+          absId: json["absId"],
+          idDocSeries: json["idDocSeries"],
+          idDocNumber: json["idDocNumber"],
+          email: json["email"],
+          mobilePhone: json["mobilePhone"],
+          pin: json["pin"],
+          regDocSeries: json["regDocSeries"],
+          regDocNumber: json["regDocNumber"],
+          regDocPlace: json["regDocPlace"],
+          regDocDate: json["regDocDate"],
+          accountsList: json["accounts"]
+              .map<AccountChetModel>((e) => AccountChetModel.fromJson(e))
+              .toList());
 
   Map<String, dynamic> toJson() => {
         "absId": absId,
@@ -49,4 +54,38 @@ class ClientInfoModel {
         "regDocPlace": regDocPlace,
         "regDocDate": regDocDate,
       };
+}
+
+class AccountChetModel {
+  final String accountNumber;
+  final String currency;
+  final num balance;
+  AccountChetModel({
+    required this.accountNumber,
+    required this.currency,
+    required this.balance,
+  });
+
+  @override
+  String toString() =>
+      'AccountChetModel(accountNumber: $accountNumber, currency: $currency, balance: $balance)';
+
+  factory AccountChetModel.fromJson(Map<String, dynamic> map) {
+    return AccountChetModel(
+      accountNumber: map['accountNumber'],
+      currency: currancyToString(map['currency']),
+      balance: map['balance'],
+    );
+  }
+}
+
+String currancyToString(String currancy) {
+  switch (currancy) {
+    case '417':
+      return 'KGZ';
+    case '418':
+      return 'Dollar';
+    default:
+      return 'Неизвестно';
+  }
 }

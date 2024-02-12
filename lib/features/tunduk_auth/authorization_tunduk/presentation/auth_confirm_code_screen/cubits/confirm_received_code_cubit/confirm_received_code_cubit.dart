@@ -26,7 +26,7 @@ class ConfirmReceivedCodeCubit extends Cubit<ConfirmReceivedCodeState> {
         final result =
             await useCase.confirmReceivedCode(smsCodeController.text);
         if (result.signInResult == 'Succeeded') {
-          AppRouting.pushFunction(const PinCodeEnterRoute());
+          AppRouting.pushFunction(PinCodeEnterRoute());
         } else {
           AppRouting.pushFunction(PinCodeCreateRoute());
         }

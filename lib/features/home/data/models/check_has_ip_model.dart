@@ -1,32 +1,24 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 class CheckHasIPModel {
-  final String id;
-  final String tin;
-  final int status;
-  final DateTime created;
   final String gnsStatus;
-  String? declinedReason;
-  final String passportNumber;
-  String? qrUrl;
+  final String declinedReason;
+  final String? tin;
+  final String? image;
 
   CheckHasIPModel({
-    required this.id,
-    required this.tin,
-    required this.status,
-    required this.created,
     required this.gnsStatus,
     required this.declinedReason,
-    required this.passportNumber,
-    required this.qrUrl,
+    this.tin,
+    this.image,
   });
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "tin": tin,
-        "status": status,
-        "created": created,
-        "gnsStatus": gnsStatus,
-        "declinedReason": declinedReason,
-        "passportNumber": passportNumber,
-        "qrUrl": qrUrl,
-      };
+  factory CheckHasIPModel.fromJson(Map<String, dynamic> map) {
+    return CheckHasIPModel(
+      gnsStatus: map['gnsStatus'],
+      declinedReason: map['declinedReason'] ?? '',
+      tin: map['tin'] ?? '',
+      image: map['qrUrl'],
+    );
+  }
 }
