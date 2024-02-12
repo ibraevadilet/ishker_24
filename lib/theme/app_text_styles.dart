@@ -11,6 +11,11 @@ abstract class AppTextStyles {
         fontSize: 10,
         fontWeight: FontWeight.bold,
       );
+  static TextStyle s10W600({Color? color}) => TextStyle(
+        color: color ?? Colors.black,
+        fontSize: 10,
+        fontWeight: FontWeight.w600,
+      );
   static TextStyle s12W400({Color? color}) => TextStyle(
         color: color ?? Colors.black,
         fontSize: 12,

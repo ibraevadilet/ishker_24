@@ -13,6 +13,7 @@ class AppImages {
   static const String bankAcoountIcon = 'assets/images/bank_acoount_icon.svg';  
   static const String bankIcon = 'assets/images/bank_icon.svg';  
   static const String bankImage = 'assets/images/bank_image.svg';  
+  static const String callIcon = 'assets/images/call_icon.svg';  
   static const String cardIcon = 'assets/images/card_icon.svg';  
   static const String cesImage = 'assets/images/ces_image.png';  
   static const String copyIconSvg = 'assets/images/copy_icon_svg.svg';  
@@ -54,6 +55,7 @@ class AppImages {
   static const String phoneIconSvg = 'assets/images/phone_icon_svg.svg';  
   static const String qrCenterIcon = 'assets/images/qr_center_icon.png';  
   static const String qrIcon = 'assets/images/qr_icon.svg';  
+  static const String questionIcon = 'assets/images/question_icon.svg';  
   static const String recoveryEmailIconSvg = 'assets/images/recovery_email_icon_svg.svg';  
   static const String recoverySmsIconSvg = 'assets/images/recovery_sms_icon_svg.svg';  
   static const String replenishIcon = 'assets/images/replenish_icon.svg';  
@@ -67,7 +69,9 @@ class AppImages {
   static const String shareIcon = 'assets/images/share_icon.svg';  
   static const String signatureImage = 'assets/images/signature_image.svg';  
   static const String successCreatedAccountIcon = 'assets/images/success_created_account_icon.svg';  
+  static const String telegramIcon = 'assets/images/telegram_icon.svg';  
   static const String transferIcon = 'assets/images/transfer_icon.svg';  
   static const String unselectedCardIcon = 'assets/images/unselected_card_icon.svg';  
   static const String visaLogo = 'assets/images/visa_logo.svg';  
+  static const String whatsappIcon = 'assets/images/whatsapp_icon.svg';  
 }

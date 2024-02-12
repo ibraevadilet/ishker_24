@@ -135,6 +135,7 @@ class GrnpCheckScreen extends StatelessWidget {
                           style: AppTextStyles.s16W700(color: Colors.white),
                         ),
                       ),
+                      const SizedBox(height: 24),
                     ],
                   ),
                 ),
