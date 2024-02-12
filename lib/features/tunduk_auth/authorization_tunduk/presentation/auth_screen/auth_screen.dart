@@ -80,7 +80,7 @@ class AuthScreen extends StatelessWidget {
                       TextSpan(
                         text:
                             'Нажав на кнопку «Далее», вы соглашаетесь, что прочитали и согласны с ',
-                        style: AppTextStyles.s12W500(
+                        style: AppTextStyles.s10W600(
                             color: AppColors.color727D8DGrey),
                         children: [
                           TextSpan(
@@ -97,7 +97,7 @@ class AuthScreen extends StatelessWidget {
                                   ),
                                 );
                               },
-                            style: AppTextStyles.s12W500(
+                            style: AppTextStyles.s10W600(
                                 color: AppColors.esiMainBlueColor),
                           )
                         ],
