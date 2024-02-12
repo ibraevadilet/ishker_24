@@ -16,6 +16,7 @@ import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/esi_text_filed.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class AuthScreen extends StatelessWidget {
@@ -76,16 +77,6 @@ class AuthScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 32),
-                    CustomButton(
-                      borderColor: AppColors.esiMainBlueColor,
-                      color: Colors.white,
-                      textColor: AppColors.esiMainBlueColor,
-                      onPress: () {
-                        AppRouting.pushFunction(const OEPRegisterRoute());
-                      },
-                      text: 'Получить ОЭП',
-                    ),
-                    const SizedBox(height: 32),
                     Text.rich(
                       TextSpan(
                         text:
@@ -96,7 +87,13 @@ class AuthScreen extends StatelessWidget {
                           TextSpan(
                             text:
                                 'Пользовательским соглашением и Политикой конфиденциальности',
-                            recognizer: TapGestureRecognizer()..onTap = () {},
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async {
+                                await launchUrl(
+                                  Uri.parse(
+                                      'https://esia.tunduk.kg/docs/iis_conditions_and_policy_ru.pdf'),
+                                );
+                              },
                             style: AppTextStyles.s12W500(
                                 color: AppColors.esiMainBlueColor),
                           )
@@ -117,7 +114,16 @@ class AuthScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 24),
+                    CustomButton(
+                      borderColor: AppColors.esiMainBlueColor,
+                      color: Colors.white,
+                      textColor: AppColors.esiMainBlueColor,
+                      onPress: () {
+                        AppRouting.pushFunction(const OEPRegisterRoute());
+                      },
+                      text: 'Получить ОЭП',
+                    ),
                   ],
                 ),
               ),
