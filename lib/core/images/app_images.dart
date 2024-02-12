@@ -70,6 +70,7 @@ class AppImages {
   static const String shareButtonIcon = 'assets/images/share_button_icon.svg';  
   static const String shareIcon = 'assets/images/share_icon.svg';  
   static const String signatureImage = 'assets/images/signature_image.svg';  
+  static const String starSelectedIcon = 'assets/images/star_selected_icon.svg';  
   static const String successCreatedAccountIcon = 'assets/images/success_created_account_icon.svg';  
   static const String telegramIcon = 'assets/images/telegram_icon.svg';  
   static const String transferIcon = 'assets/images/transfer_icon.svg';  

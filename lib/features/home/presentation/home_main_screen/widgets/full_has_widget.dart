@@ -73,7 +73,7 @@ class FullHasWidget extends StatelessWidget {
                           itemBuilder: (context, index) => ListTile(
                             contentPadding: EdgeInsets.zero,
                             leading: SvgPicture.asset(
-                              CuccencyFormatter.cuccancyIcon(
+                              AppCurrencyFormatter.cuccancyIcon(
                                   model.accountsList[index].currency),
                             ),
                             title: Row(
@@ -97,10 +97,10 @@ class FullHasWidget extends StatelessWidget {
                                                 '${model.accountsList[index].balance} ',
                                           ),
                                           TextSpan(
-                                            text:
-                                                CuccencyFormatter.cuccancyType(
-                                                    model.accountsList[index]
-                                                        .currency),
+                                            text: AppCurrencyFormatter
+                                                .cuccancyType(model
+                                                    .accountsList[index]
+                                                    .currency),
                                             style: AppTextStyles.s16W500()
                                                 .copyWith(
                                               decoration: model

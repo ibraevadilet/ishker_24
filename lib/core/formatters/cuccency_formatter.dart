@@ -1,6 +1,6 @@
 import 'package:ishker_24/core/images/app_images.dart';
 
-class CuccencyFormatter {
+class AppCurrencyFormatter {
   static String cuccancyIcon(String currancy) {
     switch (currancy) {
       case 'KGZ':

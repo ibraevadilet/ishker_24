@@ -20,21 +20,23 @@ mixin _$GenerateQrState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String error) error,
-    required TResult Function(String link) success,
+    required TResult Function(String link, List<AccountChetModel> accountsList)
+        success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String error)? error,
-    TResult? Function(String link)? success,
+    TResult? Function(String link, List<AccountChetModel> accountsList)?
+        success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String error)? error,
-    TResult Function(String link)? success,
+    TResult Function(String link, List<AccountChetModel> accountsList)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +122,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String error) error,
-    required TResult Function(String link) success,
+    required TResult Function(String link, List<AccountChetModel> accountsList)
+        success,
   }) {
     return loading();
   }
@@ -130,7 +133,8 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String error)? error,
-    TResult? Function(String link)? success,
+    TResult? Function(String link, List<AccountChetModel> accountsList)?
+        success,
   }) {
     return loading?.call();
   }
@@ -140,7 +144,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String error)? error,
-    TResult Function(String link)? success,
+    TResult Function(String link, List<AccountChetModel> accountsList)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -254,7 +258,8 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String error) error,
-    required TResult Function(String link) success,
+    required TResult Function(String link, List<AccountChetModel> accountsList)
+        success,
   }) {
     return error(this.error);
   }
@@ -264,7 +269,8 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String error)? error,
-    TResult? Function(String link)? success,
+    TResult? Function(String link, List<AccountChetModel> accountsList)?
+        success,
   }) {
     return error?.call(this.error);
   }
@@ -274,7 +280,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String error)? error,
-    TResult Function(String link)? success,
+    TResult Function(String link, List<AccountChetModel> accountsList)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -333,7 +339,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String link});
+  $Res call({String link, List<AccountChetModel> accountsList});
 }
 
 /// @nodoc
@@ -348,12 +354,17 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? link = null,
+    Object? accountsList = null,
   }) {
     return _then(_$SuccessImpl(
       null == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String,
+      null == accountsList
+          ? _value._accountsList
+          : accountsList // ignore: cast_nullable_to_non_nullable
+              as List<AccountChetModel>,
     ));
   }
 }
@@ -361,14 +372,22 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.link);
+  const _$SuccessImpl(this.link, final List<AccountChetModel> accountsList)
+      : _accountsList = accountsList;
 
   @override
   final String link;
+  final List<AccountChetModel> _accountsList;
+  @override
+  List<AccountChetModel> get accountsList {
+    if (_accountsList is EqualUnmodifiableListView) return _accountsList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_accountsList);
+  }
 
   @override
   String toString() {
-    return 'GenerateQrState.success(link: $link)';
+    return 'GenerateQrState.success(link: $link, accountsList: $accountsList)';
   }
 
   @override
@@ -376,11 +395,14 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.link, link) || other.link == link));
+            (identical(other.link, link) || other.link == link) &&
+            const DeepCollectionEquality()
+                .equals(other._accountsList, _accountsList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, link);
+  int get hashCode => Object.hash(
+      runtimeType, link, const DeepCollectionEquality().hash(_accountsList));
 
   @JsonKey(ignore: true)
   @override
@@ -393,9 +415,10 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String error) error,
-    required TResult Function(String link) success,
+    required TResult Function(String link, List<AccountChetModel> accountsList)
+        success,
   }) {
-    return success(link);
+    return success(link, accountsList);
   }
 
   @override
@@ -403,9 +426,10 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String error)? error,
-    TResult? Function(String link)? success,
+    TResult? Function(String link, List<AccountChetModel> accountsList)?
+        success,
   }) {
-    return success?.call(link);
+    return success?.call(link, accountsList);
   }
 
   @override
@@ -413,11 +437,11 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String error)? error,
-    TResult Function(String link)? success,
+    TResult Function(String link, List<AccountChetModel> accountsList)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(link);
+      return success(link, accountsList);
     }
     return orElse();
   }
@@ -458,9 +482,12 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements GenerateQrState {
-  const factory _Success(final String link) = _$SuccessImpl;
+  const factory _Success(
+          final String link, final List<AccountChetModel> accountsList) =
+      _$SuccessImpl;
 
   String get link;
+  List<AccountChetModel> get accountsList;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;

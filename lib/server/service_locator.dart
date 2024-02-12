@@ -273,7 +273,8 @@ Future<void> initServiceLocator() async {
       () => CreateAccountCubit(useCase: sl()));
   sl.registerFactory<RegitserClientCubit>(
       () => RegitserClientCubit(useCase: sl(), accountUseCase: sl()));
-  sl.registerFactory<GenerateQrCubit>(() => GenerateQrCubit(useCase: sl()));
+  sl.registerFactory<GenerateQrCubit>(
+      () => GenerateQrCubit(useCase: sl(), accountsCase: sl()));
   sl.registerFactory<GetClientPassportCubit>(
       () => GetClientPassportCubit(useCase: sl()));
   sl.registerFactory<GetMyIpCubit>(() => GetMyIpCubit(useCase: sl()));

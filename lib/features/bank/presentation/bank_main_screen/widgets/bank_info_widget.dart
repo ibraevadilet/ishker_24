@@ -57,7 +57,7 @@ class BankInfoWidget extends StatelessWidget {
                     itemBuilder: (context, index) => ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: SvgPicture.asset(
-                        CuccencyFormatter.cuccancyIcon(
+                        AppCurrencyFormatter.cuccancyIcon(
                             model.accountsList[index].currency),
                       ),
                       title: Row(
@@ -81,7 +81,7 @@ class BankInfoWidget extends StatelessWidget {
                                           '${model.accountsList[index].balance} ',
                                     ),
                                     TextSpan(
-                                      text: CuccencyFormatter.cuccancyType(
+                                      text: AppCurrencyFormatter.cuccancyType(
                                           model.accountsList[index].currency),
                                       style: AppTextStyles.s16W500().copyWith(
                                         decoration: model.accountsList[index]

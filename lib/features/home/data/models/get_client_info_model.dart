@@ -77,6 +77,19 @@ class AccountChetModel {
       balance: map['balance'],
     );
   }
+
+  @override
+  bool operator ==(covariant AccountChetModel other) {
+    if (identical(this, other)) return true;
+
+    return other.accountNumber == accountNumber &&
+        other.currency == currency &&
+        other.balance == balance;
+  }
+
+  @override
+  int get hashCode =>
+      accountNumber.hashCode ^ currency.hashCode ^ balance.hashCode;
 }
 
 String currancyToString(String currancy) {
