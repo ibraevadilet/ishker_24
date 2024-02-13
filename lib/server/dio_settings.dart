@@ -51,9 +51,10 @@ class DioSettings {
             print('STATUSSSS 401');
             await _newAccessToken();
             dio.fetch(e.requestOptions);
-          } else {
-            return handler.next(e);
           }
+          // else {
+          return handler.next(e);
+          // }
         },
       ),
     );

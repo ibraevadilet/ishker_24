@@ -1,8 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/bank/data/models/register_client_post_model.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/create_account_usecase.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/register_client_usecase.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 
 part 'regitser_client_cubit.freezed.dart';
 part 'regitser_client_state.dart';
@@ -38,10 +40,10 @@ class RegitserClientCubit extends Cubit<RegitserClientState> {
         comment: useCase.commentController.text,
       );
       print(postModel);
-      // final result = await useCase.registerClient(postModel);
-      // await accountUseCase.createAccount(result);
-      // emit(const RegitserClientState.success());
-      // AppRouting.pushAndPopUntilFunction(const CreateAccountFinishRoute());
+      final result = await useCase.registerClient(postModel);
+      await accountUseCase.createAccount(result);
+      emit(const RegitserClientState.success());
+      AppRouting.pushAndPopUntilFunction(const CreateAccountFinishRoute());
     } catch (e) {
       emit(RegitserClientState.error(e.toString()));
     }
