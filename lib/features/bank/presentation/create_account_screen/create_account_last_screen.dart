@@ -172,7 +172,8 @@ class _CreateAccountLastScreenState extends State<CreateAccountLastScreen> {
                     );
                   },
                 ),
-              )
+              ),
+              const SizedBox(height: 24),
             ],
           ),
         ),
