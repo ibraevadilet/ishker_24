@@ -23,13 +23,13 @@ class EnterPinCodeCubit extends Cubit<EnterPinCodeState> {
     emit(const EnterPinCodeState.loading());
     try {
       await useCase.enterPinCode(pinCode);
-      // final isHaveGrnp = await grnpUseCase.checkGrnp();
-      // print('grnpppp -- $isHaveGrnp');
-      // if (isHaveGrnp) {
-      emit(const EnterPinCodeState.success());
-      // } else {
-      //   emit(const EnterPinCodeState.isNotGrnp());
-      // }
+      final isHaveGrnp = await grnpUseCase.checkGrnp();
+      print('grnpppp -- $isHaveGrnp');
+      if (isHaveGrnp) {
+        emit(const EnterPinCodeState.success());
+      } else {
+        emit(const EnterPinCodeState.isNotGrnp());
+      }
     } catch (e) {
       AppSnackBar.showSnackBar(
         e.toString() == 'user is blocked'

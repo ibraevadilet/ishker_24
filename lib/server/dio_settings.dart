@@ -48,10 +48,12 @@ class DioSettings {
         },
         onError: (DioException e, handler) async {
           if (e.response?.statusCode == 401) {
+            print('STATUSSSS 401');
             await _newAccessToken();
             dio.fetch(e.requestOptions);
+          } else {
+            return handler.next(e);
           }
-          return handler.next(e);
         },
       ),
     );
@@ -67,6 +69,7 @@ class DioSettings {
   }
 
   Future<void> _newAccessToken() async {
+    print('GET NEW TOKENNNN');
     final refreshToken = prefs.getString(SharedKeys.refreshToken);
     try {
       final result = await dioForNewTokens.post(
@@ -76,6 +79,7 @@ class DioSettings {
           'refreshToken': refreshToken,
         },
       );
+      print(' NEW ${result.data['accessToken']}');
       prefs.setString(SharedKeys.accessToken, result.data['accessToken']);
     } catch (e) {
       if (e is DioException) {
