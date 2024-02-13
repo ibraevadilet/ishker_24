@@ -30,17 +30,17 @@ class BankMainScreen extends StatelessWidget {
           title: 'Мой банк',
           centerTitle: false,
         ),
-        body: BlocBuilder<CheckBankCubit, CheckBankState>(
-          builder: (context, state) {
-            return state.when(
-              emptyIp: () => const EmptyIpWidget(),
-              ipInProccess: () => const IpInProccessWidget(),
-              declinedIp: (reason) => DeclinedIPWidget(reason: reason),
-              loading: () => const AppIndicator(),
-              error: (error) => AppErrorText(error: error),
-              emptyBank: () => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 22),
-                child: Column(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 22),
+          child: BlocBuilder<CheckBankCubit, CheckBankState>(
+            builder: (context, state) {
+              return state.when(
+                emptyIp: () => const EmptyIpWidget(),
+                ipInProccess: () => const IpInProccessWidget(),
+                declinedIp: (reason) => DeclinedIPWidget(reason: reason),
+                loading: () => const AppIndicator(),
+                error: (error) => AppErrorText(error: error),
+                emptyBank: () => Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Spacer(),
@@ -60,10 +60,10 @@ class BankMainScreen extends StatelessWidget {
                     const Spacer(),
                   ],
                 ),
-              ),
-              success: () => const BankInfoWidget(),
-            );
-          },
+                success: () => const BankInfoWidget(),
+              );
+            },
+          ),
         ),
       ),
     );
