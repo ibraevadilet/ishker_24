@@ -16,16 +16,28 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
     required this.useCase,
     required this.accountsCase,
   }) : super(const GenerateQrState.loading()) {
-    generateQr(0);
+    generateQr();
   }
 
   final GenerateQrUseCase useCase;
   final GetClientInfoUseCase accountsCase;
 
-  Future<void> generateQr(int amount) async {
+  int amount = 0;
+  String savedAccount =
+      sl<SharedPreferences>().getString(SharedKeys.savedAccount) ?? '';
+
+  Future<void> generateQr({
+    int? amountFrom,
+    String? accountFrom,
+  }) async {
     final accounts = await accountsCase.getClientInfo();
-    final savedAccount =
-        sl<SharedPreferences>().getString(SharedKeys.savedAccount) ?? '';
+
+    if (amountFrom != null) {
+      amount = amountFrom;
+    }
+    if (accountFrom != null) {
+      savedAccount = accountFrom;
+    }
     try {
       final postModel = GenerateQrPostModel(
         account: savedAccount.isEmpty

@@ -86,7 +86,7 @@ class PinCodeRepoImpl implements PinCodeRepo {
         'security/auth/tokens',
         queryParameters: {
           'pin': pin,
-          'deviceId': deviceId,
+          'device_id': deviceId,
         },
         options: AppDioHeader.dioHeader(),
       );

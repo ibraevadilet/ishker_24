@@ -13,23 +13,23 @@ class CheckHasIpCubit extends Cubit<CheckHasIpState> {
     emit(const CheckHasIpState.loading());
     await Future.delayed(const Duration(microseconds: 300));
     try {
-      // final ipResult = await useCase.checkIp();
-      // if (ipResult == null) {
-      //   emit(const CheckHasIpState.emptyIp());
-      // } else {
-      //   if (ipResult.gnsStatus == 'REFUSED') {
-      //     emit(CheckHasIpState.declinedIp(ipResult.declinedReason));
-      //   }
-      //   if (ipResult.gnsStatus == 'IN_PROCESS') {
-      //     emit(const CheckHasIpState.ipInProccess());
-      //   } else {
-      final bankResult = await useCase.checkHasBank();
-      if (bankResult) {
-        emit(const CheckHasIpState.fullHas());
+      final ipResult = await useCase.checkIp();
+      if (ipResult == null) {
+        emit(const CheckHasIpState.emptyIp());
       } else {
-        emit(const CheckHasIpState.emptyBank());
-        //   }
-        // }
+        if (ipResult.gnsStatus == 'REFUSED') {
+          emit(CheckHasIpState.declinedIp(ipResult.declinedReason));
+        }
+        if (ipResult.gnsStatus == 'IN_PROCESS') {
+          emit(const CheckHasIpState.ipInProccess());
+        } else {
+          final bankResult = await useCase.checkHasBank();
+          if (bankResult) {
+            emit(const CheckHasIpState.fullHas());
+          } else {
+            emit(const CheckHasIpState.emptyBank());
+          }
+        }
       }
     } catch (e) {
       emit(CheckHasIpState.error(e.toString()));

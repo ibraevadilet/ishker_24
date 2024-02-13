@@ -66,7 +66,7 @@ class BankInfoWidget extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Счет ...//${model.accountsList[index].accountNumber.substring(model.accountsList[index].accountNumber.length - 3, model.accountsList[index].accountNumber.length)}',
+                                'Счет ...${model.accountsList[index].accountNumber.substring(model.accountsList[index].accountNumber.length - 3, model.accountsList[index].accountNumber.length)}',
                                 style: AppTextStyles.s12W400(
                                   color: AppColors.color6B7583Grey,
                                 ),
