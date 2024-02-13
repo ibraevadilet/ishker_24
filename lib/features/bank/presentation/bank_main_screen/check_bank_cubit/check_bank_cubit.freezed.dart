@@ -22,6 +22,9 @@ mixin _$CheckBankState {
     required TResult Function(String error) error,
     required TResult Function() emptyBank,
     required TResult Function() success,
+    required TResult Function() emptyIp,
+    required TResult Function(String message) declinedIp,
+    required TResult Function() ipInProccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +33,9 @@ mixin _$CheckBankState {
     TResult? Function(String error)? error,
     TResult? Function()? emptyBank,
     TResult? Function()? success,
+    TResult? Function()? emptyIp,
+    TResult? Function(String message)? declinedIp,
+    TResult? Function()? ipInProccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +44,9 @@ mixin _$CheckBankState {
     TResult Function(String error)? error,
     TResult Function()? emptyBank,
     TResult Function()? success,
+    TResult Function()? emptyIp,
+    TResult Function(String message)? declinedIp,
+    TResult Function()? ipInProccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +56,9 @@ mixin _$CheckBankState {
     required TResult Function(_Error value) error,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_Success value) success,
+    required TResult Function(_EmptyIp value) emptyIp,
+    required TResult Function(_DeclinedIp value) declinedIp,
+    required TResult Function(_IpInProccess value) ipInProccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +67,9 @@ mixin _$CheckBankState {
     TResult? Function(_Error value)? error,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyIp value)? emptyIp,
+    TResult? Function(_DeclinedIp value)? declinedIp,
+    TResult? Function(_IpInProccess value)? ipInProccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +78,9 @@ mixin _$CheckBankState {
     TResult Function(_Error value)? error,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_Success value)? success,
+    TResult Function(_EmptyIp value)? emptyIp,
+    TResult Function(_DeclinedIp value)? declinedIp,
+    TResult Function(_IpInProccess value)? ipInProccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +146,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(String error) error,
     required TResult Function() emptyBank,
     required TResult Function() success,
+    required TResult Function() emptyIp,
+    required TResult Function(String message) declinedIp,
+    required TResult Function() ipInProccess,
   }) {
     return loading();
   }
@@ -139,6 +160,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(String error)? error,
     TResult? Function()? emptyBank,
     TResult? Function()? success,
+    TResult? Function()? emptyIp,
+    TResult? Function(String message)? declinedIp,
+    TResult? Function()? ipInProccess,
   }) {
     return loading?.call();
   }
@@ -150,6 +174,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function(String error)? error,
     TResult Function()? emptyBank,
     TResult Function()? success,
+    TResult Function()? emptyIp,
+    TResult Function(String message)? declinedIp,
+    TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -165,6 +192,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Error value) error,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_Success value) success,
+    required TResult Function(_EmptyIp value) emptyIp,
+    required TResult Function(_DeclinedIp value) declinedIp,
+    required TResult Function(_IpInProccess value) ipInProccess,
   }) {
     return loading(this);
   }
@@ -176,6 +206,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Error value)? error,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyIp value)? emptyIp,
+    TResult? Function(_DeclinedIp value)? declinedIp,
+    TResult? Function(_IpInProccess value)? ipInProccess,
   }) {
     return loading?.call(this);
   }
@@ -187,6 +220,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Error value)? error,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_Success value)? success,
+    TResult Function(_EmptyIp value)? emptyIp,
+    TResult Function(_DeclinedIp value)? declinedIp,
+    TResult Function(_IpInProccess value)? ipInProccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -268,6 +304,9 @@ class _$ErrorImpl implements _Error {
     required TResult Function(String error) error,
     required TResult Function() emptyBank,
     required TResult Function() success,
+    required TResult Function() emptyIp,
+    required TResult Function(String message) declinedIp,
+    required TResult Function() ipInProccess,
   }) {
     return error(this.error);
   }
@@ -279,6 +318,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function(String error)? error,
     TResult? Function()? emptyBank,
     TResult? Function()? success,
+    TResult? Function()? emptyIp,
+    TResult? Function(String message)? declinedIp,
+    TResult? Function()? ipInProccess,
   }) {
     return error?.call(this.error);
   }
@@ -290,6 +332,9 @@ class _$ErrorImpl implements _Error {
     TResult Function(String error)? error,
     TResult Function()? emptyBank,
     TResult Function()? success,
+    TResult Function()? emptyIp,
+    TResult Function(String message)? declinedIp,
+    TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -305,6 +350,9 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Error value) error,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_Success value) success,
+    required TResult Function(_EmptyIp value) emptyIp,
+    required TResult Function(_DeclinedIp value) declinedIp,
+    required TResult Function(_IpInProccess value) ipInProccess,
   }) {
     return error(this);
   }
@@ -316,6 +364,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Error value)? error,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyIp value)? emptyIp,
+    TResult? Function(_DeclinedIp value)? declinedIp,
+    TResult? Function(_IpInProccess value)? ipInProccess,
   }) {
     return error?.call(this);
   }
@@ -327,6 +378,9 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Error value)? error,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_Success value)? success,
+    TResult Function(_EmptyIp value)? emptyIp,
+    TResult Function(_DeclinedIp value)? declinedIp,
+    TResult Function(_IpInProccess value)? ipInProccess,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -387,6 +441,9 @@ class _$EmptyBankImpl implements _EmptyBank {
     required TResult Function(String error) error,
     required TResult Function() emptyBank,
     required TResult Function() success,
+    required TResult Function() emptyIp,
+    required TResult Function(String message) declinedIp,
+    required TResult Function() ipInProccess,
   }) {
     return emptyBank();
   }
@@ -398,6 +455,9 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult? Function(String error)? error,
     TResult? Function()? emptyBank,
     TResult? Function()? success,
+    TResult? Function()? emptyIp,
+    TResult? Function(String message)? declinedIp,
+    TResult? Function()? ipInProccess,
   }) {
     return emptyBank?.call();
   }
@@ -409,6 +469,9 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult Function(String error)? error,
     TResult Function()? emptyBank,
     TResult Function()? success,
+    TResult Function()? emptyIp,
+    TResult Function(String message)? declinedIp,
+    TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {
     if (emptyBank != null) {
@@ -424,6 +487,9 @@ class _$EmptyBankImpl implements _EmptyBank {
     required TResult Function(_Error value) error,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_Success value) success,
+    required TResult Function(_EmptyIp value) emptyIp,
+    required TResult Function(_DeclinedIp value) declinedIp,
+    required TResult Function(_IpInProccess value) ipInProccess,
   }) {
     return emptyBank(this);
   }
@@ -435,6 +501,9 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult? Function(_Error value)? error,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyIp value)? emptyIp,
+    TResult? Function(_DeclinedIp value)? declinedIp,
+    TResult? Function(_IpInProccess value)? ipInProccess,
   }) {
     return emptyBank?.call(this);
   }
@@ -446,6 +515,9 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult Function(_Error value)? error,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_Success value)? success,
+    TResult Function(_EmptyIp value)? emptyIp,
+    TResult Function(_DeclinedIp value)? declinedIp,
+    TResult Function(_IpInProccess value)? ipInProccess,
     required TResult orElse(),
   }) {
     if (emptyBank != null) {
@@ -501,6 +573,9 @@ class _$SuccessImpl implements _Success {
     required TResult Function(String error) error,
     required TResult Function() emptyBank,
     required TResult Function() success,
+    required TResult Function() emptyIp,
+    required TResult Function(String message) declinedIp,
+    required TResult Function() ipInProccess,
   }) {
     return success();
   }
@@ -512,6 +587,9 @@ class _$SuccessImpl implements _Success {
     TResult? Function(String error)? error,
     TResult? Function()? emptyBank,
     TResult? Function()? success,
+    TResult? Function()? emptyIp,
+    TResult? Function(String message)? declinedIp,
+    TResult? Function()? ipInProccess,
   }) {
     return success?.call();
   }
@@ -523,6 +601,9 @@ class _$SuccessImpl implements _Success {
     TResult Function(String error)? error,
     TResult Function()? emptyBank,
     TResult Function()? success,
+    TResult Function()? emptyIp,
+    TResult Function(String message)? declinedIp,
+    TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -538,6 +619,9 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Error value) error,
     required TResult Function(_EmptyBank value) emptyBank,
     required TResult Function(_Success value) success,
+    required TResult Function(_EmptyIp value) emptyIp,
+    required TResult Function(_DeclinedIp value) declinedIp,
+    required TResult Function(_IpInProccess value) ipInProccess,
   }) {
     return success(this);
   }
@@ -549,6 +633,9 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Error value)? error,
     TResult? Function(_EmptyBank value)? emptyBank,
     TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyIp value)? emptyIp,
+    TResult? Function(_DeclinedIp value)? declinedIp,
+    TResult? Function(_IpInProccess value)? ipInProccess,
   }) {
     return success?.call(this);
   }
@@ -560,6 +647,9 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Error value)? error,
     TResult Function(_EmptyBank value)? emptyBank,
     TResult Function(_Success value)? success,
+    TResult Function(_EmptyIp value)? emptyIp,
+    TResult Function(_DeclinedIp value)? declinedIp,
+    TResult Function(_IpInProccess value)? ipInProccess,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -571,4 +661,431 @@ class _$SuccessImpl implements _Success {
 
 abstract class _Success implements CheckBankState {
   const factory _Success() = _$SuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$EmptyIpImplCopyWith<$Res> {
+  factory _$$EmptyIpImplCopyWith(
+          _$EmptyIpImpl value, $Res Function(_$EmptyIpImpl) then) =
+      __$$EmptyIpImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EmptyIpImplCopyWithImpl<$Res>
+    extends _$CheckBankStateCopyWithImpl<$Res, _$EmptyIpImpl>
+    implements _$$EmptyIpImplCopyWith<$Res> {
+  __$$EmptyIpImplCopyWithImpl(
+      _$EmptyIpImpl _value, $Res Function(_$EmptyIpImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EmptyIpImpl implements _EmptyIp {
+  const _$EmptyIpImpl();
+
+  @override
+  String toString() {
+    return 'CheckBankState.emptyIp()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EmptyIpImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function() emptyBank,
+    required TResult Function() success,
+    required TResult Function() emptyIp,
+    required TResult Function(String message) declinedIp,
+    required TResult Function() ipInProccess,
+  }) {
+    return emptyIp();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function()? emptyBank,
+    TResult? Function()? success,
+    TResult? Function()? emptyIp,
+    TResult? Function(String message)? declinedIp,
+    TResult? Function()? ipInProccess,
+  }) {
+    return emptyIp?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function()? emptyBank,
+    TResult Function()? success,
+    TResult Function()? emptyIp,
+    TResult Function(String message)? declinedIp,
+    TResult Function()? ipInProccess,
+    required TResult orElse(),
+  }) {
+    if (emptyIp != null) {
+      return emptyIp();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_EmptyBank value) emptyBank,
+    required TResult Function(_Success value) success,
+    required TResult Function(_EmptyIp value) emptyIp,
+    required TResult Function(_DeclinedIp value) declinedIp,
+    required TResult Function(_IpInProccess value) ipInProccess,
+  }) {
+    return emptyIp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_EmptyBank value)? emptyBank,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyIp value)? emptyIp,
+    TResult? Function(_DeclinedIp value)? declinedIp,
+    TResult? Function(_IpInProccess value)? ipInProccess,
+  }) {
+    return emptyIp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_EmptyBank value)? emptyBank,
+    TResult Function(_Success value)? success,
+    TResult Function(_EmptyIp value)? emptyIp,
+    TResult Function(_DeclinedIp value)? declinedIp,
+    TResult Function(_IpInProccess value)? ipInProccess,
+    required TResult orElse(),
+  }) {
+    if (emptyIp != null) {
+      return emptyIp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmptyIp implements CheckBankState {
+  const factory _EmptyIp() = _$EmptyIpImpl;
+}
+
+/// @nodoc
+abstract class _$$DeclinedIpImplCopyWith<$Res> {
+  factory _$$DeclinedIpImplCopyWith(
+          _$DeclinedIpImpl value, $Res Function(_$DeclinedIpImpl) then) =
+      __$$DeclinedIpImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$DeclinedIpImplCopyWithImpl<$Res>
+    extends _$CheckBankStateCopyWithImpl<$Res, _$DeclinedIpImpl>
+    implements _$$DeclinedIpImplCopyWith<$Res> {
+  __$$DeclinedIpImplCopyWithImpl(
+      _$DeclinedIpImpl _value, $Res Function(_$DeclinedIpImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$DeclinedIpImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeclinedIpImpl implements _DeclinedIp {
+  const _$DeclinedIpImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'CheckBankState.declinedIp(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeclinedIpImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeclinedIpImplCopyWith<_$DeclinedIpImpl> get copyWith =>
+      __$$DeclinedIpImplCopyWithImpl<_$DeclinedIpImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function() emptyBank,
+    required TResult Function() success,
+    required TResult Function() emptyIp,
+    required TResult Function(String message) declinedIp,
+    required TResult Function() ipInProccess,
+  }) {
+    return declinedIp(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function()? emptyBank,
+    TResult? Function()? success,
+    TResult? Function()? emptyIp,
+    TResult? Function(String message)? declinedIp,
+    TResult? Function()? ipInProccess,
+  }) {
+    return declinedIp?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function()? emptyBank,
+    TResult Function()? success,
+    TResult Function()? emptyIp,
+    TResult Function(String message)? declinedIp,
+    TResult Function()? ipInProccess,
+    required TResult orElse(),
+  }) {
+    if (declinedIp != null) {
+      return declinedIp(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_EmptyBank value) emptyBank,
+    required TResult Function(_Success value) success,
+    required TResult Function(_EmptyIp value) emptyIp,
+    required TResult Function(_DeclinedIp value) declinedIp,
+    required TResult Function(_IpInProccess value) ipInProccess,
+  }) {
+    return declinedIp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_EmptyBank value)? emptyBank,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyIp value)? emptyIp,
+    TResult? Function(_DeclinedIp value)? declinedIp,
+    TResult? Function(_IpInProccess value)? ipInProccess,
+  }) {
+    return declinedIp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_EmptyBank value)? emptyBank,
+    TResult Function(_Success value)? success,
+    TResult Function(_EmptyIp value)? emptyIp,
+    TResult Function(_DeclinedIp value)? declinedIp,
+    TResult Function(_IpInProccess value)? ipInProccess,
+    required TResult orElse(),
+  }) {
+    if (declinedIp != null) {
+      return declinedIp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeclinedIp implements CheckBankState {
+  const factory _DeclinedIp(final String message) = _$DeclinedIpImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$DeclinedIpImplCopyWith<_$DeclinedIpImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IpInProccessImplCopyWith<$Res> {
+  factory _$$IpInProccessImplCopyWith(
+          _$IpInProccessImpl value, $Res Function(_$IpInProccessImpl) then) =
+      __$$IpInProccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$IpInProccessImplCopyWithImpl<$Res>
+    extends _$CheckBankStateCopyWithImpl<$Res, _$IpInProccessImpl>
+    implements _$$IpInProccessImplCopyWith<$Res> {
+  __$$IpInProccessImplCopyWithImpl(
+      _$IpInProccessImpl _value, $Res Function(_$IpInProccessImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$IpInProccessImpl implements _IpInProccess {
+  const _$IpInProccessImpl();
+
+  @override
+  String toString() {
+    return 'CheckBankState.ipInProccess()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$IpInProccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function() emptyBank,
+    required TResult Function() success,
+    required TResult Function() emptyIp,
+    required TResult Function(String message) declinedIp,
+    required TResult Function() ipInProccess,
+  }) {
+    return ipInProccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function()? emptyBank,
+    TResult? Function()? success,
+    TResult? Function()? emptyIp,
+    TResult? Function(String message)? declinedIp,
+    TResult? Function()? ipInProccess,
+  }) {
+    return ipInProccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function()? emptyBank,
+    TResult Function()? success,
+    TResult Function()? emptyIp,
+    TResult Function(String message)? declinedIp,
+    TResult Function()? ipInProccess,
+    required TResult orElse(),
+  }) {
+    if (ipInProccess != null) {
+      return ipInProccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_EmptyBank value) emptyBank,
+    required TResult Function(_Success value) success,
+    required TResult Function(_EmptyIp value) emptyIp,
+    required TResult Function(_DeclinedIp value) declinedIp,
+    required TResult Function(_IpInProccess value) ipInProccess,
+  }) {
+    return ipInProccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_EmptyBank value)? emptyBank,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyIp value)? emptyIp,
+    TResult? Function(_DeclinedIp value)? declinedIp,
+    TResult? Function(_IpInProccess value)? ipInProccess,
+  }) {
+    return ipInProccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_EmptyBank value)? emptyBank,
+    TResult Function(_Success value)? success,
+    TResult Function(_EmptyIp value)? emptyIp,
+    TResult Function(_DeclinedIp value)? declinedIp,
+    TResult Function(_IpInProccess value)? ipInProccess,
+    required TResult orElse(),
+  }) {
+    if (ipInProccess != null) {
+      return ipInProccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IpInProccess implements CheckBankState {
+  const factory _IpInProccess() = _$IpInProccessImpl;
 }

@@ -5,6 +5,9 @@ import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/features/bank/presentation/bank_main_screen/check_bank_cubit/check_bank_cubit.dart';
 import 'package:ishker_24/features/bank/presentation/bank_main_screen/widgets/bank_info_widget.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/declined_ip_widget.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_ip_widget.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/ip_in_proccess_widget.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
@@ -30,6 +33,9 @@ class BankMainScreen extends StatelessWidget {
         body: BlocBuilder<CheckBankCubit, CheckBankState>(
           builder: (context, state) {
             return state.when(
+              emptyIp: () => const EmptyIpWidget(),
+              ipInProccess: () => const IpInProccessWidget(),
+              declinedIp: (reason) => DeclinedIPWidget(reason: reason),
               loading: () => const AppIndicator(),
               error: (error) => AppErrorText(error: error),
               emptyBank: () => Padding(

@@ -23,13 +23,13 @@ class HomeMainScreen extends StatelessWidget {
             child: BlocBuilder<CheckHasIpCubit, CheckHasIpState>(
               builder: (context, state) {
                 return state.when(
-                  ipInProccess: () => const IpInProccessWidget(),
                   loading: () => const AppIndicator(),
                   error: (error) => AppErrorText(error: error),
                   emptyIp: () => const EmptyIpWidget(),
+                  ipInProccess: () => const IpInProccessWidget(),
+                  declinedIp: (reason) => DeclinedIPWidget(reason: reason),
                   emptyBank: () => const EmptyBankWidget(),
                   fullHas: () => const FullHasWidget(),
-                  declinedIp: (reason) => DeclinedIPWidget(reason: reason),
                 );
               },
             ),
