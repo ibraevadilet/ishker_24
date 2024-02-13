@@ -161,7 +161,8 @@ class CreateAccountScreen extends StatelessWidget {
                           },
                           text: 'Далее',
                         ),
-                      )
+                      ),
+                      const SizedBox(height: 24),
                     ],
                   ),
                 ),

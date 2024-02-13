@@ -141,6 +141,7 @@ class _RegisterIPMainScreenState extends State<RegisterIPMainScreen> {
                             }
                           },
                         ),
+                        const SizedBox(height: 24),
                       ],
                     ),
                   ),

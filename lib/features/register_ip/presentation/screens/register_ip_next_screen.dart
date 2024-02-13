@@ -303,6 +303,7 @@ class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
                           }
                         },
                       ),
+                      const SizedBox(height: 24),
                     ],
                   ),
                 );

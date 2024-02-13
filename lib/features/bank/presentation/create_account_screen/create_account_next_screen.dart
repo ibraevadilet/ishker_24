@@ -45,11 +45,11 @@ class CreateAccountNextScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     CustomTextField(
-                      labelText: 'Место выдачи документа гос.\nрегистрации',
+                      labelText: 'Место выдачи документа гос. регистрации',
                     ),
                     SizedBox(height: 8),
                     CustomTextField(
-                      labelText: 'Дата выдачи документа гос.\nрегистрации',
+                      labelText: 'Дата выдачи документа гос. регистрации',
                     ),
                     SizedBox(height: 42),
                   ],
@@ -94,7 +94,8 @@ class CreateAccountNextScreen extends StatelessWidget {
                     AppRouting.pushFunction(const CreateAccountLastRoute()),
                 text: 'Далее',
               ),
-            )
+            ),
+            SizedBox(height: 24),
           ],
         ),
       ),
