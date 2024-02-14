@@ -21,7 +21,7 @@ class GetMyIpCubit extends Cubit<GetMyIpState> {
         emit(const GetMyIpState.emptyIp());
       } else {
         if (result.gnsStatus == 'REFUSED') {
-          emit(GetMyIpState.declinedIp(result.declinedReason));
+          emit(GetMyIpState.declinedIp(result.declinedReason, result.created!));
         } else if (result.gnsStatus == 'IN_PROCESS') {
           emit(const GetMyIpState.inProccess());
         } else {

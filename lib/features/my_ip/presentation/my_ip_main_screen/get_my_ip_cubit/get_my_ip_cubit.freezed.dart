@@ -20,7 +20,7 @@ mixin _$GetMyIpState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() inProccess,
     required TResult Function(CheckHasIPModel model) success,
     required TResult Function(String error) error,
@@ -30,7 +30,7 @@ mixin _$GetMyIpState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? inProccess,
     TResult? Function(CheckHasIPModel model)? success,
     TResult? Function(String error)? error,
@@ -40,7 +40,7 @@ mixin _$GetMyIpState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? inProccess,
     TResult Function(CheckHasIPModel model)? success,
     TResult Function(String error)? error,
@@ -138,7 +138,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() inProccess,
     required TResult Function(CheckHasIPModel model) success,
     required TResult Function(String error) error,
@@ -151,7 +151,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? inProccess,
     TResult? Function(CheckHasIPModel model)? success,
     TResult? Function(String error)? error,
@@ -164,7 +164,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? inProccess,
     TResult Function(CheckHasIPModel model)? success,
     TResult Function(String error)? error,
@@ -264,7 +264,7 @@ class _$EmptyIpImpl implements _EmptyIp {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() inProccess,
     required TResult Function(CheckHasIPModel model) success,
     required TResult Function(String error) error,
@@ -277,7 +277,7 @@ class _$EmptyIpImpl implements _EmptyIp {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? inProccess,
     TResult? Function(CheckHasIPModel model)? success,
     TResult? Function(String error)? error,
@@ -290,7 +290,7 @@ class _$EmptyIpImpl implements _EmptyIp {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? inProccess,
     TResult Function(CheckHasIPModel model)? success,
     TResult Function(String error)? error,
@@ -356,7 +356,7 @@ abstract class _$$DeclinedIpImplCopyWith<$Res> {
           _$DeclinedIpImpl value, $Res Function(_$DeclinedIpImpl) then) =
       __$$DeclinedIpImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, DateTime date});
 }
 
 /// @nodoc
@@ -371,12 +371,17 @@ class __$$DeclinedIpImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? date = null,
   }) {
     return _then(_$DeclinedIpImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -384,14 +389,16 @@ class __$$DeclinedIpImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DeclinedIpImpl implements _DeclinedIp {
-  const _$DeclinedIpImpl(this.message);
+  const _$DeclinedIpImpl(this.message, this.date);
 
   @override
   final String message;
+  @override
+  final DateTime date;
 
   @override
   String toString() {
-    return 'GetMyIpState.declinedIp(message: $message)';
+    return 'GetMyIpState.declinedIp(message: $message, date: $date)';
   }
 
   @override
@@ -399,11 +406,12 @@ class _$DeclinedIpImpl implements _DeclinedIp {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeclinedIpImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, date);
 
   @JsonKey(ignore: true)
   @override
@@ -416,12 +424,12 @@ class _$DeclinedIpImpl implements _DeclinedIp {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() inProccess,
     required TResult Function(CheckHasIPModel model) success,
     required TResult Function(String error) error,
   }) {
-    return declinedIp(message);
+    return declinedIp(message, date);
   }
 
   @override
@@ -429,12 +437,12 @@ class _$DeclinedIpImpl implements _DeclinedIp {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? inProccess,
     TResult? Function(CheckHasIPModel model)? success,
     TResult? Function(String error)? error,
   }) {
-    return declinedIp?.call(message);
+    return declinedIp?.call(message, date);
   }
 
   @override
@@ -442,14 +450,14 @@ class _$DeclinedIpImpl implements _DeclinedIp {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? inProccess,
     TResult Function(CheckHasIPModel model)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (declinedIp != null) {
-      return declinedIp(message);
+      return declinedIp(message, date);
     }
     return orElse();
   }
@@ -499,9 +507,11 @@ class _$DeclinedIpImpl implements _DeclinedIp {
 }
 
 abstract class _DeclinedIp implements GetMyIpState {
-  const factory _DeclinedIp(final String message) = _$DeclinedIpImpl;
+  const factory _DeclinedIp(final String message, final DateTime date) =
+      _$DeclinedIpImpl;
 
   String get message;
+  DateTime get date;
   @JsonKey(ignore: true)
   _$$DeclinedIpImplCopyWith<_$DeclinedIpImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -547,7 +557,7 @@ class _$InProccessImpl implements _InProccess {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() inProccess,
     required TResult Function(CheckHasIPModel model) success,
     required TResult Function(String error) error,
@@ -560,7 +570,7 @@ class _$InProccessImpl implements _InProccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? inProccess,
     TResult? Function(CheckHasIPModel model)? success,
     TResult? Function(String error)? error,
@@ -573,7 +583,7 @@ class _$InProccessImpl implements _InProccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? inProccess,
     TResult Function(CheckHasIPModel model)? success,
     TResult Function(String error)? error,
@@ -699,7 +709,7 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() inProccess,
     required TResult Function(CheckHasIPModel model) success,
     required TResult Function(String error) error,
@@ -712,7 +722,7 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? inProccess,
     TResult? Function(CheckHasIPModel model)? success,
     TResult? Function(String error)? error,
@@ -725,7 +735,7 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? inProccess,
     TResult Function(CheckHasIPModel model)? success,
     TResult Function(String error)? error,
@@ -856,7 +866,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() inProccess,
     required TResult Function(CheckHasIPModel model) success,
     required TResult Function(String error) error,
@@ -869,7 +879,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? inProccess,
     TResult? Function(CheckHasIPModel model)? success,
     TResult? Function(String error)? error,
@@ -882,7 +892,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? inProccess,
     TResult Function(CheckHasIPModel model)? success,
     TResult Function(String error)? error,

@@ -29,7 +29,8 @@ class MyIpMainScreen extends StatelessWidget {
                 return state.when(
                   loading: () => const AppIndicator(),
                   emptyIp: () => const EmptyIpWidget(),
-                  declinedIp: (message) => DeclinedIPWidget(reason: message),
+                  declinedIp: (message, date) =>
+                      DeclinedIPWidget(reason: message, date: date),
                   inProccess: () => const IpInProccessWidget(),
                   error: (error) => AppErrorText(error: error),
                   success: (model) => Column(

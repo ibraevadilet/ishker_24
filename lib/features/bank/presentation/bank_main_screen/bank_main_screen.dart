@@ -37,7 +37,8 @@ class BankMainScreen extends StatelessWidget {
               return state.when(
                 emptyIp: () => const EmptyIpWidget(),
                 ipInProccess: () => const IpInProccessWidget(),
-                declinedIp: (reason) => DeclinedIPWidget(reason: reason),
+                declinedIp: (reason, date) =>
+                    DeclinedIPWidget(reason: reason, date: date),
                 loading: () => const AppIndicator(),
                 error: (error) => AppErrorText(error: error),
                 emptyBank: () => Column(
