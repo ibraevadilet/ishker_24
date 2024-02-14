@@ -23,7 +23,7 @@ mixin _$CheckBankState {
     required TResult Function() emptyBank,
     required TResult Function() success,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ mixin _$CheckBankState {
     TResult? Function()? emptyBank,
     TResult? Function()? success,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ mixin _$CheckBankState {
     TResult Function()? emptyBank,
     TResult Function()? success,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     required TResult orElse(),
   }) =>
@@ -147,7 +147,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() emptyBank,
     required TResult Function() success,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
   }) {
     return loading();
@@ -161,7 +161,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? emptyBank,
     TResult? Function()? success,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
   }) {
     return loading?.call();
@@ -175,7 +175,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? emptyBank,
     TResult Function()? success,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {
@@ -305,7 +305,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() emptyBank,
     required TResult Function() success,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
   }) {
     return error(this.error);
@@ -319,7 +319,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? emptyBank,
     TResult? Function()? success,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
   }) {
     return error?.call(this.error);
@@ -333,7 +333,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? emptyBank,
     TResult Function()? success,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {
@@ -442,7 +442,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     required TResult Function() emptyBank,
     required TResult Function() success,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
   }) {
     return emptyBank();
@@ -456,7 +456,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult? Function()? emptyBank,
     TResult? Function()? success,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
   }) {
     return emptyBank?.call();
@@ -470,7 +470,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult Function()? emptyBank,
     TResult Function()? success,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {
@@ -574,7 +574,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() emptyBank,
     required TResult Function() success,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
   }) {
     return success();
@@ -588,7 +588,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? emptyBank,
     TResult? Function()? success,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
   }) {
     return success?.call();
@@ -602,7 +602,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? emptyBank,
     TResult Function()? success,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {
@@ -706,7 +706,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     required TResult Function() emptyBank,
     required TResult Function() success,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
   }) {
     return emptyIp();
@@ -720,7 +720,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     TResult? Function()? emptyBank,
     TResult? Function()? success,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
   }) {
     return emptyIp?.call();
@@ -734,7 +734,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     TResult Function()? emptyBank,
     TResult Function()? success,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {
@@ -801,7 +801,7 @@ abstract class _$$DeclinedIpImplCopyWith<$Res> {
           _$DeclinedIpImpl value, $Res Function(_$DeclinedIpImpl) then) =
       __$$DeclinedIpImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, DateTime date});
 }
 
 /// @nodoc
@@ -816,12 +816,17 @@ class __$$DeclinedIpImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? date = null,
   }) {
     return _then(_$DeclinedIpImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -829,14 +834,16 @@ class __$$DeclinedIpImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DeclinedIpImpl implements _DeclinedIp {
-  const _$DeclinedIpImpl(this.message);
+  const _$DeclinedIpImpl(this.message, this.date);
 
   @override
   final String message;
+  @override
+  final DateTime date;
 
   @override
   String toString() {
-    return 'CheckBankState.declinedIp(message: $message)';
+    return 'CheckBankState.declinedIp(message: $message, date: $date)';
   }
 
   @override
@@ -844,11 +851,12 @@ class _$DeclinedIpImpl implements _DeclinedIp {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeclinedIpImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, date);
 
   @JsonKey(ignore: true)
   @override
@@ -864,10 +872,10 @@ class _$DeclinedIpImpl implements _DeclinedIp {
     required TResult Function() emptyBank,
     required TResult Function() success,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
   }) {
-    return declinedIp(message);
+    return declinedIp(message, date);
   }
 
   @override
@@ -878,10 +886,10 @@ class _$DeclinedIpImpl implements _DeclinedIp {
     TResult? Function()? emptyBank,
     TResult? Function()? success,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
   }) {
-    return declinedIp?.call(message);
+    return declinedIp?.call(message, date);
   }
 
   @override
@@ -892,12 +900,12 @@ class _$DeclinedIpImpl implements _DeclinedIp {
     TResult Function()? emptyBank,
     TResult Function()? success,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {
     if (declinedIp != null) {
-      return declinedIp(message);
+      return declinedIp(message, date);
     }
     return orElse();
   }
@@ -950,9 +958,11 @@ class _$DeclinedIpImpl implements _DeclinedIp {
 }
 
 abstract class _DeclinedIp implements CheckBankState {
-  const factory _DeclinedIp(final String message) = _$DeclinedIpImpl;
+  const factory _DeclinedIp(final String message, final DateTime date) =
+      _$DeclinedIpImpl;
 
   String get message;
+  DateTime get date;
   @JsonKey(ignore: true)
   _$$DeclinedIpImplCopyWith<_$DeclinedIpImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1001,7 +1011,7 @@ class _$IpInProccessImpl implements _IpInProccess {
     required TResult Function() emptyBank,
     required TResult Function() success,
     required TResult Function() emptyIp,
-    required TResult Function(String message) declinedIp,
+    required TResult Function(String message, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
   }) {
     return ipInProccess();
@@ -1015,7 +1025,7 @@ class _$IpInProccessImpl implements _IpInProccess {
     TResult? Function()? emptyBank,
     TResult? Function()? success,
     TResult? Function()? emptyIp,
-    TResult? Function(String message)? declinedIp,
+    TResult? Function(String message, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
   }) {
     return ipInProccess?.call();
@@ -1029,7 +1039,7 @@ class _$IpInProccessImpl implements _IpInProccess {
     TResult Function()? emptyBank,
     TResult Function()? success,
     TResult Function()? emptyIp,
-    TResult Function(String message)? declinedIp,
+    TResult Function(String message, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     required TResult orElse(),
   }) {

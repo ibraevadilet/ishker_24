@@ -27,7 +27,7 @@ class HomeMainScreen extends StatelessWidget {
                   error: (error) => AppErrorText(error: error),
                   emptyIp: () => const EmptyIpWidget(),
                   ipInProccess: () => const IpInProccessWidget(),
-                  declinedIp: (reason) => DeclinedIPWidget(reason: reason),
+                  declinedIp: (reason, date) => DeclinedIPWidget(reason: reason, date: date),
                   emptyBank: () => const EmptyBankWidget(),
                   fullHas: () => const FullHasWidget(),
                 );

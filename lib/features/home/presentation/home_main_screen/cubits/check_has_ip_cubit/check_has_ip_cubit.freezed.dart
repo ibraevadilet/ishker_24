@@ -22,7 +22,7 @@ mixin _$CheckHasIpState {
     required TResult Function(String error) error,
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
-    required TResult Function(String reason) declinedIp,
+    required TResult Function(String reason, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) =>
@@ -33,7 +33,7 @@ mixin _$CheckHasIpState {
     TResult? Function(String error)? error,
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
-    TResult? Function(String reason)? declinedIp,
+    TResult? Function(String reason, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) =>
@@ -44,7 +44,7 @@ mixin _$CheckHasIpState {
     TResult Function(String error)? error,
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
-    TResult Function(String reason)? declinedIp,
+    TResult Function(String reason, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
@@ -146,7 +146,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(String error) error,
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
-    required TResult Function(String reason) declinedIp,
+    required TResult Function(String reason, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
@@ -160,7 +160,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(String error)? error,
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
-    TResult? Function(String reason)? declinedIp,
+    TResult? Function(String reason, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
@@ -174,7 +174,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(String error)? error,
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
-    TResult Function(String reason)? declinedIp,
+    TResult Function(String reason, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
@@ -304,7 +304,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(String error) error,
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
-    required TResult Function(String reason) declinedIp,
+    required TResult Function(String reason, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
@@ -318,7 +318,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(String error)? error,
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
-    TResult? Function(String reason)? declinedIp,
+    TResult? Function(String reason, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
@@ -332,7 +332,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(String error)? error,
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
-    TResult Function(String reason)? declinedIp,
+    TResult Function(String reason, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
@@ -441,7 +441,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     required TResult Function(String error) error,
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
-    required TResult Function(String reason) declinedIp,
+    required TResult Function(String reason, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
@@ -455,7 +455,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     TResult? Function(String error)? error,
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
-    TResult? Function(String reason)? declinedIp,
+    TResult? Function(String reason, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
@@ -469,7 +469,7 @@ class _$EmptyIpImpl implements _EmptyIp {
     TResult Function(String error)? error,
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
-    TResult Function(String reason)? declinedIp,
+    TResult Function(String reason, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
@@ -573,7 +573,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     required TResult Function(String error) error,
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
-    required TResult Function(String reason) declinedIp,
+    required TResult Function(String reason, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
@@ -587,7 +587,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult? Function(String error)? error,
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
-    TResult? Function(String reason)? declinedIp,
+    TResult? Function(String reason, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
@@ -601,7 +601,7 @@ class _$EmptyBankImpl implements _EmptyBank {
     TResult Function(String error)? error,
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
-    TResult Function(String reason)? declinedIp,
+    TResult Function(String reason, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
@@ -669,7 +669,7 @@ abstract class _$$DeclinedIPImplCopyWith<$Res> {
           _$DeclinedIPImpl value, $Res Function(_$DeclinedIPImpl) then) =
       __$$DeclinedIPImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String reason});
+  $Res call({String reason, DateTime date});
 }
 
 /// @nodoc
@@ -684,12 +684,17 @@ class __$$DeclinedIPImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? reason = null,
+    Object? date = null,
   }) {
     return _then(_$DeclinedIPImpl(
       null == reason
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
               as String,
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -697,14 +702,16 @@ class __$$DeclinedIPImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DeclinedIPImpl implements _DeclinedIP {
-  const _$DeclinedIPImpl(this.reason);
+  const _$DeclinedIPImpl(this.reason, this.date);
 
   @override
   final String reason;
+  @override
+  final DateTime date;
 
   @override
   String toString() {
-    return 'CheckHasIpState.declinedIp(reason: $reason)';
+    return 'CheckHasIpState.declinedIp(reason: $reason, date: $date)';
   }
 
   @override
@@ -712,11 +719,12 @@ class _$DeclinedIPImpl implements _DeclinedIP {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeclinedIPImpl &&
-            (identical(other.reason, reason) || other.reason == reason));
+            (identical(other.reason, reason) || other.reason == reason) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reason);
+  int get hashCode => Object.hash(runtimeType, reason, date);
 
   @JsonKey(ignore: true)
   @override
@@ -731,11 +739,11 @@ class _$DeclinedIPImpl implements _DeclinedIP {
     required TResult Function(String error) error,
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
-    required TResult Function(String reason) declinedIp,
+    required TResult Function(String reason, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
-    return declinedIp(reason);
+    return declinedIp(reason, date);
   }
 
   @override
@@ -745,11 +753,11 @@ class _$DeclinedIPImpl implements _DeclinedIP {
     TResult? Function(String error)? error,
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
-    TResult? Function(String reason)? declinedIp,
+    TResult? Function(String reason, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
-    return declinedIp?.call(reason);
+    return declinedIp?.call(reason, date);
   }
 
   @override
@@ -759,13 +767,13 @@ class _$DeclinedIPImpl implements _DeclinedIP {
     TResult Function(String error)? error,
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
-    TResult Function(String reason)? declinedIp,
+    TResult Function(String reason, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
   }) {
     if (declinedIp != null) {
-      return declinedIp(reason);
+      return declinedIp(reason, date);
     }
     return orElse();
   }
@@ -818,9 +826,11 @@ class _$DeclinedIPImpl implements _DeclinedIP {
 }
 
 abstract class _DeclinedIP implements CheckHasIpState {
-  const factory _DeclinedIP(final String reason) = _$DeclinedIPImpl;
+  const factory _DeclinedIP(final String reason, final DateTime date) =
+      _$DeclinedIPImpl;
 
   String get reason;
+  DateTime get date;
   @JsonKey(ignore: true)
   _$$DeclinedIPImplCopyWith<_$DeclinedIPImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -868,7 +878,7 @@ class _$ipInProcessImpl implements _ipInProcess {
     required TResult Function(String error) error,
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
-    required TResult Function(String reason) declinedIp,
+    required TResult Function(String reason, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
@@ -882,7 +892,7 @@ class _$ipInProcessImpl implements _ipInProcess {
     TResult? Function(String error)? error,
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
-    TResult? Function(String reason)? declinedIp,
+    TResult? Function(String reason, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
@@ -896,7 +906,7 @@ class _$ipInProcessImpl implements _ipInProcess {
     TResult Function(String error)? error,
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
-    TResult Function(String reason)? declinedIp,
+    TResult Function(String reason, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
@@ -1000,7 +1010,7 @@ class _$FullHasImpl implements _FullHas {
     required TResult Function(String error) error,
     required TResult Function() emptyIp,
     required TResult Function() emptyBank,
-    required TResult Function(String reason) declinedIp,
+    required TResult Function(String reason, DateTime date) declinedIp,
     required TResult Function() ipInProccess,
     required TResult Function() fullHas,
   }) {
@@ -1014,7 +1024,7 @@ class _$FullHasImpl implements _FullHas {
     TResult? Function(String error)? error,
     TResult? Function()? emptyIp,
     TResult? Function()? emptyBank,
-    TResult? Function(String reason)? declinedIp,
+    TResult? Function(String reason, DateTime date)? declinedIp,
     TResult? Function()? ipInProccess,
     TResult? Function()? fullHas,
   }) {
@@ -1028,7 +1038,7 @@ class _$FullHasImpl implements _FullHas {
     TResult Function(String error)? error,
     TResult Function()? emptyIp,
     TResult Function()? emptyBank,
-    TResult Function(String reason)? declinedIp,
+    TResult Function(String reason, DateTime date)? declinedIp,
     TResult Function()? ipInProccess,
     TResult Function()? fullHas,
     required TResult orElse(),
