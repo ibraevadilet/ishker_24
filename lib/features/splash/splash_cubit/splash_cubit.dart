@@ -19,6 +19,7 @@ class SplashCubit extends Cubit<SplashState> {
 
   Future<void> getFirstOpenStatus() async {
     prefs.remove(SharedKeys.accessToken);
+
     await Future.delayed(const Duration(seconds: 1));
     try {
       final resultPin = await useCase.existsUser();
@@ -26,31 +27,11 @@ class SplashCubit extends Cubit<SplashState> {
         prefs.setString(SharedKeys.pin, resultPin);
         AppRouting.pushAndPopUntilFunction(PinCodeEnterRoute());
       } else {
+        prefs.remove(SharedKeys.pinCode);
         AppRouting.pushAndPopUntilFunction(const AuthRoute());
       }
     } catch (e) {
       AppRouting.pushAndPopUntilFunction(const AuthRoute());
     }
   }
-
-  // Future<void> getToken() async {
-  //   final token = prefs.getString(SharedKeys.ishekrAccessToken) ?? '';
-  //   final pin = prefs.getString(SharedKeys.pin) ?? '';
-  //   try {
-  //     final result = await useCase.getToken(pin);
-  //     if (result.accessToken.isNotEmpty) {
-  //       prefs.setString(SharedKeys.ishekrAccessToken, result.accessToken);
-  //       AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
-  //     } else {
-  //       AppRouting.pushAndPopUntilFunction(const AuthRoute());
-  //     }
-  //   } catch (e) {
-  //     if (token.isEmpty) {
-  //       AppRouting.pushAndPopUntilFunction(const AuthRoute());
-  //     } else {
-  //       AppRouting.pushAndPopUntilFunction(const PinCodeEnterRoute());
-  //     }
-  //     AppSnackBar.showSnackBar(e.toString());
-  //   }
-  // }
 }

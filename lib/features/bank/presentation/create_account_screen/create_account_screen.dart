@@ -6,6 +6,8 @@ import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/register_client_usecase.dart';
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/get_client_passport_cubit/get_client_passport_cubit.dart';
+import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart';
+import 'package:ishker_24/features/register_ip/presentation/cubits/tax_and_selected_modes_cubit/tax_and_selected_modes_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
@@ -15,15 +17,28 @@ import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/custom_text_fields.dart';
-import 'package:ishker_24/widgets/expanded_list_widget.dart';
 
 @RoutePage()
-class CreateAccountScreen extends StatelessWidget {
+class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});
+
+  @override
+  State<CreateAccountScreen> createState() => _CreateAccountScreenState();
+}
+
+class _CreateAccountScreenState extends State<CreateAccountScreen> {
+  TaxModel? selectedVidDeatelnost;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<GetClientPassportCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<GetClientPassportCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<TaxAndSelectedModesCubit>()..getModels(false),
+        ),
+      ],
       child: Scaffold(
         appBar: const CustomAppBar(
           backgroundColor: AppColors.backgroundColor,
@@ -125,24 +140,63 @@ class CreateAccountScreen extends StatelessWidget {
                                     sl<RegisterClientUseCase>().emailController,
                               ),
                               const SizedBox(height: 8),
-                              Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: AppColors.color6B7583Grey,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: ExpandedList(
-                                  title: 'Основной вид деятельности',
-                                  selectedIndex: 0,
-                                  items: const [
-                                    'Основной вид деятельности',
-                                    '',
-                                    ''
-                                  ],
-                                  onSelected: (e) {},
-                                ),
-                              )
+                              BlocBuilder<TaxAndSelectedModesCubit,
+                                  TaxAndSelectedModesState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                    loading: () => const AppIndicator(),
+                                    error: (error) =>
+                                        AppErrorText(error: error),
+                                    success: (model) => GestureDetector(
+                                      onTap: () async {
+                                        final TaxModel? result =
+                                            await context.router.push(
+                                          RegisterIPTypeOfActivityRoute(
+                                            models: model.vidDeatelnosti,
+                                          ),
+                                        ) as TaxModel?;
+                                        // print(result);
+                                        setState(() {
+                                          selectedVidDeatelnost = result;
+                                        });
+
+                                        sl<RegisterClientUseCase>()
+                                            .selectedVidDeatelnost = result;
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(16),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: AppColors.color7A7A7AGrey,
+                                            width: 1,
+                                          ),
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(
+                                            10,
+                                          ),
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Expanded(
+                                              child: Text(
+                                                selectedVidDeatelnost?.text ??
+                                                    'Вид экономической деятельности',
+                                                style: AppTextStyles.s16W400(),
+                                              ),
+                                            ),
+                                            const SizedBox(width: 10),
+                                            const Icon(
+                                              Icons.arrow_forward_ios,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
                             ],
                           ),
                         ),
@@ -155,8 +209,10 @@ class CreateAccountScreen extends StatelessWidget {
                                 .formKey
                                 .currentState!
                                 .validate()) {
-                              AppRouting.pushFunction(
-                                  const CreateAccountNextRoute());
+                              if (selectedVidDeatelnost != null) {
+                                AppRouting.pushFunction(
+                                    const CreateAccountNextRoute());
+                              }
                             }
                           },
                           text: 'Далее',

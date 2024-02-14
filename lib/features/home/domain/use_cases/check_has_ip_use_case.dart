@@ -5,9 +5,17 @@ class CheckHasIPUseCase {
   CheckHasIPUseCase({required this.repo});
   final CheckHasIPRepo repo;
 
+  String certificatUrl = 'https://www.orimi.com/pdf-test.pdf';
+
   Future<CheckHasIPModel?> checkIp() async {
     try {
-      return await repo.checkHasIP();
+      final result = await repo.checkHasIP();
+      if (result != null) {
+        if (result.gnsStatus == 'APPROVED') {
+          certificatUrl = result.image!;
+        }
+      }
+      return result;
     } catch (e) {
       rethrow;
     }

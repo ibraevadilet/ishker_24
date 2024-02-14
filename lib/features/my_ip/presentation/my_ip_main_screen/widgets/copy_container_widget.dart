@@ -26,22 +26,25 @@ class CopyContainerWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: AppTextStyles.s12W600(
-                      color: AppColors.color6B7583Grey,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: AppTextStyles.s12W600(
+                        color: AppColors.color6B7583Grey,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    subTitle,
-                    style: AppTextStyles.s16W600(),
-                  ),
-                ],
+                    const SizedBox(height: 5),
+                    Text(
+                      subTitle,
+                      style: AppTextStyles.s16W600(),
+                    ),
+                  ],
+                ),
               ),
+              const SizedBox(width: 5),
               GestureDetector(
                 onTap: () {
                   Clipboard.setData(
@@ -54,7 +57,7 @@ class CopyContainerWidget extends StatelessWidget {
                   );
                 },
                 child: SvgPicture.asset(AppImages.copyIconSvg),
-              )
+              ),
             ],
           ),
         ),

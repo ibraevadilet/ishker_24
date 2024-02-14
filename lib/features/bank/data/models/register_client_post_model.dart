@@ -18,6 +18,7 @@ class RegisterClientPostModel {
   final String docPlace;
   final String docDate;
   final String comment;
+  final String note226;
   RegisterClientPostModel({
     required this.pasportTypeAnId,
     required this.pasportNumber,
@@ -31,6 +32,7 @@ class RegisterClientPostModel {
     required this.docPlace,
     required this.docDate,
     required this.comment,
+    required this.note226,
   });
 
   // Map<String, dynamic> toJson() {
@@ -58,6 +60,9 @@ class RegisterClientPostModel {
       'email': emailAdress,
       'mobilePhone': phoneNumber,
       'note372': comment,
+      'note226': note226,
+      'regDocNumber': okpo,
+      'regDocSeries': ogrn,
     };
   }
 

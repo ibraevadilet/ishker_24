@@ -4,6 +4,7 @@ import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/bank/data/models/register_client_post_model.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/create_account_usecase.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/register_client_usecase.dart';
+import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 
 part 'regitser_client_cubit.freezed.dart';
@@ -16,6 +17,11 @@ class RegitserClientCubit extends Cubit<RegitserClientState> {
   }) : super(const RegitserClientState.initial());
   final RegisterClientUseCase useCase;
   final CreateAccountUseCase accountUseCase;
+  TaxModel? selectedVidDeatelnost;
+
+  selectVidDeatelnost(TaxModel selectedVidDeatelnostFrom) {
+    selectedVidDeatelnost = selectedVidDeatelnostFrom;
+  }
 
   Future<void> registerClient() async {
     emit(const RegitserClientState.loading());
@@ -31,13 +37,14 @@ class RegitserClientCubit extends Cubit<RegitserClientState> {
         phoneNumber: '+996$number',
         emailAdress: useCase.emailController.text,
         vidDeatelnosty: 'vidDeatelnosty',
-        okpo: 'okpo',
-        ogrn: 'ogrn',
+        okpo: useCase.okpoController.text,
+        ogrn: useCase.regNumberController.text,
         seriesDocNumber: 'seriesDocNumber',
         docNumber: 'docNumber',
         docPlace: 'docPlace',
         docDate: 'docDate',
         comment: useCase.commentController.text,
+        note226: useCase.selectedVidDeatelnost!.text,
       );
       final result = await useCase.registerClient(postModel);
       await accountUseCase.createAccount(result);

@@ -16,22 +16,23 @@ class CheckBankCubit extends Cubit<CheckBankState> {
   Future<void> checkBank() async {
     emit(const CheckBankState.loading());
     try {
-      // final ipResult = await useCase.checkIp();
-      // if (ipResult == null) {
-      //   emit(const CheckBankState.emptyIp());
-      // } else {
-      //   if (ipResult.gnsStatus == 'REFUSED') {
-      //     emit(CheckBankState.declinedIp(ipResult.declinedReason));
-      //   } else if (ipResult.gnsStatus == 'IN_PROCESS') {
-      //     emit(const CheckBankState.ipInProccess());
-      //   } else {
-      final result = await useCase.checkHasBank();
-      if (result) {
-        emit(const CheckBankState.success());
+      final ipResult = await useCase.checkIp();
+      if (ipResult == null) {
+        emit(const CheckBankState.emptyIp());
       } else {
-        emit(const CheckBankState.emptyBank());
-        //     }
-        //   }
+        if (ipResult.gnsStatus == 'REFUSED') {
+          emit(CheckBankState.declinedIp(
+              ipResult.declinedReason, ipResult.created!));
+        } else if (ipResult.gnsStatus == 'IN_PROCESS') {
+          emit(const CheckBankState.ipInProccess());
+        } else {
+          final result = await useCase.checkHasBank();
+          if (result) {
+            emit(const CheckBankState.emptyBank());
+          } else {
+            emit(const CheckBankState.emptyBank());
+          }
+        }
       }
     } catch (e) {
       emit(CheckBankState.error(e.toString()));

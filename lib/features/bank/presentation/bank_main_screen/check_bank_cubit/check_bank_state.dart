@@ -7,6 +7,7 @@ class CheckBankState with _$CheckBankState {
   const factory CheckBankState.emptyBank() = _EmptyBank;
   const factory CheckBankState.success() = _Success;
   const factory CheckBankState.emptyIp() = _EmptyIp;
-  const factory CheckBankState.declinedIp(String message, DateTime date) = _DeclinedIp;
+  const factory CheckBankState.declinedIp(String message, DateTime date) =
+      _DeclinedIp;
   const factory CheckBankState.ipInProccess() = _IpInProccess;
 }

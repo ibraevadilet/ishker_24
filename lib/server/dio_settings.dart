@@ -48,13 +48,36 @@ class DioSettings {
         },
         onError: (DioException e, handler) async {
           if (e.response?.statusCode == 401) {
+            Response response;
             print('STATUSSSS 401');
+            final oldToken = prefs.getString(SharedKeys.refreshToken);
+            print('OLDDD TOKEN -- $oldToken');
             await _newAccessToken();
-            dio.fetch(e.requestOptions);
+            final newToken = prefs.getString(SharedKeys.refreshToken);
+            print('NEWWWW TOKEN -- $newToken');
+            e.requestOptions.headers
+                .update('Authorization', (value) => 'Bearer $newToken');
+            var path = '${e.requestOptions.baseUrl}${e.requestOptions.path}';
+            if (e.requestOptions.path.contains(e.requestOptions.baseUrl)) {
+              path = e.requestOptions.path;
+            }
+            response = await dio.request(
+              path,
+              data: e.requestOptions.data,
+              queryParameters: e.requestOptions.queryParameters,
+              options: Options(
+                contentType: e.requestOptions.contentType,
+                extra: e.requestOptions.extra,
+                headers: e.requestOptions.headers,
+                method: e.requestOptions.method,
+                responseType: e.requestOptions.responseType,
+              ),
+            );
+
+            handler.resolve(response);
+          } else {
+            return handler.next(e);
           }
-          // else {
-          return handler.next(e);
-          // }
         },
       ),
     );
