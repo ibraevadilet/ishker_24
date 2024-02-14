@@ -17,12 +17,12 @@ class RegisterClientRepoImpl implements RegisterClientRepo {
         'rsk-service/client/register',
         data: model.toJson(),
       );
-      final result = responce.data['data']?['reason'];
+      final result = responce.data['data']?['message'] ?? '';
       if (result.isNotEmpty) {
         AppSnackBar.showSnackBar(result);
         AppRouting.pushAndPopUntilFunction(const BottomNavigatorRoute());
       }
-      return responce.data['data']['partyId'];
+      return responce.data['data']['partyId'].toString();
     } catch (e) {
       throw CatchException.convertException(e).message;
     }

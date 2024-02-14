@@ -39,7 +39,6 @@ class RegitserClientCubit extends Cubit<RegitserClientState> {
         docDate: 'docDate',
         comment: useCase.commentController.text,
       );
-      print(postModel);
       final result = await useCase.registerClient(postModel);
       await accountUseCase.createAccount(result);
       emit(const RegitserClientState.success());
