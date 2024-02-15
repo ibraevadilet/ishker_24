@@ -14,6 +14,7 @@ import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/expanded_list_widget.dart';
+import 'package:ishker_24/widgets/styled_toasts.dart';
 
 @RoutePage()
 class RegisterIPNextScreen extends StatefulWidget {
@@ -276,33 +277,46 @@ class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
                         ),
                       ),
                       CustomButton(
-                        text: 'Далее',
-                        color: AppColors.color54B25AMain,
-                        onPress: () {
-                          if (selectedVidDeatelnost != null &&
-                              selectedIndex != null) {
-                            ///save in use case
-                            final userCase = sl<GetUserInfoUseCase>();
-                            userCase.activityCode = selectedVidDeatelnost!.id;
-                            userCase.isHaveWageEarners = selectedRadioValue;
-                            userCase.taxMode =
-                                int.parse(model.nalogTypes[selectedIndex!].id);
-                            userCase.entrepreneurType = widget.isPatent ? 0 : 1;
-                            userCase.selectedModes =
-                                nalogTypeIds.map((e) => int.parse(e)).toList();
-                            if (selectedIndex != 2) {
-                              AppRouting.pushFunction(
-                                const RegisterIpSigninRoute(),
+                          text: 'Далее',
+                          color: AppColors.color54B25AMain,
+                          onPress: () {
+                            if (selectedVidDeatelnost != null &&
+                                selectedIndex != null) {
+                              ///save in use case
+                              final userCase = sl<GetUserInfoUseCase>();
+                              userCase.activityCode = selectedVidDeatelnost!.id;
+                              userCase.isHaveWageEarners = selectedRadioValue;
+                              userCase.taxMode = int.parse(
+                                  model.nalogTypes[selectedIndex!].id);
+                              userCase.entrepreneurType =
+                                  widget.isPatent ? 0 : 1;
+                              userCase.selectedModes = nalogTypeIds
+                                  .map((e) => int.parse(e))
+                                  .toList();
+                              if (selectedIndex != 2) {
+                                AppRouting.pushFunction(
+                                  const RegisterIpSigninRoute(),
+                                );
+                              } else if (selectedIndex == 2 &&
+                                  nalogTypeIds.isNotEmpty) {
+                                AppRouting.pushFunction(
+                                  const RegisterIpSigninRoute(),
+                                );
+                              } else if (nalogTypeIds.isEmpty) {
+                                AppSnackBar.showSnackBar(
+                                  'Выберите ставки к единому налоговому режиму',
+                                );
+                              }
+                            } else if (selectedVidDeatelnost == null) {
+                              AppSnackBar.showSnackBar(
+                                'Выберите вид экономической деятельности',
                               );
-                            } else if (selectedIndex == 2 &&
-                                nalogTypeIds.isNotEmpty) {
-                              AppRouting.pushFunction(
-                                const RegisterIpSigninRoute(),
+                            } else if (selectedIndex == null) {
+                              AppSnackBar.showSnackBar(
+                                'Выберите налоговый режим',
                               );
                             }
-                          }
-                        },
-                      ),
+                          }),
                       const SizedBox(height: 24),
                     ],
                   ),

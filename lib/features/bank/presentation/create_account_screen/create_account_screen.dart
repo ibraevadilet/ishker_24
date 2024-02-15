@@ -17,6 +17,7 @@ import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/custom_text_fields.dart';
+import 'package:ishker_24/widgets/styled_toasts.dart';
 
 @RoutePage()
 class CreateAccountScreen extends StatefulWidget {
@@ -212,6 +213,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                               if (selectedVidDeatelnost != null) {
                                 AppRouting.pushFunction(
                                     const CreateAccountNextRoute());
+                              } else if (selectedVidDeatelnost == null) {
+                                AppSnackBar.showSnackBar(
+                                  'Выберите вид деятельности',
+                                );
                               }
                             }
                           },
