@@ -24,6 +24,16 @@ class CatchException {
             'EmailIncorrect') {
           return CatchException(message: 'Указан неверный e-mail');
         } else if (error.response!.data['body']?['status'] ==
+            'UserHaveNoEmail') {
+          return CatchException(
+              message:
+                  'К данному аккаунту не привязана почта. Привяжите, пожалуйста, через Тундук');
+        } else if (error.response!.data['body']?['status'] ==
+            'UserHaveNoPhoneNumber') {
+          return CatchException(
+              message:
+                  'К данному аккаунту не привязан номер телефона. Привяжите, пожалуйста, через Тундук');
+        } else if (error.response!.data['body']?['status'] ==
             'PhoneNumberEmptyOrIncorrect') {
           return CatchException(message: 'Указан неверный номер');
         } else if (error.response!.data['body']?['signInResult'] ==
