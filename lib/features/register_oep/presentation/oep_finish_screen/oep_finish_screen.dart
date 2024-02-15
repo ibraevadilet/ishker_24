@@ -27,7 +27,7 @@ class OEPFinishScreen extends StatelessWidget {
               child: Image.asset(AppImages.cesImage),
             ),
             const Text(
-              'Ваш пароль от облачной электронной\nодписи будет выслан Вам на почту',
+              'Ваш пароль от облачной электронной\nподписи будет выслан Вам на почту',
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
