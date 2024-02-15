@@ -4,7 +4,6 @@ import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/bank/data/models/register_client_post_model.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/create_account_usecase.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/register_client_usecase.dart';
-import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 
 part 'regitser_client_cubit.freezed.dart';
@@ -17,11 +16,6 @@ class RegitserClientCubit extends Cubit<RegitserClientState> {
   }) : super(const RegitserClientState.initial());
   final RegisterClientUseCase useCase;
   final CreateAccountUseCase accountUseCase;
-  TaxModel? selectedVidDeatelnost;
-
-  selectVidDeatelnost(TaxModel selectedVidDeatelnostFrom) {
-    selectedVidDeatelnost = selectedVidDeatelnostFrom;
-  }
 
   Future<void> registerClient() async {
     emit(const RegitserClientState.loading());
@@ -49,6 +43,12 @@ class RegitserClientCubit extends Cubit<RegitserClientState> {
       final result = await useCase.registerClient(postModel);
       final account = await accountUseCase.createAccount(result);
       emit(const RegitserClientState.success());
+      useCase.numberController.clear();
+      useCase.emailController.clear();
+      useCase.okpoController.clear();
+      useCase.regNumberController.clear();
+      useCase.commentController.clear();
+      useCase.selectedVidDeatelnost = null;
       AppRouting.pushAndPopUntilFunction(
         CreateAccountFinishRoute(accountNumber: account),
       );
