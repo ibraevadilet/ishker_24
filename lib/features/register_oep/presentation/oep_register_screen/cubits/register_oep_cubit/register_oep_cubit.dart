@@ -19,7 +19,7 @@ class RegisterOepCubit extends Cubit<RegisterOepState> {
     if (useCase.formKey.currentState!.validate()) {
       emit(const RegisterOepState.loading());
       try {
-        final phone = useCase.passNumberController.text
+        final phone = useCase.phoneNumber.text
             .replaceAll(' ', '')
             .replaceAll('-', '')
             .replaceAll(')', '')
@@ -39,6 +39,11 @@ class RegisterOepCubit extends Cubit<RegisterOepState> {
         if (result.isNotEmpty) {
           AppSnackBar.showSnackBar(result, seconds: 5);
           AppRouting.pushAndPopUntilFunction(const AuthRoute());
+          useCase.innController.clear();
+          useCase.idController.clear();
+          useCase.passNumberController.clear();
+          useCase.phoneNumber.clear();
+          useCase.emailController.clear();
         } else {
           emit(const RegisterOepState.success());
         }

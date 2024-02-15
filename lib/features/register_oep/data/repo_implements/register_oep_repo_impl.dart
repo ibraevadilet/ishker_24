@@ -21,8 +21,7 @@ class RegisterOEPRepoImpl implements RegisterOEPRepo {
       );
       print(response.data['code'] != null && response.data['code'] == 409);
       if (response.data['code'] != null && response.data['code'] == 409) {
-        result =
-            'Сертификат на физическое лицо 21605200001255 уже зарегистрирован. Учётная запись активна до 2024-09-17 18:34:01';
+        result = response.data['message'];
       }
       return result;
     } catch (e) {
