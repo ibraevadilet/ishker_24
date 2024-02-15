@@ -28,7 +28,7 @@ class CheckBankCubit extends Cubit<CheckBankState> {
         } else {
           final result = await useCase.checkHasBank();
           if (result) {
-            emit(const CheckBankState.emptyBank());
+            emit(const CheckBankState.success());
           } else {
             emit(const CheckBankState.emptyBank());
           }

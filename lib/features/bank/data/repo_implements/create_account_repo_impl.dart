@@ -7,15 +7,16 @@ class CreateAccountRepoImpl implements CreateAccountRepo {
   CreateAccountRepoImpl({required this.dio});
 
   @override
-  Future<void> createAccount(String partyId) async {
+  Future<String> createAccount(String partyId) async {
     try {
-      await dio.post(
+      final responce = await dio.post(
         'rsk-service/account/create',
         data: {
           'partyId': partyId,
           'bic': '129058',
         },
       );
+      return responce.data['data']?['accountNumber'] ?? '';
     } catch (e) {
       throw CatchException.convertException(e).message;
     }

@@ -160,9 +160,13 @@ abstract class $AppRouter extends _i45.RootStackRouter {
       );
     },
     CreateAccountFinishRoute.name: (routeData) {
+      final args = routeData.argsAs<CreateAccountFinishRouteArgs>();
       return _i45.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.CreateAccountFinishScreen(),
+        child: _i9.CreateAccountFinishScreen(
+          key: args.key,
+          accountNumber: args.accountNumber,
+        ),
       );
     },
     CreateAccountLastRoute.name: (routeData) {
@@ -594,16 +598,41 @@ class CesSelfieRoute extends _i45.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.CreateAccountFinishScreen]
-class CreateAccountFinishRoute extends _i45.PageRouteInfo<void> {
-  const CreateAccountFinishRoute({List<_i45.PageRouteInfo>? children})
-      : super(
+class CreateAccountFinishRoute
+    extends _i45.PageRouteInfo<CreateAccountFinishRouteArgs> {
+  CreateAccountFinishRoute({
+    _i46.Key? key,
+    required String accountNumber,
+    List<_i45.PageRouteInfo>? children,
+  }) : super(
           CreateAccountFinishRoute.name,
+          args: CreateAccountFinishRouteArgs(
+            key: key,
+            accountNumber: accountNumber,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CreateAccountFinishRoute';
 
-  static const _i45.PageInfo<void> page = _i45.PageInfo<void>(name);
+  static const _i45.PageInfo<CreateAccountFinishRouteArgs> page =
+      _i45.PageInfo<CreateAccountFinishRouteArgs>(name);
+}
+
+class CreateAccountFinishRouteArgs {
+  const CreateAccountFinishRouteArgs({
+    this.key,
+    required this.accountNumber,
+  });
+
+  final _i46.Key? key;
+
+  final String accountNumber;
+
+  @override
+  String toString() {
+    return 'CreateAccountFinishRouteArgs{key: $key, accountNumber: $accountNumber}';
+  }
 }
 
 /// generated route for

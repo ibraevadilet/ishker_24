@@ -1,3 +1,3 @@
 abstract class CreateAccountRepo {
-  Future<void> createAccount(String partyId);
+  Future<String> createAccount(String partyId);
 }

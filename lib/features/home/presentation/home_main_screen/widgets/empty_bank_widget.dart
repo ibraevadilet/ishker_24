@@ -13,16 +13,6 @@ class EmptyBankWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'ИП Нуждин Сергей Иванович',
-              style: AppTextStyles.s16W600(),
-            ),
-            SvgPicture.asset(AppImages.notificationIconSvg),
-          ],
-        ),
         const Spacer(),
         SvgPicture.asset(AppImages.empyListIconSvg),
         const Spacer(),

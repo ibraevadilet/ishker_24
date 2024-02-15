@@ -8,7 +8,8 @@ import 'package:ishker_24/widgets/custom_button.dart';
 
 @RoutePage()
 class CreateAccountFinishScreen extends StatelessWidget {
-  const CreateAccountFinishScreen({super.key});
+  const CreateAccountFinishScreen({super.key, required this.accountNumber});
+  final String accountNumber;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +24,8 @@ class CreateAccountFinishScreen extends StatelessWidget {
               const SizedBox(height: 24),
               const Text('Успешно!'),
               const SizedBox(height: 16),
-              const Text(
-                'Ваш счет успешно открыт\nНомер счета: XXXXXXXXXXXXXXXX',
+              Text(
+                'Ваш счет успешно открыт\nНомер счета: $accountNumber',
                 textAlign: TextAlign.center,
               ),
               const Spacer(),

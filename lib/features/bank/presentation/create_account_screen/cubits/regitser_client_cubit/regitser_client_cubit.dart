@@ -47,9 +47,11 @@ class RegitserClientCubit extends Cubit<RegitserClientState> {
         note226: useCase.selectedVidDeatelnost!.text,
       );
       final result = await useCase.registerClient(postModel);
-      await accountUseCase.createAccount(result);
+      final account = await accountUseCase.createAccount(result);
       emit(const RegitserClientState.success());
-      AppRouting.pushAndPopUntilFunction(const CreateAccountFinishRoute());
+      AppRouting.pushAndPopUntilFunction(
+        CreateAccountFinishRoute(accountNumber: account),
+      );
     } catch (e) {
       emit(RegitserClientState.error(e.toString()));
     }

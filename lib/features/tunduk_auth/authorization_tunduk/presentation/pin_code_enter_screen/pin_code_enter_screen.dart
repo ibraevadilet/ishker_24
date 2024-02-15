@@ -31,81 +31,84 @@ class _PinCodeEnterScreenState extends State<PinCodeEnterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => sl<EnterPinCodeCubit>(),
-        ),
-        BlocProvider(
-          create: (context) => sl<BiometricCubit>(),
-        ),
-      ],
-      child: ScaffoldBackgroundImageWidget(
-        body: SafeArea(
-          child: Column(
-            children: [
-              const SizedBox(height: 60),
-              Image.asset(
-                AppImages.esiPinTextLogoWhite,
-                height: 36,
-              ),
-              const SizedBox(height: 32),
-              Text(
-                'Введите пин-код',
-                style: AppTextStyles.s22W400(
-                  color: AppColors.color36424BGrey,
+    return PopScope(
+      canPop: false,
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => sl<EnterPinCodeCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => sl<BiometricCubit>(),
+          ),
+        ],
+        child: ScaffoldBackgroundImageWidget(
+          body: SafeArea(
+            child: Column(
+              children: [
+                const SizedBox(height: 60),
+                Image.asset(
+                  AppImages.esiPinTextLogoWhite,
+                  height: 36,
                 ),
-              ),
-              const SizedBox(height: 12),
-              BlocConsumer<EnterPinCodeCubit, EnterPinCodeState>(
-                listener: (context, state) {
-                  state.whenOrNull(
-                    isNotGrnp: () {
-                      AppRouting.pushAndPopUntilFunction(
-                        const GrnpCheckRoute(),
-                      );
-                    },
-                    success: () async {
-                      await showBioDialog(context, pinController.text);
-                      if (widget.isPushed) {
-                        Navigator.pop(context);
-                      } else {
+                const SizedBox(height: 32),
+                Text(
+                  'Введите пин-код',
+                  style: AppTextStyles.s22W400(
+                    color: AppColors.color36424BGrey,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                BlocConsumer<EnterPinCodeCubit, EnterPinCodeState>(
+                  listener: (context, state) {
+                    state.whenOrNull(
+                      isNotGrnp: () {
                         AppRouting.pushAndPopUntilFunction(
-                          const BottomNavigatorRoute(),
+                          const GrnpCheckRoute(),
                         );
-                      }
-                    },
-                    error: (error) {
-                      pinController.clear();
-                    },
-                  );
-                },
-                builder: (context, state) {
-                  return PinCodeInputWidget(
-                    onChanged: (val) {
-                      if (val.length < 4) {
-                        context.read<BiometricCubit>().getBioType(val);
-                      }
-                    },
-                    controller: pinController,
-                    onCompleted: (val) {
-                      context.read<EnterPinCodeCubit>().enterPinCode(val);
-                    },
-                  );
-                },
-              ),
-              const SizedBox(height: 20),
-              BlocBuilder<BiometricCubit, BiometricState>(
-                builder: (context, state) {
-                  return NumberKeyBoardForPinCode(
-                    pinPutController: pinController,
-                    isBiometric: state.isBioSupported,
-                    type: state.type,
-                  );
-                },
-              ),
-              const ForgotPinTextWidget(),
-            ],
+                      },
+                      success: () async {
+                        await showBioDialog(context, pinController.text);
+                        if (widget.isPushed) {
+                          Navigator.pop(context);
+                        } else {
+                          AppRouting.pushAndPopUntilFunction(
+                            const BottomNavigatorRoute(),
+                          );
+                        }
+                      },
+                      error: (error) {
+                        pinController.clear();
+                      },
+                    );
+                  },
+                  builder: (context, state) {
+                    return PinCodeInputWidget(
+                      onChanged: (val) {
+                        if (val.length < 4) {
+                          context.read<BiometricCubit>().getBioType(val);
+                        }
+                      },
+                      controller: pinController,
+                      onCompleted: (val) {
+                        context.read<EnterPinCodeCubit>().enterPinCode(val);
+                      },
+                    );
+                  },
+                ),
+                const SizedBox(height: 20),
+                BlocBuilder<BiometricCubit, BiometricState>(
+                  builder: (context, state) {
+                    return NumberKeyBoardForPinCode(
+                      pinPutController: pinController,
+                      isBiometric: state.isBioSupported,
+                      type: state.type,
+                    );
+                  },
+                ),
+                const ForgotPinTextWidget(),
+              ],
+            ),
           ),
         ),
       ),
