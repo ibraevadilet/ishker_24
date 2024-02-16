@@ -21,6 +21,7 @@ mixin _$GetClientInfoState {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(ClientInfoModel model) success,
+    required TResult Function(String partyId) emptyAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$GetClientInfoState {
     TResult? Function()? loading,
     TResult? Function(String error)? error,
     TResult? Function(ClientInfoModel model)? success,
+    TResult? Function(String partyId)? emptyAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$GetClientInfoState {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(ClientInfoModel model)? success,
+    TResult Function(String partyId)? emptyAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$GetClientInfoState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
+    required TResult Function(_EmptyAccount value) emptyAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$GetClientInfoState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyAccount value)? emptyAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$GetClientInfoState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_EmptyAccount value)? emptyAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(ClientInfoModel model) success,
+    required TResult Function(String partyId) emptyAccount,
   }) {
     return loading();
   }
@@ -131,6 +138,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(String error)? error,
     TResult? Function(ClientInfoModel model)? success,
+    TResult? Function(String partyId)? emptyAccount,
   }) {
     return loading?.call();
   }
@@ -141,6 +149,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(ClientInfoModel model)? success,
+    TResult Function(String partyId)? emptyAccount,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -155,6 +164,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
+    required TResult Function(_EmptyAccount value) emptyAccount,
   }) {
     return loading(this);
   }
@@ -165,6 +175,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyAccount value)? emptyAccount,
   }) {
     return loading?.call(this);
   }
@@ -175,6 +186,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_EmptyAccount value)? emptyAccount,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -255,6 +267,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(ClientInfoModel model) success,
+    required TResult Function(String partyId) emptyAccount,
   }) {
     return error(this.error);
   }
@@ -265,6 +278,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function(String error)? error,
     TResult? Function(ClientInfoModel model)? success,
+    TResult? Function(String partyId)? emptyAccount,
   }) {
     return error?.call(this.error);
   }
@@ -275,6 +289,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(ClientInfoModel model)? success,
+    TResult Function(String partyId)? emptyAccount,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -289,6 +304,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
+    required TResult Function(_EmptyAccount value) emptyAccount,
   }) {
     return error(this);
   }
@@ -299,6 +315,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyAccount value)? emptyAccount,
   }) {
     return error?.call(this);
   }
@@ -309,6 +326,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_EmptyAccount value)? emptyAccount,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -394,6 +412,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(ClientInfoModel model) success,
+    required TResult Function(String partyId) emptyAccount,
   }) {
     return success(model);
   }
@@ -404,6 +423,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? loading,
     TResult? Function(String error)? error,
     TResult? Function(ClientInfoModel model)? success,
+    TResult? Function(String partyId)? emptyAccount,
   }) {
     return success?.call(model);
   }
@@ -414,6 +434,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(ClientInfoModel model)? success,
+    TResult Function(String partyId)? emptyAccount,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -428,6 +449,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
+    required TResult Function(_EmptyAccount value) emptyAccount,
   }) {
     return success(this);
   }
@@ -438,6 +460,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyAccount value)? emptyAccount,
   }) {
     return success?.call(this);
   }
@@ -448,6 +471,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
+    TResult Function(_EmptyAccount value)? emptyAccount,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -463,5 +487,150 @@ abstract class _Success implements GetClientInfoState {
   ClientInfoModel get model;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EmptyAccountImplCopyWith<$Res> {
+  factory _$$EmptyAccountImplCopyWith(
+          _$EmptyAccountImpl value, $Res Function(_$EmptyAccountImpl) then) =
+      __$$EmptyAccountImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String partyId});
+}
+
+/// @nodoc
+class __$$EmptyAccountImplCopyWithImpl<$Res>
+    extends _$GetClientInfoStateCopyWithImpl<$Res, _$EmptyAccountImpl>
+    implements _$$EmptyAccountImplCopyWith<$Res> {
+  __$$EmptyAccountImplCopyWithImpl(
+      _$EmptyAccountImpl _value, $Res Function(_$EmptyAccountImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? partyId = null,
+  }) {
+    return _then(_$EmptyAccountImpl(
+      null == partyId
+          ? _value.partyId
+          : partyId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EmptyAccountImpl implements _EmptyAccount {
+  const _$EmptyAccountImpl(this.partyId);
+
+  @override
+  final String partyId;
+
+  @override
+  String toString() {
+    return 'GetClientInfoState.emptyAccount(partyId: $partyId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EmptyAccountImpl &&
+            (identical(other.partyId, partyId) || other.partyId == partyId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, partyId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EmptyAccountImplCopyWith<_$EmptyAccountImpl> get copyWith =>
+      __$$EmptyAccountImplCopyWithImpl<_$EmptyAccountImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function(ClientInfoModel model) success,
+    required TResult Function(String partyId) emptyAccount,
+  }) {
+    return emptyAccount(partyId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(ClientInfoModel model)? success,
+    TResult? Function(String partyId)? emptyAccount,
+  }) {
+    return emptyAccount?.call(partyId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function(ClientInfoModel model)? success,
+    TResult Function(String partyId)? emptyAccount,
+    required TResult orElse(),
+  }) {
+    if (emptyAccount != null) {
+      return emptyAccount(partyId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Success value) success,
+    required TResult Function(_EmptyAccount value) emptyAccount,
+  }) {
+    return emptyAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_EmptyAccount value)? emptyAccount,
+  }) {
+    return emptyAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_Success value)? success,
+    TResult Function(_EmptyAccount value)? emptyAccount,
+    required TResult orElse(),
+  }) {
+    if (emptyAccount != null) {
+      return emptyAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmptyAccount implements GetClientInfoState {
+  const factory _EmptyAccount(final String partyId) = _$EmptyAccountImpl;
+
+  String get partyId;
+  @JsonKey(ignore: true)
+  _$$EmptyAccountImplCopyWith<_$EmptyAccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

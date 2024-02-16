@@ -6,6 +6,7 @@ import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/features/home/data/models/get_client_info_model.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_account_widget.dart';
 import 'package:ishker_24/features/qr/presentation/qr_main_screen/cubits/generate_qr_cubit/generate_qr_cubit.dart';
 import 'package:ishker_24/features/qr/presentation/qr_main_screen/widgets/show_select_account_sheet.dart';
 import 'package:ishker_24/server/service_locator.dart';
@@ -75,8 +76,8 @@ class _QrWidgetState extends State<QrWidget> {
             return state.when(
               loading: () => const AppIndicator(),
               error: (error) => AppErrorText(error: error),
+              emptyAccount: (partyId) => EmptyAccountWidget(partyId: partyId),
               success: (image, accounts) => SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
                     const SizedBox(height: 24),

@@ -30,8 +30,6 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
     int? amountFrom,
     String? accountFrom,
   }) async {
-    final accounts = await accountsCase.getClientInfo();
-
     if (amountFrom != null) {
       amount = amountFrom;
     }
@@ -39,20 +37,25 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
       savedAccount = accountFrom;
     }
     try {
-      final postModel = GenerateQrPostModel(
-        account: savedAccount.isEmpty
-            ? accounts.accountsList.first.accountNumber
-            : savedAccount,
-        tspName: 'example_tsp_name',
-        serviceName: 'example_service_name',
-        comments: '',
-        mcc: 'example_mcc',
-        currency: 'example_currency',
-        amount: amount.toString(),
-        payerNameLat: 'example_payer_name_lat',
-      );
-      final result = await useCase.generateQr(postModel);
-      emit(GenerateQrState.success(result, accounts.accountsList));
+      final accounts = await accountsCase.getClientInfo();
+      if (accounts.accountsList.isEmpty) {
+        emit(GenerateQrState.emptyAccount(accounts.absId));
+      } else {
+        final postModel = GenerateQrPostModel(
+          account: savedAccount.isEmpty
+              ? accounts.accountsList.first.accountNumber
+              : savedAccount,
+          tspName: 'example_tsp_name',
+          serviceName: 'example_service_name',
+          comments: '',
+          mcc: 'example_mcc',
+          currency: 'example_currency',
+          amount: amount.toString(),
+          payerNameLat: 'example_payer_name_lat',
+        );
+        final result = await useCase.generateQr(postModel);
+        emit(GenerateQrState.success(result, accounts.accountsList));
+      }
     } catch (e) {
       emit(GenerateQrState.error(e.toString()));
     }

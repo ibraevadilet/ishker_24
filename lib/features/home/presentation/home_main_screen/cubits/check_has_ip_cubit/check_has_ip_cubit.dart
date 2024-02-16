@@ -18,7 +18,8 @@ class CheckHasIpCubit extends Cubit<CheckHasIpState> {
         emit(const CheckHasIpState.emptyIp());
       } else {
         if (ipResult.gnsStatus == 'REFUSED') {
-          emit(CheckHasIpState.declinedIp(ipResult.declinedReason, ipResult.created!));
+          emit(CheckHasIpState.declinedIp(
+              ipResult.declinedReason, ipResult.created!));
         } else if (ipResult.gnsStatus == 'IN_PROCESS') {
           emit(const CheckHasIpState.ipInProccess());
         } else {

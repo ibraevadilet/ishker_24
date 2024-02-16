@@ -5,6 +5,7 @@ import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/get_client_info_cubit/get_client_info_cubit.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_account_widget.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
@@ -22,6 +23,7 @@ class FullHasWidget extends StatelessWidget {
         builder: (context, state) {
           return state.when(
             loading: () => const AppIndicator(),
+            emptyAccount: (partyId) => EmptyAccountWidget(partyId: partyId),
             error: (error) => AppErrorText(error: error),
             success: (model) => Column(
               children: [

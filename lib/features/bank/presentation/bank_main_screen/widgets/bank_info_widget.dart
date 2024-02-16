@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/get_client_info_cubit/get_client_info_cubit.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_account_widget.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
@@ -20,39 +21,39 @@ class BankInfoWidget extends StatelessWidget {
       child: BlocBuilder<GetClientInfoCubit, GetClientInfoState>(
         builder: (context, state) {
           return state.when(
+            emptyAccount: (partyId) => EmptyAccountWidget(partyId: partyId),
             loading: () => const AppIndicator(),
             error: (error) => AppErrorText(error: error),
-            success: (model) => SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Счета',
-                          style: AppTextStyles.s16W700(),
-                        ),
+            success: (model) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Счета',
+                        style: AppTextStyles.s16W700(),
                       ),
-                      IconButton(
-                        splashColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onPressed: () {
-                          AppRouting.pushFunction(
-                            OpenAccountRoute(partyId: model.absId),
-                          );
-                        },
-                        icon: const Icon(
-                          Icons.add,
-                          color: AppColors.color34C759Green,
-                        ),
+                    ),
+                    IconButton(
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onPressed: () {
+                        AppRouting.pushFunction(
+                          OpenAccountRoute(partyId: model.absId),
+                        );
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: AppColors.color34C759Green,
                       ),
-                    ],
-                  ),
-                  ListView.separated(
-                    shrinkWrap: true,
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: ListView.separated(
+                    padding: const EdgeInsets.only(bottom: 150),
                     itemCount: model.accountsList.length,
                     itemBuilder: (context, index) => ListTile(
                       contentPadding: EdgeInsets.zero,
@@ -102,8 +103,8 @@ class BankInfoWidget extends StatelessWidget {
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 12),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
         },

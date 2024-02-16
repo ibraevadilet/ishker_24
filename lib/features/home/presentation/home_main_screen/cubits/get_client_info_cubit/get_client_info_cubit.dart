@@ -17,7 +17,11 @@ class GetClientInfoCubit extends Cubit<GetClientInfoState> {
   Future<void> getClientInfo() async {
     try {
       final result = await useCase.getClientInfo();
-      emit(GetClientInfoState.success(result));
+      if (result.accountsList.isEmpty) {
+        emit(GetClientInfoState.emptyAccount(result.absId));
+      } else {
+        emit(GetClientInfoState.success(result));
+      }
     } catch (e) {
       emit(GetClientInfoState.error(e.toString()));
     }
