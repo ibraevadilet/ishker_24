@@ -14,6 +14,7 @@ import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/custom_text_fields.dart';
 import 'package:ishker_24/widgets/expanded_list_widget.dart';
+import 'package:ishker_24/widgets/styled_toasts.dart';
 
 @RoutePage()
 class RegisterIPMainScreen extends StatefulWidget {
@@ -137,6 +138,10 @@ class _RegisterIPMainScreenState extends State<RegisterIPMainScreen> {
                                 RegisterIPNextRoute(
                                   isPatent: selectedIndex == 0,
                                 ),
+                              );
+                            } else if(selectedIndex ==null) {
+                              AppSnackBar.showSnackBar(
+                                'Выберите тип предпринимателя',
                               );
                             }
                           },

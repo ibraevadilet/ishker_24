@@ -46,6 +46,7 @@ class _EsiTextFiledState extends State<EsiTextFiled> {
       shadowColor: AppColors.color4479BABlue.withOpacity(0.05),
       child: TextFormField(
         onChanged: widget.onChanged,
+        cursorColor: AppColors.color7A7A7AGrey,
         inputFormatters: widget.inputFormatters,
         controller: widget.controller,
         keyboardType: widget.keyboardType,
