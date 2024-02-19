@@ -26,7 +26,7 @@ class GetUserInfoModel {
   factory GetUserInfoModel.fromJson(Map<String, dynamic> json) =>
       GetUserInfoModel(
         inn: json["inn"],
-        addressObl: json["addressObl"],
+        addressObl: json["addressObl"] ?? '',
         addressStreet: json["addressStreet"],
         phoneNumber: json["phoneNumber"],
         fio: json["fio"],
