@@ -14,6 +14,8 @@ import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:ishker_24/widgets/app_error_text.dart';
+import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/esi_text_filed.dart';
@@ -84,26 +86,37 @@ class AuthScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 32),
-                    Text.rich(
-                      TextSpan(
-                        text:
-                            'Нажав на кнопку «Далее», вы соглашаетесь, что прочитали и согласны с ',
-                        style: AppTextStyles.s10W600(
-                            color: AppColors.color727D8DGrey),
-                        children: [
-                          TextSpan(
-                            text:
-                                'Пользовательским соглашением и Политикой конфиденциальности',
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                context.read<EsiaTermsCubit>().esiaGetTerms();
-                              },
-                            style: AppTextStyles.s10W600(
-                                color: AppColors.esiMainBlueColor),
-                          )
-                        ],
-                      ),
-                      textAlign: TextAlign.center,
+                    BlocBuilder<EsiaTermsCubit, EsiaTermsState>(
+                      builder: (context, state) {
+                        return state.when(
+                          initial: () => const AppIndicator(
+                              color: AppColors.esiMainBlueColor),
+                          error: (error) => AppErrorText(error: error),
+                          success: (path) => Text.rich(
+                            TextSpan(
+                              text:
+                                  'Нажав на кнопку «Далее», вы соглашаетесь, что прочитали и согласны с ',
+                              style: AppTextStyles.s10W600(
+                                  color: AppColors.color727D8DGrey),
+                              children: [
+                                TextSpan(
+                                  text:
+                                      'Пользовательским соглашением и Политикой конфиденциальности',
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      AppRouting.pushFunction(
+                                        PdfViewRoute(path: path),
+                                      );
+                                    },
+                                  style: AppTextStyles.s10W600(
+                                      color: AppColors.esiMainBlueColor),
+                                )
+                              ],
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox(height: 32),
                     BlocBuilder<AuthCubit, AuthState>(
