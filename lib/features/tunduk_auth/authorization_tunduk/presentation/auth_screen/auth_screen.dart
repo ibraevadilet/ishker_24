@@ -7,6 +7,7 @@ import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/auth_cubit/auth_cubit.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/esia_cubit/esia_terms_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/esi_background_image_widget.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/top_title_widget.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
@@ -22,8 +23,15 @@ class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<AuthCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<AuthCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<EsiaTermsCubit>(),
+        ),
+      ],
       child: ScaffoldBackgroundImageWidget(
         appBar: const CustomAppBar(),
         body: SafeArea(
@@ -87,15 +95,8 @@ class AuthScreen extends StatelessWidget {
                             text:
                                 'Пользовательским соглашением и Политикой конфиденциальности',
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () async {
-                                const url =
-                                    'https://esia.tunduk.kg/docs/iis_conditions_and_policy_ru.pdf';
-                                AppRouting.pushFunction(
-                                  PdfViewRoute(
-                                    path: url,
-                                    isNetwork: true,
-                                  ),
-                                );
+                              ..onTap = () {
+                                context.read<EsiaTermsCubit>().esiaGetTerms();
                               },
                             style: AppTextStyles.s10W600(
                                 color: AppColors.esiMainBlueColor),
