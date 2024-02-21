@@ -94,7 +94,7 @@ class OEPRegisterScreen extends StatelessWidget {
                                       labelText: 'Номер Паспорта',
                                       keyboardType: TextInputType.number,
                                       validator:
-                                          AppInputValidators.emptyValidator,
+                                          AppInputValidators.passportNumber,
                                     ),
                                   ),
                                 ],

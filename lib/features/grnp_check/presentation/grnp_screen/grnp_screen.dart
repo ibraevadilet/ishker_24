@@ -13,11 +13,19 @@ import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/app_unfocuser.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/custom_text_fields.dart';
+import 'package:ishker_24/widgets/styled_toasts.dart';
 
 @RoutePage()
-class GrnpCheckScreen extends StatelessWidget {
+class GrnpCheckScreen extends StatefulWidget {
   const GrnpCheckScreen({super.key});
 
+  @override
+  State<GrnpCheckScreen> createState() => _GrnpCheckScreenState();
+}
+
+class _GrnpCheckScreenState extends State<GrnpCheckScreen> {
+  bool grnpCheck = false;
+  bool terms = false;
   @override
   Widget build(BuildContext context) {
     return BlocProvider<GRNPCubit>(
@@ -79,7 +87,7 @@ class GrnpCheckScreen extends StatelessWidget {
                                       labelText: 'Номер Паспорта',
                                       keyboardType: TextInputType.number,
                                       validator:
-                                          AppInputValidators.emptyValidator,
+                                          AppInputValidators.passportNumber,
                                     ),
                                   ),
                                 ],
@@ -109,6 +117,62 @@ class GrnpCheckScreen extends StatelessWidget {
                                 ],
                                 validator: AppInputValidators.phoneValidator,
                               ),
+                              const SizedBox(height: 16),
+                              Row(
+                                children: [
+                                  Checkbox(
+                                    activeColor: AppColors.color54B25AMain,
+                                    value: grnpCheck,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        grnpCheck = val!;
+                                      });
+                                    },
+                                  ),
+                                  Flexible(
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: Text(
+                                        'Условия оферты',
+                                        style: AppTextStyles.s14W500().copyWith(
+                                          decoration: TextDecoration.underline,
+                                          decorationColor:
+                                              AppColors.color54B25AMain,
+                                          color: AppColors.color54B25AMain,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Checkbox(
+                                    activeColor: AppColors.color54B25AMain,
+                                    value: terms,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        terms = val!;
+                                      });
+                                    },
+                                  ),
+                                  Flexible(
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: Text(
+                                        'Соглашение на сбор, обработку, хранение и передачу персональных данных',
+                                        style: AppTextStyles.s14W500().copyWith(
+                                          decoration: TextDecoration.underline,
+                                          decorationColor:
+                                              AppColors.color54B25AMain,
+                                          color: AppColors.color54B25AMain,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -123,10 +187,16 @@ class GrnpCheckScreen extends StatelessWidget {
                               .formKey
                               .currentState!
                               .validate();
-                          if (isValidate) {
-                            AppRouting.pushFunction(
-                              const GrnpSelfieRoute(),
+                          if (grnpCheck == false || terms == false) {
+                            AppSnackBar.showSnackBar(
+                              'Отметьте все галочки',
                             );
+                          } else {
+                            if (isValidate) {
+                              AppRouting.pushFunction(
+                                const GrnpSelfieRoute(),
+                              );
+                            }
                           }
                         },
                         child: Text(

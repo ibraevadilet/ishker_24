@@ -5,6 +5,7 @@ import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/bank/domain/use_cases/register_client_usecase.dart';
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/regitser_client_cubit/regitser_client_cubit.dart';
+import 'package:ishker_24/features/bank/presentation/create_account_screen/widgets/select_filial_widget.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
@@ -27,8 +28,11 @@ class _CreateAccountLastScreenState extends State<CreateAccountLastScreen> {
   bool doljnosLico = false;
   bool vidDeatelnNelic = false;
 
-  bool get isAllChecked => benific && doljnosLico && vidDeatelnNelic;
+  bool get isAllChecked =>
+      benific && doljnosLico && vidDeatelnNelic && selectedBic != null;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  String? selectedBic;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -140,6 +144,12 @@ class _CreateAccountLastScreenState extends State<CreateAccountLastScreen> {
                           controller:
                               sl<RegisterClientUseCase>().commentController,
                         ),
+                        const SizedBox(height: 8),
+                        SelectFilialWidget(
+                          onSelectAdress: (bic) {
+                            selectedBic = bic;
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -162,7 +172,7 @@ class _CreateAccountLastScreenState extends State<CreateAccountLastScreen> {
                           if (formKey.currentState!.validate()) {
                             context
                                 .read<RegitserClientCubit>()
-                                .registerClient();
+                                .registerClient(selectedBic!);
                           }
                         } else {
                           AppRouting.pushFunction(const GoBankRoute());

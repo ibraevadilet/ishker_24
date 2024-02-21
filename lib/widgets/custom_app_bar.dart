@@ -10,6 +10,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.centerTitle = true,
     this.actions,
     this.backgroundColor,
+    this.titleTextStyle,
+    this.iconColor,
     Key? key,
   }) : super(key: key);
   final String? title;
@@ -18,6 +20,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool centerTitle;
   final List<Widget>? actions;
   final Color? backgroundColor;
+  final Color? iconColor;
+  final TextStyle? titleTextStyle;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -26,12 +30,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: titleWidget ?? Text(title ?? ''),
-      titleTextStyle: AppTextStyles.s20W700(),
+      titleTextStyle: titleTextStyle ?? AppTextStyles.s20W700(),
       elevation: 0,
       backgroundColor: backgroundColor,
       centerTitle: centerTitle,
-      iconTheme: const IconThemeData(
-        color: AppColors.color727D8DGrey,
+      iconTheme: IconThemeData(
+        color: iconColor ?? AppColors.color727D8DGrey,
       ),
       leading: icon,
       actions: actions,

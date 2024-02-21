@@ -42,6 +42,20 @@ class AppInputValidators {
     }
   }
 
+  static String? passportNumber(String? val) {
+    var regexp = RegExp(r'^[0-9]*$');
+    if (val!.isEmpty) {
+      return 'Поле обязательно для заполнения';
+    }
+    if (val.length != 7) {
+      return 'Введите корректный номер';
+    } else if (!regexp.hasMatch(val)) {
+      return 'Введите корректный номер';
+    } else {
+      return null;
+    }
+  }
+
   static String? anIdValidator(String? val) {
     if (val!.isEmpty) {
       return 'Поле обязательно для заполнения';
