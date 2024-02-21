@@ -87,7 +87,7 @@ class _GrnpCheckScreenState extends State<GrnpCheckScreen> {
                                       labelText: 'Номер Паспорта',
                                       keyboardType: TextInputType.number,
                                       validator:
-                                          AppInputValidators.emptyValidator,
+                                          AppInputValidators.passportNumber,
                                     ),
                                   ),
                                 ],
