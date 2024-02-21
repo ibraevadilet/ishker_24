@@ -6,9 +6,9 @@ class CreateAccountUseCase {
     required this.repo,
   });
 
-  Future<String> createAccount(String partyId) async {
+  Future<String> createAccount(String partyId, String bic) async {
     try {
-      return await repo.createAccount(partyId);
+      return await repo.createAccount(partyId, bic);
     } catch (e) {
       rethrow;
     }

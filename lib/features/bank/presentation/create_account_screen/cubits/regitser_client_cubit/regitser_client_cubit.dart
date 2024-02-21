@@ -17,7 +17,7 @@ class RegitserClientCubit extends Cubit<RegitserClientState> {
   final RegisterClientUseCase useCase;
   final CreateAccountUseCase accountUseCase;
 
-  Future<void> registerClient() async {
+  Future<void> registerClient(String bic) async {
     emit(const RegitserClientState.loading());
     try {
       final number = useCase.numberController.text
@@ -41,7 +41,7 @@ class RegitserClientCubit extends Cubit<RegitserClientState> {
         note226: useCase.selectedVidDeatelnost!.text,
       );
       final result = await useCase.registerClient(postModel);
-      final account = await accountUseCase.createAccount(result);
+      final account = await accountUseCase.createAccount(result, bic);
       emit(const RegitserClientState.success());
       useCase.numberController.clear();
       useCase.emailController.clear();

@@ -7,13 +7,13 @@ class CreateAccountRepoImpl implements CreateAccountRepo {
   CreateAccountRepoImpl({required this.dio});
 
   @override
-  Future<String> createAccount(String partyId) async {
+  Future<String> createAccount(String partyId, String bic) async {
     try {
       final responce = await dio.post(
         'rsk-service/account/create',
         data: {
           'partyId': partyId,
-          'bic': '129058',
+          'bic': bic,
         },
       );
       return responce.data['data']?['accountNumber'] ?? '';

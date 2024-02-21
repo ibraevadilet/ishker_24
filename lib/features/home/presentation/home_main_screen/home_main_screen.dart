@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
-import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/bank_zaglushka_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/declined_ip_widget.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_bank_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_ip_widget.dart';
+import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/full_has_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/ip_in_proccess_widget.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/widgets/app_error_text.dart';
@@ -28,10 +29,8 @@ class HomeMainScreen extends StatelessWidget {
                   ipInProccess: () => const IpInProccessWidget(),
                   declinedIp: (reason, date) =>
                       DeclinedIPWidget(reason: reason, date: date),
-                  // emptyBank: () => const EmptyBankWidget(),
-                  // fullHas: () => const FullHasWidget(),
-                  emptyBank: () => const BankZaglushkaWidget(),
-                  fullHas: () => const BankZaglushkaWidget(),
+                  emptyBank: () => const EmptyBankWidget(),
+                  fullHas: () => const FullHasWidget(),
                 );
               },
             ),
