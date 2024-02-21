@@ -3,6 +3,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:ishker_24/core/network/netrowk_info.dart';
+import 'package:ishker_24/core/network/rsk_service.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/create_account_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/get_client_passport_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/register_client_repo_impl.dart';
@@ -30,6 +33,7 @@ import 'package:ishker_24/features/home/domain/use_cases/get_client_info_usecase
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/get_client_info_cubit/get_client_info_cubit.dart';
 import 'package:ishker_24/features/my_ip/presentation/my_ip_main_screen/get_my_ip_cubit/get_my_ip_cubit.dart';
+import 'package:ishker_24/features/qr/data/datasources/qr_remote_datasource.dart';
 import 'package:ishker_24/features/qr/data/repo_implements/generate_qr_repo_impl.dart';
 import 'package:ishker_24/features/qr/domain/repositories/generate_qr_repository.dart';
 import 'package:ishker_24/features/qr/domain/use_cases/generate_qr_usecase.dart';
@@ -134,10 +138,22 @@ Future<void> initServiceLocator() async {
 
   final sharedPreferences = await SharedPreferences.getInstance();
 
+  sl.registerLazySingleton(() => InternetConnectionChecker());
+  sl.registerLazySingleton<INetworkInfo>(
+    () => NetworkInfoImpl(internetConnectionChecker: sl()),
+  );
+
   /// Other Services
   sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
   sl.registerLazySingleton<Dio>(() => DioSettings(prefs: sl()).dio);
   sl.registerSingleton<AppRouter>(AppRouter());
+
+  sl.registerLazySingleton<RskService>(() => RskService(sl()));
+
+  /// Datasources
+  sl.registerLazySingleton<IQrRemoteDataSource>(
+    () => QrRemoteDataSourceImpl(sl()),
+  );
 
   /// Repository
   sl.registerFactory<RegisterOEPRepo>(() => RegisterOEPRepoImpl(dio: sl()));
@@ -175,7 +191,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<CreateAccountRepo>(() => CreateAccountRepoImpl(dio: sl()));
   sl.registerFactory<RegisterClientRepo>(
       () => RegisterClientRepoImpl(dio: sl()));
-  sl.registerFactory<GenerateQrRepo>(() => GenerateQrRepoImpl(dio: sl()));
+  sl.registerFactory<GenerateQrRepo>(() => GenerateQrRepoImpl(sl(), sl()));
   sl.registerFactory<GetClientPassportRepo>(
       () => GetClientPassportRepoImpl(dio: sl()));
   sl.registerFactory<CheckGrnpRepo>(() => CheckGrnpRepoImpl(dio: sl()));

@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ishker_24/translations/locale_keys.g.dart';
 
+class NoConnectionException implements Exception {}
+
 class CatchException {
   CatchException({required this.message});
   final String message;
