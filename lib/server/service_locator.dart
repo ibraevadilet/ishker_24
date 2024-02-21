@@ -20,7 +20,9 @@ import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit
 import 'package:ishker_24/features/grnp_check/data/repositories_impl/grnp_repo_impl.dart';
 import 'package:ishker_24/features/grnp_check/domain/repositories/grnp_repository.dart';
 import 'package:ishker_24/features/grnp_check/domain/use_case%20/grnp_use_case.dart';
-import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/grnp_cubit/grnp_cubit.dart';
+import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/grnp_cubit/grnp_cubit.dart';
+import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/pesonal_data_cubit/personal_data_cubit.dart';
+import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/public_offer_cubit/public_offer_cubit.dart';
 import 'package:ishker_24/features/home/data/repo_implements/check_has_ip_repo_impl.dart';
 import 'package:ishker_24/features/home/data/repo_implements/get_client_info_repo_impl.dart';
 import 'package:ishker_24/features/home/domain/repositories/check_has_ip_repository.dart';
@@ -72,27 +74,23 @@ import 'package:ishker_24/features/splash/splash_cubit/splash_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/auth_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/check_grnp_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/confirm_received_code_repo_impl.dart';
-import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/esia_get_terms_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/exit_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/get_confirm_code_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/repo_implements/pin_code_repo_impl.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/auth_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/check_grnp_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/confirm_received_code_repository.dart';
-import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/esia_get_terms_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/exit_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/get_confirm_code_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/pin_code_repository.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/auth_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/check_grnp_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/confirm_received_code_usecase.dart';
-import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/esia_get_terms_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/exit_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/get_confirm_code_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/pin_code_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_confirm_code_screen/cubits/confirm_received_code_cubit/confirm_received_code_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/auth_cubit/auth_cubit.dart';
-import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/esia_cubit/esia_terms_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_send_confirm_screen/cubits/get_confirm_code_cubit/get_confirm_code_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/biometric_cubit/biometric_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/enter_pin_code_cubit/enter_pin_code_cubit.dart';
@@ -179,7 +177,6 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetClientPassportRepo>(
       () => GetClientPassportRepoImpl(dio: sl()));
   sl.registerFactory<CheckGrnpRepo>(() => CheckGrnpRepoImpl(dio: sl()));
-  sl.registerFactory<EsiaGetTermsRepo>(() => EsiaGetTermsRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -228,8 +225,6 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<GetClientPassportUseCase>(
       () => GetClientPassportUseCase(repo: sl()));
   sl.registerFactory<CheckGrnpUseCase>(() => CheckGrnpUseCase(repo: sl()));
-  sl.registerFactory<EsiaGetTermsUseCase>(
-      () => EsiaGetTermsUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -286,5 +281,6 @@ Future<void> initServiceLocator() async {
       () => GetClientPassportCubit(useCase: sl()));
   sl.registerFactory<GetMyIpCubit>(() => GetMyIpCubit(useCase: sl()));
   sl.registerFactory<CheckBankCubit>(() => CheckBankCubit(useCase: sl()));
-  sl.registerFactory<EsiaTermsCubit>(() => EsiaTermsCubit(useCase: sl()));
+  sl.registerFactory<PublicOfferCubit>(() => PublicOfferCubit());
+  sl.registerFactory<PersonalDataCubit>(() => PersonalDataCubit());
 }

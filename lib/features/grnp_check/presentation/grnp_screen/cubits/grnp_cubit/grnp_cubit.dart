@@ -1,5 +1,9 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:ishker_24/core/app_helpers/encode_base_64.dart';
+import 'package:ishker_24/core/constants/app_text_constants.dart';
+import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/grnp_check/data/models/send_grnp_model.dart';
 import 'package:ishker_24/features/grnp_check/domain/use_case%20/grnp_use_case.dart';
@@ -31,6 +35,19 @@ class GRNPCubit extends Cubit<GRNPState> {
             photo: useCase.photo,
           ),
           phone: '996$phone',
+        );
+        await Dio().get(
+          AppTextConstants.savePersonalData,
+          queryParameters: {
+            'pin': useCase.innController.text,
+          },
+          options: Options(
+            headers: {
+              'Authorization': AppEncode.encode64Basic(),
+              'token':
+                  'Bearer ${sl<SharedPreferences>().getString(SharedKeys.accessToken)}',
+            },
+          ),
         );
         AppRouting.pushAndPopUntilFunction(const BottomNavigatorRoute());
         emit(const GRNPState.success());

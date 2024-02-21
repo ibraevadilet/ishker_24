@@ -3,19 +3,17 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ishker_24/core/constants/app_text_constants.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/auth_cubit/auth_cubit.dart';
-import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/esia_cubit/esia_terms_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/esi_background_image_widget.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/top_title_widget.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
-import 'package:ishker_24/widgets/app_error_text.dart';
-import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/esi_text_filed.dart';
@@ -25,15 +23,8 @@ class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => sl<AuthCubit>(),
-        ),
-        BlocProvider(
-          create: (context) => sl<EsiaTermsCubit>(),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => sl<AuthCubit>(),
       child: ScaffoldBackgroundImageWidget(
         appBar: const CustomAppBar(),
         body: SafeArea(
@@ -86,37 +77,31 @@ class AuthScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 32),
-                    BlocBuilder<EsiaTermsCubit, EsiaTermsState>(
-                      builder: (context, state) {
-                        return state.when(
-                          initial: () => const AppIndicator(
-                              color: AppColors.esiMainBlueColor),
-                          error: (error) => AppErrorText(error: error),
-                          success: (path) => Text.rich(
-                            TextSpan(
-                              text:
-                                  'Нажав на кнопку «Далее», вы соглашаетесь, что прочитали и согласны с ',
-                              style: AppTextStyles.s10W600(
-                                  color: AppColors.color727D8DGrey),
-                              children: [
-                                TextSpan(
-                                  text:
-                                      'Пользовательским соглашением и Политикой конфиденциальности',
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      AppRouting.pushFunction(
-                                        PdfViewRoute(path: path),
-                                      );
-                                    },
-                                  style: AppTextStyles.s10W600(
-                                      color: AppColors.esiMainBlueColor),
-                                )
-                              ],
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        );
-                      },
+                    Text.rich(
+                      TextSpan(
+                        text:
+                            'Нажав на кнопку «Далее», вы соглашаетесь, что прочитали и согласны с ',
+                        style: AppTextStyles.s10W600(
+                            color: AppColors.color727D8DGrey),
+                        children: [
+                          TextSpan(
+                            text:
+                                'Пользовательским соглашением и Политикой конфиденциальности',
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                AppRouting.pushFunction(
+                                  PdfViewRoute(
+                                    path: AppTextConstants.esiUserStatement,
+                                    isNetwork: true,
+                                  ),
+                                );
+                              },
+                            style: AppTextStyles.s10W600(
+                                color: AppColors.esiMainBlueColor),
+                          )
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 32),
                     BlocBuilder<AuthCubit, AuthState>(

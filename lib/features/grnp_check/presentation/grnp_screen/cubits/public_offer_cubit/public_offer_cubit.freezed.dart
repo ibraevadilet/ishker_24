@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'esia_terms_cubit.dart';
+part of 'public_offer_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$EsiaTermsState {
+mixin _$PublicOfferState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -63,16 +63,16 @@ mixin _$EsiaTermsState {
 }
 
 /// @nodoc
-abstract class $EsiaTermsStateCopyWith<$Res> {
-  factory $EsiaTermsStateCopyWith(
-          EsiaTermsState value, $Res Function(EsiaTermsState) then) =
-      _$EsiaTermsStateCopyWithImpl<$Res, EsiaTermsState>;
+abstract class $PublicOfferStateCopyWith<$Res> {
+  factory $PublicOfferStateCopyWith(
+          PublicOfferState value, $Res Function(PublicOfferState) then) =
+      _$PublicOfferStateCopyWithImpl<$Res, PublicOfferState>;
 }
 
 /// @nodoc
-class _$EsiaTermsStateCopyWithImpl<$Res, $Val extends EsiaTermsState>
-    implements $EsiaTermsStateCopyWith<$Res> {
-  _$EsiaTermsStateCopyWithImpl(this._value, this._then);
+class _$PublicOfferStateCopyWithImpl<$Res, $Val extends PublicOfferState>
+    implements $PublicOfferStateCopyWith<$Res> {
+  _$PublicOfferStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -89,7 +89,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$EsiaTermsStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$PublicOfferStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -103,7 +103,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'EsiaTermsState.initial()';
+    return 'PublicOfferState.initial()';
   }
 
   @override
@@ -184,7 +184,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements EsiaTermsState {
+abstract class _Initial implements PublicOfferState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -199,7 +199,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$EsiaTermsStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$PublicOfferStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -229,7 +229,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'EsiaTermsState.error(error: $error)';
+    return 'PublicOfferState.error(error: $error)';
   }
 
   @override
@@ -318,7 +318,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements EsiaTermsState {
+abstract class _Error implements PublicOfferState {
   const factory _Error(final String error) = _$ErrorImpl;
 
   String get error;
@@ -338,7 +338,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$EsiaTermsStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$PublicOfferStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -368,7 +368,7 @@ class _$SuccessImpl implements _Success {
 
   @override
   String toString() {
-    return 'EsiaTermsState.success(path: $path)';
+    return 'PublicOfferState.success(path: $path)';
   }
 
   @override
@@ -457,7 +457,7 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements EsiaTermsState {
+abstract class _Success implements PublicOfferState {
   const factory _Success(final String path) = _$SuccessImpl;
 
   String get path;

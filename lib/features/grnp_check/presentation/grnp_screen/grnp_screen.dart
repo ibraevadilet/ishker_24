@@ -5,15 +5,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/formatters/input_formatters.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
-import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/grnp_cubit/grnp_cubit.dart';
+import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/grnp_cubit/grnp_cubit.dart';
+import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/pesonal_data_cubit/personal_data_cubit.dart';
+import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/public_offer_cubit/public_offer_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:ishker_24/widgets/app_error_text.dart';
+import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/app_unfocuser.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/custom_text_fields.dart';
-import 'package:ishker_24/widgets/styled_toasts.dart';
 
 @RoutePage()
 class GrnpCheckScreen extends StatefulWidget {
@@ -26,10 +29,23 @@ class GrnpCheckScreen extends StatefulWidget {
 class _GrnpCheckScreenState extends State<GrnpCheckScreen> {
   bool grnpCheck = false;
   bool terms = false;
+  bool isValidate = false;
+
+  bool get isAllChecked => grnpCheck && terms && isValidate;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<GRNPCubit>(
-      create: (context) => sl<GRNPCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<GRNPCubit>(
+          create: (context) => sl<GRNPCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<PublicOfferCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<PersonalDataCubit>(),
+        ),
+      ],
       child: AppUnfocuser(
         child: Scaffold(
           body: SafeArea(
@@ -73,6 +89,16 @@ class _GrnpCheckScreenState extends State<GrnpCheckScreen> {
                                       maxLength: 2,
                                       validator:
                                           AppInputValidators.emptyValidator,
+                                      onChanged: (val) {
+                                        setState(() {
+                                          isValidate = context
+                                              .read<GRNPCubit>()
+                                              .useCase
+                                              .formKey
+                                              .currentState!
+                                              .validate();
+                                        });
+                                      },
                                     ),
                                   ),
                                   const SizedBox(width: 12),
@@ -88,6 +114,16 @@ class _GrnpCheckScreenState extends State<GrnpCheckScreen> {
                                       keyboardType: TextInputType.number,
                                       validator:
                                           AppInputValidators.passportNumber,
+                                      onChanged: (val) {
+                                        setState(() {
+                                          isValidate = context
+                                              .read<GRNPCubit>()
+                                              .useCase
+                                              .formKey
+                                              .currentState!
+                                              .validate();
+                                        });
+                                      },
                                     ),
                                   ),
                                 ],
@@ -102,6 +138,16 @@ class _GrnpCheckScreenState extends State<GrnpCheckScreen> {
                                 labelText: 'ИНН',
                                 keyboardType: TextInputType.number,
                                 validator: AppInputValidators.innValidator,
+                                onChanged: (val) {
+                                  setState(() {
+                                    isValidate = context
+                                        .read<GRNPCubit>()
+                                        .useCase
+                                        .formKey
+                                        .currentState!
+                                        .validate();
+                                  });
+                                },
                               ),
                               const SizedBox(height: 8),
                               CustomTextField(
@@ -116,6 +162,16 @@ class _GrnpCheckScreenState extends State<GrnpCheckScreen> {
                                   AppInputFormatters.phoneFormatter,
                                 ],
                                 validator: AppInputValidators.phoneValidator,
+                                onChanged: (val) {
+                                  setState(() {
+                                    isValidate = context
+                                        .read<GRNPCubit>()
+                                        .useCase
+                                        .formKey
+                                        .currentState!
+                                        .validate();
+                                  });
+                                },
                               ),
                               const SizedBox(height: 16),
                               Row(
@@ -129,19 +185,37 @@ class _GrnpCheckScreenState extends State<GrnpCheckScreen> {
                                       });
                                     },
                                   ),
-                                  Flexible(
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Text(
-                                        'Условия оферты',
-                                        style: AppTextStyles.s14W500().copyWith(
-                                          decoration: TextDecoration.underline,
-                                          decorationColor:
-                                              AppColors.color54B25AMain,
+                                  BlocBuilder<PublicOfferCubit,
+                                      PublicOfferState>(
+                                    builder: (context, state) {
+                                      return state.when(
+                                        initial: () => const AppIndicator(
                                           color: AppColors.color54B25AMain,
                                         ),
-                                      ),
-                                    ),
+                                        error: (error) =>
+                                            AppErrorText(error: error),
+                                        success: (path) => Flexible(
+                                          child: GestureDetector(
+                                            onTap: () =>
+                                                AppRouting.pushFunction(
+                                              PdfViewRoute(path: path),
+                                            ),
+                                            child: Text(
+                                              'Условия оферты',
+                                              style: AppTextStyles.s14W500()
+                                                  .copyWith(
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                decorationColor:
+                                                    AppColors.color54B25AMain,
+                                                color:
+                                                    AppColors.color54B25AMain,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
@@ -157,19 +231,37 @@ class _GrnpCheckScreenState extends State<GrnpCheckScreen> {
                                       });
                                     },
                                   ),
-                                  Flexible(
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Text(
-                                        'Соглашение на сбор, обработку, хранение и передачу персональных данных',
-                                        style: AppTextStyles.s14W500().copyWith(
-                                          decoration: TextDecoration.underline,
-                                          decorationColor:
-                                              AppColors.color54B25AMain,
+                                  BlocBuilder<PersonalDataCubit,
+                                      PersonalDataState>(
+                                    builder: (context, state) {
+                                      return state.when(
+                                        initial: () => const AppIndicator(
                                           color: AppColors.color54B25AMain,
                                         ),
-                                      ),
-                                    ),
+                                        error: (error) =>
+                                            AppErrorText(error: error),
+                                        success: (path) => Flexible(
+                                          child: GestureDetector(
+                                            onTap: () =>
+                                                AppRouting.pushFunction(
+                                              PdfViewRoute(path: path),
+                                            ),
+                                            child: Text(
+                                              'Соглашение на сбор, обработку, хранение и передачу персональных данных',
+                                              style: AppTextStyles.s14W500()
+                                                  .copyWith(
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                decorationColor:
+                                                    AppColors.color54B25AMain,
+                                                color:
+                                                    AppColors.color54B25AMain,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
@@ -179,24 +271,21 @@ class _GrnpCheckScreenState extends State<GrnpCheckScreen> {
                       ),
                       CustomButton(
                         radius: 16,
-                        color: AppColors.color1EA31EGreen,
+                        color: isAllChecked
+                            ? AppColors.color1EA31EGreen
+                            : AppColors.color6B7583Grey,
                         onPress: () {
-                          final bool isValidate = context
+                          isValidate = context
                               .read<GRNPCubit>()
                               .useCase
                               .formKey
                               .currentState!
                               .validate();
-                          if (grnpCheck == false || terms == false) {
-                            AppSnackBar.showSnackBar(
-                              'Отметьте все галочки',
+
+                          if (isAllChecked) {
+                            AppRouting.pushFunction(
+                              const GrnpSelfieRoute(),
                             );
-                          } else {
-                            if (isValidate) {
-                              AppRouting.pushFunction(
-                                const GrnpSelfieRoute(),
-                              );
-                            }
                           }
                         },
                         child: Text(
