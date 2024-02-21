@@ -50,7 +50,7 @@ class _SelectFilialWidgetState extends State<SelectFilialWidget> {
                   InkWell(
                     onTap: () {
                       selecteAdress = 'г. Бишкек, ул. Московская 80/1';
-                      widget.onSelectAdress('129058');
+                      widget.onSelectAdress('129900');
                       setState(() {});
                       Navigator.pop(context);
                     },
