@@ -19,22 +19,22 @@ mixin _$GetTermsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() error,
-    required TResult Function() success,
+    required TResult Function(String error) error,
+    required TResult Function(String path) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? error,
-    TResult? Function()? success,
+    TResult? Function(String error)? error,
+    TResult? Function(String path)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? error,
-    TResult Function()? success,
+    TResult Function(String error)? error,
+    TResult Function(String path)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,8 +119,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() error,
-    required TResult Function() success,
+    required TResult Function(String error) error,
+    required TResult Function(String path) success,
   }) {
     return initial();
   }
@@ -129,8 +129,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? error,
-    TResult? Function()? success,
+    TResult? Function(String error)? error,
+    TResult? Function(String path)? success,
   }) {
     return initial?.call();
   }
@@ -139,8 +139,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? error,
-    TResult Function()? success,
+    TResult Function(String error)? error,
+    TResult Function(String path)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -193,6 +193,8 @@ abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
 }
 
 /// @nodoc
@@ -202,57 +204,81 @@ class __$$ErrorImplCopyWithImpl<$Res>
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$ErrorImpl(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ErrorImpl implements _Error {
-  const _$ErrorImpl();
+  const _$ErrorImpl(this.error);
+
+  @override
+  final String error;
 
   @override
   String toString() {
-    return 'GetTermsState.error()';
+    return 'GetTermsState.error(error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ErrorImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorImpl &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() error,
-    required TResult Function() success,
+    required TResult Function(String error) error,
+    required TResult Function(String path) success,
   }) {
-    return error();
+    return error(this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? error,
-    TResult? Function()? success,
+    TResult? Function(String error)? error,
+    TResult? Function(String path)? success,
   }) {
-    return error?.call();
+    return error?.call(this.error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? error,
-    TResult Function()? success,
+    TResult Function(String error)? error,
+    TResult Function(String path)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(this.error);
     }
     return orElse();
   }
@@ -293,7 +319,12 @@ class _$ErrorImpl implements _Error {
 }
 
 abstract class _Error implements GetTermsState {
-  const factory _Error() = _$ErrorImpl;
+  const factory _Error(final String error) = _$ErrorImpl;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -301,6 +332,8 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String path});
 }
 
 /// @nodoc
@@ -310,57 +343,81 @@ class __$$SuccessImplCopyWithImpl<$Res>
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? path = null,
+  }) {
+    return _then(_$SuccessImpl(
+      null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl();
+  const _$SuccessImpl(this.path);
+
+  @override
+  final String path;
 
   @override
   String toString() {
-    return 'GetTermsState.success()';
+    return 'GetTermsState.success(path: $path)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl &&
+            (identical(other.path, path) || other.path == path));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, path);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() error,
-    required TResult Function() success,
+    required TResult Function(String error) error,
+    required TResult Function(String path) success,
   }) {
-    return success();
+    return success(path);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? error,
-    TResult? Function()? success,
+    TResult? Function(String error)? error,
+    TResult? Function(String path)? success,
   }) {
-    return success?.call();
+    return success?.call(path);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? error,
-    TResult Function()? success,
+    TResult Function(String error)? error,
+    TResult Function(String path)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(path);
     }
     return orElse();
   }
@@ -401,5 +458,10 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements GetTermsState {
-  const factory _Success() = _$SuccessImpl;
+  const factory _Success(final String path) = _$SuccessImpl;
+
+  String get path;
+  @JsonKey(ignore: true)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
