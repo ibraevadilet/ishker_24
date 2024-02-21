@@ -19,7 +19,7 @@ import 'package:ishker_24/features/bank/presentation/create_account_screen/cubit
 import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit/bottom_navigator_cubit.dart';
 import 'package:ishker_24/features/grnp_check/data/repositories_impl/grnp_repo_impl.dart';
 import 'package:ishker_24/features/grnp_check/domain/repositories/grnp_repository.dart';
-import 'package:ishker_24/features/grnp_check/domain/use_case%20/grnp_use_case.dart';
+import 'package:ishker_24/features/grnp_check/domain/use_case/grnp_use_case.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/grnp_cubit/grnp_cubit.dart';
 import 'package:ishker_24/features/home/data/repo_implements/check_has_ip_repo_impl.dart';
 import 'package:ishker_24/features/home/data/repo_implements/get_client_info_repo_impl.dart';
