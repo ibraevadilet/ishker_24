@@ -212,7 +212,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                 .validate()) {
                               if (selectedVidDeatelnost != null) {
                                 AppRouting.pushFunction(
-                                    const CreateAccountNextRoute());
+                                    const CreateAccountLastRoute());
                               } else if (selectedVidDeatelnost == null) {
                                 AppSnackBar.showSnackBar(
                                   'Выберите вид деятельности',

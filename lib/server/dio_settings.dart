@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:ishker_24/core/app_helpers/dio_header.dart';
 import 'package:ishker_24/core/constants/app_text_constants.dart';
 import 'package:ishker_24/core/constants/shared_keys.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DioSettings {
@@ -36,6 +37,12 @@ class DioSettings {
     interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
+          //////ADD version build
+          final packageInfo = await PackageInfo.fromPlatform();
+          final buildNumber = packageInfo.buildNumber;
+          options.headers['versionBuild'] = buildNumber;
+
+          //////ADD TOKEN
           final accessToken = prefs.getString(SharedKeys.accessToken) ?? '';
           if (accessToken != '') {
             options.headers['Authorization'] = 'Bearer $accessToken';

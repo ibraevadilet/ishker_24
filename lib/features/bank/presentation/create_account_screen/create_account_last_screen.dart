@@ -28,8 +28,7 @@ class _CreateAccountLastScreenState extends State<CreateAccountLastScreen> {
   bool doljnosLico = false;
   bool vidDeatelnNelic = false;
 
-  bool get isAllChecked =>
-      benific && doljnosLico && vidDeatelnNelic && selectedBic != null;
+  bool get isAllChecked => benific && doljnosLico && vidDeatelnNelic;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   String? selectedBic;
@@ -155,11 +154,6 @@ class _CreateAccountLastScreenState extends State<CreateAccountLastScreen> {
                   ),
                 ),
               ),
-              Text(
-                'Ваш счет будет открыт в головном\nфилиале РСК банка по адресу:\nг. Бишкек, ул.Московская, 80/1',
-                style: AppTextStyles.s16W400(color: AppColors.color6B7583Grey),
-                textAlign: TextAlign.center,
-              ),
               const SizedBox(height: 21),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -168,14 +162,16 @@ class _CreateAccountLastScreenState extends State<CreateAccountLastScreen> {
                     return CustomButton(
                       isLoading: state.isLoading,
                       onPress: () {
-                        if (isAllChecked) {
-                          if (formKey.currentState!.validate()) {
-                            context
-                                .read<RegitserClientCubit>()
-                                .registerClient(selectedBic!);
+                        if (selectedBic != null) {
+                          if (isAllChecked) {
+                            if (formKey.currentState!.validate()) {
+                              context
+                                  .read<RegitserClientCubit>()
+                                  .registerClient(selectedBic!);
+                            }
+                          } else {
+                            AppRouting.pushFunction(const GoBankRoute());
                           }
-                        } else {
-                          AppRouting.pushFunction(const GoBankRoute());
                         }
                       },
                       text: 'Открыть счет',

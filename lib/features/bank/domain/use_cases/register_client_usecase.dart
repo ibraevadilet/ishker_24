@@ -13,15 +13,20 @@ class RegisterClientUseCase {
   final numberController = TextEditingController();
   final commentController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final okpoController = TextEditingController();
-  final regNumberController = TextEditingController();
-  final GlobalKey<FormState> okpoFormKey = GlobalKey<FormState>();
   TaxModel? selectedVidDeatelnost;
+
   Future<String> registerClient(RegisterClientPostModel model) async {
     try {
       return await repo.registerClient(model);
     } catch (e) {
       rethrow;
     }
+  }
+
+  void disposeControllers() {
+    emailController.text = '';
+    numberController.text = '';
+    commentController.text = '';
+    selectedVidDeatelnost = null;
   }
 }

@@ -46,7 +46,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: CardOperationHistoryRoute.page),
         AutoRoute(page: AccountDetailRoute.page),
         AutoRoute(page: CreateAccountRoute.page),
-        AutoRoute(page: CreateAccountNextRoute.page),
         AutoRoute(page: CreateAccountLastRoute.page),
         AutoRoute(page: CreateAccountFinishRoute.page),
         AutoRoute(page: OpenAccountRoute.page),
