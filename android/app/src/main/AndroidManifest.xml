@@ -25,8 +25,9 @@
         </intent>
     </queries>
 
+    <!-- //TODO: change name -->
     <application
-        android:label="Ишкер24"
+        android:label="Ишкер24.dev"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

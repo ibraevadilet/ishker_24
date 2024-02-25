@@ -1,40 +1,89 @@
-import 'package:auto_route/auto_route.dart';
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:ishker_24/core/constants/app_text_constants.dart';
-import 'package:ishker_24/routes/mobile_auto_router.dart';
-import 'package:ishker_24/server/service_locator.dart';
-import 'package:ishker_24/theme/app_theme.dart';
-import 'package:ishker_24/widgets/init_widget.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ishker_24/src/app.dart';
+import 'src/core/utils/bloc_observer.dart';
+import 'src/di.dart' as locator;
+import 'translations/codegen_loader.g.dart';
 
-final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
-final appRouter = sl<AppRouter>();
+final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+// final appRouter = sl<AppRouter>();
 
-void main() async {
-  await initServiceLocator();
-  runApp(const Main());
-}
-
-class Main extends StatelessWidget {
-  const Main({Key? key}) : super(key: key);
-
+class MyHttpOverrides extends HttpOverrides {
   @override
-  Widget build(BuildContext context) {
-    return InitWidget(
-      child: Builder(
-        builder: (context) => MaterialApp.router(
-          scaffoldMessengerKey: scaffoldKey,
-          theme: lightTheme,
-          title: AppTextConstants.appTitle,
-          debugShowCheckedModeBanner: false,
-          routeInformationParser: appRouter.defaultRouteParser(),
-          routerDelegate: AutoRouterDelegate(appRouter),
-          routeInformationProvider: appRouter.routeInfoProvider(),
-          supportedLocales: context.supportedLocales,
-          localizationsDelegates: context.localizationDelegates,
-          locale: context.locale,
-        ),
-      ),
-    );
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Future.wait([
+    EasyLocalization.ensureInitialized(),
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]),
+  ]);
+  Bloc.observer = const AppBlocObserver();
+
+  await locator.init();
+
+  // android emu dev mode workaround through HandshakeException CERTIFICATE_VERIFY_FAILED
+  if (kDebugMode) HttpOverrides.global = MyHttpOverrides();
+
+  // Bloc.observer = const AppBlocObserver();
+
+  runApp(
+    EasyLocalization(
+      assetLoader: const CodegenLoader(),
+      path: 'assets/translations',
+      supportedLocales: const [Locale('ru'), Locale('ky')],
+      fallbackLocale: const Locale('ru'),
+      child: const App(),
+      // child: MultiBlocProvider(
+      //   providers: [
+      //     BlocProvider(
+      //       create: (context) => sl<BottomNavigatorCubit>(),
+      //     ),
+      //   ],
+      //   child: widget.child,
+      // ),
+    ),
+  );
+}
+
+// void main() async {
+//   await initServiceLocator();
+
+//   HttpOverrides.global = MyHttpOverrides();
+
+//   runApp(const Main());
+// }
+
+// class Main extends StatelessWidget {
+//   const Main({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return InitWidget(
+//       child: Builder(
+//         builder: (context) => MaterialApp.router(
+//           scaffoldMessengerKey: scaffoldKey,
+//           theme: lightTheme,
+//           title: AppTextConstants.appTitle,
+//           debugShowCheckedModeBanner: false,
+//           routeInformationParser: appRouter.defaultRouteParser(),
+//           routerDelegate: AutoRouterDelegate(appRouter),
+//           routeInformationProvider: appRouter.routeInfoProvider(),
+//           supportedLocales: context.supportedLocales,
+//           localizationsDelegates: context.localizationDelegates,
+//           locale: context.locale,
+//         ),
+//       ),
+//     );
+//   }
+// }
