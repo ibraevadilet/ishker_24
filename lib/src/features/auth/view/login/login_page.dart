@@ -68,15 +68,6 @@ class _LoginFormState extends State<LoginForm> {
   late TextEditingController passwordController;
 
   @override
-  void initState() {
-    super.initState();
-
-    //TODO: delete
-    loginController = TextEditingController(text: '22607199200135');
-    passwordController = TextEditingController(text: '_hk2w2726b');
-  }
-
-  @override
   void dispose() {
     loginController.dispose();
     passwordController.dispose();
