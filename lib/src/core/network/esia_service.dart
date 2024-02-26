@@ -5,14 +5,15 @@ import 'package:ishker_24/src/features/auth/data/models/auth_model.dart';
 import 'package:ishker_24/src/features/auth/data/models/auth_request_model.dart';
 import 'package:ishker_24/src/features/auth/data/models/get_confirm_code_model.dart';
 import 'package:ishker_24/src/features/auth/data/models/send_confirm_code_model.dart';
+import 'package:ishker_24/src/features/recovery/data/models/reset_pass_token_model.dart';
 
 class EsiaService {
-  EsiaService(this.dio);
+  EsiaService(this._dio);
 
-  final Dio dio;
+  final Dio _dio;
 
   Future<String> userExists(String deviceId) async {
-    final response = await dio.get(
+    final response = await _dio.get(
       options: AppDioHeader.dioHeader(),
       'esia/check-user',
       queryParameters: {'deviceId': deviceId},
@@ -22,7 +23,7 @@ class EsiaService {
   }
 
   Future<AuthModel> auth(AuthRequestBody body) async {
-    final response = await dio.post(
+    final response = await _dio.post(
       options: AppDioHeader.dioHeader(),
       'esia/check',
       data: body.toJson(),
@@ -32,7 +33,7 @@ class EsiaService {
   }
 
   Future<void> setPinCode(String persistentSessionToken, String pin) async {
-    await dio.post(
+    await _dio.post(
       options: AppDioHeader.dioHeader(),
       'esia/set-pincode',
       data: {
@@ -48,7 +49,7 @@ class EsiaService {
     String resetPinCodeToken,
     String pinCode,
   ) async {
-    await dio.post(
+    await _dio.post(
       options: AppDioHeader.dioHeader(),
       'esia/set-new-pincode',
       data: {
@@ -61,7 +62,7 @@ class EsiaService {
   }
 
   Future<void> pinCodeEnter(String deviceId, String pin, String pinCode) async {
-    await dio.get(
+    await _dio.get(
       'esia/connection',
       options: AppDioHeader.dioHeader(),
       queryParameters: {'deviceId': deviceId, 'pinCode': pinCode},
@@ -72,7 +73,7 @@ class EsiaService {
     String method,
     String twoFactorSessionToken,
   ) async {
-    await dio.post(
+    await _dio.post(
       'esia/send-code/$method',
       options: AppDioHeader.dioHeader(),
       data: {'twoFactorSessionToken': twoFactorSessionToken},
@@ -80,7 +81,7 @@ class EsiaService {
   }
 
   Future<void> exit(String deviceId) async {
-    await dio.get(
+    await _dio.get(
       'esia/exit',
       options: AppDioHeader.dioHeader(),
       queryParameters: {'deviceId': deviceId},
@@ -89,7 +90,7 @@ class EsiaService {
 
   //TODO: 404
   Future<String> esiaGetTerms(String path) async {
-    await dio.download(
+    await _dio.download(
       AppTextConstants.esiUserStatement,
       path,
       options: Options(
@@ -104,12 +105,54 @@ class EsiaService {
   Future<GetConfirmCodeModel> confirmReceivedCode(
     SendConfirmCodeModel model,
   ) async {
-    final response = await dio.post(
+    final response = await _dio.post(
       'esia/login',
       options: AppDioHeader.dioHeader(),
       data: model.toJson(),
     );
 
     return GetConfirmCodeModel.fromJson(response.data['body']);
+  }
+
+  Future<void> resetPassword(String pin, String contact, String method) async {
+    final sendData = method == 'sms'
+        ? {'pin': pin, 'phoneNumber': contact}
+        : {'pin': pin, 'email': contact};
+
+    await _dio.post(
+      'esia/$method/reset-password',
+      options: AppDioHeader.dioHeader(),
+      data: sendData,
+    );
+  }
+
+  Future<ResetPasswordTokenModel> resetPasswordToken(
+    String pin,
+    String otp,
+  ) async {
+    final response = await _dio.post(
+      'esia/reset-password-token',
+      options: AppDioHeader.dioHeader(),
+      data: {'pin': pin, 'otp': otp},
+    );
+
+    return ResetPasswordTokenModel.fromJson(response.data['body']);
+  }
+
+  Future<void> setNewPassword(
+    String userId,
+    String token,
+    String password,
+  ) async {
+    await _dio.post(
+      'esia/set-new-password',
+      options: AppDioHeader.dioHeader(),
+      data: {
+        'userId': userId,
+        'token': token,
+        'password': password,
+        'newPassword': password,
+      },
+    );
   }
 }

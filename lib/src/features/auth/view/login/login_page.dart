@@ -42,10 +42,11 @@ class LoginPage extends StatelessWidget {
       child: const BackgroundImageWidget(
         slivers: [
           SliverFillRemaining(
-            hasScrollBody: false,
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(30, kToolbarHeight, 30, 0),
-              child: LoginForm(),
+            child: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(30, kToolbarHeight, 30, 0),
+                child: LoginForm(),
+              ),
             ),
           ),
         ],
@@ -64,8 +65,8 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
 
-  late TextEditingController loginController;
-  late TextEditingController passwordController;
+  final loginController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   void dispose() {
@@ -120,6 +121,7 @@ class _LoginFormState extends State<LoginForm> {
             children: [
               GestureDetector(
                 onTap: () {
+                  //TODO:
                   // AppRouting.pushFunction(
                   //     const RecoveryPasswordChoiseTypeRoute());
                 },
@@ -135,7 +137,13 @@ class _LoginFormState extends State<LoginForm> {
           const SizedBox(height: 32),
           BlocConsumer<TermsCubit, TermsState>(
             listener: (context, state) {
-              if (state is TermsSuccess) Navigator.pushNamed(context, pdfRoute);
+              if (state is TermsSuccess) {
+                Navigator.pushNamed(
+                  context,
+                  pdfRoute,
+                  arguments: state.path,
+                );
+              }
             },
             builder: (context, state) => switch (state) {
               TermsLoading() =>
@@ -200,9 +208,7 @@ class _LoginFormState extends State<LoginForm> {
             borderColor: AppColors.esiMainBlueColor,
             color: Colors.white,
             textColor: AppColors.esiMainBlueColor,
-            onPress: () {
-              // AppRouting.pushFunction(const OEPRegisterRoute());
-            },
+            onPress: () => Navigator.pushNamed(context, signupRoute),
             text: 'Получить ОЭП',
           ),
         ],

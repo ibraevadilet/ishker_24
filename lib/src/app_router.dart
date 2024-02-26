@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:ishker_24/src/features/auth/domain/entity/auth_entity.dart';
 import 'package:ishker_24/src/features/auth/domain/entity/confirm_code_entity.dart';
 import 'package:ishker_24/src/features/auth/view/grnp/grnp_screen.dart';
+import 'package:ishker_24/src/features/signup/view/oep_signup_page.dart';
 
 import 'features/auth/view/confirm/confirm_page.dart';
-import 'features/auth/view/grnp/grnp_create/grnp_camera_page.dart';
+import 'core/widgets/camera_page.dart';
 import 'features/auth/view/grnp/grnp_create/grnp_create_page.dart';
 import 'features/auth/view/login/login_page.dart';
 import 'features/auth/view/pincode/enter/pincode_enter_page.dart';
 import 'features/auth/view/pincode/create/pincode_create_page.dart';
-import 'features/auth/view/signup_page.dart';
 import 'features/auth/view/splash/splash_page.dart';
 import 'features/auth/view/widgets/pdf_view_screen.dart';
 import 'features/home/home_page.dart';
@@ -26,7 +26,7 @@ const String pdfRoute = '/pdf';
 const String confirmRoute = '/confirm';
 const String grnpRoute = '/grnp';
 const String grnpCreateRoute = '/grnpCreate';
-const String grnpCameraRoute = '/grnpCamera';
+const String cameraRoute = '/grnpCamera';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -37,7 +37,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => PdfViewScreen(path: path));
 
       case signupRoute:
-        return MaterialPageRoute(builder: (_) => const SignUpPage());
+        return MaterialPageRoute(builder: (_) => const OepSignUpPage());
 
       case loginRoute:
         return MaterialPageRoute(builder: (_) => const LoginPage());
@@ -66,11 +66,11 @@ class AppRouter {
       case grnpCreateRoute:
         return MaterialPageRoute(builder: (_) => const GrnpCreatePage());
 
-      case grnpCameraRoute:
+      case cameraRoute:
         final description = settings.arguments as CameraDescription;
 
         return MaterialPageRoute(
-          builder: (_) => GrnpCameraPage(description: description),
+          builder: (_) => CameraPage(description: description),
         );
 
       default:

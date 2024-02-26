@@ -9,16 +9,16 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/src/core/images/app_images.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 
-class GrnpCameraPage extends StatefulWidget {
-  const GrnpCameraPage({super.key, required this.description});
+class CameraPage extends StatefulWidget {
+  const CameraPage({super.key, required this.description});
 
   final CameraDescription description;
 
   @override
-  State<GrnpCameraPage> createState() => _GrnpCameraPageState();
+  State<CameraPage> createState() => _CameraPageState();
 }
 
-class _GrnpCameraPageState extends State<GrnpCameraPage>
+class _CameraPageState extends State<CameraPage>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
@@ -78,30 +78,28 @@ class _GrnpCameraPageState extends State<GrnpCameraPage>
                     child: CameraPreview(
                       _controller,
                       child: Padding(
-                          padding: EdgeInsets.all(Platform.isIOS ? 20 : 10),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                'Для прохождения успешной идентификации лицо должно быть хорошо освещено.',
-                                style:
-                                    AppTextStyles.s12W500(color: Colors.white),
-                                textAlign: TextAlign.center,
-                              ),
-                              const SizedBox(height: 2),
-                              SvgPicture.asset(
-                                  AppImages.selfieAttentionIconSvg),
-                              Image.asset(
-                                AppImages.faceEllipseIcon,
+                        padding: EdgeInsets.all(Platform.isIOS ? 20 : 10),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Для прохождения успешной идентификации лицо должно быть хорошо освещено.',
+                              style: AppTextStyles.s12W500(color: Colors.white),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 2),
+                            SvgPicture.asset(AppImages.selfieAttentionIconSvg),
+                            Image.asset(
+                              AppImages.faceEllipseIcon,
+                              height: MediaQuery.of(context).size.height * 0.35,
+                            ),
+                            SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.35,
-                              ),
-                              SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.05),
-                              const SizedBox(height: 10.0),
-                            ],
-                          )),
+                                    MediaQuery.of(context).size.height * 0.05),
+                            const SizedBox(height: 10.0),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),

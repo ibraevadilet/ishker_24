@@ -6,11 +6,11 @@ import 'package:ishker_24/theme/app_text_styles.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
+    super.key,
     this.text,
     this.color = AppColors.color54B25AMain,
     this.loadingColor = Colors.white,
     required this.onPress,
-    Key? key,
     this.width = double.infinity,
     this.isFullFilled = true,
     this.isLoading = false,
@@ -22,7 +22,7 @@ class CustomButton extends StatelessWidget {
     this.child,
     this.borderColor,
     this.textColor = Colors.white,
-  }) : super(key: key);
+  });
 
   final double? width;
   final double height;
@@ -37,7 +37,7 @@ class CustomButton extends StatelessWidget {
   final bool isLoading;
   final TextStyle? textStyle;
   final String? text;
-  final Function() onPress;
+  final VoidCallback onPress;
   final Widget? child;
 
   @override
@@ -55,11 +55,8 @@ class CustomButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(radius),
-            border: borderColor != null
-                ? Border.all(
-                    color: borderColor!,
-                  )
-                : null,
+            border:
+                borderColor != null ? Border.all(color: borderColor!) : null,
           ),
           child: isLoading
               ? AppIndicator(color: loadingColor)
@@ -67,10 +64,7 @@ class CustomButton extends StatelessWidget {
                   Text(
                     text!,
                     textAlign: TextAlign.center,
-                    style: textStyle ??
-                        AppTextStyles.s17W600(
-                          color: textColor,
-                        ),
+                    style: textStyle ?? AppTextStyles.s17W600(color: textColor),
                   ),
         ),
       ),

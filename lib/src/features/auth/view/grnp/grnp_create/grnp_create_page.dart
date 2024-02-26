@@ -101,11 +101,8 @@ class _GrnpCreateViewState extends State<GrnpCreateView> {
 
       // Navigator.push returns a Future that completes after calling
       // Navigator.pop on the Selection Screen.
-      file = await Navigator.pushNamed(
-        context,
-        grnpCameraRoute,
-        arguments: descr,
-      ) as XFile;
+      file = await Navigator.pushNamed(context, cameraRoute, arguments: descr)
+          as XFile;
 
       setState(() {});
 

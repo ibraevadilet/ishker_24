@@ -13,10 +13,19 @@ import 'package:ishker_24/src/features/auth/domain/usecases/pincode_enter_usecas
 import 'package:ishker_24/src/features/auth/domain/usecases/pincode_new_usecase.dart';
 import 'package:ishker_24/src/features/auth/domain/usecases/pincode_cached_usecase.dart';
 import 'package:ishker_24/src/features/auth/domain/usecases/terms_usecase.dart';
+import 'package:ishker_24/src/features/recovery/data/datasources/recovery_datasource.dart';
+import 'package:ishker_24/src/features/recovery/domain/repositories/i_recovery_repository.dart';
+import 'package:ishker_24/src/features/recovery/domain/usecases/reset_password_usecase.dart';
+import 'package:ishker_24/src/features/signup/data/datasources/signup_remote_datasource.dart';
+import 'package:ishker_24/src/features/signup/data/repositories/signup_repository_impl.dart';
+import 'package:ishker_24/src/features/signup/domain/repositories/i_signup_repository.dart';
+import 'package:ishker_24/src/features/signup/domain/usecases/oep_terms_usecase.dart';
+import 'package:ishker_24/src/features/signup/domain/usecases/signup_usecase.dart';
 
 import 'core/network/auth_service.dart';
 import 'core/network/esia_service.dart';
 import 'core/network/grnp_service.dart';
+import 'core/network/oep_service.dart';
 import 'core/network/rsk_service.dart';
 import 'core/utils/app_device_info.dart';
 import 'features/auth/data/repositories/auth_repository_impl.dart';
@@ -26,6 +35,7 @@ import 'features/auth/domain/usecases/exists_user_usecase.dart';
 import 'features/auth/domain/usecases/get_cached_pin_usecase.dart';
 import 'features/auth/domain/usecases/grnp_create_use_case.dart';
 import 'features/auth/domain/usecases/pincode_set_usecase.dart';
+import 'features/recovery/data/repositories/recovery_repository_impl.dart';
 
 final sl = GetIt.instance;
 
@@ -70,10 +80,17 @@ Future<void> init() async {
   sl.registerLazySingleton(() => EsiaService(slo));
   sl.registerLazySingleton(() => GRNPService(slo));
   sl.registerLazySingleton(() => AuthService(slo));
+  sl.registerLazySingleton(() => OepService(slo));
 
   // data sources
   sl.registerLazySingleton<IAuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(sl(), sl(), sl()),
+  );
+  sl.registerLazySingleton<ISignUpRemoteDataSource>(
+    () => SignUpRemoteDataSourceImpl(sl()),
+  );
+  sl.registerLazySingleton<IRecoveryDataSource>(
+    () => RecoveryDataSourceImpl(sl()),
   );
 
   // repositories
@@ -83,6 +100,12 @@ Future<void> init() async {
 
   sl.registerLazySingleton<IAuthRepository>(
     () => AuthRepositoryImpl(sl(), sl(), sl()),
+  );
+  sl.registerLazySingleton<ISignUpRepository>(
+    () => SignUpRepositoryImpl(sl(), sl()),
+  );
+  sl.registerLazySingleton<IRecoveryRepository>(
+    () => RecoveryRepositoryImpl(sl(), sl()),
   );
 
   // usecases
@@ -99,4 +122,9 @@ Future<void> init() async {
   sl.registerFactory(() => PinCodeCachedUseCase(sl()));
   sl.registerFactory(() => GrnpCheckUseCase(sl()));
   sl.registerFactory(() => GrnpCreateaUseCase(sl()));
+
+  sl.registerFactory(() => SignUpUseCase(sl()));
+  sl.registerFactory(() => OepTermsUseCase(sl()));
+
+  sl.registerFactory(() => ResetPasswordUseCase(sl()));
 }

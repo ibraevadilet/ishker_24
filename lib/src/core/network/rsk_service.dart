@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
 class RskService {
-  RskService(this.dio);
+  RskService(this._dio);
 
-  final Dio dio;
+  final Dio _dio;
 
   // Future<String> generateQR(GenerateQrPostModel model) async {
   //   final response = await dio.post(
