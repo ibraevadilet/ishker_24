@@ -16,18 +16,29 @@ class GetMyIpCubit extends Cubit<GetMyIpState> {
   Future<void> getMyIp() async {
     emit(const GetMyIpState.loading());
     try {
-      final result = await useCase.checkIp();
-      if (result == null) {
-        emit(const GetMyIpState.emptyIp());
-      } else {
-        if (result.gnsStatus == 'REFUSED') {
-          emit(GetMyIpState.declinedIp(result.declinedReason, result.created!));
-        } else if (result.gnsStatus == 'IN_PROCESS') {
-          emit(const GetMyIpState.inProccess());
-        } else {
-          emit(GetMyIpState.success(result));
-        }
-      }
+      emit(
+        GetMyIpState.success(
+          CheckHasIPModel(
+            gnsStatus: '',
+            declinedReason: '',
+            firstName: '',
+            lastName: '',
+            middleName: '',
+          ),
+        ),
+      );
+      // final result = await useCase.checkIp();
+      // if (result == null) {
+      //   emit(const GetMyIpState.emptyIp());
+      // } else {
+      //   if (result.gnsStatus == 'REFUSED') {
+      //     emit(GetMyIpState.declinedIp(result.declinedReason, result.created!));
+      //   } else if (result.gnsStatus == 'IN_PROCESS') {
+      //     emit(const GetMyIpState.inProccess());
+      //   } else {
+      //     emit(GetMyIpState.success(result));
+      //   }
+      // }
     } catch (e) {
       emit(GetMyIpState.error(e.toString()));
     }

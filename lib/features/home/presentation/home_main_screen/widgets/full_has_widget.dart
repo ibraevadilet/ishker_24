@@ -32,7 +32,7 @@ class FullHasWidget extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        'ИП ${model.pin}',
+                        model.fio,
                         style: AppTextStyles.s16W600(),
                       ),
                     ),
@@ -41,7 +41,6 @@ class FullHasWidget extends StatelessWidget {
                 ),
                 Expanded(
                   child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -53,18 +52,21 @@ class FullHasWidget extends StatelessWidget {
                                 style: AppTextStyles.s16W700(),
                               ),
                             ),
-                            IconButton(
-                              splashColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onPressed: () {
-                                AppRouting.pushFunction(
-                                  OpenAccountRoute(partyId: model.absId),
-                                );
-                              },
-                              icon: const Icon(
-                                Icons.add,
-                                color: AppColors.color34C759Green,
+                            Visibility(
+                              visible: model.accountsList.isEmpty,
+                              child: IconButton(
+                                splashColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onPressed: () {
+                                  AppRouting.pushFunction(
+                                    OpenAccountRoute(partyId: model.absId),
+                                  );
+                                },
+                                icon: const Icon(
+                                  Icons.add,
+                                  color: AppColors.color34C759Green,
+                                ),
                               ),
                             ),
                           ],
