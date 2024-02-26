@@ -36,7 +36,7 @@ class FullHasWidget extends StatelessWidget {
                         style: AppTextStyles.s16W600(),
                       ),
                     ),
-                    SvgPicture.asset(AppImages.notificationIconSvg),
+                    SvgPicture.asset(AppImages.mainNotificationIcon),
                   ],
                 ),
                 Expanded(

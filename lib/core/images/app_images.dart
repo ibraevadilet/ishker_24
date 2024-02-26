@@ -26,6 +26,7 @@ class AppImages {
   static const String emptyAccontIcon = 'assets/images/empty_accont_icon.svg';  
   static const String empyListIconSvg = 'assets/images/empy_list_icon_svg.svg';  
   static const String errorIcon = 'assets/images/error_icon.svg';  
+  static const String esfIcon = 'assets/images/esf_icon.svg';  
   static const String esiErrorIcon = 'assets/images/esi_error_icon.png';  
   static const String esiLogoImage = 'assets/images/esi_logo_image.png';  
   static const String esiMainPageIcon = 'assets/images/esi_main_page_icon.png';  
@@ -43,14 +44,17 @@ class AppImages {
   static const String folderImageSvg = 'assets/images/folder_imageSvg.svg';  
   static const String helpIcon = 'assets/images/help_icon.svg';  
   static const String homeIcon = 'assets/images/home_icon.svg';  
+  static const String ipIcon = 'assets/images/ip_icon.svg';  
   static const String ipImage = 'assets/images/ip_image.png';  
   static const String kgLangIcon = 'assets/images/kg_lang_icon.svg';  
+  static const String kkmIcon = 'assets/images/kkm_icon.svg';  
   static const String langIcon = 'assets/images/lang_icon.svg';  
   static const String logo = 'assets/images/logo.png';  
+  static const String mainNotificationIcon = 'assets/images/main_notification_icon.svg';  
   static const String moreIcon = 'assets/images/more_icon.svg';  
   static const String myIpIcon = 'assets/images/my_ip_icon.svg';  
   static const String noInternetError = 'assets/images/no_internet_error.svg';  
-  static const String notificationIconSvg = 'assets/images/notification_icon_svg.svg';  
+  static const String notificationIcon = 'assets/images/notification_icon.svg';  
   static const String passwordIconSvg = 'assets/images/password_icon_svg.svg';  
   static const String paymentIcon = 'assets/images/payment_icon.svg';  
   static const String personIconSvg = 'assets/images/person_icon_svg.svg';  
@@ -73,6 +77,7 @@ class AppImages {
   static const String signatureImage = 'assets/images/signature_image.svg';  
   static const String starSelectedIcon = 'assets/images/star_selected_icon.svg';  
   static const String successCreatedAccountIcon = 'assets/images/success_created_account_icon.svg';  
+  static const String taxIcon = 'assets/images/tax_icon.svg';  
   static const String telegramIcon = 'assets/images/telegram_icon.svg';  
   static const String transferIcon = 'assets/images/transfer_icon.svg';  
   static const String unselectedCardIcon = 'assets/images/unselected_card_icon.svg';  

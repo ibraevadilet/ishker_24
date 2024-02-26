@@ -105,7 +105,8 @@ class _SettingsMainScreenState extends State<SettingsMainScreen> {
               const SizedBox(height: 8),
               SettingsExpandedList(
                 image: SvgPicture.asset(
-                  AppImages.notificationIconSvg,
+                  AppImages.notificationIcon,
+                  height: 32,
                 ),
                 title: 'Уведомления',
                 children: [
