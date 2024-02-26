@@ -21,6 +21,7 @@ class AppImages {
   static const String copyIconSvg = 'assets/images/copy_icon_svg.svg';  
   static const String creditIcon = 'assets/images/credit_icon.svg';  
   static const String depositIcon = 'assets/images/deposit_icon.svg';  
+  static const String edNalogIcon = 'assets/images/ed_nalog_icon.svg';  
   static const String editIcon = 'assets/images/edit_icon.svg';  
   static const String emptyAccontIcon = 'assets/images/empty_accont_icon.svg';  
   static const String empyListIconSvg = 'assets/images/empy_list_icon_svg.svg';  

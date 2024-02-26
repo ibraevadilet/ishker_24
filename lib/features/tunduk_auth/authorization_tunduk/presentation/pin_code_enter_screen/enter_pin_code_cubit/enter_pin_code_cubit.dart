@@ -22,7 +22,6 @@ class EnterPinCodeCubit extends Cubit<EnterPinCodeState> {
     try {
       await useCase.enterPinCode(pinCode);
       final isHaveGrnp = await grnpUseCase.checkGrnp();
-      print('grnpppp -- $isHaveGrnp');
       if (isHaveGrnp) {
         emit(const EnterPinCodeState.success());
       } else {

@@ -88,6 +88,7 @@ import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_c
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/confirm_received_code_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/exit_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/get_confirm_code_usecase.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/get_tokens_use_case.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/pin_code_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_confirm_code_screen/cubits/confirm_received_code_cubit/confirm_received_code_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/auth_cubit/auth_cubit.dart';
@@ -225,6 +226,8 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<GetClientPassportUseCase>(
       () => GetClientPassportUseCase(repo: sl()));
   sl.registerFactory<CheckGrnpUseCase>(() => CheckGrnpUseCase(repo: sl()));
+  sl.registerLazySingleton<GetTokensUseCase>(
+      () => GetTokensUseCase(repo: sl(), prefs: sl()));
 
   /// BLoCs / Cubits
 
@@ -245,7 +248,8 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<SendOtpCubit>(() => SendOtpCubit(useCase: sl()));
   sl.registerFactory<ConfirmOtpCubit>(() => ConfirmOtpCubit(useCase: sl()));
   sl.registerFactory<TimerCubit>(() => TimerCubit());
-  sl.registerFactory<AuthCubit>(() => AuthCubit(useCase: sl(), prefs: sl()));
+  sl.registerFactory<AuthCubit>(
+      () => AuthCubit(useCase: sl(), prefs: sl(), tokenseCase: sl()));
   sl.registerFactory<GetConfirmCodeCubit>(
       () => GetConfirmCodeCubit(useCase: sl()));
   sl.registerFactory<ConfirmReceivedCodeCubit>(
