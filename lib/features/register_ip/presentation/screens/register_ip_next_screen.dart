@@ -102,8 +102,9 @@ class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          selectedVidDeatelnost?.text ??
-                                              'Вид экономической деятельности',
+                                          selectedVidDeatelnost == null
+                                              ? 'Вид экономической деятельности'
+                                              : '${selectedVidDeatelnost!.id} - ${selectedVidDeatelnost!.text}',
                                           style: AppTextStyles.s16W400(),
                                         ),
                                       ),

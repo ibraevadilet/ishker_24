@@ -62,7 +62,7 @@ class RegisterIPTypeOfActivityScreen extends StatelessWidget {
                           Navigator.of(context).pop(state.model[index]);
                         },
                         child: Text(
-                          state.model[index].text,
+                          '${state.model[index].id} - ${state.model[index].text}',
                           style: AppTextStyles.s16W500(),
                         ),
                       ),

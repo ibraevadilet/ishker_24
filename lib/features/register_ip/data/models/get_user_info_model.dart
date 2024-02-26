@@ -25,16 +25,16 @@ class GetUserInfoModel {
 
   factory GetUserInfoModel.fromJson(Map<String, dynamic> json) =>
       GetUserInfoModel(
-        inn: json["inn"],
+        inn: json["inn"] ?? '',
         addressObl: json["addressObl"] ?? '',
-        addressStreet: json["addressStreet"],
-        phoneNumber: json["phoneNumber"],
-        fio: json["fio"],
-        passportSeries: json["passportSeries"],
-        passportNumber: json["passportNumber"],
+        addressStreet: json["addressStreet"] ?? '',
+        phoneNumber: json["phoneNumber"] ?? '',
+        fio: json["fio"] ?? '',
+        passportSeries: json["passportSeries"] ?? '',
+        passportNumber: json["passportNumber"] ?? '',
         issuedDate: DateTime.parse(json["issuedDate"]),
-        passportAuthority: json["passportAuthority"],
-        passportAuthorityCode: json["passportAuthorityCode"],
+        passportAuthority: json["passportAuthority"] ?? '',
+        passportAuthorityCode: json["passportAuthorityCode"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {

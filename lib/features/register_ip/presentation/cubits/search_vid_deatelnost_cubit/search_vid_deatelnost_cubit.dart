@@ -18,8 +18,8 @@ class SearchVidDeatelnostCubit extends Cubit<SearchVidDeatelnostState> {
 
   void searchList(String value) {
     final newList = List<TaxModel>.from(modelList);
-    newList.removeWhere(
-        (e) => !e.text.toLowerCase().contains(value.toLowerCase()));
+    newList.removeWhere((e) =>
+        !'${e.id} - ${e.text}'.toLowerCase().contains(value.toLowerCase()));
     emit(SearchVidDeatelnostState.initial(newList));
   }
 }
