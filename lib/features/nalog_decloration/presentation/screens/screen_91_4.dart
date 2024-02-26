@@ -19,55 +19,55 @@ class Screen914 extends StatefulWidget {
 }
 
 class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
-  static const List<Tab> myTabs1 = <Tab>[
-    Tab(text: '1 месяц'),
-    Tab(text: '2 месяц'),
-    Tab(text: '3 месяц'),
+  static List<Tab> myTabs1 = <Tab>[
+    const Tab(text: '1 месяц'),
+    const Tab(text: '2 месяц'),
+    const Tab(text: '3 месяц'),
   ];
-  static const List<Tab> myTabs2 = <Tab>[
-    Tab(text: '1 месяц'),
-    Tab(text: '2 месяц'),
-    Tab(text: '3 месяц'),
+  static List<Tab> myTabs2 = <Tab>[
+    const Tab(text: '1 месяц'),
+    const Tab(text: '2 месяц'),
+    const Tab(text: '3 месяц'),
   ];
-  static const List<Tab> myTabs3 = <Tab>[
-    Tab(text: '1 месяц'),
-    Tab(text: '2 месяц'),
-    Tab(text: '3 месяц'),
+  static List<Tab> myTabs3 = <Tab>[
+    const Tab(text: '1 месяц'),
+    const Tab(text: '2 месяц'),
+    const Tab(text: '3 месяц'),
   ];
-  static const List<Tab> myTabs4 = <Tab>[
-    Tab(text: '1 месяц'),
-    Tab(text: '2 месяц'),
-    Tab(text: '3 месяц'),
+  static List<Tab> myTabs4 = <Tab>[
+    const Tab(text: '1 месяц'),
+    const Tab(text: '2 месяц'),
+    const Tab(text: '3 месяц'),
   ];
-  static const List<Tab> myTabs5 = <Tab>[
-    Tab(text: '1 месяц'),
-    Tab(text: '2 месяц'),
-    Tab(text: '3 месяц'),
+  static List<Tab> myTabs5 = <Tab>[
+    const Tab(text: '1 месяц'),
+    const Tab(text: '2 месяц'),
+    const Tab(text: '3 месяц'),
   ];
-  static const List<Tab> myTabs6 = <Tab>[
-    Tab(text: '1 месяц'),
-    Tab(text: '2 месяц'),
-    Tab(text: '3 месяц'),
+  static List<Tab> myTabs6 = <Tab>[
+    const Tab(text: '1 месяц'),
+    const Tab(text: '2 месяц'),
+    const Tab(text: '3 месяц'),
   ];
-  static const List<Tab> myTabs7 = <Tab>[
-    Tab(text: '1 месяц'),
-    Tab(text: '2 месяц'),
-    Tab(text: '3 месяц'),
+  static List<Tab> myTabs7 = <Tab>[
+    const Tab(text: '1 месяц'),
+    const Tab(text: '2 месяц'),
+    const Tab(text: '3 месяц'),
   ];
-  static const List<Tab> myTabs8 = <Tab>[
-    Tab(text: '1 месяц'),
-    Tab(text: '2 месяц'),
-    Tab(text: '3 месяц'),
+  static List<Tab> myTabs8 = <Tab>[
+    const Tab(text: '1 месяц'),
+    const Tab(text: '2 месяц'),
+    const Tab(text: '3 месяц'),
   ];
-  static const List<Tab> myTabs9 = <Tab>[
-    Tab(text: '1 месяц'),
-    Tab(text: '2 месяц'),
-    Tab(text: '3 месяц'),
+  static List<Tab> myTabs9 = <Tab>[
+    const Tab(text: '1 месяц'),
+    const Tab(text: '2 месяц'),
+    const Tab(text: '3 месяц'),
   ];
-  static const List<Tab> myTabs10 = <Tab>[
-    Tab(text: '1 месяц'),
-    Tab(text: '2 месяц'),
-    Tab(text: '3 месяц'),
+  static List<Tab> myTabs10 = <Tab>[
+    const Tab(text: '1 месяц'),
+    const Tab(text: '2 месяц'),
+    const Tab(text: '3 месяц'),
   ];
   int? selectedKvartalIndex;
   String groupValue = 'first';
@@ -223,7 +223,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 12),
                           Text(
                             'Наименование района',
-                            style: AppTextStyles.s16W500(),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(
@@ -324,7 +325,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   children: [
                                     Text(
                                       'Дата с',
-                                      style: AppTextStyles.s16W500(),
+                                      style: AppTextStyles.s16W500(
+                                          color: AppColors.color6B7583Grey),
                                     ),
                                     const SizedBox(height: 12),
                                     const CustomTextField(),
@@ -339,7 +341,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   children: [
                                     Text(
                                       'по',
-                                      style: AppTextStyles.s16W500(),
+                                      style: AppTextStyles.s16W500(
+                                          color: AppColors.color6B7583Grey),
                                     ),
                                     const SizedBox(height: 12),
                                     const CustomTextField()
@@ -356,13 +359,14 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 16),
                           Text(
                             'Торговая деятельность, осуществляемой:',
-                            style: AppTextStyles.s16W500(),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           Text(
                             'А) Субъектом, за исключением импортера, экспортера, дистрибьютера и субъекта реализующего горючего-смазочные материалы, лекарственные средства и медицинские изделия',
-                            style: AppTextStyles.s16W500()
-                                .copyWith(color: AppColors.color6B7583Grey),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           Text(
@@ -387,9 +391,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'От 30 000 000 до 50 000 000\nсомов',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -411,13 +415,13 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 24),
                           Text(
                             'Б) Субъектом, не указанных в пункте А), оплаченных:',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В наличной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -437,9 +441,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В безналичной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -459,9 +463,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В адрес обезличенного субъекта',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -490,13 +494,13 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 24),
                           Text(
                             'Переработка сельскохозяйственной продукции, производственная сфера, туроператорской деятельности, разработки программного обеспечения в области вычислительной техники, а также для турагентской деятельности, оплаченных:',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В наличной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -516,9 +520,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В безналичной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -544,15 +548,13 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 24),
-                          Text(
-                            'Остальные виды деятельности,\nоплаченных:',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
-                          ),
+                          Text('Остальные виды деятельности,\nоплаченных:',
+                              style: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey)),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В наличной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -572,9 +574,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В безналичной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -602,14 +604,13 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 24),
                           Text(
                             'Общественное питание, оплаченных:',
-                            style: AppTextStyles.s16w500.copyWith(
-                              color: const Color(0xff6B7583),
-                            ),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В наличной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -629,9 +630,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В безналичной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -659,8 +660,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 24),
                           Text(
                             'Швейное и/или текстильное производство',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -682,8 +683,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 24),
                           Text(
                             'Сауна',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -705,8 +706,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 24),
                           Text(
                             'Бильярд',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -728,8 +729,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 24),
                           Text(
                             'Баня, за исключением муниципиальных\nбань',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -751,8 +752,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 24),
                           Text(
                             'Резидент парка креативной индустрии',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -774,8 +775,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           const SizedBox(height: 24),
                           Text(
                             'Торговая деятельность на рынках и мини рынках (определенных кабинетом министров кыргызской республики)',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -805,19 +806,20 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    const Text(
+                    Text(
                       'Приложение 1 (FORM\nSTI -091-001)',
-                      style: AppTextStyles.s20w500,
+                      style: AppTextStyles.s20W500(),
                     ),
                     const SizedBox(height: 24),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Торговая деятельность,\nосуществляемой',
-                          style: AppTextStyles.s16w500,
+                          style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_up,
                           size: 30,
                         )
@@ -839,7 +841,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TabBar(
-                              labelStyle: AppTextStyles.s16w500,
+                              labelStyle: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey),
                               indicatorSize: TabBarIndicatorSize.tab,
                               indicator: BoxDecoration(
                                 color: AppColors.color32D681Green,
@@ -868,10 +871,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                         Flexible(
                                           child: Text(
                                             'А) Субъектом, за исключением\nимпортера, экспортера,\nдистрибьютера и субъекта\nреализующего горючего-\nсмазочные материалы,\nлекарственные средства и\nмедицинские изделия',
-                                            style: AppTextStyles.s16w500
-                                                .copyWith(
-                                                    color: AppColors
-                                                        .color6B7583Grey),
+                                            style: AppTextStyles.s16W500(
+                                                color:
+                                                    AppColors.color6B7583Grey),
                                           ),
                                         ),
                                         const Icon(
@@ -881,9 +883,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                       ],
                                     ),
                                     const SizedBox(height: 24),
-                                    const Text(
+                                    Text(
                                       'До 30 000 000 сомов',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -905,9 +907,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 12),
                                     const StaticContainerInfoWidget(title: ''),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'От 30 000 000 до 50 000 000\nсомов',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -934,7 +936,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                       children: [
                                         Text(
                                           'Б) Субъектом, не указанных\nв пункте «А»',
-                                          style: AppTextStyles.s16w500.copyWith(
+                                          style: AppTextStyles.s16W500(
                                               color: AppColors.color6B7583Grey),
                                         ),
                                         const Icon(
@@ -944,9 +946,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                       ],
                                     ),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -967,9 +969,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 12),
                                     const StaticContainerInfoWidget(title: ''),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -990,9 +992,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 12),
                                     const StaticContainerInfoWidget(title: ''),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'В адрес обезличенного субъекта',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -1032,10 +1034,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                         Flexible(
                                           child: Text(
                                             'А) Субъектом, за исключением\nимпортера, экспортера,\nдистрибьютера и субъекта\nреализующего горючего-\nсмазочные материалы,\nлекарственные средства и\nмедицинские изделия',
-                                            style: AppTextStyles.s16w500
-                                                .copyWith(
-                                                    color: AppColors
-                                                        .color6B7583Grey),
+                                            style: AppTextStyles.s16W500(
+                                                color:
+                                                    AppColors.color6B7583Grey),
                                           ),
                                         ),
                                         const Icon(
@@ -1045,9 +1046,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                       ],
                                     ),
                                     const SizedBox(height: 24),
-                                    const Text(
+                                    Text(
                                       'До 30 000 000 сомов',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -1069,9 +1070,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 12),
                                     const StaticContainerInfoWidget(title: ''),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'От 30 000 000 до 50 000 000\nсомов',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -1098,7 +1099,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                       children: [
                                         Text(
                                           'Б) Субъектом, не указанных\nв пункте «А»',
-                                          style: AppTextStyles.s16w500.copyWith(
+                                          style: AppTextStyles.s16W500(
                                               color: AppColors.color6B7583Grey),
                                         ),
                                         const Icon(
@@ -1108,9 +1109,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                       ],
                                     ),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -1131,10 +1132,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 12),
                                     const StaticContainerInfoWidget(title: ''),
                                     const SizedBox(height: 16),
-                                    const Text(
-                                      'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
-                                    ),
+                                    Text('В безналичной форме',
+                                        style: AppTextStyles.s20W500()),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
                                         number: '259',
@@ -1154,9 +1153,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 12),
                                     const StaticContainerInfoWidget(title: ''),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'В адрес обезличенного субъекта',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -1196,10 +1195,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                         Flexible(
                                           child: Text(
                                             'А) Субъектом, за исключением\nимпортера, экспортера,\nдистрибьютера и субъекта\nреализующего горючего-\nсмазочные материалы,\nлекарственные средства и\nмедицинские изделия',
-                                            style:
-                                                AppTextStyles.s16w500.copyWith(
-                                              color: AppColors.color6B7583Grey,
-                                            ),
+                                            style: AppTextStyles.s16W500(
+                                                color:
+                                                    AppColors.color6B7583Grey),
                                           ),
                                         ),
                                         const Icon(
@@ -1209,9 +1207,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                       ],
                                     ),
                                     const SizedBox(height: 24),
-                                    const Text(
+                                    Text(
                                       'До 30 000 000 сомов',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -1233,9 +1231,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 12),
                                     const StaticContainerInfoWidget(title: ''),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'От 30 000 000 до 50 000 000\nсомов',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -1262,7 +1260,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                       children: [
                                         Text(
                                           'Б) Субъектом, не указанных\nв пункте «А»',
-                                          style: AppTextStyles.s16w500.copyWith(
+                                          style: AppTextStyles.s16W500(
                                               color: AppColors.color6B7583Grey),
                                         ),
                                         const Icon(
@@ -1272,9 +1270,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                       ],
                                     ),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -1295,9 +1293,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 12),
                                     const StaticContainerInfoWidget(title: ''),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -1318,9 +1316,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 12),
                                     const StaticContainerInfoWidget(title: ''),
                                     const SizedBox(height: 16),
-                                    const Text(
+                                    Text(
                                       'В адрес обезличенного субъекта',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -1356,14 +1354,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Переработка\nсельскохозяйственной\nпродукции, производственная\nсфера, туроператорской\nдеятельности, разработки\nпрограммного обеспечения в\nобласти вычислительной\nтехники, а также для\nтурагентской деятельности,\nоплаченных:',
-                          style: AppTextStyles.s16w500,
+                          style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_up,
                           size: 30,
                         ),
@@ -1385,7 +1384,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TabBar(
-                              labelStyle: AppTextStyles.s16w500,
+                              labelStyle: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey),
                               indicatorSize: TabBarIndicatorSize.tab,
                               indicator: BoxDecoration(
                                 color: AppColors.color32D681Green,
@@ -1402,186 +1402,186 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                             height: 880,
                             child: TabBarView(
                               controller: _2tabController,
-                              children: const [
+                              children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '176',
                                         title:
                                             'Выручка от реализации товаров, работ,\nуслуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '177',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '178', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                     Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '179',
                                         title:
                                             'Выручка от реализации товаров, работ, услуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '180',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '2'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '2'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '181', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '182',
                                       title:
                                           'Итого сумма единого налога (178+181)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '266',
                                         title:
                                             'Выручка от реализации товаров, работ, услуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '267',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '268', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                     Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '269',
                                         title:
                                             'Выручка от реализации товаров, работ, услуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '270',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '2'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '2'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '271', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '272',
                                       title:
                                           'Итого сумма единого налога (268+271)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '326',
                                         title:
                                             'Выручка от реализации товаров, работ, услуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '327',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '328', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                     Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '329',
                                         title:
                                             'Выручка от реализации товаров, работ,\nуслуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '330',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '2'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '2'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '331', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '332',
                                       title:
                                           'Итого сумма единого налога (328+331)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                               ],
@@ -1591,14 +1591,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Остальные виды деятельности',
-                          style: AppTextStyles.s16w500,
+                          style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_up,
                           size: 30,
                         ),
@@ -1620,7 +1621,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TabBar(
-                              labelStyle: AppTextStyles.s16w500,
+                              labelStyle: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey),
                               indicatorSize: TabBarIndicatorSize.tab,
                               indicator: BoxDecoration(
                                 color: AppColors.color32D681Green,
@@ -1637,186 +1639,186 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                             height: 880,
                             child: TabBarView(
                               controller: _3tabController,
-                              children: const [
+                              children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '183',
                                         title:
                                             'Выручка от реализации товаров, работ,\nуслуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '184',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '185', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                     Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '186',
                                         title:
                                             'Выручка от реализации товаров, работ, услуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '187',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '2'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '2'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '188', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '189',
                                       title:
                                           'Итого сумма единого налога (185+188)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '273',
                                         title:
                                             'Выручка от реализации товаров, работ, услуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '274',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '275', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                     Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '276',
                                         title:
                                             'Выручка от реализации товаров, работ, услуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '277',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '2'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '2'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '278', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '279',
                                       title:
                                           'Итого сумма единого налога (275+278)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '333',
                                         title:
                                             'Выручка от реализации товаров, работ, услуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '334',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '335', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                     Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '336',
                                         title:
                                             'Выручка от реализации товаров, работ,\nуслуг'),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '337',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '2'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '2'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '338', title: 'Сумма налога'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '339',
                                       title:
                                           'Итого сумма единого налога (335+338)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                               ],
@@ -1826,14 +1828,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Общественное питание',
-                          style: AppTextStyles.s16w500,
+                          style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_up,
                           size: 30,
                         ),
@@ -1855,7 +1858,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TabBar(
-                              labelStyle: AppTextStyles.s16w500,
+                              labelStyle: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey),
                               indicatorSize: TabBarIndicatorSize.tab,
                               indicator: BoxDecoration(
                                 color: AppColors.color32D681Green,
@@ -1872,209 +1876,209 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                             height: 880,
                             child: TabBarView(
                               controller: _4tabController,
-                              children: const [
+                              children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '190',
                                       title:
                                           'Выручка от реализации товаров, работ,\nуслуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '191',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '192',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                     Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '193',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '194',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '2'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '2'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '195',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '196',
                                       title:
                                           'Итого сумма единого налога (192+195)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '280',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '281',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '282',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                     Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '283',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                         number: '284',
                                         title: 'Ставка налога (%)'),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '2'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '2'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '285',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '286',
                                       title:
                                           'Итого сумма единого налога (282+285)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '340',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '341',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '342',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
                                     Text(
                                       'В безналичной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '343',
                                       title:
                                           'Выручка от реализации товаров, работ,\nуслуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '344',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '2'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '2'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '345',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
-                                    SizedBox(height: 16),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 16),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '346',
                                       title:
                                           'Итого сумма единого налога (342+345)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                               ],
@@ -2084,14 +2088,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Швейное и/или текстильное\nпроизводство',
-                          style: AppTextStyles.s16w500,
+                          style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_up,
                           size: 30,
                         ),
@@ -2113,7 +2118,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TabBar(
-                              labelStyle: AppTextStyles.s16w500,
+                              labelStyle: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey),
                               indicatorSize: TabBarIndicatorSize.tab,
                               indicator: BoxDecoration(
                                 color: AppColors.color32D681Green,
@@ -2130,101 +2136,101 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                             height: 376,
                             child: TabBarView(
                               controller: _5tabController,
-                              children: const [
+                              children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '197',
                                       title:
                                           'Выручка от реализации товаров, работ,\nуслуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '198',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '199',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '287',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '288',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '289',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '347',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '348',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '349',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                               ],
@@ -2234,14 +2240,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Сауна',
-                          style: AppTextStyles.s16w500,
+                          style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_up,
                           size: 30,
                         ),
@@ -2263,7 +2270,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TabBar(
-                              labelStyle: AppTextStyles.s16w500,
+                              labelStyle: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey),
                               indicatorSize: TabBarIndicatorSize.tab,
                               indicator: BoxDecoration(
                                 color: AppColors.color32D681Green,
@@ -2280,101 +2288,101 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                             height: 376,
                             child: TabBarView(
                               controller: _6tabController,
-                              children: const [
+                              children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '200',
                                       title:
                                           'Выручка от реализации товаров, работ,\nуслуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '201',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '202',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '290',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '291',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '292',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '350',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '351',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '352',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                               ],
@@ -2384,14 +2392,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Бильярд',
-                          style: AppTextStyles.s16w500,
+                          style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_up,
                           size: 30,
                         ),
@@ -2413,7 +2422,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TabBar(
-                              labelStyle: AppTextStyles.s16w500,
+                              labelStyle: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey),
                               indicatorSize: TabBarIndicatorSize.tab,
                               indicator: BoxDecoration(
                                 color: AppColors.color32D681Green,
@@ -2430,101 +2440,101 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                             height: 376,
                             child: TabBarView(
                               controller: _7tabController,
-                              children: const [
+                              children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '203',
                                       title:
                                           'Выручка от реализации товаров, работ,\nуслуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '204',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '205',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '293',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '294',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '295',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '353',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '354',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '355',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                               ],
@@ -2534,14 +2544,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Баня, за исключением\nмуниципиальных бань',
-                          style: AppTextStyles.s16w500,
+                          style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_up,
                           size: 30,
                         ),
@@ -2563,7 +2574,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TabBar(
-                              labelStyle: AppTextStyles.s16w500,
+                              labelStyle: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey),
                               indicatorSize: TabBarIndicatorSize.tab,
                               indicator: BoxDecoration(
                                 color: AppColors.color32D681Green,
@@ -2619,7 +2631,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -2651,7 +2663,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
                                     const SizedBox(height: 16),
                                     const FieldNameWidget(
@@ -2684,14 +2696,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Резидент парка креативной\nиндустрии',
-                          style: AppTextStyles.s16w500,
+                          style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_up,
                           size: 30,
                         ),
@@ -2713,7 +2726,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TabBar(
-                              labelStyle: AppTextStyles.s16w500,
+                              labelStyle: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey),
                               indicatorSize: TabBarIndicatorSize.tab,
                               indicator: BoxDecoration(
                                 color: AppColors.color32D681Green,
@@ -2730,101 +2744,101 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                             height: 376,
                             child: TabBarView(
                               controller: _9tabController,
-                              children: const [
+                              children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '209',
                                       title:
                                           'Выручка от реализации товаров, работ,\nуслуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '210',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '211',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '299',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '300',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '301',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '359',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '360',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '361',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                               ],
@@ -2834,14 +2848,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Торговая деятельность на\nрынках и мини рынках\n(определенных кабинетом\nминистров кыргызской республики)',
-                          style: AppTextStyles.s16w500,
+                          style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.keyboard_arrow_down,
                           size: 30,
                         ),
@@ -2869,7 +2884,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TabBar(
-                              labelStyle: AppTextStyles.s16w500,
+                              labelStyle: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey),
                               indicatorSize: TabBarIndicatorSize.tab,
                               indicator: BoxDecoration(
                                 color: AppColors.color32D681Green,
@@ -2886,101 +2902,101 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                             height: 376,
                             child: TabBarView(
                               controller: _10tabController,
-                              children: const [
+                              children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '212',
                                       title:
                                           'Выручка от реализации товаров, работ,\nуслуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '213',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '214',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '302',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '303',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '304',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 24),
+                                    const SizedBox(height: 24),
                                     Text(
                                       'В наличной форме',
-                                      style: AppTextStyles.s20w500,
+                                      style: AppTextStyles.s20W500(),
                                     ),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '362',
                                       title:
                                           'Выручка от реализации товаров, работ, услуг',
                                     ),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '363',
                                       title: 'Ставка налога (%)',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: '4'),
-                                    SizedBox(height: 16),
-                                    FieldNameWidget(
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: '4'),
+                                    const SizedBox(height: 16),
+                                    const FieldNameWidget(
                                       number: '364',
                                       title: 'Сумма налога',
                                     ),
-                                    SizedBox(height: 12),
-                                    StaticContainerInfoWidget(title: ''),
+                                    const SizedBox(height: 12),
+                                    const StaticContainerInfoWidget(title: ''),
                                   ],
                                 ),
                               ],
@@ -3026,19 +3042,14 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                       borderColor: AppColors.color32D681Green,
                       color: Colors.transparent,
                     ),
-                    // const SizedBox(height: 16),
-                    // CustomButton(
-                    //   onPress: () => Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => const EndPdfViewScreen(),
-                    //     ),
-                    //   ),
-                    //   text: 'Предпросмотр',
-                    //   textColor: AppColors.color32D681Green,
-                    //   borderColor: AppColors.color32D681Green,
-                    //   color: Colors.transparent,
-                    // ),
+                    const SizedBox(height: 16),
+                    CustomButton(
+                      onPress: () {},
+                      text: 'Предпросмотр',
+                      textColor: AppColors.color32D681Green,
+                      borderColor: AppColors.color32D681Green,
+                      color: Colors.transparent,
+                    ),
                   ],
                 ),
               ),

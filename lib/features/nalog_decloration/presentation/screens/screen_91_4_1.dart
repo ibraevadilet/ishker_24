@@ -1,6 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/components/custom_radio_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/components/custom_text_field.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/components/expanded_list_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/components/field_name_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/components/select_bottom_sheet_container.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/components/static_container_info_widget.dart';
+import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:ishker_24/widgets/custom_button.dart';
 
 @RoutePage()
 class Screen9141 extends StatefulWidget {
@@ -135,9 +143,9 @@ class _Screen9141State extends State<Screen9141> {
                             items: ugns,
                           ),
                           const SizedBox(height: 12),
-                          const Text(
+                          Text(
                             'Наименование района',
-                            style: AppTextStyles.s16w500,
+                            style: AppTextStyles.s16W500(),
                           ),
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(
@@ -209,9 +217,9 @@ class _Screen9141State extends State<Screen9141> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             'Фактическое местонахождение',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 24),
                           const FieldNameWidget(
@@ -241,8 +249,8 @@ class _Screen9141State extends State<Screen9141> {
                                 'г. Джалал-Абад, Спутник, переулок Тихий, дом 31а',
                           ),
                           const SizedBox(height: 24),
-                          const Text('Налоговый период (201 - 202)',
-                              style: AppTextStyles.s16w500),
+                          Text('Налоговый период (201 - 202)',
+                              style: AppTextStyles.s16W500()),
                           const SizedBox(height: 12),
                           ExpandedList(
                             color: AppColors.colorF3F4F5Grey,
@@ -258,7 +266,7 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 12),
                           const SelectBottomSheetContainer(),
                           const SizedBox(height: 12),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
@@ -267,46 +275,46 @@ class _Screen9141State extends State<Screen9141> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('Дата с',
-                                        style: AppTextStyles.s16w500),
-                                    SizedBox(height: 12),
-                                    CustomTextField(),
+                                        style: AppTextStyles.s16W500()),
+                                    const SizedBox(height: 12),
+                                    const CustomTextField(),
                                   ],
                                 ),
                               ),
-                              SizedBox(width: 16),
+                              const SizedBox(width: 16),
                               Flexible(
                                 flex: 2,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('по', style: AppTextStyles.s16w500),
-                                    SizedBox(height: 12),
-                                    CustomTextField()
+                                    Text('по', style: AppTextStyles.s16W500()),
+                                    const SizedBox(height: 12),
+                                    const CustomTextField()
                                   ],
                                 ),
                               ),
                             ],
                           ),
                           const SizedBox(height: 24),
-                          const Text(
+                          Text(
                             'РАЗДЕЛ 2. ИНФОРМАЦИЯ О ЕДИНОМ НАЛОГЕ',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'Торговая деятельность, осуществляемой:',
-                            style: AppTextStyles.s16w500,
+                            style: AppTextStyles.s16W500(),
                           ),
                           const SizedBox(height: 24),
                           Text(
                             'Б) Субъектом, не указанных в пункте А), оплаченных:',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В наличной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -326,9 +334,9 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В безналичной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -348,9 +356,9 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В адрес обезличенного субъекта',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -378,14 +386,13 @@ class _Screen9141State extends State<Screen9141> {
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 24),
                           Text(
-                            'Переработка сельскохозяйственной продукции, производственная сфера, туроператорской деятельности, разработки программного обеспечения в области вычислительной техники, а также для турагентской деятельности, оплаченных:',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
-                          ),
+                              'Переработка сельскохозяйственной продукции, производственная сфера, туроператорской деятельности, разработки программного обеспечения в области вычислительной техники, а также для турагентской деятельности, оплаченных:',
+                              style: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey)),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В наличной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -405,9 +412,9 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В безналичной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -435,13 +442,13 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 24),
                           Text(
                             'Остальные виды деятельности,\nоплаченных:',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В наличной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -461,9 +468,9 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В безналичной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -491,14 +498,14 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 24),
                           Text(
                             'Общественное питание, оплаченных:',
-                            style: AppTextStyles.s16w500.copyWith(
-                              color: const Color(0xff6B7583),
+                            style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey,
                             ),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В наличной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -518,9 +525,9 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'В безналичной форме',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -548,8 +555,8 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 24),
                           Text(
                             'Швейное и/или текстильное производство',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -571,8 +578,8 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 24),
                           Text(
                             'Лотерейная деятельность',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -594,8 +601,8 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 24),
                           Text(
                             'Сауна',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -617,8 +624,8 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 24),
                           Text(
                             'Бильярд',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -638,11 +645,9 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 24),
-                          Text(
-                            'Баня, за исключением муниципиальных\nбань',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
-                          ),
+                          Text('Баня, за исключением муниципиальных\nбань',
+                              style: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey)),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
                               number: '142',
@@ -661,11 +666,9 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 12),
                           const StaticContainerInfoWidget(title: ''),
                           const SizedBox(height: 24),
-                          Text(
-                            'Резидент парка креативной индустрии',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
-                          ),
+                          Text('Резидент парка креативной индустрии',
+                              style: AppTextStyles.s16W500(
+                                  color: AppColors.color6B7583Grey)),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
                               number: '145',
@@ -686,8 +689,8 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 24),
                           Text(
                             'Торговая деятельность на рынках и мини рынках (определенных кабинетом министров кыргызской республики)',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -709,13 +712,13 @@ class _Screen9141State extends State<Screen9141> {
                           const SizedBox(height: 24),
                           Text(
                             'Субъект, применяющего режим,\nустановленный статьей 324 налогового\nкодекса кыргызской республики',
-                            style: AppTextStyles.s16w500
-                                .copyWith(color: const Color(0xff6B7583)),
+                            style: AppTextStyles.s16W500(
+                                color: AppColors.color6B7583Grey),
                           ),
                           const SizedBox(height: 16),
-                          const Text(
+                          Text(
                             'Стоимость товара',
-                            style: AppTextStyles.s20w500,
+                            style: AppTextStyles.s20W500(),
                           ),
                           const SizedBox(height: 16),
                           const FieldNameWidget(
@@ -761,12 +764,7 @@ class _Screen9141State extends State<Screen9141> {
                     ),
                     const SizedBox(height: 16),
                     CustomButton(
-                      onPress: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const EndPdfViewScreen(),
-                        ),
-                      ),
+                      onPress: () {},
                       text: 'Предпросмотр',
                       textColor: AppColors.color32D681Green,
                       borderColor: AppColors.color32D681Green,
