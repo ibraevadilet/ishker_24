@@ -21,6 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.inputFormatters,
     this.keyboardType,
+    this.enabled = true,
   });
   final String? hintText;
   final TextEditingController? controller;
@@ -29,9 +30,11 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? keyboardType;
+  final bool enabled;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       keyboardType: keyboardType,
       onChanged: onChanged,
@@ -40,6 +43,8 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: enabled ? Colors.white : Colors.grey.shade300,
         hintText: hintText,
         border: border,
         enabledBorder: border,

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/esf_check_cubit/esf_check_cubit.dart';
+import 'package:ishker_24/features/esf/presentation/cubits/save_token_cubit/save_token_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/widgets/esf_empty_token_widget.dart';
 import 'package:ishker_24/features/esf/presentation/widgets/esf_has_token_widget.dart';
 import 'package:ishker_24/server/service_locator.dart';
@@ -15,8 +16,15 @@ class EsfScreen extends StatelessWidget {
   const EsfScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<EsfCheckCubit>()..esfCheck(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => sl<EsfCheckCubit>()..esfCheck(),
+        ),
+        BlocProvider(
+          create: (context) => sl<SaveTokenCubit>(),
+        ),
+      ],
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: const CustomAppBar(
