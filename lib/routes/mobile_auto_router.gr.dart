@@ -54,6 +54,8 @@ import 'package:ishker_24/features/kkm/presentation/screens/kkm_screen.dart'
     as _i23;
 import 'package:ishker_24/features/my_ip/presentation/my_certificate_screen/my_certficate_screen.dart'
     as _i24;
+import 'package:ishker_24/features/nalog_decloration/data/models/nalog_names_model.dart'
+    as _i61;
 import 'package:ishker_24/features/nalog_decloration/presentation/screens/main_screen.dart'
     as _i25;
 import 'package:ishker_24/features/nalog_decloration/presentation/screens/screen_91_4.dart'
@@ -494,21 +496,33 @@ abstract class $AppRouter extends _i54.RootStackRouter {
       );
     },
     Route914.name: (routeData) {
+      final args = routeData.argsAs<Route914Args>();
       return _i54.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i47.Screen914(),
+        child: _i47.Screen914(
+          key: args.key,
+          model: args.model,
+        ),
       );
     },
     Route9141.name: (routeData) {
+      final args = routeData.argsAs<Route9141Args>();
       return _i54.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i48.Screen9141(),
+        child: _i48.Screen9141(
+          key: args.key,
+          model: args.model,
+        ),
       );
     },
     Route9142.name: (routeData) {
+      final args = routeData.argsAs<Route9142Args>();
       return _i54.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i49.Screen9142(),
+        child: _i49.Screen9142(
+          key: args.key,
+          model: args.model,
+        ),
       );
     },
     SelfiePreviewRoute.name: (routeData) {
@@ -1712,9 +1726,12 @@ class RegisterIpSigninRoute extends _i54.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i47.Screen914]
-class Route914 extends _i54.PageRouteInfo<void> {
-  const Route914({List<_i54.PageRouteInfo>? children})
-      : super(
+class Route914 extends _i54.PageRouteInfo<Route914Args> {
+  Route914({
+    _i55.Key? key,
+    required _i61.NalogNameModel model,
+    List<_i54.PageRouteInfo>? children,
+  }) : super(
           Route914.name,
           args: Route914Args(
             key: key,
@@ -1725,14 +1742,34 @@ class Route914 extends _i54.PageRouteInfo<void> {
 
   static const String name = 'Route914';
 
-  static const _i54.PageInfo<void> page = _i54.PageInfo<void>(name);
+  static const _i54.PageInfo<Route914Args> page =
+      _i54.PageInfo<Route914Args>(name);
+}
+
+class Route914Args {
+  const Route914Args({
+    this.key,
+    required this.model,
+  });
+
+  final _i55.Key? key;
+
+  final _i61.NalogNameModel model;
+
+  @override
+  String toString() {
+    return 'Route914Args{key: $key, model: $model}';
+  }
 }
 
 /// generated route for
 /// [_i48.Screen9141]
-class Route9141 extends _i54.PageRouteInfo<void> {
-  const Route9141({List<_i54.PageRouteInfo>? children})
-      : super(
+class Route9141 extends _i54.PageRouteInfo<Route9141Args> {
+  Route9141({
+    _i55.Key? key,
+    required _i61.NalogNameModel model,
+    List<_i54.PageRouteInfo>? children,
+  }) : super(
           Route9141.name,
           args: Route9141Args(
             key: key,
@@ -1743,14 +1780,34 @@ class Route9141 extends _i54.PageRouteInfo<void> {
 
   static const String name = 'Route9141';
 
-  static const _i54.PageInfo<void> page = _i54.PageInfo<void>(name);
+  static const _i54.PageInfo<Route9141Args> page =
+      _i54.PageInfo<Route9141Args>(name);
+}
+
+class Route9141Args {
+  const Route9141Args({
+    this.key,
+    required this.model,
+  });
+
+  final _i55.Key? key;
+
+  final _i61.NalogNameModel model;
+
+  @override
+  String toString() {
+    return 'Route9141Args{key: $key, model: $model}';
+  }
 }
 
 /// generated route for
 /// [_i49.Screen9142]
-class Route9142 extends _i54.PageRouteInfo<void> {
-  const Route9142({List<_i54.PageRouteInfo>? children})
-      : super(
+class Route9142 extends _i54.PageRouteInfo<Route9142Args> {
+  Route9142({
+    _i55.Key? key,
+    required _i61.NalogNameModel model,
+    List<_i54.PageRouteInfo>? children,
+  }) : super(
           Route9142.name,
           args: Route9142Args(
             key: key,
@@ -1761,7 +1818,24 @@ class Route9142 extends _i54.PageRouteInfo<void> {
 
   static const String name = 'Route9142';
 
-  static const _i54.PageInfo<void> page = _i54.PageInfo<void>(name);
+  static const _i54.PageInfo<Route9142Args> page =
+      _i54.PageInfo<Route9142Args>(name);
+}
+
+class Route9142Args {
+  const Route9142Args({
+    this.key,
+    required this.model,
+  });
+
+  final _i55.Key? key;
+
+  final _i61.NalogNameModel model;
+
+  @override
+  String toString() {
+    return 'Route9142Args{key: $key, model: $model}';
+  }
 }
 
 /// generated route for
