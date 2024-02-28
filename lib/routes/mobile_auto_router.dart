@@ -51,7 +51,12 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: OpenAccountRoute.page),
         AutoRoute(page: GoBankRoute.page),
         AutoRoute(page: PdfViewRoute.page),
+        /////END
         AutoRoute(page: NalogMainRoute.page),
+        AutoRoute(page: Route9142.page),
+        AutoRoute(page: Route914.page),
+        AutoRoute(page: Route9141.page),
+        ////ESF
         AutoRoute(page: EsfRoute.page),
         AutoRoute(page: KKMRoute.page),
       ];
