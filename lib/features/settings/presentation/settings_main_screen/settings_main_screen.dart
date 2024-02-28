@@ -149,6 +149,7 @@ class _SettingsMainScreenState extends State<SettingsMainScreen> {
                   ),
                 ),
                 child: ListTile(
+                  shape: const CircleBorder(),
                   onTap: () {
                     AppRouting.pushFunction(const SettingsAboutRoute());
                   },
@@ -181,6 +182,7 @@ class _SettingsMainScreenState extends State<SettingsMainScreen> {
                   ),
                 ),
                 child: ListTile(
+                  shape: const CircleBorder(),
                   onTap: () {
                     AppRouting.pushFunction(const SettingsHelpRoute());
                   },
@@ -213,6 +215,7 @@ class _SettingsMainScreenState extends State<SettingsMainScreen> {
                   ),
                 ),
                 child: ListTile(
+                  shape: const CircleBorder(),
                   onTap: () {
                     print('object');
                   },
@@ -251,6 +254,7 @@ class _SettingsMainScreenState extends State<SettingsMainScreen> {
                     child: state.isLoading
                         ? const AppIndicator()
                         : ListTile(
+                            shape: const CircleBorder(),
                             onTap: () async {
                               context.read<ExitCubit>().exit();
                             },

@@ -47,6 +47,7 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^24.2.5
   package_info_plus: ^5.0.1
   flutter_inappwebview: ^6.0.0
+  table_calendar: ^3.0.9
   
   
 
