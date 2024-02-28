@@ -17,6 +17,14 @@ import 'package:ishker_24/features/bank/presentation/create_account_screen/cubit
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/get_client_passport_cubit/get_client_passport_cubit.dart';
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/regitser_client_cubit/regitser_client_cubit.dart';
 import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit/bottom_navigator_cubit.dart';
+import 'package:ishker_24/features/esf/data/repo_impls/esf_check_repo_impl.dart';
+import 'package:ishker_24/features/esf/data/repo_impls/esf_invoice_repo_impl.dart';
+import 'package:ishker_24/features/esf/domain/repositories/esf_check_repository.dart';
+import 'package:ishker_24/features/esf/domain/repositories/esf_invoice_repository.dart';
+import 'package:ishker_24/features/esf/domain/usecases/esf_check_usecase.dart';
+import 'package:ishker_24/features/esf/domain/usecases/esf_invoice_usecase.dart';
+import 'package:ishker_24/features/esf/presentation/cubits/esf_check_cubit/esf_check_cubit.dart';
+import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
 import 'package:ishker_24/features/grnp_check/data/repositories_impl/grnp_repo_impl.dart';
 import 'package:ishker_24/features/grnp_check/domain/repositories/grnp_repository.dart';
 import 'package:ishker_24/features/grnp_check/domain/use_case%20/grnp_use_case.dart';
@@ -178,6 +186,8 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetClientPassportRepo>(
       () => GetClientPassportRepoImpl(dio: sl()));
   sl.registerFactory<CheckGrnpRepo>(() => CheckGrnpRepoImpl(dio: sl()));
+  sl.registerFactory<EsfCheckRepo>(() => EsfCheckRepoImpl(dio: sl()));
+  sl.registerFactory<EsfInvoiceRepo>(() => EsfInvoiceRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -228,6 +238,9 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<CheckGrnpUseCase>(() => CheckGrnpUseCase(repo: sl()));
   sl.registerLazySingleton<GetTokensUseCase>(
       () => GetTokensUseCase(repo: sl(), prefs: sl()));
+  sl.registerLazySingleton<EsfCheckUseCase>(() => EsfCheckUseCase(repo: sl()));
+  sl.registerLazySingleton<EsfInvoiceUseCase>(
+      () => EsfInvoiceUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -287,4 +300,6 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<CheckBankCubit>(() => CheckBankCubit(useCase: sl()));
   sl.registerFactory<PublicOfferCubit>(() => PublicOfferCubit());
   sl.registerFactory<PersonalDataCubit>(() => PersonalDataCubit());
+  sl.registerFactory<EsfCheckCubit>(() => EsfCheckCubit(useCase: sl()));
+  sl.registerFactory<EsfInvoiceCubit>(() => EsfInvoiceCubit(useCase: sl()));
 }

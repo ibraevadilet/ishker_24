@@ -53,6 +53,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: PdfViewRoute.page),
         AutoRoute(page: NalogMainRoute.page),
         AutoRoute(page: EsfRoute.page),
+        AutoRoute(page: EsfInvoiceRoute.page),
+        AutoRoute(page: EsfRealizationDetailRoute.page),
+        AutoRoute(page: EsfIncomeRoute.page),
+        AutoRoute(page: EsfIncomeDetailRoute.page),
         AutoRoute(page: KKMRoute.page),
       ];
 }

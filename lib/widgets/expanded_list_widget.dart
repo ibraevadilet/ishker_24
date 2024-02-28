@@ -13,6 +13,7 @@ class ExpandedList extends StatefulWidget {
     required this.title,
     required this.selectedIndex,
     required this.onSelected,
+    this.borderColor = Colors.white,
   });
   final Widget? image;
   final String title;
@@ -20,6 +21,7 @@ class ExpandedList extends StatefulWidget {
   final int? selectedIndex;
   final bool tapEnabled;
   final Function(int) onSelected;
+  final Color borderColor;
 
   @override
   State<ExpandedList> createState() => _ExpandedListState();
@@ -89,6 +91,7 @@ class _ExpandedListState extends State<ExpandedList>
         decoration: BoxDecoration(
           color: widget.tapEnabled ? Colors.white : AppColors.color617796Grey,
           borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: widget.borderColor),
         ),
         child: AnimatedBuilder(
           animation: _controller,
