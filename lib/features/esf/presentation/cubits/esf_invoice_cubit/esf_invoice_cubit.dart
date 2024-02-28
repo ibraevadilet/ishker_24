@@ -29,8 +29,8 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
   }
 
   Future<void> esfInvoiceSorted({
-    String? createdDateFrom,
-    String? createdDateTo,
+    DateTime? createdDateFrom,
+    DateTime? createdDateTo,
     String? exchangeCode,
     String? statusCode,
     String? invoiceNumber,
@@ -40,8 +40,8 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
     try {
       final result = await useCase.esfInvoice(
         '20705198701479',
-        // createdDateFrom: DateTime.parse(createdDateFrom ?? ''),
-        // createdDateTo: DateTime.parse(createdDateTo ?? ''),
+        createdDateFrom: createdDateFrom,
+        createdDateTo: createdDateTo,
         exchangeCode: exchangeCode,
         statusCode: statusCode,
         invoiceNumber: invoiceNumber,
@@ -76,8 +76,8 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
   }
 
   Future<void> esfIncomeSorted({
-    String? createdDateFrom,
-    String? createdDateTo,
+    DateTime? createdDateFrom,
+    DateTime? createdDateTo,
     String? exchangeCode,
     String? statusCode,
     String? invoiceNumber,
