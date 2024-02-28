@@ -195,8 +195,8 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
                                           ? null
                                           : statuses.content[selectedIndex!].id
                                               .toString(),
-                                      invoiceNumber: numberController.text,
-                                      contractorTin: contractorController.text,
+                                      invoiceNumber: numberController.text.isEmpty ? null : numberController.text,
+                                      contractorTin: contractorController.text.isEmpty ? null: contractorController.text,
                                     );
                               },
                               text: 'Поиск',
