@@ -25,8 +25,10 @@ class MegaKassaProfileEntity {
 
   factory MegaKassaProfileEntity.fromJson(Map<String, dynamic> json) =>
       MegaKassaProfileEntity(
-        clientDetails: ClientDetails.fromJson(json["clientDetails"]),
-        balance: json["balance"],
+        clientDetails: json["clientDetails"] == null
+            ? ClientDetails()
+            : ClientDetails.fromJson(json["clientDetails"]),
+        balance: json["balance"] ?? 0.0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -52,20 +54,20 @@ class ClientDetails {
   final String? responsiblePerson;
 
   ClientDetails({
-    required this.type,
-    required this.address,
-    required this.fio,
-    required this.phoneNum,
-    required this.ls,
-    required this.tin,
-    required this.companyName,
-    required this.okpo,
-    required this.registrationCertificateNumber,
-    required this.contractStartDate,
-    required this.checkingAccount,
-    required this.bik,
-    required this.login,
-    required this.responsiblePerson,
+    this.type,
+    this.address,
+    this.fio,
+    this.phoneNum,
+    this.ls,
+    this.tin,
+    this.companyName,
+    this.okpo,
+    this.registrationCertificateNumber,
+    this.contractStartDate,
+    this.checkingAccount,
+    this.bik,
+    this.login,
+    this.responsiblePerson,
   });
 
   ClientDetails copyWith({

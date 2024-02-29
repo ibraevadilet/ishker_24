@@ -63,6 +63,8 @@ class CatchException {
         return CatchException(message: error.response!.data['error']);
       } else if (error.response!.statusCode == 400) {
         return CatchException(message: error.response!.data['error']);
+      } else if (error.response!.statusCode == 404) {
+        return CatchException(message: error.response.toString());
       } else if (error.response!.statusCode == 409) {
         return CatchException(message: error.response!.data['error']);
       } else if (error.response!.statusCode == 415) {
