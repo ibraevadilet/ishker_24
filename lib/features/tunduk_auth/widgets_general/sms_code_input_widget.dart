@@ -10,6 +10,7 @@ class SmsCodeInputWidget extends StatelessWidget {
     this.controller,
   });
   final TextEditingController? controller;
+
   @override
   Widget build(BuildContext context) {
     return PinCodeTextField(

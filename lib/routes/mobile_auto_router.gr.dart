@@ -8,9 +8,10 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i44;
-import 'package:camera/camera.dart' as _i47;
-import 'package:flutter/material.dart' as _i45;
+import 'package:auto_route/auto_route.dart' as _i56;
+import 'package:camera/camera.dart' as _i59;
+import 'package:flutter/cupertino.dart' as _i64;
+import 'package:flutter/material.dart' as _i57;
 import 'package:ishker_24/features/bank/presentation/account_detail_screen/account_detail_screen.dart'
     as _i1;
 import 'package:ishker_24/features/bank/presentation/card_detail_screen/card_detail_screen.dart'
@@ -26,7 +27,7 @@ import 'package:ishker_24/features/bank/presentation/create_account_screen/creat
 import 'package:ishker_24/features/bank/presentation/create_account_screen/go_bank_screen.dart'
     as _i13;
 import 'package:ishker_24/features/bank/presentation/create_account_screen/open_account_screen.dart'
-    as _i22;
+    as _i33;
 import 'package:ishker_24/features/bottom_navigator/bottom_navigator_screen.dart'
     as _i5;
 import 'package:ishker_24/features/grnp_check/presentation/grnp_camera_screen/grnp_camera_screen.dart'
@@ -37,40 +38,76 @@ import 'package:ishker_24/features/grnp_check/presentation/grnp_camera_screen/gr
     as _i16;
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/grnp_screen.dart'
     as _i15;
-import 'package:ishker_24/features/my_ip/presentation/my_certificate_screen/my_certficate_screen.dart'
+import 'package:ishker_24/features/megakassa/domain/entities/gns_registration_request_entity.dart'
+    as _i61;
+import 'package:ishker_24/features/megakassa/domain/entities/kkm_entity.dart'
+    as _i63;
+import 'package:ishker_24/features/megakassa/domain/entities/kkm_registration_entity.dart'
+    as _i62;
+import 'package:ishker_24/features/megakassa/domain/entities/kkm_registration_step_first_entity.dart'
+    as _i65;
+import 'package:ishker_24/features/megakassa/domain/entities/kkm_registration_step_second_entity.dart'
+    as _i66;
+import 'package:ishker_24/features/megakassa/domain/entities/kkm_registration_step_third_entity.dart'
+    as _i67;
+import 'package:ishker_24/features/megakassa/presentation/gns_confirmation/gns_confirmation_screen.dart'
+    as _i19;
+import 'package:ishker_24/features/megakassa/presentation/gns_registration/gns_registration_screen.dart'
+    as _i20;
+import 'package:ishker_24/features/megakassa/presentation/kkm_detail/kkm_detail_screen.dart'
+    as _i21;
+import 'package:ishker_24/features/megakassa/presentation/kkm_list/kkm_list_screen.dart'
+    as _i22;
+import 'package:ishker_24/features/megakassa/presentation/kkm_personal_account/kkm_personal_account_screen.dart'
+    as _i23;
+import 'package:ishker_24/features/megakassa/presentation/kkm_registration/kkm_registration_screen.dart'
+    as _i24;
+import 'package:ishker_24/features/megakassa/presentation/kkm_registration_steps/screens/kkm_registration_step_first_screen.dart'
+    as _i25;
+import 'package:ishker_24/features/megakassa/presentation/kkm_registration_steps/screens/kkm_registration_step_second_screen.dart'
+    as _i26;
+import 'package:ishker_24/features/megakassa/presentation/kkm_registration_steps/screens/kkm_registration_step_third_screen.dart'
+    as _i27;
+import 'package:ishker_24/features/megakassa/presentation/megakassa_entry/megakassa_entry_screen.dart'
     as _i18;
-import 'package:ishker_24/features/pdf_view_screen.dart' as _i23;
+import 'package:ishker_24/features/megakassa/presentation/my_profile/my_profile_screen.dart'
+    as _i28;
+import 'package:ishker_24/features/my_ip/presentation/my_certificate_screen/my_certficate_screen.dart'
+    as _i29;
+import 'package:ishker_24/features/pdf_view_screen.dart' as _i34;
+import 'package:ishker_24/features/register_ip/data/models/pin_code_types_model.dart'
+    as _i60;
 import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart'
-    as _i48;
+    as _i68;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_confirm_oep_screen.dart'
-    as _i37;
+    as _i48;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_main_screen.dart'
-    as _i34;
+    as _i45;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_next_screen.dart'
-    as _i35;
+    as _i46;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_select_modes_screen.dart'
-    as _i38;
+    as _i49;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_signin_screen.dart'
-    as _i39;
+    as _i50;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_type_of_activity_screen.dart'
-    as _i36;
+    as _i47;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/ces_selfie_ident_screen.dart'
     as _i8;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/oep_camera_screen.dart'
-    as _i19;
+    as _i30;
 import 'package:ishker_24/features/register_oep/presentation/oep_camera_screen/selife_preview_screen.dart'
-    as _i40;
+    as _i51;
 import 'package:ishker_24/features/register_oep/presentation/oep_finish_screen/oep_finish_screen.dart'
-    as _i20;
+    as _i31;
 import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/oep_register_screen.dart'
-    as _i21;
+    as _i32;
 import 'package:ishker_24/features/settings/presentation/settings_about_screen/settings_about_screen.dart'
-    as _i41;
+    as _i52;
 import 'package:ishker_24/features/settings/presentation/settings_help_screen/settings_help_screen.dart'
-    as _i42;
-import 'package:ishker_24/features/splash/splash_screen.dart' as _i43;
+    as _i53;
+import 'package:ishker_24/features/splash/splash_screen.dart' as _i54;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/data/models/auth_model.dart'
-    as _i46;
+    as _i58;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_confirm_code_screen/auth_confirm_code_screen.dart'
     as _i2;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/auth_screen.dart'
@@ -80,52 +117,53 @@ import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/error_screen/error_screen.dart'
     as _i12;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_create_screen/pin_code_create_screen.dart'
-    as _i24;
+    as _i35;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_enter_screen/pin_code_enter_screen.dart'
-    as _i25;
+    as _i36;
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/pin_code_repeat_screen/pin_code_repeat_screen.dart'
-    as _i26;
+    as _i37;
 import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_choise_type_screen/recovery_password_choise_type_screen.dart'
-    as _i27;
+    as _i38;
 import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_inn_screen/recovery_password_enter_inn_screen.dart'
-    as _i28;
+    as _i39;
 import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_new_password_screen/recovery_password_enter_new_password_screen.dart'
-    as _i29;
+    as _i40;
 import 'package:ishker_24/features/tunduk_auth/recovery_password/presentation/recovery_password_enter_sms_code_screen/recovery_password_enter_sms_code_screen.dart'
-    as _i30;
+    as _i41;
 import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_choise_type_screen/recovery_pin_code_choise_type_screen.dart'
-    as _i31;
+    as _i42;
 import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_esi_password_screen/recovery_pin_code_enter_esi_password_screen.dart'
-    as _i32;
+    as _i43;
 import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_sms_code_screen/recovery_pin_code_enter_sms_code_screen.dart'
-    as _i33;
+    as _i44;
+import 'package:ishker_24/widgets/success_or_failure_screen.dart' as _i55;
 
-abstract class $AppRouter extends _i44.RootStackRouter {
+abstract class $AppRouter extends _i56.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i44.PageFactory> pagesMap = {
+  final Map<String, _i56.PageFactory> pagesMap = {
     AccountDetailRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.AccountDetailScreen(),
       );
     },
     AuthConfirmCodeRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i2.AuthConfirmCodeScreen(),
       );
     },
     AuthRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i3.AuthScreen(),
       );
     },
     AuthSendConfirmRoute.name: (routeData) {
       final args = routeData.argsAs<AuthSendConfirmRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i4.AuthSendConfirmScreen(
           key: args.key,
@@ -134,32 +172,32 @@ abstract class $AppRouter extends _i44.RootStackRouter {
       );
     },
     BottomNavigatorRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i5.BottomNavigatorScreen(),
       );
     },
     CardDetailRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i6.CardDetailScreen(),
       );
     },
     CardOperationHistoryRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i7.CardOperationHistoryScreen(),
       );
     },
     CesSelfieRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i8.CesSelfieScreen(),
       );
     },
     CreateAccountFinishRoute.name: (routeData) {
       final args = routeData.argsAs<CreateAccountFinishRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i9.CreateAccountFinishScreen(
           key: args.key,
@@ -168,32 +206,32 @@ abstract class $AppRouter extends _i44.RootStackRouter {
       );
     },
     CreateAccountLastRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i10.CreateAccountLastScreen(),
       );
     },
     CreateAccountRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i11.CreateAccountScreen(),
       );
     },
     EsiErrorRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i12.EsiErrorScreen(),
       );
     },
     GoBankRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i13.GoBankScreen(),
       );
     },
     GrnpCameraRoute.name: (routeData) {
       final args = routeData.argsAs<GrnpCameraRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i14.GrnpCameraScreen(
           key: args.key,
@@ -202,14 +240,14 @@ abstract class $AppRouter extends _i44.RootStackRouter {
       );
     },
     GrnpCheckRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i15.GrnpCheckScreen(),
       );
     },
     GrnpSelfiePreviewRoute.name: (routeData) {
       final args = routeData.argsAs<GrnpSelfiePreviewRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i16.GrnpSelfiePreviewScreen(
           args.path,
@@ -219,16 +257,104 @@ abstract class $AppRouter extends _i44.RootStackRouter {
       );
     },
     GrnpSelfieRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i17.GrnpSelfieScreen(),
       );
     },
+    MegaKassaEntryRoute.name: (routeData) {
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i18.MegaKassaEntryScreen(),
+      );
+    },
+    MegaKassaGnsConfirmationRoute.name: (routeData) {
+      final args = routeData.argsAs<MegaKassaGnsConfirmationRouteArgs>();
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i19.MegaKassaGnsConfirmationScreen(
+          key: args.key,
+          types: args.types,
+          registrationEntity: args.registrationEntity,
+          registrationKkmEntity: args.registrationKkmEntity,
+        ),
+      );
+    },
+    MegaKassaGnsRegistrationRoute.name: (routeData) {
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i20.MegaKassaGnsRegistrationScreen(),
+      );
+    },
+    MegaKassaKkmDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<MegaKassaKkmDetailRouteArgs>();
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i21.MegaKassaKkmDetailScreen(
+          key: args.key,
+          cashbox: args.cashbox,
+        ),
+      );
+    },
+    MegaKassaKkmListRoute.name: (routeData) {
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i22.MegaKassaKkmListScreen(),
+      );
+    },
+    MegaKassaKkmPersonalAccountRoute.name: (routeData) {
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i23.MegaKassaKkmPersonalAccountScreen(),
+      );
+    },
+    MegaKassaKkmRegistrationRoute.name: (routeData) {
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i24.MegaKassaKkmRegistrationScreen(),
+      );
+    },
+    MegaKassaKkmRegistrationStep1Route.name: (routeData) {
+      final args = routeData.argsAs<MegaKassaKkmRegistrationStep1RouteArgs>();
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i25.MegaKassaKkmRegistrationStep1Screen(
+          key: args.key,
+          stepEntity: args.stepEntity,
+        ),
+      );
+    },
+    MegaKassaKkmRegistrationStep2Route.name: (routeData) {
+      final args = routeData.argsAs<MegaKassaKkmRegistrationStep2RouteArgs>();
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i26.MegaKassaKkmRegistrationStep2Screen(
+          key: args.key,
+          stepEntity: args.stepEntity,
+        ),
+      );
+    },
+    MegaKassaKkmRegistrationStep3Route.name: (routeData) {
+      final args = routeData.argsAs<MegaKassaKkmRegistrationStep3RouteArgs>();
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i27.MegaKassaKkmRegistrationStep3Screen(
+          key: args.key,
+          stepEntity: args.stepEntity,
+        ),
+      );
+    },
+    MegaKassaMyProfileRoute.name: (routeData) {
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i28.MegaKassaMyProfileScreen(),
+      );
+    },
     MyCertficateRoute.name: (routeData) {
       final args = routeData.argsAs<MyCertficateRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.MyCertficateScreen(
+        child: _i29.MyCertficateScreen(
           key: args.key,
           certUrl: args.certUrl,
         ),
@@ -236,31 +362,31 @@ abstract class $AppRouter extends _i44.RootStackRouter {
     },
     OEPCameraRoute.name: (routeData) {
       final args = routeData.argsAs<OEPCameraRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i19.OEPCameraScreen(
+        child: _i30.OEPCameraScreen(
           key: args.key,
           description: args.description,
         ),
       );
     },
     OEPFinishRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i20.OEPFinishScreen(),
+        child: const _i31.OEPFinishScreen(),
       );
     },
     OEPRegisterRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i21.OEPRegisterScreen(),
+        child: const _i32.OEPRegisterScreen(),
       );
     },
     OpenAccountRoute.name: (routeData) {
       final args = routeData.argsAs<OpenAccountRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i22.OpenAccountScreen(
+        child: _i33.OpenAccountScreen(
           key: args.key,
           partyId: args.partyId,
         ),
@@ -268,9 +394,9 @@ abstract class $AppRouter extends _i44.RootStackRouter {
     },
     PdfViewRoute.name: (routeData) {
       final args = routeData.argsAs<PdfViewRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i23.PdfViewScreen(
+        child: _i34.PdfViewScreen(
           key: args.key,
           path: args.path,
           isNetwork: args.isNetwork,
@@ -280,9 +406,9 @@ abstract class $AppRouter extends _i44.RootStackRouter {
     PinCodeCreateRoute.name: (routeData) {
       final args = routeData.argsAs<PinCodeCreateRouteArgs>(
           orElse: () => const PinCodeCreateRouteArgs());
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i24.PinCodeCreateScreen(
+        child: _i35.PinCodeCreateScreen(
           key: args.key,
           isNewPin: args.isNewPin,
         ),
@@ -291,9 +417,9 @@ abstract class $AppRouter extends _i44.RootStackRouter {
     PinCodeEnterRoute.name: (routeData) {
       final args = routeData.argsAs<PinCodeEnterRouteArgs>(
           orElse: () => const PinCodeEnterRouteArgs());
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i25.PinCodeEnterScreen(
+        child: _i36.PinCodeEnterScreen(
           key: args.key,
           isPushed: args.isPushed,
         ),
@@ -301,9 +427,9 @@ abstract class $AppRouter extends _i44.RootStackRouter {
     },
     PinCodeRepeatRoute.name: (routeData) {
       final args = routeData.argsAs<PinCodeRepeatRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i26.PinCodeRepeatScreen(
+        child: _i37.PinCodeRepeatScreen(
           key: args.key,
           firstPin: args.firstPin,
           isNewPin: args.isNewPin,
@@ -311,33 +437,33 @@ abstract class $AppRouter extends _i44.RootStackRouter {
       );
     },
     RecoveryPasswordChoiseTypeRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i27.RecoveryPasswordChoiseTypeScreen(),
+        child: const _i38.RecoveryPasswordChoiseTypeScreen(),
       );
     },
     RecoveryPasswordEnterInnRoute.name: (routeData) {
       final args = routeData.argsAs<RecoveryPasswordEnterInnRouteArgs>(
           orElse: () => const RecoveryPasswordEnterInnRouteArgs());
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i28.RecoveryPasswordEnterInnScreen(
+        child: _i39.RecoveryPasswordEnterInnScreen(
           key: args.key,
           isSmsRecovery: args.isSmsRecovery,
         ),
       );
     },
     RecoveryPasswordEnterNewPasswordRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i29.RecoveryPasswordEnterNewPasswordScreen(),
+        child: const _i40.RecoveryPasswordEnterNewPasswordScreen(),
       );
     },
     RecoveryPasswordEnterSmsCodeRoute.name: (routeData) {
       final args = routeData.argsAs<RecoveryPasswordEnterSmsCodeRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i30.RecoveryPasswordEnterSmsCodeScreen(
+        child: _i41.RecoveryPasswordEnterSmsCodeScreen(
           key: args.key,
           isSmsRecovery: args.isSmsRecovery,
           contact: args.contact,
@@ -346,25 +472,25 @@ abstract class $AppRouter extends _i44.RootStackRouter {
     },
     RecoveryPinCodeChoiseTypeRoute.name: (routeData) {
       final args = routeData.argsAs<RecoveryPinCodeChoiseTypeRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i31.RecoveryPinCodeChoiseTypeScreen(
+        child: _i42.RecoveryPinCodeChoiseTypeScreen(
           key: args.key,
           password: args.password,
         ),
       );
     },
     RecoveryPinCodeEnterEsiPasswordRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i32.RecoveryPinCodeEnterEsiPasswordScreen(),
+        child: const _i43.RecoveryPinCodeEnterEsiPasswordScreen(),
       );
     },
     RecoveryPinCodeEnterSmsCodeRoute.name: (routeData) {
       final args = routeData.argsAs<RecoveryPinCodeEnterSmsCodeRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i33.RecoveryPinCodeEnterSmsCodeScreen(
+        child: _i44.RecoveryPinCodeEnterSmsCodeScreen(
           key: args.key,
           method: args.method,
           userId: args.userId,
@@ -372,16 +498,16 @@ abstract class $AppRouter extends _i44.RootStackRouter {
       );
     },
     RegisterIPMainRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i34.RegisterIPMainScreen(),
+        child: const _i45.RegisterIPMainScreen(),
       );
     },
     RegisterIPNextRoute.name: (routeData) {
       final args = routeData.argsAs<RegisterIPNextRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i35.RegisterIPNextScreen(
+        child: _i46.RegisterIPNextScreen(
           key: args.key,
           isPatent: args.isPatent,
         ),
@@ -389,41 +515,41 @@ abstract class $AppRouter extends _i44.RootStackRouter {
     },
     RegisterIPTypeOfActivityRoute.name: (routeData) {
       final args = routeData.argsAs<RegisterIPTypeOfActivityRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i36.RegisterIPTypeOfActivityScreen(
+        child: _i47.RegisterIPTypeOfActivityScreen(
           key: args.key,
           models: args.models,
         ),
       );
     },
     RegisterIpConfirmOepRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i37.RegisterIpConfirmOepScreen(),
+        child: const _i48.RegisterIpConfirmOepScreen(),
       );
     },
     RegisterIpSelectModesRoute.name: (routeData) {
       final args = routeData.argsAs<RegisterIpSelectModesRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i38.RegisterIpSelectModesScreen(
+        child: _i49.RegisterIpSelectModesScreen(
           key: args.key,
           models: args.models,
         ),
       );
     },
     RegisterIpSigninRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i39.RegisterIpSigninScreen(),
+        child: const _i50.RegisterIpSigninScreen(),
       );
     },
     SelfiePreviewRoute.name: (routeData) {
       final args = routeData.argsAs<SelfiePreviewRouteArgs>();
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i40.SelfiePreviewScreen(
+        child: _i51.SelfiePreviewScreen(
           args.path,
           args.onCheck,
           key: args.key,
@@ -431,21 +557,35 @@ abstract class $AppRouter extends _i44.RootStackRouter {
       );
     },
     SettingsAboutRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i41.SettingsAboutScreen(),
+        child: const _i52.SettingsAboutScreen(),
       );
     },
     SettingsHelpRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i42.SettingsHelpScreen(),
+        child: const _i53.SettingsHelpScreen(),
       );
     },
     SplashRoute.name: (routeData) {
-      return _i44.AutoRoutePage<dynamic>(
+      return _i56.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i43.SplashScreen(),
+        child: const _i54.SplashScreen(),
+      );
+    },
+    SuccessOrFailureRoute.name: (routeData) {
+      final args = routeData.argsAs<SuccessOrFailureRouteArgs>();
+      return _i56.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i55.SuccessOrFailureScreen(
+          key: args.key,
+          onPress: args.onPress,
+          title: args.title,
+          subtitle: args.subtitle,
+          buttonText: args.buttonText,
+          isSuccess: args.isSuccess,
+        ),
       );
     },
   };
@@ -453,8 +593,8 @@ abstract class $AppRouter extends _i44.RootStackRouter {
 
 /// generated route for
 /// [_i1.AccountDetailScreen]
-class AccountDetailRoute extends _i44.PageRouteInfo<void> {
-  const AccountDetailRoute({List<_i44.PageRouteInfo>? children})
+class AccountDetailRoute extends _i56.PageRouteInfo<void> {
+  const AccountDetailRoute({List<_i56.PageRouteInfo>? children})
       : super(
           AccountDetailRoute.name,
           initialChildren: children,
@@ -462,13 +602,13 @@ class AccountDetailRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'AccountDetailRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.AuthConfirmCodeScreen]
-class AuthConfirmCodeRoute extends _i44.PageRouteInfo<void> {
-  const AuthConfirmCodeRoute({List<_i44.PageRouteInfo>? children})
+class AuthConfirmCodeRoute extends _i56.PageRouteInfo<void> {
+  const AuthConfirmCodeRoute({List<_i56.PageRouteInfo>? children})
       : super(
           AuthConfirmCodeRoute.name,
           initialChildren: children,
@@ -476,13 +616,13 @@ class AuthConfirmCodeRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'AuthConfirmCodeRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i3.AuthScreen]
-class AuthRoute extends _i44.PageRouteInfo<void> {
-  const AuthRoute({List<_i44.PageRouteInfo>? children})
+class AuthRoute extends _i56.PageRouteInfo<void> {
+  const AuthRoute({List<_i56.PageRouteInfo>? children})
       : super(
           AuthRoute.name,
           initialChildren: children,
@@ -490,17 +630,17 @@ class AuthRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'AuthRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i4.AuthSendConfirmScreen]
 class AuthSendConfirmRoute
-    extends _i44.PageRouteInfo<AuthSendConfirmRouteArgs> {
+    extends _i56.PageRouteInfo<AuthSendConfirmRouteArgs> {
   AuthSendConfirmRoute({
-    _i45.Key? key,
-    required _i46.AuthModel authModel,
-    List<_i44.PageRouteInfo>? children,
+    _i57.Key? key,
+    required _i58.AuthModel authModel,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           AuthSendConfirmRoute.name,
           args: AuthSendConfirmRouteArgs(
@@ -512,8 +652,8 @@ class AuthSendConfirmRoute
 
   static const String name = 'AuthSendConfirmRoute';
 
-  static const _i44.PageInfo<AuthSendConfirmRouteArgs> page =
-      _i44.PageInfo<AuthSendConfirmRouteArgs>(name);
+  static const _i56.PageInfo<AuthSendConfirmRouteArgs> page =
+      _i56.PageInfo<AuthSendConfirmRouteArgs>(name);
 }
 
 class AuthSendConfirmRouteArgs {
@@ -522,9 +662,9 @@ class AuthSendConfirmRouteArgs {
     required this.authModel,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
-  final _i46.AuthModel authModel;
+  final _i58.AuthModel authModel;
 
   @override
   String toString() {
@@ -534,8 +674,8 @@ class AuthSendConfirmRouteArgs {
 
 /// generated route for
 /// [_i5.BottomNavigatorScreen]
-class BottomNavigatorRoute extends _i44.PageRouteInfo<void> {
-  const BottomNavigatorRoute({List<_i44.PageRouteInfo>? children})
+class BottomNavigatorRoute extends _i56.PageRouteInfo<void> {
+  const BottomNavigatorRoute({List<_i56.PageRouteInfo>? children})
       : super(
           BottomNavigatorRoute.name,
           initialChildren: children,
@@ -543,13 +683,13 @@ class BottomNavigatorRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'BottomNavigatorRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i6.CardDetailScreen]
-class CardDetailRoute extends _i44.PageRouteInfo<void> {
-  const CardDetailRoute({List<_i44.PageRouteInfo>? children})
+class CardDetailRoute extends _i56.PageRouteInfo<void> {
+  const CardDetailRoute({List<_i56.PageRouteInfo>? children})
       : super(
           CardDetailRoute.name,
           initialChildren: children,
@@ -557,13 +697,13 @@ class CardDetailRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'CardDetailRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i7.CardOperationHistoryScreen]
-class CardOperationHistoryRoute extends _i44.PageRouteInfo<void> {
-  const CardOperationHistoryRoute({List<_i44.PageRouteInfo>? children})
+class CardOperationHistoryRoute extends _i56.PageRouteInfo<void> {
+  const CardOperationHistoryRoute({List<_i56.PageRouteInfo>? children})
       : super(
           CardOperationHistoryRoute.name,
           initialChildren: children,
@@ -571,13 +711,13 @@ class CardOperationHistoryRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'CardOperationHistoryRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i8.CesSelfieScreen]
-class CesSelfieRoute extends _i44.PageRouteInfo<void> {
-  const CesSelfieRoute({List<_i44.PageRouteInfo>? children})
+class CesSelfieRoute extends _i56.PageRouteInfo<void> {
+  const CesSelfieRoute({List<_i56.PageRouteInfo>? children})
       : super(
           CesSelfieRoute.name,
           initialChildren: children,
@@ -585,17 +725,17 @@ class CesSelfieRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'CesSelfieRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i9.CreateAccountFinishScreen]
 class CreateAccountFinishRoute
-    extends _i44.PageRouteInfo<CreateAccountFinishRouteArgs> {
+    extends _i56.PageRouteInfo<CreateAccountFinishRouteArgs> {
   CreateAccountFinishRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     required String accountNumber,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           CreateAccountFinishRoute.name,
           args: CreateAccountFinishRouteArgs(
@@ -607,8 +747,8 @@ class CreateAccountFinishRoute
 
   static const String name = 'CreateAccountFinishRoute';
 
-  static const _i44.PageInfo<CreateAccountFinishRouteArgs> page =
-      _i44.PageInfo<CreateAccountFinishRouteArgs>(name);
+  static const _i56.PageInfo<CreateAccountFinishRouteArgs> page =
+      _i56.PageInfo<CreateAccountFinishRouteArgs>(name);
 }
 
 class CreateAccountFinishRouteArgs {
@@ -617,7 +757,7 @@ class CreateAccountFinishRouteArgs {
     required this.accountNumber,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final String accountNumber;
 
@@ -629,8 +769,8 @@ class CreateAccountFinishRouteArgs {
 
 /// generated route for
 /// [_i10.CreateAccountLastScreen]
-class CreateAccountLastRoute extends _i44.PageRouteInfo<void> {
-  const CreateAccountLastRoute({List<_i44.PageRouteInfo>? children})
+class CreateAccountLastRoute extends _i56.PageRouteInfo<void> {
+  const CreateAccountLastRoute({List<_i56.PageRouteInfo>? children})
       : super(
           CreateAccountLastRoute.name,
           initialChildren: children,
@@ -638,13 +778,13 @@ class CreateAccountLastRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'CreateAccountLastRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i11.CreateAccountScreen]
-class CreateAccountRoute extends _i44.PageRouteInfo<void> {
-  const CreateAccountRoute({List<_i44.PageRouteInfo>? children})
+class CreateAccountRoute extends _i56.PageRouteInfo<void> {
+  const CreateAccountRoute({List<_i56.PageRouteInfo>? children})
       : super(
           CreateAccountRoute.name,
           initialChildren: children,
@@ -652,13 +792,13 @@ class CreateAccountRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'CreateAccountRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i12.EsiErrorScreen]
-class EsiErrorRoute extends _i44.PageRouteInfo<void> {
-  const EsiErrorRoute({List<_i44.PageRouteInfo>? children})
+class EsiErrorRoute extends _i56.PageRouteInfo<void> {
+  const EsiErrorRoute({List<_i56.PageRouteInfo>? children})
       : super(
           EsiErrorRoute.name,
           initialChildren: children,
@@ -666,13 +806,13 @@ class EsiErrorRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'EsiErrorRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i13.GoBankScreen]
-class GoBankRoute extends _i44.PageRouteInfo<void> {
-  const GoBankRoute({List<_i44.PageRouteInfo>? children})
+class GoBankRoute extends _i56.PageRouteInfo<void> {
+  const GoBankRoute({List<_i56.PageRouteInfo>? children})
       : super(
           GoBankRoute.name,
           initialChildren: children,
@@ -680,16 +820,16 @@ class GoBankRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'GoBankRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i14.GrnpCameraScreen]
-class GrnpCameraRoute extends _i44.PageRouteInfo<GrnpCameraRouteArgs> {
+class GrnpCameraRoute extends _i56.PageRouteInfo<GrnpCameraRouteArgs> {
   GrnpCameraRoute({
-    _i45.Key? key,
-    required _i47.CameraDescription description,
-    List<_i44.PageRouteInfo>? children,
+    _i57.Key? key,
+    required _i59.CameraDescription description,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           GrnpCameraRoute.name,
           args: GrnpCameraRouteArgs(
@@ -701,8 +841,8 @@ class GrnpCameraRoute extends _i44.PageRouteInfo<GrnpCameraRouteArgs> {
 
   static const String name = 'GrnpCameraRoute';
 
-  static const _i44.PageInfo<GrnpCameraRouteArgs> page =
-      _i44.PageInfo<GrnpCameraRouteArgs>(name);
+  static const _i56.PageInfo<GrnpCameraRouteArgs> page =
+      _i56.PageInfo<GrnpCameraRouteArgs>(name);
 }
 
 class GrnpCameraRouteArgs {
@@ -711,9 +851,9 @@ class GrnpCameraRouteArgs {
     required this.description,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
-  final _i47.CameraDescription description;
+  final _i59.CameraDescription description;
 
   @override
   String toString() {
@@ -723,8 +863,8 @@ class GrnpCameraRouteArgs {
 
 /// generated route for
 /// [_i15.GrnpCheckScreen]
-class GrnpCheckRoute extends _i44.PageRouteInfo<void> {
-  const GrnpCheckRoute({List<_i44.PageRouteInfo>? children})
+class GrnpCheckRoute extends _i56.PageRouteInfo<void> {
+  const GrnpCheckRoute({List<_i56.PageRouteInfo>? children})
       : super(
           GrnpCheckRoute.name,
           initialChildren: children,
@@ -732,18 +872,18 @@ class GrnpCheckRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'GrnpCheckRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i16.GrnpSelfiePreviewScreen]
 class GrnpSelfiePreviewRoute
-    extends _i44.PageRouteInfo<GrnpSelfiePreviewRouteArgs> {
+    extends _i56.PageRouteInfo<GrnpSelfiePreviewRouteArgs> {
   GrnpSelfiePreviewRoute({
     required String? path,
     required Function onCheck,
-    _i45.Key? key,
-    List<_i44.PageRouteInfo>? children,
+    _i57.Key? key,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           GrnpSelfiePreviewRoute.name,
           args: GrnpSelfiePreviewRouteArgs(
@@ -756,8 +896,8 @@ class GrnpSelfiePreviewRoute
 
   static const String name = 'GrnpSelfiePreviewRoute';
 
-  static const _i44.PageInfo<GrnpSelfiePreviewRouteArgs> page =
-      _i44.PageInfo<GrnpSelfiePreviewRouteArgs>(name);
+  static const _i56.PageInfo<GrnpSelfiePreviewRouteArgs> page =
+      _i56.PageInfo<GrnpSelfiePreviewRouteArgs>(name);
 }
 
 class GrnpSelfiePreviewRouteArgs {
@@ -771,7 +911,7 @@ class GrnpSelfiePreviewRouteArgs {
 
   final Function onCheck;
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   @override
   String toString() {
@@ -781,8 +921,8 @@ class GrnpSelfiePreviewRouteArgs {
 
 /// generated route for
 /// [_i17.GrnpSelfieScreen]
-class GrnpSelfieRoute extends _i44.PageRouteInfo<void> {
-  const GrnpSelfieRoute({List<_i44.PageRouteInfo>? children})
+class GrnpSelfieRoute extends _i56.PageRouteInfo<void> {
+  const GrnpSelfieRoute({List<_i56.PageRouteInfo>? children})
       : super(
           GrnpSelfieRoute.name,
           initialChildren: children,
@@ -790,16 +930,305 @@ class GrnpSelfieRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'GrnpSelfieRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i18.MyCertficateScreen]
-class MyCertficateRoute extends _i44.PageRouteInfo<MyCertficateRouteArgs> {
+/// [_i18.MegaKassaEntryScreen]
+class MegaKassaEntryRoute extends _i56.PageRouteInfo<void> {
+  const MegaKassaEntryRoute({List<_i56.PageRouteInfo>? children})
+      : super(
+          MegaKassaEntryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaEntryRoute';
+
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i19.MegaKassaGnsConfirmationScreen]
+class MegaKassaGnsConfirmationRoute
+    extends _i56.PageRouteInfo<MegaKassaGnsConfirmationRouteArgs> {
+  MegaKassaGnsConfirmationRoute({
+    _i57.Key? key,
+    required List<_i60.PinCodeTypesModel> types,
+    _i61.MegaKassaGnsRegistrationRequestEntity? registrationEntity,
+    _i62.MegaKassaKkmRegistrationEntity? registrationKkmEntity,
+    List<_i56.PageRouteInfo>? children,
+  }) : super(
+          MegaKassaGnsConfirmationRoute.name,
+          args: MegaKassaGnsConfirmationRouteArgs(
+            key: key,
+            types: types,
+            registrationEntity: registrationEntity,
+            registrationKkmEntity: registrationKkmEntity,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaGnsConfirmationRoute';
+
+  static const _i56.PageInfo<MegaKassaGnsConfirmationRouteArgs> page =
+      _i56.PageInfo<MegaKassaGnsConfirmationRouteArgs>(name);
+}
+
+class MegaKassaGnsConfirmationRouteArgs {
+  const MegaKassaGnsConfirmationRouteArgs({
+    this.key,
+    required this.types,
+    this.registrationEntity,
+    this.registrationKkmEntity,
+  });
+
+  final _i57.Key? key;
+
+  final List<_i60.PinCodeTypesModel> types;
+
+  final _i61.MegaKassaGnsRegistrationRequestEntity? registrationEntity;
+
+  final _i62.MegaKassaKkmRegistrationEntity? registrationKkmEntity;
+
+  @override
+  String toString() {
+    return 'MegaKassaGnsConfirmationRouteArgs{key: $key, types: $types, registrationEntity: $registrationEntity, registrationKkmEntity: $registrationKkmEntity}';
+  }
+}
+
+/// generated route for
+/// [_i20.MegaKassaGnsRegistrationScreen]
+class MegaKassaGnsRegistrationRoute extends _i56.PageRouteInfo<void> {
+  const MegaKassaGnsRegistrationRoute({List<_i56.PageRouteInfo>? children})
+      : super(
+          MegaKassaGnsRegistrationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaGnsRegistrationRoute';
+
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i21.MegaKassaKkmDetailScreen]
+class MegaKassaKkmDetailRoute
+    extends _i56.PageRouteInfo<MegaKassaKkmDetailRouteArgs> {
+  MegaKassaKkmDetailRoute({
+    _i57.Key? key,
+    required _i63.MegaKassaKkmEntity cashbox,
+    List<_i56.PageRouteInfo>? children,
+  }) : super(
+          MegaKassaKkmDetailRoute.name,
+          args: MegaKassaKkmDetailRouteArgs(
+            key: key,
+            cashbox: cashbox,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaKkmDetailRoute';
+
+  static const _i56.PageInfo<MegaKassaKkmDetailRouteArgs> page =
+      _i56.PageInfo<MegaKassaKkmDetailRouteArgs>(name);
+}
+
+class MegaKassaKkmDetailRouteArgs {
+  const MegaKassaKkmDetailRouteArgs({
+    this.key,
+    required this.cashbox,
+  });
+
+  final _i57.Key? key;
+
+  final _i63.MegaKassaKkmEntity cashbox;
+
+  @override
+  String toString() {
+    return 'MegaKassaKkmDetailRouteArgs{key: $key, cashbox: $cashbox}';
+  }
+}
+
+/// generated route for
+/// [_i22.MegaKassaKkmListScreen]
+class MegaKassaKkmListRoute extends _i56.PageRouteInfo<void> {
+  const MegaKassaKkmListRoute({List<_i56.PageRouteInfo>? children})
+      : super(
+          MegaKassaKkmListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaKkmListRoute';
+
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i23.MegaKassaKkmPersonalAccountScreen]
+class MegaKassaKkmPersonalAccountRoute extends _i56.PageRouteInfo<void> {
+  const MegaKassaKkmPersonalAccountRoute({List<_i56.PageRouteInfo>? children})
+      : super(
+          MegaKassaKkmPersonalAccountRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaKkmPersonalAccountRoute';
+
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i24.MegaKassaKkmRegistrationScreen]
+class MegaKassaKkmRegistrationRoute extends _i56.PageRouteInfo<void> {
+  const MegaKassaKkmRegistrationRoute({List<_i56.PageRouteInfo>? children})
+      : super(
+          MegaKassaKkmRegistrationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaKkmRegistrationRoute';
+
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i25.MegaKassaKkmRegistrationStep1Screen]
+class MegaKassaKkmRegistrationStep1Route
+    extends _i56.PageRouteInfo<MegaKassaKkmRegistrationStep1RouteArgs> {
+  MegaKassaKkmRegistrationStep1Route({
+    _i64.Key? key,
+    required _i65.MegaKassaKkmRegistrationStep1Entity? stepEntity,
+    List<_i56.PageRouteInfo>? children,
+  }) : super(
+          MegaKassaKkmRegistrationStep1Route.name,
+          args: MegaKassaKkmRegistrationStep1RouteArgs(
+            key: key,
+            stepEntity: stepEntity,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaKkmRegistrationStep1Route';
+
+  static const _i56.PageInfo<MegaKassaKkmRegistrationStep1RouteArgs> page =
+      _i56.PageInfo<MegaKassaKkmRegistrationStep1RouteArgs>(name);
+}
+
+class MegaKassaKkmRegistrationStep1RouteArgs {
+  const MegaKassaKkmRegistrationStep1RouteArgs({
+    this.key,
+    required this.stepEntity,
+  });
+
+  final _i64.Key? key;
+
+  final _i65.MegaKassaKkmRegistrationStep1Entity? stepEntity;
+
+  @override
+  String toString() {
+    return 'MegaKassaKkmRegistrationStep1RouteArgs{key: $key, stepEntity: $stepEntity}';
+  }
+}
+
+/// generated route for
+/// [_i26.MegaKassaKkmRegistrationStep2Screen]
+class MegaKassaKkmRegistrationStep2Route
+    extends _i56.PageRouteInfo<MegaKassaKkmRegistrationStep2RouteArgs> {
+  MegaKassaKkmRegistrationStep2Route({
+    _i64.Key? key,
+    required _i66.MegaKassaKkmRegistrationStep2Entity? stepEntity,
+    List<_i56.PageRouteInfo>? children,
+  }) : super(
+          MegaKassaKkmRegistrationStep2Route.name,
+          args: MegaKassaKkmRegistrationStep2RouteArgs(
+            key: key,
+            stepEntity: stepEntity,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaKkmRegistrationStep2Route';
+
+  static const _i56.PageInfo<MegaKassaKkmRegistrationStep2RouteArgs> page =
+      _i56.PageInfo<MegaKassaKkmRegistrationStep2RouteArgs>(name);
+}
+
+class MegaKassaKkmRegistrationStep2RouteArgs {
+  const MegaKassaKkmRegistrationStep2RouteArgs({
+    this.key,
+    required this.stepEntity,
+  });
+
+  final _i64.Key? key;
+
+  final _i66.MegaKassaKkmRegistrationStep2Entity? stepEntity;
+
+  @override
+  String toString() {
+    return 'MegaKassaKkmRegistrationStep2RouteArgs{key: $key, stepEntity: $stepEntity}';
+  }
+}
+
+/// generated route for
+/// [_i27.MegaKassaKkmRegistrationStep3Screen]
+class MegaKassaKkmRegistrationStep3Route
+    extends _i56.PageRouteInfo<MegaKassaKkmRegistrationStep3RouteArgs> {
+  MegaKassaKkmRegistrationStep3Route({
+    _i57.Key? key,
+    required _i67.MegaKassaKkmRegistrationStep3Entity? stepEntity,
+    List<_i56.PageRouteInfo>? children,
+  }) : super(
+          MegaKassaKkmRegistrationStep3Route.name,
+          args: MegaKassaKkmRegistrationStep3RouteArgs(
+            key: key,
+            stepEntity: stepEntity,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaKkmRegistrationStep3Route';
+
+  static const _i56.PageInfo<MegaKassaKkmRegistrationStep3RouteArgs> page =
+      _i56.PageInfo<MegaKassaKkmRegistrationStep3RouteArgs>(name);
+}
+
+class MegaKassaKkmRegistrationStep3RouteArgs {
+  const MegaKassaKkmRegistrationStep3RouteArgs({
+    this.key,
+    required this.stepEntity,
+  });
+
+  final _i57.Key? key;
+
+  final _i67.MegaKassaKkmRegistrationStep3Entity? stepEntity;
+
+  @override
+  String toString() {
+    return 'MegaKassaKkmRegistrationStep3RouteArgs{key: $key, stepEntity: $stepEntity}';
+  }
+}
+
+/// generated route for
+/// [_i28.MegaKassaMyProfileScreen]
+class MegaKassaMyProfileRoute extends _i56.PageRouteInfo<void> {
+  const MegaKassaMyProfileRoute({List<_i56.PageRouteInfo>? children})
+      : super(
+          MegaKassaMyProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MegaKassaMyProfileRoute';
+
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i29.MyCertficateScreen]
+class MyCertficateRoute extends _i56.PageRouteInfo<MyCertficateRouteArgs> {
   MyCertficateRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     required String certUrl,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           MyCertficateRoute.name,
           args: MyCertficateRouteArgs(
@@ -811,8 +1240,8 @@ class MyCertficateRoute extends _i44.PageRouteInfo<MyCertficateRouteArgs> {
 
   static const String name = 'MyCertficateRoute';
 
-  static const _i44.PageInfo<MyCertficateRouteArgs> page =
-      _i44.PageInfo<MyCertficateRouteArgs>(name);
+  static const _i56.PageInfo<MyCertficateRouteArgs> page =
+      _i56.PageInfo<MyCertficateRouteArgs>(name);
 }
 
 class MyCertficateRouteArgs {
@@ -821,7 +1250,7 @@ class MyCertficateRouteArgs {
     required this.certUrl,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final String certUrl;
 
@@ -832,12 +1261,12 @@ class MyCertficateRouteArgs {
 }
 
 /// generated route for
-/// [_i19.OEPCameraScreen]
-class OEPCameraRoute extends _i44.PageRouteInfo<OEPCameraRouteArgs> {
+/// [_i30.OEPCameraScreen]
+class OEPCameraRoute extends _i56.PageRouteInfo<OEPCameraRouteArgs> {
   OEPCameraRoute({
-    _i45.Key? key,
-    required _i47.CameraDescription description,
-    List<_i44.PageRouteInfo>? children,
+    _i57.Key? key,
+    required _i59.CameraDescription description,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           OEPCameraRoute.name,
           args: OEPCameraRouteArgs(
@@ -849,8 +1278,8 @@ class OEPCameraRoute extends _i44.PageRouteInfo<OEPCameraRouteArgs> {
 
   static const String name = 'OEPCameraRoute';
 
-  static const _i44.PageInfo<OEPCameraRouteArgs> page =
-      _i44.PageInfo<OEPCameraRouteArgs>(name);
+  static const _i56.PageInfo<OEPCameraRouteArgs> page =
+      _i56.PageInfo<OEPCameraRouteArgs>(name);
 }
 
 class OEPCameraRouteArgs {
@@ -859,9 +1288,9 @@ class OEPCameraRouteArgs {
     required this.description,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
-  final _i47.CameraDescription description;
+  final _i59.CameraDescription description;
 
   @override
   String toString() {
@@ -870,9 +1299,9 @@ class OEPCameraRouteArgs {
 }
 
 /// generated route for
-/// [_i20.OEPFinishScreen]
-class OEPFinishRoute extends _i44.PageRouteInfo<void> {
-  const OEPFinishRoute({List<_i44.PageRouteInfo>? children})
+/// [_i31.OEPFinishScreen]
+class OEPFinishRoute extends _i56.PageRouteInfo<void> {
+  const OEPFinishRoute({List<_i56.PageRouteInfo>? children})
       : super(
           OEPFinishRoute.name,
           initialChildren: children,
@@ -880,13 +1309,13 @@ class OEPFinishRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'OEPFinishRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i21.OEPRegisterScreen]
-class OEPRegisterRoute extends _i44.PageRouteInfo<void> {
-  const OEPRegisterRoute({List<_i44.PageRouteInfo>? children})
+/// [_i32.OEPRegisterScreen]
+class OEPRegisterRoute extends _i56.PageRouteInfo<void> {
+  const OEPRegisterRoute({List<_i56.PageRouteInfo>? children})
       : super(
           OEPRegisterRoute.name,
           initialChildren: children,
@@ -894,16 +1323,16 @@ class OEPRegisterRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'OEPRegisterRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i22.OpenAccountScreen]
-class OpenAccountRoute extends _i44.PageRouteInfo<OpenAccountRouteArgs> {
+/// [_i33.OpenAccountScreen]
+class OpenAccountRoute extends _i56.PageRouteInfo<OpenAccountRouteArgs> {
   OpenAccountRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     required String partyId,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           OpenAccountRoute.name,
           args: OpenAccountRouteArgs(
@@ -915,8 +1344,8 @@ class OpenAccountRoute extends _i44.PageRouteInfo<OpenAccountRouteArgs> {
 
   static const String name = 'OpenAccountRoute';
 
-  static const _i44.PageInfo<OpenAccountRouteArgs> page =
-      _i44.PageInfo<OpenAccountRouteArgs>(name);
+  static const _i56.PageInfo<OpenAccountRouteArgs> page =
+      _i56.PageInfo<OpenAccountRouteArgs>(name);
 }
 
 class OpenAccountRouteArgs {
@@ -925,7 +1354,7 @@ class OpenAccountRouteArgs {
     required this.partyId,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final String partyId;
 
@@ -936,13 +1365,13 @@ class OpenAccountRouteArgs {
 }
 
 /// generated route for
-/// [_i23.PdfViewScreen]
-class PdfViewRoute extends _i44.PageRouteInfo<PdfViewRouteArgs> {
+/// [_i34.PdfViewScreen]
+class PdfViewRoute extends _i56.PageRouteInfo<PdfViewRouteArgs> {
   PdfViewRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     required String path,
     bool isNetwork = false,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           PdfViewRoute.name,
           args: PdfViewRouteArgs(
@@ -955,8 +1384,8 @@ class PdfViewRoute extends _i44.PageRouteInfo<PdfViewRouteArgs> {
 
   static const String name = 'PdfViewRoute';
 
-  static const _i44.PageInfo<PdfViewRouteArgs> page =
-      _i44.PageInfo<PdfViewRouteArgs>(name);
+  static const _i56.PageInfo<PdfViewRouteArgs> page =
+      _i56.PageInfo<PdfViewRouteArgs>(name);
 }
 
 class PdfViewRouteArgs {
@@ -966,7 +1395,7 @@ class PdfViewRouteArgs {
     this.isNetwork = false,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final String path;
 
@@ -979,12 +1408,12 @@ class PdfViewRouteArgs {
 }
 
 /// generated route for
-/// [_i24.PinCodeCreateScreen]
-class PinCodeCreateRoute extends _i44.PageRouteInfo<PinCodeCreateRouteArgs> {
+/// [_i35.PinCodeCreateScreen]
+class PinCodeCreateRoute extends _i56.PageRouteInfo<PinCodeCreateRouteArgs> {
   PinCodeCreateRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     bool isNewPin = false,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           PinCodeCreateRoute.name,
           args: PinCodeCreateRouteArgs(
@@ -996,8 +1425,8 @@ class PinCodeCreateRoute extends _i44.PageRouteInfo<PinCodeCreateRouteArgs> {
 
   static const String name = 'PinCodeCreateRoute';
 
-  static const _i44.PageInfo<PinCodeCreateRouteArgs> page =
-      _i44.PageInfo<PinCodeCreateRouteArgs>(name);
+  static const _i56.PageInfo<PinCodeCreateRouteArgs> page =
+      _i56.PageInfo<PinCodeCreateRouteArgs>(name);
 }
 
 class PinCodeCreateRouteArgs {
@@ -1006,7 +1435,7 @@ class PinCodeCreateRouteArgs {
     this.isNewPin = false,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final bool isNewPin;
 
@@ -1017,12 +1446,12 @@ class PinCodeCreateRouteArgs {
 }
 
 /// generated route for
-/// [_i25.PinCodeEnterScreen]
-class PinCodeEnterRoute extends _i44.PageRouteInfo<PinCodeEnterRouteArgs> {
+/// [_i36.PinCodeEnterScreen]
+class PinCodeEnterRoute extends _i56.PageRouteInfo<PinCodeEnterRouteArgs> {
   PinCodeEnterRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     bool isPushed = false,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           PinCodeEnterRoute.name,
           args: PinCodeEnterRouteArgs(
@@ -1034,8 +1463,8 @@ class PinCodeEnterRoute extends _i44.PageRouteInfo<PinCodeEnterRouteArgs> {
 
   static const String name = 'PinCodeEnterRoute';
 
-  static const _i44.PageInfo<PinCodeEnterRouteArgs> page =
-      _i44.PageInfo<PinCodeEnterRouteArgs>(name);
+  static const _i56.PageInfo<PinCodeEnterRouteArgs> page =
+      _i56.PageInfo<PinCodeEnterRouteArgs>(name);
 }
 
 class PinCodeEnterRouteArgs {
@@ -1044,7 +1473,7 @@ class PinCodeEnterRouteArgs {
     this.isPushed = false,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final bool isPushed;
 
@@ -1055,13 +1484,13 @@ class PinCodeEnterRouteArgs {
 }
 
 /// generated route for
-/// [_i26.PinCodeRepeatScreen]
-class PinCodeRepeatRoute extends _i44.PageRouteInfo<PinCodeRepeatRouteArgs> {
+/// [_i37.PinCodeRepeatScreen]
+class PinCodeRepeatRoute extends _i56.PageRouteInfo<PinCodeRepeatRouteArgs> {
   PinCodeRepeatRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     required String firstPin,
     required bool isNewPin,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           PinCodeRepeatRoute.name,
           args: PinCodeRepeatRouteArgs(
@@ -1074,8 +1503,8 @@ class PinCodeRepeatRoute extends _i44.PageRouteInfo<PinCodeRepeatRouteArgs> {
 
   static const String name = 'PinCodeRepeatRoute';
 
-  static const _i44.PageInfo<PinCodeRepeatRouteArgs> page =
-      _i44.PageInfo<PinCodeRepeatRouteArgs>(name);
+  static const _i56.PageInfo<PinCodeRepeatRouteArgs> page =
+      _i56.PageInfo<PinCodeRepeatRouteArgs>(name);
 }
 
 class PinCodeRepeatRouteArgs {
@@ -1085,7 +1514,7 @@ class PinCodeRepeatRouteArgs {
     required this.isNewPin,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final String firstPin;
 
@@ -1098,9 +1527,9 @@ class PinCodeRepeatRouteArgs {
 }
 
 /// generated route for
-/// [_i27.RecoveryPasswordChoiseTypeScreen]
-class RecoveryPasswordChoiseTypeRoute extends _i44.PageRouteInfo<void> {
-  const RecoveryPasswordChoiseTypeRoute({List<_i44.PageRouteInfo>? children})
+/// [_i38.RecoveryPasswordChoiseTypeScreen]
+class RecoveryPasswordChoiseTypeRoute extends _i56.PageRouteInfo<void> {
+  const RecoveryPasswordChoiseTypeRoute({List<_i56.PageRouteInfo>? children})
       : super(
           RecoveryPasswordChoiseTypeRoute.name,
           initialChildren: children,
@@ -1108,17 +1537,17 @@ class RecoveryPasswordChoiseTypeRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'RecoveryPasswordChoiseTypeRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i28.RecoveryPasswordEnterInnScreen]
+/// [_i39.RecoveryPasswordEnterInnScreen]
 class RecoveryPasswordEnterInnRoute
-    extends _i44.PageRouteInfo<RecoveryPasswordEnterInnRouteArgs> {
+    extends _i56.PageRouteInfo<RecoveryPasswordEnterInnRouteArgs> {
   RecoveryPasswordEnterInnRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     bool isSmsRecovery = false,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           RecoveryPasswordEnterInnRoute.name,
           args: RecoveryPasswordEnterInnRouteArgs(
@@ -1130,8 +1559,8 @@ class RecoveryPasswordEnterInnRoute
 
   static const String name = 'RecoveryPasswordEnterInnRoute';
 
-  static const _i44.PageInfo<RecoveryPasswordEnterInnRouteArgs> page =
-      _i44.PageInfo<RecoveryPasswordEnterInnRouteArgs>(name);
+  static const _i56.PageInfo<RecoveryPasswordEnterInnRouteArgs> page =
+      _i56.PageInfo<RecoveryPasswordEnterInnRouteArgs>(name);
 }
 
 class RecoveryPasswordEnterInnRouteArgs {
@@ -1140,7 +1569,7 @@ class RecoveryPasswordEnterInnRouteArgs {
     this.isSmsRecovery = false,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final bool isSmsRecovery;
 
@@ -1151,10 +1580,10 @@ class RecoveryPasswordEnterInnRouteArgs {
 }
 
 /// generated route for
-/// [_i29.RecoveryPasswordEnterNewPasswordScreen]
-class RecoveryPasswordEnterNewPasswordRoute extends _i44.PageRouteInfo<void> {
+/// [_i40.RecoveryPasswordEnterNewPasswordScreen]
+class RecoveryPasswordEnterNewPasswordRoute extends _i56.PageRouteInfo<void> {
   const RecoveryPasswordEnterNewPasswordRoute(
-      {List<_i44.PageRouteInfo>? children})
+      {List<_i56.PageRouteInfo>? children})
       : super(
           RecoveryPasswordEnterNewPasswordRoute.name,
           initialChildren: children,
@@ -1162,18 +1591,18 @@ class RecoveryPasswordEnterNewPasswordRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'RecoveryPasswordEnterNewPasswordRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i30.RecoveryPasswordEnterSmsCodeScreen]
+/// [_i41.RecoveryPasswordEnterSmsCodeScreen]
 class RecoveryPasswordEnterSmsCodeRoute
-    extends _i44.PageRouteInfo<RecoveryPasswordEnterSmsCodeRouteArgs> {
+    extends _i56.PageRouteInfo<RecoveryPasswordEnterSmsCodeRouteArgs> {
   RecoveryPasswordEnterSmsCodeRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     bool isSmsRecovery = false,
     required String contact,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           RecoveryPasswordEnterSmsCodeRoute.name,
           args: RecoveryPasswordEnterSmsCodeRouteArgs(
@@ -1186,8 +1615,8 @@ class RecoveryPasswordEnterSmsCodeRoute
 
   static const String name = 'RecoveryPasswordEnterSmsCodeRoute';
 
-  static const _i44.PageInfo<RecoveryPasswordEnterSmsCodeRouteArgs> page =
-      _i44.PageInfo<RecoveryPasswordEnterSmsCodeRouteArgs>(name);
+  static const _i56.PageInfo<RecoveryPasswordEnterSmsCodeRouteArgs> page =
+      _i56.PageInfo<RecoveryPasswordEnterSmsCodeRouteArgs>(name);
 }
 
 class RecoveryPasswordEnterSmsCodeRouteArgs {
@@ -1197,7 +1626,7 @@ class RecoveryPasswordEnterSmsCodeRouteArgs {
     required this.contact,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final bool isSmsRecovery;
 
@@ -1210,13 +1639,13 @@ class RecoveryPasswordEnterSmsCodeRouteArgs {
 }
 
 /// generated route for
-/// [_i31.RecoveryPinCodeChoiseTypeScreen]
+/// [_i42.RecoveryPinCodeChoiseTypeScreen]
 class RecoveryPinCodeChoiseTypeRoute
-    extends _i44.PageRouteInfo<RecoveryPinCodeChoiseTypeRouteArgs> {
+    extends _i56.PageRouteInfo<RecoveryPinCodeChoiseTypeRouteArgs> {
   RecoveryPinCodeChoiseTypeRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     required String password,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           RecoveryPinCodeChoiseTypeRoute.name,
           args: RecoveryPinCodeChoiseTypeRouteArgs(
@@ -1228,8 +1657,8 @@ class RecoveryPinCodeChoiseTypeRoute
 
   static const String name = 'RecoveryPinCodeChoiseTypeRoute';
 
-  static const _i44.PageInfo<RecoveryPinCodeChoiseTypeRouteArgs> page =
-      _i44.PageInfo<RecoveryPinCodeChoiseTypeRouteArgs>(name);
+  static const _i56.PageInfo<RecoveryPinCodeChoiseTypeRouteArgs> page =
+      _i56.PageInfo<RecoveryPinCodeChoiseTypeRouteArgs>(name);
 }
 
 class RecoveryPinCodeChoiseTypeRouteArgs {
@@ -1238,7 +1667,7 @@ class RecoveryPinCodeChoiseTypeRouteArgs {
     required this.password,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final String password;
 
@@ -1249,10 +1678,10 @@ class RecoveryPinCodeChoiseTypeRouteArgs {
 }
 
 /// generated route for
-/// [_i32.RecoveryPinCodeEnterEsiPasswordScreen]
-class RecoveryPinCodeEnterEsiPasswordRoute extends _i44.PageRouteInfo<void> {
+/// [_i43.RecoveryPinCodeEnterEsiPasswordScreen]
+class RecoveryPinCodeEnterEsiPasswordRoute extends _i56.PageRouteInfo<void> {
   const RecoveryPinCodeEnterEsiPasswordRoute(
-      {List<_i44.PageRouteInfo>? children})
+      {List<_i56.PageRouteInfo>? children})
       : super(
           RecoveryPinCodeEnterEsiPasswordRoute.name,
           initialChildren: children,
@@ -1260,18 +1689,18 @@ class RecoveryPinCodeEnterEsiPasswordRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'RecoveryPinCodeEnterEsiPasswordRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i33.RecoveryPinCodeEnterSmsCodeScreen]
+/// [_i44.RecoveryPinCodeEnterSmsCodeScreen]
 class RecoveryPinCodeEnterSmsCodeRoute
-    extends _i44.PageRouteInfo<RecoveryPinCodeEnterSmsCodeRouteArgs> {
+    extends _i56.PageRouteInfo<RecoveryPinCodeEnterSmsCodeRouteArgs> {
   RecoveryPinCodeEnterSmsCodeRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     required String method,
     required String userId,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           RecoveryPinCodeEnterSmsCodeRoute.name,
           args: RecoveryPinCodeEnterSmsCodeRouteArgs(
@@ -1284,8 +1713,8 @@ class RecoveryPinCodeEnterSmsCodeRoute
 
   static const String name = 'RecoveryPinCodeEnterSmsCodeRoute';
 
-  static const _i44.PageInfo<RecoveryPinCodeEnterSmsCodeRouteArgs> page =
-      _i44.PageInfo<RecoveryPinCodeEnterSmsCodeRouteArgs>(name);
+  static const _i56.PageInfo<RecoveryPinCodeEnterSmsCodeRouteArgs> page =
+      _i56.PageInfo<RecoveryPinCodeEnterSmsCodeRouteArgs>(name);
 }
 
 class RecoveryPinCodeEnterSmsCodeRouteArgs {
@@ -1295,7 +1724,7 @@ class RecoveryPinCodeEnterSmsCodeRouteArgs {
     required this.userId,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final String method;
 
@@ -1308,9 +1737,9 @@ class RecoveryPinCodeEnterSmsCodeRouteArgs {
 }
 
 /// generated route for
-/// [_i34.RegisterIPMainScreen]
-class RegisterIPMainRoute extends _i44.PageRouteInfo<void> {
-  const RegisterIPMainRoute({List<_i44.PageRouteInfo>? children})
+/// [_i45.RegisterIPMainScreen]
+class RegisterIPMainRoute extends _i56.PageRouteInfo<void> {
+  const RegisterIPMainRoute({List<_i56.PageRouteInfo>? children})
       : super(
           RegisterIPMainRoute.name,
           initialChildren: children,
@@ -1318,16 +1747,16 @@ class RegisterIPMainRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'RegisterIPMainRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i35.RegisterIPNextScreen]
-class RegisterIPNextRoute extends _i44.PageRouteInfo<RegisterIPNextRouteArgs> {
+/// [_i46.RegisterIPNextScreen]
+class RegisterIPNextRoute extends _i56.PageRouteInfo<RegisterIPNextRouteArgs> {
   RegisterIPNextRoute({
-    _i45.Key? key,
+    _i57.Key? key,
     required bool isPatent,
-    List<_i44.PageRouteInfo>? children,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           RegisterIPNextRoute.name,
           args: RegisterIPNextRouteArgs(
@@ -1339,8 +1768,8 @@ class RegisterIPNextRoute extends _i44.PageRouteInfo<RegisterIPNextRouteArgs> {
 
   static const String name = 'RegisterIPNextRoute';
 
-  static const _i44.PageInfo<RegisterIPNextRouteArgs> page =
-      _i44.PageInfo<RegisterIPNextRouteArgs>(name);
+  static const _i56.PageInfo<RegisterIPNextRouteArgs> page =
+      _i56.PageInfo<RegisterIPNextRouteArgs>(name);
 }
 
 class RegisterIPNextRouteArgs {
@@ -1349,7 +1778,7 @@ class RegisterIPNextRouteArgs {
     required this.isPatent,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   final bool isPatent;
 
@@ -1360,13 +1789,13 @@ class RegisterIPNextRouteArgs {
 }
 
 /// generated route for
-/// [_i36.RegisterIPTypeOfActivityScreen]
+/// [_i47.RegisterIPTypeOfActivityScreen]
 class RegisterIPTypeOfActivityRoute
-    extends _i44.PageRouteInfo<RegisterIPTypeOfActivityRouteArgs> {
+    extends _i56.PageRouteInfo<RegisterIPTypeOfActivityRouteArgs> {
   RegisterIPTypeOfActivityRoute({
-    _i45.Key? key,
-    required List<_i48.TaxModel> models,
-    List<_i44.PageRouteInfo>? children,
+    _i57.Key? key,
+    required List<_i68.TaxModel> models,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           RegisterIPTypeOfActivityRoute.name,
           args: RegisterIPTypeOfActivityRouteArgs(
@@ -1378,8 +1807,8 @@ class RegisterIPTypeOfActivityRoute
 
   static const String name = 'RegisterIPTypeOfActivityRoute';
 
-  static const _i44.PageInfo<RegisterIPTypeOfActivityRouteArgs> page =
-      _i44.PageInfo<RegisterIPTypeOfActivityRouteArgs>(name);
+  static const _i56.PageInfo<RegisterIPTypeOfActivityRouteArgs> page =
+      _i56.PageInfo<RegisterIPTypeOfActivityRouteArgs>(name);
 }
 
 class RegisterIPTypeOfActivityRouteArgs {
@@ -1388,9 +1817,9 @@ class RegisterIPTypeOfActivityRouteArgs {
     required this.models,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
-  final List<_i48.TaxModel> models;
+  final List<_i68.TaxModel> models;
 
   @override
   String toString() {
@@ -1399,9 +1828,9 @@ class RegisterIPTypeOfActivityRouteArgs {
 }
 
 /// generated route for
-/// [_i37.RegisterIpConfirmOepScreen]
-class RegisterIpConfirmOepRoute extends _i44.PageRouteInfo<void> {
-  const RegisterIpConfirmOepRoute({List<_i44.PageRouteInfo>? children})
+/// [_i48.RegisterIpConfirmOepScreen]
+class RegisterIpConfirmOepRoute extends _i56.PageRouteInfo<void> {
+  const RegisterIpConfirmOepRoute({List<_i56.PageRouteInfo>? children})
       : super(
           RegisterIpConfirmOepRoute.name,
           initialChildren: children,
@@ -1409,17 +1838,17 @@ class RegisterIpConfirmOepRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'RegisterIpConfirmOepRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i38.RegisterIpSelectModesScreen]
+/// [_i49.RegisterIpSelectModesScreen]
 class RegisterIpSelectModesRoute
-    extends _i44.PageRouteInfo<RegisterIpSelectModesRouteArgs> {
+    extends _i56.PageRouteInfo<RegisterIpSelectModesRouteArgs> {
   RegisterIpSelectModesRoute({
-    _i45.Key? key,
-    required List<_i48.TaxModel> models,
-    List<_i44.PageRouteInfo>? children,
+    _i57.Key? key,
+    required List<_i68.TaxModel> models,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           RegisterIpSelectModesRoute.name,
           args: RegisterIpSelectModesRouteArgs(
@@ -1431,8 +1860,8 @@ class RegisterIpSelectModesRoute
 
   static const String name = 'RegisterIpSelectModesRoute';
 
-  static const _i44.PageInfo<RegisterIpSelectModesRouteArgs> page =
-      _i44.PageInfo<RegisterIpSelectModesRouteArgs>(name);
+  static const _i56.PageInfo<RegisterIpSelectModesRouteArgs> page =
+      _i56.PageInfo<RegisterIpSelectModesRouteArgs>(name);
 }
 
 class RegisterIpSelectModesRouteArgs {
@@ -1441,9 +1870,9 @@ class RegisterIpSelectModesRouteArgs {
     required this.models,
   });
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
-  final List<_i48.TaxModel> models;
+  final List<_i68.TaxModel> models;
 
   @override
   String toString() {
@@ -1452,9 +1881,9 @@ class RegisterIpSelectModesRouteArgs {
 }
 
 /// generated route for
-/// [_i39.RegisterIpSigninScreen]
-class RegisterIpSigninRoute extends _i44.PageRouteInfo<void> {
-  const RegisterIpSigninRoute({List<_i44.PageRouteInfo>? children})
+/// [_i50.RegisterIpSigninScreen]
+class RegisterIpSigninRoute extends _i56.PageRouteInfo<void> {
+  const RegisterIpSigninRoute({List<_i56.PageRouteInfo>? children})
       : super(
           RegisterIpSigninRoute.name,
           initialChildren: children,
@@ -1462,17 +1891,17 @@ class RegisterIpSigninRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'RegisterIpSigninRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i40.SelfiePreviewScreen]
-class SelfiePreviewRoute extends _i44.PageRouteInfo<SelfiePreviewRouteArgs> {
+/// [_i51.SelfiePreviewScreen]
+class SelfiePreviewRoute extends _i56.PageRouteInfo<SelfiePreviewRouteArgs> {
   SelfiePreviewRoute({
     required String? path,
     required Function onCheck,
-    _i45.Key? key,
-    List<_i44.PageRouteInfo>? children,
+    _i57.Key? key,
+    List<_i56.PageRouteInfo>? children,
   }) : super(
           SelfiePreviewRoute.name,
           args: SelfiePreviewRouteArgs(
@@ -1485,8 +1914,8 @@ class SelfiePreviewRoute extends _i44.PageRouteInfo<SelfiePreviewRouteArgs> {
 
   static const String name = 'SelfiePreviewRoute';
 
-  static const _i44.PageInfo<SelfiePreviewRouteArgs> page =
-      _i44.PageInfo<SelfiePreviewRouteArgs>(name);
+  static const _i56.PageInfo<SelfiePreviewRouteArgs> page =
+      _i56.PageInfo<SelfiePreviewRouteArgs>(name);
 }
 
 class SelfiePreviewRouteArgs {
@@ -1500,7 +1929,7 @@ class SelfiePreviewRouteArgs {
 
   final Function onCheck;
 
-  final _i45.Key? key;
+  final _i57.Key? key;
 
   @override
   String toString() {
@@ -1509,9 +1938,9 @@ class SelfiePreviewRouteArgs {
 }
 
 /// generated route for
-/// [_i41.SettingsAboutScreen]
-class SettingsAboutRoute extends _i44.PageRouteInfo<void> {
-  const SettingsAboutRoute({List<_i44.PageRouteInfo>? children})
+/// [_i52.SettingsAboutScreen]
+class SettingsAboutRoute extends _i56.PageRouteInfo<void> {
+  const SettingsAboutRoute({List<_i56.PageRouteInfo>? children})
       : super(
           SettingsAboutRoute.name,
           initialChildren: children,
@@ -1519,13 +1948,13 @@ class SettingsAboutRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'SettingsAboutRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i42.SettingsHelpScreen]
-class SettingsHelpRoute extends _i44.PageRouteInfo<void> {
-  const SettingsHelpRoute({List<_i44.PageRouteInfo>? children})
+/// [_i53.SettingsHelpScreen]
+class SettingsHelpRoute extends _i56.PageRouteInfo<void> {
+  const SettingsHelpRoute({List<_i56.PageRouteInfo>? children})
       : super(
           SettingsHelpRoute.name,
           initialChildren: children,
@@ -1533,13 +1962,13 @@ class SettingsHelpRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'SettingsHelpRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i43.SplashScreen]
-class SplashRoute extends _i44.PageRouteInfo<void> {
-  const SplashRoute({List<_i44.PageRouteInfo>? children})
+/// [_i54.SplashScreen]
+class SplashRoute extends _i56.PageRouteInfo<void> {
+  const SplashRoute({List<_i56.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -1547,5 +1976,64 @@ class SplashRoute extends _i44.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static const _i44.PageInfo<void> page = _i44.PageInfo<void>(name);
+  static const _i56.PageInfo<void> page = _i56.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i55.SuccessOrFailureScreen]
+class SuccessOrFailureRoute
+    extends _i56.PageRouteInfo<SuccessOrFailureRouteArgs> {
+  SuccessOrFailureRoute({
+    _i57.Key? key,
+    required void Function() onPress,
+    required String title,
+    required String subtitle,
+    required String buttonText,
+    bool isSuccess = true,
+    List<_i56.PageRouteInfo>? children,
+  }) : super(
+          SuccessOrFailureRoute.name,
+          args: SuccessOrFailureRouteArgs(
+            key: key,
+            onPress: onPress,
+            title: title,
+            subtitle: subtitle,
+            buttonText: buttonText,
+            isSuccess: isSuccess,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SuccessOrFailureRoute';
+
+  static const _i56.PageInfo<SuccessOrFailureRouteArgs> page =
+      _i56.PageInfo<SuccessOrFailureRouteArgs>(name);
+}
+
+class SuccessOrFailureRouteArgs {
+  const SuccessOrFailureRouteArgs({
+    this.key,
+    required this.onPress,
+    required this.title,
+    required this.subtitle,
+    required this.buttonText,
+    this.isSuccess = true,
+  });
+
+  final _i57.Key? key;
+
+  final void Function() onPress;
+
+  final String title;
+
+  final String subtitle;
+
+  final String buttonText;
+
+  final bool isSuccess;
+
+  @override
+  String toString() {
+    return 'SuccessOrFailureRouteArgs{key: $key, onPress: $onPress, title: $title, subtitle: $subtitle, buttonText: $buttonText, isSuccess: $isSuccess}';
+  }
 }

@@ -28,6 +28,41 @@ class AppInputValidators {
     }
   }
 
+  static String? bikValidator(String? val) {
+    if (val!.isEmpty) {
+      return null;
+    }
+    if (val.length != 6) {
+      return 'Бик должен состоянить из 6 цифр';
+    } else {
+      return null;
+    }
+  }
+
+  static String? okpoValidator(String? val) {
+    if (val!.isEmpty) {
+      return 'Поле обязательно для заполнения';
+    }
+    if (val.length == 8) {
+      return null;
+    } else if (val.length == 10) {
+      return null;
+    } else {
+      return 'Введите корректные данные';
+    }
+  }
+
+  static String? checkingAccountValidator(String? val) {
+    if (val!.isEmpty) {
+      return null;
+    }
+    if (val.length != 16) {
+      return 'Введите корректные данные';
+    } else {
+      return null;
+    }
+  }
+
   static String? innValidator(String? val) {
     var regexp = RegExp(r'^[0-9]*$');
     if (val!.isEmpty) {

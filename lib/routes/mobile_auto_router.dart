@@ -51,5 +51,17 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: OpenAccountRoute.page),
         AutoRoute(page: GoBankRoute.page),
         AutoRoute(page: PdfViewRoute.page),
+        AutoRoute(page: MegaKassaEntryRoute.page),
+        AutoRoute(page: SuccessOrFailureRoute.page),
+        AutoRoute(page: MegaKassaMyProfileRoute.page),
+        AutoRoute(page: MegaKassaKkmListRoute.page),
+        AutoRoute(page: MegaKassaKkmDetailRoute.page),
+        AutoRoute(page: MegaKassaKkmRegistrationRoute.page),
+        AutoRoute(page: MegaKassaKkmRegistrationStep1Route.page),
+        AutoRoute(page: MegaKassaKkmRegistrationStep2Route.page),
+        AutoRoute(page: MegaKassaKkmRegistrationStep3Route.page),
+        AutoRoute(page: MegaKassaGnsRegistrationRoute.page),
+        AutoRoute(page: MegaKassaGnsConfirmationRoute.page),
+        AutoRoute(page: MegaKassaKkmPersonalAccountRoute.page),
       ];
 }

@@ -23,7 +23,7 @@ class EmptyBankWidget extends StatelessWidget {
         ),
         const Spacer(),
         CustomButton(
-          onPress: () => AppRouting.pushFunction(const CreateAccountRoute()),
+          onPress: () => AppRouting.pushFunction(const MegaKassaEntryRoute()),
           text: 'Открыть счет',
         ),
         const Spacer(),

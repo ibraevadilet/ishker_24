@@ -46,14 +46,18 @@ class CustomButton extends StatelessWidget {
       padding: aroundButtonPadding,
       child: CupertinoButton(
         padding: EdgeInsets.zero,
-        onPressed: isLoading ? null : onPress,
+        onPressed: isLoading
+            ? null
+            : isFullFilled
+                ? onPress
+                : null,
         child: Container(
           alignment: Alignment.center,
           height: height,
           width: width,
           padding: EdgeInsets.all(contentPadding),
           decoration: BoxDecoration(
-            color: color,
+            color: isFullFilled ? color : const Color(0xff6B7583),
             borderRadius: BorderRadius.circular(radius),
             border: borderColor != null
                 ? Border.all(

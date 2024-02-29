@@ -68,7 +68,11 @@ class CatchException {
       } else if (error.response!.statusCode == 415) {
         return CatchException(message: error.response!.data['error']);
       } else if (error.response!.statusCode == 500) {
-        return CatchException(message: error.response!.data['error']);
+        try {
+          return CatchException(message: error.response!.data['error']);
+        } catch (e) {
+          return CatchException(message: error.response.toString());
+        }
       } else {
         return CatchException(message: LocaleKeys.catchExSystemError.tr());
       }

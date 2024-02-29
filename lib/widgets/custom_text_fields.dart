@@ -19,6 +19,16 @@ class CustomTextField extends StatefulWidget {
     this.prefixIcon,
     this.onChanged,
     this.isId = false,
+    this.height,
+    this.contentPadding,
+    this.hintStyle,
+    this.borderRadius = 12,
+    this.borderColor,
+    this.textStyle,
+    this.focusNode,
+    this.enabled = true,
+    this.suffixIcon,
+    this.autofocus = false,
   });
 
   final List<TextInputFormatter>? inputFormatters;
@@ -32,8 +42,18 @@ class CustomTextField extends StatefulWidget {
   final String? prefixText;
   final int? maxLength;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final bool isId;
+  final double? height;
   final Function(String)? onChanged;
+  final EdgeInsets? contentPadding;
+  final TextStyle? hintStyle;
+  final TextStyle? textStyle;
+  final double borderRadius;
+  final Color? borderColor;
+  final FocusNode? focusNode;
+  final bool enabled;
+  final bool autofocus;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -43,16 +63,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      height: widget.height,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(widget.borderRadius),
         border: Border.all(
-          color: AppColors.color7A7A7AGrey,
+          color: widget.borderColor ?? AppColors.color7A7A7AGrey,
           width: 1,
         ),
       ),
       child: TextFormField(
-        style: AppTextStyles.s15W600(),
+        autofocus: widget.autofocus,
+        focusNode: widget.focusNode,
+        style: widget.textStyle ?? AppTextStyles.s15W600(),
         cursorColor: AppColors.color7A7A7AGrey,
         maxLength: widget.maxLength,
         inputFormatters: widget.inputFormatters,
@@ -60,6 +82,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         keyboardType: widget.keyboardType,
         obscureText: widget.obscureText,
         validator: widget.validator,
+        enabled: widget.enabled,
         onChanged: (value) {
           if (widget.onChanged != null) {
             widget.onChanged!(value);
@@ -70,9 +93,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
         },
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
+          contentPadding: widget.contentPadding ??
+              const EdgeInsets.symmetric(horizontal: 12),
           labelStyle: AppTextStyles.s14W600(color: AppColors.color6B7583Grey),
           prefixText: widget.prefixText,
           prefixIcon: widget.prefixIcon,
+          suffixIcon: widget.suffixIcon,
+          hintStyle: widget.hintStyle,
           counter: const SizedBox(),
           hintText: widget.hintText,
           labelText: widget.labelText,

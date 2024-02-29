@@ -31,6 +31,25 @@ import 'package:ishker_24/features/home/domain/use_cases/check_has_ip_use_case.d
 import 'package:ishker_24/features/home/domain/use_cases/get_client_info_usecase.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/get_client_info_cubit/get_client_info_cubit.dart';
+import 'package:ishker_24/features/megakassa/data/repo_implements/megakassa_repo_impl.dart';
+import 'package:ishker_24/features/megakassa/domain/repositories/megakassa_repository.dart';
+import 'package:ishker_24/features/megakassa/domain/use_cases/get_kkm_detail_usecase.dart';
+import 'package:ishker_24/features/megakassa/domain/use_cases/get_kkm_list_usecase.dart';
+import 'package:ishker_24/features/megakassa/domain/use_cases/get_profile_info_usecase.dart';
+import 'package:ishker_24/features/megakassa/domain/use_cases/get_status_usecase.dart';
+import 'package:ishker_24/features/megakassa/domain/use_cases/get_steps_info_usecase.dart';
+import 'package:ishker_24/features/megakassa/domain/use_cases/gns_get_confirmation_usecase.dart';
+import 'package:ishker_24/features/megakassa/domain/use_cases/gns_registration_methods_usecase.dart';
+import 'package:ishker_24/features/megakassa/domain/use_cases/gns_registration_usecase.dart';
+import 'package:ishker_24/features/megakassa/domain/use_cases/kkm_registration_usecase.dart';
+import 'package:ishker_24/features/megakassa/presentation/gns_confirmation/cubit/gns_confirmation_cubit.dart';
+import 'package:ishker_24/features/megakassa/presentation/gns_registration/cubit/gns_registration_cubit.dart';
+import 'package:ishker_24/features/megakassa/presentation/kkm_detail/cubit/get_kkm_detail_cubit.dart';
+import 'package:ishker_24/features/megakassa/presentation/kkm_list/cubit/get_kkm_list_cubit.dart';
+import 'package:ishker_24/features/megakassa/presentation/kkm_registration/cubit/kkm_registration_cubit.dart';
+import 'package:ishker_24/features/megakassa/presentation/kkm_registration_steps/cubits/get_steps_info_cubit.dart';
+import 'package:ishker_24/features/megakassa/presentation/megakassa_entry/cubit/get_megakassa_status_cubit.dart';
+import 'package:ishker_24/features/megakassa/presentation/my_profile/cubit/get_profile_info_cubit.dart';
 import 'package:ishker_24/features/my_ip/presentation/my_ip_main_screen/get_my_ip_cubit/get_my_ip_cubit.dart';
 import 'package:ishker_24/features/qr/data/repo_implements/generate_qr_repo_impl.dart';
 import 'package:ishker_24/features/qr/domain/repositories/generate_qr_repository.dart';
@@ -283,4 +302,49 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<CheckBankCubit>(() => CheckBankCubit(useCase: sl()));
   sl.registerFactory<PublicOfferCubit>(() => PublicOfferCubit());
   sl.registerFactory<PersonalDataCubit>(() => PersonalDataCubit());
+
+  _registerMegaKassaDependecies();
+}
+
+Future<void> _registerMegaKassaDependecies() async {
+  sl.registerFactory<MegaKassaRepo>(() => MegaKassaRepoImpl(dio: sl()));
+
+  sl.registerFactory<MegaKassaGetStatusUseCase>(
+      () => MegaKassaGetStatusUseCase(repo: sl()));
+  sl.registerFactory<MegaKassaGnsRegistrationUseCase>(
+      () => MegaKassaGnsRegistrationUseCase(repo: sl()));
+  sl.registerFactory<MegaKassaGetProfileInfoUseCase>(
+      () => MegaKassaGetProfileInfoUseCase(repo: sl()));
+  sl.registerFactory<MegaKassaGetKkmListUseCase>(
+      () => MegaKassaGetKkmListUseCase(repo: sl()));
+  sl.registerFactory<MegaKassaGetKkmDetailUseCase>(
+      () => MegaKassaGetKkmDetailUseCase(repo: sl()));
+  sl.registerFactory<MegaKassaGetStepsInfoUseCase>(
+      () => MegaKassaGetStepsInfoUseCase(repo: sl()));
+  sl.registerFactory<MegaKassaKkmRegistrationUseCase>(
+      () => MegaKassaKkmRegistrationUseCase(repo: sl()));
+  sl.registerFactory<MegaKassaGnsRegistrationMethodsUseCase>(
+      () => MegaKassaGnsRegistrationMethodsUseCase(repo: sl()));
+  sl.registerFactory<MegaKassaGnsGetConfirmationUseCase>(
+      () => MegaKassaGnsGetConfirmationUseCase(repo: sl()));
+
+  sl.registerFactory<MegaKassaGetMegaKassaStatusCubit>(
+      () => MegaKassaGetMegaKassaStatusCubit(useCase: sl()));
+  sl.registerFactory<MegaKassaGnsRegistrationCubit>(
+      () => MegaKassaGnsRegistrationCubit(
+            useCase: sl(),
+            methodsUseCase: sl(),
+          ));
+  sl.registerFactory<MegaKassaGetProfileInfoCubit>(
+      () => MegaKassaGetProfileInfoCubit(useCase: sl()));
+  sl.registerFactory<MegaKassaGetKkmListCubit>(
+      () => MegaKassaGetKkmListCubit(useCase: sl()));
+  sl.registerFactory<MegaKassaGetKkmDetailCubit>(
+      () => MegaKassaGetKkmDetailCubit(useCase: sl()));
+  sl.registerFactory<MegaKassaGetStepsInfoCubit>(
+      () => MegaKassaGetStepsInfoCubit(useCase: sl()));
+  sl.registerFactory<MegaKassaKkmRegistrationCubit>(
+      () => MegaKassaKkmRegistrationCubit(useCase: sl()));
+  sl.registerFactory<MegaKassaGnsConfirmationCubit>(
+      () => MegaKassaGnsConfirmationCubit(useCase: sl()));
 }
