@@ -28,7 +28,7 @@ import 'package:ishker_24/features/esf/presentation/cubits/esf_check_cubit/esf_c
 import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
 import 'package:ishker_24/features/grnp_check/data/repositories_impl/grnp_repo_impl.dart';
 import 'package:ishker_24/features/grnp_check/domain/repositories/grnp_repository.dart';
-import 'package:ishker_24/features/grnp_check/domain/use_case%20/grnp_use_case.dart';
+import 'package:ishker_24/features/grnp_check/domain/use_case/grnp_use_case.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/grnp_cubit/grnp_cubit.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/pesonal_data_cubit/personal_data_cubit.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/public_offer_cubit/public_offer_cubit.dart';
