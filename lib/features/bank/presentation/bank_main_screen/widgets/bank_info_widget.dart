@@ -56,6 +56,11 @@ class BankInfoWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 150),
                     itemCount: model.accountsList.length,
                     itemBuilder: (context, index) => ListTile(
+                      onTap: () => AppRouting.pushFunction(
+                        AccountInfoRoute(
+                          account: model.accountsList[index].accountNumber,
+                        ),
+                      ),
                       contentPadding: EdgeInsets.zero,
                       leading: SvgPicture.asset(
                         AppCurrencyFormatter.cuccancyIcon(

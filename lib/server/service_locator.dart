@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/create_account_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/get_client_passport_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/register_client_repo_impl.dart';
@@ -32,8 +33,11 @@ import 'package:ishker_24/features/home/domain/use_cases/get_client_info_usecase
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/get_client_info_cubit/get_client_info_cubit.dart';
 import 'package:ishker_24/features/my_ip/presentation/my_ip_main_screen/get_my_ip_cubit/get_my_ip_cubit.dart';
+import 'package:ishker_24/features/account/data/repositories/account_repo_impl.dart';
 import 'package:ishker_24/features/qr/data/repo_implements/generate_qr_repo_impl.dart';
+import 'package:ishker_24/features/account/domain/repositories/account_repo.dart';
 import 'package:ishker_24/features/qr/domain/repositories/generate_qr_repository.dart';
+import 'package:ishker_24/features/account/domain/usecases/account_info_usecase.dart';
 import 'package:ishker_24/features/qr/domain/use_cases/generate_qr_usecase.dart';
 import 'package:ishker_24/features/qr/presentation/qr_main_screen/cubits/generate_qr_cubit/generate_qr_cubit.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_gns_pdf_repo_impl.dart';
@@ -178,6 +182,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetClientPassportRepo>(
       () => GetClientPassportRepoImpl(dio: sl()));
   sl.registerFactory<CheckGrnpRepo>(() => CheckGrnpRepoImpl(dio: sl()));
+  sl.registerFactory<AccountRepo>(() => AccountRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -228,6 +233,10 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<CheckGrnpUseCase>(() => CheckGrnpUseCase(repo: sl()));
   sl.registerLazySingleton<GetTokensUseCase>(
       () => GetTokensUseCase(repo: sl(), prefs: sl()));
+  sl.registerLazySingleton<HistoryUseCase>(() => HistoryUseCase(sl()));
+  sl.registerLazySingleton<AccountInfoUseCase>(
+    () => AccountInfoUseCase(repo: sl()),
+  );
 
   /// BLoCs / Cubits
 

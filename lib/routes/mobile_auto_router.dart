@@ -54,5 +54,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: NalogMainRoute.page),
         AutoRoute(page: EsfRoute.page),
         AutoRoute(page: KKMRoute.page),
+        AutoRoute(page: HistoryRoute.page),
+        AutoRoute(page: AccountInfoRoute.page),
       ];
 }
