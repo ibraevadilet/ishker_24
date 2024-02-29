@@ -31,6 +31,11 @@ abstract class AppTextStyles {
         fontSize: 12,
         fontWeight: FontWeight.w600,
       );
+  static TextStyle s13W500({Color? color}) => TextStyle(
+        color: color ?? Colors.black,
+        fontSize: 13,
+        fontWeight: FontWeight.w500,
+      );
   static TextStyle s13W700({Color? color}) => TextStyle(
         color: color ?? Colors.black,
         fontSize: 13,
@@ -113,6 +118,11 @@ abstract class AppTextStyles {
   static TextStyle s20W600({Color? color}) => TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w600,
+        color: color ?? Colors.black,
+      );
+  static TextStyle s20W500({Color? color}) => TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
         color: color ?? Colors.black,
       );
 

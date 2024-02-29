@@ -22,7 +22,9 @@ class CheckHasIPRepoImpl implements CheckHasIPRepo {
       );
       return response.data.isEmpty
           ? null
-          : CheckHasIPModel.fromJson(response.data['data']);
+          : response.data['data']['qrUrl'] != null
+              ? CheckHasIPModel.fromJsonCertificate(response.data['data'])
+              : CheckHasIPModel.fromJsonNoCertificate(response.data['data']);
     } catch (e) {
       throw CatchException.convertException(e).message;
     }

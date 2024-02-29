@@ -9,6 +9,8 @@ abstract class AppColors {
   static const Color color6B7583Grey = Color(0xff6B7583);
   static const Color color7A7A7AGrey = Color(0xff7A7A7A);
   static const Color colorD0D0D0Grey = Color(0xffD0D0D0);
+  static const Color colorF3F4F5Grey = Color(0xffF3F4F5);
+  static const Color color4E4E4EGrey = Color(0xff4E4E4E);
   static const Color colorFF0000Red = Color(0xffFF0000);
   static const Color colorFC4637Red = Color(0xffFC4637);
   static const Color color54B25AMain = Color(0xff54B25A);
@@ -17,6 +19,8 @@ abstract class AppColors {
   static const Color color46CC6BGreen = Color(0xff46CC6B);
   static const Color backgroundColor = Color(0xffFAFAFA);
   static const Color color2C2C2CBlack = Color(0xff2C2C2C);
+  static const Color color32D681Green = Color(0xff32D681);
+
   static const LinearGradient billGradient = LinearGradient(
     begin: Alignment.topRight,
     end: Alignment.bottomLeft,

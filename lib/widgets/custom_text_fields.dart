@@ -18,7 +18,6 @@ class CustomTextField extends StatefulWidget {
     this.maxLength,
     this.prefixIcon,
     this.onChanged,
-    this.isId = false,
     this.height,
     this.contentPadding,
     this.hintStyle,
@@ -29,6 +28,8 @@ class CustomTextField extends StatefulWidget {
     this.enabled = true,
     this.suffixIcon,
     this.autofocus = false,
+    this.isId = false,
+    this.maxLines = 1,
   });
 
   final List<TextInputFormatter>? inputFormatters;
@@ -54,6 +55,7 @@ class CustomTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final bool enabled;
   final bool autofocus;
+  final int? maxLines;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -75,6 +77,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         autofocus: widget.autofocus,
         focusNode: widget.focusNode,
         style: widget.textStyle ?? AppTextStyles.s15W600(),
+        maxLines: widget.maxLines,
         cursorColor: AppColors.color7A7A7AGrey,
         maxLength: widget.maxLength,
         inputFormatters: widget.inputFormatters,

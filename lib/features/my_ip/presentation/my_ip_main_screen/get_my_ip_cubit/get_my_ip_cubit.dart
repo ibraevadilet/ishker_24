@@ -16,6 +16,22 @@ class GetMyIpCubit extends Cubit<GetMyIpState> {
   Future<void> getMyIp() async {
     emit(const GetMyIpState.loading());
     try {
+      // emit(
+      //   GetMyIpState.success(
+      //     CheckHasIPModel(
+      //       tin: '21605200001255',
+      //       gnsStatus: '',
+      //       declinedReason: '',
+      //       firstName: 'Адилет',
+      //       lastName: 'Джаанбаевич',
+      //       middleName: 'Ибраев',
+      //       created: DateTime.now(),
+      //       isNewIp: true,
+      //       image:
+      //           'https://qr.salyk.kg/getcertificate?encodedText=j7pBI-O0UBMbc66TrW2eg3F8dFh5PECwQyDAKjLbiSw',
+      //     ),
+      //   ),
+      // );
       final result = await useCase.checkIp();
       if (result == null) {
         emit(const GetMyIpState.emptyIp());

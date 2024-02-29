@@ -4,6 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:ishker_24/core/app_helpers/dio_header.dart';
 import 'package:ishker_24/core/constants/app_text_constants.dart';
 import 'package:ishker_24/core/constants/shared_keys.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/get_tokens_use_case.dart';
+import 'package:ishker_24/server/service_locator.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -48,6 +50,12 @@ class DioSettings {
             options.headers['Authorization'] = 'Bearer $accessToken';
           }
 
+          //////ADD TEST AUTH FOR STORE TESTERS
+          final pin = sl<GetTokensUseCase>().pin;
+          if (pin == '12345678987654') {
+            options.headers['isMock'] = true;
+          }
+
           return handler.next(options);
         },
         onResponse: (response, handler) {
@@ -56,12 +64,8 @@ class DioSettings {
         onError: (DioException e, handler) async {
           if (e.response?.statusCode == 401) {
             Response response;
-            print('STATUSSSS 401');
-            final oldToken = prefs.getString(SharedKeys.refreshToken);
-            print('OLDDD TOKEN -- $oldToken');
             await _newAccessToken();
             final newToken = prefs.getString(SharedKeys.refreshToken);
-            print('NEWWWW TOKEN -- $newToken');
             e.requestOptions.headers
                 .update('Authorization', (value) => 'Bearer $newToken');
             var path = '${e.requestOptions.baseUrl}${e.requestOptions.path}';
@@ -100,7 +104,6 @@ class DioSettings {
   }
 
   Future<void> _newAccessToken() async {
-    print('GET NEW TOKENNNN');
     final refreshToken = prefs.getString(SharedKeys.refreshToken);
     try {
       final result = await dioForNewTokens.post(
@@ -110,7 +113,6 @@ class DioSettings {
           'refreshToken': refreshToken,
         },
       );
-      print(' NEW ${result.data['accessToken']}');
       prefs.setString(SharedKeys.accessToken, result.data['accessToken']);
     } catch (e) {
       if (e is DioException) {

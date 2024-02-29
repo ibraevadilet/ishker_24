@@ -54,7 +54,7 @@ class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
               listener: (context, state) {
                 state.whenOrNull(
                   success: (model) {
-                    if (widget.isPatent) {
+                    if (!widget.isPatent) {
                       nalogTypes =
                           model.nalogTypes.map<String>((e) => e.text).toList();
                     } else {
@@ -102,8 +102,9 @@ class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          selectedVidDeatelnost?.text ??
-                                              'Вид экономической деятельности',
+                                          selectedVidDeatelnost == null
+                                              ? 'Вид экономической деятельности'
+                                              : '${selectedVidDeatelnost!.id} - ${selectedVidDeatelnost!.text}',
                                           style: AppTextStyles.s16W400(),
                                         ),
                                       ),

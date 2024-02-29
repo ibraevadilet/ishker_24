@@ -1,5 +1,5 @@
 abstract class AppTextConstants {
-  // static const mainServer = 'https://app1.megacom.kg:9090/site-api8/';
+  // static const mainServer = 'https://app1.megacom.kg:9090/site-api5/';
   static const mainServer = 'https://ishker24-api.megapay.kg/';
   static const megaKassaServer = 'https://app1.megacom.kg:9090/site-api13';
   static const userStatement =

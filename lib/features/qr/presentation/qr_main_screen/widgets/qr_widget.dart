@@ -40,182 +40,183 @@ class _QrWidgetState extends State<QrWidget> {
           titleWidget: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Мой QR',
-                style: AppTextStyles.s16W600(),
-              ),
-              Text(
-                'История',
-                style: AppTextStyles.s16W700(
-                  color: AppColors.color54B25AMain,
-                ),
-              ),
+              Text('Мой QR', style: AppTextStyles.s16W600()),
             ],
           ),
         ),
-        body: BlocConsumer<GenerateQrCubit, GenerateQrState>(
-          listener: (context, state) {
-            state.whenOrNull(
-              success: (link, accounts) {
-                final savedAccount = sl<SharedPreferences>()
-                        .getString(SharedKeys.savedAccount) ??
-                    '';
-                if (savedAccount.isNotEmpty) {
-                  final newAccounts =
-                      accounts.where((e) => e.accountNumber == savedAccount);
-                  if (newAccounts.isNotEmpty) {
-                    selectedAccount = newAccounts.first;
+        body: SafeArea(
+          child: BlocConsumer<GenerateQrCubit, GenerateQrState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                success: (link, accounts) {
+                  final savedAccount = sl<SharedPreferences>()
+                          .getString(SharedKeys.savedAccount) ??
+                      '';
+                  if (savedAccount.isNotEmpty) {
+                    final newAccounts = accounts
+                        .where((e) => e.accountNumber == savedAccount)
+                        .toList();
+                    if (newAccounts.isNotEmpty) {
+                      selectedAccount = newAccounts.first;
+                    } else {
+                      selectedAccount = accounts.first;
+                    }
+                  } else {
+                    selectedAccount = accounts.first;
                   }
-                } else {
-                  selectedAccount = accounts.first;
-                }
-              },
-            );
-          },
-          builder: (context, state) {
-            return state.when(
-              loading: () => const AppIndicator(),
-              error: (error) => AppErrorText(error: error),
-              emptyAccount: (partyId) => EmptyAccountWidget(partyId: partyId),
-              success: (image, accounts) => SingleChildScrollView(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 24),
-                    const Text(
-                      'Получайте переводы с банковских\nприложений или кошельков',
-                      textAlign: TextAlign.center,
-                    ),
-                    QrImageView(
-                      embeddedImage: const AssetImage(AppImages.qrCenterIcon),
-                      data: image,
-                      size: 200,
-                    ),
-                    const SizedBox(height: 32),
-                    const Text(
-                      'Также можно указать сумму к\nзачислению',
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 16),
-                    CustomTextField(
-                      keyboardType: TextInputType.number,
-                      labelText: 'Сумма к зачислению',
-                      onChanged: (val) {
-                        context.read<GenerateQrCubit>().generateQr(
-                              amountFrom: int.tryParse(val) ?? 0,
-                            );
-                      },
-                    ),
-                    const SizedBox(height: 32),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Зачислится на счет:',
-                          style: AppTextStyles.s14W400(
-                              color: AppColors.color6B7583Grey),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    CupertinoButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: () async {
-                        final result = await showSelectedAccountSheet(
-                          context,
-                          accounts,
-                          selectedAccount,
-                        );
-                        selectedAccount = result;
-                        await sl<SharedPreferences>().setString(
-                          SharedKeys.savedAccount,
-                          selectedAccount.accountNumber,
-                        );
-                        context.read<GenerateQrCubit>().generateQr(
-                              accountFrom: selectedAccount.accountNumber,
-                            );
-                        setState(() {});
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 12, horizontal: 16),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.white,
-                        ),
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              AppCurrencyFormatter.cuccancyIcon(
-                                  selectedAccount.currency),
-                            ),
-                            const SizedBox(width: 12),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Счет ...${selectedAccount.accountNumber.substring(selectedAccount.accountNumber.length - 3, selectedAccount.accountNumber.length)}',
-                                  style: AppTextStyles.s12W400(
-                                    color: AppColors.color6B7583Grey,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                RichText(
-                                  text: TextSpan(
-                                    style: AppTextStyles.s16W500(),
-                                    children: [
-                                      TextSpan(
-                                        text: '${selectedAccount.balance} ',
-                                      ),
-                                      TextSpan(
-                                        text: AppCurrencyFormatter.cuccancyType(
-                                            selectedAccount.currency),
-                                        style: AppTextStyles.s16W500().copyWith(
-                                          decoration:
-                                              selectedAccount.currency == 'KGZ'
-                                                  ? TextDecoration.underline
-                                                  : null,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Spacer(),
-                            SvgPicture.asset(AppImages.starSelectedIcon),
-                            const SizedBox(width: 12),
-                            SvgPicture.asset(AppImages.arrowForwardIcon),
-                          ],
-                        ),
+                },
+              );
+            },
+            builder: (context, state) {
+              return state.when(
+                loading: () => const AppIndicator(),
+                error: (error) => AppErrorText(error: error),
+                emptyAccount: (partyId) => EmptyAccountWidget(partyId: partyId),
+                success: (image, accounts) => SingleChildScrollView(
+                  physics: const ClampingScrollPhysics(),
+                  padding: const EdgeInsets.only(bottom: 50),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 24),
+                      const Text(
+                        'Получайте переводы с банковских\nприложений или кошельков',
+                        textAlign: TextAlign.center,
                       ),
-                    ),
-                    const SizedBox(height: 32),
-                    CustomButton(
-                      onPress: () async {
-                        await Share.shareUri(
-                          Uri.parse(image),
-                        );
-                      },
-                      borderColor: AppColors.color54B25AMain,
-                      color: Colors.transparent,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      QrImageView(
+                        embeddedImage: const AssetImage(AppImages.qrCenterIcon),
+                        data: image,
+                        size: 200,
+                      ),
+                      const SizedBox(height: 32),
+                      const Text(
+                        'Также можно указать сумму к\nзачислению',
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 16),
+                      CustomTextField(
+                        keyboardType: TextInputType.number,
+                        labelText: 'Сумма к зачислению',
+                        onChanged: (val) {
+                          context.read<GenerateQrCubit>().generateQr(
+                                amountFrom: int.tryParse(val) ?? 0,
+                              );
+                        },
+                      ),
+                      const SizedBox(height: 32),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          SvgPicture.asset(AppImages.shareButtonIcon),
-                          const SizedBox(width: 12),
                           Text(
-                            'Поделиться',
-                            style: AppTextStyles.s16W700(
-                                color: AppColors.color54B25AMain),
+                            'Зачислится на счет:',
+                            style: AppTextStyles.s14W400(
+                                color: AppColors.color6B7583Grey),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 8),
+                      CupertinoButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: () async {
+                          final result = await showSelectedAccountSheet(
+                            context,
+                            accounts,
+                            selectedAccount,
+                          );
+                          selectedAccount = result;
+                          await sl<SharedPreferences>().setString(
+                            SharedKeys.savedAccount,
+                            selectedAccount.accountNumber,
+                          );
+                          context.read<GenerateQrCubit>().generateQr(
+                                accountFrom: selectedAccount.accountNumber,
+                              );
+                          setState(() {});
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 16),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: Colors.white,
+                          ),
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                AppCurrencyFormatter.cuccancyIcon(
+                                    selectedAccount.currency),
+                              ),
+                              const SizedBox(width: 12),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Счет ...${selectedAccount.accountNumber.substring(selectedAccount.accountNumber.length - 3, selectedAccount.accountNumber.length)}',
+                                    style: AppTextStyles.s12W400(
+                                      color: AppColors.color6B7583Grey,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  RichText(
+                                    text: TextSpan(
+                                      style: AppTextStyles.s16W500(),
+                                      children: [
+                                        TextSpan(
+                                          text: '${selectedAccount.balance} ',
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              AppCurrencyFormatter.cuccancyType(
+                                                  selectedAccount.currency),
+                                          style:
+                                              AppTextStyles.s16W500().copyWith(
+                                            decoration:
+                                                selectedAccount.currency ==
+                                                        'KGZ'
+                                                    ? TextDecoration.underline
+                                                    : null,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
+                              SvgPicture.asset(AppImages.starSelectedIcon),
+                              const SizedBox(width: 12),
+                              SvgPicture.asset(AppImages.arrowForwardIcon),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 32),
+                      CustomButton(
+                        onPress: () async {
+                          await Share.shareUri(
+                            Uri.parse(image),
+                          );
+                        },
+                        borderColor: AppColors.color54B25AMain,
+                        color: Colors.transparent,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(AppImages.shareButtonIcon),
+                            const SizedBox(width: 12),
+                            Text(
+                              'Поделиться',
+                              style: AppTextStyles.s16W700(
+                                  color: AppColors.color54B25AMain),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

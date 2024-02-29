@@ -98,4 +98,17 @@ class AppImages {
   static const String arrowDown = 'assets/images/arrow_down.svg';
   static const String kkmEmpty = 'assets/images/kkm_empty.svg';
   static const String megakassaLogo = 'assets/images/megakassa_logo.png';
+  static const String arrowDownIcon = 'assets/images/arrow_down_icon.svg';
+  static const String edNalogIcon = 'assets/images/ed_nalog_icon.svg';
+  static const String edNalogIconInProcess =
+      'assets/images/ed_nalog_icon_in_process.svg';
+  static const String edNalogIconReject =
+      'assets/images/ed_nalog_icon_reject.svg';
+  static const String esfIcon = 'assets/images/esf_icon.svg';
+  static const String ipIcon = 'assets/images/ip_icon.svg';
+  static const String kkmIcon = 'assets/images/kkm_icon.svg';
+  static const String mainNotificationIcon =
+      'assets/images/main_notification_icon.svg';
+  static const String notificationIcon = 'assets/images/notification_icon.svg';
+  static const String taxIcon = 'assets/images/tax_icon.svg';
 }

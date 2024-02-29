@@ -9,6 +9,7 @@ class ClientInfoModel {
   final String regDocSeries;
   final String regDocNumber;
   final String regDocDate;
+  final String fio;
   final List<AccountChetModel> accountsList;
 
   ClientInfoModel({
@@ -21,20 +22,22 @@ class ClientInfoModel {
     required this.regDocSeries,
     required this.regDocNumber,
     required this.regDocDate,
+    required this.fio,
     required this.accountsList,
   });
 
   factory ClientInfoModel.fromJson(Map<String, dynamic> json) =>
       ClientInfoModel(
-          absId: json["absId"]??'',
-          idDocSeries: json["idDocSeries"]??'',
-          idDocNumber: json["idDocNumber"]??'',
-          email: json["email"]??'',
-          mobilePhone: json["mobilePhone"]??'',
-          pin: json["pin"]??'',
-          regDocSeries: json["regDocSeries"]??'',
-          regDocNumber: json["regDocNumber"]??'',
-          regDocDate: json["regDocDate"]??'',
+          absId: json["absId"] ?? '',
+          idDocSeries: json["idDocSeries"] ?? '',
+          idDocNumber: json["idDocNumber"] ?? '',
+          email: json["email"] ?? '',
+          mobilePhone: json["mobilePhone"] ?? '',
+          pin: json["pin"] ?? '',
+          regDocSeries: json["regDocSeries"] ?? '',
+          regDocNumber: json["regDocNumber"] ?? '',
+          regDocDate: json["regDocDate"] ?? '',
+          fio: json["fio"] ?? '',
           accountsList: json["accounts"]
               .map<AccountChetModel>((e) => AccountChetModel.fromJson(e))
               .toList());

@@ -136,10 +136,10 @@ class _RegisterIPMainScreenState extends State<RegisterIPMainScreen> {
                                 formKey.currentState!.validate()) {
                               AppRouting.pushFunction(
                                 RegisterIPNextRoute(
-                                  isPatent: selectedIndex == 0,
+                                  isPatent: selectedIndex != 0,
                                 ),
                               );
-                            } else if(selectedIndex ==null) {
+                            } else if (selectedIndex == null) {
                               AppSnackBar.showSnackBar(
                                 'Выберите тип предпринимателя',
                               );

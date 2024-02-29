@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/create_account_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/get_client_passport_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/register_client_repo_impl.dart';
@@ -17,9 +18,17 @@ import 'package:ishker_24/features/bank/presentation/create_account_screen/cubit
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/get_client_passport_cubit/get_client_passport_cubit.dart';
 import 'package:ishker_24/features/bank/presentation/create_account_screen/cubits/regitser_client_cubit/regitser_client_cubit.dart';
 import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit/bottom_navigator_cubit.dart';
+import 'package:ishker_24/features/esf/data/repo_impls/esf_check_repo_impl.dart';
+import 'package:ishker_24/features/esf/data/repo_impls/esf_invoice_repo_impl.dart';
+import 'package:ishker_24/features/esf/domain/repositories/esf_check_repository.dart';
+import 'package:ishker_24/features/esf/domain/repositories/esf_invoice_repository.dart';
+import 'package:ishker_24/features/esf/domain/usecases/esf_check_usecase.dart';
+import 'package:ishker_24/features/esf/domain/usecases/esf_invoice_usecase.dart';
+import 'package:ishker_24/features/esf/presentation/cubits/esf_check_cubit/esf_check_cubit.dart';
+import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
 import 'package:ishker_24/features/grnp_check/data/repositories_impl/grnp_repo_impl.dart';
 import 'package:ishker_24/features/grnp_check/domain/repositories/grnp_repository.dart';
-import 'package:ishker_24/features/grnp_check/domain/use_case%20/grnp_use_case.dart';
+import 'package:ishker_24/features/grnp_check/domain/use_case/grnp_use_case.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/grnp_cubit/grnp_cubit.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/pesonal_data_cubit/personal_data_cubit.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/public_offer_cubit/public_offer_cubit.dart';
@@ -51,8 +60,31 @@ import 'package:ishker_24/features/megakassa/presentation/kkm_registration_steps
 import 'package:ishker_24/features/megakassa/presentation/megakassa_entry/cubit/get_megakassa_status_cubit.dart';
 import 'package:ishker_24/features/megakassa/presentation/my_profile/cubit/get_profile_info_cubit.dart';
 import 'package:ishker_24/features/my_ip/presentation/my_ip_main_screen/get_my_ip_cubit/get_my_ip_cubit.dart';
+import 'package:ishker_24/features/nalog_decloration/data/repo_implements/get_my_reports_repo_impl.dart';
+import 'package:ishker_24/features/account/data/repositories/account_repo_impl.dart';
+import 'package:ishker_24/features/nalog_decloration/data/repo_implements/get_nalog_names_repo_impl.dart';
+import 'package:ishker_24/features/nalog_decloration/data/repo_implements/get_static_fields_repo_impl.dart';
+import 'package:ishker_24/features/nalog_decloration/data/repo_implements/report_detail_pdf_repo_impl.dart';
+import 'package:ishker_24/features/nalog_decloration/data/repo_implements/send_nalog_data_repo_impl.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/repositories/get_my_reports_repository.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/repositories/get_nalog_names_repository.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/repositories/get_static_fields_repository.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/repositories/report_detail_pdf_repository.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/repositories/send_nalog_data_repository.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/use_cases/get_my_reports_usecase.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/use_cases/get_nalog_names_usecase.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/use_cases/get_static_fields_usecase.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/use_cases/report_detail_pdf_usecase.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/use_cases/send_nalog_data_usecase.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/cubits/get_my_reports_cubit/get_my_reports_cubit.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/cubits/get_nalog_names_cubit/get_nalog_names_cubit.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/cubits/get_report_deteil_pdf_cubit/get_report_deteil_pdf_cubit.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/get_statis_fileds_cubit/get_statis_fileds_cubit.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/send_saved_data_cubit/send_saved_data_cubit.dart';
 import 'package:ishker_24/features/qr/data/repo_implements/generate_qr_repo_impl.dart';
+import 'package:ishker_24/features/account/domain/repositories/account_repo.dart';
 import 'package:ishker_24/features/qr/domain/repositories/generate_qr_repository.dart';
+import 'package:ishker_24/features/account/domain/usecases/account_info_usecase.dart';
 import 'package:ishker_24/features/qr/domain/use_cases/generate_qr_usecase.dart';
 import 'package:ishker_24/features/qr/presentation/qr_main_screen/cubits/generate_qr_cubit/generate_qr_cubit.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_gns_pdf_repo_impl.dart';
@@ -107,6 +139,7 @@ import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_c
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/confirm_received_code_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/exit_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/get_confirm_code_usecase.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/get_tokens_use_case.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/pin_code_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_confirm_code_screen/cubits/confirm_received_code_cubit/confirm_received_code_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/auth_cubit/auth_cubit.dart';
@@ -196,6 +229,16 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetClientPassportRepo>(
       () => GetClientPassportRepoImpl(dio: sl()));
   sl.registerFactory<CheckGrnpRepo>(() => CheckGrnpRepoImpl(dio: sl()));
+  sl.registerFactory<AccountRepo>(() => AccountRepoImpl(dio: sl()));
+  sl.registerFactory<GetStaticFieldsRepo>(
+      () => GetStaticFieldsRepoImpl(dio: sl()));
+  sl.registerFactory<GetNalogNamesRepo>(() => GetNalogNamesRepoImpl(dio: sl()));
+  sl.registerFactory<SendNalogDataRepo>(() => SendNalogDataRepoImpl(dio: sl()));
+  sl.registerFactory<EsfCheckRepo>(() => EsfCheckRepoImpl(dio: sl()));
+  sl.registerFactory<EsfInvoiceRepo>(() => EsfInvoiceRepoImpl(dio: sl()));
+  sl.registerFactory<GetMyReportsRepo>(() => GetMyReportsRepoImpl(dio: sl()));
+  sl.registerFactory<ReportDetailPdfRepo>(
+      () => ReportDetailPdfRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -244,6 +287,25 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<GetClientPassportUseCase>(
       () => GetClientPassportUseCase(repo: sl()));
   sl.registerFactory<CheckGrnpUseCase>(() => CheckGrnpUseCase(repo: sl()));
+  sl.registerLazySingleton<GetTokensUseCase>(
+      () => GetTokensUseCase(repo: sl(), prefs: sl()));
+  sl.registerLazySingleton<HistoryUseCase>(() => HistoryUseCase(sl()));
+  sl.registerLazySingleton<AccountInfoUseCase>(
+    () => AccountInfoUseCase(repo: sl()),
+  );
+  sl.registerFactory<GetStaticFieldsUseCase>(
+      () => GetStaticFieldsUseCase(repo: sl()));
+  sl.registerFactory<GetNalogNamesUseCase>(
+      () => GetNalogNamesUseCase(repo: sl()));
+  sl.registerFactory<SendNalogDataUseCase>(
+      () => SendNalogDataUseCase(repo: sl()));
+  sl.registerLazySingleton<EsfCheckUseCase>(() => EsfCheckUseCase(repo: sl()));
+  sl.registerLazySingleton<EsfInvoiceUseCase>(
+      () => EsfInvoiceUseCase(repo: sl()));
+  sl.registerLazySingleton<GetMyReportsUseCase>(
+      () => GetMyReportsUseCase(repo: sl()));
+  sl.registerLazySingleton<ReportDetailPdfUseCase>(
+      () => ReportDetailPdfUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -264,7 +326,8 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<SendOtpCubit>(() => SendOtpCubit(useCase: sl()));
   sl.registerFactory<ConfirmOtpCubit>(() => ConfirmOtpCubit(useCase: sl()));
   sl.registerFactory<TimerCubit>(() => TimerCubit());
-  sl.registerFactory<AuthCubit>(() => AuthCubit(useCase: sl(), prefs: sl()));
+  sl.registerFactory<AuthCubit>(
+      () => AuthCubit(useCase: sl(), prefs: sl(), tokenseCase: sl()));
   sl.registerFactory<GetConfirmCodeCubit>(
       () => GetConfirmCodeCubit(useCase: sl()));
   sl.registerFactory<ConfirmReceivedCodeCubit>(
@@ -302,6 +365,17 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<CheckBankCubit>(() => CheckBankCubit(useCase: sl()));
   sl.registerFactory<PublicOfferCubit>(() => PublicOfferCubit());
   sl.registerFactory<PersonalDataCubit>(() => PersonalDataCubit());
+  sl.registerFactory<GetStatisFiledsCubit>(
+      () => GetStatisFiledsCubit(useCase: sl()));
+  sl.registerFactory<GetNalogNamesCubit>(
+      () => GetNalogNamesCubit(useCase: sl()));
+  sl.registerFactory<SendSavedDataCubit>(
+      () => SendSavedDataCubit(useCase: sl()));
+  sl.registerFactory<EsfCheckCubit>(() => EsfCheckCubit(useCase: sl()));
+  sl.registerFactory<EsfInvoiceCubit>(() => EsfInvoiceCubit(useCase: sl()));
+  sl.registerFactory<GetMyReportsCubit>(() => GetMyReportsCubit(useCase: sl()));
+  sl.registerFactory<GetReportDeteilPdfCubit>(
+      () => GetReportDeteilPdfCubit(useCase: sl()));
 
   _registerMegaKassaDependecies();
 }
