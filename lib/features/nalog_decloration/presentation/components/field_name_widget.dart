@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
@@ -19,7 +18,7 @@ class FieldNameWidget extends StatelessWidget {
           ),
           child: Text(
             number,
-            style: AppTextStyles.s12W500(),
+            style: AppTextStyles.s12W500(color: Colors.white),
           ),
         ),
         const SizedBox(width: 8),

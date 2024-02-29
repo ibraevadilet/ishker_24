@@ -9,25 +9,32 @@ class CustomRadioWidget extends StatelessWidget {
     this.onChanged,
     required this.title,
   });
-  final String value;
-  final String? groupValue;
+  final int value;
+  final int? groupValue;
   final String title;
-  final void Function(String?)? onChanged;
+  final void Function(int?)? onChanged;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Radio<String>(
-          fillColor: MaterialStateColor.resolveWith(
-              (states) => AppColors.color32D681Green),
-          splashRadius: 2,
-          activeColor: AppColors.color32D681Green,
-          value: value,
-          groupValue: groupValue,
-          onChanged: onChanged,
-        ),
-        Text(title),
-      ],
+    return InkWell(
+      onTap: () {
+        if (onChanged != null) {
+          onChanged!(value);
+        }
+      },
+      child: Row(
+        children: [
+          Radio<int>(
+            fillColor: MaterialStateColor.resolveWith(
+                (states) => AppColors.color32D681Green),
+            splashRadius: 2,
+            activeColor: AppColors.color32D681Green,
+            value: value,
+            groupValue: groupValue,
+            onChanged: onChanged,
+          ),
+          Text(title),
+        ],
+      ),
     );
   }
 }
