@@ -1,3 +1,3 @@
 abstract class EsfCheckRepo {
-  Future<bool> esfCheck(String tin);
+  Future<bool> esfCheck();
 }

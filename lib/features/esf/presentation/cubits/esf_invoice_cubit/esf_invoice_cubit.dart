@@ -16,8 +16,8 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
   Future<void> esfInvoice() async {
     emit(const EsfInvoiceState.loading());
     try {
-      final result = await useCase.esfInvoice('20705198701479');
-      final statuses = await useCase.esfStatus('20705198701479');
+      final result = await useCase.esfInvoice();
+      final statuses = await useCase.esfStatus();
       emit(
         EsfInvoiceState.success(result, statuses),
       );
@@ -39,7 +39,6 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
     emit(const EsfInvoiceState.loading());
     try {
       final result = await useCase.esfInvoice(
-        '20705198701479',
         createdDateFrom: createdDateFrom,
         createdDateTo: createdDateTo,
         exchangeCode: exchangeCode,
@@ -47,7 +46,7 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
         invoiceNumber: invoiceNumber,
         contractorTin: contractorTin,
       );
-      final statuses = await useCase.esfStatus('20705198701479');
+      final statuses = await useCase.esfStatus();
       emit(
         EsfInvoiceState.success(result, statuses),
       );
@@ -61,10 +60,8 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
   Future<void> esfIncome() async {
     emit(const EsfInvoiceState.loading());
     try {
-      final result = await useCase.esfInvoice(
-        '20705198701479',
-      );
-      final statuses = await useCase.esfStatus('20705198701479');
+      final result = await useCase.esfInvoice();
+      final statuses = await useCase.esfStatus();
       emit(
         EsfInvoiceState.success(result, statuses),
       );
@@ -86,13 +83,12 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
     emit(const EsfInvoiceState.loading());
     try {
       final result = await useCase.esfInvoice(
-        '20705198701479',
         exchangeCode: exchangeCode,
         statusCode: statusCode,
         invoiceNumber: invoiceNumber,
         contractorTin: contractorTin,
       );
-      final statuses = await useCase.esfStatus('20705198701479');
+      final statuses = await useCase.esfStatus();
       emit(
         EsfInvoiceState.success(result, statuses),
       );
@@ -108,7 +104,6 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
     emit(const EsfInvoiceState.loading());
     try {
       await useCase.esfAcceptOrReject(
-        '20705198701479',
         documentUuids,
         statusCode,
       );

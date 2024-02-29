@@ -7,8 +7,7 @@ class EsfInvoiceUseCase {
   EsfInvoiceUseCase({required this.repo});
   final EsfInvoiceRepo repo;
 
-  Future<EsfModel> esfInvoice(
-    String tin, {
+  Future<EsfModel> esfInvoice({
     DateTime? createdDateFrom,
     DateTime? createdDateTo,
     String? exchangeCode,
@@ -18,7 +17,6 @@ class EsfInvoiceUseCase {
   }) async {
     try {
       return await repo.esfInvoice(
-        tin,
         createdDateFrom: createdDateFrom,
         createdDateTo: createdDateTo,
         exchangeCode: exchangeCode,
@@ -31,8 +29,7 @@ class EsfInvoiceUseCase {
     }
   }
 
-  Future<EsfModel> esfIncome(
-    String tin, {
+  Future<EsfModel> esfIncome({
     DateTime? createdDateFrom,
     DateTime? createdDateTo,
     String? exchangeCode,
@@ -42,7 +39,6 @@ class EsfInvoiceUseCase {
   }) async {
     try {
       return await repo.esfIncome(
-        tin,
         createdDateFrom: createdDateFrom,
         createdDateTo: createdDateTo,
         exchangeCode: exchangeCode,
@@ -56,13 +52,11 @@ class EsfInvoiceUseCase {
   }
 
   Future<EsfAcceptOrRejectModel> esfAcceptOrReject(
-    String tin,
     List<String> documentUuids,
     int statusCode,
   ) async {
     try {
       return await repo.esfAcceptOrReject(
-        tin,
         documentUuids,
         statusCode,
       );
@@ -71,9 +65,9 @@ class EsfInvoiceUseCase {
     }
   }
 
-  Future<EsfStatusModel> esfStatus(String tin) async {
+  Future<EsfStatusModel> esfStatus() async {
     try {
-      return await repo.esfSatuses(tin);
+      return await repo.esfSatuses();
     } catch (e) {
       rethrow;
     }

@@ -3,8 +3,7 @@ import 'package:ishker_24/features/esf/data/models/esf_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_status_model.dart';
 
 abstract class EsfInvoiceRepo {
-  Future<EsfModel> esfInvoice(
-    String tin, {
+  Future<EsfModel> esfInvoice({
     DateTime? createdDateFrom,
     DateTime? createdDateTo,
     String? exchangeCode,
@@ -12,8 +11,7 @@ abstract class EsfInvoiceRepo {
     String? invoiceNumber,
     String? contractorTin,
   });
-  Future<EsfModel> esfIncome(
-    String tin, {
+  Future<EsfModel> esfIncome({
     DateTime? createdDateFrom,
     DateTime? createdDateTo,
     String? exchangeCode,
@@ -22,9 +20,8 @@ abstract class EsfInvoiceRepo {
     String? contractorTin,
   });
   Future<EsfAcceptOrRejectModel> esfAcceptOrReject(
-    String tin,
     List<String> documentUuids,
     int statusCode,
   );
-  Future<EsfStatusModel> esfSatuses(String tin);
+  Future<EsfStatusModel> esfSatuses();
 }

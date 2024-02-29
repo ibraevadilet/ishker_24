@@ -12,7 +12,7 @@ class EsfCheckCubit extends Cubit<EsfCheckState> {
 
   void esfCheck() async {
     try {
-      final result = await useCase.esfCheck('20705198701479');
+      final result = await useCase.esfCheck();
       if (result == true) {
         emit(const EsfCheckState.hasToken());
       } else {

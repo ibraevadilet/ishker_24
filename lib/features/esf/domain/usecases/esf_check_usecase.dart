@@ -3,9 +3,9 @@ import 'package:ishker_24/features/esf/domain/repositories/esf_check_repository.
 class EsfCheckUseCase {
   EsfCheckUseCase({required this.repo});
   final EsfCheckRepo repo;
-  Future<bool> esfCheck(String tin) async {
+  Future<bool> esfCheck() async {
     try {
-     return await repo.esfCheck(tin);
+      return await repo.esfCheck();
     } catch (e) {
       rethrow;
     }

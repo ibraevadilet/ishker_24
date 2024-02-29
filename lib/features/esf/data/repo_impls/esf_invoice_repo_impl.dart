@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
+import 'package:ishker_24/core/functions/saved_pin.dart';
 import 'package:ishker_24/features/esf/data/models/esf_accept_or_reject_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_status_model.dart';
@@ -10,8 +11,7 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
   EsfInvoiceRepoImpl({required this.dio});
   final Dio dio;
   @override
-  Future<EsfModel> esfInvoice(
-    String tin, {
+  Future<EsfModel> esfInvoice({
     DateTime? createdDateFrom,
     DateTime? createdDateTo,
     String? exchangeCode,
@@ -19,7 +19,9 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
     String? invoiceNumber,
     String? contractorTin,
   }) async {
-    Map<String, dynamic> getData = {'tin': tin};
+    final pin = AppSavedPin.getPin();
+
+    Map<String, dynamic> getData = {'tin': pin};
 
     if (createdDateFrom != null) {
       getData.addEntries(
@@ -75,8 +77,7 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
   }
 
   @override
-  Future<EsfModel> esfIncome(
-    String tin, {
+  Future<EsfModel> esfIncome({
     DateTime? createdDateFrom,
     DateTime? createdDateTo,
     String? exchangeCode,
@@ -84,7 +85,8 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
     String? invoiceNumber,
     String? contractorTin,
   }) async {
-    Map<String, dynamic> getData = {'tin': tin};
+    final pin = AppSavedPin.getPin();
+    Map<String, dynamic> getData = {'tin': pin};
 
     if (createdDateFrom != null) {
       getData.addEntries(
@@ -133,17 +135,17 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
 
   @override
   Future<EsfAcceptOrRejectModel> esfAcceptOrReject(
-    String tin,
     List<String> documentUuids,
     int statusCode,
   ) async {
+    final pin = AppSavedPin.getPin();
     try {
       final response = await dio.post(
         'esf/gns/api/v1/acceptation',
         data: {
           "statusCode": statusCode,
           "documentUuids": documentUuids,
-          "tin": tin,
+          "tin": pin,
         },
       );
       return EsfAcceptOrRejectModel.fromJson(response.data);
@@ -153,12 +155,13 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
   }
 
   @override
-  Future<EsfStatusModel> esfSatuses(String tin) async {
+  Future<EsfStatusModel> esfSatuses() async {
+    final pin = AppSavedPin.getPin();
     try {
       final response = await dio.get(
         'esf/gns/api/v1/statuses',
         queryParameters: {
-          'tin': tin,
+          'tin': pin,
         },
       );
       return EsfStatusModel.fromJson(response.data);
