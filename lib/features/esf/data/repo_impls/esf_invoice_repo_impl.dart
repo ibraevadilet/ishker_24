@@ -72,7 +72,12 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
       );
       return EsfModel.fromJson(response.data);
     } catch (e) {
-      throw CatchException(message: e.toString());
+      if (e is DioException) {
+        throw CatchException(message: 'Отсутствует доступ к данному сервису')
+            .message;
+      } else {
+        throw CatchException(message: e.toString());
+      }
     }
   }
 
@@ -129,7 +134,12 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
       );
       return EsfModel.fromJson(response.data);
     } catch (e) {
-      throw CatchException(message: e.toString());
+      if (e is DioException) {
+        throw CatchException(message: 'Отсутствует доступ к данному сервису')
+            .message;
+      } else {
+        throw CatchException(message: e.toString());
+      }
     }
   }
 

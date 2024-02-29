@@ -19,7 +19,6 @@ class SaveTokenRepoImpl implements SaveTokenRepo {
     if (isSavedPin.isEmpty) {
       isSavedPin = sl<AuthUseCase>().inn;
     }
-    isSavedPin = '20705198701479';
 
     Map<String, dynamic> sendData = {'tin': isSavedPin};
     FormData formData = FormData.fromMap({});
