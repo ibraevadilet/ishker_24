@@ -2,7 +2,6 @@ part of '../kkm_list_screen.dart';
 
 class _KkmItem extends StatelessWidget {
   const _KkmItem({
-    super.key,
     required this.kkm,
   });
 

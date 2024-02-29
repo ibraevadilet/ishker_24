@@ -162,7 +162,9 @@ class MyIpMainScreen extends StatelessWidget {
                         child: ListTile(
                           shape: const CircleBorder(),
                           onTap: () {
-                            AppRouting.pushFunction(const KKMRoute());
+                            AppRouting.pushFunction(
+                              const MegaKassaEntryRoute(),
+                            );
                           },
                           leading: SvgPicture.asset(
                             AppImages.kkmIcon,

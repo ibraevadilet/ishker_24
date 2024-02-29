@@ -17,7 +17,6 @@ import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_text_fields.dart';
 import 'package:ishker_24/widgets/styled_toasts.dart';
 
-@RoutePage()
 class MegaKassaGnsRegistrationScreen extends StatefulWidget {
   const MegaKassaGnsRegistrationScreen({super.key});
 

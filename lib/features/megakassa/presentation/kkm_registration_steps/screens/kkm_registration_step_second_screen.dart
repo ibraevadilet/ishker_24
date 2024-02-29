@@ -1,7 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/features/megakassa/domain/entities/kkm_registration_step_second_entity.dart';
 import 'package:ishker_24/theme/app_colors.dart';

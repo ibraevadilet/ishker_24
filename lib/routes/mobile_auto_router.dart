@@ -60,9 +60,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: MegaKassaKkmRegistrationStep1Route.page),
         AutoRoute(page: MegaKassaKkmRegistrationStep2Route.page),
         AutoRoute(page: MegaKassaKkmRegistrationStep3Route.page),
-        AutoRoute(page: MegaKassaGnsRegistrationRoute.page),
         AutoRoute(page: MegaKassaGnsConfirmationRoute.page),
-        AutoRoute(page: MegaKassaKkmPersonalAccountRoute.page),
         /////END
         AutoRoute(page: NalogMainRoute.page),
         AutoRoute(page: Route9142.page),

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/declined_ip_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_bank_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_ip_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/full_has_widget.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/ip_in_proccess_widget.dart';
-import 'package:ishker_24/features/megakassa/presentation/kkm_personal_account/kkm_personal_account_screen.dart';
-import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/widgets/app_error_text.dart';
 import 'package:ishker_24/widgets/app_indicator.dart';
@@ -20,29 +17,6 @@ class HomeMainScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => sl<CheckHasIpCubit>()..checkIp(),
       child: Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.abc_rounded),
-              onPressed: () {
-                AppRouting.pushFunction(const MegaKassaEntryRoute());
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.abc_rounded),
-              onPressed: () {
-                AppRouting.pushFunction(const MegaKassaGnsRegistrationRoute());
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.abc_rounded),
-              onPressed: () {
-                AppRouting.pushFunction(
-                    const MegaKassaKkmPersonalAccountRoute());
-              },
-            ),
-          ],
-        ),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

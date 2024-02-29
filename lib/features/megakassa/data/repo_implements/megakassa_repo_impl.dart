@@ -16,6 +16,7 @@ import 'package:ishker_24/server/service_locator.dart';
 
 class MegaKassaRepoImpl implements MegaKassaRepo {
   final Dio dio;
+
   MegaKassaRepoImpl({required this.dio}) {
     dio.options = BaseOptions(
       baseUrl: AppTextConstants.megaKassaServer,

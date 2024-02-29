@@ -34,6 +34,7 @@ class DioSettings {
       receiveTimeout: const Duration(milliseconds: 50000),
     ),
   );
+
   void initialSettings() {
     final interceptors = dio.interceptors;
     interceptors.add(
