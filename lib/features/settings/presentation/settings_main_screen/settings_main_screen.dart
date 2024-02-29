@@ -139,39 +139,39 @@ class _SettingsMainScreenState extends State<SettingsMainScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
-              Container(
-                height: 64,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ),
-                ),
-                child: ListTile(
-                  shape: const CircleBorder(),
-                  onTap: () {
-                    AppRouting.pushFunction(const SettingsAboutRoute());
-                  },
-                  leading: SvgPicture.asset(
-                    AppImages.aboutIcon,
-                  ),
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          'О приложении',
-                          style: AppTextStyles.s16W600(),
-                        ),
-                      ),
-                      SvgPicture.asset(
-                        AppImages.arrowForwardIcon,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // const SizedBox(height: 8),
+              // Container(
+              //   height: 64,
+              //   decoration: BoxDecoration(
+              //     color: Colors.white,
+              //     borderRadius: BorderRadius.circular(
+              //       10,
+              //     ),
+              //   ),
+              //   child: ListTile(
+              //     shape: const CircleBorder(),
+              //     onTap: () {
+              //       AppRouting.pushFunction(const SettingsAboutRoute());
+              //     },
+              //     leading: SvgPicture.asset(
+              //       AppImages.aboutIcon,
+              //     ),
+              //     title: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         Flexible(
+              //           child: Text(
+              //             'О приложении',
+              //             style: AppTextStyles.s16W600(),
+              //           ),
+              //         ),
+              //         SvgPicture.asset(
+              //           AppImages.arrowForwardIcon,
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               const SizedBox(height: 8),
               Container(
                 height: 64,
@@ -205,39 +205,39 @@ class _SettingsMainScreenState extends State<SettingsMainScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 8),
-              Container(
-                height: 64,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ),
-                ),
-                child: ListTile(
-                  shape: const CircleBorder(),
-                  onTap: () {
-                    print('object');
-                  },
-                  leading: SvgPicture.asset(
-                    AppImages.securityIcon,
-                  ),
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          'Безопасность',
-                          style: AppTextStyles.s16W600(),
-                        ),
-                      ),
-                      SvgPicture.asset(
-                        AppImages.arrowForwardIcon,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // const SizedBox(height: 8),
+              // Container(
+              //   height: 64,
+              //   decoration: BoxDecoration(
+              //     color: Colors.white,
+              //     borderRadius: BorderRadius.circular(
+              //       10,
+              //     ),
+              //   ),
+              //   child: ListTile(
+              //     shape: const CircleBorder(),
+              //     onTap: () {
+              //       print('object');
+              //     },
+              //     leading: SvgPicture.asset(
+              //       AppImages.securityIcon,
+              //     ),
+              //     title: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         Flexible(
+              //           child: Text(
+              //             'Безопасность',
+              //             style: AppTextStyles.s16W600(),
+              //           ),
+              //         ),
+              //         SvgPicture.asset(
+              //           AppImages.arrowForwardIcon,
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               const SizedBox(height: 8),
               BlocProvider(
                 create: (context) => sl<ExitCubit>(),

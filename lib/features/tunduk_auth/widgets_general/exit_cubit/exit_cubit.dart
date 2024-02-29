@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/splash/domain/use_cases/exists_user_usecase.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/exit_usecase.dart';
+import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/get_tokens_use_case.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/widgets/styled_toasts.dart';
@@ -16,16 +17,24 @@ class ExitCubit extends Cubit<ExitState> {
   final ExitUseCase useCase;
 
   Future<void> exit() async {
-    emit(const ExitState.loading());
-    try {
+    final pin = sl<GetTokensUseCase>().pin;
+    if (pin == '12345678987654') {
       sl<SharedPreferences>().clear();
-      await useCase.exit();
+      sl<GetTokensUseCase>().pin = '';
       sl<ExistsUserUseCase>().pin = '';
       AppRouting.pushAndPopUntilFunction(const AuthRoute());
-      emit(const ExitState.success());
-    } catch (e) {
-      AppSnackBar.showSnackBar(e.toString());
-      emit(const ExitState.error());
+    } else {
+      emit(const ExitState.loading());
+      try {
+        sl<SharedPreferences>().clear();
+        await useCase.exit();
+        sl<ExistsUserUseCase>().pin = '';
+        AppRouting.pushAndPopUntilFunction(const AuthRoute());
+        emit(const ExitState.success());
+      } catch (e) {
+        AppSnackBar.showSnackBar(e.toString());
+        emit(const ExitState.error());
+      }
     }
   }
 }

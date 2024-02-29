@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/calculate_nalog_summa_widget.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/field_name_widget.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/static_container_info_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/calculate_nalog_summa_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/field_name_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/static_container_info_widget.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 

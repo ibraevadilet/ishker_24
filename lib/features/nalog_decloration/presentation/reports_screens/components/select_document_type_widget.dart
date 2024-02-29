@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/custom_radio_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/custom_radio_widget.dart';
 
 class SelectDocumentTypeWidget extends StatefulWidget {
   const SelectDocumentTypeWidget({super.key, required this.onChanged});

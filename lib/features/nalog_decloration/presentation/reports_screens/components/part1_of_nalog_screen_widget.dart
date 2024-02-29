@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:ishker_24/core/formatters/input_formatters.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/features/nalog_decloration/data/models/ugns_model.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/custom_text_field.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/expanded_list_widget.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/field_name_widget.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/select_document_type_widget.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/static_container_info_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/custom_text_field.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/expanded_list_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/field_name_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/select_document_type_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/static_container_info_widget.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 

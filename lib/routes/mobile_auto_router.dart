@@ -56,6 +56,8 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: Route9142.page),
         AutoRoute(page: Route914.page),
         AutoRoute(page: Route9141.page),
+        AutoRoute(page: ReportDetailPdfViewRoute.page),
+
         ////ESF
         AutoRoute(page: EsfRoute.page),
         AutoRoute(page: EsfInvoiceRoute.page),

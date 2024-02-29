@@ -22,7 +22,7 @@ class SplashCubit extends Cubit<SplashState> {
 
   //   await Future.delayed(const Duration(seconds: 1));
   //   ////TEST ROUTE
-  //   AppRouting.pushAndPopUntilFunction(const EsfRoute());
+  //   AppRouting.pushAndPopUntilFunction(const NalogMainRoute());
   //   // try {
   //   //   final resultPin = await useCase.existsUser();
   //   //   if (resultPin.isNotEmpty) {

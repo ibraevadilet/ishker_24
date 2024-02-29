@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/custom_text_field.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/field_name_widget.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/components/static_container_info_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/custom_text_field.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/field_name_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/static_container_info_widget.dart';
 
 class CalculateNalogSummaWidget extends StatelessWidget {
   const CalculateNalogSummaWidget({
