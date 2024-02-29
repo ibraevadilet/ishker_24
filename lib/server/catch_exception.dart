@@ -79,4 +79,11 @@ class CatchException {
       return CatchException(message: LocaleKeys.catchExSystemError.tr());
     }
   }
+
+  @override
+  bool operator ==(Object other) =>
+      other is CatchException && message == other.message;
+
+  @override
+  int get hashCode => Object.hash(message, null);
 }

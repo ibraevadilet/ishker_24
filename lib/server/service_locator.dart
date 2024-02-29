@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/create_account_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/get_client_passport_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/register_client_repo_impl.dart';
@@ -27,7 +28,7 @@ import 'package:ishker_24/features/esf/presentation/cubits/esf_check_cubit/esf_c
 import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
 import 'package:ishker_24/features/grnp_check/data/repositories_impl/grnp_repo_impl.dart';
 import 'package:ishker_24/features/grnp_check/domain/repositories/grnp_repository.dart';
-import 'package:ishker_24/features/grnp_check/domain/use_case%20/grnp_use_case.dart';
+import 'package:ishker_24/features/grnp_check/domain/use_case/grnp_use_case.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/grnp_cubit/grnp_cubit.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/pesonal_data_cubit/personal_data_cubit.dart';
 import 'package:ishker_24/features/grnp_check/presentation/grnp_screen/cubits/public_offer_cubit/public_offer_cubit.dart';
@@ -40,6 +41,7 @@ import 'package:ishker_24/features/home/domain/use_cases/get_client_info_usecase
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/check_has_ip_cubit/check_has_ip_cubit.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/get_client_info_cubit/get_client_info_cubit.dart';
 import 'package:ishker_24/features/my_ip/presentation/my_ip_main_screen/get_my_ip_cubit/get_my_ip_cubit.dart';
+import 'package:ishker_24/features/account/data/repositories/account_repo_impl.dart';
 import 'package:ishker_24/features/nalog_decloration/data/repo_implements/get_nalog_names_repo_impl.dart';
 import 'package:ishker_24/features/nalog_decloration/data/repo_implements/get_static_fields_repo_impl.dart';
 import 'package:ishker_24/features/nalog_decloration/data/repo_implements/send_nalog_data_repo_impl.dart';
@@ -53,7 +55,9 @@ import 'package:ishker_24/features/nalog_decloration/presentation/cubits/get_nal
 import 'package:ishker_24/features/nalog_decloration/presentation/cubits/get_statis_fileds_cubit/get_statis_fileds_cubit.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/cubits/send_saved_data_cubit/send_saved_data_cubit.dart';
 import 'package:ishker_24/features/qr/data/repo_implements/generate_qr_repo_impl.dart';
+import 'package:ishker_24/features/account/domain/repositories/account_repo.dart';
 import 'package:ishker_24/features/qr/domain/repositories/generate_qr_repository.dart';
+import 'package:ishker_24/features/account/domain/usecases/account_info_usecase.dart';
 import 'package:ishker_24/features/qr/domain/use_cases/generate_qr_usecase.dart';
 import 'package:ishker_24/features/qr/presentation/qr_main_screen/cubits/generate_qr_cubit/generate_qr_cubit.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_gns_pdf_repo_impl.dart';
@@ -198,6 +202,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetClientPassportRepo>(
       () => GetClientPassportRepoImpl(dio: sl()));
   sl.registerFactory<CheckGrnpRepo>(() => CheckGrnpRepoImpl(dio: sl()));
+  sl.registerFactory<AccountRepo>(() => AccountRepoImpl(dio: sl()));
   sl.registerFactory<GetStaticFieldsRepo>(
       () => GetStaticFieldsRepoImpl(dio: sl()));
   sl.registerFactory<GetNalogNamesRepo>(() => GetNalogNamesRepoImpl(dio: sl()));
@@ -254,6 +259,10 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<CheckGrnpUseCase>(() => CheckGrnpUseCase(repo: sl()));
   sl.registerLazySingleton<GetTokensUseCase>(
       () => GetTokensUseCase(repo: sl(), prefs: sl()));
+  sl.registerLazySingleton<HistoryUseCase>(() => HistoryUseCase(sl()));
+  sl.registerLazySingleton<AccountInfoUseCase>(
+    () => AccountInfoUseCase(repo: sl()),
+  );
   sl.registerFactory<GetStaticFieldsUseCase>(
       () => GetStaticFieldsUseCase(repo: sl()));
   sl.registerFactory<GetNalogNamesUseCase>(

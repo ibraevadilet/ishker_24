@@ -40,16 +40,7 @@ class _QrWidgetState extends State<QrWidget> {
           titleWidget: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Мой QR',
-                style: AppTextStyles.s16W600(),
-              ),
-              Text(
-                'История',
-                style: AppTextStyles.s16W700(
-                  color: AppColors.color54B25AMain,
-                ),
-              ),
+              Text('Мой QR', style: AppTextStyles.s16W600()),
             ],
           ),
         ),
