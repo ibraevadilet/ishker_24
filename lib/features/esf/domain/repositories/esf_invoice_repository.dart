@@ -4,7 +4,7 @@ import 'package:ishker_24/features/esf/data/models/esf_status_model.dart';
 
 abstract class EsfInvoiceRepo {
   Future<EsfModel> esfInvoice(
-    String tin,  {
+    String tin, {
     DateTime? createdDateFrom,
     DateTime? createdDateTo,
     String? exchangeCode,
@@ -14,8 +14,8 @@ abstract class EsfInvoiceRepo {
   });
   Future<EsfModel> esfIncome(
     String tin, {
-    String? createdDateFrom,
-    String? createdDateTo,
+    DateTime? createdDateFrom,
+    DateTime? createdDateTo,
     String? exchangeCode,
     String? statusCode,
     String? invoiceNumber,

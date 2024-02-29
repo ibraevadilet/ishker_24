@@ -9,7 +9,7 @@ class EsfCheckRepoImpl implements EsfCheckRepo {
   Future<bool> esfCheck(String tin) async {
     try {
       final response = await dio.get(
-        'gns/api/v1/check',
+        'esf/gns/api/v1/check',
         queryParameters: {
           'tin': tin,
         },

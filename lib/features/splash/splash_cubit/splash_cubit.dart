@@ -17,40 +17,40 @@ class SplashCubit extends Cubit<SplashState> {
   final ExistsUserUseCase useCase;
   final SharedPreferences prefs;
 
-  Future<void> getFirstOpenStatus() async {
-    prefs.remove(SharedKeys.accessToken);
-
-    await Future.delayed(const Duration(seconds: 1));
-    ////TEST ROUTE
-    AppRouting.pushAndPopUntilFunction(const EsfRoute());
-    // try {
-    //   final resultPin = await useCase.existsUser();
-    //   if (resultPin.isNotEmpty) {
-    //     prefs.setString(SharedKeys.pin, resultPin);
-    //     AppRouting.pushAndPopUntilFunction(PinCodeEnterRoute());
-    //   } else {
-    //     prefs.remove(SharedKeys.pinCode);
-    //     AppRouting.pushAndPopUntilFunction(const AuthRoute());
-    //   }
-    // } catch (e) {
-    //   AppRouting.pushAndPopUntilFunction(const AuthRoute());
-    // }
-  }
   // Future<void> getFirstOpenStatus() async {
   //   prefs.remove(SharedKeys.accessToken);
 
   //   await Future.delayed(const Duration(seconds: 1));
-  //   try {
-  //     final resultPin = await useCase.existsUser();
-  //     if (resultPin.isNotEmpty) {
-  //       prefs.setString(SharedKeys.pin, resultPin);
-  //       AppRouting.pushAndPopUntilFunction(PinCodeEnterRoute());
-  //     } else {
-  //       prefs.remove(SharedKeys.pinCode);
-  //       AppRouting.pushAndPopUntilFunction(const AuthRoute());
-  //     }
-  //   } catch (e) {
-  //     AppRouting.pushAndPopUntilFunction(const AuthRoute());
-  //   }
+  //   ////TEST ROUTE
+  //   AppRouting.pushAndPopUntilFunction(const EsfRoute());
+  //   // try {
+  //   //   final resultPin = await useCase.existsUser();
+  //   //   if (resultPin.isNotEmpty) {
+  //   //     prefs.setString(SharedKeys.pin, resultPin);
+  //   //     AppRouting.pushAndPopUntilFunction(PinCodeEnterRoute());
+  //   //   } else {
+  //   //     prefs.remove(SharedKeys.pinCode);
+  //   //     AppRouting.pushAndPopUntilFunction(const AuthRoute());
+  //   //   }
+  //   // } catch (e) {
+  //   //   AppRouting.pushAndPopUntilFunction(const AuthRoute());
+  //   // }
   // }
+  Future<void> getFirstOpenStatus() async {
+    prefs.remove(SharedKeys.accessToken);
+
+    await Future.delayed(const Duration(seconds: 1));
+    try {
+      final resultPin = await useCase.existsUser();
+      if (resultPin.isNotEmpty) {
+        prefs.setString(SharedKeys.pin, resultPin);
+        AppRouting.pushAndPopUntilFunction(PinCodeEnterRoute());
+      } else {
+        prefs.remove(SharedKeys.pinCode);
+        AppRouting.pushAndPopUntilFunction(const AuthRoute());
+      }
+    } catch (e) {
+      AppRouting.pushAndPopUntilFunction(const AuthRoute());
+    }
+  }
 }

@@ -40,7 +40,7 @@ class SaveTokenRepoImpl implements SaveTokenRepo {
     }
     try {
       await dio.post(
-        '/gns/api/v1/save-token',
+        'esf/gns/api/v1/save-token',
         queryParameters: sendData,
         data: isFile ? formData : null,
       );

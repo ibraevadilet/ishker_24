@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ishker_24/core/formatters/date_format.dart';
 import 'package:ishker_24/features/esf/data/models/esf_accept_or_reject_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_status_model.dart';
@@ -22,37 +23,49 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
 
     if (createdDateFrom != null) {
       getData.addEntries(
-        {"createdDateFrom": createdDateFrom}.entries,
+        {
+          "createdDateFrom":
+              AppDateFormats.formatyyyyMMDd.format(createdDateFrom)
+        }.entries,
       );
     }
     if (createdDateTo != null) {
       getData.addEntries(
-        {"createdDateTo": createdDateTo}.entries,
+        {"createdDateTo": AppDateFormats.formatyyyyMMDd.format(createdDateTo)}
+            .entries,
       );
     }
     if (exchangeCode != null) {
       getData.addEntries(
-        {"exchangeCode": exchangeCode}.entries,
+        {
+          "exchangeCode": exchangeCode,
+        }.entries,
       );
     }
     if (statusCode != null) {
       getData.addEntries(
-        {"statusCode": statusCode}.entries,
+        {
+          "statusCode": statusCode,
+        }.entries,
       );
     }
     if (invoiceNumber != null) {
       getData.addEntries(
-        {"invoiceNumber": invoiceNumber}.entries,
+        {
+          "invoiceNumber": invoiceNumber,
+        }.entries,
       );
     }
     if (contractorTin != null) {
       getData.addEntries(
-        {"contractorTin": contractorTin}.entries,
+        {
+          "contractorTin": contractorTin,
+        }.entries,
       );
     }
     try {
       final response = await dio.post(
-        'gns/api/v1/realization',
+        'esf/gns/api/v1/realization',
         queryParameters: getData,
       );
       return EsfModel.fromJson(response.data);
@@ -64,8 +77,8 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
   @override
   Future<EsfModel> esfIncome(
     String tin, {
-    String? createdDateFrom,
-    String? createdDateTo,
+    DateTime? createdDateFrom,
+    DateTime? createdDateTo,
     String? exchangeCode,
     String? statusCode,
     String? invoiceNumber,
@@ -75,12 +88,16 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
 
     if (createdDateFrom != null) {
       getData.addEntries(
-        {"createdDateFrom": createdDateFrom}.entries,
+        {
+          "createdDateFrom":
+              AppDateFormats.formatyyyyMMDd.format(createdDateFrom)
+        }.entries,
       );
     }
     if (createdDateTo != null) {
       getData.addEntries(
-        {"createdDateTo": createdDateTo}.entries,
+        {"createdDateTo": AppDateFormats.formatyyyyMMDd.format(createdDateTo)}
+            .entries,
       );
     }
     if (exchangeCode != null) {
@@ -105,7 +122,7 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
     }
     try {
       final response = await dio.post(
-        'gns/api/v1/income',
+        'esf/gns/api/v1/income',
         queryParameters: getData,
       );
       return EsfModel.fromJson(response.data);
@@ -122,7 +139,7 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
   ) async {
     try {
       final response = await dio.post(
-        'gns/api/v1/acceptation',
+        'esf/gns/api/v1/acceptation',
         data: {
           "statusCode": statusCode,
           "documentUuids": documentUuids,
@@ -139,7 +156,7 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
   Future<EsfStatusModel> esfSatuses(String tin) async {
     try {
       final response = await dio.get(
-        'gns/api/v1/statuses',
+        'esf/gns/api/v1/statuses',
         queryParameters: {
           'tin': tin,
         },

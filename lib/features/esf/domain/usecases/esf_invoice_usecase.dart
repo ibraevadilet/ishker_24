@@ -33,8 +33,8 @@ class EsfInvoiceUseCase {
 
   Future<EsfModel> esfIncome(
     String tin, {
-    String? createdDateFrom,
-    String? createdDateTo,
+    DateTime? createdDateFrom,
+    DateTime? createdDateTo,
     String? exchangeCode,
     String? statusCode,
     String? invoiceNumber,
