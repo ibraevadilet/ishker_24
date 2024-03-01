@@ -178,6 +178,7 @@ import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/re
 import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_sms_code_screen/reset_pin_code_token_cubit/reset_pin_code_token_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/exit_cubit/exit_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.dart';
+import 'package:ishker_24/server/dio_kkm.dart';
 import 'package:ishker_24/server/dio_settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -400,7 +401,9 @@ Future<void> initServiceLocator() async {
 }
 
 Future<void> _registerMegaKassaDependecies() async {
-  sl.registerFactory<MegaKassaRepo>(() => MegaKassaRepoImpl(dio: sl()));
+  ///TODO
+  final dioKKm = DioKKM().dio;
+  sl.registerFactory<MegaKassaRepo>(() => MegaKassaRepoImpl(dio: dioKKm));
 
   sl.registerFactory<MegaKassaGetStatusUseCase>(
       () => MegaKassaGetStatusUseCase(repo: sl()));

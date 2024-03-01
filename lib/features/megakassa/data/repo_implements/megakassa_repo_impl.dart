@@ -1,6 +1,6 @@
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
-import 'package:ishker_24/core/constants/app_text_constants.dart';
 import 'package:ishker_24/features/megakassa/domain/entities/gns_registration_request_entity.dart';
 import 'package:ishker_24/features/megakassa/domain/entities/kkm_detail_entity.dart';
 import 'package:ishker_24/features/megakassa/domain/entities/kkm_entity.dart';
@@ -18,13 +18,13 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   final Dio dio;
 
   MegaKassaRepoImpl({required this.dio}) {
-    dio.options = BaseOptions(
-      baseUrl: AppTextConstants.megaKassaServer,
-      responseType: ResponseType.json,
-      contentType: "application/json; charset=utf-8",
-      connectTimeout: const Duration(milliseconds: 50000),
-      receiveTimeout: const Duration(milliseconds: 50000),
-    );
+    // dio.options = BaseOptions(
+    //   baseUrl: AppTextConstants.megaKassaServer,
+    //   responseType: ResponseType.json,
+    //   contentType: "application/json; charset=utf-8",
+    //   connectTimeout: const Duration(milliseconds: 50000),
+    //   receiveTimeout: const Duration(milliseconds: 50000),
+    // );
   }
 
   String get _tin => sl<ExistsUserUseCase>().pin.isEmpty
