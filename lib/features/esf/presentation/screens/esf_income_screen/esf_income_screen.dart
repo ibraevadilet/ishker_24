@@ -4,7 +4,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
-import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/widgets/esf_container.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
@@ -51,7 +50,7 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<EsfInvoiceCubit>()..esfIncome(),
+      create: (context) => sl<EsfInvoiceCubit>()..esfIncomeSorted(),
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: const CustomAppBar(
@@ -140,10 +139,7 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          createDateTo == null
-                                              ? ''
-                                              : AppDateFormats.formatDdMMYyyy
-                                                  .format(createDateTo!),
+                                          'Дата создания ПО',
                                           style: AppTextStyles.s12W400(),
                                         ),
                                         const SizedBox(height: 6),
@@ -195,8 +191,14 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
                                           ? null
                                           : statuses.content[selectedIndex!].id
                                               .toString(),
-                                      invoiceNumber: numberController.text.isEmpty ? null : numberController.text,
-                                      contractorTin: contractorController.text.isEmpty ? null: contractorController.text,
+                                      invoiceNumber:
+                                          numberController.text.isEmpty
+                                              ? null
+                                              : numberController.text,
+                                      contractorTin:
+                                          contractorController.text.isEmpty
+                                              ? null
+                                              : contractorController.text,
                                     );
                               },
                               text: 'Поиск',
@@ -214,7 +216,9 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
                                   createDateTo = null;
                                 });
 
-                                context.read<EsfInvoiceCubit>().esfIncome();
+                                context
+                                    .read<EsfInvoiceCubit>()
+                                    .esfIncomeSorted();
                               },
                               text: 'Очистить фильтр',
                               radius: 16,
@@ -238,11 +242,21 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
                                 data.invoices[index].contractor.fullName,
                             totalCost:
                                 data.invoices[index].totalAmount.toString(),
-                            onTap: () => AppRouting.pushFunction(
-                              EsfIncomeDetailRoute(
-                                invoice: data.invoices[index],
-                              ),
-                            ),
+                            onTap: () async {
+                              await context.router.push(
+                                EsfIncomeDetailRoute(
+                                  invoice: data.invoices[index],
+                                ),
+                              );
+                              contractorController.clear();
+                              numberController.clear();
+                              setState(() {
+                                selectedIndex = null;
+                                createDateFrom = null;
+                                createDateTo = null;
+                              });
+                              context.read<EsfInvoiceCubit>().esfIncomeSorted();
+                            },
                           ),
                           separatorBuilder: (context, index) =>
                               const SizedBox(height: 8),

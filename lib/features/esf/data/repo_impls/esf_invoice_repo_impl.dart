@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
 import 'package:ishker_24/core/functions/saved_pin.dart';
@@ -160,7 +162,13 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
       );
       return EsfAcceptOrRejectModel.fromJson(response.data);
     } catch (e) {
-      throw CatchException(message: e.toString());
+      if (e is DioException) {
+        Map valueMap = jsonDecode(e.response!.data);
+
+        throw CatchException(message: valueMap['message']).message;
+      } else {
+        throw CatchException.convertException(e).message;
+      }
     }
   }
 

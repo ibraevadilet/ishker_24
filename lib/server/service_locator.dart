@@ -30,6 +30,7 @@ import 'package:ishker_24/features/esf/domain/repositories/save_token_repository
 import 'package:ishker_24/features/esf/domain/usecases/esf_check_usecase.dart';
 import 'package:ishker_24/features/esf/domain/usecases/esf_invoice_usecase.dart';
 import 'package:ishker_24/features/esf/domain/usecases/save_token_usecase.dart';
+import 'package:ishker_24/features/esf/presentation/cubits/esf_accept_cubit/esf_accept_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/esf_check_cubit/esf_check_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/save_token_cubit/save_token_cubit.dart';
@@ -374,4 +375,5 @@ Future<void> initServiceLocator() async {
       () => GetReportDeteilPdfCubit(useCase: sl()));
   sl.registerFactory<GeneratePdfReviewCubit>(
       () => GeneratePdfReviewCubit(useCase: sl()));
+  sl.registerFactory<EsfAcceptCubit>(() => EsfAcceptCubit(useCase: sl()));
 }

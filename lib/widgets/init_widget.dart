@@ -44,13 +44,12 @@ class _InitWidgetState extends State<InitWidget> with WidgetsBindingObserver {
 
     if (state == AppLifecycleState.paused) {
       final isEsfRoute = sl<AppRouter>().currentPath != '/esf-route';
-      print(sl<AppRouter>().currentPath);
       final isTokenNotEmpty = token.isNotEmpty;
       final pinIsTest = pin != '12345678987654';
 
       if (isTokenNotEmpty && pinIsTest && isEsfRoute) {
         sl<SharedPreferences>().remove(SharedKeys.accessToken);
-        AppRouting.pushFunction(PinCodeEnterRoute());
+        AppRouting.pushFunction(PinCodeEnterRoute(isPushed: true));
       }
     }
   }

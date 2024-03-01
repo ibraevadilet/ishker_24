@@ -13,21 +13,6 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
 
   final EsfInvoiceUseCase useCase;
 
-  Future<void> esfInvoice() async {
-    emit(const EsfInvoiceState.loading());
-    try {
-      final result = await useCase.esfInvoice();
-      final statuses = await useCase.esfStatus();
-      emit(
-        EsfInvoiceState.success(result, statuses),
-      );
-    } catch (e) {
-      emit(
-        EsfInvoiceState.error(e.toString()),
-      );
-    }
-  }
-
   Future<void> esfInvoiceSorted({
     DateTime? createdDateFrom,
     DateTime? createdDateTo,
@@ -57,21 +42,6 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
     }
   }
 
-  Future<void> esfIncome() async {
-    emit(const EsfInvoiceState.loading());
-    try {
-      final result = await useCase.esfInvoice();
-      final statuses = await useCase.esfStatus();
-      emit(
-        EsfInvoiceState.success(result, statuses),
-      );
-    } catch (e) {
-      emit(
-        EsfInvoiceState.error(e.toString()),
-      );
-    }
-  }
-
   Future<void> esfIncomeSorted({
     DateTime? createdDateFrom,
     DateTime? createdDateTo,
@@ -82,7 +52,9 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
   }) async {
     emit(const EsfInvoiceState.loading());
     try {
-      final result = await useCase.esfInvoice(
+      final result = await useCase.esfIncome(
+        createdDateFrom: createdDateFrom,
+        createdDateTo: createdDateTo,
         exchangeCode: exchangeCode,
         statusCode: statusCode,
         invoiceNumber: invoiceNumber,
@@ -99,18 +71,19 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
     }
   }
 
-  Future<void> esfAcceptOrReject(
-      int statusCode, List<String> documentUuids) async {
-    emit(const EsfInvoiceState.loading());
-    try {
-      await useCase.esfAcceptOrReject(
-        documentUuids,
-        statusCode,
-      );
-    } catch (e) {
-      emit(
-        EsfInvoiceState.error(e.toString()),
-      );
-    }
-  }
+  // Future<void> esfAcceptOrReject(
+  //     int statusCode, List<String> documentUuids) async {
+  //   emit(const EsfInvoiceState.loading());
+  //   try {
+  //     await useCase.esfAcceptOrReject(
+  //       documentUuids,
+  //       statusCode,
+  //     );
+  //     emit(const EsfInvoiceState.success());
+  //   } catch (e) {
+  //     emit(
+  //       EsfInvoiceState.error(e.toString()),
+  //     );
+  //   }
+  // }
 }

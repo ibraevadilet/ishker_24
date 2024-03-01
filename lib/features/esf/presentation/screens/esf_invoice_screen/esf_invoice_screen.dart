@@ -4,7 +4,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
-import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/widgets/esf_container.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
@@ -47,7 +46,7 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<EsfInvoiceCubit>()..esfInvoice(),
+      create: (context) => sl<EsfInvoiceCubit>()..esfInvoiceSorted(),
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: const CustomAppBar(
@@ -215,7 +214,9 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
                                   createDateFrom = null;
                                   createDateTo = null;
                                 });
-                                context.read<EsfInvoiceCubit>().esfInvoice();
+                                context
+                                    .read<EsfInvoiceCubit>()
+                                    .esfInvoiceSorted();
                               },
                               text: 'Очистить фильтр',
                               radius: 16,
@@ -239,11 +240,23 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
                                 data.invoices[index].contractor.fullName,
                             totalCost:
                                 data.invoices[index].totalAmount.toString(),
-                            onTap: () => AppRouting.pushFunction(
-                              EsfRealizationDetailRoute(
-                                invoice: data.invoices[index],
-                              ),
-                            ),
+                            onTap: () async {
+                              await context.router.push(
+                                EsfRealizationDetailRoute(
+                                  invoice: data.invoices[index],
+                                ),
+                              );
+                              contractorController.clear();
+                              numberController.clear();
+                              setState(() {
+                                selectedIndex = null;
+                                createDateFrom = null;
+                                createDateTo = null;
+                              });
+                              context
+                                  .read<EsfInvoiceCubit>()
+                                  .esfInvoiceSorted();
+                            },
                           ),
                           separatorBuilder: (context, index) =>
                               const SizedBox(height: 8),
