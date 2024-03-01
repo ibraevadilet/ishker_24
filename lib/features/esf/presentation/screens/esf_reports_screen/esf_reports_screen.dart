@@ -7,7 +7,6 @@ import 'package:ishker_24/core/formatters/date_format.dart';
 import 'package:ishker_24/features/esf/data/repo_impls/esf_invoice_repo_impl.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/widgets/esf_container.dart';
-import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
@@ -21,22 +20,28 @@ import 'package:ishker_24/widgets/expanded_list_widget.dart';
 import 'package:ishker_24/widgets/show_calendar/show_calendar.dart';
 
 @RoutePage()
-class EsfInvoiceScreen extends StatefulWidget {
-  const EsfInvoiceScreen({super.key});
+class EsfReportsScreen extends StatefulWidget {
+  const EsfReportsScreen({
+    super.key,
+    required this.type,
+    required this.title,
+  });
+  final ESFType type;
+  final String title;
 
   @override
-  State<EsfInvoiceScreen> createState() => _EsfInvoiceScreenState();
+  State<EsfReportsScreen> createState() => _EsfReportsScreenState();
 }
 
-class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
+class _EsfReportsScreenState extends State<EsfReportsScreen> {
   List<String> status = [];
   String title = 'Статус';
   DateTime? createDateFrom;
   DateTime? createDateTo;
   int? selectedIndex;
+
   final TextEditingController contractorController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
-
   @override
   void dispose() {
     contractorController.dispose();
@@ -48,13 +53,13 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          sl<EsfInvoiceCubit>()..esfReports(typeFrom: ESFType.invoice),
+          sl<EsfInvoiceCubit>()..esfReports(typeFrom: widget.type),
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
-        appBar: const CustomAppBar(
+        appBar: CustomAppBar(
           backgroundColor: AppColors.backgroundColor,
           centerTitle: false,
-          title: 'Реализация',
+          title: widget.title,
         ),
         body: BlocBuilder<EsfInvoiceCubit, EsfInvoiceState>(
           builder: (context, state) {
@@ -70,7 +75,6 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 16),
                         EsfExpandedList(
                           title: 'Фильтр',
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,7 +163,7 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
                             const SizedBox(height: 8),
                             ExpandedList(
                               borderColor: AppColors.color6B7583Grey,
-                              title: 'Статус',
+                              title: title,
                               selectedIndex: selectedIndex,
                               onSelected: (e) {
                                 setState(() {
@@ -170,13 +174,13 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
                             ),
                             const SizedBox(height: 8),
                             CustomTextField(
-                              controller: contractorController,
                               labelText: 'Контрагент',
+                              controller: contractorController,
                             ),
                             const SizedBox(height: 8),
                             CustomTextField(
-                              controller: numberController,
                               labelText: 'Номер ЭСФ',
+                              controller: numberController,
                             ),
                             const SizedBox(height: 8),
                             CustomButton(
@@ -228,23 +232,8 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (context, index) => EsfContainer(
-                            createDate: AppDateFormats.formatDdMMYyyy
-                                .format(data.invoices[index].createdDate),
-                            operationType:
-                                data.invoices[index].receiptType.name,
-                            status: data.invoices[index].status.name,
-                            counterparty:
-                                data.invoices[index].contractor.fullName,
-                            totalCost:
-                                data.invoices[index].totalAmount.toString(),
-                            onTap: () async {
-                              await context.router.push(
-                                EsfRealizationDetailRoute(
-                                  invoice: data.invoices[index],
-                                ),
-                              );
-                              context.read<EsfInvoiceCubit>().esfReports();
-                            },
+                            type: widget.type,
+                            model: data.invoices[index],
                           ),
                           separatorBuilder: (context, index) =>
                               const SizedBox(height: 8),

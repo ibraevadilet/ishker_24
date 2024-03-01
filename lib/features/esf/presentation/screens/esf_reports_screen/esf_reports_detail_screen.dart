@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
 import 'package:ishker_24/features/esf/data/models/esf_model.dart';
+import 'package:ishker_24/features/esf/data/repo_impls/esf_invoice_repo_impl.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/esf_accept_cubit/esf_accept_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/widgets/esf_sevice_container.dart';
 import 'package:ishker_24/server/service_locator.dart';
@@ -13,12 +14,15 @@ import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/esf_expanded_list.dart';
 
 @RoutePage()
-class EsfIncomeDetailScreen extends StatelessWidget {
-  const EsfIncomeDetailScreen({
+class EsfReportsDetailScreen extends StatelessWidget {
+  const EsfReportsDetailScreen({
     super.key,
     required this.invoice,
+    required this.type,
   });
   final Invoice invoice;
+  final ESFType type;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -381,21 +385,10 @@ class EsfIncomeDetailScreen extends StatelessWidget {
                 Text('Услуги', style: AppTextStyles.s16W500()),
                 const SizedBox(height: 24),
                 EsfSeviceContainer(
-                  number: invoice.number,
-                  product: 'Flash karra eToker\nPro 7k\nIDO',
-                  unit: 'Штука',
-                  gked: '',
-                  factCount: '1.00000',
-                  price: '582,00000',
-                  vatAmount: '61,26',
-                  nsp: '2%',
-                  nspAmount: '10,21',
-                  gtdNumber: '',
-                  costWitoutTax: '510,53',
-                  totalCost: invoice.totalAmount.toString(),
+                  model: invoice,
                 ),
                 const SizedBox(height: 24),
-                if (invoice.status.code == '30')
+                if (invoice.status.code == '30' && type == ESFType.income)
                   BlocConsumer<EsfAcceptCubit, EsfAcceptState>(
                     listener: (context, state) {
                       state.whenOrNull(

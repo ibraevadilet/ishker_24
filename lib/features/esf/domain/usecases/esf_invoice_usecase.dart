@@ -1,4 +1,3 @@
-import 'package:ishker_24/features/esf/data/models/esf_accept_or_reject_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_status_model.dart';
 import 'package:ishker_24/features/esf/data/models/get_esf_qwery_model.dart';
@@ -20,12 +19,12 @@ class EsfInvoiceUseCase {
     }
   }
 
-  Future<EsfAcceptOrRejectModel> esfAcceptOrReject(
+  Future<void> esfAcceptOrReject(
     List<String> documentUuids,
     int statusCode,
   ) async {
     try {
-      return await repo.esfAcceptOrReject(
+      await repo.esfAcceptOrReject(
         documentUuids,
         statusCode,
       );

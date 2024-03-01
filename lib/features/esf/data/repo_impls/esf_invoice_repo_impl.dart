@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/functions/saved_pin.dart';
-import 'package:ishker_24/features/esf/data/models/esf_accept_or_reject_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_status_model.dart';
 import 'package:ishker_24/features/esf/data/models/get_esf_qwery_model.dart';
@@ -58,13 +57,13 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
   }
 
   @override
-  Future<EsfAcceptOrRejectModel> esfAcceptOrReject(
+  Future<void> esfAcceptOrReject(
     List<String> documentUuids,
     int statusCode,
   ) async {
     final pin = AppSavedPin.getPin();
     try {
-      final response = await dio.post(
+      await dio.post(
         'esf/gns/api/v1/acceptation',
         data: {
           "statusCode": statusCode,
@@ -72,7 +71,6 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
           "tin": pin,
         },
       );
-      return EsfAcceptOrRejectModel.fromJson(response.data);
     } catch (e) {
       if (e is DioException) {
         if (e.response!.statusCode == 423) {

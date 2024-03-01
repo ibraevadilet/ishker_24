@@ -51,11 +51,13 @@ class GetEsfQweryModel {
       );
     }
     if (statusCode != null) {
-      getData.addEntries(
-        {
-          "statusCode": statusCode,
-        }.entries,
-      );
+      if (statusCode != '90') {
+        getData.addEntries(
+          {
+            "statusCode": statusCode,
+          }.entries,
+        );
+      }
     }
     if (invoiceNumber != null) {
       getData.addEntries(

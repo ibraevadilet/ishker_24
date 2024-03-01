@@ -25,6 +25,11 @@ class EsfAcceptCubit extends Cubit<EsfAcceptState> {
         documentUuids,
         statusCode,
       );
+      if (statusCode == 40) {
+        AppSnackBar.showSnackBar('Успешно принят!', isSuccess: true);
+      } else {
+        AppSnackBar.showSnackBar('Успешно отклонен!', isSuccess: true);
+      }
       emit(const EsfAcceptState.success());
     } catch (e) {
       AppSnackBar.showSnackBar(e.toString());
