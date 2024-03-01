@@ -39,7 +39,7 @@ class Invoice {
   final DateTime deliveryDate;
   final DateTime invoiceDate;
   final String ownedCrmReceiptCode;
-  final int invoiceNumber;
+  final String invoiceNumber;
   final String number;
   final String note;
   final String correctedReceiptUuid;
@@ -86,7 +86,7 @@ class Invoice {
         deliveryDate: DateTime.parse(json["deliveryDate"] ?? DateTime.now()),
         invoiceDate: json["invoiceDate"] ?? DateTime.now(),
         ownedCrmReceiptCode: json["ownedCrmReceiptCode"] ?? '',
-        invoiceNumber: json["invoiceNumber"] ?? 0,
+        invoiceNumber: json["invoiceNumber"] ?? '0',
         number: json["number"] ?? '',
         note: json["note"] ?? '',
         correctedReceiptUuid: json["correctedReceiptUuid"] ?? '',

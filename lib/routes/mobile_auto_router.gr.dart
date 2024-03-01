@@ -486,6 +486,7 @@ abstract class $AppRouter extends _i67.RootStackRouter {
           key: args.key,
           path: args.path,
           isNetwork: args.isNetwork,
+          title: args.title,
         ),
       );
     },
@@ -1698,6 +1699,7 @@ class PdfViewRoute extends _i67.PageRouteInfo<PdfViewRouteArgs> {
     _i68.Key? key,
     required String path,
     bool isNetwork = false,
+    String title = '',
     List<_i67.PageRouteInfo>? children,
   }) : super(
           PdfViewRoute.name,
@@ -1705,6 +1707,7 @@ class PdfViewRoute extends _i67.PageRouteInfo<PdfViewRouteArgs> {
             key: key,
             path: path,
             isNetwork: isNetwork,
+            title: title,
           ),
           initialChildren: children,
         );
@@ -1720,6 +1723,7 @@ class PdfViewRouteArgs {
     this.key,
     required this.path,
     this.isNetwork = false,
+    this.title = '',
   });
 
   final _i68.Key? key;
@@ -1728,9 +1732,11 @@ class PdfViewRouteArgs {
 
   final bool isNetwork;
 
+  final String title;
+
   @override
   String toString() {
-    return 'PdfViewRouteArgs{key: $key, path: $path, isNetwork: $isNetwork}';
+    return 'PdfViewRouteArgs{key: $key, path: $path, isNetwork: $isNetwork, title: $title}';
   }
 }
 

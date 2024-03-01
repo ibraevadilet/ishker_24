@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/features/nalog_decloration/data/models/nalog_names_model.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/generate_pdf_review_cubit/generate_pdf_review_cubit.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/get_statis_fileds_cubit/get_statis_fileds_cubit.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/send_saved_data_cubit/send_saved_data_cubit.dart';
 import 'package:ishker_24/server/service_locator.dart';
@@ -26,6 +27,9 @@ class ProviderScaffoldBackgroundWidgets extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => sl<SendSavedDataCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<GeneratePdfReviewCubit>(),
         ),
       ],
       child: Scaffold(

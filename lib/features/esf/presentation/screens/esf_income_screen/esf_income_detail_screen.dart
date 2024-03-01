@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
 import 'package:ishker_24/features/esf/data/models/esf_model.dart';
-import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
+import 'package:ishker_24/features/esf/presentation/cubits/esf_accept_cubit/esf_accept_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/widgets/esf_sevice_container.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
@@ -21,8 +21,8 @@ class EsfIncomeDetailScreen extends StatelessWidget {
   final Invoice invoice;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: sl<EsfInvoiceCubit>(),
+    return BlocProvider(
+      create: (context) => sl<EsfAcceptCubit>(),
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: const CustomAppBar(
@@ -395,35 +395,47 @@ class EsfIncomeDetailScreen extends StatelessWidget {
                   totalCost: invoice.totalAmount.toString(),
                 ),
                 const SizedBox(height: 24),
-                BlocBuilder<EsfInvoiceCubit, EsfInvoiceState>(
-                  builder: (context, state) {
-                    return Column(
-                      children: [
-                        CustomButton(
+                if (invoice.status.code != '40' && invoice.status.code != '50')
+                  BlocConsumer<EsfAcceptCubit, EsfAcceptState>(
+                    listener: (context, state) {
+                      state.whenOrNull(
+                        success: () {
+                          Navigator.pop(context);
+                        },
+                      );
+                    },
+                    builder: (context, state) {
+                      return Column(
+                        children: [
+                          CustomButton(
+                            isLoading: state.isLoading40,
                             onPress: () {
-                              context.read<EsfInvoiceCubit>().esfAcceptOrReject(
+                              context.read<EsfAcceptCubit>().esfAcceptOrReject(
                                 40,
                                 [invoice.documentUuid],
                               );
                             },
-                            text: 'Принять'),
-                        const SizedBox(height: 16),
-                        CustomButton(
-                          onPress: () {
-                            context.read<EsfInvoiceCubit>().esfAcceptOrReject(
-                              50,
-                              [invoice.documentUuid],
-                            );
-                          },
-                          color: Colors.transparent,
-                          borderColor: AppColors.color54B25AMain,
-                          text: 'Отклонить',
-                          textColor: AppColors.color54B25AMain,
-                        ),
-                      ],
-                    );
-                  },
-                ),
+                            text: 'Принять',
+                          ),
+                          const SizedBox(height: 16),
+                          CustomButton(
+                            loadingColor: AppColors.color54B25AMain,
+                            isLoading: state.isLoading50,
+                            onPress: () {
+                              context.read<EsfAcceptCubit>().esfAcceptOrReject(
+                                50,
+                                [invoice.documentUuid],
+                              );
+                            },
+                            color: Colors.transparent,
+                            borderColor: AppColors.color54B25AMain,
+                            text: 'Отклонить',
+                            textColor: AppColors.color54B25AMain,
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                 const SizedBox(height: 16),
               ],
             ),

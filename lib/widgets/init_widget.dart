@@ -5,6 +5,7 @@ import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/bottom_navigator/logic/bottom_navigator_cubit/bottom_navigator_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/get_tokens_use_case.dart';
+import 'package:ishker_24/routes/mobile_auto_router.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/translations/codegen_loader.g.dart';
@@ -42,9 +43,13 @@ class _InitWidgetState extends State<InitWidget> with WidgetsBindingObserver {
     final pin = sl<GetTokensUseCase>().pin;
 
     if (state == AppLifecycleState.paused) {
-      if (token.isNotEmpty && pin != '12345678987654') {
+      final isEsfRoute = sl<AppRouter>().currentPath != '/esf-route';
+      final isTokenNotEmpty = token.isNotEmpty;
+      final pinIsTest = pin != '12345678987654';
+
+      if (isTokenNotEmpty && pinIsTest && isEsfRoute) {
         sl<SharedPreferences>().remove(SharedKeys.accessToken);
-        AppRouting.pushFunction(PinCodeEnterRoute());
+        AppRouting.pushFunction(PinCodeEnterRoute(isPushed: true));
       }
     }
   }

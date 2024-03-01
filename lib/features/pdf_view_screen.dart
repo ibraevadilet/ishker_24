@@ -8,13 +8,17 @@ class PdfViewScreen extends StatelessWidget {
     super.key,
     required this.path,
     this.isNetwork = false,
+    this.title = '',
   });
   final String path;
   final bool isNetwork;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(title),
+      ),
       body: SafeArea(
         child: isNetwork
             ? const PDF().cachedFromUrl(path)

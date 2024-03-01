@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:ishker_24/core/functions/saved_pin.dart';
 import 'package:ishker_24/features/esf/domain/repositories/save_token_repository.dart';
-import 'package:ishker_24/features/splash/domain/use_cases/exists_user_usecase.dart';
-import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/auth_usecase.dart';
 import 'package:ishker_24/server/catch_exception.dart';
-import 'package:ishker_24/server/service_locator.dart';
 
 class SaveTokenRepoImpl implements SaveTokenRepo {
   final Dio dio;
@@ -15,13 +13,9 @@ class SaveTokenRepoImpl implements SaveTokenRepo {
     required bool isFile,
     String? fileName,
   }) async {
-    String isSavedPin = sl<ExistsUserUseCase>().pin;
-    if (isSavedPin.isEmpty) {
-      isSavedPin = sl<AuthUseCase>().inn;
-    }
-    isSavedPin = '20705198701479';
+    final pin = AppSavedPin.getPin();
 
-    Map<String, dynamic> sendData = {'tin': isSavedPin};
+    Map<String, dynamic> sendData = {'tin': pin};
     FormData formData = FormData.fromMap({});
     if (isFile) {
       formData.files.add(
