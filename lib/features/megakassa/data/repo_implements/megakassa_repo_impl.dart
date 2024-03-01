@@ -27,10 +27,10 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
     );
   }
 
-  // String get _tin => sl<ExistsUserUseCase>().pin.isEmpty
-  //     ? sl<AuthUseCase>().inn
-  //     : sl<ExistsUserUseCase>().pin;
-  String get _tin => '12406199101096';
+  String get _tin => sl<ExistsUserUseCase>().pin.isEmpty
+      ? sl<AuthUseCase>().inn
+      : sl<ExistsUserUseCase>().pin;
+  // String get _tin => '12406199101096';
 
   @override
   Future<bool> getMegakassaStatus() async {
