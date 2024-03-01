@@ -35,6 +35,7 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
   clear() {
     useCase.invoices.clear();
     isFirstLoad = true;
+    currentPage = 0;
     createdDateFrom = null;
     createdDateTo = null;
     exchangeCode = null;
@@ -56,6 +57,7 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
     if (isFilter) {
       useCase.invoices.clear();
       isFirstLoad = true;
+      currentPage = 0;
     }
     if (isFirstLoad) {
       emit(const EsfInvoiceState.loading());
