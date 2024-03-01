@@ -2,12 +2,15 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/functions/saved_pin.dart';
 import 'package:ishker_24/features/esf/data/models/esf_accept_or_reject_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_status_model.dart';
 import 'package:ishker_24/features/esf/domain/repositories/esf_invoice_repository.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/catch_exception.dart';
+import 'package:ishker_24/widgets/styled_toasts.dart';
 
 class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
   EsfInvoiceRepoImpl({required this.dio});
@@ -75,8 +78,15 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
       return EsfModel.fromJson(response.data);
     } catch (e) {
       if (e is DioException) {
-        throw CatchException(message: 'Отсутствует доступ к данному сервису')
-            .message;
+        if (e.response!.statusCode == 423) {
+          showError();
+          throw CatchException(message: 'Токен заблокирован').message;
+        } else if (e.response!.statusCode == 500) {
+          throw CatchException(message: 'Internal Server Error').message;
+        } else {
+          Map valueMap = jsonDecode(e.response!.data);
+          throw CatchException(message: valueMap['message']['ru']).message;
+        }
       } else {
         throw CatchException(message: e.toString());
       }
@@ -137,12 +147,28 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
       return EsfModel.fromJson(response.data);
     } catch (e) {
       if (e is DioException) {
-        throw CatchException(message: 'Отсутствует доступ к данному сервису')
-            .message;
+        if (e.response!.statusCode == 423) {
+          showError();
+          throw CatchException(message: 'Токен заблокирован').message;
+        } else if (e.response!.statusCode == 500) {
+          throw CatchException(message: 'Internal Server Error').message;
+        } else {
+          Map valueMap = jsonDecode(e.response!.data);
+
+          throw CatchException(message: valueMap['message']['ru']).message;
+        }
       } else {
-        throw CatchException(message: e.toString());
+        throw CatchException.convertException(e).message;
       }
     }
+  }
+
+  showError() async {
+    AppSnackBar.showSnackBar('Токен заблокирован');
+    Future.microtask(() {
+      AppRouting.popUntilRootFunction();
+    });
+    AppRouting.pushFunction(const EsfRoute());
   }
 
   @override

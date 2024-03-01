@@ -7,8 +7,16 @@ class AppRouting {
     sl<AppRouter>().push(route);
   }
 
-  static replacehFunction(PageRouteInfo<dynamic> route) {
+  static replaceFunction(PageRouteInfo<dynamic> route) {
     sl<AppRouter>().replace(route);
+  }
+
+  static popUntilFunction(String routeName) {
+    sl<AppRouter>().popUntilRouteWithName(routeName);
+  }
+
+  static popUntilRootFunction() {
+    sl<AppRouter>().popUntilRoot();
   }
 
   static pushAndPopUntilFunction(PageRouteInfo<dynamic> route) {
