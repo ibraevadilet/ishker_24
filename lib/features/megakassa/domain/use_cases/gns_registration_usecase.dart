@@ -9,7 +9,7 @@ class MegaKassaGnsRegistrationUseCase {
     required this.repo,
   });
 
-  Future<(bool, MegaKassaKkmEntity?)> registerGns({
+  Future<(String, MegaKassaKkmEntity?, int)> registerGns({
     MegaKassaGnsRegistrationRequestEntity? registrationEntity,
     MegaKassaKkmRegistrationEntity? registrationKkmEntity,
     required String pincode,

@@ -6,6 +6,20 @@ class AppInputValidators {
     return null;
   }
 
+  static String? emailMegaKassaValidator(String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Поле обязательно для заполнения';
+    }
+    if (!val.contains('@') ||
+        val.contains('@') && val.split('@').last.length < 5) {
+      return 'Укажите адрес почты';
+    }
+    if (val.contains('@gmail')) {
+      return 'Нельзя использовать gmail адрес';
+    }
+    return null;
+  }
+
   static String? phoneValidator(String? val) {
     if (val!.isEmpty) {
       return 'Поле обязательно для заполнения';

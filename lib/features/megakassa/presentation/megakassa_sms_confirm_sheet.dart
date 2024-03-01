@@ -18,11 +18,13 @@ Future<void> megaKassaSmsConfirmSheet({
   required BuildContext mainContext,
   required Function() onResend,
   required Function(MegaKassaKkmEntity? kkm) onSuccess,
+  required Function() onError,
   MegaKassaGnsRegistrationRequestEntity? registrationEntity,
   MegaKassaKkmRegistrationEntity? registrationKkmEntity,
 }) async {
   final smsConroller = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final cubit = sl<MegaKassaGnsRegistrationCubit>();
   showModalBottomSheet(
     barrierColor: Colors.black.withOpacity(0.8),
     isScrollControlled: true,
@@ -31,9 +33,7 @@ Future<void> megaKassaSmsConfirmSheet({
     context: mainContext,
     builder: (context) => MultiBlocProvider(
       providers: [
-        BlocProvider.value(
-          value: sl<MegaKassaGnsRegistrationCubit>(),
-        ),
+        BlocProvider.value(value: cubit),
         BlocProvider(
           create: (context) => sl<TimerCubit>()..getTimer(60),
         ),
@@ -119,10 +119,13 @@ Future<void> megaKassaSmsConfirmSheet({
                 const SizedBox(height: 16),
                 BlocConsumer<MegaKassaGnsRegistrationCubit,
                     GnsRegistrationState>(
+                  bloc: cubit,
                   listener: (context, state) {
                     state.whenOrNull(
-                      error: (error) =>
-                          AppSnackBar.showToastAbaveSheet(context, error),
+                      error: (error) {
+                        Navigator.pop(context);
+                        onError();
+                      },
                       success: (_, __, ___, kkm) {
                         Navigator.pop(context);
                         onSuccess(kkm);
@@ -134,13 +137,11 @@ Future<void> megaKassaSmsConfirmSheet({
                       isLoading: state.isLoading,
                       onPress: () {
                         if (formKey.currentState!.validate()) {
-                          context
-                              .read<MegaKassaGnsRegistrationCubit>()
-                              .register(
-                                registrationEntity: registrationEntity,
-                                registrationKkmEntity: registrationKkmEntity,
-                                pincode: smsConroller.text,
-                              );
+                          cubit.register(
+                            registrationEntity: registrationEntity,
+                            registrationKkmEntity: registrationKkmEntity,
+                            pincode: smsConroller.text,
+                          );
                         }
                       },
                       text: 'Отправить',

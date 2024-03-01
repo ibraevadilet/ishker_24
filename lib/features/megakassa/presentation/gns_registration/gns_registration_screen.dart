@@ -150,7 +150,8 @@ class _MegaKassaGnsRegistrationScreenState
                           );
 
                           _cubit.getMethods(
-                              registrationEntity: registrationEntity);
+                            registrationEntity: registrationEntity,
+                          );
                         }
                       },
                       radius: 16,
@@ -180,7 +181,7 @@ class _MegaKassaGnsRegistrationScreenState
                   labelText: 'Логин',
                   controller: _loginController,
                   onChanged: _validate,
-                  validator: AppInputValidators.emptyValidator,
+                  validator: AppInputValidators.emailMegaKassaValidator,
                   maxLength: 200,
                 ),
                 const SizedBox(height: 8),

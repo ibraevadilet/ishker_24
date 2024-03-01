@@ -84,11 +84,28 @@ class _MegaKassaGnsConfirmationScreenState
                                 isResend: true,
                               );
                             },
+                            onError: () {
+                              context.router.replace(
+                                SuccessOrFailureRoute(
+                                  onPress: () {
+                                    appRouter.popUntilRoot();
+                                    appRouter.push(
+                                      const MegaKassaEntryRoute(),
+                                    );
+                                  },
+                                  isSuccess: false,
+                                  title: 'Произошла ошибка',
+                                  subtitle: 'Попробуйте еще раз',
+                                  buttonText: 'Попробовать еще раз',
+                                ),
+                              );
+                            },
                             onSuccess: (_) {
                               context.router.replace(
                                 SuccessOrFailureRoute(
                                   onPress: () {
-                                    appRouter.replace(
+                                    appRouter.popUntilRoot();
+                                    appRouter.push(
                                       const MegaKassaEntryRoute(),
                                     );
                                   },
@@ -105,18 +122,38 @@ class _MegaKassaGnsConfirmationScreenState
                         if (widget.registrationKkmEntity != null) {
                           megaKassaSmsConfirmSheet(
                             mainContext: context,
-                            registrationEntity: widget.registrationEntity,
+                            registrationKkmEntity: widget.registrationKkmEntity,
                             onResend: () {
                               _getConfirmationCubit.getGnsConfirmation(
                                 method: method,
                                 isResend: true,
                               );
                             },
+                            onError: () {
+                              context.router.replace(
+                                SuccessOrFailureRoute(
+                                  onPress: () {
+                                    appRouter.popUntilRoot();
+                                    appRouter.push(
+                                      const MegaKassaEntryRoute(),
+                                    );
+                                  },
+                                  isSuccess: false,
+                                  title: 'Произошла ошибка',
+                                  subtitle: 'Попробуйте еще раз',
+                                  buttonText: 'Попробовать еще раз',
+                                ),
+                              );
+                            },
                             onSuccess: (kkm) {
                               context.router.replace(
                                 SuccessOrFailureRoute(
                                   onPress: () {
-                                    appRouter.replace(
+                                    appRouter.popUntilRoot();
+                                    appRouter.push(
+                                      const MegaKassaEntryRoute(),
+                                    );
+                                    appRouter.push(
                                       MegaKassaKkmDetailRoute(
                                           cashbox: kkm ??
                                               MegaKassaKkmEntity(

@@ -28,20 +28,22 @@ class MegaKassaGnsRegistrationCubit extends Cubit<GnsRegistrationState> {
     try {
       emit(const GnsRegistrationState.loading());
 
-      final (status, kkm) = await useCase.registerGns(
+      final (message, kkm, statusCode) = await useCase.registerGns(
         registrationEntity: registrationEntity,
         registrationKkmEntity: registrationKkmEntity,
         pincode: pincode,
       );
-      if (status) {
+      if (statusCode == 200) {
         emit(GnsRegistrationState.success(
           registrationEntity: registrationEntity,
           kkmRegistrationEntity: registrationKkmEntity,
           kkmEntity: kkm,
           methods: [],
         ));
+      } else if (statusCode == 400) {
+        AppSnackBar.showSnackBar(message, isSuccess: false);
       } else {
-        emit(const GnsRegistrationState.error(''));
+        emit(const GnsRegistrationState.initial());
       }
     } catch (e) {
       AppSnackBar.showSnackBar(e.toString(), isSuccess: false);

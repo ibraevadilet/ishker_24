@@ -27,10 +27,10 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
     );
   }
 
-  String get _tin => sl<ExistsUserUseCase>().pin.isEmpty
-      ? sl<AuthUseCase>().inn
-      : sl<ExistsUserUseCase>().pin;
-  // String get _tin => '00000522006494';
+  // String get _tin => sl<ExistsUserUseCase>().pin.isEmpty
+  //     ? sl<AuthUseCase>().inn
+  //     : sl<ExistsUserUseCase>().pin;
+  String get _tin => '12406199101096';
 
   @override
   Future<bool> getMegakassaStatus() async {
@@ -71,7 +71,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   }
 
   @override
-  Future<(bool, MegaKassaKkmEntity?)> registerGns({
+  Future<(String, MegaKassaKkmEntity?, int)> registerGns({
     required String pincode,
     required MegaKassaGnsRegistrationRequestEntity? registrationEntity,
     required MegaKassaKkmRegistrationEntity? registrationKkmEntity,
@@ -90,12 +90,12 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
           },
         );
 
-        final request = await dio.post(
+        final result = await dio.post(
           'document/kkm/client/account/auth?personIdnp=$_tin&byPin=$pincode',
           data: registrationEntity.toJson(),
         );
 
-        return (request.data['message'] == 'Успешно', null);
+        return ('Успешно', null, result.statusCode ?? 400);
       }
 
       if (registrationKkmEntity != null) {
@@ -106,14 +106,27 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
         );
 
         return (
-          true,
-          MegaKassaKkmEntity.fromJson(json.encode(request.data['data']))
+          'Успешно',
+          MegaKassaKkmEntity.fromJson(json.encode(request.data['data'])),
+          request.statusCode ?? 400,
         );
       }
 
-      return (false, null);
+      return ('Ошибка', null, 500);
     } catch (e) {
-      throw CatchException.convertException(e).message;
+      if (e is DioException) {
+        if (e.response?.statusCode == 400) {
+          return (
+            e.response?.data['error'].toString() ?? 'Неверный пин код',
+            null,
+            400
+          );
+        } else {
+          throw CatchException.convertException(e).message;
+        }
+      } else {
+        throw CatchException.convertException(e).message;
+      }
     }
   }
 

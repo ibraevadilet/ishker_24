@@ -16,7 +16,7 @@ abstract class MegaKassaRepo {
   Future<MegaKassaKkmDetailEntity> getKkmDetail({
     required String cashboxId,
   });
-  Future<(bool, MegaKassaKkmEntity?)> registerGns({
+  Future<(String, MegaKassaKkmEntity?, int)> registerGns({
     required String pincode,
     required MegaKassaGnsRegistrationRequestEntity? registrationEntity,
     required MegaKassaKkmRegistrationEntity? registrationKkmEntity,

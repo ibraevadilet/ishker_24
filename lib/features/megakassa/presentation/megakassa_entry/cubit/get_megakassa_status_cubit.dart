@@ -17,7 +17,7 @@ class MegaKassaGetMegaKassaStatusCubit extends Cubit<GetMegaKassaStatusState> {
     try {
       final isRegistered = await useCase.getMegakassaStatus();
 
-      if (!isRegistered) {
+      if (isRegistered) {
         emit(const GetMegaKassaStatusState.registered());
       } else {
         emit(const GetMegaKassaStatusState.unregistered());
