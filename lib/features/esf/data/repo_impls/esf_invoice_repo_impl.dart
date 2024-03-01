@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/functions/saved_pin.dart';
@@ -39,9 +37,11 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
           throw CatchException(message: 'Токен заблокирован').message;
         } else if (e.response!.statusCode == 500) {
           throw CatchException(message: 'Internal Server Error').message;
+        } else if (e.response!.statusCode == 403) {
+          throw CatchException(message: e.response!.data['message']['ru'])
+              .message;
         } else {
-          Map valueMap = jsonDecode(e.response!.data);
-          throw CatchException(message: valueMap['message']['ru']).message;
+          throw CatchException(message: e.response!.data['message']).message;
         }
       } else {
         throw CatchException(message: e.toString()).message;
