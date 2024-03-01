@@ -395,7 +395,7 @@ class EsfIncomeDetailScreen extends StatelessWidget {
                   totalCost: invoice.totalAmount.toString(),
                 ),
                 const SizedBox(height: 24),
-                if (invoice.status.code != '40' && invoice.status.code != '50')
+                if (invoice.status.code == '30')
                   BlocConsumer<EsfAcceptCubit, EsfAcceptState>(
                     listener: (context, state) {
                       state.whenOrNull(

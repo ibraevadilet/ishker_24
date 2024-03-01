@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
+import 'package:ishker_24/features/esf/data/repo_impls/esf_invoice_repo_impl.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/widgets/esf_container.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
@@ -46,7 +47,8 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<EsfInvoiceCubit>()..esfInvoiceSorted(),
+      create: (context) =>
+          sl<EsfInvoiceCubit>()..esfReports(typeFrom: ESFType.invoice),
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: const CustomAppBar(
@@ -62,6 +64,7 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
               success: (data, statuses) {
                 status = statuses.content.map((e) => e.name).toList();
                 return SingleChildScrollView(
+                  controller: context.read<EsfInvoiceCubit>().scrollController,
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: SafeArea(
                     child: Column(
@@ -179,24 +182,19 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
                             CustomButton(
                               radius: 16,
                               onPress: () {
-                                context
-                                    .read<EsfInvoiceCubit>()
-                                    .esfInvoiceSorted(
-                                      createdDateFrom: createDateFrom != null
-                                          ? createDateFrom
-                                          : null,
-                                      createdDateTo: createDateTo != null
-                                          ? createDateTo
-                                          : null,
-                                      statusCode: selectedIndex == null
+                                context.read<EsfInvoiceCubit>().esfReports(
+                                      isFilter: true,
+                                      createdDateFromFrom: createDateFrom,
+                                      createdDateToFrom: createDateTo,
+                                      statusCodeFrom: selectedIndex == null
                                           ? null
                                           : statuses.content[selectedIndex!].id
                                               .toString(),
-                                      invoiceNumber:
+                                      invoiceNumberFrom:
                                           numberController.text.isEmpty
                                               ? null
                                               : numberController.text,
-                                      contractorTin:
+                                      contractorTinFrom:
                                           contractorController.text.isEmpty
                                               ? null
                                               : contractorController.text,
@@ -214,9 +212,8 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
                                   createDateFrom = null;
                                   createDateTo = null;
                                 });
-                                context
-                                    .read<EsfInvoiceCubit>()
-                                    .esfInvoiceSorted();
+                                context.read<EsfInvoiceCubit>().clear();
+                                context.read<EsfInvoiceCubit>().esfReports();
                               },
                               text: 'Очистить фильтр',
                               radius: 16,
@@ -246,16 +243,7 @@ class _EsfInvoiceScreenState extends State<EsfInvoiceScreen> {
                                   invoice: data.invoices[index],
                                 ),
                               );
-                              contractorController.clear();
-                              numberController.clear();
-                              setState(() {
-                                selectedIndex = null;
-                                createDateFrom = null;
-                                createDateTo = null;
-                              });
-                              context
-                                  .read<EsfInvoiceCubit>()
-                                  .esfInvoiceSorted();
+                              context.read<EsfInvoiceCubit>().esfReports();
                             },
                           ),
                           separatorBuilder: (context, index) =>

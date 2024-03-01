@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class EsfModel {
   final String requestId;
   final String responseId;
@@ -30,6 +32,54 @@ class EsfModel {
         totalPage: json["totalPage"] ?? 0,
         invoiceDate: json["invoiceDate"] ?? DateTime.now(),
       );
+
+  @override
+  bool operator ==(covariant EsfModel other) {
+    if (identical(this, other)) return true;
+
+    return other.requestId == requestId &&
+        other.responseId == responseId &&
+        other.userId == userId &&
+        other.clientId == clientId &&
+        listEquals(other.invoices, invoices) &&
+        other.totalElements == totalElements &&
+        other.totalPage == totalPage &&
+        other.invoiceDate == invoiceDate;
+  }
+
+  @override
+  int get hashCode {
+    return requestId.hashCode ^
+        responseId.hashCode ^
+        userId.hashCode ^
+        clientId.hashCode ^
+        invoices.hashCode ^
+        totalElements.hashCode ^
+        totalPage.hashCode ^
+        invoiceDate.hashCode;
+  }
+
+  EsfModel copyWith({
+    String? requestId,
+    String? responseId,
+    String? userId,
+    String? clientId,
+    List<Invoice>? invoices,
+    int? totalElements,
+    int? totalPage,
+    DateTime? invoiceDate,
+  }) {
+    return EsfModel(
+      requestId: requestId ?? this.requestId,
+      responseId: responseId ?? this.responseId,
+      userId: userId ?? this.userId,
+      clientId: clientId ?? this.clientId,
+      invoices: invoices ?? this.invoices,
+      totalElements: totalElements ?? this.totalElements,
+      totalPage: totalPage ?? this.totalPage,
+      invoiceDate: invoiceDate ?? this.invoiceDate,
+    );
+  }
 }
 
 class Invoice {

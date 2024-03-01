@@ -312,8 +312,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<SendNalogDataUseCase>(
       () => SendNalogDataUseCase(repo: sl()));
   sl.registerLazySingleton<EsfCheckUseCase>(() => EsfCheckUseCase(repo: sl()));
-  sl.registerLazySingleton<EsfInvoiceUseCase>(
-      () => EsfInvoiceUseCase(repo: sl()));
+  sl.registerFactory<EsfInvoiceUseCase>(() => EsfInvoiceUseCase(repo: sl()));
   sl.registerFactory<GetMyReportsUseCase>(
       () => GetMyReportsUseCase(repo: sl()));
   sl.registerFactory<ReportDetailPdfUseCase>(

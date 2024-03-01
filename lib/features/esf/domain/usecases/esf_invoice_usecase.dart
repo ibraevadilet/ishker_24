@@ -1,51 +1,20 @@
 import 'package:ishker_24/features/esf/data/models/esf_accept_or_reject_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_model.dart';
 import 'package:ishker_24/features/esf/data/models/esf_status_model.dart';
+import 'package:ishker_24/features/esf/data/models/get_esf_qwery_model.dart';
 import 'package:ishker_24/features/esf/domain/repositories/esf_invoice_repository.dart';
 
 class EsfInvoiceUseCase {
   EsfInvoiceUseCase({required this.repo});
   final EsfInvoiceRepo repo;
 
-  Future<EsfModel> esfInvoice({
-    DateTime? createdDateFrom,
-    DateTime? createdDateTo,
-    String? exchangeCode,
-    String? statusCode,
-    String? invoiceNumber,
-    String? contractorTin,
-  }) async {
-    try {
-      return await repo.esfInvoice(
-        createdDateFrom: createdDateFrom,
-        createdDateTo: createdDateTo,
-        exchangeCode: exchangeCode,
-        statusCode: statusCode,
-        invoiceNumber: invoiceNumber,
-        contractorTin: contractorTin,
-      );
-    } catch (e) {
-      rethrow;
-    }
-  }
+  List<Invoice> invoices = [];
 
-  Future<EsfModel> esfIncome({
-    DateTime? createdDateFrom,
-    DateTime? createdDateTo,
-    String? exchangeCode,
-    String? statusCode,
-    String? invoiceNumber,
-    String? contractorTin,
-  }) async {
+  Future<EsfModel> esfReports(GetEsfQweryModel model) async {
     try {
-      return await repo.esfIncome(
-        createdDateFrom: createdDateFrom,
-        createdDateTo: createdDateTo,
-        exchangeCode: exchangeCode,
-        statusCode: statusCode,
-        invoiceNumber: invoiceNumber,
-        contractorTin: contractorTin,
-      );
+      final result = await repo.esfReports(model);
+      invoices.addAll(result.invoices);
+      return result.copyWith(invoices: invoices);
     } catch (e) {
       rethrow;
     }

@@ -78,7 +78,10 @@ class EsfContainer extends StatelessWidget {
                   child: Text(
                     status,
                     style: AppTextStyles.s16W500(
-                        color: AppColors.color32D681Green),
+                      color: status == 'Удален'
+                          ? Colors.red
+                          : AppColors.color32D681Green,
+                    ),
                   ),
                 ),
               ],
