@@ -19,10 +19,10 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
 
   MegaKassaRepoImpl({required this.dio});
 
-  // String get _tin => sl<ExistsUserUseCase>().pin.isEmpty
-  //     ? sl<AuthUseCase>().inn
-  //     : sl<ExistsUserUseCase>().pin;
-  String get _tin => '12406199101096';
+  String get _tin => sl<ExistsUserUseCase>().pin.isEmpty
+      ? sl<AuthUseCase>().inn
+      : sl<ExistsUserUseCase>().pin;
+  // String get _tin => '12406199101096';
 
   @override
   Future<bool> getMegakassaStatus() async {
@@ -93,7 +93,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
       if (registrationKkmEntity != null) {
         final request = await dio.post(
           'document/kkm/kkm/account/auth?personIdnp=$_tin&byPin=$pincode',
-          queryParameters: registrationKkmEntity.toParams(),
+          // queryParameters: registrationKkmEntity.toParams(),
           data: registrationKkmEntity.toJson(),
         );
 
