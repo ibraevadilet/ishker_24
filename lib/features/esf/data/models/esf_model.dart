@@ -137,7 +137,7 @@ class Invoice {
         deliveryDate: DateTime.parse(json["deliveryDate"] ?? DateTime.now()),
         invoiceDate: json["invoiceDate"] ?? DateTime.now(),
         ownedCrmReceiptCode: json["ownedCrmReceiptCode"] ?? '',
-        invoiceNumber: json["invoiceNumber"] ?? '0',
+        invoiceNumber: json["invoiceNumber"] ?? '',
         number: json["number"] ?? '',
         note: json["note"] ?? '',
         correctedReceiptUuid: json["correctedReceiptUuid"] ?? '',

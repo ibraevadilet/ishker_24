@@ -423,7 +423,6 @@ abstract class $AppRouter extends _i65.RootStackRouter {
         routeData: routeData,
         child: _i33.MyCertficateScreen(
           key: args.key,
-          certUrl: args.certUrl,
           model: args.model,
         ),
       );
@@ -1505,14 +1504,12 @@ class MegaKassaMyProfileRoute extends _i65.PageRouteInfo<void> {
 class MyCertficateRoute extends _i65.PageRouteInfo<MyCertficateRouteArgs> {
   MyCertficateRoute({
     _i66.Key? key,
-    String? certUrl,
     required _i79.CheckHasIPModel model,
     List<_i65.PageRouteInfo>? children,
   }) : super(
           MyCertficateRoute.name,
           args: MyCertficateRouteArgs(
             key: key,
-            certUrl: certUrl,
             model: model,
           ),
           initialChildren: children,
@@ -1527,19 +1524,16 @@ class MyCertficateRoute extends _i65.PageRouteInfo<MyCertficateRouteArgs> {
 class MyCertficateRouteArgs {
   const MyCertficateRouteArgs({
     this.key,
-    this.certUrl,
     required this.model,
   });
 
   final _i66.Key? key;
 
-  final String? certUrl;
-
   final _i79.CheckHasIPModel model;
 
   @override
   String toString() {
-    return 'MyCertficateRouteArgs{key: $key, certUrl: $certUrl, model: $model}';
+    return 'MyCertficateRouteArgs{key: $key, model: $model}';
   }
 }
 

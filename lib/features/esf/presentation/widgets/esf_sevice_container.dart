@@ -4,10 +4,7 @@ import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 
 class EsfSeviceContainer extends StatelessWidget {
-  const EsfSeviceContainer({
-    super.key,
-    required this.model
-  });
+  const EsfSeviceContainer({super.key, required this.model});
   final Invoice model;
   @override
   Widget build(BuildContext context) {
