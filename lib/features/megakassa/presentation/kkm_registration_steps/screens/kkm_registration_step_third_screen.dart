@@ -76,7 +76,7 @@ class _MegaKassaKkmRegistrationStep3ScreenState
   }
 
   void _validatePassword(_) {
-    if (_passwordController.text.length >= 6) {
+    if (_passwordController.text.length >= 8) {
       _firstCorrect = true;
     } else {
       _firstCorrect = false;
@@ -223,7 +223,7 @@ class _MegaKassaKkmRegistrationStep3ScreenState
                           const SizedBox(height: 8),
                           _RequirementsItem(
                             isFilled: _firstCorrect,
-                            title: 'не менее 6 символов',
+                            title: 'не менее 8 символов',
                           ),
                           const SizedBox(height: 10),
                           _RequirementsItem(

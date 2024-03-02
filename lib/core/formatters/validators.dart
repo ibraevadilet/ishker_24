@@ -66,7 +66,18 @@ class AppInputValidators {
       return null;
     }
     if (val.length != 6) {
-      return 'Бик должен состоянить из 6 цифр';
+      return 'Бик должен состоять из 6 цифр';
+    } else {
+      return null;
+    }
+  }
+
+  static String? indexValidator(String? val) {
+    if (val!.isEmpty) {
+      return null;
+    }
+    if (val.length != 6) {
+      return 'Индекс должен состоять из 6 цифр';
     } else {
       return null;
     }

@@ -26,6 +26,8 @@ class _MegaKassaKkmRegistrationStep2ScreenState
     extends State<MegaKassaKkmRegistrationStep2Screen> {
   final _isFullFilled = ValueNotifier(false);
 
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   late final _indexController =
       TextEditingController(text: widget.stepEntity?.index ?? '');
   late final _regionController =
@@ -73,118 +75,122 @@ class _MegaKassaKkmRegistrationStep2ScreenState
       data: lightTheme.copyWith(
         dividerTheme: const DividerThemeData(color: Colors.transparent),
       ),
-      child: Scaffold(
-        backgroundColor: const Color(0xffF3F4F5),
-        appBar: CustomAppBar(
-          title: 'Адрес объекта',
-          titleTextStyle: AppTextStyles.s16W700(
-            color: AppColors.color2C2C2CBlack,
-          ),
+      child: Form(
+        key: formKey,
+        child: Scaffold(
           backgroundColor: const Color(0xffF3F4F5),
-          centerTitle: false,
-        ),
-        persistentFooterButtons: [
-          ValueListenableBuilder(
-            valueListenable: _isFullFilled,
-            builder: (context, _, __) {
-              return CustomButton(
-                aroundButtonPadding: const EdgeInsets.symmetric(
-                  vertical: 16,
-                  horizontal: 8,
-                ),
-                onPress: () {
-                  final model = MegaKassaKkmRegistrationStep2Entity(
-                    index: _indexController.text,
-                    region: _regionController.text,
-                    locality: _localityController.text,
-                    street: _streetController.text,
-                    houseNumber: _houseNumberController.text,
-                    lat: _latController.text,
-                    long: _longController.text,
-                  );
-                  context.router.pop(model);
-                },
-                radius: 16,
-                text: 'Сохранить',
-                isFullFilled: _isFullFilled.value,
-              );
-            },
+          appBar: CustomAppBar(
+            title: 'Адрес объекта',
+            titleTextStyle: AppTextStyles.s16W700(
+              color: AppColors.color2C2C2CBlack,
+            ),
+            backgroundColor: const Color(0xffF3F4F5),
+            centerTitle: false,
           ),
-        ],
-        body: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-          children: [
-            CustomTextField(
-              labelText: 'Индекс',
-              controller: _indexController,
-              onChanged: _validate,
-              validator: AppInputValidators.emptyValidator,
-              keyboardType: TextInputType.number,
-              maxLength: 200,
-            ),
-            const SizedBox(height: 8),
-            CustomTextField(
-              labelText: 'Регион',
-              controller: _regionController,
-              onChanged: _validate,
-              validator: AppInputValidators.emptyValidator,
-              maxLength: 200,
-            ),
-            const SizedBox(height: 8),
-            CustomTextField(
-              labelText: 'Населенный пункт',
-              controller: _localityController,
-              onChanged: _validate,
-              validator: AppInputValidators.emptyValidator,
-              maxLength: 200,
-            ),
-            const SizedBox(height: 8),
-            CustomTextField(
-              labelText: 'Улица',
-              controller: _streetController,
-              onChanged: _validate,
-              validator: AppInputValidators.emptyValidator,
-              maxLength: 200,
-            ),
-            const SizedBox(height: 8),
-            CustomTextField(
-              labelText: 'Номер дома',
-              controller: _houseNumberController,
-              onChanged: _validate,
-              validator: AppInputValidators.emptyValidator,
-              keyboardType: TextInputType.number,
-              maxLength: 4,
-            ),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                Flexible(
-                  child: CustomTextField(
-                    labelText: 'Широта',
-                    controller: _latController,
-                    onChanged: _validate,
-                    validator: AppInputValidators.latLonValidator,
-                    keyboardType:
-                        const TextInputType.numberWithOptions(decimal: true),
-                    maxLength: 7,
+          persistentFooterButtons: [
+            ValueListenableBuilder(
+              valueListenable: _isFullFilled,
+              builder: (context, _, __) {
+                return CustomButton(
+                  aroundButtonPadding: const EdgeInsets.symmetric(
+                    vertical: 16,
+                    horizontal: 8,
                   ),
-                ),
-                const SizedBox(width: 8),
-                Flexible(
-                  child: CustomTextField(
-                    labelText: 'Долгота',
-                    controller: _longController,
-                    onChanged: _validate,
-                    validator: AppInputValidators.latLonValidator,
-                    keyboardType:
-                        const TextInputType.numberWithOptions(decimal: true),
-                    maxLength: 7,
-                  ),
-                ),
-              ],
+                  onPress: () {
+                    if (formKey.currentState?.validate() ?? false) {
+                      final model = MegaKassaKkmRegistrationStep2Entity(
+                        index: _indexController.text,
+                        region: _regionController.text,
+                        locality: _localityController.text,
+                        street: _streetController.text,
+                        houseNumber: _houseNumberController.text,
+                        lat: _latController.text,
+                        long: _longController.text,
+                      );
+                      context.router.pop(model);
+                    }
+                  },
+                  radius: 16,
+                  text: 'Сохранить',
+                  isFullFilled: _isFullFilled.value,
+                );
+              },
             ),
-            const SizedBox(height: 18),
           ],
+          body: ListView(
+            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+            children: [
+              CustomTextField(
+                labelText: 'Индекс',
+                controller: _indexController,
+                onChanged: _validate,
+                validator: AppInputValidators.indexValidator,
+                keyboardType: TextInputType.number,
+                maxLength: 6,
+              ),
+              const SizedBox(height: 8),
+              CustomTextField(
+                labelText: 'Регион',
+                controller: _regionController,
+                onChanged: _validate,
+                validator: AppInputValidators.emptyValidator,
+                maxLength: 200,
+              ),
+              const SizedBox(height: 8),
+              CustomTextField(
+                labelText: 'Населенный пункт',
+                controller: _localityController,
+                onChanged: _validate,
+                validator: AppInputValidators.emptyValidator,
+                maxLength: 200,
+              ),
+              const SizedBox(height: 8),
+              CustomTextField(
+                labelText: 'Улица',
+                controller: _streetController,
+                onChanged: _validate,
+                validator: AppInputValidators.emptyValidator,
+                maxLength: 200,
+              ),
+              const SizedBox(height: 8),
+              CustomTextField(
+                labelText: 'Номер дома',
+                controller: _houseNumberController,
+                onChanged: _validate,
+                validator: AppInputValidators.emptyValidator,
+                maxLength: 200,
+              ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Flexible(
+                    child: CustomTextField(
+                      labelText: 'Широта',
+                      controller: _latController,
+                      onChanged: _validate,
+                      validator: AppInputValidators.latLonValidator,
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      maxLength: 7,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Flexible(
+                    child: CustomTextField(
+                      labelText: 'Долгота',
+                      controller: _longController,
+                      onChanged: _validate,
+                      validator: AppInputValidators.latLonValidator,
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      maxLength: 7,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 18),
+            ],
+          ),
         ),
       ),
     );
