@@ -56,10 +56,8 @@ class MegaKassaKkmRegistrationEntity {
           "city": step2Entity?.locality,
           "street": step2Entity?.street,
           "homeNumber": step2Entity?.houseNumber,
-          "lat":
-              double.parse((step2Entity?.lat)?.replaceAll(',', '.') ?? '0.0'),
-          "lon":
-              double.parse((step2Entity?.long)?.replaceAll(',', '.') ?? '0.0'),
+          "lat": (step2Entity?.lat.replaceAll(',', '.')) ?? '0.0',
+          "lon": (step2Entity?.long.replaceAll(',', '.')) ?? '0.0',
         },
         "sellPlaceCode": step1Entity?.paymentType.code,
         "password": step3Entity?.password,

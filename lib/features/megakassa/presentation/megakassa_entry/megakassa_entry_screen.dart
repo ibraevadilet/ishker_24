@@ -10,7 +10,12 @@ import 'package:ishker_24/widgets/app_indicator.dart';
 
 @RoutePage()
 class MegaKassaEntryScreen extends StatelessWidget {
-  const MegaKassaEntryScreen({super.key});
+  const MegaKassaEntryScreen({
+    super.key,
+    this.isAfterRegistration = false,
+  });
+
+  final bool isAfterRegistration;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,7 +30,9 @@ class MegaKassaEntryScreen extends StatelessWidget {
                 body: AppErrorText(error: text),
               ),
               loading: () => const Scaffold(body: AppIndicator()),
-              registered: () => const MegaKassaKkmPersonalAccountScreen(),
+              registered: () => MegaKassaKkmPersonalAccountScreen(
+                isAfterRegistration: isAfterRegistration,
+              ),
               unregistered: () => const MegaKassaGnsRegistrationScreen(),
             );
           },
