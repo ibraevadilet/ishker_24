@@ -286,7 +286,7 @@ class _EsfReportsDetailScreenState extends State<EsfReportsDetailScreen> {
                               ),
                               Flexible(
                                 child: Text(
-                                  widget.invoice.invoiceNumber.toString(),
+                                  widget.invoice.number.toString(),
                                   style: AppTextStyles.s14W500(),
                                 ),
                               ),
