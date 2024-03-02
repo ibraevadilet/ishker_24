@@ -64,14 +64,14 @@ class MegaKassaKkmRegistrationEntity {
         "vatPayer": step1Entity?.isNdsPayer
       };
 
-  Map<String, dynamic> toParams() => {
-        "taxSystemNames": step1Entity?.mode.taxName,
-        "entrepreneurshipObjecName": step1Entity?.objectType.name,
-        "taxAuthorityDepartmenName": step1Entity?.code.name,
-        "businessActivitName": step1Entity?.activity.name,
-        "modelName": step3Entity?.kkmModel,
-        "calcItemTypeNames":
-            step1Entity?.params.map((e) => e.attributeName).toList(),
-        "sellPlaceName": step1Entity?.paymentType.name,
-      };
+  // Map<String, dynamic> toParams() => {
+  //       "taxSystemNames": step1Entity?.mode.taxName,
+  //       "entrepreneurshipObjecName": step1Entity?.objectType.name,
+  //       "taxAuthorityDepartmenName": step1Entity?.code.name,
+  //       "businessActivitName": step1Entity?.activity.name,
+  //       "modelName": step3Entity?.kkmModel,
+  //       "calcItemTypeNames":
+  //           step1Entity?.params.map((e) => e.attributeName).toList(),
+  //       "sellPlaceName": step1Entity?.paymentType.name,
+  //     };
 }
