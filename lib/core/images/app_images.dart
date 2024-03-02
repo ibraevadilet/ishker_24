@@ -98,6 +98,8 @@ class AppImages {
   static const String arrowDown = 'assets/images/arrow_down.svg';
   static const String kkmEmpty = 'assets/images/kkm_empty.svg';
   static const String megakassaLogo = 'assets/images/megakassa_logo.png';
+  static const String mkLogoSvg = 'assets/images/logomk.svg';
+  static const String installMk = 'assets/images/install_mk.png';
   static const String arrowDownIcon = 'assets/images/arrow_down_icon.svg';
   static const String edNalogIcon = 'assets/images/ed_nalog_icon.svg';
   static const String edNalogIconInProcess =
@@ -107,6 +109,8 @@ class AppImages {
   static const String esfIcon = 'assets/images/esf_icon.svg';
   static const String ipIcon = 'assets/images/ip_icon.svg';
   static const String kkmIcon = 'assets/images/kkm_icon.svg';
+  static const String appStoreLogo = 'assets/images/appstore_logo.png';
+  static const String playStoreLogo = 'assets/images/playstore_logo.png';
   static const String mainNotificationIcon =
       'assets/images/main_notification_icon.svg';
   static const String notificationIcon = 'assets/images/notification_icon.svg';

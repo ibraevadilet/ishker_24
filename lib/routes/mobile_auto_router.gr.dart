@@ -354,9 +354,14 @@ abstract class $AppRouter extends _i67.RootStackRouter {
       );
     },
     MegaKassaEntryRoute.name: (routeData) {
+      final args = routeData.argsAs<MegaKassaEntryRouteArgs>(
+          orElse: () => const MegaKassaEntryRouteArgs());
       return _i67.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i26.MegaKassaEntryScreen(),
+        child: _i26.MegaKassaEntryScreen(
+          key: args.key,
+          isAfterRegistration: args.isAfterRegistration,
+        ),
       );
     },
     MegaKassaGnsConfirmationRoute.name: (routeData) {
@@ -1272,16 +1277,40 @@ class KKMRoute extends _i67.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i26.MegaKassaEntryScreen]
-class MegaKassaEntryRoute extends _i67.PageRouteInfo<void> {
-  const MegaKassaEntryRoute({List<_i67.PageRouteInfo>? children})
-      : super(
+class MegaKassaEntryRoute extends _i67.PageRouteInfo<MegaKassaEntryRouteArgs> {
+  MegaKassaEntryRoute({
+    _i68.Key? key,
+    bool isAfterRegistration = false,
+    List<_i67.PageRouteInfo>? children,
+  }) : super(
           MegaKassaEntryRoute.name,
+          args: MegaKassaEntryRouteArgs(
+            key: key,
+            isAfterRegistration: isAfterRegistration,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'MegaKassaEntryRoute';
 
-  static const _i67.PageInfo<void> page = _i67.PageInfo<void>(name);
+  static const _i67.PageInfo<MegaKassaEntryRouteArgs> page =
+      _i67.PageInfo<MegaKassaEntryRouteArgs>(name);
+}
+
+class MegaKassaEntryRouteArgs {
+  const MegaKassaEntryRouteArgs({
+    this.key,
+    this.isAfterRegistration = false,
+  });
+
+  final _i68.Key? key;
+
+  final bool isAfterRegistration;
+
+  @override
+  String toString() {
+    return 'MegaKassaEntryRouteArgs{key: $key, isAfterRegistration: $isAfterRegistration}';
+  }
 }
 
 /// generated route for

@@ -17,20 +17,12 @@ import 'package:ishker_24/server/service_locator.dart';
 class MegaKassaRepoImpl implements MegaKassaRepo {
   final Dio dio;
 
-  MegaKassaRepoImpl({required this.dio}) {
-    // dio.options = BaseOptions(
-    //   baseUrl: AppTextConstants.megaKassaServer,
-    //   responseType: ResponseType.json,
-    //   contentType: "application/json; charset=utf-8",
-    //   connectTimeout: const Duration(milliseconds: 50000),
-    //   receiveTimeout: const Duration(milliseconds: 50000),
-    // );
-  }
+  MegaKassaRepoImpl({required this.dio});
 
-  String get _tin => sl<ExistsUserUseCase>().pin.isEmpty
-      ? sl<AuthUseCase>().inn
-      : sl<ExistsUserUseCase>().pin;
-  // String get _tin => '12406199101096';
+  // String get _tin => sl<ExistsUserUseCase>().pin.isEmpty
+  //     ? sl<AuthUseCase>().inn
+  //     : sl<ExistsUserUseCase>().pin;
+  String get _tin => '12406199101096';
 
   @override
   Future<bool> getMegakassaStatus() async {
