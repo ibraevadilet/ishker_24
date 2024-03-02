@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/features/nalog_decloration/data/models/nalog_names_model.dart';
 import 'package:ishker_24/features/nalog_decloration/data/models/ugns_model.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/calculate_nalog_summa_widget.dart';
@@ -11,10 +12,12 @@ import 'package:ishker_24/features/nalog_decloration/presentation/reports_screen
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/provider_scaffold_background_widgets.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/select_dates_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/static_container_info_widget.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/send_saved_data_cubit/send_saved_data_cubit.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/app_unfocuser.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
+import 'package:ishker_24/widgets/styled_toasts.dart';
 
 @RoutePage()
 class Screen914 extends StatefulWidget {
@@ -164,8 +167,6 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
   TextEditingController c212 = TextEditingController();
   ValueNotifier<num> nalogSumm214 = ValueNotifier(0);
 
-  ValueNotifier<num> nalogSumm215 = ValueNotifier(0);
-
 ////////Form 1 2 Month
   TextEditingController c250 = TextEditingController();
   ValueNotifier<num> nalogSumm252 = ValueNotifier(0);
@@ -225,8 +226,6 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
 
   TextEditingController c302 = TextEditingController();
   ValueNotifier<num> nalogSumm304 = ValueNotifier(0);
-
-  ValueNotifier<num> nalogSumm305 = ValueNotifier(0);
 
   ///Form 1 3 MONTH
   TextEditingController c310 = TextEditingController();
@@ -288,6 +287,13 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
   TextEditingController c362 = TextEditingController();
   ValueNotifier<num> nalogSumm364 = ValueNotifier(0);
 
+  // 1месяц allsumm215
+  ValueNotifier<num> nalogSumm215 = ValueNotifier(0);
+
+  // 2месяц allsumm305
+  ValueNotifier<num> nalogSumm305 = ValueNotifier(0);
+
+  // 3месяц allsumm365
   ValueNotifier<num> nalogSumm365 = ValueNotifier(0);
 
   void allSumm() {
@@ -316,6 +322,32 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         nalogSumm208.value +
         nalogSumm211.value +
         nalogSumm214.value;
+  }
+
+  void allSumm305() {
+    nalogSumm305.value = nalogSumm265.value +
+        nalogSumm272.value +
+        nalogSumm279.value +
+        nalogSumm286.value +
+        nalogSumm289.value +
+        nalogSumm292.value +
+        nalogSumm295.value +
+        nalogSumm298.value +
+        nalogSumm301.value +
+        nalogSumm304.value;
+  }
+
+  void allSumm365() {
+    nalogSumm365.value = nalogSumm325.value +
+        nalogSumm332.value +
+        nalogSumm339.value +
+        nalogSumm346.value +
+        nalogSumm349.value +
+        nalogSumm352.value +
+        nalogSumm355.value +
+        nalogSumm358.value +
+        nalogSumm361.value +
+        nalogSumm364.value;
   }
 
   GlobalKey ugnsKey = GlobalKey();
@@ -627,6 +659,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm168.value +
                                           nalogSumm171.value +
                                           nalogSumm174.value;
+                                      allSumm215();
                                     },
                                   ),
                                   Text(
@@ -646,6 +679,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm168.value +
                                           nalogSumm171.value +
                                           nalogSumm174.value;
+                                      allSumm215();
                                     },
                                   ),
                                   const SizedBox(height: 8),
@@ -682,6 +716,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm168.value +
                                           nalogSumm171.value +
                                           nalogSumm174.value;
+                                      allSumm215();
                                     },
                                   ),
                                   Text(
@@ -701,6 +736,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm168.value +
                                           nalogSumm171.value +
                                           nalogSumm174.value;
+                                      allSumm215();
                                     },
                                   ),
                                   Text(
@@ -777,6 +813,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm258.value +
                                           nalogSumm261.value +
                                           nalogSumm264.value;
+                                      allSumm305();
                                     },
                                   ),
                                   Text(
@@ -796,6 +833,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm258.value +
                                           nalogSumm261.value +
                                           nalogSumm264.value;
+                                      allSumm305();
                                     },
                                   ),
                                   Row(
@@ -831,6 +869,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm258.value +
                                           nalogSumm261.value +
                                           nalogSumm264.value;
+                                      allSumm305();
                                     },
                                   ),
                                   Text('В безналичной форме',
@@ -848,6 +887,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm258.value +
                                           nalogSumm261.value +
                                           nalogSumm264.value;
+                                      allSumm305();
                                     },
                                   ),
                                   Text(
@@ -867,6 +907,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm258.value +
                                           nalogSumm261.value +
                                           nalogSumm264.value;
+                                      allSumm305();
                                     },
                                   ),
                                   const FieldNameWidget(
@@ -923,6 +964,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm318.value +
                                           nalogSumm321.value +
                                           nalogSumm324.value;
+                                      allSumm365();
                                     },
                                   ),
                                   Text(
@@ -942,6 +984,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm318.value +
                                           nalogSumm321.value +
                                           nalogSumm324.value;
+                                      allSumm365();
                                     },
                                   ),
                                   Row(
@@ -977,6 +1020,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm318.value +
                                           nalogSumm321.value +
                                           nalogSumm324.value;
+                                      allSumm365();
                                     },
                                   ),
                                   Text(
@@ -996,6 +1040,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm318.value +
                                           nalogSumm321.value +
                                           nalogSumm324.value;
+                                      allSumm365();
                                     },
                                   ),
                                   Text(
@@ -1015,6 +1060,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm318.value +
                                           nalogSumm321.value +
                                           nalogSumm324.value;
+                                      allSumm365();
                                     },
                                   ),
                                   const FieldNameWidget(
@@ -1106,6 +1152,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm182.value = nalogSumm178.value +
                                           nalogSumm181.value;
+                                      allSumm215();
                                     },
                                   ),
                                   Text(
@@ -1159,6 +1206,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm272.value = nalogSumm268.value +
                                           nalogSumm271.value;
+                                      allSumm305();
                                     },
                                   ),
                                   Text(
@@ -1176,6 +1224,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm272.value = nalogSumm268.value +
                                           nalogSumm271.value;
+                                      allSumm305();
                                     },
                                   ),
                                   const FieldNameWidget(
@@ -1212,6 +1261,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm332.value = nalogSumm328.value +
                                           nalogSumm331.value;
+                                      allSumm365();
                                     },
                                   ),
                                   Text(
@@ -1229,6 +1279,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm332.value = nalogSumm328.value +
                                           nalogSumm331.value;
+                                      allSumm365();
                                     },
                                   ),
                                   const FieldNameWidget(
@@ -1321,6 +1372,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm189.value = nalogSumm185.value +
                                           nalogSumm188.value;
+                                      allSumm215();
                                     },
                                   ),
                                   Text(
@@ -1375,6 +1427,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm279.value = nalogSumm275.value +
                                           nalogSumm278.value;
+                                      allSumm305();
                                     },
                                   ),
                                   Text(
@@ -1392,6 +1445,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm279.value = nalogSumm275.value +
                                           nalogSumm278.value;
+                                      allSumm305();
                                     },
                                   ),
                                   const FieldNameWidget(
@@ -1428,6 +1482,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm339.value = nalogSumm335.value +
                                           nalogSumm338.value;
+                                      allSumm365();
                                     },
                                   ),
                                   Text(
@@ -1445,6 +1500,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm339.value = nalogSumm335.value +
                                           nalogSumm338.value;
+                                      allSumm365();
                                     },
                                   ),
                                   const FieldNameWidget(
@@ -1537,6 +1593,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm196.value = nalogSumm192.value +
                                           nalogSumm195.value;
+                                      allSumm215();
                                     },
                                   ),
                                   Text(
@@ -1591,6 +1648,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm286.value = nalogSumm282.value +
                                           nalogSumm285.value;
+                                      allSumm305();
                                     },
                                   ),
                                   Text(
@@ -1608,6 +1666,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm286.value = nalogSumm282.value +
                                           nalogSumm285.value;
+                                      allSumm305();
                                     },
                                   ),
                                   const FieldNameWidget(
@@ -1644,6 +1703,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm346.value = nalogSumm342.value +
                                           nalogSumm345.value;
+                                      allSumm365();
                                     },
                                   ),
                                   Text(
@@ -1661,6 +1721,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     onChanged: (summa) {
                                       nalogSumm346.value = nalogSumm342.value +
                                           nalogSumm345.value;
+                                      allSumm365();
                                     },
                                   ),
                                   const FieldNameWidget(
@@ -1771,7 +1832,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti288'],
                                     numberSumma: '289',
                                     nalogSumm: nalogSumm289,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm305();
+                                    },
                                   ),
                                 ],
                               ),
@@ -1790,7 +1853,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti348'],
                                     numberSumma: '349',
                                     nalogSumm: nalogSumm349,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm365();
+                                    },
                                   ),
                                 ],
                               ),
@@ -1886,7 +1951,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti291'],
                                     numberSumma: '292',
                                     nalogSumm: nalogSumm292,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm305();
+                                    },
                                   ),
                                 ],
                               ),
@@ -1905,7 +1972,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti351'],
                                     numberSumma: '352',
                                     nalogSumm: nalogSumm352,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm365();
+                                    },
                                   ),
                                 ],
                               ),
@@ -2001,7 +2070,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti294'],
                                     numberSumma: '295',
                                     nalogSumm: nalogSumm295,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm305();
+                                    },
                                   ),
                                 ],
                               ),
@@ -2020,7 +2091,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti354'],
                                     numberSumma: '355',
                                     nalogSumm: nalogSumm355,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm365();
+                                    },
                                   ),
                                 ],
                               ),
@@ -2116,7 +2189,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti297'],
                                     numberSumma: '298',
                                     nalogSumm: nalogSumm298,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm305();
+                                    },
                                   ),
                                 ],
                               ),
@@ -2135,7 +2210,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti357'],
                                     numberSumma: '358',
                                     nalogSumm: nalogSumm358,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm365();
+                                    },
                                   ),
                                 ],
                               ),
@@ -2231,7 +2308,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti300'],
                                     numberSumma: '301',
                                     nalogSumm: nalogSumm301,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm305();
+                                    },
                                   ),
                                 ],
                               ),
@@ -2250,7 +2329,9 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti360'],
                                     numberSumma: '361',
                                     nalogSumm: nalogSumm361,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm365();
+                                    },
                                   ),
                                 ],
                               ),
@@ -2338,9 +2419,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   const FieldNameWidget(
                                       number: '215',
                                       title:
-                                          'Общая сумма единого налога\n(175+182+189+196+199+202+205+208+\n211+214)'),
+                                          'Общая сумма единого налога\n(175+182+189+196+199+202+205+208+211+214)'),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm215,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                               Column(
@@ -2358,14 +2446,23 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti303'],
                                     numberSumma: '304',
                                     nalogSumm: nalogSumm304,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm305();
+                                    },
                                   ),
                                   const FieldNameWidget(
                                       number: '305',
                                       title:
                                           'Общая сумма единого налога\n(265+272+279+286+289+292+295+298\n+301+304)'),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm305,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                               Column(
@@ -2383,14 +2480,23 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     percent: model['sti363'],
                                     numberSumma: '364',
                                     nalogSumm: nalogSumm364,
-                                    onChanged: (summa) {},
+                                    onChanged: (summa) {
+                                      allSumm365();
+                                    },
                                   ),
                                   const FieldNameWidget(
                                       number: '365',
                                       title:
                                           'Общая сумма единого налога\n(325+332+339+346+349+352+355\n+358+361+364)'),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm365,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                             ],
@@ -2400,9 +2506,289 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                     ),
                   ),
                   const SizedBox(height: 36),
-                  CustomButton(
-                    onPress: () {},
-                    text: 'Отправить в ГНС',
+                  BlocBuilder<SendSavedDataCubit, SendSavedDataState>(
+                    builder: (context, state) {
+                      return CustomButton(
+                        isLoading: state.isLoading,
+                        onPress: () {
+                          isUgnsSelected.value =
+                              selectedUgnsIndex104.value == null;
+                          kvartalSelected.value =
+                              selectedKvartalIndex.value == null;
+                          isYearSelected.value = selectedYear.value == null;
+
+                          if (isUgnsSelected.value) {
+                            Scrollable.ensureVisible(
+                              ugnsKey.currentContext!,
+                              duration: const Duration(seconds: 1),
+                            );
+                            AppSnackBar.showSnackBar(
+                                'Заполние обязательные поля!');
+                          } else if (!formKey.currentState!.validate()) {
+                            Scrollable.ensureVisible(
+                              numbersKey.currentContext!,
+                              duration: const Duration(seconds: 1),
+                            );
+                            AppSnackBar.showSnackBar(
+                                'Заполние обязательные поля!');
+                          } else if (kvartalSelected.value ||
+                              isYearSelected.value) {
+                            Scrollable.ensureVisible(
+                              dateKey.currentContext!,
+                              duration: const Duration(seconds: 1),
+                            );
+                            AppSnackBar.showSnackBar(
+                                'Заполние обязательные поля!');
+                          } else {
+                            final sendData = {
+                              "ftype": selectedDocType001,
+                              "startdate": startdate,
+                              "enddate": enddate,
+                              "sti102": model['sti102'],
+                              "sti103": model['sti103'],
+                              "sti104":
+                                  ugnsModels[selectedUgnsIndex104.value!].id,
+                              "sti106": model['sti106'],
+                              "sti107": model['sti107'],
+                              "sti115": c115.text,
+                              "sti116": c116.text,
+                              "sti108": c108.text,
+                              "sti110": model['sti110'],
+                              "sti111": model['sti111'],
+                              "sti050": c50.text,
+                              "sti051": model['sti051'],
+                              "sti052": nalogSumm052.value,
+                              "sti053": c53.text,
+                              "sti054": model['sti054'],
+                              "sti055": nalogSumm055.value,
+                              "sti056": c56.text,
+                              "sti057": model['sti057'],
+                              "sti058": nalogSumm058.value,
+                              "sti059": c59.text,
+                              "sti060": model['sti060'],
+                              "sti061": nalogSumm061.value,
+                              "sti062": c62.text,
+                              "sti063": model['sti063'],
+                              "sti064": nalogSumm064.value,
+                              "sti065": nalogSumm065.value,
+                              "sti066": c66.text,
+                              "sti067": model['sti067'],
+                              "sti068": nalogSumm068.value,
+                              "sti069": c69.text,
+                              "sti070": model['sti070'],
+                              "sti071": nalogSumm071.value,
+                              "sti072": nalogSumm072.value,
+                              "sti073": c73.text,
+                              "sti074": model['sti074'],
+                              "sti075": nalogSumm075.value,
+                              "sti076": c76.text,
+                              "sti077": model['sti077'],
+                              "sti078": nalogSumm078.value,
+                              "sti079": nalogSumm079.value,
+                              "sti080": c80.text,
+                              "sti081": model['sti081'],
+                              "sti082": nalogSumm082.value,
+                              "sti083": c83.text,
+                              "sti084": model['sti084'],
+                              "sti085": nalogSumm085.value,
+                              "sti086": nalogSumm086.value,
+                              "sti130": c130.text,
+                              "sti131": model['sti131'],
+                              "sti132": nalogSumm132.value,
+                              "sti136": c136.text,
+                              "sti137": model['sti137'],
+                              "sti138": nalogSumm138.value,
+                              "sti139": c139.text,
+                              "sti140": model['sti140'],
+                              "sti141": nalogSumm141.value,
+                              "sti142": c142.text,
+                              "sti143": model['sti143'],
+                              "sti144": nalogSumm144.value,
+                              "sti145": c145.text,
+                              "sti146": model['sti146'],
+                              "sti147": nalogSumm147.value,
+                              "sti148": c148.text,
+                              "sti149": model['sti149'],
+                              "sti150": nalogSumm150.value,
+                              "totalsum": nalogSumm154.value,
+                              "sti160": c160.text,
+                              "sti161": model['sti161'],
+                              "sti162": nalogSumm162.value,
+                              "sti163": c163.text,
+                              "sti164": model['sti164'],
+                              "sti165": nalogSumm165.value,
+                              "sti166": c166.text,
+                              "sti167": model['sti167'],
+                              "sti168": nalogSumm168.value,
+                              "sti169": c169.text,
+                              "sti170": model['sti170'],
+                              "sti171": nalogSumm171.value,
+                              "sti172": c172.text,
+                              "sti173": model['sti173'],
+                              "sti174": nalogSumm174.value,
+                              "sti175": nalogSumm175.value,
+                              "sti176": c176.text,
+                              "sti177": model['sti177'],
+                              "sti178": nalogSumm178.value,
+                              "sti179": c179.text,
+                              "sti180": model['sti180'],
+                              "sti181": nalogSumm181.value,
+                              "sti182": nalogSumm182.value,
+                              "sti183": c183.text,
+                              "sti184": model['sti184'],
+                              "sti185": nalogSumm185.value,
+                              "sti186": c186.text,
+                              "sti187": model['sti187'],
+                              "sti188": nalogSumm188.value,
+                              "sti189": nalogSumm189.value,
+                              "sti190": c190.text,
+                              "sti191": model['sti191'],
+                              "sti192": nalogSumm192.value,
+                              "sti193": c193.text,
+                              "sti194": model['sti194'],
+                              "sti195": nalogSumm195.value,
+                              "sti196": nalogSumm196.value,
+                              "sti197": c197.text,
+                              "sti198": model['sti198'],
+                              "sti199": nalogSumm199.value,
+                              "sti200": c200.text,
+                              "sti201": model['sti201'],
+                              "sti202": nalogSumm202.value,
+                              "sti203": c203.text,
+                              "sti204": model['sti204'],
+                              "sti205": nalogSumm205.value,
+                              "sti206": c206.text,
+                              "sti207": model['sti207'],
+                              "sti208": nalogSumm208.value,
+                              "sti209": c209.text,
+                              "sti210": model['sti210'],
+                              "sti211": nalogSumm211.value,
+                              "sti212": c212.text,
+                              "sti213": model['sti213'],
+                              "sti214": nalogSumm214.value,
+                              "sti215": nalogSumm215.value,
+                              "sti250": c250.text,
+                              "sti251": model['sti251'],
+                              "sti252": nalogSumm252.value,
+                              "sti253": c253.text,
+                              "sti254": model['sti254'],
+                              "sti255": nalogSumm255.value,
+                              "sti256": c256.text,
+                              "sti257": model['sti257'],
+                              "sti258": nalogSumm258.value,
+                              "sti259": c259.text,
+                              "sti260": model['sti260'],
+                              "sti261": nalogSumm261.value,
+                              "sti262": c262.text,
+                              "sti263": model['sti263'],
+                              "sti264": nalogSumm264.value,
+                              "sti265": nalogSumm265.value,
+                              "sti266": c266.text,
+                              "sti267": model['sti267'],
+                              "sti268": nalogSumm268.value,
+                              "sti269": c269.text,
+                              "sti270": model['sti270'],
+                              "sti271": nalogSumm271.value,
+                              "sti272": nalogSumm272.value,
+                              "sti273": c273.text,
+                              "sti274": model['sti274'],
+                              "sti275": nalogSumm275.value,
+                              "sti276": c276.text,
+                              "sti277": model['sti277'],
+                              "sti278": nalogSumm278.value,
+                              "sti279": nalogSumm279.value,
+                              "sti280": c280.text,
+                              "sti281": model['sti281'],
+                              "sti282": nalogSumm282.value,
+                              "sti283": c283.text,
+                              "sti284": model['sti284'],
+                              "sti285": nalogSumm285.value,
+                              "sti286": nalogSumm286.value,
+                              "sti287": c287.text,
+                              "sti288": model['sti288'],
+                              "sti289": nalogSumm289.value,
+                              "sti290": c290.text,
+                              "sti291": model['sti291'],
+                              "sti292": nalogSumm292.value,
+                              "sti293": c293.text,
+                              "sti294": model['sti294'],
+                              "sti295": nalogSumm295.value,
+                              "sti296": c296.text,
+                              "sti297": model['sti297'],
+                              "sti298": nalogSumm298.value,
+                              "sti299": c299.text,
+                              "sti300": model['sti300'],
+                              "sti301": nalogSumm301.value,
+                              "sti302": c302.text,
+                              "sti303": model['sti303'],
+                              "sti304": nalogSumm304.value,
+                              "sti305": nalogSumm305.value,
+                              "sti310": c310.text,
+                              "sti311": model['sti311'],
+                              "sti312": nalogSumm312.value,
+                              "sti313": c313.text,
+                              "sti314": model['sti314'],
+                              "sti315": nalogSumm315.value,
+                              "sti316": c316.text,
+                              "sti317": model['sti317'],
+                              "sti318": nalogSumm318.value,
+                              "sti319": c319.text,
+                              "sti320": model['sti320'],
+                              "sti321": nalogSumm321.value,
+                              "sti322": c322.text,
+                              "sti323": model['sti323'],
+                              "sti324": nalogSumm324.value,
+                              "sti325": nalogSumm325.value,
+                              "sti326": c326.text,
+                              "sti327": model['sti327'],
+                              "sti328": nalogSumm328.value,
+                              "sti329": c329.text,
+                              "sti330": model['sti330'],
+                              "sti331": nalogSumm331.value,
+                              "sti332": nalogSumm332.value,
+                              "sti333": c333.text,
+                              "sti334": model['sti334'],
+                              "sti335": nalogSumm335.value,
+                              "sti336": c336.text,
+                              "sti337": model['sti337'],
+                              "sti338": nalogSumm338.value,
+                              "sti339": nalogSumm339.value,
+                              "sti340": c340.text,
+                              "sti341": model['sti341'],
+                              "sti342": nalogSumm342.value,
+                              "sti343": c343.text,
+                              "sti344": model['sti344'],
+                              "sti345": nalogSumm345.value,
+                              "sti346": nalogSumm346.value,
+                              "sti347": c347.text,
+                              "sti348": model['sti348'],
+                              "sti349": nalogSumm349.value,
+                              "sti350": c350.text,
+                              "sti351": model['sti351'],
+                              "sti352": nalogSumm352.value,
+                              "sti353": c353.text,
+                              "sti354": model['sti354'],
+                              "sti355": nalogSumm355.value,
+                              "sti356": c356.text,
+                              "sti357": model['sti357'],
+                              "sti358": nalogSumm358.value,
+                              "sti359": c359.text,
+                              "sti360": model['sti360'],
+                              "sti361": nalogSumm361.value,
+                              "sti362": c362.text,
+                              "sti363": model['sti363'],
+                              "sti364": nalogSumm364.value,
+                              "sti365": nalogSumm365.value,
+                            };
+
+                            context
+                                .read<SendSavedDataCubit>()
+                                .sendData(sendData, widget.model.reportType);
+                          }
+                        },
+                        text: 'Отправить в ГНС',
+                      );
+                    },
                   ),
                   const SizedBox(height: 16),
                   CustomButton(
