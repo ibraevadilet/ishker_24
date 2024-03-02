@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:ishker_24/features/nalog_decloration/data/models/nalog_names_model.dart';
 import 'package:ishker_24/features/nalog_decloration/data/models/ugns_model.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/calculate_nalog_summa_widget.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/custom_text_field.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/field_name_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/part050_part055_widgets.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/part056_part132_widgets.dart';
@@ -105,7 +104,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
 
   ValueNotifier<num> nalogSumm154 = ValueNotifier(0);
 
-  ///////FROM 1
+  ///////FROM 1 1 MONTH
   TextEditingController c160 = TextEditingController();
   ValueNotifier<num> nalogSumm162 = ValueNotifier(0);
 
@@ -123,6 +122,174 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
 
   ValueNotifier<num> nalogSumm175 = ValueNotifier(0);
 
+  TextEditingController c176 = TextEditingController();
+  ValueNotifier<num> nalogSumm178 = ValueNotifier(0);
+
+  TextEditingController c179 = TextEditingController();
+  ValueNotifier<num> nalogSumm181 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm182 = ValueNotifier(0);
+
+  TextEditingController c183 = TextEditingController();
+  ValueNotifier<num> nalogSumm185 = ValueNotifier(0);
+
+  TextEditingController c186 = TextEditingController();
+  ValueNotifier<num> nalogSumm188 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm189 = ValueNotifier(0);
+
+  TextEditingController c190 = TextEditingController();
+  ValueNotifier<num> nalogSumm192 = ValueNotifier(0);
+
+  TextEditingController c193 = TextEditingController();
+  ValueNotifier<num> nalogSumm195 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm196 = ValueNotifier(0);
+
+  TextEditingController c197 = TextEditingController();
+  ValueNotifier<num> nalogSumm199 = ValueNotifier(0);
+
+  TextEditingController c200 = TextEditingController();
+  ValueNotifier<num> nalogSumm202 = ValueNotifier(0);
+
+  TextEditingController c203 = TextEditingController();
+  ValueNotifier<num> nalogSumm205 = ValueNotifier(0);
+
+  TextEditingController c206 = TextEditingController();
+  ValueNotifier<num> nalogSumm208 = ValueNotifier(0);
+
+  TextEditingController c209 = TextEditingController();
+  ValueNotifier<num> nalogSumm211 = ValueNotifier(0);
+
+  TextEditingController c212 = TextEditingController();
+  ValueNotifier<num> nalogSumm214 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm215 = ValueNotifier(0);
+
+////////Form 1 2 Month
+  TextEditingController c250 = TextEditingController();
+  ValueNotifier<num> nalogSumm252 = ValueNotifier(0);
+
+  TextEditingController c253 = TextEditingController();
+  ValueNotifier<num> nalogSumm255 = ValueNotifier(0);
+
+  TextEditingController c256 = TextEditingController();
+  ValueNotifier<num> nalogSumm258 = ValueNotifier(0);
+
+  TextEditingController c259 = TextEditingController();
+  ValueNotifier<num> nalogSumm261 = ValueNotifier(0);
+
+  TextEditingController c262 = TextEditingController();
+  ValueNotifier<num> nalogSumm264 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm265 = ValueNotifier(0);
+
+  TextEditingController c266 = TextEditingController();
+  ValueNotifier<num> nalogSumm268 = ValueNotifier(0);
+
+  TextEditingController c269 = TextEditingController();
+  ValueNotifier<num> nalogSumm271 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm272 = ValueNotifier(0);
+
+  TextEditingController c273 = TextEditingController();
+  ValueNotifier<num> nalogSumm275 = ValueNotifier(0);
+
+  TextEditingController c276 = TextEditingController();
+  ValueNotifier<num> nalogSumm278 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm279 = ValueNotifier(0);
+
+  TextEditingController c280 = TextEditingController();
+  ValueNotifier<num> nalogSumm282 = ValueNotifier(0);
+
+  TextEditingController c283 = TextEditingController();
+  ValueNotifier<num> nalogSumm285 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm286 = ValueNotifier(0);
+
+  TextEditingController c287 = TextEditingController();
+  ValueNotifier<num> nalogSumm289 = ValueNotifier(0);
+
+  TextEditingController c290 = TextEditingController();
+  ValueNotifier<num> nalogSumm292 = ValueNotifier(0);
+
+  TextEditingController c293 = TextEditingController();
+  ValueNotifier<num> nalogSumm295 = ValueNotifier(0);
+
+  TextEditingController c296 = TextEditingController();
+  ValueNotifier<num> nalogSumm298 = ValueNotifier(0);
+
+  TextEditingController c299 = TextEditingController();
+  ValueNotifier<num> nalogSumm301 = ValueNotifier(0);
+
+  TextEditingController c302 = TextEditingController();
+  ValueNotifier<num> nalogSumm304 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm305 = ValueNotifier(0);
+
+  ///Form 1 3 MONTH
+  TextEditingController c310 = TextEditingController();
+  ValueNotifier<num> nalogSumm312 = ValueNotifier(0);
+
+  TextEditingController c313 = TextEditingController();
+  ValueNotifier<num> nalogSumm315 = ValueNotifier(0);
+
+  TextEditingController c316 = TextEditingController();
+  ValueNotifier<num> nalogSumm318 = ValueNotifier(0);
+
+  TextEditingController c319 = TextEditingController();
+  ValueNotifier<num> nalogSumm321 = ValueNotifier(0);
+
+  TextEditingController c322 = TextEditingController();
+  ValueNotifier<num> nalogSumm324 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm325 = ValueNotifier(0);
+
+  TextEditingController c326 = TextEditingController();
+  ValueNotifier<num> nalogSumm328 = ValueNotifier(0);
+
+  TextEditingController c329 = TextEditingController();
+  ValueNotifier<num> nalogSumm331 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm332 = ValueNotifier(0);
+
+  TextEditingController c333 = TextEditingController();
+  ValueNotifier<num> nalogSumm335 = ValueNotifier(0);
+
+  TextEditingController c336 = TextEditingController();
+  ValueNotifier<num> nalogSumm338 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm339 = ValueNotifier(0);
+
+  TextEditingController c340 = TextEditingController();
+  ValueNotifier<num> nalogSumm342 = ValueNotifier(0);
+
+  TextEditingController c343 = TextEditingController();
+  ValueNotifier<num> nalogSumm345 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm346 = ValueNotifier(0);
+
+  TextEditingController c347 = TextEditingController();
+  ValueNotifier<num> nalogSumm349 = ValueNotifier(0);
+
+  TextEditingController c350 = TextEditingController();
+  ValueNotifier<num> nalogSumm352 = ValueNotifier(0);
+
+  TextEditingController c353 = TextEditingController();
+  ValueNotifier<num> nalogSumm355 = ValueNotifier(0);
+
+  TextEditingController c356 = TextEditingController();
+  ValueNotifier<num> nalogSumm358 = ValueNotifier(0);
+
+  TextEditingController c359 = TextEditingController();
+  ValueNotifier<num> nalogSumm361 = ValueNotifier(0);
+
+  TextEditingController c362 = TextEditingController();
+  ValueNotifier<num> nalogSumm364 = ValueNotifier(0);
+
+  ValueNotifier<num> nalogSumm365 = ValueNotifier(0);
+
   void allSumm() {
     nalogSumm154.value = nalogSumm052.value +
         nalogSumm055.value +
@@ -136,6 +303,19 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         nalogSumm144.value +
         nalogSumm147.value +
         nalogSumm150.value;
+  }
+
+  void allSumm215() {
+    nalogSumm215.value = nalogSumm175.value +
+        nalogSumm182.value +
+        nalogSumm189.value +
+        nalogSumm196.value +
+        nalogSumm199.value +
+        nalogSumm202.value +
+        nalogSumm205.value +
+        nalogSumm208.value +
+        nalogSumm211.value +
+        nalogSumm214.value;
   }
 
   GlobalKey ugnsKey = GlobalKey();
@@ -540,6 +720,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                           nalogSumm168.value +
                                           nalogSumm171.value +
                                           nalogSumm174.value;
+                                      allSumm215();
                                     },
                                   ),
                                   const FieldNameWidget(
@@ -583,48 +764,40 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'До 30 000 000 сомов',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '250',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '251',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '0,5'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '252', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '250',
+                                    controller: c250,
+                                    numberPercent: '251',
+                                    percent: model['sti251'],
+                                    numberSumma: '252',
+                                    nalogSumm: nalogSumm252,
+                                    onChanged: (summa) {
+                                      nalogSumm265.value = nalogSumm252.value +
+                                          nalogSumm255.value +
+                                          nalogSumm258.value +
+                                          nalogSumm261.value +
+                                          nalogSumm264.value;
+                                    },
+                                  ),
                                   Text(
                                     'От 30 000 000 до 50 000 000\nсомов',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '253',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '254',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '1'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '255', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 24),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '253',
+                                    controller: c253,
+                                    numberPercent: '254',
+                                    percent: model['sti254'],
+                                    numberSumma: '255',
+                                    nalogSumm: nalogSumm255,
+                                    onChanged: (summa) {
+                                      nalogSumm265.value = nalogSumm252.value +
+                                          nalogSumm255.value +
+                                          nalogSumm258.value +
+                                          nalogSumm261.value +
+                                          nalogSumm264.value;
+                                    },
+                                  ),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -645,75 +818,70 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '256',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '257',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '258', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '256',
+                                    controller: c256,
+                                    numberPercent: '257',
+                                    percent: model['sti257'],
+                                    numberSumma: '258',
+                                    nalogSumm: nalogSumm258,
+                                    onChanged: (summa) {
+                                      nalogSumm265.value = nalogSumm252.value +
+                                          nalogSumm255.value +
+                                          nalogSumm258.value +
+                                          nalogSumm261.value +
+                                          nalogSumm264.value;
+                                    },
+                                  ),
                                   Text('В безналичной форме',
                                       style: AppTextStyles.s20W500()),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '259',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '260',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '261', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '259',
+                                    controller: c259,
+                                    numberPercent: '260',
+                                    percent: model['sti260'],
+                                    numberSumma: '261',
+                                    nalogSumm: nalogSumm261,
+                                    onChanged: (summa) {
+                                      nalogSumm265.value = nalogSumm252.value +
+                                          nalogSumm255.value +
+                                          nalogSumm258.value +
+                                          nalogSumm261.value +
+                                          nalogSumm264.value;
+                                    },
+                                  ),
                                   Text(
                                     'В адрес обезличенного субъекта',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '262',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '263',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '264', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '262',
+                                    controller: c262,
+                                    numberPercent: '263',
+                                    percent: model['sti263'],
+                                    numberSumma: '264',
+                                    nalogSumm: nalogSumm264,
+                                    onChanged: (summa) {
+                                      nalogSumm265.value = nalogSumm252.value +
+                                          nalogSumm255.value +
+                                          nalogSumm258.value +
+                                          nalogSumm261.value +
+                                          nalogSumm264.value;
+                                    },
+                                  ),
                                   const FieldNameWidget(
                                       number: '265',
                                       title:
                                           'Итого сумма единого налога\n(252+255+258+261+264)'),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm265,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                               Column(
@@ -742,48 +910,40 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'До 30 000 000 сомов',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '310',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '311',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '0,5'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '312', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '310',
+                                    controller: c310,
+                                    numberPercent: '311',
+                                    percent: model['sti311'],
+                                    numberSumma: '312',
+                                    nalogSumm: nalogSumm312,
+                                    onChanged: (summa) {
+                                      nalogSumm325.value = nalogSumm312.value +
+                                          nalogSumm315.value +
+                                          nalogSumm318.value +
+                                          nalogSumm321.value +
+                                          nalogSumm324.value;
+                                    },
+                                  ),
                                   Text(
                                     'От 30 000 000 до 50 000 000\nсомов',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '313',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '314',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '1'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '315', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 24),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '313',
+                                    controller: c313,
+                                    numberPercent: '314',
+                                    percent: model['sti314'],
+                                    numberSumma: '315',
+                                    nalogSumm: nalogSumm315,
+                                    onChanged: (summa) {
+                                      nalogSumm325.value = nalogSumm312.value +
+                                          nalogSumm315.value +
+                                          nalogSumm318.value +
+                                          nalogSumm321.value +
+                                          nalogSumm324.value;
+                                    },
+                                  ),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -804,77 +964,72 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '316',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '317',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '318', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '316',
+                                    controller: c316,
+                                    numberPercent: '317',
+                                    percent: model['sti317'],
+                                    numberSumma: '318',
+                                    nalogSumm: nalogSumm318,
+                                    onChanged: (summa) {
+                                      nalogSumm325.value = nalogSumm312.value +
+                                          nalogSumm315.value +
+                                          nalogSumm318.value +
+                                          nalogSumm321.value +
+                                          nalogSumm324.value;
+                                    },
+                                  ),
                                   Text(
                                     'В безналичной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '319',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '320',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '321', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '319',
+                                    controller: c319,
+                                    numberPercent: '320',
+                                    percent: model['sti320'],
+                                    numberSumma: '321',
+                                    nalogSumm: nalogSumm321,
+                                    onChanged: (summa) {
+                                      nalogSumm325.value = nalogSumm312.value +
+                                          nalogSumm315.value +
+                                          nalogSumm318.value +
+                                          nalogSumm321.value +
+                                          nalogSumm324.value;
+                                    },
+                                  ),
                                   Text(
                                     'В адрес обезличенного субъекта',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '322',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '323',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '324', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '322',
+                                    controller: c322,
+                                    numberPercent: '323',
+                                    percent: model['sti323'],
+                                    numberSumma: '324',
+                                    nalogSumm: nalogSumm324,
+                                    onChanged: (summa) {
+                                      nalogSumm325.value = nalogSumm312.value +
+                                          nalogSumm315.value +
+                                          nalogSumm318.value +
+                                          nalogSumm321.value +
+                                          nalogSumm324.value;
+                                    },
+                                  ),
                                   const FieldNameWidget(
                                       number: '325',
                                       title:
                                           'Итого сумма единого налога\n(312+315+318+321+324)'),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm325,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                             ],
@@ -929,7 +1084,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           ),
                         ),
                         SizedBox(
-                          height: 880,
+                          height: 910,
                           child: TabBarView(
                             controller: _2tabController,
                             children: [
@@ -941,56 +1096,49 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '176',
-                                      title:
-                                          'Выручка от реализации товаров, работ,\nуслуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '177',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '178', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '176',
+                                    controller: c176,
+                                    numberPercent: '177',
+                                    percent: model['sti177'],
+                                    numberSumma: '178',
+                                    nalogSumm: nalogSumm178,
+                                    onChanged: (summa) {
+                                      nalogSumm182.value = nalogSumm178.value +
+                                          nalogSumm181.value;
+                                    },
+                                  ),
                                   Text(
                                     'В безналичной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
                                   const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '179',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '180',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '181', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '179',
+                                    controller: c179,
+                                    numberPercent: '180',
+                                    percent: model['sti180'],
+                                    numberSumma: '181',
+                                    nalogSumm: nalogSumm181,
+                                    onChanged: (summa) {
+                                      nalogSumm182.value = nalogSumm178.value +
+                                          nalogSumm181.value;
+                                      allSumm215();
+                                    },
+                                  ),
                                   const FieldNameWidget(
                                     number: '182',
                                     title:
                                         'Итого сумма единого налога (178+181)',
                                   ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm182,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                               Column(
@@ -1001,57 +1149,49 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '266',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '267',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '268', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '266',
+                                    controller: c266,
+                                    numberPercent: '267',
+                                    percent: model['sti267'],
+                                    numberSumma: '268',
+                                    nalogSumm: nalogSumm268,
+                                    onChanged: (summa) {
+                                      nalogSumm272.value = nalogSumm268.value +
+                                          nalogSumm271.value;
+                                    },
+                                  ),
                                   Text(
                                     'В безналичной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
                                   const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '269',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '270',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '271', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '269',
+                                    controller: c269,
+                                    numberPercent: '270',
+                                    percent: model['sti270'],
+                                    numberSumma: '271',
+                                    nalogSumm: nalogSumm271,
+                                    onChanged: (summa) {
+                                      nalogSumm272.value = nalogSumm268.value +
+                                          nalogSumm271.value;
+                                    },
+                                  ),
                                   const FieldNameWidget(
                                     number: '272',
                                     title:
                                         'Итого сумма единого налога (268+271)',
                                   ),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm272,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                               Column(
@@ -1062,56 +1202,49 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '326',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '327',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '328', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '326',
+                                    controller: c326,
+                                    numberPercent: '327',
+                                    percent: model['sti327'],
+                                    numberSumma: '328',
+                                    nalogSumm: nalogSumm328,
+                                    onChanged: (summa) {
+                                      nalogSumm332.value = nalogSumm328.value +
+                                          nalogSumm331.value;
+                                    },
+                                  ),
                                   Text(
                                     'В безналичной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
                                   const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '329',
-                                      title:
-                                          'Выручка от реализации товаров, работ,\nуслуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '330',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '331', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '329',
+                                    controller: c329,
+                                    numberPercent: '330',
+                                    percent: model['sti330'],
+                                    numberSumma: '331',
+                                    nalogSumm: nalogSumm331,
+                                    onChanged: (summa) {
+                                      nalogSumm332.value = nalogSumm328.value +
+                                          nalogSumm331.value;
+                                    },
+                                  ),
                                   const FieldNameWidget(
                                     number: '332',
                                     title:
                                         'Итого сумма единого налога (328+331)',
                                   ),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm332,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                             ],
@@ -1166,7 +1299,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           ),
                         ),
                         SizedBox(
-                          height: 880,
+                          height: 910,
                           child: TabBarView(
                             controller: _3tabController,
                             children: [
@@ -1178,56 +1311,50 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '183',
-                                      title:
-                                          'Выручка от реализации товаров, работ,\nуслуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '184',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '185', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '183',
+                                    controller: c183,
+                                    numberPercent: '184',
+                                    percent: model['sti184'],
+                                    numberSumma: '185',
+                                    nalogSumm: nalogSumm185,
+                                    onChanged: (summa) {
+                                      nalogSumm189.value = nalogSumm185.value +
+                                          nalogSumm188.value;
+                                    },
+                                  ),
                                   Text(
                                     'В безналичной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
                                   const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '186',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '187',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '188', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '186',
+                                    controller: c186,
+                                    numberPercent: '187',
+                                    percent: model['sti187'],
+                                    numberSumma: '188',
+                                    nalogSumm: nalogSumm188,
+                                    onChanged: (summa) {
+                                      nalogSumm189.value = nalogSumm185.value +
+                                          nalogSumm188.value;
+                                      allSumm215();
+                                    },
+                                  ),
                                   const FieldNameWidget(
                                     number: '189',
                                     title:
                                         'Итого сумма единого налога (185+188)',
                                   ),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm189,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                               Column(
@@ -1238,57 +1365,49 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '273',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '274',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '275', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '273',
+                                    controller: c273,
+                                    numberPercent: '274',
+                                    percent: model['sti274'],
+                                    numberSumma: '275',
+                                    nalogSumm: nalogSumm275,
+                                    onChanged: (summa) {
+                                      nalogSumm279.value = nalogSumm275.value +
+                                          nalogSumm278.value;
+                                    },
+                                  ),
                                   Text(
                                     'В безналичной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
                                   const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '276',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '277',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '278', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '276',
+                                    controller: c276,
+                                    numberPercent: '277',
+                                    percent: model['sti277'],
+                                    numberSumma: '278',
+                                    nalogSumm: nalogSumm278,
+                                    onChanged: (summa) {
+                                      nalogSumm279.value = nalogSumm275.value +
+                                          nalogSumm278.value;
+                                    },
+                                  ),
                                   const FieldNameWidget(
                                     number: '279',
                                     title:
                                         'Итого сумма единого налога (275+278)',
                                   ),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm279,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                               Column(
@@ -1299,56 +1418,49 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '333',
-                                      title:
-                                          'Выручка от реализации товаров, работ, услуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '334',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '335', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '333',
+                                    controller: c333,
+                                    numberPercent: '334',
+                                    percent: model['sti334'],
+                                    numberSumma: '335',
+                                    nalogSumm: nalogSumm335,
+                                    onChanged: (summa) {
+                                      nalogSumm339.value = nalogSumm335.value +
+                                          nalogSumm338.value;
+                                    },
+                                  ),
                                   Text(
                                     'В безналичной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
                                   const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '336',
-                                      title:
-                                          'Выручка от реализации товаров, работ,\nуслуг'),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '337',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '338', title: 'Сумма налога'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
-                                  const SizedBox(height: 16),
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '336',
+                                    controller: c336,
+                                    numberPercent: '337',
+                                    percent: model['sti337'],
+                                    numberSumma: '338',
+                                    nalogSumm: nalogSumm338,
+                                    onChanged: (summa) {
+                                      nalogSumm339.value = nalogSumm335.value +
+                                          nalogSumm338.value;
+                                    },
+                                  ),
                                   const FieldNameWidget(
                                     number: '339',
                                     title:
                                         'Итого сумма единого налога (335+338)',
                                   ),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm339,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                             ],
@@ -1403,7 +1515,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           ),
                         ),
                         SizedBox(
-                          height: 880,
+                          height: 910,
                           child: TabBarView(
                             controller: _4tabController,
                             children: [
@@ -1415,64 +1527,50 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '190',
-                                    title:
-                                        'Выручка от реализации товаров, работ,\nуслуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '190',
+                                    controller: c190,
+                                    numberPercent: '191',
+                                    percent: model['sti191'],
+                                    numberSumma: '192',
+                                    nalogSumm: nalogSumm192,
+                                    onChanged: (summa) {
+                                      nalogSumm196.value = nalogSumm192.value +
+                                          nalogSumm195.value;
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '191',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '192',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
                                   Text(
                                     'В безналичной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
                                   const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '193',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '193',
+                                    controller: c193,
+                                    numberPercent: '194',
+                                    percent: model['sti194'],
+                                    numberSumma: '195',
+                                    nalogSumm: nalogSumm195,
+                                    onChanged: (summa) {
+                                      nalogSumm196.value = nalogSumm192.value +
+                                          nalogSumm195.value;
+                                      allSumm215();
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '194',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '195',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
-                                  const SizedBox(height: 16),
                                   const FieldNameWidget(
                                     number: '196',
                                     title:
                                         'Итого сумма единого налога (192+195)',
                                   ),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm196,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                               Column(
@@ -1483,64 +1581,49 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '280',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '280',
+                                    controller: c280,
+                                    numberPercent: '281',
+                                    percent: model['sti281'],
+                                    numberSumma: '282',
+                                    nalogSumm: nalogSumm282,
+                                    onChanged: (summa) {
+                                      nalogSumm286.value = nalogSumm282.value +
+                                          nalogSumm285.value;
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '281',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '282',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
                                   Text(
                                     'В безналичной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
                                   const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '283',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '283',
+                                    controller: c283,
+                                    numberPercent: '284',
+                                    percent: model['sti284'],
+                                    numberSumma: '285',
+                                    nalogSumm: nalogSumm285,
+                                    onChanged: (summa) {
+                                      nalogSumm286.value = nalogSumm282.value +
+                                          nalogSumm285.value;
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                      number: '284',
-                                      title: 'Ставка налога (%)'),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '285',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
-                                  const SizedBox(height: 16),
                                   const FieldNameWidget(
                                     number: '286',
                                     title:
                                         'Итого сумма единого налога (282+285)',
                                   ),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm286,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                               Column(
@@ -1551,64 +1634,49 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '340',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '340',
+                                    controller: c340,
+                                    numberPercent: '341',
+                                    percent: model['sti341'],
+                                    numberSumma: '342',
+                                    nalogSumm: nalogSumm342,
+                                    onChanged: (summa) {
+                                      nalogSumm346.value = nalogSumm342.value +
+                                          nalogSumm345.value;
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '341',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '342',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
                                   Text(
                                     'В безналичной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
                                   const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '343',
-                                    title:
-                                        'Выручка от реализации товаров, работ,\nуслуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '343',
+                                    controller: c343,
+                                    numberPercent: '344',
+                                    percent: model['sti344'],
+                                    numberSumma: '345',
+                                    nalogSumm: nalogSumm345,
+                                    onChanged: (summa) {
+                                      nalogSumm346.value = nalogSumm342.value +
+                                          nalogSumm345.value;
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '344',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '2'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '345',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
-                                  const SizedBox(height: 16),
-                                  const SizedBox(height: 16),
                                   const FieldNameWidget(
                                     number: '346',
                                     title:
                                         'Итого сумма единого налога (342+345)',
                                   ),
                                   const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
+                                  ValueListenableBuilder(
+                                    valueListenable: nalogSumm346,
+                                    builder: (_, value, child) {
+                                      return StaticContainerInfoWidget(
+                                        title: value.toString(),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                             ],
@@ -1663,7 +1731,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           ),
                         ),
                         SizedBox(
-                          height: 376,
+                          height: 410,
                           child: TabBarView(
                             controller: _5tabController,
                             children: [
@@ -1675,28 +1743,17 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '197',
-                                    title:
-                                        'Выручка от реализации товаров, работ,\nуслуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '197',
+                                    controller: c197,
+                                    numberPercent: '198',
+                                    percent: model['sti198'],
+                                    numberSumma: '199',
+                                    nalogSumm: nalogSumm199,
+                                    onChanged: (summa) {
+                                      allSumm215();
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '198',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '199',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                               Column(
@@ -1707,28 +1764,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '287',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '287',
+                                    controller: c287,
+                                    numberPercent: '288',
+                                    percent: model['sti288'],
+                                    numberSumma: '289',
+                                    nalogSumm: nalogSumm289,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '288',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '289',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                               Column(
@@ -1739,28 +1783,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '347',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '347',
+                                    controller: c347,
+                                    numberPercent: '348',
+                                    percent: model['sti348'],
+                                    numberSumma: '349',
+                                    nalogSumm: nalogSumm349,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '348',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '349',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                             ],
@@ -1815,7 +1846,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           ),
                         ),
                         SizedBox(
-                          height: 376,
+                          height: 410,
                           child: TabBarView(
                             controller: _6tabController,
                             children: [
@@ -1827,28 +1858,17 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '200',
-                                    title:
-                                        'Выручка от реализации товаров, работ,\nуслуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '200',
+                                    controller: c200,
+                                    numberPercent: '201',
+                                    percent: model['sti201'],
+                                    numberSumma: '202',
+                                    nalogSumm: nalogSumm202,
+                                    onChanged: (summa) {
+                                      allSumm215();
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '201',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '202',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                               Column(
@@ -1859,28 +1879,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '290',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '290',
+                                    controller: c290,
+                                    numberPercent: '291',
+                                    percent: model['sti291'],
+                                    numberSumma: '292',
+                                    nalogSumm: nalogSumm292,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '291',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '292',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                               Column(
@@ -1891,28 +1898,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '350',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '350',
+                                    controller: c350,
+                                    numberPercent: '351',
+                                    percent: model['sti351'],
+                                    numberSumma: '352',
+                                    nalogSumm: nalogSumm352,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '351',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '352',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                             ],
@@ -1967,7 +1961,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           ),
                         ),
                         SizedBox(
-                          height: 376,
+                          height: 410,
                           child: TabBarView(
                             controller: _7tabController,
                             children: [
@@ -1979,28 +1973,17 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '203',
-                                    title:
-                                        'Выручка от реализации товаров, работ,\nуслуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '203',
+                                    controller: c203,
+                                    numberPercent: '204',
+                                    percent: model['sti204'],
+                                    numberSumma: '205',
+                                    nalogSumm: nalogSumm205,
+                                    onChanged: (summa) {
+                                      allSumm215();
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '204',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '205',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                               Column(
@@ -2011,28 +1994,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '293',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '293',
+                                    controller: c293,
+                                    numberPercent: '294',
+                                    percent: model['sti294'],
+                                    numberSumma: '295',
+                                    nalogSumm: nalogSumm295,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '294',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '295',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                               Column(
@@ -2043,28 +2013,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '353',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '353',
+                                    controller: c353,
+                                    numberPercent: '354',
+                                    percent: model['sti354'],
+                                    numberSumma: '355',
+                                    nalogSumm: nalogSumm355,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '354',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '355',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                             ],
@@ -2119,7 +2076,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           ),
                         ),
                         SizedBox(
-                          height: 376,
+                          height: 410,
                           child: TabBarView(
                             controller: _8tabController,
                             children: [
@@ -2131,28 +2088,17 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '206',
-                                    title:
-                                        'Выручка от реализации товаров, работ,\nуслуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '206',
+                                    controller: c206,
+                                    numberPercent: '207',
+                                    percent: model['sti207'],
+                                    numberSumma: '208',
+                                    nalogSumm: nalogSumm208,
+                                    onChanged: (summa) {
+                                      allSumm215();
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '207',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '208',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                               Column(
@@ -2163,28 +2109,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '296',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '296',
+                                    controller: c296,
+                                    numberPercent: '297',
+                                    percent: model['sti297'],
+                                    numberSumma: '298',
+                                    nalogSumm: nalogSumm298,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '297',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '298',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                               Column(
@@ -2195,28 +2128,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '356',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '356',
+                                    controller: c356,
+                                    numberPercent: '357',
+                                    percent: model['sti357'],
+                                    numberSumma: '358',
+                                    nalogSumm: nalogSumm358,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '357',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '358',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                             ],
@@ -2271,7 +2191,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           ),
                         ),
                         SizedBox(
-                          height: 376,
+                          height: 410,
                           child: TabBarView(
                             controller: _9tabController,
                             children: [
@@ -2283,28 +2203,17 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '209',
-                                    title:
-                                        'Выручка от реализации товаров, работ,\nуслуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '209',
+                                    controller: c209,
+                                    numberPercent: '210',
+                                    percent: model['sti210'],
+                                    numberSumma: '211',
+                                    nalogSumm: nalogSumm211,
+                                    onChanged: (summa) {
+                                      allSumm215();
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '210',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '211',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                               Column(
@@ -2315,28 +2224,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '299',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '299',
+                                    controller: c299,
+                                    numberPercent: '300',
+                                    percent: model['sti300'],
+                                    numberSumma: '301',
+                                    nalogSumm: nalogSumm301,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '300',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '301',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                               Column(
@@ -2347,28 +2243,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '359',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '359',
+                                    controller: c359,
+                                    numberPercent: '360',
+                                    percent: model['sti360'],
+                                    numberSumma: '361',
+                                    nalogSumm: nalogSumm361,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '360',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '361',
-                                    title: 'Сумма налога',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: ''),
                                 ],
                               ),
                             ],
@@ -2429,7 +2312,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                           ),
                         ),
                         SizedBox(
-                          height: 376,
+                          height: 570,
                           child: TabBarView(
                             controller: _10tabController,
                             children: [
@@ -2441,26 +2324,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '212',
-                                    title:
-                                        'Выручка от реализации товаров, работ,\nуслуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '212',
+                                    controller: c212,
+                                    numberPercent: '213',
+                                    percent: model['sti213'],
+                                    numberSumma: '214',
+                                    nalogSumm: nalogSumm214,
+                                    onChanged: (summa) {
+                                      allSumm215();
+                                    },
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
                                   const FieldNameWidget(
-                                    number: '213',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '214',
-                                    title: 'Сумма налога',
-                                  ),
+                                      number: '215',
+                                      title:
+                                          'Общая сумма единого налога\n(175+182+189+196+199+202+205+208+\n211+214)'),
                                   const SizedBox(height: 12),
                                   const StaticContainerInfoWidget(title: ''),
                                 ],
@@ -2473,26 +2351,19 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '302',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '302',
+                                    controller: c302,
+                                    numberPercent: '303',
+                                    percent: model['sti303'],
+                                    numberSumma: '304',
+                                    nalogSumm: nalogSumm304,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
                                   const FieldNameWidget(
-                                    number: '303',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '304',
-                                    title: 'Сумма налога',
-                                  ),
+                                      number: '305',
+                                      title:
+                                          'Общая сумма единого налога\n(265+272+279+286+289+292+295+298\n+301+304)'),
                                   const SizedBox(height: 12),
                                   const StaticContainerInfoWidget(title: ''),
                                 ],
@@ -2505,26 +2376,19 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                     'В наличной форме',
                                     style: AppTextStyles.s20W500(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '362',
-                                    title:
-                                        'Выручка от реализации товаров, работ, услуг',
+                                  CalculateNalogSummaWidget(
+                                    numberFiled: '362',
+                                    controller: c362,
+                                    numberPercent: '363',
+                                    percent: model['sti363'],
+                                    numberSumma: '364',
+                                    nalogSumm: nalogSumm364,
+                                    onChanged: (summa) {},
                                   ),
-                                  const SizedBox(height: 12),
-                                  const CustomTextField(),
-                                  const SizedBox(height: 16),
                                   const FieldNameWidget(
-                                    number: '363',
-                                    title: 'Ставка налога (%)',
-                                  ),
-                                  const SizedBox(height: 12),
-                                  const StaticContainerInfoWidget(title: '4'),
-                                  const SizedBox(height: 16),
-                                  const FieldNameWidget(
-                                    number: '364',
-                                    title: 'Сумма налога',
-                                  ),
+                                      number: '365',
+                                      title:
+                                          'Общая сумма единого налога\n(325+332+339+346+349+352+355\n+358+361+364)'),
                                   const SizedBox(height: 12),
                                   const StaticContainerInfoWidget(title: ''),
                                 ],
@@ -2532,28 +2396,6 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 16),
-                        const FieldNameWidget(
-                            number: '215',
-                            title:
-                                'Общая сумма единого налога\n(175+182+189+196+199+202+205+208+\n211+214)'),
-                        const SizedBox(height: 12),
-                        const StaticContainerInfoWidget(title: ''),
-                        const SizedBox(height: 16),
-                        const FieldNameWidget(
-                            number: '305',
-                            title:
-                                'Общая сумма единого налога\n(265+272+279+286+289+292+295+298\n+301+304)'),
-                        const SizedBox(height: 12),
-                        const StaticContainerInfoWidget(title: ''),
-                        const SizedBox(height: 16),
-                        const FieldNameWidget(
-                            number: '365',
-                            title:
-                                'Общая сумма единого налога\n(325+332+339+346+349+352+355\n+358+361+364)'),
-                        const SizedBox(height: 12),
-                        const StaticContainerInfoWidget(title: ''),
-                        const SizedBox(height: 16),
                       ],
                     ),
                   ),
