@@ -21,18 +21,14 @@ class QrHistoryCubit extends Cubit<QrHistoryState> {
           end: DateTime.now(),
         ));
 
-  final HistoryUseCase _historyUseCase;
   final String _account;
+  final HistoryUseCase _historyUseCase;
 
   void load({DateTime? start, DateTime? end, int page = 1}) async {
     log('QrHistoryCubit.load(state.model.pages: ${state.model.pages}, state.start: ${state.start}, state.end: ${state.end})');
     log('QrHistoryCubit.load(page: $page, start: $start, end: $end)');
     if (page == 1) {
-      emit(QrHistoryState(
-        start: start ?? state.start,
-        end: end ?? state.end,
-        status: RequestLoading(),
-      ));
+      emit(QrHistoryState(start: start ?? state.start, end: end ?? state.end));
       await Future.delayed(Duration.zero);
     } else if (page > state.model.pages) {
       return;
@@ -63,28 +59,4 @@ class QrHistoryCubit extends Cubit<QrHistoryState> {
       ));
     }
   }
-
-  // void next(int page) async {
-  //   if(page)
-  // }
-
-  // void load(DateTime start, {DateTime? end, int page = 0}) async {
-  //   currentPage = page;
-  //   if (page == 0) items.clear();
-
-  //   emit(const QrHistoryState.loading());
-
-  //   try {
-  //     final result = await _historyUseCase.call(QrHistoryRequestModel(
-  //       account: _account,
-  //       startDate: start,
-  //       endDate: end ?? DateTime.now(),
-  //     ));
-  //     items.addAll(result.items);
-  //     items.toSet().toList();
-  //     emit(QrHistoryState.success(result.copyWith(items: items), page));
-  //   } catch (e) {
-  //     emit(QrHistoryState.error(e.toString()));
-  //   }
-  // }
 }
