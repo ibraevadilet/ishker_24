@@ -1,3 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/foundation.dart';
+
 class EsfModel {
   final String requestId;
   final String responseId;
@@ -30,6 +33,54 @@ class EsfModel {
         totalPage: json["totalPage"] ?? 0,
         invoiceDate: json["invoiceDate"] ?? DateTime.now(),
       );
+
+  @override
+  bool operator ==(covariant EsfModel other) {
+    if (identical(this, other)) return true;
+
+    return other.requestId == requestId &&
+        other.responseId == responseId &&
+        other.userId == userId &&
+        other.clientId == clientId &&
+        listEquals(other.invoices, invoices) &&
+        other.totalElements == totalElements &&
+        other.totalPage == totalPage &&
+        other.invoiceDate == invoiceDate;
+  }
+
+  @override
+  int get hashCode {
+    return requestId.hashCode ^
+        responseId.hashCode ^
+        userId.hashCode ^
+        clientId.hashCode ^
+        invoices.hashCode ^
+        totalElements.hashCode ^
+        totalPage.hashCode ^
+        invoiceDate.hashCode;
+  }
+
+  EsfModel copyWith({
+    String? requestId,
+    String? responseId,
+    String? userId,
+    String? clientId,
+    List<Invoice>? invoices,
+    int? totalElements,
+    int? totalPage,
+    DateTime? invoiceDate,
+  }) {
+    return EsfModel(
+      requestId: requestId ?? this.requestId,
+      responseId: responseId ?? this.responseId,
+      userId: userId ?? this.userId,
+      clientId: clientId ?? this.clientId,
+      invoices: invoices ?? this.invoices,
+      totalElements: totalElements ?? this.totalElements,
+      totalPage: totalPage ?? this.totalPage,
+      invoiceDate: invoiceDate ?? this.invoiceDate,
+    );
+  }
 }
 
 class Invoice {
@@ -86,7 +137,7 @@ class Invoice {
         deliveryDate: DateTime.parse(json["deliveryDate"] ?? DateTime.now()),
         invoiceDate: json["invoiceDate"] ?? DateTime.now(),
         ownedCrmReceiptCode: json["ownedCrmReceiptCode"] ?? '',
-        invoiceNumber: json["invoiceNumber"] ?? '0',
+        invoiceNumber: json["invoiceNumber"] ?? '',
         number: json["number"] ?? '',
         note: json["note"] ?? '',
         correctedReceiptUuid: json["correctedReceiptUuid"] ?? '',
@@ -102,6 +153,58 @@ class Invoice {
         contractor: Contractor.fromJson(json["contractor"] ?? ''),
         vatTaxType: VatTaxType.fromJson(json["vatTaxType"] ?? ''),
       );
+
+  @override
+  bool operator ==(covariant Invoice other) {
+    if (identical(this, other)) return true;
+
+    return other.documentUuid == documentUuid &&
+        other.totalAmount == totalAmount &&
+        other.createdDate == createdDate &&
+        other.deliveryDate == deliveryDate &&
+        other.invoiceDate == invoiceDate &&
+        other.ownedCrmReceiptCode == ownedCrmReceiptCode &&
+        other.invoiceNumber == invoiceNumber &&
+        other.number == number &&
+        other.note == note &&
+        other.correctedReceiptUuid == correctedReceiptUuid &&
+        other.legalPersonBankAccount == legalPersonBankAccount &&
+        other.contractorBankAccount == contractorBankAccount &&
+        other.isResident == isResident &&
+        other.paymentType == paymentType &&
+        other.currency == currency &&
+        other.status == status &&
+        other.receiptType == receiptType &&
+        other.deliveryType == deliveryType &&
+        other.legalPerson == legalPerson &&
+        other.contractor == contractor &&
+        other.vatTaxType == vatTaxType;
+  }
+
+  @override
+  int get hashCode {
+    return documentUuid.hashCode ^
+        totalAmount.hashCode ^
+        createdDate.hashCode ^
+        deliveryDate.hashCode ^
+        invoiceDate.hashCode ^
+        ownedCrmReceiptCode.hashCode ^
+        invoiceNumber.hashCode ^
+        number.hashCode ^
+        note.hashCode ^
+        correctedReceiptUuid.hashCode ^
+        legalPersonBankAccount.hashCode ^
+        contractorBankAccount.hashCode ^
+        isResident.hashCode ^
+        paymentType.hashCode ^
+        currency.hashCode ^
+        status.hashCode ^
+        receiptType.hashCode ^
+        deliveryType.hashCode ^
+        legalPerson.hashCode ^
+        contractor.hashCode ^
+        vatTaxType.hashCode;
+  }
 }
 
 class Contractor {
@@ -123,6 +226,24 @@ class Contractor {
         mainFullName: json["mainFullName"] ?? '',
         mainPin: json["mainPin"] ?? '',
       );
+
+  @override
+  bool operator ==(covariant Contractor other) {
+    if (identical(this, other)) return true;
+
+    return other.pin == pin &&
+        other.fullName == fullName &&
+        other.mainFullName == mainFullName &&
+        other.mainPin == mainPin;
+  }
+
+  @override
+  int get hashCode {
+    return pin.hashCode ^
+        fullName.hashCode ^
+        mainFullName.hashCode ^
+        mainPin.hashCode;
+  }
 }
 
 class Currency {
@@ -138,6 +259,16 @@ class Currency {
         code: json["code"] ?? '',
         name: json["name"] ?? '',
       );
+
+  @override
+  bool operator ==(covariant Currency other) {
+    if (identical(this, other)) return true;
+
+    return other.code == code && other.name == name;
+  }
+
+  @override
+  int get hashCode => code.hashCode ^ name.hashCode;
 }
 
 class VatTaxType {

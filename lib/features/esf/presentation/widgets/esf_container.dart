@@ -1,29 +1,36 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ishker_24/core/formatters/date_format.dart';
+import 'package:ishker_24/features/esf/data/models/esf_model.dart';
+import 'package:ishker_24/features/esf/data/repo_impls/esf_invoice_repo_impl.dart';
+import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 
 class EsfContainer extends StatelessWidget {
   const EsfContainer({
     super.key,
-    required this.createDate,
-    required this.operationType,
-    required this.status,
-    required this.counterparty,
-    required this.totalCost,
-    this.onTap,
+    required this.model,
+    required this.type,
   });
-  final String createDate;
-  final String operationType;
-  final String status;
-  final String counterparty;
-  final String totalCost;
-  final void Function()? onTap;
+  final Invoice model;
+  final ESFType type;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(8),
-      onTap: onTap,
+      onTap: () async {
+        await context.router.push(
+          EsfReportsDetailRoute(
+            invoice: model,
+            type: type,
+          ),
+        );
+        context.read<EsfInvoiceCubit>().esfReports(isFilter: true);
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         decoration: BoxDecoration(
@@ -42,7 +49,7 @@ class EsfContainer extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    createDate,
+                    AppDateFormats.formatDdMMYyyy.format(model.createdDate),
                     style: AppTextStyles.s16W500(),
                   ),
                 ),
@@ -59,7 +66,7 @@ class EsfContainer extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    operationType,
+                    model.receiptType.name,
                     style: AppTextStyles.s16W500(),
                   ),
                 ),
@@ -76,9 +83,12 @@ class EsfContainer extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    status,
+                    model.status.name,
                     style: AppTextStyles.s16W500(
-                        color: AppColors.color32D681Green),
+                      color: model.status.name == 'Удален'
+                          ? Colors.red
+                          : AppColors.color32D681Green,
+                    ),
                   ),
                 ),
               ],
@@ -94,7 +104,7 @@ class EsfContainer extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    counterparty,
+                    model.contractor.fullName,
                     style: AppTextStyles.s16W500(),
                     textAlign: TextAlign.right,
                   ),
@@ -111,7 +121,7 @@ class EsfContainer extends StatelessWidget {
                       AppTextStyles.s16W400(color: AppColors.color6B7583Grey),
                 ),
                 Text(
-                  totalCost,
+                  model.totalAmount.toString(),
                   style: AppTextStyles.s16W500(),
                 ),
               ],
