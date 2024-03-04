@@ -4,9 +4,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
+import 'package:ishker_24/features/esf/data/repo_impls/esf_invoice_repo_impl.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
 import 'package:ishker_24/features/esf/presentation/widgets/esf_container.dart';
-import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
@@ -20,28 +20,30 @@ import 'package:ishker_24/widgets/expanded_list_widget.dart';
 import 'package:ishker_24/widgets/show_calendar/show_calendar.dart';
 
 @RoutePage()
-class EsfIncomeScreen extends StatefulWidget {
-  const EsfIncomeScreen({super.key});
+class EsfReportsScreen extends StatefulWidget {
+  const EsfReportsScreen({
+    super.key,
+    required this.type,
+    required this.title,
+  });
+  final ESFType type;
+  final String title;
 
   @override
-  State<EsfIncomeScreen> createState() => _EsfIncomeScreenState();
+  State<EsfReportsScreen> createState() => _EsfReportsScreenState();
 }
 
-class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
+class _EsfReportsScreenState extends State<EsfReportsScreen> {
   List<String> status = [];
   String title = 'Статус';
   DateTime? createDateFrom;
   DateTime? createDateTo;
   int? selectedIndex;
 
-  final TextEditingController dateFromController = TextEditingController();
-  final TextEditingController dateToController = TextEditingController();
   final TextEditingController contractorController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
   @override
   void dispose() {
-    dateFromController.dispose();
-    dateToController.dispose();
     contractorController.dispose();
     numberController.dispose();
     super.dispose();
@@ -50,13 +52,14 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<EsfInvoiceCubit>()..esfIncomeSorted(),
+      create: (context) =>
+          sl<EsfInvoiceCubit>()..esfReports(typeFrom: widget.type),
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
-        appBar: const CustomAppBar(
+        appBar: CustomAppBar(
           backgroundColor: AppColors.backgroundColor,
           centerTitle: false,
-          title: 'Приобретение',
+          title: widget.title,
         ),
         body: BlocBuilder<EsfInvoiceCubit, EsfInvoiceState>(
           builder: (context, state) {
@@ -66,6 +69,7 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
               success: (data, statuses) {
                 status = statuses.content.map((e) => e.name).toList();
                 return SingleChildScrollView(
+                  controller: context.read<EsfInvoiceCubit>().scrollController,
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: SafeArea(
                     child: Column(
@@ -144,8 +148,10 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
                                         ),
                                         const SizedBox(height: 6),
                                         Text(
-                                          AppDateFormats.formatDdMMYyyy.format(
-                                              createDateTo ?? DateTime.now()),
+                                          createDateTo == null
+                                              ? ''
+                                              : AppDateFormats.formatDdMMYyyy
+                                                  .format(createDateTo!),
                                           style: AppTextStyles.s16W600(),
                                         ),
                                       ],
@@ -180,22 +186,19 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
                             CustomButton(
                               radius: 16,
                               onPress: () {
-                                context.read<EsfInvoiceCubit>().esfIncomeSorted(
-                                      createdDateFrom: createDateFrom != null
-                                          ? createDateFrom
-                                          : null,
-                                      createdDateTo: createDateTo != null
-                                          ? createDateTo
-                                          : null,
-                                      statusCode: selectedIndex == null
+                                context.read<EsfInvoiceCubit>().esfReports(
+                                      isFilter: true,
+                                      createdDateFromFrom: createDateFrom,
+                                      createdDateToFrom: createDateTo,
+                                      statusCodeFrom: selectedIndex == null
                                           ? null
                                           : statuses.content[selectedIndex!].id
                                               .toString(),
-                                      invoiceNumber:
+                                      invoiceNumberFrom:
                                           numberController.text.isEmpty
                                               ? null
                                               : numberController.text,
-                                      contractorTin:
+                                      contractorTinFrom:
                                           contractorController.text.isEmpty
                                               ? null
                                               : contractorController.text,
@@ -206,8 +209,6 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
                             const SizedBox(height: 8),
                             CustomButton(
                               onPress: () {
-                                dateFromController.clear();
-                                dateToController.clear();
                                 contractorController.clear();
                                 numberController.clear();
                                 setState(() {
@@ -215,10 +216,8 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
                                   createDateFrom = null;
                                   createDateTo = null;
                                 });
-
-                                context
-                                    .read<EsfInvoiceCubit>()
-                                    .esfIncomeSorted();
+                                context.read<EsfInvoiceCubit>().clear();
+                                context.read<EsfInvoiceCubit>().esfReports();
                               },
                               text: 'Очистить фильтр',
                               radius: 16,
@@ -233,30 +232,8 @@ class _EsfIncomeScreenState extends State<EsfIncomeScreen> {
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (context, index) => EsfContainer(
-                            createDate: AppDateFormats.formatDdMMYyyy
-                                .format(data.invoices[index].createdDate),
-                            operationType:
-                                data.invoices[index].receiptType.name,
-                            status: data.invoices[index].status.name,
-                            counterparty:
-                                data.invoices[index].contractor.fullName,
-                            totalCost:
-                                data.invoices[index].totalAmount.toString(),
-                            onTap: () async {
-                              await context.router.push(
-                                EsfIncomeDetailRoute(
-                                  invoice: data.invoices[index],
-                                ),
-                              );
-                              contractorController.clear();
-                              numberController.clear();
-                              setState(() {
-                                selectedIndex = null;
-                                createDateFrom = null;
-                                createDateTo = null;
-                              });
-                              context.read<EsfInvoiceCubit>().esfIncomeSorted();
-                            },
+                            type: widget.type,
+                            model: data.invoices[index],
                           ),
                           separatorBuilder: (context, index) =>
                               const SizedBox(height: 8),

@@ -70,10 +70,8 @@ class AppRouter extends $AppRouter {
 
         ////ESF
         AutoRoute(page: EsfRoute.page),
-        AutoRoute(page: EsfInvoiceRoute.page),
-        AutoRoute(page: EsfRealizationDetailRoute.page),
-        AutoRoute(page: EsfIncomeRoute.page),
-        AutoRoute(page: EsfIncomeDetailRoute.page),
+        AutoRoute(page: EsfReportsRoute.page),
+        AutoRoute(page: EsfReportsDetailRoute.page),
         AutoRoute(page: KKMRoute.page),
         AutoRoute(page: HistoryRoute.page),
         AutoRoute(page: AccountInfoRoute.page),

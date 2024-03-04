@@ -20,10 +20,8 @@ import '../my_ip_main_screen/widgets/copy_container_widget.dart';
 class MyCertficateScreen extends StatelessWidget {
   const MyCertficateScreen({
     super.key,
-    this.certUrl,
     required this.model,
   });
-  final String? certUrl;
   final CheckHasIPModel model;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,7 @@ class MyCertficateScreen extends StatelessWidget {
           child: model.isNewIp
               ? BlocProvider(
                   create: (context) =>
-                      DownloadCertificatePdfCubit()..downloadPdf(certUrl!),
+                      DownloadCertificatePdfCubit()..downloadPdf(model.image!),
                   child: BlocBuilder<DownloadCertificatePdfCubit,
                       DownloadCertificatePdfState>(
                     builder: (context, state) {
