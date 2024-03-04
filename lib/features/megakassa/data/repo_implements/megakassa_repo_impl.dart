@@ -128,7 +128,11 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   }) async {
     try {
       final response = await dio.get(
-        'kkm/megakassa/cashBox/details?rnm=$cashboxId',
+        'kkm/megakassa/cashBox/details',
+        queryParameters: {
+          'rnm': cashboxId,
+          'tin': _tin,
+        },
       );
       return megaKassaKkmDetailEntityFromJson(json.encode(response.data));
     } catch (e) {
