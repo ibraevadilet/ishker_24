@@ -108,7 +108,6 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
   }
 
   _scrollListener() {
-    print(isGetAll);
     if (scrollController.offset >= scrollController.position.maxScrollExtent &&
         !scrollController.position.outOfRange) {
       if (!isGetAll) {
@@ -116,5 +115,11 @@ class EsfInvoiceCubit extends Cubit<EsfInvoiceState> {
         esfReports();
       }
     }
+  }
+
+  @override
+  Future<void> close() {
+    clear();
+    return super.close();
   }
 }

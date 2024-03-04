@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ishker_24/core/formatters/date_format.dart';
 import 'package:ishker_24/features/esf/data/models/esf_model.dart';
 import 'package:ishker_24/features/esf/data/repo_impls/esf_invoice_repo_impl.dart';
 import 'package:ishker_24/features/esf/presentation/cubits/esf_invoice_cubit/esf_invoice_cubit.dart';
@@ -49,7 +48,7 @@ class EsfContainer extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    AppDateFormats.formatDdMMYyyy.format(model.createdDate),
+                    model.createdDate,
                     style: AppTextStyles.s16W500(),
                   ),
                 ),

@@ -86,9 +86,9 @@ class EsfModel {
 class Invoice {
   final String documentUuid;
   final double totalAmount;
-  final DateTime createdDate;
-  final DateTime deliveryDate;
-  final DateTime invoiceDate;
+  final String createdDate;
+  final String deliveryDate;
+  final String invoiceDate;
   final String ownedCrmReceiptCode;
   final String invoiceNumber;
   final String number;
@@ -133,9 +133,9 @@ class Invoice {
   factory Invoice.fromJson(Map<String, dynamic> json) => Invoice(
         documentUuid: json["documentUuid"] ?? '',
         totalAmount: json["totalAmount"] ?? 0.0,
-        createdDate: DateTime.parse(json["createdDate"] ?? DateTime.now()),
-        deliveryDate: DateTime.parse(json["deliveryDate"] ?? DateTime.now()),
-        invoiceDate: json["invoiceDate"] ?? DateTime.now(),
+        createdDate: json["createdDate"] ?? '',
+        deliveryDate: json["deliveryDate"] ?? '',
+        invoiceDate: json["invoiceDate"] ?? '',
         ownedCrmReceiptCode: json["ownedCrmReceiptCode"] ?? '',
         invoiceNumber: json["invoiceNumber"] ?? '',
         number: json["number"] ?? '',

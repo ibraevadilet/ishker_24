@@ -118,7 +118,8 @@ class MegaKassaKkmDetailScreen extends StatelessWidget {
                   ),
                   _buildInfoRow(
                     title: 'Адрес объекта:',
-                    info: detail.city,
+                    info:
+                        '${detail.index}, ${detail.region}, ${detail.city}, ${detail.street}, ${detail.homeNumber}',
                   ),
                   _buildInfoRow(
                     title: 'Широта, долгота:',

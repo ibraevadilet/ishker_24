@@ -108,7 +108,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
     } catch (e) {
       if (e is DioException) {
         if (e.response?.statusCode == 400) {
-          return (
+          throw (
             e.response?.data['error'].toString() ?? 'Неверный пин код',
             null,
             400

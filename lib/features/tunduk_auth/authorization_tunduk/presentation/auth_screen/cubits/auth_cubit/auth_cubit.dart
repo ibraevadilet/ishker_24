@@ -49,13 +49,20 @@ class AuthCubit extends Cubit<AuthState> {
             loginController.text,
             passwordController.text,
           );
-          AppRouting.pushFunction(
-            AuthSendConfirmRoute(
-              authModel: result.copyWith(
-                body: result.body.where((e) => e.enabled).toList(),
+          if (result.body.isEmpty) {
+            AppRouting.pushFunction(
+              const EsiErrorRoute(),
+            );
+          } else {
+            AppRouting.pushFunction(
+              AuthSendConfirmRoute(
+                authModel: result.copyWith(
+                  body: result.body.where((e) => e.enabled).toList(),
+                ),
               ),
-            ),
-          );
+            );
+          }
+
           emit(const AuthState.success());
         } catch (e) {
           AppSnackBar.showSnackBar(e.toString());

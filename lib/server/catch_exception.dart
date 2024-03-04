@@ -52,9 +52,9 @@ class CatchException {
           return CatchException(message: 'Пользователь заблокирован');
         } else if (error.response!.data['body']?['status'] ==
                 'InValidResetPinCodeToken' ||
-            error.response!.data['body']['status'] == 'InvalidOtp') {
+            error.response!.data['body']?['status'] == 'InvalidOtp') {
           return CatchException(message: 'Неверный код подтверждения');
-        } else if (error.response!.data['body']['status'] == 'NoUserFound') {
+        } else if (error.response!.data['body']?['status'] == 'NoUserFound') {
           return CatchException(message: 'Пользователь не найден');
         } else {
           return CatchException(message: error.response!.data['error']);
