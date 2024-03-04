@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,15 +7,16 @@ import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/core/utils/modal_bottom_sheet.dart';
-import 'package:ishker_24/features/account/presentation/account_info_cubit/account_info_cubit.dart';
-import 'package:ishker_24/features/account/presentation/history_cubit/history_cubit.dart';
+import 'package:ishker_24/features/account/presentation/info/cubit/account_info_cubit.dart';
+import 'package:ishker_24/features/account/presentation/history/cubit/history_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:ishker_24/widgets/icon_title_button.dart';
 import 'package:ishker_24/widgets/styled_toasts.dart';
 
-import 'history_item_widget.dart';
+import '../history/history_item_widget.dart';
 
 @RoutePage()
 class AccountInfoScreen extends StatelessWidget {
@@ -54,7 +53,7 @@ class AccountInfoScreen extends StatelessWidget {
           create: (_) => AccountInfoCubit(useCase: sl())..load(account),
         ),
         BlocProvider(
-          create: (_) => QrHistoryCubit(
+          create: (_) => HistoryCubit(
             historyUseCase: sl(),
             account: account,
           )..load(),
@@ -62,56 +61,6 @@ class AccountInfoScreen extends StatelessWidget {
       ],
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
-        // appBar: CustomAppBar(title: account),
-        // body: SafeArea(
-        // child: BlocBuilder<AccountInfoCubit, AccountInfoState>(
-        //   builder: (_, state) {
-        //     return state.when(
-        //       loading: () => const AppIndicator(),
-        //       error: (e) => AppErrorText(error: e),
-        //       success: (info) => Padding(
-        //         padding: const EdgeInsets.all(16),
-        //         child: Column(
-        //           children: [
-        //             infoWidget(
-        //               'Баланс',
-        //               AppCurrencyFormatter.currencyCash(info.amount),
-        //             ),
-        //             infoWidget(
-        //               'Доступный баланс',
-        //               AppCurrencyFormatter.currencyCash(info.amountFree),
-        //             ),
-        //             infoWidget(
-        //               'В обработке',
-        //               AppCurrencyFormatter.currencyCash(info.amountUnfree),
-        //             ),
-        //             infoWidget(
-        //               'Валюта',
-        //               AppCurrencyFormatter.currencyName(info.currency),
-        //             ),
-        //             infoWidget('БИК', info.bic),
-        //             infoWidget('Банк', info.depname),
-        //             infoWidget('ИНН Банка', info.pin),
-        //             infoWidget('Адрес', info.address),
-        //             TextButton(
-        //               onPressed: () => AppRouting.pushFunction(
-        //                 HistoryRoute(account: account),
-        //               ),
-        //               child: Text(
-        //                 'История операций по счету',
-        //                 style: AppTextStyles.s14W500(
-        //                   color: AppColors.color54B25AMain,
-        //                 ),
-        //               ),
-        //             )
-        //           ],
-        //         ),
-        //       ),
-        //     );
-        //   },
-        // ),
-        // ),
-
         body: AccountInfoView(account: account),
       ),
     );
@@ -226,22 +175,22 @@ class _AccountInfoViewState extends State<AccountInfoView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        _Button(
-                          onTap: () => log('tap'),
+                        IconTitleButton(
+                          onTap: () => AppSnackBar.showUnimplementedSnackBar(),
                           imagePath: AppImages.paymentIcon,
                           title: 'Оплатить',
                         ),
-                        _Button(
-                          onTap: () => log('tap'),
+                        IconTitleButton(
+                          onTap: () => AppSnackBar.showUnimplementedSnackBar(),
                           imagePath: AppImages.replenishIcon,
                           title: 'Пополнить',
                         ),
-                        _Button(
-                          onTap: () => log('tap'),
+                        IconTitleButton(
+                          onTap: () => AppSnackBar.showUnimplementedSnackBar(),
                           imagePath: AppImages.transferIcon,
                           title: 'Перевести',
                         ),
-                        _Button(
+                        IconTitleButton(
                           onTap: () => showSheet(
                             context,
                             Column(
@@ -379,62 +328,13 @@ class _AccountInfoViewState extends State<AccountInfoView> {
           ],
         ),
         SliverList.builder(
-          itemCount: context.watch<QrHistoryCubit>().state.model.items.length,
+          itemCount: context.watch<HistoryCubit>().state.model.items.length,
           itemBuilder: (context, i) {
-            final item = context.watch<QrHistoryCubit>().state.model.items[i];
+            final item = context.watch<HistoryCubit>().state.model.items[i];
 
             return HistoryItemWidget(item: item);
           },
         ),
-      ],
-    );
-  }
-}
-
-class _Button extends StatelessWidget {
-  const _Button({
-    super.key,
-    required this.onTap,
-    required this.title,
-    required this.imagePath,
-  });
-
-  final VoidCallback onTap;
-  final String title;
-  final String imagePath;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Material(
-          elevation: 2,
-          borderRadius: BorderRadius.circular(8),
-          color: Colors.white,
-          child: InkWell(
-            onTap: onTap,
-            highlightColor: AppColors.color54B25AMain.withOpacity(.15),
-            splashColor: AppColors.esiMainBlueColor.withOpacity(.15),
-            borderRadius: BorderRadius.circular(8),
-            child: SizedBox(
-              width: 40,
-              height: 40,
-              child: SvgPicture.asset(
-                imagePath,
-                width: 24,
-                height: 24,
-                fit: BoxFit.scaleDown,
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: Text(
-            title,
-            style: AppTextStyles.s14W400(color: AppColors.color2C2C2CBlack),
-          ),
-        )
       ],
     );
   }

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/core/utils/request_status.dart';
-import 'package:ishker_24/features/account/presentation/history_cubit/history_cubit.dart';
-import 'package:ishker_24/features/account/presentation/history_item_widget.dart';
+import 'package:ishker_24/features/account/presentation/history/cubit/history_cubit.dart';
+import 'package:ishker_24/features/account/presentation/history/history_item_widget.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
@@ -23,7 +23,7 @@ class HistoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) =>
-          QrHistoryCubit(historyUseCase: sl(), account: account)..load(),
+          HistoryCubit(historyUseCase: sl(), account: account)..load(),
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: CustomAppBar(
@@ -37,7 +37,7 @@ class HistoryScreen extends StatelessWidget {
           centerTitle: false,
           actions: const [DatePickWidget()],
         ),
-        body: BlocBuilder<QrHistoryCubit, QrHistoryState>(
+        body: BlocBuilder<HistoryCubit, HistoryState>(
           builder: (context, state) {
             if (state.status is RequestLoading) return const AppIndicator();
 
@@ -80,7 +80,7 @@ class HistoryScreen extends StatelessWidget {
                       final metrics = scrollEnd.metrics;
                       if (metrics.atEdge && metrics.pixels != 0) {
                         context
-                            .read<QrHistoryCubit>()
+                            .read<HistoryCubit>()
                             .load(page: state.currentPage + 1);
                       }
 
@@ -135,7 +135,7 @@ class _DatePickWidgetState extends State<DatePickWidget> with RestorationMixin {
 
   void _selectDateRange(DateTimeRange? newSelectedDate) {
     if (newSelectedDate != null) {
-      context.read<QrHistoryCubit>().load(
+      context.read<HistoryCubit>().load(
             start: newSelectedDate.start,
             end: newSelectedDate.end,
           );
@@ -224,7 +224,7 @@ class _DatePickWidgetState extends State<DatePickWidget> with RestorationMixin {
                     CustomListTile(
                       title: 'За 7 дней',
                       ontap: () {
-                        context.read<QrHistoryCubit>().load();
+                        context.read<HistoryCubit>().load();
                         Navigator.pop(context);
                       },
                     ),
@@ -232,7 +232,7 @@ class _DatePickWidgetState extends State<DatePickWidget> with RestorationMixin {
                     CustomListTile(
                       title: 'За 30 дней',
                       ontap: () {
-                        context.read<QrHistoryCubit>().load(
+                        context.read<HistoryCubit>().load(
                             start: DateTime.now()
                                 .subtract(const Duration(days: 30)));
                         Navigator.pop(context);
@@ -242,7 +242,7 @@ class _DatePickWidgetState extends State<DatePickWidget> with RestorationMixin {
                     CustomListTile(
                         title: 'За 90 дней',
                         ontap: () {
-                          context.read<QrHistoryCubit>().load(
+                          context.read<HistoryCubit>().load(
                                 start: DateTime.now()
                                     .subtract(const Duration(days: 90)),
                               );
