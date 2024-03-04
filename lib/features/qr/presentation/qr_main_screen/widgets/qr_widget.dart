@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -108,20 +107,22 @@ class _QrWidgetState extends State<QrWidget> {
                       const SizedBox(height: 16),
                       CustomTextField(
                         controller: _controller,
-                        keyboardType: TextInputType.number,
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: true,
+                        ),
                         labelText: 'Сумма к зачислению',
                         onChanged: (val) {
                           if (_debounce?.isActive ?? false) _debounce?.cancel();
                           _debounce = Timer(const Duration(seconds: 1), () {
-                            log(val);
                             final value = double.tryParse(val);
+                            if (value != null) {
+                              context.read<GenerateQrCubit>().generateQr(
+                                  amountFrom: (value * 100).toInt());
 
-                            setState(() {
-                              _controller.text = value?.toString() ?? '0.0';
-                            });
-                            context.read<GenerateQrCubit>().generateQr(
-                                  amountFrom: value ?? 0.0,
-                                );
+                              setState(
+                                () => _controller.text = value.toString(),
+                              );
+                            }
                           });
                         },
                       ),

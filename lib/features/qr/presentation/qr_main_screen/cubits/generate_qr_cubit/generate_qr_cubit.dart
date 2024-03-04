@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ishker_24/core/constants/shared_keys.dart';
@@ -25,7 +27,7 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
   final GenerateQrUseCase useCase;
   final GetClientInfoUseCase accountsCase;
 
-  num amount = 0;
+  int amount = 0;
   String savedAccount =
       sl<SharedPreferences>().getString(SharedKeys.savedAccount) ?? '';
   final String testQrCode =
@@ -47,12 +49,13 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
   }
 
   Future<void> generateQr({
-    num? amountFrom,
+    int? amountFrom,
     String? accountFrom,
   }) async {
     if (amountFrom != null) {
       amount = amountFrom;
     }
+    log('amount: $amount');
     if (accountFrom != null) {
       savedAccount = accountFrom;
     }
@@ -63,7 +66,7 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
     try {
       final postModel = GenerateQrPostModel(
         pin: isSavedPin,
-        amount: (amount * 100).toString(),
+        amount: amount.toString(),
         account: savedAccount.isEmpty
             ? accountsList.first.accountNumber
             : savedAccount,
