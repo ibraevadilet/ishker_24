@@ -5,4 +5,10 @@ class AccountInfoState with _$AccountInfoState {
   const factory AccountInfoState.loading() = _Loading;
   const factory AccountInfoState.error(String error) = _Error;
   const factory AccountInfoState.success(AccountModel model) = _Success;
+
+  const AccountInfoState._();
+  bool get isLoading => maybeWhen(
+        orElse: () => false,
+        loading: () => true,
+      );
 }

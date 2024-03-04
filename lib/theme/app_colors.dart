@@ -20,6 +20,7 @@ abstract class AppColors {
   static const Color backgroundColor = Color(0xffFAFAFA);
   static const Color color2C2C2CBlack = Color(0xff2C2C2C);
   static const Color color32D681Green = Color(0xff32D681);
+  static const Color colorBBD9B9 = Color(0xffBBD9B9);
 
   static const LinearGradient billGradient = LinearGradient(
     begin: Alignment.topRight,

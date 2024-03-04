@@ -35,6 +35,7 @@ class AppSnackBar {
     BuildContext context,
     String text, {
     bool isSuccess = false,
+    Duration? duration,
   }) {
     showToast(
       text,
@@ -42,7 +43,7 @@ class AppSnackBar {
           isSuccess ? const Color(0xFF026405) : const Color(0xFFFF1100),
       context: context,
       animation: StyledToastAnimation.fade,
-      duration: const Duration(seconds: 5),
+      duration: duration ?? const Duration(seconds: 5),
     );
   }
 }

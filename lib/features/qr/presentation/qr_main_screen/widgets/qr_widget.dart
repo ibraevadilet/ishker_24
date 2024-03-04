@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +33,16 @@ class QrWidget extends StatefulWidget {
 
 class _QrWidgetState extends State<QrWidget> {
   late AccountChetModel selectedAccount;
+  final _controller = TextEditingController();
+  Timer? _debounce;
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _debounce?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -94,12 +107,22 @@ class _QrWidgetState extends State<QrWidget> {
                       ),
                       const SizedBox(height: 16),
                       CustomTextField(
+                        controller: _controller,
                         keyboardType: TextInputType.number,
                         labelText: 'Сумма к зачислению',
                         onChanged: (val) {
-                          context.read<GenerateQrCubit>().generateQr(
-                                amountFrom: int.tryParse(val) ?? 0,
-                              );
+                          if (_debounce?.isActive ?? false) _debounce?.cancel();
+                          _debounce = Timer(const Duration(seconds: 1), () {
+                            log(val);
+                            final value = double.tryParse(val);
+
+                            setState(() {
+                              _controller.text = value?.toString() ?? '0.0';
+                            });
+                            context.read<GenerateQrCubit>().generateQr(
+                                  amountFrom: value ?? 0.0,
+                                );
+                          });
                         },
                       ),
                       const SizedBox(height: 32),

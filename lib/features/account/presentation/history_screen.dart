@@ -29,7 +29,7 @@ class HistoryScreen extends StatelessWidget {
         appBar: CustomAppBar(
           backgroundColor: AppColors.backgroundColor,
           titleWidget: Text(
-            'История по QR',
+            'История',
             style: AppTextStyles.s16W600(
               color: AppColors.color2C2C2CBlack,
             ),

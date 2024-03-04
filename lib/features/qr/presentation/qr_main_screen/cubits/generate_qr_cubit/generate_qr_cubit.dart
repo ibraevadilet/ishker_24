@@ -25,7 +25,7 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
   final GenerateQrUseCase useCase;
   final GetClientInfoUseCase accountsCase;
 
-  int amount = 0;
+  num amount = 0;
   String savedAccount =
       sl<SharedPreferences>().getString(SharedKeys.savedAccount) ?? '';
   final String testQrCode =
@@ -47,7 +47,7 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
   }
 
   Future<void> generateQr({
-    int? amountFrom,
+    num? amountFrom,
     String? accountFrom,
   }) async {
     if (amountFrom != null) {
@@ -63,7 +63,7 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
     try {
       final postModel = GenerateQrPostModel(
         pin: isSavedPin,
-        amount: amount.toString(),
+        amount: (amount * 100).toString(),
         account: savedAccount.isEmpty
             ? accountsList.first.accountNumber
             : savedAccount,

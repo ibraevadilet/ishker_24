@@ -98,8 +98,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
@@ -184,8 +184,9 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements AccountInfoState {
+abstract class _Loading extends AccountInfoState {
   const factory _Loading() = _$LoadingImpl;
+  const _Loading._() : super._();
 }
 
 /// @nodoc
@@ -221,8 +222,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(this.error);
+class _$ErrorImpl extends _Error {
+  const _$ErrorImpl(this.error) : super._();
 
   @override
   final String error;
@@ -318,8 +319,9 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements AccountInfoState {
+abstract class _Error extends AccountInfoState {
   const factory _Error(final String error) = _$ErrorImpl;
+  const _Error._() : super._();
 
   String get error;
   @JsonKey(ignore: true)
@@ -360,8 +362,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.model);
+class _$SuccessImpl extends _Success {
+  const _$SuccessImpl(this.model) : super._();
 
   @override
   final AccountModel model;
@@ -457,8 +459,9 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements AccountInfoState {
+abstract class _Success extends AccountInfoState {
   const factory _Success(final AccountModel model) = _$SuccessImpl;
+  const _Success._() : super._();
 
   AccountModel get model;
   @JsonKey(ignore: true)
