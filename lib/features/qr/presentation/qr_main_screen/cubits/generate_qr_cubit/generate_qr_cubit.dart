@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ishker_24/core/constants/shared_keys.dart';
@@ -53,6 +55,7 @@ class GenerateQrCubit extends Cubit<GenerateQrState> {
     if (amountFrom != null) {
       amount = amountFrom;
     }
+    log('amount: $amount');
     if (accountFrom != null) {
       savedAccount = accountFrom;
     }

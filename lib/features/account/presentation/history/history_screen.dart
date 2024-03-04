@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/core/utils/request_status.dart';
-import 'package:ishker_24/features/account/presentation/history_cubit/history_cubit.dart';
-import 'package:ishker_24/features/account/presentation/history_item_widget.dart';
+import 'package:ishker_24/features/account/presentation/history/cubit/history_cubit.dart';
+import 'package:ishker_24/features/account/presentation/history/history_item_widget.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/theme/app_theme.dart';
+import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_listtile.dart';
-import 'package:ishker_24/widgets/declarative_refresh_indicator.dart';
 
 @RoutePage()
 class HistoryScreen extends StatelessWidget {
@@ -23,13 +23,13 @@ class HistoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) =>
-          QrHistoryCubit(historyUseCase: sl(), account: account)..load(),
+          HistoryCubit(historyUseCase: sl(), account: account)..load(),
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: CustomAppBar(
           backgroundColor: AppColors.backgroundColor,
           titleWidget: Text(
-            'История по QR',
+            'История',
             style: AppTextStyles.s16W600(
               color: AppColors.color2C2C2CBlack,
             ),
@@ -37,66 +37,64 @@ class HistoryScreen extends StatelessWidget {
           centerTitle: false,
           actions: const [DatePickWidget()],
         ),
-        body: BlocBuilder<QrHistoryCubit, QrHistoryState>(
+        body: BlocBuilder<HistoryCubit, HistoryState>(
           builder: (context, state) {
+            if (state.status is RequestLoading) return const AppIndicator();
+
             final items = state.model.items;
 
-            return DeclarativeRefreshIndicator(
-              refreshing: state.status is RequestLoading,
-              onRefresh: () => context.read<QrHistoryCubit>().load(),
-              child: items.isEmpty
-                  ? Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          // mainAxisSize: MainAxisSize.max,
-                          children: [
-                            SvgPicture.asset('assets/images/file_icon.svg'),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                top: 40,
-                                bottom: 20,
-                              ),
-                              child: Text(
-                                'Операций нет',
-                                style: AppTextStyles.s16W500(
-                                  color: AppColors.color2C2C2CBlack,
-                                ),
+            return items.isEmpty
+                ? Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // mainAxisSize: MainAxisSize.max,
+                        children: [
+                          SvgPicture.asset('assets/images/file_icon.svg'),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 40,
+                              bottom: 20,
+                            ),
+                            child: Text(
+                              'Операций нет',
+                              style: AppTextStyles.s16W500(
+                                color: AppColors.color2C2C2CBlack,
                               ),
                             ),
-                            Text(
-                              'За выбранный период операций не найдено, попробуйте указать другие даты',
-                              style: AppTextStyles.s16W500(
-                                color: AppColors.color6B7583Grey,
-                              ),
-                              textAlign: TextAlign.center,
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  : NotificationListener<ScrollEndNotification>(
-                      onNotification: (scrollEnd) {
-                        final metrics = scrollEnd.metrics;
-                        if (metrics.atEdge && metrics.pixels != 0) {
-                          context
-                              .read<QrHistoryCubit>()
-                              .load(page: state.currentPage + 1);
-                        }
-
-                        return true;
-                      },
-                      child: SafeArea(
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: items.length,
-                          itemBuilder: (context, index) =>
-                              HistoryItemWidget(item: items[index]),
-                        ),
+                          ),
+                          Text(
+                            'За выбранный период операций не найдено, попробуйте указать другие даты',
+                            style: AppTextStyles.s16W500(
+                              color: AppColors.color6B7583Grey,
+                            ),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
                       ),
                     ),
-            );
+                  )
+                : NotificationListener<ScrollEndNotification>(
+                    onNotification: (scrollEnd) {
+                      final metrics = scrollEnd.metrics;
+                      if (metrics.atEdge && metrics.pixels != 0) {
+                        context
+                            .read<HistoryCubit>()
+                            .load(page: state.currentPage + 1);
+                      }
+
+                      return true;
+                    },
+                    child: SafeArea(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: items.length,
+                        itemBuilder: (context, index) =>
+                            HistoryItemWidget(item: items[index]),
+                      ),
+                    ),
+                  );
           },
         ),
       ),
@@ -137,7 +135,7 @@ class _DatePickWidgetState extends State<DatePickWidget> with RestorationMixin {
 
   void _selectDateRange(DateTimeRange? newSelectedDate) {
     if (newSelectedDate != null) {
-      context.read<QrHistoryCubit>().load(
+      context.read<HistoryCubit>().load(
             start: newSelectedDate.start,
             end: newSelectedDate.end,
           );
@@ -226,7 +224,7 @@ class _DatePickWidgetState extends State<DatePickWidget> with RestorationMixin {
                     CustomListTile(
                       title: 'За 7 дней',
                       ontap: () {
-                        context.read<QrHistoryCubit>().load();
+                        context.read<HistoryCubit>().load();
                         Navigator.pop(context);
                       },
                     ),
@@ -234,7 +232,7 @@ class _DatePickWidgetState extends State<DatePickWidget> with RestorationMixin {
                     CustomListTile(
                       title: 'За 30 дней',
                       ontap: () {
-                        context.read<QrHistoryCubit>().load(
+                        context.read<HistoryCubit>().load(
                             start: DateTime.now()
                                 .subtract(const Duration(days: 30)));
                         Navigator.pop(context);
@@ -244,7 +242,7 @@ class _DatePickWidgetState extends State<DatePickWidget> with RestorationMixin {
                     CustomListTile(
                         title: 'За 90 дней',
                         ontap: () {
-                          context.read<QrHistoryCubit>().load(
+                          context.read<HistoryCubit>().load(
                                 start: DateTime.now()
                                     .subtract(const Duration(days: 90)),
                               );

@@ -13,6 +13,9 @@ final appRouter = sl<AppRouter>();
 
 void main() async {
   await initServiceLocator();
+
+  // Bloc.observer = const AppBlocObserver();
+
   runApp(const Main());
 }
 

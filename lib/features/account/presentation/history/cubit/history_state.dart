@@ -1,7 +1,7 @@
 part of 'history_cubit.dart';
 
-class QrHistoryState extends Equatable {
-  const QrHistoryState({
+class HistoryState extends Equatable {
+  const HistoryState({
     this.status = const RequestInitial(),
     this.model = HistoryModel.empty,
     this.currentPage = 1,
@@ -15,14 +15,14 @@ class QrHistoryState extends Equatable {
   final DateTime start;
   final DateTime end;
 
-  QrHistoryState copyWith({
+  HistoryState copyWith({
     RequestStatus? status,
     HistoryModel? model,
     int? currentPage,
     DateTime? start,
     DateTime? end,
   }) =>
-      QrHistoryState(
+      HistoryState(
         status: status ?? this.status,
         model: model ?? this.model,
         currentPage: currentPage ?? this.currentPage,

@@ -29,5 +29,6 @@ class AppCurrencyFormatter {
   static String currencyName(String currancy) =>
       switch (currancy) { '417' => 'Сом', _ => '' };
 
-  static String currencyCash(num value) => currencyDisplayFormat.format(value);
+  static String currencyCash(num value) =>
+      currencyDisplayFormat.format(value).replaceAll(',', '.');
 }
