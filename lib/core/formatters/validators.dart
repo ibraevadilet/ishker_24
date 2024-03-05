@@ -6,6 +6,25 @@ class AppInputValidators {
     return null;
   }
 
+  static String? latLonValidator(String? val) {
+    final value = val?.replaceFirst(',', '.');
+    if (value == null || value.isEmpty) {
+      return 'Поле обязательно для заполнения';
+    }
+    if (!value.contains('.')) {
+      return 'Поле обязательно должно быть дробным';
+    }
+    if (value.contains('.') && value.split('.').last.length != 4 ||
+        !(double.parse(value.split('.').first) >= 10 &&
+            double.parse(value.split('.').first) <= 90)) {
+      return 'Формат поля "10.0000"';
+    }
+    if (value.split('.').any((e) => e.contains('.'))) {
+      return 'Формат поля "10.0000"';
+    }
+    return null;
+  }
+
   static String? emailMegaKassaValidator(String? val) {
     if (val == null || val.isEmpty) {
       return 'Поле обязательно для заполнения';
@@ -47,7 +66,18 @@ class AppInputValidators {
       return null;
     }
     if (val.length != 6) {
-      return 'Бик должен состоянить из 6 цифр';
+      return 'Бик должен состоять из 6 цифр';
+    } else {
+      return null;
+    }
+  }
+
+  static String? indexValidator(String? val) {
+    if (val!.isEmpty) {
+      return null;
+    }
+    if (val.length != 6) {
+      return 'Индекс должен состоять из 6 цифр';
     } else {
       return null;
     }

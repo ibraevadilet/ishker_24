@@ -56,24 +56,22 @@ class MegaKassaKkmRegistrationEntity {
           "city": step2Entity?.locality,
           "street": step2Entity?.street,
           "homeNumber": step2Entity?.houseNumber,
-          "lat":
-              double.parse((step2Entity?.lat)?.replaceAll(',', '.') ?? '0.0'),
-          "lon":
-              double.parse((step2Entity?.long)?.replaceAll(',', '.') ?? '0.0'),
+          "lat": (step2Entity?.lat.replaceAll(',', '.')) ?? '0.0',
+          "lon": (step2Entity?.long.replaceAll(',', '.')) ?? '0.0',
         },
         "sellPlaceCode": step1Entity?.paymentType.code,
         "password": step3Entity?.password,
         "vatPayer": step1Entity?.isNdsPayer
       };
 
-  Map<String, dynamic> toParams() => {
-        "taxSystemNames": step1Entity?.mode.taxName,
-        "entrepreneurshipObjecName": step1Entity?.objectType.name,
-        "taxAuthorityDepartmenName": step1Entity?.code.name,
-        "businessActivitName": step1Entity?.activity.name,
-        "modelName": step3Entity?.kkmModel,
-        "calcItemTypeNames":
-            step1Entity?.params.map((e) => e.attributeName).toList(),
-        "sellPlaceName": step1Entity?.paymentType.name,
-      };
+  // Map<String, dynamic> toParams() => {
+  //       "taxSystemNames": step1Entity?.mode.taxName,
+  //       "entrepreneurshipObjecName": step1Entity?.objectType.name,
+  //       "taxAuthorityDepartmenName": step1Entity?.code.name,
+  //       "businessActivitName": step1Entity?.activity.name,
+  //       "modelName": step3Entity?.kkmModel,
+  //       "calcItemTypeNames":
+  //           step1Entity?.params.map((e) => e.attributeName).toList(),
+  //       "sellPlaceName": step1Entity?.paymentType.name,
+  //     };
 }

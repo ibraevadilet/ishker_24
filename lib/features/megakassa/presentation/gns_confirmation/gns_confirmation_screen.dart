@@ -90,7 +90,7 @@ class _MegaKassaGnsConfirmationScreenState
                                   onPress: () {
                                     appRouter.popUntilRoot();
                                     appRouter.push(
-                                      const MegaKassaEntryRoute(),
+                                      MegaKassaEntryRoute(),
                                     );
                                   },
                                   isSuccess: false,
@@ -106,7 +106,9 @@ class _MegaKassaGnsConfirmationScreenState
                                   onPress: () {
                                     appRouter.popUntilRoot();
                                     appRouter.push(
-                                      const MegaKassaEntryRoute(),
+                                      MegaKassaEntryRoute(
+                                        isAfterRegistration: true,
+                                      ),
                                     );
                                   },
                                   title: 'Регистрация прошла успешно!',
@@ -135,7 +137,7 @@ class _MegaKassaGnsConfirmationScreenState
                                   onPress: () {
                                     appRouter.popUntilRoot();
                                     appRouter.push(
-                                      const MegaKassaEntryRoute(),
+                                      MegaKassaEntryRoute(),
                                     );
                                   },
                                   isSuccess: false,
@@ -151,7 +153,7 @@ class _MegaKassaGnsConfirmationScreenState
                                   onPress: () {
                                     appRouter.popUntilRoot();
                                     appRouter.push(
-                                      const MegaKassaEntryRoute(),
+                                      MegaKassaEntryRoute(),
                                     );
                                     appRouter.push(
                                       MegaKassaKkmDetailRoute(

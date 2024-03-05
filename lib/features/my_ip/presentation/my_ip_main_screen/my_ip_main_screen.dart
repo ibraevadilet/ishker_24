@@ -163,7 +163,7 @@ class MyIpMainScreen extends StatelessWidget {
                           shape: const CircleBorder(),
                           onTap: () {
                             AppRouting.pushFunction(
-                              const MegaKassaEntryRoute(),
+                              MegaKassaEntryRoute(),
                             );
                           },
                           leading: SvgPicture.asset(
