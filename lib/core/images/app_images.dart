@@ -11,6 +11,7 @@ class AppImages {
   static const String aboutIcon = 'assets/images/about_icon.svg';  
   static const String accountIconComCurrancy = 'assets/images/account_icon_com_currancy.svg';  
   static const String accountIconDollarCurrancy = 'assets/images/account_icon_dollar_currancy.svg';  
+  static const String alertIcon = 'assets/images/alert_icon.svg';  
   static const String appstoreLogo = 'assets/images/appstore_logo.png';  
   static const String arrowDown = 'assets/images/arrow_down.svg';  
   static const String arrowDownIcon = 'assets/images/arrow_down_icon.svg';  
