@@ -8,9 +8,11 @@ class DetailColumnContainer extends StatelessWidget {
     super.key,
     required this.title,
     required this.value,
+    this.color = Colors.black,
   });
   final String title;
   final String value;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return value.isNotEmpty
@@ -39,7 +41,9 @@ class DetailColumnContainer extends StatelessWidget {
                           : null,
                       child: Text(
                         value,
-                        style: AppTextStyles.s14W500(),
+                        style: AppTextStyles.s14W500(
+                          color: color,
+                        ),
                       ),
                     ),
                   ),

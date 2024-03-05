@@ -1,12 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/app_helpers/app_device_info.dart';
 import 'package:ishker_24/core/app_helpers/dio_header.dart';
-import 'package:ishker_24/core/constants/shared_keys.dart';
+import 'package:ishker_24/core/functions/saved_pin.dart';
 import 'package:ishker_24/features/splash/data/models/ishker_auth_model.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/repositories/pin_code_repository.dart';
 import 'package:ishker_24/server/catch_exception.dart';
-import 'package:ishker_24/server/service_locator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class PinCodeRepoImpl implements PinCodeRepo {
   final Dio dio;
@@ -15,7 +13,7 @@ class PinCodeRepoImpl implements PinCodeRepo {
   @override
   Future<IshkerAuthModel> enterPinCode(String pinCode) async {
     final deviceId = await AppDeviceInfo.deviceId();
-    final pin = sl<SharedPreferences>().getString(SharedKeys.pin)!;
+    final pin = AppSavedPin.getPin();
     try {
       await dio.get(
         options: AppDioHeader.dioHeader(),
@@ -28,13 +26,6 @@ class PinCodeRepoImpl implements PinCodeRepo {
 
       return await getToken(deviceId, pin);
     } catch (e) {
-      if (e is DioException) {
-        if (e.response!.data['error'] == 'invalid username or password') {
-          throw CatchException(message: 'Неверный пин код').message;
-        } else {
-          throw CatchException(message: e.response!.data['error']).message;
-        }
-      }
       throw CatchException.convertException(e).message;
     }
   }

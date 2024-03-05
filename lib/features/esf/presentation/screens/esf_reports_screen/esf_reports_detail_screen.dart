@@ -60,6 +60,13 @@ class _EsfReportsDetailScreenState extends State<EsfReportsDetailScreen> {
                             value: widget.invoice.invoiceNumber,
                           ),
                           DetailColumnContainer(
+                            title: 'Статус',
+                            value: widget.invoice.status.name,
+                            color: widget.invoice.status.name == 'Удален'
+                                ? Colors.red
+                                : AppColors.color32D681Green,
+                          ),
+                          DetailColumnContainer(
                             title: 'Получатель',
                             value:
                                 '${widget.invoice.contractor.pin} - ${widget.invoice.contractor.fullName}',
