@@ -28,7 +28,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   Future<bool> getMegakassaStatus() async {
     try {
       final response = await dio.get(
-        '/kkm/megakassa/client/findByTin?tin=$_tin',
+        'kkm/kkm/megakassa/client/findByTin?tin=$_tin',
       );
       return response.data;
     } catch (e) {
@@ -40,7 +40,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   Future<List<MegaKassaKkmEntity>?> getKkmList() async {
     try {
       final response = await dio.get(
-        '/kkm/megakassa/cashBox/list?tin=$_tin',
+        'kkm/kkm/megakassa/cashBox/list?tin=$_tin',
       );
       return (response.data as List)
           .map((e) => MegaKassaKkmEntity.fromMap(e))
@@ -54,7 +54,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   Future<MegaKassaProfileEntity> getProfileInfo() async {
     try {
       final response = await dio.get(
-        '/kkm/megakassa/getClientDetails?tin=$_tin',
+        'kkm/kkm/megakassa/getClientDetails?tin=$_tin',
       );
       return MegaKassaProfileEntity.fromJson(response.data);
     } catch (e) {
@@ -71,7 +71,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
     try {
       if (registrationEntity != null) {
         final clientGnsRegistrationRequest = await dio.get(
-          '/kkm/megakassa/gnsTinValidation?tin=$_tin',
+          'kkm/kkm/megakassa/gnsTinValidation?tin=$_tin',
         );
 
         registrationEntity = registrationEntity.copyWith(
@@ -83,7 +83,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
         );
 
         final result = await dio.post(
-          'document/kkm/client/account/auth?personIdnp=$_tin&byPin=$pincode',
+          'kkm/document/kkm/client/account/auth?personIdnp=$_tin&byPin=$pincode',
           data: registrationEntity.toJson(),
         );
 
@@ -92,7 +92,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
 
       if (registrationKkmEntity != null) {
         final request = await dio.post(
-          'document/kkm/kkm/account/auth?personIdnp=$_tin&byPin=$pincode',
+          'kkm/document/kkm/kkm/account/auth?personIdnp=$_tin&byPin=$pincode',
           // queryParameters: registrationKkmEntity.toParams(),
           data: registrationKkmEntity.toJson(),
         );
@@ -108,7 +108,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
     } catch (e) {
       if (e is DioException) {
         if (e.response?.statusCode == 400) {
-          throw (
+          return (
             e.response?.data['error'].toString() ?? 'Неверный пин код',
             null,
             400
@@ -128,7 +128,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   }) async {
     try {
       final response = await dio.get(
-        'kkm/megakassa/cashBox/details',
+        'kkm/kkm/megakassa/cashBox/details',
         queryParameters: {
           'rnm': cashboxId,
           'tin': _tin,
@@ -144,7 +144,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   Future<MegaKassaStepsInfoEntity> getStepsInfo() async {
     try {
       final response = await dio.get(
-        '/kkm/megakassa/getInfo',
+        'kkm/kkm/megakassa/getInfo',
       );
       return megaKassaStep1InfoEntityFromJson(json.encode(response.data));
     } catch (e) {
@@ -158,7 +158,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   }) async {
     try {
       final request = await dio.post(
-        '/kkm/megakassa/create/cashBox?tin=$_tin',
+        'kkm/kkm/megakassa/create/cashBox?tin=$_tin',
         data: registrationEntity.toJson(),
       );
 
@@ -172,7 +172,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   Future<List<PinCodeTypesModel>> getGnsMethods() async {
     try {
       final request = await dio.post(
-        '/document/kkm/methods',
+        'kkm/document/kkm/methods',
         data: {"personIdnp": _tin},
       );
 
@@ -188,7 +188,7 @@ class MegaKassaRepoImpl implements MegaKassaRepo {
   Future<bool> getGetConfirmation({required String method}) async {
     try {
       await dio.post(
-        'document/kkm/pin/code',
+        'kkm/document/kkm/pin/code',
         data: {
           "personIdnp": _tin,
           "method": method,

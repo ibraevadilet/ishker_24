@@ -96,21 +96,25 @@ import 'package:ishker_24/features/qr/data/repo_implements/generate_qr_repo_impl
 import 'package:ishker_24/features/qr/domain/repositories/generate_qr_repository.dart';
 import 'package:ishker_24/features/qr/domain/use_cases/generate_qr_usecase.dart';
 import 'package:ishker_24/features/qr/presentation/qr_main_screen/cubits/generate_qr_cubit/generate_qr_cubit.dart';
+import 'package:ishker_24/features/register_ip/data/repo_implements/check_oep_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_gns_pdf_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_pin_code_receiving_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/get_user_info_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/send_otp_repo_impl.dart';
 import 'package:ishker_24/features/register_ip/data/repo_implements/tax_and_selected_modes_repo_impl.dart';
+import 'package:ishker_24/features/register_ip/domain/repositories/check_oep_repository.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/get_gns_pdf_repository.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/get_pin_code_receiving_repository.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/get_user_info_repository.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/send_otp_repository.dart';
 import 'package:ishker_24/features/register_ip/domain/repositories/tax_and_selected_modes_repository.dart';
+import 'package:ishker_24/features/register_ip/domain/use_cases/check_oep_usecase.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/get_gns_pdf_usecase.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/get_pin_code_receiving_usecase.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/get_user_info_usecase.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/send_otp_usecase.dart';
 import 'package:ishker_24/features/register_ip/domain/use_cases/tax_and_selected_modes_usecase.dart';
+import 'package:ishker_24/features/register_ip/presentation/cubits/check_oep_cubit/check_oep_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/confirm_otp_cubit/confirm_otp_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/get_gns_pdf_cubit/get_gns_pdf_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/get_pin_code_receiving_cubit/get_pin_code_receiving_cubit.dart';
@@ -178,7 +182,7 @@ import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/re
 import 'package:ishker_24/features/tunduk_auth/recovery_pin_code/presentation/recovery_pin_code_enter_sms_code_screen/reset_pin_code_token_cubit/reset_pin_code_token_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/exit_cubit/exit_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.dart';
-import 'package:ishker_24/server/dio_kkm.dart';
+import 'package:ishker_24/server/dio_base_auth.dart';
 import 'package:ishker_24/server/dio_settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -197,11 +201,13 @@ Future<void> initServiceLocator() async {
   /// Other Services
   sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
   sl.registerLazySingleton<Dio>(() => DioSettings(prefs: sl()).dio);
+  final dioBaseAuth = DioBaseAuth().dio;
   sl.registerSingleton<AppRouter>(AppRouter());
 
   /// Repository
-  sl.registerFactory<RegisterOEPRepo>(() => RegisterOEPRepoImpl(dio: sl()));
-  sl.registerFactory<GetTermsRepo>(() => GetTermsRepoImpl(dio: sl()));
+  sl.registerFactory<RegisterOEPRepo>(
+      () => RegisterOEPRepoImpl(dio: dioBaseAuth));
+  sl.registerFactory<GetTermsRepo>(() => GetTermsRepoImpl(dio: dioBaseAuth));
   sl.registerFactory<GetUserInfoRepo>(
     () => GetUserInfoRepoImpl(dio: sl()),
   );
@@ -252,6 +258,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GeneratePdfReviewRepo>(
       () => GeneratePdfReviewRepoImpl(dio: sl()));
   sl.registerFactory<SaveTokenRepo>(() => SaveTokenRepoImpl(dio: sl()));
+  sl.registerFactory<CheckOepRepo>(() => CheckOepRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -321,6 +328,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GeneratePdfReviewUseCase>(
       () => GeneratePdfReviewUseCase(repo: sl()));
   sl.registerFactory<SaveTokenUseCase>(() => SaveTokenUseCase(repo: sl()));
+  sl.registerFactory<CheckOepUseCase>(() => CheckOepUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -395,14 +403,15 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GeneratePdfReviewCubit>(
       () => GeneratePdfReviewCubit(useCase: sl()));
   sl.registerFactory<EsfAcceptCubit>(() => EsfAcceptCubit(useCase: sl()));
+  sl.registerFactory<CheckOepCubit>(() => CheckOepCubit(useCase: sl()));
 
   _registerMegaKassaDependecies();
 }
 
 Future<void> _registerMegaKassaDependecies() async {
   ///TODO
-  final dioKKm = DioKKM().dio;
-  sl.registerFactory<MegaKassaRepo>(() => MegaKassaRepoImpl(dio: dioKKm));
+  // final dioKKm = DioKKM().dio;
+  sl.registerFactory<MegaKassaRepo>(() => MegaKassaRepoImpl(dio: sl()));
 
   sl.registerFactory<MegaKassaGetStatusUseCase>(
       () => MegaKassaGetStatusUseCase(repo: sl()));

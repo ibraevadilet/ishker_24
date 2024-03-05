@@ -4,7 +4,9 @@ import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/register_oep/data/models/send_register_oep_model.dart';
 import 'package:ishker_24/features/register_oep/domain/use_cases/register_oep_use_case.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
+import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/widgets/styled_toasts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'register_oep_cubit.freezed.dart';
 part 'register_oep_state.dart';
@@ -44,6 +46,7 @@ class RegisterOepCubit extends Cubit<RegisterOepState> {
           useCase.passNumberController.clear();
           useCase.phoneNumber.clear();
           useCase.emailController.clear();
+          sl<SharedPreferences>().clear();
         } else {
           emit(const RegisterOepState.success());
         }
