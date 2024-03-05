@@ -2,7 +2,7 @@ class ReportDoneModel {
   final int reportId;
   final String reportName;
   final String status;
-  final DateTime sendDate;
+  final String sendDate;
 
   ReportDoneModel({
     required this.reportId,
@@ -16,13 +16,13 @@ class ReportDoneModel {
         reportId: json["reportId"],
         reportName: json["reportName"],
         status: json["status"],
-        sendDate: DateTime.parse(json["sendDate"]),
+        sendDate: json["sendDate"],
       );
 
   Map<String, dynamic> toJson() => {
         "reportId": reportId,
         "reportName": reportName,
         "status": status,
-        "sendDate": sendDate.toIso8601String(),
+        "sendDate": sendDate,
       };
 }

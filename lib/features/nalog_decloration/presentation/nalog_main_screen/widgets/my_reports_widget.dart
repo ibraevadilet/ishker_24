@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ishker_24/core/formatters/date_format.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/cubits/get_my_reports_cubit/get_my_reports_cubit.dart';
@@ -43,8 +42,7 @@ class MyReportsWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            AppDateFormats.formatDdMMYyyyHHmm
-                                .format(model[index].sendDate),
+                            model[index].sendDate,
                             style: AppTextStyles.s16W400(),
                           ),
                           const SizedBox(height: 12),
