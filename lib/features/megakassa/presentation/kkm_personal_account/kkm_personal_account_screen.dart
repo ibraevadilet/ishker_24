@@ -78,7 +78,7 @@ class _MegaKassaKkmPersonalAccountScreenState
           const SizedBox(height: 8),
           _MenuItem(
             title: 'MegaKassa',
-            iconPath: AppImages.mkLogoSvg,
+            iconPath: AppImages.logomk,
             bgColor: const Color(0xffA0E73F),
             onPressed: () {
               IshkerDialog.showDraggableBottomSheet(
@@ -145,8 +145,8 @@ class _InstalBottomSheet extends StatelessWidget {
               children: [
                 Image.asset(
                   Platform.isIOS
-                      ? AppImages.appStoreLogo
-                      : AppImages.playStoreLogo,
+                      ? AppImages.appstoreLogo
+                      : AppImages.playstoreLogo,
                   scale: 4,
                 ),
                 const SizedBox(width: 10),

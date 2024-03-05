@@ -26,13 +26,16 @@ class GeneratePdfReviewRepoImpl implements GeneratePdfReviewRepo {
           : await getExternalStorageDirectory();
       final file = File('${temp?.path}/reviewpdf.pdf');
 
-      final response = await dio.get(
+      final response = await dio.post(
         'declaration/pdf/declaration/generate',
         queryParameters: {
           'type': type,
         },
         data: sendModel,
-        options: Options(),
+        options: Options(
+          method: 'POST',
+          responseType: ResponseType.bytes,
+        ),
       );
 
       await file.writeAsBytes(response.data, flush: true);
