@@ -34,7 +34,7 @@ class GetUserInfoModel {
         passportNumber: json["passportNumber"] ?? '',
         issuedDate: DateTime.parse(json["issuedDate"]),
         passportAuthority: json["passportAuthority"] ?? '',
-        passportAuthorityCode: json["passportAuthorityCode"] ?? '',
+        passportAuthorityCode: json["passportAuthorityCode"] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
