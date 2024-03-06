@@ -39,10 +39,10 @@ class Part050toPart055Widgets extends StatelessWidget {
         ),
         CalculateNalogSummaWidget(
           numberFiled: '050',
-          numberPercent: '051',
-          numberSumma: '052',
-          percent: model['sti051'],
           controller: c50,
+          numberPercent: '051',
+          percent: model['sti051'],
+          numberSumma: '052',
           nalogSumm: nalogSumm052,
           onChanged: (summa) {
             ///////////

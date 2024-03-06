@@ -42,6 +42,23 @@ class EsfContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
+                  'Номер ЭСФ',
+                  style:
+                      AppTextStyles.s16W400(color: AppColors.color6B7583Grey),
+                ),
+                Flexible(
+                  child: Text(
+                    model.invoiceNumber,
+                    style: AppTextStyles.s16W500(),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
                   'Дата создания',
                   style:
                       AppTextStyles.s16W400(color: AppColors.color6B7583Grey),

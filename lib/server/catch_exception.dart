@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/translations/locale_keys.g.dart';
 
 class CatchException {
@@ -59,9 +61,10 @@ class CatchException {
         } else {
           return CatchException(message: error.response!.data['error']);
         }
+      } else if (error.response!.statusCode == 403) {
+        AppRouting.pushAndPopUntilFunction(const AuthRoute());
+        return CatchException(message: 'Сессия истекла!');
       } else if (error.response!.statusCode == 405) {
-        return CatchException(message: error.response!.data['error']);
-      } else if (error.response!.statusCode == 400) {
         return CatchException(message: error.response!.data['error']);
       } else if (error.response!.statusCode == 404) {
         return CatchException(message: error.response.toString());

@@ -72,39 +72,39 @@ class MyIpMainScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      Container(
-                        height: 64,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(
-                            10,
-                          ),
-                        ),
-                        child: ListTile(
-                          shape: const CircleBorder(),
-                          onTap: () {
-                            AppRouting.pushFunction(const NalogMainRoute());
-                          },
-                          leading: SvgPicture.asset(
-                            AppImages.taxIcon,
-                          ),
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  'Единый налог',
-                                  style: AppTextStyles.s16W500(),
-                                ),
-                              ),
-                              SvgPicture.asset(
-                                AppImages.arrowForwardIcon,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      // const SizedBox(height: 8),
+                      // Container(
+                      //   height: 64,
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.white,
+                      //     borderRadius: BorderRadius.circular(
+                      //       10,
+                      //     ),
+                      //   ),
+                      //   child: ListTile(
+                      //     shape: const CircleBorder(),
+                      //     onTap: () {
+                      //       AppRouting.pushFunction(const NalogMainRoute());
+                      //     },
+                      //     leading: SvgPicture.asset(
+                      //       AppImages.taxIcon,
+                      //     ),
+                      //     title: Row(
+                      //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //       children: [
+                      //         Flexible(
+                      //           child: Text(
+                      //             'Единый налог',
+                      //             style: AppTextStyles.s16W500(),
+                      //           ),
+                      //         ),
+                      //         SvgPicture.asset(
+                      //           AppImages.arrowForwardIcon,
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
                       const SizedBox(height: 8),
                       Container(
                         height: 64,
