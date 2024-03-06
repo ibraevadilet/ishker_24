@@ -3,10 +3,9 @@ import 'dart:developer';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/utils/request_status.dart';
-import 'package:ishker_24/features/account/data/models/history_model.dart';
-import 'package:ishker_24/features/account/data/models/history_request_model.dart';
+import 'package:ishker_24/core/utils/result.dart';
+import 'package:ishker_24/features/account/domain/entities/history.dart';
 import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
-import 'package:ishker_24/server/catch_exception.dart';
 
 part 'history_state.dart';
 
@@ -36,27 +35,26 @@ class HistoryCubit extends Cubit<HistoryState> {
 
     emit(state.copyWith(status: RequestLoading()));
 
-    try {
-      final result = await _historyUseCase.call(HistoryRequestModel(
-        account: _account,
-        startDate: start ?? state.start,
-        endDate: end ?? state.end,
-        page: page,
-      ));
+    final result = await _historyUseCase.call(HistoryParams(
+      account: _account,
+      startDate: start ?? state.start,
+      endDate: end ?? state.end,
+      page: page,
+    ));
 
-      emit(state.copyWith(
-        status: RequestSuccess(),
-        currentPage: page,
-        model: page == 1
-            ? result
-            : state.model.copyWith(
-                items: {...state.model.items, ...result.items}.toList(),
-              ),
-      ));
-    } catch (e) {
-      emit(state.copyWith(
-        status: RequestFailure(CatchException.convertException(e)),
-      ));
+    switch (result) {
+      case Success():
+        emit(state.copyWith(
+          status: RequestSuccess(),
+          currentPage: page,
+          model: page == 1
+              ? result.value
+              : state.model.copyWith(
+                  items: {...state.model.items, ...result.value.items}.toList(),
+                ),
+        ));
+      case Failure():
+        emit(state.copyWith(status: RequestFailure(result.exception)));
     }
   }
 }

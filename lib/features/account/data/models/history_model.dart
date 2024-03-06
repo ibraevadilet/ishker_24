@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
+import 'package:ishker_24/features/account/domain/entities/history.dart';
 
 class HistoryModel extends Equatable {
   const HistoryModel(this.pages, this.items);
@@ -15,6 +16,8 @@ class HistoryModel extends Equatable {
       );
 
   static const empty = HistoryModel(0, <HistoryItemModel>[]);
+
+  History toEntity() => History(pages, items.map((e) => e.toEntity()).toList());
 
   HistoryModel copyWith({int? pages, List<HistoryItemModel>? items}) =>
       HistoryModel(pages ?? this.pages, items ?? this.items);
@@ -65,7 +68,19 @@ class HistoryItemModel extends Equatable {
         isCommision: (json['is_commision'] as String) != '0',
       );
 
-  bool get isPrihod => paytype == 'Приход';
+  HistoryItem toEntity() => HistoryItem(
+        transactionid: transactionid,
+        amount: amount,
+        currency: currency,
+        paytype: paytype,
+        paydate: paydate,
+        trandate: trandate,
+        receiverAccount: receiverAccount,
+        ground: ground,
+        payerName: payerName,
+        payerBankname: payerBankname,
+        isCommision: isCommision,
+      );
 
   @override
   List<Object?> get props => [

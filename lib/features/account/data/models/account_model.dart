@@ -1,5 +1,8 @@
-class AccountModel {
-  AccountModel({
+import 'package:equatable/equatable.dart';
+import 'package:ishker_24/features/account/domain/entities/account.dart';
+
+class AccountModel extends Equatable {
+  const AccountModel({
     required this.account,
     required this.currency,
     required this.bic,
@@ -33,21 +36,20 @@ class AccountModel {
         amountUnfree: json['unfree_amount'],
       );
 
-  @override
-  bool operator ==(Object other) =>
-      other is AccountModel &&
-      account == other.account &&
-      currency == other.currency &&
-      bic == other.bic &&
-      depname == other.depname &&
-      address == other.address &&
-      pin == other.pin &&
-      amount == other.amount &&
-      amountFree == other.amountFree &&
-      amountUnfree == other.amountUnfree;
+  Account toEntity() => Account(
+        account: account,
+        currency: currency,
+        bic: bic,
+        depname: depname,
+        address: address,
+        pin: pin,
+        amount: amount,
+        amountFree: amountFree,
+        amountUnfree: amountUnfree,
+      );
 
   @override
-  int get hashCode => Object.hash(
+  List<Object?> get props => [
         account,
         currency,
         bic,
@@ -57,5 +59,5 @@ class AccountModel {
         amount,
         amountFree,
         amountUnfree,
-      );
+      ];
 }

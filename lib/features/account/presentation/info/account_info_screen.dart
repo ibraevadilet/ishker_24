@@ -50,7 +50,7 @@ class AccountInfoScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => AccountInfoCubit(useCase: sl())..load(account),
+          create: (_) => AccountInfoCubit(sl())..load(account),
         ),
         BlocProvider(
           create: (_) => HistoryCubit(
@@ -129,27 +129,29 @@ class _AccountInfoViewState extends State<AccountInfoView> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              state.maybeWhen(
-                                orElse: () => const SizedBox.shrink(),
-                                success: (model) => RichText(
-                                  text: TextSpan(
-                                    text:
-                                        '${AppCurrencyFormatter.currencyCash(model.amount)} ',
-                                    style: AppTextStyles.s28W700(
-                                        color: Colors.white),
-                                    children: [
-                                      TextSpan(
-                                        text: 'C',
-                                        style: AppTextStyles.s28W700(
-                                          color: Colors.white,
-                                        ).copyWith(
-                                          decoration: TextDecoration.underline,
-                                        ),
-                                      )
-                                    ],
+                              switch (state) {
+                                AccountInfoSuccess() => RichText(
+                                    text: TextSpan(
+                                      text:
+                                          '${AppCurrencyFormatter.currencyCash(state.account.amount)} ',
+                                      style: AppTextStyles.s28W700(
+                                        color: Colors.white,
+                                      ),
+                                      children: [
+                                        TextSpan(
+                                          text: 'C',
+                                          style: AppTextStyles.s28W700(
+                                            color: Colors.white,
+                                          ).copyWith(
+                                            decoration:
+                                                TextDecoration.underline,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ),
+                                _ => const SizedBox.shrink(),
+                              },
                               RichText(
                                 text: TextSpan(
                                   text: '\u00b7\u00b7',
@@ -220,24 +222,26 @@ class _AccountInfoViewState extends State<AccountInfoView> {
                                 ),
                                 _CopyWidget(
                                   title: 'Банк получатель',
-                                  value: state.maybeWhen(
-                                    orElse: () => '',
-                                    success: (model) => model.depname,
-                                  ),
+                                  value: switch (state) {
+                                    AccountInfoSuccess() =>
+                                      state.account.depname,
+                                    _ => '',
+                                  },
                                 ),
                                 _CopyWidget(
                                   title: 'БИК',
-                                  value: state.maybeWhen(
-                                    orElse: () => '',
-                                    success: (model) => model.bic,
-                                  ),
+                                  value: switch (state) {
+                                    AccountInfoSuccess() => state.account.bic,
+                                    _ => '',
+                                  },
                                 ),
                                 _CopyWidget(
                                   title: 'Филиал',
-                                  value: state.maybeWhen(
-                                    orElse: () => '',
-                                    success: (model) => model.address,
-                                  ),
+                                  value: switch (state) {
+                                    AccountInfoSuccess() =>
+                                      state.account.address,
+                                    _ => '',
+                                  },
                                 ),
                               ],
                             ),
@@ -250,43 +254,43 @@ class _AccountInfoViewState extends State<AccountInfoView> {
                     const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: state.maybeWhen(
-                        orElse: () => const SizedBox.shrink(),
-                        success: (model) => ListTile(
-                          tileColor: Colors.white,
-                          title: Text(
-                            'Сумма в обработке',
-                            style: AppTextStyles.s14W400(
-                              color: AppColors.color6B7583Grey,
-                            ),
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          trailing: RichText(
-                            text: TextSpan(
-                              text: '${AppCurrencyFormatter.currencyCash(
-                                model.amountUnfree,
-                              )} ',
-                              style: AppTextStyles.s16W700(
-                                color: AppColors.color2C2C2CBlack,
+                      child: switch (state) {
+                        AccountInfoSuccess() => ListTile(
+                            tileColor: Colors.white,
+                            title: Text(
+                              'Сумма в обработке',
+                              style: AppTextStyles.s14W400(
+                                color: AppColors.color6B7583Grey,
                               ),
-                              children: [
-                                TextSpan(
-                                  text: AppCurrencyFormatter.cuccancyType(
-                                    model.currency,
-                                  ),
-                                  style: AppTextStyles.s16W500(
-                                    color: AppColors.color2C2C2CBlack,
-                                  ).copyWith(
-                                    decoration: TextDecoration.underline,
-                                  ),
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            trailing: RichText(
+                              text: TextSpan(
+                                text: '${AppCurrencyFormatter.currencyCash(
+                                  state.account.amountUnfree,
+                                )} ',
+                                style: AppTextStyles.s16W700(
+                                  color: AppColors.color2C2C2CBlack,
                                 ),
-                              ],
+                                children: [
+                                  TextSpan(
+                                    text: AppCurrencyFormatter.cuccancyType(
+                                      state.account.currency,
+                                    ),
+                                    style: AppTextStyles.s16W500(
+                                      color: AppColors.color2C2C2CBlack,
+                                    ).copyWith(
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ),
+                        _ => const SizedBox.shrink(),
+                      },
                     ),
                   ],
                 ),

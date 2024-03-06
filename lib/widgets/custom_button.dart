@@ -9,7 +9,7 @@ class CustomButton extends StatelessWidget {
     this.text,
     this.color = AppColors.color54B25AMain,
     this.loadingColor = Colors.white,
-    required this.onPress,
+    this.onPress,
     Key? key,
     this.width = double.infinity,
     this.isFullFilled = true,
@@ -37,7 +37,7 @@ class CustomButton extends StatelessWidget {
   final bool isLoading;
   final TextStyle? textStyle;
   final String? text;
-  final Function() onPress;
+  final VoidCallback? onPress;
   final Widget? child;
 
   @override

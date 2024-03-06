@@ -62,6 +62,8 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
+  bool hasError = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(

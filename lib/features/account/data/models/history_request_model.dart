@@ -1,5 +1,7 @@
-class HistoryRequestModel {
-  HistoryRequestModel({
+import 'package:equatable/equatable.dart';
+
+class HistoryRequestModel extends Equatable {
+  const HistoryRequestModel({
     required this.account,
     required this.startDate,
     required this.endDate,
@@ -20,4 +22,7 @@ class HistoryRequestModel {
         "page": page,
         "size": size
       };
+
+  @override
+  List<Object?> get props => [account, startDate, endDate, page, size];
 }
