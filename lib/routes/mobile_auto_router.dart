@@ -5,7 +5,7 @@ import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: SplashRoute.page),
+        AutoRoute(page: SplashRoute.page, initial: true),
         AutoRoute(page: BottomNavigatorRoute.page),
         AutoRoute(page: AuthRoute.page),
         AutoRoute(page: AuthSendConfirmRoute.page),
@@ -68,7 +68,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: Route9141.page),
         AutoRoute(page: ReportDetailPdfViewRoute.page),
         AutoRoute(page: NalogConfirmRoute.page),
-        AutoRoute(page: NalogConfirmOepRoute.page, initial: true),
+        AutoRoute(page: NalogConfirmOepRoute.page),
 
         ////ESF
         AutoRoute(page: EsfRoute.page),
