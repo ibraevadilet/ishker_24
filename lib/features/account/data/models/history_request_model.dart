@@ -5,7 +5,7 @@ class HistoryRequestModel extends Equatable {
     required this.account,
     required this.startDate,
     required this.endDate,
-    this.page = 0,
+    this.page = 1,
     this.size = 10,
   });
 

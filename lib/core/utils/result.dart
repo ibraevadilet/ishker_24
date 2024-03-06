@@ -24,5 +24,5 @@ final class Failure<S, E extends Exception> extends Result<S, E> {
   final StackTrace? stackTrace;
 
   @override
-  List<Object?> get props => [exception, stackTrace];
+  List<Object?> get props => [exception];
 }

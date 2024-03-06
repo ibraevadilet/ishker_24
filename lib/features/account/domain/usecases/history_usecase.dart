@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:ishker_24/core/usecases/usecase.dart';
 import 'package:ishker_24/core/utils/result.dart';
+import 'package:ishker_24/features/account/data/models/history_request_model.dart';
 import 'package:ishker_24/features/account/domain/entities/history.dart';
 import 'package:ishker_24/features/account/domain/repositories/i_account_repository.dart';
 
@@ -20,7 +21,7 @@ final class HistoryParams extends Equatable {
     required this.account,
     required this.startDate,
     required this.endDate,
-    this.page = 0,
+    this.page = 1,
     this.size = 10,
   });
 
@@ -29,6 +30,14 @@ final class HistoryParams extends Equatable {
   final DateTime endDate;
   final int page;
   final int size;
+
+  HistoryRequestModel toModel() => HistoryRequestModel(
+        account: account,
+        startDate: startDate,
+        endDate: endDate,
+        page: page,
+        size: size,
+      );
 
   @override
   List<Object?> get props => [account, startDate, endDate, page, size];

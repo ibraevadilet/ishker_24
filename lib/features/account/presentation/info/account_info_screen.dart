@@ -1,49 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
-import 'package:ishker_24/core/images/app_images.dart';
-import 'package:ishker_24/core/utils/modal_bottom_sheet.dart';
-import 'package:ishker_24/features/account/presentation/info/cubit/account_info_cubit.dart';
 import 'package:ishker_24/features/account/presentation/history/cubit/history_cubit.dart';
+import 'package:ishker_24/features/account/presentation/info/widgets/amount_unfree_widget.dart';
+import 'package:ishker_24/features/account/presentation/info/cubit/account_info_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
-import 'package:ishker_24/widgets/icon_title_button.dart';
-import 'package:ishker_24/widgets/styled_toasts.dart';
 
 import '../history/history_item_widget.dart';
+import 'widgets/account_action_buttons.dart';
+import 'widgets/account_card_widget.dart';
 
 @RoutePage()
 class AccountInfoScreen extends StatelessWidget {
   const AccountInfoScreen({super.key, required this.account});
 
   final String account;
-
-  Widget infoWidget(String title, String value) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: AppTextStyles.s16W500(color: AppColors.color6B7583Grey),
-            ),
-            Flexible(
-              child: Text(
-                value,
-                style: AppTextStyles.s16W500(color: AppColors.color2C2C2CBlack),
-                textAlign: TextAlign.end,
-              ),
-            ),
-          ],
-        ),
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -100,198 +75,11 @@ class _AccountInfoViewState extends State<AccountInfoView> {
                 child: Column(
                   children: [
                     const SizedBox(height: 16),
-                    Container(
-                      height: 160,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        gradient: const LinearGradient(
-                          begin: Alignment.bottomLeft,
-                          end: Alignment.topRight,
-                          colors: [
-                            AppColors.color54B25AMain,
-                            AppColors.colorBBD9B9,
-                          ],
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0xFFCFCFCF).withOpacity(.25),
-                            spreadRadius: 0,
-                            blurRadius: 8,
-                            offset: const Offset(0, 1),
-                          ),
-                        ],
-                      ),
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              switch (state) {
-                                AccountInfoSuccess() => RichText(
-                                    text: TextSpan(
-                                      text:
-                                          '${AppCurrencyFormatter.currencyCash(state.account.amount)} ',
-                                      style: AppTextStyles.s28W700(
-                                        color: Colors.white,
-                                      ),
-                                      children: [
-                                        TextSpan(
-                                          text: 'C',
-                                          style: AppTextStyles.s28W700(
-                                            color: Colors.white,
-                                          ).copyWith(
-                                            decoration:
-                                                TextDecoration.underline,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                _ => const SizedBox.shrink(),
-                              },
-                              RichText(
-                                text: TextSpan(
-                                  text: '\u00b7\u00b7',
-                                  style: AppTextStyles.s14W700(
-                                      color: Colors.white),
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          account.substring(account.length - 4),
-                                      style: AppTextStyles.s14W400(
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                    AccountCardWidget(account: account),
                     const SizedBox(height: 24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconTitleButton(
-                          onTap: () => AppSnackBar.showUnimplementedSnackBar(),
-                          imagePath: AppImages.paymentIcon,
-                          title: 'Оплатить',
-                        ),
-                        IconTitleButton(
-                          onTap: () => AppSnackBar.showUnimplementedSnackBar(),
-                          imagePath: AppImages.replenishIcon,
-                          title: 'Пополнить',
-                        ),
-                        IconTitleButton(
-                          onTap: () => AppSnackBar.showUnimplementedSnackBar(),
-                          imagePath: AppImages.transferIcon,
-                          title: 'Перевести',
-                        ),
-                        IconTitleButton(
-                          onTap: () => showSheet(
-                            context,
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const SizedBox(height: 12),
-                                Center(
-                                  child: Container(
-                                    height: 4,
-                                    width: 32,
-                                    decoration: BoxDecoration(
-                                      color: AppColors.color617796Grey,
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 24),
-                                Text(
-                                  'Реквизиты',
-                                  style: AppTextStyles.s16W500(),
-                                ),
-                                const SizedBox(height: 24),
-                                _CopyWidget(
-                                  title: 'Номер счета',
-                                  value: account,
-                                ),
-                                _CopyWidget(
-                                  title: 'Банк получатель',
-                                  value: switch (state) {
-                                    AccountInfoSuccess() =>
-                                      state.account.depname,
-                                    _ => '',
-                                  },
-                                ),
-                                _CopyWidget(
-                                  title: 'БИК',
-                                  value: switch (state) {
-                                    AccountInfoSuccess() => state.account.bic,
-                                    _ => '',
-                                  },
-                                ),
-                                _CopyWidget(
-                                  title: 'Филиал',
-                                  value: switch (state) {
-                                    AccountInfoSuccess() =>
-                                      state.account.address,
-                                    _ => '',
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                          imagePath: AppImages.requisitesIcon,
-                          title: 'Реквизиты',
-                        ),
-                      ],
-                    ),
+                    AccountActionButtons(account: account),
                     const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: switch (state) {
-                        AccountInfoSuccess() => ListTile(
-                            tileColor: Colors.white,
-                            title: Text(
-                              'Сумма в обработке',
-                              style: AppTextStyles.s14W400(
-                                color: AppColors.color6B7583Grey,
-                              ),
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            trailing: RichText(
-                              text: TextSpan(
-                                text: '${AppCurrencyFormatter.currencyCash(
-                                  state.account.amountUnfree,
-                                )} ',
-                                style: AppTextStyles.s16W700(
-                                  color: AppColors.color2C2C2CBlack,
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: AppCurrencyFormatter.cuccancyType(
-                                      state.account.currency,
-                                    ),
-                                    style: AppTextStyles.s16W500(
-                                      color: AppColors.color2C2C2CBlack,
-                                    ).copyWith(
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        _ => const SizedBox.shrink(),
-                      },
-                    ),
+                    const AmountUnfreeWidget(),
                   ],
                 ),
               );
@@ -338,66 +126,6 @@ class _AccountInfoViewState extends State<AccountInfoView> {
 
             return HistoryItemWidget(item: item);
           },
-        ),
-      ],
-    );
-  }
-}
-
-class _CopyWidget extends StatelessWidget {
-  const _CopyWidget({
-    super.key,
-    required this.title,
-    required this.value,
-  });
-
-  final String title;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: AppTextStyles.s12W400(
-                  color: AppColors.color6B7583Grey,
-                ),
-              ),
-              Text(
-                value,
-                style: AppTextStyles.s16W500(
-                  color: AppColors.color2C2C2CBlack,
-                ),
-              ),
-            ],
-          ),
-        ),
-        IconButton(
-          onPressed: () {
-            Clipboard.setData(
-              ClipboardData(text: value),
-            ).then((value) => AppSnackBar.showToastAbaveSheet(
-                  context,
-                  '$title скопирован',
-                  isSuccess: true,
-                  duration: const Duration(
-                    seconds: 1,
-                  ),
-                ));
-          },
-          icon: SvgPicture.asset(
-            'assets/images/copy_icon.svg',
-            colorFilter: const ColorFilter.mode(
-              AppColors.color2C2C2CBlack,
-              BlendMode.srcIn,
-            ),
-          ),
         ),
       ],
     );

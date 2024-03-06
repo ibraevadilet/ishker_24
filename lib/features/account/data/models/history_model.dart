@@ -15,12 +15,7 @@ class HistoryModel extends Equatable {
             .toList(),
       );
 
-  static const empty = HistoryModel(0, <HistoryItemModel>[]);
-
   History toEntity() => History(pages, items.map((e) => e.toEntity()).toList());
-
-  HistoryModel copyWith({int? pages, List<HistoryItemModel>? items}) =>
-      HistoryModel(pages ?? this.pages, items ?? this.items);
 
   @override
   List<Object?> get props => [pages, items];

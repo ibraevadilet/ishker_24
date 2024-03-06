@@ -6,8 +6,8 @@ import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:ishker_24/core/network/netrowk_info.dart';
 import 'package:ishker_24/core/network/rsk_service.dart';
-import 'package:ishker_24/features/account/data/datasources/transfer_datasource.dart';
-import 'package:ishker_24/features/account/data/repositories/transfer_repository_impl.dart';
+import 'package:ishker_24/features/account/data/datasources/account_datasource.dart';
+import 'package:ishker_24/features/account/data/repositories/account_repository_impl.dart';
 import 'package:ishker_24/features/account/domain/repositories/i_account_repository.dart';
 import 'package:ishker_24/features/account/domain/usecases/account_info_usecase.dart';
 import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
@@ -213,8 +213,8 @@ Future<void> initServiceLocator() async {
   );
 
   /// Data sources
-  sl.registerLazySingleton<ITransfersDataSource>(
-    () => TransfersDataSourceImpl(rskService),
+  sl.registerLazySingleton<IAccountDataSource>(
+    () => AccountDataSourceImpl(rskService),
   );
 
   /// Repository

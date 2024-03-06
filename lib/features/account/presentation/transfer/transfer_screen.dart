@@ -177,7 +177,7 @@ class _PayScreenViewState extends State<PayScreenView> {
             ),
           ],
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: BlocConsumer<TransferValidateCubit, TransferValidateState>(

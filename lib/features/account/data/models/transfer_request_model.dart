@@ -26,8 +26,8 @@ class TransferRequestModel extends Equatable {
   final String inn;
 
   Map<String, dynamic> toValidateJson() => {
-        "summa": 1000,
-        "fee": 0,
+        "summa": summa,
+        "fee": fee ?? 0,
         "currency": currency,
         "serviceid": serviceid,
         "typeservice": typeservice,
@@ -39,8 +39,8 @@ class TransferRequestModel extends Equatable {
 
   Map<String, dynamic> toPerformJson() => {
         "id": id,
-        "summa": 1000,
-        "fee": 0,
+        "summa": summa,
+        "fee": fee ?? 0,
         "currency": currency,
         "serviceid": serviceid,
         "typeservice": typeservice,
