@@ -50,9 +50,8 @@ class EsfInvoiceRepoImpl implements EsfInvoiceRepo {
 
   showError() async {
     AppSnackBar.showSnackBar('Токен заблокирован');
-    Future.microtask(() {
-      AppRouting.popUntilRootFunction();
-    });
+    await Future.delayed(const Duration(seconds: 1));
+    AppRouting.popUntilRootFunction();
     AppRouting.pushFunction(const EsfRoute());
   }
 
