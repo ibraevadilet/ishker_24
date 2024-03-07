@@ -10,11 +10,13 @@ class IconTitleButton extends StatelessWidget {
     required this.onTap,
     required this.title,
     required this.imagePath,
+    this.btnKey,
   });
 
   final VoidCallback onTap;
   final String title;
   final String imagePath;
+  final Key? btnKey;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class IconTitleButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           color: Colors.white,
           child: InkWell(
+            key: btnKey,
             onTap: onTap,
             highlightColor: AppColors.color54B25AMain.withOpacity(.15),
             splashColor: AppColors.esiMainBlueColor.withOpacity(.15),
@@ -61,7 +64,9 @@ class IconTitleButton extends StatelessWidget {
 }
 
 class IconTitleButtonShimmer extends StatelessWidget {
-  const IconTitleButtonShimmer({super.key});
+  const IconTitleButtonShimmer({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -76,13 +81,9 @@ class IconTitleButtonShimmer extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8),
-            child: Container(
-              height: 14,
-              width: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: Colors.white,
-              ),
+            child: Text(
+              title,
+              style: AppTextStyles.s14W400(color: AppColors.color2C2C2CBlack),
             ),
           )
         ],

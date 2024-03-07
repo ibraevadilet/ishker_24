@@ -148,16 +148,14 @@ class _AccountInfoViewState extends State<AccountInfoView> {
                                       style: AppTextStyles.s16W700(),
                                     ),
                                   ),
-                                  Flexible(
-                                    child: TextButton(
-                                      onPressed: () => AppRouting.pushFunction(
-                                        HistoryRoute(account: account),
-                                      ),
-                                      child: Text(
-                                        'Все',
-                                        style: AppTextStyles.s16W700(
-                                          color: AppColors.color54B25AMain,
-                                        ),
+                                  TextButton(
+                                    onPressed: () => AppRouting.pushFunction(
+                                      HistoryRoute(account: account),
+                                    ),
+                                    child: Text(
+                                      'Все',
+                                      style: AppTextStyles.s16W700(
+                                        color: AppColors.color54B25AMain,
                                       ),
                                     ),
                                   ),

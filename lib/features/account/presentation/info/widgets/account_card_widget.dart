@@ -1,15 +1,23 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
+import 'package:ishker_24/core/utils/extensions.dart';
 import 'package:ishker_24/core/utils/modal_bottom_sheet.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
+import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/icon_title_button.dart';
 import 'package:ishker_24/widgets/shimmers.dart';
 import 'package:ishker_24/widgets/styled_toasts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../cubit/account_info_cubit.dart';
 
@@ -116,57 +124,60 @@ class AccountActionButtons extends StatelessWidget {
   void showRequisites(BuildContext context) async {
     showSheet(
       context,
-      BlocBuilder<AccountInfoCubit, AccountInfoState>(
-        builder: (context, state) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 12),
-              Center(
-                child: Container(
-                  height: 4,
-                  width: 32,
-                  decoration: BoxDecoration(
-                    color: AppColors.color617796Grey,
-                    borderRadius: BorderRadius.circular(4),
+      BlocProvider.value(
+        value: context.read<AccountInfoCubit>(),
+        child: BlocBuilder<AccountInfoCubit, AccountInfoState>(
+          builder: (_, state) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 12),
+                Center(
+                  child: Container(
+                    height: 4,
+                    width: 32,
+                    decoration: BoxDecoration(
+                      color: AppColors.color617796Grey,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 24),
-              Text(
-                'Реквизиты',
-                style: AppTextStyles.s16W500(),
-              ),
-              const SizedBox(height: 24),
-              _CopyWidget(
-                title: 'Номер счета',
-                value: account,
-              ),
-              _CopyWidget(
-                title: 'Банк получатель',
-                value: switch (state) {
-                  AccountInfoSuccess() => state.account.depname,
-                  _ => '',
-                },
-              ),
-              _CopyWidget(
-                title: 'БИК',
-                value: switch (state) {
-                  AccountInfoSuccess() => state.account.bic,
-                  _ => '',
-                },
-              ),
-              _CopyWidget(
-                title: 'Филиал',
-                value: switch (state) {
-                  AccountInfoSuccess() => state.account.address,
-                  _ => '',
-                },
-              ),
-            ],
-          );
-        },
+                const SizedBox(height: 24),
+                Text(
+                  'requisites'.tr(context: context),
+                  style: AppTextStyles.s16W500(),
+                ),
+                const SizedBox(height: 24),
+                _CopyWidget(
+                  title: 'accountNumber'.tr(context: context),
+                  value: account,
+                ),
+                _CopyWidget(
+                  title: 'recipientBank'.tr(context: context),
+                  value: switch (state) {
+                    AccountInfoSuccess() => state.account.depname,
+                    _ => '',
+                  },
+                ),
+                _CopyWidget(
+                  title: 'bic'.tr(context: context),
+                  value: switch (state) {
+                    AccountInfoSuccess() => state.account.bic,
+                    _ => '',
+                  },
+                ),
+                _CopyWidget(
+                  title: 'branch'.tr(context: context),
+                  value: switch (state) {
+                    AccountInfoSuccess() => state.account.address,
+                    _ => '',
+                  },
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -177,37 +188,63 @@ class AccountActionButtons extends StatelessWidget {
       builder: (context, state) {
         return defaultAnimatedSwitcher(
           switch (state) {
-            AccountInfoInitial() || AccountInfoLoading() => const Row(
+            AccountInfoInitial() || AccountInfoLoading() => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconTitleButtonShimmer(),
-                  IconTitleButtonShimmer(),
-                  IconTitleButtonShimmer(),
-                  IconTitleButtonShimmer(),
+                  IconTitleButtonShimmer(
+                    title: 'pay'.tr(context: context),
+                  ),
+                  IconTitleButtonShimmer(
+                    title: 'refill'.tr(context: context),
+                  ),
+                  IconTitleButtonShimmer(
+                    title: 'toTransfer'.tr(context: context),
+                  ),
+                  IconTitleButtonShimmer(
+                    title: 'requisites'.tr(context: context),
+                  ),
                 ],
               ),
             _ => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconTitleButton(
+                    key: const ValueKey('account_card_pay_key'),
                     onTap: () => AppSnackBar.showUnimplementedSnackBar(),
                     imagePath: AppImages.paymentIcon,
-                    title: 'Оплатить',
+                    title: 'pay'.tr(context: context),
                   ),
                   IconTitleButton(
+                    key: const ValueKey('account_card_refill_key'),
                     onTap: () => AppSnackBar.showUnimplementedSnackBar(),
                     imagePath: AppImages.replenishIcon,
-                    title: 'Пополнить',
+                    title: 'refill'.tr(context: context),
                   ),
                   IconTitleButton(
-                    onTap: () => AppSnackBar.showUnimplementedSnackBar(),
+                    key: const ValueKey('account_card_transfer_key'),
+                    onTap: () async {
+                      //TODO: позже отрефакторить auth, чтобы все необходимые значения хранились в его состоянии
+                      //и все, кому ниже нужны какое-то значения из них, могли подписываться в своих кубитах
+                      final inn =
+                          sl<SharedPreferences>().getString(SharedKeys.pin);
+                      if (inn.isNullOrEmpty) return;
+
+                      kDebugMode && state is AccountInfoSuccess
+                          ? AppRouting.pushFunction(TransferRoute(
+                              account: state.account,
+                              inn: inn!,
+                            ))
+                          : AppSnackBar.showUnimplementedSnackBar();
+                    },
                     imagePath: AppImages.transferIcon,
-                    title: 'Перевести',
+                    title: 'toTransfer'.tr(context: context),
                   ),
                   IconTitleButton(
                     onTap: () => showRequisites(context),
+                    // onTap: () => log('requisites'),
                     imagePath: AppImages.requisitesIcon,
-                    title: 'Реквизиты',
+                    title: 'requisites'.tr(context: context),
+                    btnKey: const ValueKey('account_card_requisites_key'),
                   ),
                 ],
               ),
@@ -219,11 +256,7 @@ class AccountActionButtons extends StatelessWidget {
 }
 
 class _CopyWidget extends StatelessWidget {
-  const _CopyWidget({
-    super.key,
-    required this.title,
-    required this.value,
-  });
+  const _CopyWidget({required this.title, required this.value});
 
   final String title;
   final String value;
@@ -239,31 +272,25 @@ class _CopyWidget extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: AppTextStyles.s12W400(
-                  color: AppColors.color6B7583Grey,
-                ),
+                style: AppTextStyles.s12W400(color: AppColors.color6B7583Grey),
               ),
               Text(
                 value,
-                style: AppTextStyles.s16W500(
-                  color: AppColors.color2C2C2CBlack,
-                ),
+                style: AppTextStyles.s16W500(color: AppColors.color2C2C2CBlack),
               ),
             ],
           ),
         ),
         IconButton(
           onPressed: () {
-            Clipboard.setData(
-              ClipboardData(text: value),
-            ).then((value) => AppSnackBar.showToastAbaveSheet(
-                  context,
-                  '$title скопирован',
-                  isSuccess: true,
-                  duration: const Duration(
-                    seconds: 1,
-                  ),
-                ));
+            Clipboard.setData(ClipboardData(text: value)).then(
+              (value) => AppSnackBar.showToastAbaveSheet(
+                context,
+                '$title ${'copied'.tr(context: context)}',
+                isSuccess: true,
+                duration: const Duration(seconds: 1),
+              ),
+            );
           },
           icon: SvgPicture.asset(
             'assets/images/copy_icon.svg',

@@ -5,7 +5,7 @@ import 'package:ishker_24/core/errors/exceptions.dart';
 import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/formatters/input_formatters.dart';
 import 'package:ishker_24/core/utils/extensions.dart';
-import 'package:ishker_24/features/account/data/models/account_model.dart';
+import 'package:ishker_24/features/account/domain/entities/account.dart';
 import 'package:ishker_24/features/account/presentation/transfer/cubit/transfer_cubit.dart';
 import 'package:ishker_24/features/account/presentation/transfer/cubits/transfer_validate/transfer_validate_cubit.dart';
 import 'package:ishker_24/server/service_locator.dart';
@@ -20,9 +20,9 @@ import 'package:ishker_24/widgets/styled_toasts.dart';
 
 @RoutePage()
 class TransferScreen extends StatelessWidget {
-  const TransferScreen({super.key, required this.model, required this.inn});
+  const TransferScreen({super.key, required this.account, required this.inn});
 
-  final AccountModel model;
+  final Account account;
   final String inn;
 
   @override
@@ -32,7 +32,7 @@ class TransferScreen extends StatelessWidget {
         BlocProvider(
           create: (_) => TransferValidateCubit(
             validateUseCase: sl(),
-            accountModel: model,
+            account: account,
             inn: inn,
           ),
         ),

@@ -1,16 +1,13 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ishker_24/translations/codegen_loader.g.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> pumpWidget(WidgetTester tester, Widget child) async {
-  log("pump start");
-  // TestWidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences.setMockInitialValues({});
+  TestWidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
-  log("pump ensureInitialized");
 
   await tester.pumpWidget(
     EasyLocalization(
@@ -38,3 +35,9 @@ class LocalizationsInj extends StatelessWidget {
     );
   }
 }
+
+BuildContext getContext(WidgetTester tester, Type type) =>
+    tester.element(find.byType(type));
+
+InkWell findInkWell(Key key) =>
+    find.byKey(key).evaluate().first.widget as InkWell;

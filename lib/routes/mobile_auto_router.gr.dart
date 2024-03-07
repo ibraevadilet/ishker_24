@@ -12,7 +12,7 @@ import 'package:auto_route/auto_route.dart' as _i66;
 import 'package:camera/camera.dart' as _i71;
 import 'package:flutter/cupertino.dart' as _i76;
 import 'package:flutter/material.dart' as _i67;
-import 'package:ishker_24/features/account/data/models/account_model.dart'
+import 'package:ishker_24/features/account/domain/entities/account.dart'
     as _i83;
 import 'package:ishker_24/features/account/presentation/history/history_screen.dart'
     as _i22;
@@ -717,7 +717,7 @@ abstract class $AppRouter extends _i66.RootStackRouter {
         routeData: routeData,
         child: _i65.TransferScreen(
           key: args.key,
-          model: args.model,
+          account: args.account,
           inn: args.inn,
         ),
       );
@@ -2536,14 +2536,14 @@ class SuccessOrFailureRouteArgs {
 class TransferRoute extends _i66.PageRouteInfo<TransferRouteArgs> {
   TransferRoute({
     _i67.Key? key,
-    required _i83.AccountModel model,
+    required _i83.Account account,
     required String inn,
     List<_i66.PageRouteInfo>? children,
   }) : super(
           TransferRoute.name,
           args: TransferRouteArgs(
             key: key,
-            model: model,
+            account: account,
             inn: inn,
           ),
           initialChildren: children,
@@ -2558,18 +2558,18 @@ class TransferRoute extends _i66.PageRouteInfo<TransferRouteArgs> {
 class TransferRouteArgs {
   const TransferRouteArgs({
     this.key,
-    required this.model,
+    required this.account,
     required this.inn,
   });
 
   final _i67.Key? key;
 
-  final _i83.AccountModel model;
+  final _i83.Account account;
 
   final String inn;
 
   @override
   String toString() {
-    return 'TransferRouteArgs{key: $key, model: $model, inn: $inn}';
+    return 'TransferRouteArgs{key: $key, account: $account, inn: $inn}';
   }
 }

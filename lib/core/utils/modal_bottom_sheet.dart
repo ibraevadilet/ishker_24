@@ -19,7 +19,7 @@ void showSheet(BuildContext context, Widget child) async {
             topRight: Radius.circular(24),
           ),
         ),
-        child: child,
+        child: SafeArea(child: child),
       ),
     ),
   );

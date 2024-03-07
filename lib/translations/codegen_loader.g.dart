@@ -21,7 +21,16 @@ class CodegenLoader extends AssetLoader{
   "catchExLoginNotFound": "Неверный логин или пароль",
   "catchExSystemError": "Произошла системная ошибка",
   "catchExSessionExpired": "Ваша сессия истекла. Просьба авторизоваться повторно!",
-  "retry": "Повторить попытку"
+  "retry": "Повторить попытку",
+  "pay": "Оплатить",
+  "refill": "Пополнить",
+  "toTransfer": "Перевести",
+  "requisites": "Реквизиты",
+  "accountNumber": "Номер счета",
+  "recipientBank": "Банк получатель",
+  "bic": "БИК",
+  "branch": "Филиал",
+  "copied": "скопирован"
 };
 static const Map<String,dynamic> ky = {
   "catchExTimeOfProcessing": "Сурамды иштеп чыгуу убактысынан ашып кетти.\nАракетти бир аздан кийин кайталаңыз",
@@ -30,7 +39,16 @@ static const Map<String,dynamic> ky = {
   "catchExLoginNotFound": "Бул логин табылган жок",
   "catchExSystemError": "Системадан ката кетти",
   "catchExSessionExpired": "Сиздин сесссияңыз аяктады. Кайрадан авторизациялоодон өтүүнү суранабыз!",
-  "retry": "Аракетти кайталаңыз"
+  "retry": "Аракетти кайталаңыз",
+  "pay": "Төлөө",
+  "refill": "Толуктоо",
+  "toTransfer": "Которуу",
+  "requisites": "Реквизиттер",
+  "accountNumber": "Эсеп номери",
+  "recipientBank": "Алуучу банк",
+  "bic": "БИК",
+  "branch": "Филиал",
+  "copied": "көчүрүлдү"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru": ru, "ky": ky};
 }
