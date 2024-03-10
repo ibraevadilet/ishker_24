@@ -1,4 +1,3 @@
-import 'package:bloc_test/bloc_test.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,19 +9,15 @@ import 'package:ishker_24/widgets/icon_title_button.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../../mocks.dart';
 import '../../../../../utils/constants.dart';
 import '../../../../../utils/ui_test_helper.dart';
-
-class MockAccountInfoCubit extends MockCubit<AccountInfoState>
-    implements AccountInfoCubit {}
 
 void main() {
   late MockAccountInfoCubit infoCubit;
 
   setUp(() async => infoCubit = MockAccountInfoCubit());
 
-  Future<void> pump(WidgetTester tester, Widget child) async =>
-      pumpWidget(tester, child);
   group('AccountCardWidget when AccountInfoCubit\'s state is', () {
     final accountCard = BlocProvider<AccountInfoCubit>(
       create: (_) => infoCubit,
@@ -38,7 +33,7 @@ void main() {
       });
 
       testWidgets('should draw a shimmer', (tester) async {
-        await pump(tester, accountCard);
+        await pumpWidget(tester, accountCard);
         await tester.pump();
         expect(find.byType(Shimmer), findsOneWidget);
       });
@@ -53,7 +48,7 @@ void main() {
       });
 
       testWidgets('should draw a shimmer', (tester) async {
-        await pump(tester, accountCard);
+        await pumpWidget(tester, accountCard);
         await tester.pump();
         expect(find.byType(Shimmer), findsOneWidget);
       });
@@ -70,7 +65,7 @@ void main() {
       testWidgets(
         'should draw a Container with amount and account number RichTexts',
         (tester) async {
-          await pump(tester, accountCard);
+          await pumpWidget(tester, accountCard);
           await tester.pump();
           expect(
             find.text(
@@ -106,7 +101,7 @@ void main() {
       testWidgets(
         'should draw a Container with account number RichText',
         (tester) async {
-          await pump(tester, accountCard);
+          await pumpWidget(tester, accountCard);
           await tester.pump();
 
           expect(
@@ -138,7 +133,7 @@ void main() {
       testWidgets(
         'should draw 4 IconTitleButtonShimmer widgets and their labels',
         (tester) async {
-          await pump(tester, accountButtons);
+          await pumpWidget(tester, accountButtons);
           await tester.pump();
 
           expect(find.byType(IconTitleButtonShimmer), findsNWidgets(4));
@@ -161,7 +156,7 @@ void main() {
       testWidgets(
         'should draw 4 IconTitleButtonShimmer widgets and their labels',
         (tester) async {
-          await pump(tester, accountButtons);
+          await pumpWidget(tester, accountButtons);
           await tester.pump();
 
           expect(find.byType(IconTitleButtonShimmer), findsNWidgets(4));
@@ -184,7 +179,7 @@ void main() {
       testWidgets(
         'should draw 4 IconTitleButton widgets and their labels',
         (tester) async {
-          await pump(tester, accountButtons);
+          await pumpWidget(tester, accountButtons);
           await tester.pump();
 
           expect(find.byType(IconTitleButton), findsNWidgets(4));
@@ -198,7 +193,7 @@ void main() {
       testWidgets(
         'tap on Requisites should draw requisites info on bottom sheet',
         (tester) async {
-          await pump(tester, accountButtons);
+          await pumpWidget(tester, accountButtons);
           await tester.pump();
 
           expect(find.text('requisites'.tr()), findsOneWidget);

@@ -1,13 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ishker_24/core/utils/result.dart';
-import 'package:ishker_24/features/account/domain/usecases/account_info_usecase.dart';
 import 'package:ishker_24/features/account/presentation/info/cubit/account_info_cubit.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../../../mocks.dart';
 import '../../../../../utils/constants.dart';
-
-class MockAccountInfoUseCase extends Mock implements AccountInfoUseCase {}
 
 void main() async {
   late MockAccountInfoUseCase useCase;

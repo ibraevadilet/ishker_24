@@ -1,9 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ishker_24/core/network/netrowk_info.dart';
 import 'package:ishker_24/core/utils/result.dart';
-import 'package:ishker_24/features/account/data/datasources/account_datasource.dart';
 import 'package:ishker_24/features/account/data/repositories/account_repository_impl.dart';
 import 'package:ishker_24/features/account/domain/entities/account.dart';
 import 'package:ishker_24/features/account/domain/entities/history.dart';
@@ -11,12 +9,9 @@ import 'package:ishker_24/features/account/domain/entities/transfer_perform.dart
 import 'package:ishker_24/features/account/domain/entities/transfer_validate.dart';
 import 'package:mockingjay/mockingjay.dart';
 
+import '../../../../mocks.dart';
 import '../../../../utils/constants.dart';
 import '../../../../utils/extensions.dart';
-
-class MockINetworkInfo extends Mock implements INetworkInfo {}
-
-class MockIAccountDataSource extends Mock implements IAccountDataSource {}
 
 void main() {
   late MockINetworkInfo networkInfo;

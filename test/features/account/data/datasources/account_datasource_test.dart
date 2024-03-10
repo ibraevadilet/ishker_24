@@ -1,11 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ishker_24/core/network/rsk_service.dart';
 import 'package:ishker_24/features/account/data/datasources/account_datasource.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../../mocks.dart';
 import '../../../../utils/constants.dart';
-
-class MockRskService extends Mock implements RskService {}
 
 void main() {
   late MockRskService service;

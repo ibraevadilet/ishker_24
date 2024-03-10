@@ -9,6 +9,7 @@ import 'package:ishker_24/features/account/domain/entities/account.dart';
 import 'package:ishker_24/features/account/domain/entities/history.dart';
 import 'package:ishker_24/features/account/domain/entities/transfer_perform.dart';
 import 'package:ishker_24/features/account/domain/entities/transfer_validate.dart';
+import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
 
 final tDioException = DioException(
   requestOptions: RequestOptions(),
@@ -131,4 +132,12 @@ const tTransferRequestModelP = TransferRequestModel(
   account: '4724144078984592',
   accountDt: '1290583310042253',
   inn: '20509199801631',
+);
+
+final tHistoryParams = HistoryParams(
+  account: tHistoryRequestModel.account,
+  startDate: tHistoryRequestModel.startDate,
+  endDate: tHistoryRequestModel.endDate,
+  page: tHistoryRequestModel.page,
+  size: tHistoryRequestModel.size,
 );

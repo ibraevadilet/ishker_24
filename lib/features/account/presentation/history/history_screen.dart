@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ishker_24/core/utils/extensions.dart';
 import 'package:ishker_24/core/utils/request_status.dart';
 import 'package:ishker_24/features/account/presentation/history/cubit/history_cubit.dart';
 import 'package:ishker_24/features/account/presentation/history/history_item_widget.dart';
@@ -79,9 +80,7 @@ class HistoryScreen extends StatelessWidget {
                     onNotification: (scrollEnd) {
                       final metrics = scrollEnd.metrics;
                       if (metrics.atEdge && metrics.pixels != 0) {
-                        context
-                            .read<HistoryCubit>()
-                            .load(page: state.currentPage + 1);
+                        context.read<HistoryCubit>().next();
                       }
 
                       return true;
@@ -233,8 +232,8 @@ class _DatePickWidgetState extends State<DatePickWidget> with RestorationMixin {
                       title: 'За 30 дней',
                       ontap: () {
                         context.read<HistoryCubit>().load(
-                            start: DateTime.now()
-                                .subtract(const Duration(days: 30)));
+                              start: DateTime.now().days30,
+                            );
                         Navigator.pop(context);
                       },
                     ),
@@ -243,8 +242,7 @@ class _DatePickWidgetState extends State<DatePickWidget> with RestorationMixin {
                         title: 'За 90 дней',
                         ontap: () {
                           context.read<HistoryCubit>().load(
-                                start: DateTime.now()
-                                    .subtract(const Duration(days: 90)),
+                                start: DateTime.now().days90,
                               );
 
                           Navigator.pop(context);

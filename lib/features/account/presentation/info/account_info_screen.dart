@@ -172,14 +172,6 @@ class _AccountInfoViewState extends State<AccountInfoView> {
               ),
             ),
           ),
-          // SliverList.builder(
-          //   itemCount: context.watch<HistoryCubit>().state.model.items.length,
-          //   itemBuilder: (context, i) {
-          //     final item = context.watch<HistoryCubit>().state.model.items[i];
-
-          //     return ;
-          //   },
-          // ),
         ],
       ),
     );
