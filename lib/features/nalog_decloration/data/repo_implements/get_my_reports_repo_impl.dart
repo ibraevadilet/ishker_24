@@ -10,7 +10,7 @@ class GetMyReportsRepoImpl implements GetMyReportsRepo {
   @override
   Future<List<ReportDoneModel>> getMyReports() async {
     // final inn = AppSavedPin.getPin();
-    const inn = '21605200001255';
+    const inn = '22306199300089';
     try {
       final response = await dio.get(
         'declaration/user/declarations',

@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/expanded_list_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/select_bottom_sheet_container.dart';
@@ -150,40 +149,22 @@ class SelectDatesWidget extends StatelessWidget {
 
   List<String> kvartals() {
     final year = selectedYear.value!;
-    final int nowYear = int.parse(DateFormat.y().format(DateTime.now()));
-    final int nowMonth = int.parse(DateFormat.M().format(DateTime.now()));
+    final int nowYear = DateTime.now().year;
+    final int nowMonth = DateTime.now().month;
+    final quarters = ['1 квартал'];
 
     if (nowYear == year) {
       if (nowMonth <= 3) {
-        return [
-          '1 квартал',
-        ];
+        return quarters;
       } else if (nowMonth <= 6) {
-        return [
-          '1 квартал',
-          '2 квартал',
-        ];
+        return quarters..add('2 квартал');
       } else if (nowMonth <= 9) {
-        return [
-          '1 квартал',
-          '2 квартал',
-          '3 квартал',
-        ];
+        return quarters..addAll(['2 квартал', '3 квартал']);
       } else {
-        return [
-          '1 квартал',
-          '2 квартал',
-          '3 квартал',
-          '4 квартал',
-        ];
+        return quarters..addAll(['2 квартал', '3 квартал', '4 квартал']);
       }
     } else {
-      return [
-        '1 квартал',
-        '2 квартал',
-        '3 квартал',
-        '4 квартал',
-      ];
+      return quarters..addAll(['2 квартал', '3 квартал', '4 квартал']);
     }
   }
 }

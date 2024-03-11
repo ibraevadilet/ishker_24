@@ -151,179 +151,20 @@ class SelectDatesMonthWidget extends StatelessWidget {
 
   List<String> months() {
     final year = selectedYear.value!;
-    final int nowYear = int.parse(DateFormat.y().format(DateTime.now()));
-    final int nowMonth = int.parse(DateFormat.M().format(DateTime.now()));
-
-    List<String> monthsForSlect = [];
+    final int nowYear = DateTime.now().year;
+    final int nowMonth = DateTime.now().month;
+    print(nowYear);
+    print(nowMonth);
+    List<String> monthsForSelect = List.generate(
+      12,
+      (index) => DateFormat('MMMM').format(DateTime(year, index + 1, 1)),
+    );
 
     if (nowYear == year) {
-      switch (nowMonth) {
-        case 1:
-          monthsForSlect.add('Январь');
-          break;
-        case 2:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-            ],
-          );
-          break;
-        case 3:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-              'Март',
-            ],
-          );
-          break;
-        case 4:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-              'Март',
-              'Апрель',
-            ],
-          );
-          break;
-        case 5:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-              'Март',
-              'Апрель',
-              'Май',
-            ],
-          );
-          break;
-        case 6:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-              'Март',
-              'Апрель',
-              'Май',
-              'Июнь',
-            ],
-          );
-          break;
-        case 7:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-              'Март',
-              'Апрель',
-              'Май',
-              'Июнь',
-              'Июль',
-            ],
-          );
-          break;
-        case 8:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-              'Март',
-              'Апрель',
-              'Май',
-              'Июнь',
-              'Июль',
-              'Август',
-            ],
-          );
-          break;
-        case 9:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-              'Март',
-              'Апрель',
-              'Май',
-              'Июнь',
-              'Июль',
-              'Август',
-              'Сентябрь',
-            ],
-          );
-          break;
-        case 10:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-              'Март',
-              'Апрель',
-              'Май',
-              'Июнь',
-              'Июль',
-              'Август',
-              'Сентябрь',
-              'Октябрь',
-            ],
-          );
-          break;
-        case 11:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-              'Март',
-              'Апрель',
-              'Май',
-              'Июнь',
-              'Июль',
-              'Август',
-              'Сентябрь',
-              'Октябрь',
-              'Ноябрь',
-            ],
-          );
-          break;
-        case 12:
-          monthsForSlect.addAll(
-            [
-              'Январь',
-              'Февраль',
-              'Март',
-              'Апрель',
-              'Май',
-              'Июнь',
-              'Июль',
-              'Август',
-              'Сентябрь',
-              'Октябрь',
-              'Ноябрь',
-              'Декабрь',
-            ],
-          );
-          break;
-      }
-    } else {
-      monthsForSlect.addAll(
-        [
-          'Январь',
-          'Февраль',
-          'Март',
-          'Апрель',
-          'Май',
-          'Июнь',
-          'Июль',
-          'Август',
-          'Сентябрь',
-          'Октябрь',
-          'Ноябрь',
-          'Декабрь',
-        ],
-      );
+      monthsForSelect = monthsForSelect.sublist(0, nowMonth);
     }
-    return monthsForSlect;
+
+    return monthsForSelect;
   }
 }
 

@@ -10,7 +10,7 @@ class OepSignatureRepoImpl implements OepSignatureRepo {
   @override
   Future<CheckOepModel> checkOep() async {
     // final pin = AppSavedPin.getPin();
-    const pin = '21605200001255';
+    const pin = '22306199300089';
     try {
       final response = await dio.get(
         'declaration/sign/check-oep',
@@ -33,7 +33,7 @@ class OepSignatureRepoImpl implements OepSignatureRepo {
   @override
   Future<CheckOepModel> sendOtp(String authType) async {
     // final pin = AppSavedPin.getPin();
-    const pin = '21605200001255';
+    const pin = '22306199300089';
     try {
       final response = await dio.get(
         'declaration/sign/send-otp',

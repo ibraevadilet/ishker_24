@@ -15,7 +15,7 @@ class GetStaticFieldsRepoImpl implements GetStaticFieldsRepo {
     if (isSavedPin.isEmpty) {
       isSavedPin = sl<AuthUseCase>().inn;
     }
-    isSavedPin = '21605200001255';
+    isSavedPin = '22306199300089';
     try {
       final response = await dio.get(
         'declaration/ishker/user/info',

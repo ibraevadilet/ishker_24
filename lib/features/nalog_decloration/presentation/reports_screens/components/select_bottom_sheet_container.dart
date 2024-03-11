@@ -135,8 +135,8 @@ class _SelectBottomSheetContainerState
   }
 
   selectKvartal(int index) {
-    final int nowYear = int.parse(DateFormat.y().format(DateTime.now()));
-    final int nowMonth = int.parse(DateFormat.M().format(DateTime.now()));
+    final int nowYear = DateTime.now().year;
+    final int nowMonth = DateTime.now().month;
     int kvINdex = 0;
     final selectedKvartalIndex = widget.selectedKvartalIndex.value ?? 0;
     switch (nowMonth) {
@@ -187,8 +187,8 @@ class _SelectBottomSheetContainerState
   }
 
   selectMonth(int index) {
-    final int nowYear = int.parse(DateFormat.y().format(DateTime.now()));
-    final int nowMonth = int.parse(DateFormat.M().format(DateTime.now()));
+    final int nowYear = DateTime.now().year;
+    final int nowMonth = DateTime.now().month;
     final selectedMonthIndex = widget.selectedKvartalIndex.value ?? 0;
 
     if (years[index] == nowYear) {

@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
@@ -49,8 +48,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
 
   ValueNotifier<int?> selectedKvartalIndex = ValueNotifier(null);
   ValueNotifier<bool> kvartalSelected = ValueNotifier(false);
-  final String nowYear = DateFormat.y().format(DateTime.now());
-  late ValueNotifier<int?> selectedYear = ValueNotifier(int.parse(nowYear));
+  final int nowYear = DateTime.now().year;
+  late ValueNotifier<int?> selectedYear = ValueNotifier(nowYear);
   ValueNotifier<bool> isYearSelected = ValueNotifier(false);
   String startdate = '';
   String enddate = '';
@@ -2679,7 +2678,6 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         "sti149": model['sti149'],
         "sti150": nalogSumm150.value,
         "totalsum": nalogSumm154.value,
-        
         "sti160": c160.text,
         "sti161": model['sti161'],
         "sti162": nalogSumm162.value,
@@ -2735,7 +2733,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         "sti212": c212.text,
         "sti213": model['sti213'],
         "sti214": nalogSumm214.value,
-        "sti215": nalogSumm215.value,
+        "totalm1": nalogSumm215.value,
         "sti250": c250.text,
         "sti251": model['sti251'],
         "sti252": nalogSumm252.value,
@@ -2791,7 +2789,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         "sti302": c302.text,
         "sti303": model['sti303'],
         "sti304": nalogSumm304.value,
-        "sti305": nalogSumm305.value,
+        "totalm2": nalogSumm305.value,
         "sti310": c310.text,
         "sti311": model['sti311'],
         "sti312": nalogSumm312.value,
@@ -2847,6 +2845,6 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         "sti362": c362.text,
         "sti363": model['sti363'],
         "sti364": nalogSumm364.value,
-        "sti365": nalogSumm365.value,
+        "totalm3": nalogSumm365.value,
       };
 }

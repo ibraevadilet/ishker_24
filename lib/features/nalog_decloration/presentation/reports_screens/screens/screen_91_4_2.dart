@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
@@ -48,8 +47,8 @@ class _Screen9142State extends State<Screen9142> {
 
   ValueNotifier<int?> selectedKvartalIndex = ValueNotifier(null);
   ValueNotifier<bool> kvartalSelected = ValueNotifier(false);
-  final String nowYear = DateFormat.y().format(DateTime.now());
-  late ValueNotifier<int?> selectedYear = ValueNotifier(int.parse(nowYear));
+  final int nowYear = DateTime.now().year;
+  late ValueNotifier<int?> selectedYear = ValueNotifier(nowYear);
   ValueNotifier<bool> isYearSelected = ValueNotifier(false);
   String startdate = '';
   String enddate = '';
