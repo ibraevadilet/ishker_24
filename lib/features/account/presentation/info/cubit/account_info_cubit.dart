@@ -14,8 +14,6 @@ class AccountInfoCubit extends Cubit<AccountInfoState> {
   void load(String account) async {
     emit(AccountInfoLoading());
 
-    await Future.delayed(const Duration(seconds: 5));
-
     final result = await _infoUseCase.call(account);
     emit(switch (result) {
       Success() => AccountInfoSuccess(result.value),
