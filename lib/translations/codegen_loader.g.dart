@@ -30,7 +30,23 @@ class CodegenLoader extends AssetLoader{
   "recipientBank": "Банк получатель",
   "bic": "БИК",
   "branch": "Филиал",
-  "copied": "скопирован"
+  "copied": "скопирован",
+  "historyDetails": "Детали операции",
+  "sum": "Сумма",
+  "operation": "Операция",
+  "prihod": "Начисление",
+  "rashod": "Списание",
+  "toAccount": "На счет",
+  "fromAccount": "Со счета",
+  "sendDate": "Дата отправки",
+  "prihodDate": "Дата начисления",
+  "rashodDate": "Дата списания",
+  "sender": "Отправитель",
+  "senderBank": "Банк отправителя",
+  "recieverBank": "Банк получателя",
+  "history": "История",
+  "operationsEmpty": "Операций нет",
+  "operationsEmptyMsg": "За выбранный период операций не найдено, попробуйте указать другие даты"
 };
 static const Map<String,dynamic> ky = {
   "catchExTimeOfProcessing": "Сурамды иштеп чыгуу убактысынан ашып кетти.\nАракетти бир аздан кийин кайталаңыз",
@@ -48,7 +64,23 @@ static const Map<String,dynamic> ky = {
   "recipientBank": "Алуучу банк",
   "bic": "БИК",
   "branch": "Филиал",
-  "copied": "көчүрүлдү"
+  "copied": "көчүрүлдү",
+  "historyDetails": "Операциянын чоо-жайы",
+  "sum": "Суммасы",
+  "operation": "Иштетүү",
+  "prihod": "Эсептөө",
+  "rashod": "Эсептен чыгаруу",
+  "toAccount": "Эсепке",
+  "fromAccount": "Эсептен",
+  "sendDate": "Жөнөтүлгөн күнү",
+  "prihodDate": "Эсептөө күнү",
+  "rashodDate": "Эсептен чыгаруу күнү",
+  "sender": "Жөнөтүүчү",
+  "senderBank": "Жөнөтүүчү Банк",
+  "recieverBank": "Алуучу Банк",
+  "history": "Тарых",
+  "operationsEmpty": "Операциялар жок",
+  "operationsEmptyMsg": "Тандалган күндөрдө эч кандай операция табылган жок, башка күндөрдү тандап көрүңүздөр"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru": ru, "ky": ky};
 }

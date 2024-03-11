@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
@@ -47,10 +48,8 @@ class HistoryItemWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              'Детали операции',
-              style: AppTextStyles.s16W500(
-                color: AppColors.color2C2C2CBlack,
-              ),
+              'historyDetails'.tr(context: context),
+              style: AppTextStyles.s16W500(color: AppColors.color2C2C2CBlack),
             ),
             const SizedBox(height: 16),
             Padding(
@@ -58,27 +57,37 @@ class HistoryItemWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  detailRow('Сумма',
-                      '${AppCurrencyFormatter.currencyCash(item.amount)} C'),
                   detailRow(
-                    'Операция',
-                    item.isPrihod ? 'Начисление' : 'Списание',
+                    'sum'.tr(context: context),
+                    '${AppCurrencyFormatter.currencyCash(item.amount)} C',
                   ),
                   detailRow(
-                    item.isPrihod ? 'На счет' : 'Со счета',
+                    'operation'.tr(context: context),
+                    item.isPrihod
+                        ? 'prihod'.tr(context: context)
+                        : 'rashod'.tr(context: context),
+                  ),
+                  detailRow(
+                    item.isPrihod
+                        ? 'toAccount'.tr(context: context)
+                        : 'fromAccount'.tr(context: context),
                     item.receiverAccount,
                   ),
                   detailRow(
-                    'Дата отправки',
+                    'sendDate'.tr(context: context),
                     AppDateFormats.formatDdMMYyyy.format(item.paydate),
                   ),
                   detailRow(
-                    'Дата ${item.isPrihod ? 'начисления' : 'списания'}',
+                    item.isPrihod
+                        ? 'prihodDate'.tr(context: context)
+                        : 'rashodDate'.tr(context: context),
                     AppDateFormats.formatDdMMYyyy.format(item.trandate),
                   ),
-                  detailRow('Отправитель', item.payerName),
+                  detailRow('sender'.tr(context: context), item.payerName),
                   detailRow(
-                    'Банк ${item.isPrihod ? 'отправителя' : 'получателя'}',
+                    item.isPrihod
+                        ? 'senderBank'.tr(context: context)
+                        : 'recieverBank'.tr(context: context),
                     item.payerBankname,
                   ),
                 ],
@@ -101,9 +110,7 @@ class HistoryItemWidget extends StatelessWidget {
           children: [
             Text(
               '№${item.receiverAccount}',
-              style: AppTextStyles.s15W600(
-                color: AppColors.color2C2C2CBlack,
-              ),
+              style: AppTextStyles.s15W600(color: AppColors.color2C2C2CBlack),
             ),
             Text(
               AppDateFormats.formatDdMMYyyy.format(item.trandate),
@@ -113,12 +120,25 @@ class HistoryItemWidget extends StatelessWidget {
             )
           ],
         ),
-        trailingWidget: Text(
-          '${item.isPrihod ? '+' : '-'}${AppCurrencyFormatter.currencyCash(item.amount)} C',
-          style: AppTextStyles.s16W700(
-            color: item.isPrihod
-                ? AppColors.color54B25AMain
-                : AppColors.color2C2C2CBlack,
+        trailingWidget: RichText(
+          text: TextSpan(
+            text:
+                '${item.isPrihod ? '+' : '-'}${AppCurrencyFormatter.currencyCash(item.amount)} ',
+            style: AppTextStyles.s16W700(
+              color: item.isPrihod
+                  ? AppColors.color54B25AMain
+                  : AppColors.color2C2C2CBlack,
+            ),
+            children: [
+              TextSpan(
+                text: AppCurrencyFormatter.cuccancyType(item.currency),
+                style: AppTextStyles.s16W700(
+                  color: item.isPrihod
+                      ? AppColors.color54B25AMain
+                      : AppColors.color2C2C2CBlack,
+                ).copyWith(decoration: TextDecoration.underline),
+              )
+            ],
           ),
         ),
       ),

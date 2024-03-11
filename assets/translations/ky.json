@@ -16,5 +16,23 @@
     "recipientBank":"Алуучу банк",
     "bic":"БИК",
     "branch":"Филиал",
-    "copied":"көчүрүлдү"
+    "copied":"көчүрүлдү",
+
+    "historyDetails": "Операциянын чоо-жайы",
+    "sum": "Суммасы",
+    "operation": "Иштетүү",
+    "prihod":"Эсептөө",
+    "rashod":"Эсептен чыгаруу",
+    "toAccount":"Эсепке",
+    "fromAccount":"Эсептен",
+    "sendDate":"Жөнөтүлгөн күнү",
+    "prihodDate":"Эсептөө күнү",
+    "rashodDate":"Эсептен чыгаруу күнү",
+    "sender":"Жөнөтүүчү",
+    "senderBank":"Жөнөтүүчү Банк",
+    "recieverBank":"Алуучу Банк",
+
+    "history":"Тарых",
+    "operationsEmpty": "Операциялар жок",
+    "operationsEmptyMsg": "Тандалган күндөрдө эч кандай операция табылган жок, башка күндөрдү тандап көрүңүздөр"
 }
