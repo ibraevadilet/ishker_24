@@ -3,10 +3,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
-import 'package:ishker_24/features/account/data/repositories/account_repo_impl.dart';
-import 'package:ishker_24/features/account/domain/repositories/account_repo.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:ishker_24/core/network/netrowk_info.dart';
+import 'package:ishker_24/core/network/rsk_service.dart';
+import 'package:ishker_24/features/account/data/datasources/account_datasource.dart';
+import 'package:ishker_24/features/account/data/repositories/account_repository_impl.dart';
+import 'package:ishker_24/features/account/domain/repositories/i_account_repository.dart';
 import 'package:ishker_24/features/account/domain/usecases/account_info_usecase.dart';
 import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
+import 'package:ishker_24/features/account/domain/usecases/transfer_perform_usecase.dart';
+import 'package:ishker_24/features/account/domain/usecases/transfer_validate_usecase.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/create_account_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/get_client_passport_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/register_client_repo_impl.dart';
@@ -204,6 +210,18 @@ Future<void> initServiceLocator() async {
   final dioBaseAuth = DioBaseAuth().dio;
   sl.registerSingleton<AppRouter>(AppRouter());
 
+  final rskService = RskService(sl());
+  sl.registerLazySingleton<INetworkInfo>(
+    () => NetworkInfoImpl(
+      internetConnectionChecker: InternetConnectionChecker(),
+    ),
+  );
+
+  /// Data sources
+  sl.registerLazySingleton<IAccountDataSource>(
+    () => AccountDataSourceImpl(rskService),
+  );
+
   /// Repository
   sl.registerFactory<RegisterOEPRepo>(
       () => RegisterOEPRepoImpl(dio: dioBaseAuth));
@@ -245,7 +263,9 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetClientPassportRepo>(
       () => GetClientPassportRepoImpl(dio: sl()));
   sl.registerFactory<CheckGrnpRepo>(() => CheckGrnpRepoImpl(dio: sl()));
-  sl.registerFactory<AccountRepo>(() => AccountRepoImpl(dio: sl()));
+  sl.registerFactory<IAccountRepository>(
+    () => AccountRepositoryImpl(sl(), sl()),
+  );
   sl.registerFactory<GetStaticFieldsRepo>(
       () => GetStaticFieldsRepoImpl(dio: sl()));
   sl.registerFactory<GetNalogNamesRepo>(() => GetNalogNamesRepoImpl(dio: sl()));
@@ -310,9 +330,7 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton<GetTokensUseCase>(
       () => GetTokensUseCase(repo: sl(), prefs: sl()));
   sl.registerLazySingleton<HistoryUseCase>(() => HistoryUseCase(sl()));
-  sl.registerLazySingleton<AccountInfoUseCase>(
-    () => AccountInfoUseCase(repo: sl()),
-  );
+  sl.registerLazySingleton(() => AccountInfoUseCase(sl()));
   sl.registerFactory<GetStaticFieldsUseCase>(
       () => GetStaticFieldsUseCase(repo: sl()));
   sl.registerFactory<GetNalogNamesUseCase>(
@@ -328,6 +346,8 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GeneratePdfReviewUseCase>(
       () => GeneratePdfReviewUseCase(repo: sl()));
   sl.registerFactory<SaveTokenUseCase>(() => SaveTokenUseCase(repo: sl()));
+  sl.registerLazySingleton(() => TransferValidateUseCase(sl()));
+  sl.registerLazySingleton(() => TransferPerformUseCase(sl()));
   sl.registerFactory<CheckOepUseCase>(() => CheckOepUseCase(repo: sl()));
 
   /// BLoCs / Cubits

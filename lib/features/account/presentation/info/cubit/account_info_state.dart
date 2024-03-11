@@ -1,14 +1,30 @@
 part of 'account_info_cubit.dart';
 
-@freezed
-class AccountInfoState with _$AccountInfoState {
-  const factory AccountInfoState.loading() = _Loading;
-  const factory AccountInfoState.error(String error) = _Error;
-  const factory AccountInfoState.success(AccountModel model) = _Success;
+sealed class AccountInfoState extends Equatable {
+  const AccountInfoState();
 
-  const AccountInfoState._();
-  bool get isLoading => maybeWhen(
-        orElse: () => false,
-        loading: () => true,
-      );
+  @override
+  List<Object?> get props => [];
+}
+
+final class AccountInfoInitial extends AccountInfoState {}
+
+final class AccountInfoLoading extends AccountInfoState {}
+
+final class AccountInfoFailure extends AccountInfoState {
+  const AccountInfoFailure(this.e);
+
+  final Exception e;
+
+  @override
+  List<Object?> get props => [e];
+}
+
+final class AccountInfoSuccess extends AccountInfoState {
+  const AccountInfoSuccess(this.account);
+
+  final Account account;
+
+  @override
+  List<Object?> get props => [account];
 }

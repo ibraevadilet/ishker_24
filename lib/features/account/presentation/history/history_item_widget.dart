@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
-import 'package:ishker_24/features/account/data/models/history_model.dart';
+import 'package:ishker_24/core/utils/modal_bottom_sheet.dart';
+import 'package:ishker_24/features/account/domain/entities/history.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/custom_listtile.dart';
@@ -9,7 +11,7 @@ import 'package:ishker_24/widgets/custom_listtile.dart';
 class HistoryItemWidget extends StatelessWidget {
   const HistoryItemWidget({super.key, required this.item});
 
-  final HistoryItemModel item;
+  final HistoryItem item;
 
   Widget detailRow(String title, String value) => Padding(
         padding: const EdgeInsets.all(8.0),
@@ -36,68 +38,66 @@ class HistoryItemWidget extends StatelessWidget {
         ),
       );
 
-  void showDetailsModal(BuildContext context) => showModalBottomSheet(
-      context: context,
-      backgroundColor: AppColors.backgroundColor,
-      builder: (_) {
-        // return StatefulBuilder(builder: (context, st) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 30,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(
-                'Детали операции',
-                style: AppTextStyles.s16W500(
-                  color: AppColors.color2C2C2CBlack,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Card(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      detailRow('Сумма',
-                          '${AppCurrencyFormatter.currencyCash(item.amount)} C'),
-                      detailRow(
-                        'Операция',
-                        item.isPrihod ? 'Начисление' : 'Списание',
-                      ),
-                      detailRow(
-                        item.isPrihod ? 'На счет' : 'Со счета',
-                        item.receiverAccount,
-                      ),
-                      detailRow(
-                        'Дата отправки',
-                        AppDateFormats.formatDdMMYyyy.format(item.paydate),
-                      ),
-                      detailRow(
-                        'Дата ${item.isPrihod ? 'начисления' : 'списания'}',
-                        AppDateFormats.formatDdMMYyyy.format(item.trandate),
-                      ),
-                      detailRow('Отправитель', item.payerName),
-                      detailRow(
-                        'Банк ${item.isPrihod ? 'отправителя' : 'получателя'}',
-                        item.payerBankname,
-                      ),
-                    ],
+  void showDetailsModal(BuildContext context) {
+    showSheet(
+      context,
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              'historyDetails'.tr(context: context),
+              style: AppTextStyles.s16W500(color: AppColors.color2C2C2CBlack),
+            ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  detailRow(
+                    'sum'.tr(context: context),
+                    '${AppCurrencyFormatter.currencyCash(item.amount)} C',
                   ),
-                ),
-              )
-            ],
-          ),
-        );
-      });
+                  detailRow(
+                    'operation'.tr(context: context),
+                    item.isPrihod
+                        ? 'prihod'.tr(context: context)
+                        : 'rashod'.tr(context: context),
+                  ),
+                  detailRow(
+                    item.isPrihod
+                        ? 'toAccount'.tr(context: context)
+                        : 'fromAccount'.tr(context: context),
+                    item.receiverAccount,
+                  ),
+                  detailRow(
+                    'sendDate'.tr(context: context),
+                    AppDateFormats.formatDdMMYyyy.format(item.paydate),
+                  ),
+                  detailRow(
+                    item.isPrihod
+                        ? 'prihodDate'.tr(context: context)
+                        : 'rashodDate'.tr(context: context),
+                    AppDateFormats.formatDdMMYyyy.format(item.trandate),
+                  ),
+                  detailRow('sender'.tr(context: context), item.payerName),
+                  detailRow(
+                    item.isPrihod
+                        ? 'senderBank'.tr(context: context)
+                        : 'recieverBank'.tr(context: context),
+                    item.payerBankname,
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,9 +110,7 @@ class HistoryItemWidget extends StatelessWidget {
           children: [
             Text(
               '№${item.receiverAccount}',
-              style: AppTextStyles.s15W600(
-                color: AppColors.color2C2C2CBlack,
-              ),
+              style: AppTextStyles.s15W600(color: AppColors.color2C2C2CBlack),
             ),
             Text(
               AppDateFormats.formatDdMMYyyy.format(item.trandate),
@@ -122,12 +120,25 @@ class HistoryItemWidget extends StatelessWidget {
             )
           ],
         ),
-        trailingWidget: Text(
-          '${item.isPrihod ? '+' : '-'}${AppCurrencyFormatter.currencyCash(item.amount)} C',
-          style: AppTextStyles.s16W700(
-            color: item.isPrihod
-                ? AppColors.color54B25AMain
-                : AppColors.color2C2C2CBlack,
+        trailingWidget: RichText(
+          text: TextSpan(
+            text:
+                '${item.isPrihod ? '+' : '-'}${AppCurrencyFormatter.currencyCash(item.amount)} ',
+            style: AppTextStyles.s16W700(
+              color: item.isPrihod
+                  ? AppColors.color54B25AMain
+                  : AppColors.color2C2C2CBlack,
+            ),
+            children: [
+              TextSpan(
+                text: AppCurrencyFormatter.cuccancyType(item.currency),
+                style: AppTextStyles.s16W700(
+                  color: item.isPrihod
+                      ? AppColors.color54B25AMain
+                      : AppColors.color2C2C2CBlack,
+                ).copyWith(decoration: TextDecoration.underline),
+              )
+            ],
           ),
         ),
       ),

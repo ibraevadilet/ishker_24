@@ -1,15 +1,15 @@
-import 'package:ishker_24/features/account/data/models/account_model.dart';
-import 'package:ishker_24/features/account/domain/repositories/account_repo.dart';
+import 'package:ishker_24/core/usecases/usecase.dart';
+import 'package:ishker_24/core/utils/result.dart';
+import 'package:ishker_24/features/account/domain/entities/account.dart';
+import 'package:ishker_24/features/account/domain/repositories/i_account_repository.dart';
 
-class AccountInfoUseCase {
-  final AccountRepo repo;
-  AccountInfoUseCase({required this.repo});
+class AccountInfoUseCase
+    implements UseCase<Result<Account, Exception>, String> {
+  AccountInfoUseCase(this._repository);
 
-  Future<AccountModel> call(String account) async {
-    try {
-      return await repo.info(account);
-    } catch (e) {
-      rethrow;
-    }
-  }
+  final IAccountRepository _repository;
+
+  @override
+  Future<Result<Account, Exception>> call(String account) async =>
+      _repository.info(account);
 }

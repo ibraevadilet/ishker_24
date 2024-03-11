@@ -3,8 +3,9 @@ import 'package:ishker_24/theme/app_colors.dart';
 
 void showSheet(BuildContext context, Widget child) async {
   return showModalBottomSheet(
-    isScrollControlled: true,
     context: context,
+    isScrollControlled: true,
+    useSafeArea: true,
     builder: (context) => Padding(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,

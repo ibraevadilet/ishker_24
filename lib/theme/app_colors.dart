@@ -10,6 +10,7 @@ abstract class AppColors {
   static const Color color7A7A7AGrey = Color(0xff7A7A7A);
   static const Color colorD0D0D0Grey = Color(0xffD0D0D0);
   static const Color colorF3F4F5Grey = Color(0xffF3F4F5);
+  static const Color colorDADBDCGrey = Color(0xffDADBDC);
   static const Color color4E4E4EGrey = Color(0xff4E4E4E);
   static const Color colorFF0000Red = Color(0xffFF0000);
   static const Color colorFC4637Red = Color(0xffFC4637);

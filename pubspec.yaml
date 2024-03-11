@@ -50,7 +50,8 @@ dependencies:
   flutter_inappwebview: ^6.0.0
   table_calendar: ^3.0.9
   file_picker: ^6.1.1
-
+  internet_connection_checker: ^1.0.0+1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,14 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.4.4
   auto_route_generator: ^7.1.1
+
+  # test
+  mocktail: ^1.0.3
+  mockingjay: ^0.5.0
+  bloc_test: ^9.1.6
+  test: any
+  mocktail_image_network: ^1.1.0
+
   
 flutter:
 

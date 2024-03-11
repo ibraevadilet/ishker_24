@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
+import 'package:ishker_24/core/formatters/input_formatters.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/features/home/data/models/get_client_info_model.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/widgets/empty_account_widget.dart';
@@ -107,6 +108,7 @@ class _QrWidgetState extends State<QrWidget> {
                       const SizedBox(height: 16),
                       CustomTextField(
                         controller: _controller,
+                        inputFormatters: [AppInputFormatters.amountFormatter],
                         keyboardType: const TextInputType.numberWithOptions(
                           decimal: true,
                         ),

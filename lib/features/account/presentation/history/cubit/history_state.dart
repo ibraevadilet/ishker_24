@@ -3,21 +3,21 @@ part of 'history_cubit.dart';
 class HistoryState extends Equatable {
   const HistoryState({
     this.status = const RequestInitial(),
-    this.model = HistoryModel.empty,
+    this.model = History.empty,
     this.currentPage = 1,
     required this.start,
     required this.end,
   });
 
   final RequestStatus status;
-  final HistoryModel model;
+  final History model;
   final int currentPage;
   final DateTime start;
   final DateTime end;
 
   HistoryState copyWith({
     RequestStatus? status,
-    HistoryModel? model,
+    History? model,
     int? currentPage,
     DateTime? start,
     DateTime? end,

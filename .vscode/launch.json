@@ -20,6 +20,12 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "tests",
+            "type": "dart",
+            "request": "launch",
+            "program": "test/", // or tests/foo for a subset of tests
         }
     ]
 }
