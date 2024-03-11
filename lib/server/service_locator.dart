@@ -370,7 +370,7 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<ConfirmOtpCubit>(() => ConfirmOtpCubit(useCase: sl()));
   sl.registerFactory<TimerCubit>(() => TimerCubit());
   sl.registerFactory<AuthCubit>(
-      () => AuthCubit(useCase: sl(), prefs: sl(), tokenseCase: sl()));
+      () => AuthCubit(useCase: sl(), tokenseCase: sl()));
   sl.registerFactory<GetConfirmCodeCubit>(
       () => GetConfirmCodeCubit(useCase: sl()));
   sl.registerFactory<ConfirmReceivedCodeCubit>(
