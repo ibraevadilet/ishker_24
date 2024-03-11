@@ -14,13 +14,19 @@ class OepSignatureRepoImpl implements OepSignatureRepo {
     try {
       final response = await dio.get(
         'declaration/sign/check-oep',
-        data: {
+        queryParameters: {
           'inn': pin,
         },
       );
-      return CheckOepModel.fromJson(response.data);
+      return CheckOepModel.fromJson(response.data['data']);
     } catch (e) {
-      throw CatchException.convertException(e).message;
+      if (e is DioException) {
+        throw CatchException(
+          message: e.response!.data?['message'] ?? 'Приозошла системная ошибка',
+        ).message;
+      } else {
+        throw CatchException.convertException(e).message;
+      }
     }
   }
 
@@ -30,15 +36,21 @@ class OepSignatureRepoImpl implements OepSignatureRepo {
     const pin = '21605200001255';
     try {
       final response = await dio.get(
-        'declaration/sign/check-oep',
-        data: {
+        'declaration/sign/send-otp',
+        queryParameters: {
           'inn': pin,
           'authType': authType,
         },
       );
       return CheckOepModel.fromJson(response.data);
     } catch (e) {
-      throw CatchException.convertException(e).message;
+      if (e is DioException) {
+        throw CatchException(
+          message: e.response!.data?['message'] ?? 'Приозошла системная ошибка',
+        ).message;
+      } else {
+        throw CatchException.convertException(e).message;
+      }
     }
   }
 }

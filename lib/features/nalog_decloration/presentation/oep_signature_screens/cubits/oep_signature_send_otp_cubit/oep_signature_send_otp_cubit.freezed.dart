@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'send_saved_data_cubit.dart';
+part of 'oep_signature_send_otp_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,31 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SendSavedDataState {
+mixin _$OepSignatureSendOtpState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String error) error,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingSms,
+    required TResult Function() error,
     required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String error)? error,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingSms,
+    TResult? Function()? error,
     TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingSms,
+    TResult Function()? error,
     TResult Function()? success,
     required TResult orElse(),
   }) =>
@@ -44,7 +47,8 @@ mixin _$SendSavedDataState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingSms value) loadingSms,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
   }) =>
@@ -52,7 +56,8 @@ mixin _$SendSavedDataState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingSms value)? loadingSms,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
   }) =>
@@ -60,7 +65,8 @@ mixin _$SendSavedDataState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingSms value)? loadingSms,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -69,16 +75,17 @@ mixin _$SendSavedDataState {
 }
 
 /// @nodoc
-abstract class $SendSavedDataStateCopyWith<$Res> {
-  factory $SendSavedDataStateCopyWith(
-          SendSavedDataState value, $Res Function(SendSavedDataState) then) =
-      _$SendSavedDataStateCopyWithImpl<$Res, SendSavedDataState>;
+abstract class $OepSignatureSendOtpStateCopyWith<$Res> {
+  factory $OepSignatureSendOtpStateCopyWith(OepSignatureSendOtpState value,
+          $Res Function(OepSignatureSendOtpState) then) =
+      _$OepSignatureSendOtpStateCopyWithImpl<$Res, OepSignatureSendOtpState>;
 }
 
 /// @nodoc
-class _$SendSavedDataStateCopyWithImpl<$Res, $Val extends SendSavedDataState>
-    implements $SendSavedDataStateCopyWith<$Res> {
-  _$SendSavedDataStateCopyWithImpl(this._value, this._then);
+class _$OepSignatureSendOtpStateCopyWithImpl<$Res,
+        $Val extends OepSignatureSendOtpState>
+    implements $OepSignatureSendOtpStateCopyWith<$Res> {
+  _$OepSignatureSendOtpStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +102,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$SendSavedDataStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$OepSignatureSendOtpStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -109,7 +116,7 @@ class _$InitialImpl extends _Initial {
 
   @override
   String toString() {
-    return 'SendSavedDataState.initial()';
+    return 'OepSignatureSendOtpState.initial()';
   }
 
   @override
@@ -125,8 +132,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String error) error,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingSms,
+    required TResult Function() error,
     required TResult Function() success,
   }) {
     return initial();
@@ -136,8 +144,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String error)? error,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingSms,
+    TResult? Function()? error,
     TResult? Function()? success,
   }) {
     return initial?.call();
@@ -147,8 +156,9 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingSms,
+    TResult Function()? error,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -162,7 +172,8 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingSms value) loadingSms,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
   }) {
@@ -173,7 +184,8 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingSms value)? loadingSms,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
   }) {
@@ -184,7 +196,8 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingSms value)? loadingSms,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -196,41 +209,41 @@ class _$InitialImpl extends _Initial {
   }
 }
 
-abstract class _Initial extends SendSavedDataState {
+abstract class _Initial extends OepSignatureSendOtpState {
   const factory _Initial() = _$InitialImpl;
   const _Initial._() : super._();
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+abstract class _$$LoadingEmailImplCopyWith<$Res> {
+  factory _$$LoadingEmailImplCopyWith(
+          _$LoadingEmailImpl value, $Res Function(_$LoadingEmailImpl) then) =
+      __$$LoadingEmailImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$SendSavedDataStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$LoadingEmailImplCopyWithImpl<$Res>
+    extends _$OepSignatureSendOtpStateCopyWithImpl<$Res, _$LoadingEmailImpl>
+    implements _$$LoadingEmailImplCopyWith<$Res> {
+  __$$LoadingEmailImplCopyWithImpl(
+      _$LoadingEmailImpl _value, $Res Function(_$LoadingEmailImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingImpl extends _Loading {
-  const _$LoadingImpl() : super._();
+class _$LoadingEmailImpl extends _LoadingEmail {
+  const _$LoadingEmailImpl() : super._();
 
   @override
   String toString() {
-    return 'SendSavedDataState.loading()';
+    return 'OepSignatureSendOtpState.loadingEmail()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is _$LoadingEmailImpl);
   }
 
   @override
@@ -240,35 +253,38 @@ class _$LoadingImpl extends _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String error) error,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingSms,
+    required TResult Function() error,
     required TResult Function() success,
   }) {
-    return loading();
+    return loadingEmail();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String error)? error,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingSms,
+    TResult? Function()? error,
     TResult? Function()? success,
   }) {
-    return loading?.call();
+    return loadingEmail?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingSms,
+    TResult Function()? error,
     TResult Function()? success,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (loadingEmail != null) {
+      return loadingEmail();
     }
     return orElse();
   }
@@ -277,43 +293,167 @@ class _$LoadingImpl extends _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingSms value) loadingSms,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
   }) {
-    return loading(this);
+    return loadingEmail(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingSms value)? loadingSms,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
   }) {
-    return loading?.call(this);
+    return loadingEmail?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingSms value)? loadingSms,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (loadingEmail != null) {
+      return loadingEmail(this);
     }
     return orElse();
   }
 }
 
-abstract class _Loading extends SendSavedDataState {
-  const factory _Loading() = _$LoadingImpl;
-  const _Loading._() : super._();
+abstract class _LoadingEmail extends OepSignatureSendOtpState {
+  const factory _LoadingEmail() = _$LoadingEmailImpl;
+  const _LoadingEmail._() : super._();
+}
+
+/// @nodoc
+abstract class _$$LoadingSmsImplCopyWith<$Res> {
+  factory _$$LoadingSmsImplCopyWith(
+          _$LoadingSmsImpl value, $Res Function(_$LoadingSmsImpl) then) =
+      __$$LoadingSmsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingSmsImplCopyWithImpl<$Res>
+    extends _$OepSignatureSendOtpStateCopyWithImpl<$Res, _$LoadingSmsImpl>
+    implements _$$LoadingSmsImplCopyWith<$Res> {
+  __$$LoadingSmsImplCopyWithImpl(
+      _$LoadingSmsImpl _value, $Res Function(_$LoadingSmsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingSmsImpl extends _LoadingSms {
+  const _$LoadingSmsImpl() : super._();
+
+  @override
+  String toString() {
+    return 'OepSignatureSendOtpState.loadingSms()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingSmsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingSms,
+    required TResult Function() error,
+    required TResult Function() success,
+  }) {
+    return loadingSms();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingSms,
+    TResult? Function()? error,
+    TResult? Function()? success,
+  }) {
+    return loadingSms?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingSms,
+    TResult Function()? error,
+    TResult Function()? success,
+    required TResult orElse(),
+  }) {
+    if (loadingSms != null) {
+      return loadingSms();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingSms value) loadingSms,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Success value) success,
+  }) {
+    return loadingSms(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingSms value)? loadingSms,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Success value)? success,
+  }) {
+    return loadingSms?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingSms value)? loadingSms,
+    TResult Function(_Error value)? error,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (loadingSms != null) {
+      return loadingSms(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadingSms extends OepSignatureSendOtpState {
+  const factory _LoadingSms() = _$LoadingSmsImpl;
+  const _LoadingSms._() : super._();
 }
 
 /// @nodoc
@@ -321,95 +461,72 @@ abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String error});
 }
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$SendSavedDataStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$OepSignatureSendOtpStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? error = null,
-  }) {
-    return _then(_$ErrorImpl(
-      null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$ErrorImpl extends _Error {
-  const _$ErrorImpl(this.error) : super._();
-
-  @override
-  final String error;
+  const _$ErrorImpl() : super._();
 
   @override
   String toString() {
-    return 'SendSavedDataState.error(error: $error)';
+    return 'OepSignatureSendOtpState.error()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
-            (identical(other.error, error) || other.error == error));
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, error);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String error) error,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingSms,
+    required TResult Function() error,
     required TResult Function() success,
   }) {
-    return error(this.error);
+    return error();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String error)? error,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingSms,
+    TResult? Function()? error,
     TResult? Function()? success,
   }) {
-    return error?.call(this.error);
+    return error?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingSms,
+    TResult Function()? error,
     TResult Function()? success,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error);
+      return error();
     }
     return orElse();
   }
@@ -418,7 +535,8 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingSms value) loadingSms,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
   }) {
@@ -429,7 +547,8 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingSms value)? loadingSms,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
   }) {
@@ -440,7 +559,8 @@ class _$ErrorImpl extends _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingSms value)? loadingSms,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -452,14 +572,9 @@ class _$ErrorImpl extends _Error {
   }
 }
 
-abstract class _Error extends SendSavedDataState {
-  const factory _Error(final String error) = _$ErrorImpl;
+abstract class _Error extends OepSignatureSendOtpState {
+  const factory _Error() = _$ErrorImpl;
   const _Error._() : super._();
-
-  String get error;
-  @JsonKey(ignore: true)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -471,7 +586,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$SendSavedDataStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$OepSignatureSendOtpStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -485,7 +600,7 @@ class _$SuccessImpl extends _Success {
 
   @override
   String toString() {
-    return 'SendSavedDataState.success()';
+    return 'OepSignatureSendOtpState.success()';
   }
 
   @override
@@ -501,8 +616,9 @@ class _$SuccessImpl extends _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String error) error,
+    required TResult Function() loadingEmail,
+    required TResult Function() loadingSms,
+    required TResult Function() error,
     required TResult Function() success,
   }) {
     return success();
@@ -512,8 +628,9 @@ class _$SuccessImpl extends _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String error)? error,
+    TResult? Function()? loadingEmail,
+    TResult? Function()? loadingSms,
+    TResult? Function()? error,
     TResult? Function()? success,
   }) {
     return success?.call();
@@ -523,8 +640,9 @@ class _$SuccessImpl extends _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
+    TResult Function()? loadingEmail,
+    TResult Function()? loadingSms,
+    TResult Function()? error,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -538,7 +656,8 @@ class _$SuccessImpl extends _Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
+    required TResult Function(_LoadingEmail value) loadingEmail,
+    required TResult Function(_LoadingSms value) loadingSms,
     required TResult Function(_Error value) error,
     required TResult Function(_Success value) success,
   }) {
@@ -549,7 +668,8 @@ class _$SuccessImpl extends _Success {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LoadingEmail value)? loadingEmail,
+    TResult? Function(_LoadingSms value)? loadingSms,
     TResult? Function(_Error value)? error,
     TResult? Function(_Success value)? success,
   }) {
@@ -560,7 +680,8 @@ class _$SuccessImpl extends _Success {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
+    TResult Function(_LoadingEmail value)? loadingEmail,
+    TResult Function(_LoadingSms value)? loadingSms,
     TResult Function(_Error value)? error,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -572,7 +693,7 @@ class _$SuccessImpl extends _Success {
   }
 }
 
-abstract class _Success extends SendSavedDataState {
+abstract class _Success extends OepSignatureSendOtpState {
   const factory _Success() = _$SuccessImpl;
   const _Success._() : super._();
 }

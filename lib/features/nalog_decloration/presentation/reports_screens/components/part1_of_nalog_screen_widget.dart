@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ishker_24/core/formatters/input_formatters.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/features/nalog_decloration/data/models/ugns_model.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/custom_text_field.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/expanded_list_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/field_name_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/select_document_type_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/static_container_info_widget.dart';
-import 'package:ishker_24/theme/app_colors.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/screens/code_ugns_screen.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 
 class Part1OfNalogScreenWidget extends StatelessWidget {
@@ -72,24 +72,46 @@ class Part1OfNalogScreenWidget extends StatelessWidget {
               return ValueListenableBuilder(
                 valueListenable: isUgnsSelected,
                 builder: (_, ugnsValue, child) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: ugnsValue
-                          ? Border.all(
-                              color: Colors.red,
-                            )
-                          : null,
-                    ),
-                    child: ExpandedList(
-                      color: AppColors.colorF3F4F5Grey,
-                      title: 'Выберите',
-                      selectedIndex: value,
-                      onSelected: (int index) {
-                        selectedUgnsIndex104.value = index;
+                  return InkWell(
+                    onTap: () async {
+                      final resultIndex = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CodeUgnsScreen(
+                            ugnsModels: ugnsModels,
+                          ),
+                        ),
+                      ) as int?;
+                      if (resultIndex != null) {
+                        selectedUgnsIndex104.value = resultIndex;
                         isUgnsSelected.value = false;
-                      },
-                      items: ugnsModels.map<String>((e) => e.id).toList(),
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: ugnsValue
+                            ? Border.all(
+                                color: Colors.red,
+                              )
+                            : Border.all(
+                                color: Colors.black,
+                              ),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              selectedUgnsIndex104.value == null
+                                  ? 'Выберите'
+                                  : ugnsModels[selectedUgnsIndex104.value!].id,
+                              style: AppTextStyles.s16W500(),
+                            ),
+                          ),
+                          const Icon(Icons.arrow_forward_ios_sharp),
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -163,6 +185,9 @@ class Part1OfNalogScreenWidget extends StatelessWidget {
             controller: c108,
             keyboardType: TextInputType.number,
             validator: AppInputValidators.emptyValidator,
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(6),
+            ],
           ),
           const SizedBox(height: 16),
           const FieldNameWidget(

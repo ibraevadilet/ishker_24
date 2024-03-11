@@ -7,9 +7,12 @@ class SendNalogDataUseCase {
   });
 
   Future<void> sendNalogData(
-      Map<String, dynamic> sendModel, String type) async {
+    Map<String, dynamic> sendModel,
+    String type,
+    String pinCode,
+  ) async {
     try {
-      await repo.sendNalogData(sendModel, type);
+      await repo.sendNalogData(sendModel, type, pinCode);
     } catch (e) {
       rethrow;
     }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/expanded_list_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/select_bottom_sheet_container.dart';
@@ -30,30 +31,35 @@ class SelectDatesWidget extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         ValueListenableBuilder(
-          valueListenable: selectedKvartalIndex,
-          builder: (_, value, child) {
+          valueListenable: selectedYear,
+          builder: (_, __, child) {
             return ValueListenableBuilder(
-              valueListenable: kvartalSelected,
-              builder: (_, isKvartalSelected, child) {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: isKvartalSelected
-                        ? Border.all(
-                            color: Colors.red,
-                          )
-                        : null,
-                  ),
-                  child: ExpandedList(
-                    color: AppColors.colorF3F4F5Grey,
-                    title: 'Выберите квартал',
-                    selectedIndex: value,
-                    onSelected: (int index) {
-                      selectedKvartalIndex.value = index;
-                      kvartalSelected.value = false;
-                    },
-                    items: kvartals,
-                  ),
+              valueListenable: selectedKvartalIndex,
+              builder: (_, value, child) {
+                return ValueListenableBuilder(
+                  valueListenable: kvartalSelected,
+                  builder: (_, isKvartalSelected, child) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: isKvartalSelected
+                            ? Border.all(
+                                color: Colors.red,
+                              )
+                            : null,
+                      ),
+                      child: ExpandedList(
+                        color: AppColors.colorF3F4F5Grey,
+                        title: 'Выберите квартал',
+                        selectedIndex: value,
+                        onSelected: (int index) {
+                          selectedKvartalIndex.value = index;
+                          kvartalSelected.value = false;
+                        },
+                        items: kvartals(),
+                      ),
+                    );
+                  },
                 );
               },
             );
@@ -63,6 +69,7 @@ class SelectDatesWidget extends StatelessWidget {
         SelectBottomSheetContainer(
           selectedYear: selectedYear,
           isYearSelected: isYearSelected,
+          selectedKvartalIndex: selectedKvartalIndex,
         ),
         const SizedBox(height: 12),
         ValueListenableBuilder(
@@ -140,6 +147,45 @@ class SelectDatesWidget extends StatelessWidget {
       ],
     );
   }
+
+  List<String> kvartals() {
+    final year = selectedYear.value!;
+    final int nowYear = int.parse(DateFormat.y().format(DateTime.now()));
+    final int nowMonth = int.parse(DateFormat.M().format(DateTime.now()));
+
+    if (nowYear == year) {
+      if (nowMonth <= 3) {
+        return [
+          '1 квартал',
+        ];
+      } else if (nowMonth <= 6) {
+        return [
+          '1 квартал',
+          '2 квартал',
+        ];
+      } else if (nowMonth <= 9) {
+        return [
+          '1 квартал',
+          '2 квартал',
+          '3 квартал',
+        ];
+      } else {
+        return [
+          '1 квартал',
+          '2 квартал',
+          '3 квартал',
+          '4 квартал',
+        ];
+      }
+    } else {
+      return [
+        '1 квартал',
+        '2 квартал',
+        '3 квартал',
+        '4 квартал',
+      ];
+    }
+  }
 }
 
 String dateFrom(int kvartalIndex, int year) {
@@ -171,10 +217,3 @@ String dateTo(int kvartalIndex, int year) {
       return '';
   }
 }
-
-List<String> get kvartals => [
-      '1 квартал',
-      '2 квартал',
-      '3 квартал',
-      '4 квартал',
-    ];

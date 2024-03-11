@@ -88,7 +88,7 @@ import 'package:ishker_24/features/megakassa/presentation/my_profile/my_profile_
 import 'package:ishker_24/features/my_ip/presentation/my_certificate_screen/my_certficate_screen.dart'
     as _i33;
 import 'package:ishker_24/features/nalog_decloration/data/models/nalog_names_model.dart'
-    as _i83;
+    as _i82;
 import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/main_screen.dart'
     as _i36;
 import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/widgets/report_detail_pdf_view_screen.dart'
@@ -107,7 +107,7 @@ import 'package:ishker_24/features/pdf_view_screen.dart' as _i41;
 import 'package:ishker_24/features/register_ip/data/models/pin_code_types_model.dart'
     as _i73;
 import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart'
-    as _i82;
+    as _i83;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_confirm_oep_screen.dart'
     as _i55;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_main_screen.dart'
@@ -437,15 +437,25 @@ abstract class $AppRouter extends _i67.RootStackRouter {
       );
     },
     NalogConfirmOepRoute.name: (routeData) {
+      final args = routeData.argsAs<NalogConfirmOepRouteArgs>();
       return _i67.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i34.NalogConfirmOepScreen(),
+        child: _i34.NalogConfirmOepScreen(
+          key: args.key,
+          nalogNameModel: args.nalogNameModel,
+          sendModel: args.sendModel,
+        ),
       );
     },
     NalogConfirmRoute.name: (routeData) {
+      final args = routeData.argsAs<NalogConfirmRouteArgs>();
       return _i67.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i35.NalogConfirmScreen(),
+        child: _i35.NalogConfirmScreen(
+          key: args.key,
+          nalogNameModel: args.nalogNameModel,
+          sendModel: args.sendModel,
+        ),
       );
     },
     NalogMainRoute.name: (routeData) {
@@ -1584,30 +1594,89 @@ class MyCertficateRouteArgs {
 
 /// generated route for
 /// [_i34.NalogConfirmOepScreen]
-class NalogConfirmOepRoute extends _i67.PageRouteInfo<void> {
-  const NalogConfirmOepRoute({List<_i67.PageRouteInfo>? children})
-      : super(
+class NalogConfirmOepRoute
+    extends _i67.PageRouteInfo<NalogConfirmOepRouteArgs> {
+  NalogConfirmOepRoute({
+    _i68.Key? key,
+    required _i82.NalogNameModel nalogNameModel,
+    required Map<String, dynamic> sendModel,
+    List<_i67.PageRouteInfo>? children,
+  }) : super(
           NalogConfirmOepRoute.name,
+          args: NalogConfirmOepRouteArgs(
+            key: key,
+            nalogNameModel: nalogNameModel,
+            sendModel: sendModel,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'NalogConfirmOepRoute';
 
-  static const _i67.PageInfo<void> page = _i67.PageInfo<void>(name);
+  static const _i67.PageInfo<NalogConfirmOepRouteArgs> page =
+      _i67.PageInfo<NalogConfirmOepRouteArgs>(name);
+}
+
+class NalogConfirmOepRouteArgs {
+  const NalogConfirmOepRouteArgs({
+    this.key,
+    required this.nalogNameModel,
+    required this.sendModel,
+  });
+
+  final _i68.Key? key;
+
+  final _i82.NalogNameModel nalogNameModel;
+
+  final Map<String, dynamic> sendModel;
+
+  @override
+  String toString() {
+    return 'NalogConfirmOepRouteArgs{key: $key, nalogNameModel: $nalogNameModel, sendModel: $sendModel}';
+  }
 }
 
 /// generated route for
 /// [_i35.NalogConfirmScreen]
-class NalogConfirmRoute extends _i67.PageRouteInfo<void> {
-  const NalogConfirmRoute({List<_i67.PageRouteInfo>? children})
-      : super(
+class NalogConfirmRoute extends _i67.PageRouteInfo<NalogConfirmRouteArgs> {
+  NalogConfirmRoute({
+    _i68.Key? key,
+    required _i82.NalogNameModel nalogNameModel,
+    required Map<String, dynamic> sendModel,
+    List<_i67.PageRouteInfo>? children,
+  }) : super(
           NalogConfirmRoute.name,
+          args: NalogConfirmRouteArgs(
+            key: key,
+            nalogNameModel: nalogNameModel,
+            sendModel: sendModel,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'NalogConfirmRoute';
 
-  static const _i67.PageInfo<void> page = _i67.PageInfo<void>(name);
+  static const _i67.PageInfo<NalogConfirmRouteArgs> page =
+      _i67.PageInfo<NalogConfirmRouteArgs>(name);
+}
+
+class NalogConfirmRouteArgs {
+  const NalogConfirmRouteArgs({
+    this.key,
+    required this.nalogNameModel,
+    required this.sendModel,
+  });
+
+  final _i68.Key? key;
+
+  final _i82.NalogNameModel nalogNameModel;
+
+  final Map<String, dynamic> sendModel;
+
+  @override
+  String toString() {
+    return 'NalogConfirmRouteArgs{key: $key, nalogNameModel: $nalogNameModel, sendModel: $sendModel}';
+  }
 }
 
 /// generated route for
@@ -2163,7 +2232,7 @@ class RegisterIPTypeOfActivityRoute
     extends _i67.PageRouteInfo<RegisterIPTypeOfActivityRouteArgs> {
   RegisterIPTypeOfActivityRoute({
     _i68.Key? key,
-    required List<_i82.TaxModel> models,
+    required List<_i83.TaxModel> models,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           RegisterIPTypeOfActivityRoute.name,
@@ -2188,7 +2257,7 @@ class RegisterIPTypeOfActivityRouteArgs {
 
   final _i68.Key? key;
 
-  final List<_i82.TaxModel> models;
+  final List<_i83.TaxModel> models;
 
   @override
   String toString() {
@@ -2216,7 +2285,7 @@ class RegisterIpSelectModesRoute
     extends _i67.PageRouteInfo<RegisterIpSelectModesRouteArgs> {
   RegisterIpSelectModesRoute({
     _i68.Key? key,
-    required List<_i82.TaxModel> models,
+    required List<_i83.TaxModel> models,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           RegisterIpSelectModesRoute.name,
@@ -2241,7 +2310,7 @@ class RegisterIpSelectModesRouteArgs {
 
   final _i68.Key? key;
 
-  final List<_i82.TaxModel> models;
+  final List<_i83.TaxModel> models;
 
   @override
   String toString() {
@@ -2307,7 +2376,7 @@ class ReportDetailPdfViewRouteArgs {
 class Route914 extends _i67.PageRouteInfo<Route914Args> {
   Route914({
     _i68.Key? key,
-    required _i83.NalogNameModel model,
+    required _i82.NalogNameModel model,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           Route914.name,
@@ -2332,7 +2401,7 @@ class Route914Args {
 
   final _i68.Key? key;
 
-  final _i83.NalogNameModel model;
+  final _i82.NalogNameModel model;
 
   @override
   String toString() {
@@ -2345,7 +2414,7 @@ class Route914Args {
 class Route9141 extends _i67.PageRouteInfo<Route9141Args> {
   Route9141({
     _i68.Key? key,
-    required _i83.NalogNameModel model,
+    required _i82.NalogNameModel model,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           Route9141.name,
@@ -2370,7 +2439,7 @@ class Route9141Args {
 
   final _i68.Key? key;
 
-  final _i83.NalogNameModel model;
+  final _i82.NalogNameModel model;
 
   @override
   String toString() {
@@ -2383,7 +2452,7 @@ class Route9141Args {
 class Route9142 extends _i67.PageRouteInfo<Route9142Args> {
   Route9142({
     _i68.Key? key,
-    required _i83.NalogNameModel model,
+    required _i82.NalogNameModel model,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           Route9142.name,
@@ -2408,7 +2477,7 @@ class Route9142Args {
 
   final _i68.Key? key;
 
-  final _i83.NalogNameModel model;
+  final _i82.NalogNameModel model;
 
   @override
   String toString() {

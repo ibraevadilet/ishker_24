@@ -4,7 +4,12 @@ import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 
 class ConfirmContainer extends StatelessWidget {
-  const ConfirmContainer({super.key});
+  const ConfirmContainer({
+    super.key,
+    required this.reportTypeName,
+  });
+  final String reportTypeName;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,13 +49,12 @@ class ConfirmContainer extends StatelessWidget {
               children: [
                 const TextSpan(text: 'Для предоставления'),
                 TextSpan(
-                  text:
-                      '"Отчет по единому налогу для субъектов малого предпринимательства (01.04.2023- квартальный)» - 091_4_2",',
+                  text: ' "$reportTypeName" ',
                   style: AppTextStyles.s16W700(),
                 ),
                 const TextSpan(
                     text:
-                        ' требуется подписать его с использованием облачной\nэлектронной подписи (ОЭП).'),
+                        'требуется подписать его с использованием облачной электронной подписи (ОЭП).'),
               ],
             ),
           ),

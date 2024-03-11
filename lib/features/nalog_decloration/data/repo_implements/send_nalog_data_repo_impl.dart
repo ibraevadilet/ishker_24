@@ -8,12 +8,16 @@ class SendNalogDataRepoImpl implements SendNalogDataRepo {
 
   @override
   Future<void> sendNalogData(
-      Map<String, dynamic> sendModel, String type) async {
+    Map<String, dynamic> sendModel,
+    String type,
+    String pinCode,
+  ) async {
     try {
       await dio.post(
         'declaration/send',
         queryParameters: {
           "type": type,
+          "pinCode": pinCode,
         },
         data: sendModel,
       );

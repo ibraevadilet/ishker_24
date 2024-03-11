@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
+import 'package:ishker_24/core/functions/un_focuser_func.dart';
 import 'package:ishker_24/features/nalog_decloration/data/models/nalog_names_model.dart';
 import 'package:ishker_24/features/nalog_decloration/data/models/ugns_model.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/field_name_widget.dart';
@@ -13,7 +15,6 @@ import 'package:ishker_24/features/nalog_decloration/presentation/reports_screen
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/select_dates_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/static_container_info_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/generate_pdf_review_cubit/generate_pdf_review_cubit.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/send_saved_data_cubit/send_saved_data_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
@@ -47,7 +48,8 @@ class _Screen9142State extends State<Screen9142> {
 
   ValueNotifier<int?> selectedKvartalIndex = ValueNotifier(null);
   ValueNotifier<bool> kvartalSelected = ValueNotifier(false);
-  ValueNotifier<int?> selectedYear = ValueNotifier(null);
+  final String nowYear = DateFormat.y().format(DateTime.now());
+  late ValueNotifier<int?> selectedYear = ValueNotifier(int.parse(nowYear));
   ValueNotifier<bool> isYearSelected = ValueNotifier(false);
   String startdate = '';
   String enddate = '';
@@ -137,7 +139,9 @@ class _Screen9142State extends State<Screen9142> {
             ugnsModels = model['sti104']
                 .map<UgnsModel>((e) => UgnsModel.fromJson(e))
                 .toList();
-            c115.text = model['sti115'];
+            if (model['sti115'].isNotEmpty) {
+              c115.text = model['sti115'];
+            }
             return Form(
               key: formKey,
               child: Column(
@@ -257,121 +261,15 @@ class _Screen9142State extends State<Screen9142> {
                     ),
                   ),
                   const SizedBox(height: 36),
-                  BlocBuilder<SendSavedDataCubit, SendSavedDataState>(
-                    builder: (context, state) {
-                      return CustomButton(
-                        isLoading: state.isLoading,
-                        onPress: () {
-                          isUgnsSelected.value =
-                              selectedUgnsIndex104.value == null;
-                          kvartalSelected.value =
-                              selectedKvartalIndex.value == null;
-                          isYearSelected.value = selectedYear.value == null;
-
-                          if (isUgnsSelected.value) {
-                            Scrollable.ensureVisible(
-                              ugnsKey.currentContext!,
-                              duration: const Duration(seconds: 1),
-                            );
-                            AppSnackBar.showSnackBar(
-                                'Заполние обязательные поля!');
-                          } else if (!formKey.currentState!.validate()) {
-                            Scrollable.ensureVisible(
-                              numbersKey.currentContext!,
-                              duration: const Duration(seconds: 1),
-                            );
-                            AppSnackBar.showSnackBar(
-                                'Заполние обязательные поля!');
-                          } else if (kvartalSelected.value ||
-                              isYearSelected.value) {
-                            Scrollable.ensureVisible(
-                              dateKey.currentContext!,
-                              duration: const Duration(seconds: 1),
-                            );
-                            AppSnackBar.showSnackBar(
-                                'Заполние обязательные поля!');
-                          } else {
-                            final sendData = {
-                              "ftype": selectedDocType001,
-                              "startdate": startdate,
-                              "enddate": enddate,
-                              "sti102": model['sti102'],
-                              "sti103": model['sti103'],
-                              "sti104":
-                                  ugnsModels[selectedUgnsIndex104.value!].id,
-                              "sti106": model['sti106'],
-                              "sti107": model['sti107'],
-                              "sti115": c115.text,
-                              "sti116": c116.text,
-                              "sti108": c108.text,
-                              "sti110": model['sti110'],
-                              "sti111": model['sti111'],
-                              "sti050": c50.text,
-                              "sti051": model['sti051'],
-                              "sti052": nalogSumm052.value,
-                              "sti053": c53.text,
-                              "sti054": model['sti054'],
-                              "sti055": nalogSumm055.value,
-                              "sti056": c56.text,
-                              "sti057": model['sti057'],
-                              "sti058": nalogSumm058.value,
-                              "sti059": c59.text,
-                              "sti060": model['sti060'],
-                              "sti061": nalogSumm061.value,
-                              "sti062": c62.text,
-                              "sti063": model['sti063'],
-                              "sti064": nalogSumm064.value,
-                              "sti065": nalogSumm065.value,
-                              "sti066": c66.text,
-                              "sti067": model['sti067'],
-                              "sti068": nalogSumm068.value,
-                              "sti069": c69.text,
-                              "sti070": model['sti070'],
-                              "sti071": nalogSumm071.value,
-                              "sti072": nalogSumm072.value,
-                              "sti073": c73.text,
-                              "sti074": model['sti074'],
-                              "sti075": nalogSumm075.value,
-                              "sti076": c76.text,
-                              "sti077": model['sti077'],
-                              "sti078": nalogSumm078.value,
-                              "sti079": nalogSumm079.value,
-                              "sti080": c80.text,
-                              "sti081": model['sti081'],
-                              "sti082": nalogSumm082.value,
-                              "sti083": c83.text,
-                              "sti084": model['sti084'],
-                              "sti085": nalogSumm085.value,
-                              "sti086": nalogSumm086.value,
-                              "sti130": c130.text,
-                              "sti131": model['sti131'],
-                              "sti132": nalogSumm132.value,
-                              "sti136": c136.text,
-                              "sti137": model['sti137'],
-                              "sti138": nalogSumm138.value,
-                              "sti139": c139.text,
-                              "sti140": model['sti140'],
-                              "sti141": nalogSumm141.value,
-                              "sti142": c142.text,
-                              "sti143": model['sti143'],
-                              "sti144": nalogSumm144.value,
-                              "sti145": c145.text,
-                              "sti146": model['sti146'],
-                              "sti147": nalogSumm147.value,
-                              "sti148": c148.text,
-                              "sti149": model['sti149'],
-                              "sti150": nalogSumm150.value,
-                              "totalsum": nalogSumm154.value,
-                            };
-
-                            context
-                                .read<SendSavedDataCubit>()
-                                .sendData(sendData, widget.model.reportType);
-                          }
-                        },
-                        text: 'Отправить в ГНС',
+                  CustomButton(
+                    onPress: () {
+                      sendOrReview(
+                        contextFrom: context,
+                        model: model,
+                        isSend: true,
                       );
                     },
+                    text: 'Отправить в ГНС',
                   ),
                   const SizedBox(height: 16),
                   CustomButton(
@@ -402,112 +300,11 @@ class _Screen9142State extends State<Screen9142> {
                         loadingColor: AppColors.color32D681Green,
                         isLoading: state.isLoading,
                         onPress: () {
-                          isUgnsSelected.value =
-                              selectedUgnsIndex104.value == null;
-                          kvartalSelected.value =
-                              selectedKvartalIndex.value == null;
-                          isYearSelected.value = selectedYear.value == null;
-
-                          if (isUgnsSelected.value) {
-                            Scrollable.ensureVisible(
-                              ugnsKey.currentContext!,
-                              duration: const Duration(seconds: 1),
-                            );
-                            AppSnackBar.showSnackBar(
-                                'Заполние обязательные поля!');
-                          } else if (!formKey.currentState!.validate()) {
-                            Scrollable.ensureVisible(
-                              numbersKey.currentContext!,
-                              duration: const Duration(seconds: 1),
-                            );
-                            AppSnackBar.showSnackBar(
-                                'Заполние обязательные поля!');
-                          } else if (kvartalSelected.value ||
-                              isYearSelected.value) {
-                            Scrollable.ensureVisible(
-                              dateKey.currentContext!,
-                              duration: const Duration(seconds: 1),
-                            );
-                            AppSnackBar.showSnackBar(
-                                'Заполние обязательные поля!');
-                          } else {
-                            final sendData = {
-                              "ftype": selectedDocType001,
-                              "startdate": startdate,
-                              "enddate": enddate,
-                              "sti102": model['sti102'],
-                              "sti103": model['sti103'],
-                              "sti104":
-                                  ugnsModels[selectedUgnsIndex104.value!].id,
-                              "sti106": model['sti106'],
-                              "sti107": model['sti107'],
-                              "sti115": c115.text,
-                              "sti116": c116.text,
-                              "sti108": c108.text,
-                              "sti110": model['sti110'],
-                              "sti111": model['sti111'],
-                              "sti050": c50.text,
-                              "sti051": model['sti051'],
-                              "sti052": nalogSumm052.value,
-                              "sti053": c53.text,
-                              "sti054": model['sti054'],
-                              "sti055": nalogSumm055.value,
-                              "sti056": c56.text,
-                              "sti057": model['sti057'],
-                              "sti058": nalogSumm058.value,
-                              "sti059": c59.text,
-                              "sti060": model['sti060'],
-                              "sti061": nalogSumm061.value,
-                              "sti062": c62.text,
-                              "sti063": model['sti063'],
-                              "sti064": nalogSumm064.value,
-                              "sti065": nalogSumm065.value,
-                              "sti066": c66.text,
-                              "sti067": model['sti067'],
-                              "sti068": nalogSumm068.value,
-                              "sti069": c69.text,
-                              "sti070": model['sti070'],
-                              "sti071": nalogSumm071.value,
-                              "sti072": nalogSumm072.value,
-                              "sti073": c73.text,
-                              "sti074": model['sti074'],
-                              "sti075": nalogSumm075.value,
-                              "sti076": c76.text,
-                              "sti077": model['sti077'],
-                              "sti078": nalogSumm078.value,
-                              "sti079": nalogSumm079.value,
-                              "sti080": c80.text,
-                              "sti081": model['sti081'],
-                              "sti082": nalogSumm082.value,
-                              "sti083": c83.text,
-                              "sti084": model['sti084'],
-                              "sti085": nalogSumm085.value,
-                              "sti086": nalogSumm086.value,
-                              "sti130": c130.text,
-                              "sti131": model['sti131'],
-                              "sti132": nalogSumm132.value,
-                              "sti136": c136.text,
-                              "sti137": model['sti137'],
-                              "sti138": nalogSumm138.value,
-                              "sti139": c139.text,
-                              "sti140": model['sti140'],
-                              "sti141": nalogSumm141.value,
-                              "sti142": c142.text,
-                              "sti143": model['sti143'],
-                              "sti144": nalogSumm144.value,
-                              "sti145": c145.text,
-                              "sti146": model['sti146'],
-                              "sti147": nalogSumm147.value,
-                              "sti148": c148.text,
-                              "sti149": model['sti149'],
-                              "sti150": nalogSumm150.value,
-                              "totalsum": nalogSumm154.value,
-                            };
-
-                            context
-                                .read<GeneratePdfReviewCubit>()
-                                .generatePdf(sendData, widget.model.reportType);
-                          }
+                          sendOrReview(
+                            contextFrom: context,
+                            model: model,
+                            isSend: false,
+                          );
                         },
                         text: 'Предпросмотр',
                         textColor: AppColors.color32D681Green,
@@ -522,4 +319,121 @@ class _Screen9142State extends State<Screen9142> {
           }),
     );
   }
+
+  sendOrReview({
+    required BuildContext contextFrom,
+    required Map<String, dynamic> model,
+    required bool isSend,
+  }) {
+    isUgnsSelected.value = selectedUgnsIndex104.value == null;
+    kvartalSelected.value = selectedKvartalIndex.value == null;
+    isYearSelected.value = selectedYear.value == null;
+
+    if (isUgnsSelected.value) {
+      Scrollable.ensureVisible(
+        ugnsKey.currentContext!,
+        duration: const Duration(seconds: 1),
+      );
+      AppSnackBar.showSnackBar('Заполние обязательные поля!');
+    } else if (!formKey.currentState!.validate()) {
+      Scrollable.ensureVisible(
+        numbersKey.currentContext!,
+        duration: const Duration(seconds: 1),
+      );
+      AppSnackBar.showSnackBar('Заполние обязательные поля!');
+    } else if (kvartalSelected.value || isYearSelected.value) {
+      Scrollable.ensureVisible(
+        dateKey.currentContext!,
+        duration: const Duration(seconds: 1),
+      );
+      AppSnackBar.showSnackBar('Заполние обязательные поля!');
+    } else {
+      unFocuserFunc(context);
+      final sendData = sendDataFunc(model);
+      if (isSend) {
+        AppRouting.pushFunction(
+          NalogConfirmRoute(
+            nalogNameModel: widget.model,
+            sendModel: sendData,
+          ),
+        );
+      } else {
+        contextFrom
+            .read<GeneratePdfReviewCubit>()
+            .generatePdf(sendData, widget.model.reportType);
+      }
+    }
+  }
+
+  Map<String, dynamic> sendDataFunc(Map<String, dynamic> model) => {
+        "ftype": selectedDocType001,
+        "startdate": startdate,
+        "enddate": enddate,
+        "sti102": model['sti102'],
+        "sti103": model['sti103'],
+        "sti104": ugnsModels[selectedUgnsIndex104.value!].id,
+        "sti106": model['sti106'],
+        "sti107": model['sti107'],
+        "sti115": c115.text,
+        "sti116": c116.text,
+        "sti108": c108.text,
+        "sti110": model['sti110'],
+        "sti111": model['sti111'],
+        "sti050": c50.text,
+        "sti051": model['sti051'],
+        "sti052": nalogSumm052.value,
+        "sti053": c53.text,
+        "sti054": model['sti054'],
+        "sti055": nalogSumm055.value,
+        "sti056": c56.text,
+        "sti057": model['sti057'],
+        "sti058": nalogSumm058.value,
+        "sti059": c59.text,
+        "sti060": model['sti060'],
+        "sti061": nalogSumm061.value,
+        "sti062": c62.text,
+        "sti063": model['sti063'],
+        "sti064": nalogSumm064.value,
+        "sti065": nalogSumm065.value,
+        "sti066": c66.text,
+        "sti067": model['sti067'],
+        "sti068": nalogSumm068.value,
+        "sti069": c69.text,
+        "sti070": model['sti070'],
+        "sti071": nalogSumm071.value,
+        "sti072": nalogSumm072.value,
+        "sti073": c73.text,
+        "sti074": model['sti074'],
+        "sti075": nalogSumm075.value,
+        "sti076": c76.text,
+        "sti077": model['sti077'],
+        "sti078": nalogSumm078.value,
+        "sti079": nalogSumm079.value,
+        "sti080": c80.text,
+        "sti081": model['sti081'],
+        "sti082": nalogSumm082.value,
+        "sti083": c83.text,
+        "sti084": model['sti084'],
+        "sti085": nalogSumm085.value,
+        "sti086": nalogSumm086.value,
+        "sti130": c130.text,
+        "sti131": model['sti131'],
+        "sti132": nalogSumm132.value,
+        "sti136": c136.text,
+        "sti137": model['sti137'],
+        "sti138": nalogSumm138.value,
+        "sti139": c139.text,
+        "sti140": model['sti140'],
+        "sti141": nalogSumm141.value,
+        "sti142": c142.text,
+        "sti143": model['sti143'],
+        "sti144": nalogSumm144.value,
+        "sti145": c145.text,
+        "sti146": model['sti146'],
+        "sti147": nalogSumm147.value,
+        "sti148": c148.text,
+        "sti149": model['sti149'],
+        "sti150": nalogSumm150.value,
+        "totalsum": nalogSumm154.value,
+      };
 }

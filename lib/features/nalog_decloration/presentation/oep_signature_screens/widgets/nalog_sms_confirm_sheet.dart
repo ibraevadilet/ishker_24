@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/core/formatters/shapes.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/send_saved_data_cubit/send_saved_data_cubit.dart';
 import 'package:ishker_24/features/register_ip/presentation/cubits/timer_cubit/timer_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/sms_code_input_widget.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
@@ -12,9 +13,14 @@ import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/spaces.dart';
+import 'package:ishker_24/widgets/styled_toasts.dart';
 
 Future<void> nalogSmsConfirmSheet(
-    BuildContext mainContext, Function() resend) async {
+  BuildContext mainContext,
+  Function() resend,
+  Map<String, dynamic> sendModel,
+  String type,
+) async {
   final smsConroller = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   showModalBottomSheet(
@@ -27,6 +33,9 @@ Future<void> nalogSmsConfirmSheet(
       providers: [
         BlocProvider(
           create: (context) => sl<TimerCubit>()..getTimer(60),
+        ),
+        BlocProvider(
+          create: (context) => sl<SendSavedDataCubit>(),
         ),
       ],
       child: Padding(
@@ -108,44 +117,65 @@ Future<void> nalogSmsConfirmSheet(
                   ),
                 ),
                 const SizedBox(height: 16),
-                CustomButton(
-                  onPress: () {
-                    Navigator.of(context).pop();
-                    if (formKey.currentState!.validate()) {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          backgroundColor: Colors.white,
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 32,
-                            vertical: 24,
+                BlocConsumer<SendSavedDataCubit, SendSavedDataState>(
+                  listener: (context, state) {
+                    state.whenOrNull(
+                      error: (error) {
+                        AppSnackBar.showToastAbaveSheet(context, error);
+                      },
+                      success: () {
+                        Navigator.pop(context);
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            backgroundColor: Colors.white,
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 32,
+                              vertical: 24,
+                            ),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Center(
+                                  child: SvgPicture.asset(AppImages.alertIcon),
+                                ),
+                                SizedBox(height: 24, width: context.width),
+                                Text(
+                                  'Отчет успешно отправлен!',
+                                  style: AppTextStyles.s16W500(),
+                                ),
+                                const SizedBox(height: 24),
+                                CustomButton(
+                                  onPress: () {
+                                    AppRouting.popUntilFunction(
+                                      NalogMainRoute.name,
+                                    );
+                                  },
+                                  text: 'Закрыть',
+                                )
+                              ],
+                            ),
                           ),
-                          content: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Center(
-                                child: SvgPicture.asset(AppImages.alertIcon),
-                              ),
-                              const SizedBox(height: 24),
-                              Text(
-                                'Отчет успешно отправлен!',
-                                style: AppTextStyles.s16W500(),
-                              ),
-                              const SizedBox(height: 24),
-                              CustomButton(
-                                onPress: () {
-                                  AppRouting.popUntilFunction(
-                                      NalogMainRoute.name);
-                                },
-                                text: 'Закрыть',
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    }
+                        );
+                      },
+                    );
                   },
-                  text: 'Отправить',
+                  builder: (context, state) {
+                    return CustomButton(
+                      isLoading: state.isLoading,
+                      onPress: () {
+                        if (formKey.currentState!.validate()) {
+                          context.read<SendSavedDataCubit>().sendData(
+                                sendModel,
+                                type,
+                                smsConroller.text,
+                              );
+                        }
+                      },
+                      text: 'Отправить',
+                    );
+                  },
                 ),
                 const SizedBox(height: 16),
               ],

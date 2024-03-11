@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/expanded_list_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/select_bottom_sheet_container.dart';
@@ -30,30 +31,35 @@ class SelectDatesMonthWidget extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         ValueListenableBuilder(
-          valueListenable: selectedKvartalIndex,
-          builder: (_, value, child) {
+          valueListenable: selectedYear,
+          builder: (_, __, child) {
             return ValueListenableBuilder(
-              valueListenable: kvartalSelected,
-              builder: (_, isKvartalSelected, child) {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: isKvartalSelected
-                        ? Border.all(
-                            color: Colors.red,
-                          )
-                        : null,
-                  ),
-                  child: ExpandedList(
-                    color: AppColors.colorF3F4F5Grey,
-                    title: 'Выберите месяц',
-                    selectedIndex: value,
-                    onSelected: (int index) {
-                      selectedKvartalIndex.value = index;
-                      kvartalSelected.value = false;
-                    },
-                    items: months,
-                  ),
+              valueListenable: selectedKvartalIndex,
+              builder: (_, value, child) {
+                return ValueListenableBuilder(
+                  valueListenable: kvartalSelected,
+                  builder: (_, isKvartalSelected, child) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: isKvartalSelected
+                            ? Border.all(
+                                color: Colors.red,
+                              )
+                            : null,
+                      ),
+                      child: ExpandedList(
+                        color: AppColors.colorF3F4F5Grey,
+                        title: 'Выберите месяц',
+                        selectedIndex: value,
+                        onSelected: (int index) {
+                          selectedKvartalIndex.value = index;
+                          kvartalSelected.value = false;
+                        },
+                        items: months(),
+                      ),
+                    );
+                  },
                 );
               },
             );
@@ -63,6 +69,8 @@ class SelectDatesMonthWidget extends StatelessWidget {
         SelectBottomSheetContainer(
           selectedYear: selectedYear,
           isYearSelected: isYearSelected,
+          selectedKvartalIndex: selectedKvartalIndex,
+          isMonth: true,
         ),
         const SizedBox(height: 12),
         ValueListenableBuilder(
@@ -140,6 +148,183 @@ class SelectDatesMonthWidget extends StatelessWidget {
       ],
     );
   }
+
+  List<String> months() {
+    final year = selectedYear.value!;
+    final int nowYear = int.parse(DateFormat.y().format(DateTime.now()));
+    final int nowMonth = int.parse(DateFormat.M().format(DateTime.now()));
+
+    List<String> monthsForSlect = [];
+
+    if (nowYear == year) {
+      switch (nowMonth) {
+        case 1:
+          monthsForSlect.add('Январь');
+          break;
+        case 2:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+            ],
+          );
+          break;
+        case 3:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+              'Март',
+            ],
+          );
+          break;
+        case 4:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+              'Март',
+              'Апрель',
+            ],
+          );
+          break;
+        case 5:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+              'Март',
+              'Апрель',
+              'Май',
+            ],
+          );
+          break;
+        case 6:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+              'Март',
+              'Апрель',
+              'Май',
+              'Июнь',
+            ],
+          );
+          break;
+        case 7:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+              'Март',
+              'Апрель',
+              'Май',
+              'Июнь',
+              'Июль',
+            ],
+          );
+          break;
+        case 8:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+              'Март',
+              'Апрель',
+              'Май',
+              'Июнь',
+              'Июль',
+              'Август',
+            ],
+          );
+          break;
+        case 9:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+              'Март',
+              'Апрель',
+              'Май',
+              'Июнь',
+              'Июль',
+              'Август',
+              'Сентябрь',
+            ],
+          );
+          break;
+        case 10:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+              'Март',
+              'Апрель',
+              'Май',
+              'Июнь',
+              'Июль',
+              'Август',
+              'Сентябрь',
+              'Октябрь',
+            ],
+          );
+          break;
+        case 11:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+              'Март',
+              'Апрель',
+              'Май',
+              'Июнь',
+              'Июль',
+              'Август',
+              'Сентябрь',
+              'Октябрь',
+              'Ноябрь',
+            ],
+          );
+          break;
+        case 12:
+          monthsForSlect.addAll(
+            [
+              'Январь',
+              'Февраль',
+              'Март',
+              'Апрель',
+              'Май',
+              'Июнь',
+              'Июль',
+              'Август',
+              'Сентябрь',
+              'Октябрь',
+              'Ноябрь',
+              'Декабрь',
+            ],
+          );
+          break;
+      }
+    } else {
+      monthsForSlect.addAll(
+        [
+          'Январь',
+          'Февраль',
+          'Март',
+          'Апрель',
+          'Май',
+          'Июнь',
+          'Июль',
+          'Август',
+          'Сентябрь',
+          'Октябрь',
+          'Ноябрь',
+          'Декабрь',
+        ],
+      );
+    }
+    return monthsForSlect;
+  }
 }
 
 String dateFrom(int monthIndex, int year) {
@@ -213,18 +398,3 @@ String dateTo(int monthIndex, int year) {
       return '';
   }
 }
-
-List<String> get months => [
-      'Январь',
-      'Февраль',
-      'Март',
-      'Апрель',
-      'Май',
-      'Июнь',
-      'Июль',
-      'Август',
-      'Сентябрь',
-      'Октябрь',
-      'Ноябрь',
-      'Декабрь',
-    ];

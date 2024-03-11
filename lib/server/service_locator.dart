@@ -72,23 +72,28 @@ import 'package:ishker_24/features/nalog_decloration/data/repo_implements/genera
 import 'package:ishker_24/features/nalog_decloration/data/repo_implements/get_my_reports_repo_impl.dart';
 import 'package:ishker_24/features/nalog_decloration/data/repo_implements/get_nalog_names_repo_impl.dart';
 import 'package:ishker_24/features/nalog_decloration/data/repo_implements/get_static_fields_repo_impl.dart';
+import 'package:ishker_24/features/nalog_decloration/data/repo_implements/oep_signature_repo_impl.dart';
 import 'package:ishker_24/features/nalog_decloration/data/repo_implements/report_detail_pdf_repo_impl.dart';
 import 'package:ishker_24/features/nalog_decloration/data/repo_implements/send_nalog_data_repo_impl.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/repositories/generate_pdf_review_repository.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/repositories/get_my_reports_repository.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/repositories/get_nalog_names_repository.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/repositories/get_static_fields_repository.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/repositories/oep_signature_repository.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/repositories/report_detail_pdf_repository.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/repositories/send_nalog_data_repository.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/use_cases/generate_pdf_review_usecase.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/use_cases/get_my_reports_usecase.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/use_cases/get_nalog_names_usecase.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/use_cases/get_static_fields_usecase.dart';
+import 'package:ishker_24/features/nalog_decloration/domain/use_cases/oep_signature_usecase.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/use_cases/report_detail_pdf_usecase.dart';
 import 'package:ishker_24/features/nalog_decloration/domain/use_cases/send_nalog_data_usecase.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/cubits/get_my_reports_cubit/get_my_reports_cubit.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/cubits/get_nalog_names_cubit/get_nalog_names_cubit.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/cubits/get_report_deteil_pdf_cubit/get_report_deteil_pdf_cubit.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/oep_signature_screens/cubits/oep_signature_check_cubit/oep_signature_check_cubit.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/oep_signature_screens/cubits/oep_signature_send_otp_cubit/oep_signature_send_otp_cubit.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/generate_pdf_review_cubit/generate_pdf_review_cubit.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/get_statis_fileds_cubit/get_statis_fileds_cubit.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/cubits/send_saved_data_cubit/send_saved_data_cubit.dart';
@@ -259,6 +264,7 @@ Future<void> initServiceLocator() async {
       () => GeneratePdfReviewRepoImpl(dio: sl()));
   sl.registerFactory<SaveTokenRepo>(() => SaveTokenRepoImpl(dio: sl()));
   sl.registerFactory<CheckOepRepo>(() => CheckOepRepoImpl(dio: sl()));
+  sl.registerFactory<OepSignatureRepo>(() => OepSignatureRepoImpl(dio: sl()));
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -329,6 +335,8 @@ Future<void> initServiceLocator() async {
       () => GeneratePdfReviewUseCase(repo: sl()));
   sl.registerFactory<SaveTokenUseCase>(() => SaveTokenUseCase(repo: sl()));
   sl.registerFactory<CheckOepUseCase>(() => CheckOepUseCase(repo: sl()));
+  sl.registerFactory<OepSignatureUseCase>(
+      () => OepSignatureUseCase(repo: sl()));
 
   /// BLoCs / Cubits
 
@@ -404,6 +412,10 @@ Future<void> initServiceLocator() async {
       () => GeneratePdfReviewCubit(useCase: sl()));
   sl.registerFactory<EsfAcceptCubit>(() => EsfAcceptCubit(useCase: sl()));
   sl.registerFactory<CheckOepCubit>(() => CheckOepCubit(useCase: sl()));
+  sl.registerFactory<OepSignatureCheckCubit>(
+      () => OepSignatureCheckCubit(useCase: sl()));
+  sl.registerFactory<OepSignatureSendOtpCubit>(
+      () => OepSignatureSendOtpCubit(useCase: sl()));
 
   _registerMegaKassaDependecies();
 }
