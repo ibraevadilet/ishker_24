@@ -15,7 +15,7 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> ru = {
-  "catchExTimeOfProcessing": "Привышено время обработки запроса.\nПовторите позднее",
+  "catchExTimeOfProcessing": "Превышено время обработки запроса.\nПовторите позднее",
   "catchExNoInternet": "Нет интернет соединения",
   "catchExRequestDenied": "Запрос отклонен",
   "catchExLoginNotFound": "Неверный логин или пароль",
