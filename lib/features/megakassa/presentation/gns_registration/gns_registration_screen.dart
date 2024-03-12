@@ -9,11 +9,11 @@ import 'package:ishker_24/features/megakassa/domain/entities/gns_registration_re
 import 'package:ishker_24/features/megakassa/presentation/gns_registration/cubit/gns_registration_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
-import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/theme/app_theme.dart';
 import 'package:ishker_24/widgets/custom_app_bar.dart';
+import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/custom_text_fields.dart';
 import 'package:ishker_24/widgets/styled_toasts.dart';
 
@@ -294,7 +294,8 @@ class _MegaKassaGnsRegistrationScreenState
                 ),
                 const SizedBox(height: 8),
                 CustomTextField(
-                  labelText: 'Решение ГНС о регистр. / № патента',
+                  labelText:
+                      'Регистрационный номер свидетельства о гос регистрации / № патента',
                   controller: _gnsSolutionController,
                   maxLength: 50,
                   onChanged: _validate,
