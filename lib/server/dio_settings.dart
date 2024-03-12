@@ -1,11 +1,12 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/app_helpers/dio_header.dart';
 import 'package:ishker_24/core/constants/app_text_constants.dart';
 import 'package:ishker_24/core/constants/shared_keys.dart';
+import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/domain/use_cases/get_tokens_use_case.dart';
+import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
+import 'package:ishker_24/widgets/styled_toasts.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -120,6 +121,9 @@ class DioSettings {
         if (e.response!.statusCode == 401) {
           await _newRefreshToken();
           dio.fetch(e.requestOptions);
+        } else if (e.response!.statusCode == 446) {
+          AppSnackBar.showSnackBar('Невалидный JWT токен!');
+          AppRouting.pushAndPopUntilFunction(const AuthRoute());
         }
       }
     }
@@ -137,7 +141,12 @@ class DioSettings {
       prefs.setString(SharedKeys.accessToken, result.data['accessToken']);
       prefs.setString(SharedKeys.refreshToken, result.data['refreshToken']);
     } catch (e) {
-      log(e.toString());
+      if (e is DioException) {
+        if (e.response!.statusCode == 446) {
+          AppSnackBar.showSnackBar('Невалидный JWT токен!');
+          AppRouting.pushAndPopUntilFunction(const AuthRoute());
+        }
+      }
     }
   }
 }
