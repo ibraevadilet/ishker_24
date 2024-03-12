@@ -35,6 +35,7 @@ class _Screen9142State extends State<Screen9142> {
   ///////////////////
   ///PART 1/////
   int selectedDocType001 = 0;
+  ValueNotifier<bool> isDocType3 = ValueNotifier(false);
   ValueNotifier<int?> selectedUgnsIndex104 = ValueNotifier(null);
   ValueNotifier<bool> isUgnsSelected = ValueNotifier(false);
   List<UgnsModel> ugnsModels = [];
@@ -159,6 +160,24 @@ class _Screen9142State extends State<Screen9142> {
                     c108: c108,
                     onSelectedDocument: (val) {
                       selectedDocType001 = val;
+                      isDocType3.value = val == 3;
+
+                      if (val == 3) {
+                        final int nowMonth = DateTime.now().month;
+                        int kvartalIndex = 0;
+                        if (nowMonth <= 3) {
+                          kvartalIndex = 0;
+                        } else if (nowMonth <= 6) {
+                          kvartalIndex = 1;
+                        } else if (nowMonth <= 9) {
+                          kvartalIndex = 2;
+                        } else if (nowMonth <= 12) {
+                          kvartalIndex = 3;
+                        }
+
+                        selectedKvartalIndex.value = kvartalIndex;
+                        selectedYear.value = DateTime.now().year;
+                      }
                     },
                   ),
                   const SizedBox(height: 16),
@@ -174,6 +193,7 @@ class _Screen9142State extends State<Screen9142> {
                       children: [
                         SelectDatesWidget(
                           key: dateKey,
+                          isDocType3: isDocType3,
                           selectedKvartalIndex: selectedKvartalIndex,
                           kvartalSelected: kvartalSelected,
                           selectedYear: selectedYear,

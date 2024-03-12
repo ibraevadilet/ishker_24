@@ -35,6 +35,8 @@ class _Screen9141State extends State<Screen9141> {
   ///////////////////
   ///PART 1/////
   int selectedDocType001 = 0;
+  ValueNotifier<bool> isDocType3 = ValueNotifier(false);
+
   ValueNotifier<int?> selectedUgnsIndex104 = ValueNotifier(null);
   ValueNotifier<bool> isUgnsSelected = ValueNotifier(false);
   List<UgnsModel> ugnsModels = [];
@@ -48,8 +50,8 @@ class _Screen9141State extends State<Screen9141> {
   TextEditingController c113 = TextEditingController();
   TextEditingController c114 = TextEditingController();
 
-  ValueNotifier<int?> selectedKvartalIndex = ValueNotifier(null);
-  ValueNotifier<bool> kvartalSelected = ValueNotifier(false);
+  ValueNotifier<int?> selectedMonthIndex = ValueNotifier(null);
+  ValueNotifier<bool> monthSelected = ValueNotifier(false);
   final int nowYear = DateTime.now().year;
   late ValueNotifier<int?> selectedYear = ValueNotifier(nowYear);
   ValueNotifier<bool> isYearSelected = ValueNotifier(false);
@@ -169,6 +171,12 @@ class _Screen9141State extends State<Screen9141> {
                 c108: c108,
                 onSelectedDocument: (val) {
                   selectedDocType001 = val;
+                  isDocType3.value = val == 3;
+
+                  if (val == 3) {
+                    selectedMonthIndex.value = DateTime.now().month - 1;
+                    selectedYear.value = DateTime.now().year;
+                  }
                 },
               ),
               const SizedBox(height: 16),
@@ -222,14 +230,15 @@ class _Screen9141State extends State<Screen9141> {
                     const SizedBox(height: 24),
                     SelectDatesMonthWidget(
                       key: dateKey,
-                      selectedKvartalIndex: selectedKvartalIndex,
-                      kvartalSelected: kvartalSelected,
+                      selectedMonthIndex: selectedMonthIndex,
+                      monthSelected: monthSelected,
                       selectedYear: selectedYear,
                       isYearSelected: isYearSelected,
                       onDaySelected: (startdateFrom, enddateFrom) {
                         startdate = startdateFrom;
                         enddate = enddateFrom;
                       },
+                      isDocType3: isDocType3,
                     ),
                     Text(
                       'РАЗДЕЛ 2. ИНФОРМАЦИЯ О ЕДИНОМ НАЛОГЕ',
@@ -406,7 +415,7 @@ class _Screen9141State extends State<Screen9141> {
     required bool isSend,
   }) {
     isUgnsSelected.value = selectedUgnsIndex104.value == null;
-    kvartalSelected.value = selectedKvartalIndex.value == null;
+    monthSelected.value = selectedMonthIndex.value == null;
     isYearSelected.value = selectedYear.value == null;
 
     if (isUgnsSelected.value) {
@@ -421,7 +430,7 @@ class _Screen9141State extends State<Screen9141> {
         duration: const Duration(seconds: 1),
       );
       AppSnackBar.showSnackBar('Заполние обязательные поля!');
-    } else if (kvartalSelected.value || isYearSelected.value) {
+    } else if (monthSelected.value || isYearSelected.value) {
       Scrollable.ensureVisible(
         dateKey.currentContext!,
         duration: const Duration(seconds: 1),
