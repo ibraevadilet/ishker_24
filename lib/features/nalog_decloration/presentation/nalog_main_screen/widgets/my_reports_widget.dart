@@ -69,6 +69,16 @@ class MyReportsWidget extends StatelessWidget {
                                         style: AppTextStyles.s16W500(),
                                       ),
                                       const SizedBox(height: 12),
+                                      if (model[index].period.isNotEmpty)
+                                        Text(
+                                          'Период: ${model[index].period}',
+                                          style: AppTextStyles.s16W400(),
+                                        ),
+                                      if (model[index].formType.isNotEmpty)
+                                        Text(
+                                          'Тип документа: ${model[index].formType}',
+                                          style: AppTextStyles.s16W400(),
+                                        ),
                                       Text(
                                         'Статус: ${nameByStatus(model[index].status)}',
                                         style: AppTextStyles.s16W400(),
