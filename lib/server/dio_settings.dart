@@ -68,26 +68,28 @@ class DioSettings {
             Response response;
             await _newAccessToken();
             final newToken = prefs.getString(SharedKeys.refreshToken);
-            e.requestOptions.headers
-                .update('Authorization', (value) => 'Bearer $newToken');
-            var path = '${e.requestOptions.baseUrl}${e.requestOptions.path}';
-            if (e.requestOptions.path.contains(e.requestOptions.baseUrl)) {
-              path = e.requestOptions.path;
-            }
-            response = await dio.request(
-              path,
-              data: e.requestOptions.data,
-              queryParameters: e.requestOptions.queryParameters,
-              options: Options(
-                contentType: e.requestOptions.contentType,
-                extra: e.requestOptions.extra,
-                headers: e.requestOptions.headers,
-                method: e.requestOptions.method,
-                responseType: e.requestOptions.responseType,
-              ),
-            );
+            if (newToken != null) {
+              e.requestOptions.headers
+                  .update('Authorization', (value) => 'Bearer $newToken');
+              var path = '${e.requestOptions.baseUrl}${e.requestOptions.path}';
+              if (e.requestOptions.path.contains(e.requestOptions.baseUrl)) {
+                path = e.requestOptions.path;
+              }
+              response = await dio.request(
+                path,
+                data: e.requestOptions.data,
+                queryParameters: e.requestOptions.queryParameters,
+                options: Options(
+                  contentType: e.requestOptions.contentType,
+                  extra: e.requestOptions.extra,
+                  headers: e.requestOptions.headers,
+                  method: e.requestOptions.method,
+                  responseType: e.requestOptions.responseType,
+                ),
+              );
 
-            handler.resolve(response);
+              handler.resolve(response);
+            }
           } else {
             return handler.next(e);
           }
@@ -123,6 +125,7 @@ class DioSettings {
           dio.fetch(e.requestOptions);
         } else if (e.response!.statusCode == 446) {
           AppSnackBar.showSnackBar('Невалидный JWT токен!');
+          prefs.clear();
           AppRouting.pushAndPopUntilFunction(const AuthRoute());
         }
       }
@@ -144,6 +147,7 @@ class DioSettings {
       if (e is DioException) {
         if (e.response!.statusCode == 446) {
           AppSnackBar.showSnackBar('Невалидный JWT токен!');
+          prefs.clear();
           AppRouting.pushAndPopUntilFunction(const AuthRoute());
         }
       }
