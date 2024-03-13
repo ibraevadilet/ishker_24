@@ -681,6 +681,12 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '162',
                                   nalogSumm: nalogSumm162,
                                   onChanged: (summa) {
+                                    int c160Data = int.tryParse(c160.text) ?? 0;
+                                    int c250Data = int.tryParse(c250.text) ?? 0;
+                                    int c310Data = int.tryParse(c310.text) ?? 0;
+                                    int o50 = c160Data + c250Data + c310Data;
+                                    c50.text = o50.toString();
+                                    setState(() {});
                                     nalogSumm175.value = nalogSumm162.value +
                                         nalogSumm165.value +
                                         nalogSumm168.value +
