@@ -7,9 +7,9 @@ import 'package:ishker_24/features/nalog_decloration/data/models/nalog_names_mod
 import 'package:ishker_24/features/nalog_decloration/data/models/ugns_model.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/calculate_nalog_summa_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/field_name_widget.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/part050_part055_widgets.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/part056_part132_widgets.dart';
-import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/part136_part150_widgets.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/only_091_4/part050_part055_widgets_for_091_4.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/only_091_4/part056_part132_widgets_for_091_4.dart';
+import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/only_091_4/part136_part150_widgets_for_091_4.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/part1_of_nalog_screen_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/provider_scaffold_background_widgets.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/select_dates_widget.dart';
@@ -356,6 +356,30 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         nalogSumm364.value;
   }
 
+  void controllerChanger({
+    required TextEditingController c1,
+    required TextEditingController c2,
+    required TextEditingController c3,
+    required TextEditingController c4summ,
+    required ValueNotifier<num> n1,
+    required ValueNotifier<num> n2,
+    required ValueNotifier<num> n3,
+    required ValueNotifier<num> nalogSumm,
+    Function()? miniSumm,
+  }) {
+    int c1Data = int.tryParse(c1.text) ?? 0;
+    int c2Data = int.tryParse(c2.text) ?? 0;
+    int c3Data = int.tryParse(c3.text) ?? 0;
+    int total = c1Data + c2Data + c3Data;
+    c4summ.text = total.toString();
+    nalogSumm.value = n1.value + n2.value + n3.value;
+
+    if (miniSumm != null) {
+      miniSumm();
+    }
+    allSumm();
+  }
+
   GlobalKey ugnsKey = GlobalKey();
   GlobalKey dateKey = GlobalKey();
   GlobalKey numbersKey = GlobalKey();
@@ -525,17 +549,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                         'Торговая деятельность, осуществляемой:',
                         style: AppTextStyles.s16W500(),
                       ),
-                      Part050toPart055Widgets(
+                      Part050toPart055WidgetsFor0914(
                         model: model,
-                        allSumm: allSumm,
                         c50: c50,
                         nalogSumm052: nalogSumm052,
                         c53: c53,
                         nalogSumm055: nalogSumm055,
                       ),
-                      Part056toPart132Widgets(
+                      Part056toPart132WidgetsFor0914(
                         model: model,
-                        allSumm: allSumm,
                         c56: c56,
                         nalogSumm058: nalogSumm058,
                         c59: c59,
@@ -561,9 +583,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                         c130: c130,
                         nalogSumm132: nalogSumm132,
                       ),
-                      Part136toPart150Widgets(
+                      Part136toPart150WidgetsFor0914(
                         model: model,
-                        allSumm: allSumm,
                         c136: c136,
                         nalogSumm138: nalogSumm138,
                         c139: c139,
@@ -681,12 +702,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '162',
                                   nalogSumm: nalogSumm162,
                                   onChanged: (summa) {
-                                    int c160Data = int.tryParse(c160.text) ?? 0;
-                                    int c250Data = int.tryParse(c250.text) ?? 0;
-                                    int c310Data = int.tryParse(c310.text) ?? 0;
-                                    int o50 = c160Data + c250Data + c310Data;
-                                    c50.text = o50.toString();
-                                    setState(() {});
+                                    controllerChanger(
+                                      c1: c160,
+                                      c2: c250,
+                                      c3: c310,
+                                      c4summ: c50,
+                                      n1: nalogSumm162,
+                                      n2: nalogSumm252,
+                                      n3: nalogSumm312,
+                                      nalogSumm: nalogSumm052,
+                                    );
                                     nalogSumm175.value = nalogSumm162.value +
                                         nalogSumm165.value +
                                         nalogSumm168.value +
@@ -707,6 +732,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '165',
                                   nalogSumm: nalogSumm165,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c163,
+                                      c2: c253,
+                                      c3: c313,
+                                      c4summ: c53,
+                                      n1: nalogSumm165,
+                                      n2: nalogSumm255,
+                                      n3: nalogSumm315,
+                                      nalogSumm: nalogSumm055,
+                                    );
                                     nalogSumm175.value = nalogSumm162.value +
                                         nalogSumm165.value +
                                         nalogSumm168.value +
@@ -744,6 +779,22 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '168',
                                   nalogSumm: nalogSumm168,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c166,
+                                      c2: c256,
+                                      c3: c316,
+                                      c4summ: c56,
+                                      n1: nalogSumm168,
+                                      n2: nalogSumm258,
+                                      n3: nalogSumm318,
+                                      nalogSumm: nalogSumm058,
+                                      miniSumm: () {
+                                        nalogSumm065.value =
+                                            nalogSumm058.value +
+                                                nalogSumm061.value +
+                                                nalogSumm064.value;
+                                      },
+                                    );
                                     nalogSumm175.value = nalogSumm162.value +
                                         nalogSumm165.value +
                                         nalogSumm168.value +
@@ -764,6 +815,22 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '171',
                                   nalogSumm: nalogSumm171,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c169,
+                                      c2: c259,
+                                      c3: c319,
+                                      c4summ: c59,
+                                      n1: nalogSumm171,
+                                      n2: nalogSumm261,
+                                      n3: nalogSumm321,
+                                      nalogSumm: nalogSumm061,
+                                      miniSumm: () {
+                                        nalogSumm065.value =
+                                            nalogSumm058.value +
+                                                nalogSumm061.value +
+                                                nalogSumm064.value;
+                                      },
+                                    );
                                     nalogSumm175.value = nalogSumm162.value +
                                         nalogSumm165.value +
                                         nalogSumm168.value +
@@ -784,6 +851,22 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '174',
                                   nalogSumm: nalogSumm174,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c172,
+                                      c2: c262,
+                                      c3: c322,
+                                      c4summ: c62,
+                                      n1: nalogSumm174,
+                                      n2: nalogSumm264,
+                                      n3: nalogSumm324,
+                                      nalogSumm: nalogSumm064,
+                                      miniSumm: () {
+                                        nalogSumm065.value =
+                                            nalogSumm058.value +
+                                                nalogSumm061.value +
+                                                nalogSumm064.value;
+                                      },
+                                    );
                                     nalogSumm175.value = nalogSumm162.value +
                                         nalogSumm165.value +
                                         nalogSumm168.value +
@@ -841,6 +924,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '252',
                                   nalogSumm: nalogSumm252,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c160,
+                                      c2: c250,
+                                      c3: c310,
+                                      c4summ: c50,
+                                      n1: nalogSumm162,
+                                      n2: nalogSumm252,
+                                      n3: nalogSumm312,
+                                      nalogSumm: nalogSumm052,
+                                    );
                                     nalogSumm265.value = nalogSumm252.value +
                                         nalogSumm255.value +
                                         nalogSumm258.value +
@@ -861,6 +954,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '255',
                                   nalogSumm: nalogSumm255,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c163,
+                                      c2: c253,
+                                      c3: c313,
+                                      c4summ: c53,
+                                      n1: nalogSumm165,
+                                      n2: nalogSumm255,
+                                      n3: nalogSumm315,
+                                      nalogSumm: nalogSumm055,
+                                    );
                                     nalogSumm265.value = nalogSumm252.value +
                                         nalogSumm255.value +
                                         nalogSumm258.value +
@@ -897,6 +1000,22 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '258',
                                   nalogSumm: nalogSumm258,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c166,
+                                      c2: c256,
+                                      c3: c316,
+                                      c4summ: c56,
+                                      n1: nalogSumm168,
+                                      n2: nalogSumm258,
+                                      n3: nalogSumm318,
+                                      nalogSumm: nalogSumm058,
+                                      miniSumm: () {
+                                        nalogSumm065.value =
+                                            nalogSumm058.value +
+                                                nalogSumm061.value +
+                                                nalogSumm064.value;
+                                      },
+                                    );
                                     nalogSumm265.value = nalogSumm252.value +
                                         nalogSumm255.value +
                                         nalogSumm258.value +
@@ -915,6 +1034,22 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '261',
                                   nalogSumm: nalogSumm261,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c169,
+                                      c2: c259,
+                                      c3: c319,
+                                      c4summ: c59,
+                                      n1: nalogSumm171,
+                                      n2: nalogSumm261,
+                                      n3: nalogSumm321,
+                                      nalogSumm: nalogSumm061,
+                                      miniSumm: () {
+                                        nalogSumm065.value =
+                                            nalogSumm058.value +
+                                                nalogSumm061.value +
+                                                nalogSumm064.value;
+                                      },
+                                    );
                                     nalogSumm265.value = nalogSumm252.value +
                                         nalogSumm255.value +
                                         nalogSumm258.value +
@@ -935,6 +1070,22 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '264',
                                   nalogSumm: nalogSumm264,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c172,
+                                      c2: c262,
+                                      c3: c322,
+                                      c4summ: c62,
+                                      n1: nalogSumm174,
+                                      n2: nalogSumm264,
+                                      n3: nalogSumm324,
+                                      nalogSumm: nalogSumm064,
+                                      miniSumm: () {
+                                        nalogSumm065.value =
+                                            nalogSumm058.value +
+                                                nalogSumm061.value +
+                                                nalogSumm064.value;
+                                      },
+                                    );
                                     nalogSumm265.value = nalogSumm252.value +
                                         nalogSumm255.value +
                                         nalogSumm258.value +
@@ -992,6 +1143,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '312',
                                   nalogSumm: nalogSumm312,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c160,
+                                      c2: c250,
+                                      c3: c310,
+                                      c4summ: c50,
+                                      n1: nalogSumm162,
+                                      n2: nalogSumm252,
+                                      n3: nalogSumm312,
+                                      nalogSumm: nalogSumm052,
+                                    );
                                     nalogSumm325.value = nalogSumm312.value +
                                         nalogSumm315.value +
                                         nalogSumm318.value +
@@ -1012,6 +1173,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '315',
                                   nalogSumm: nalogSumm315,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c163,
+                                      c2: c253,
+                                      c3: c313,
+                                      c4summ: c53,
+                                      n1: nalogSumm165,
+                                      n2: nalogSumm255,
+                                      n3: nalogSumm315,
+                                      nalogSumm: nalogSumm055,
+                                    );
                                     nalogSumm325.value = nalogSumm312.value +
                                         nalogSumm315.value +
                                         nalogSumm318.value +
@@ -1048,6 +1219,22 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '318',
                                   nalogSumm: nalogSumm318,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c166,
+                                      c2: c256,
+                                      c3: c316,
+                                      c4summ: c56,
+                                      n1: nalogSumm168,
+                                      n2: nalogSumm258,
+                                      n3: nalogSumm318,
+                                      nalogSumm: nalogSumm058,
+                                      miniSumm: () {
+                                        nalogSumm065.value =
+                                            nalogSumm058.value +
+                                                nalogSumm061.value +
+                                                nalogSumm064.value;
+                                      },
+                                    );
                                     nalogSumm325.value = nalogSumm312.value +
                                         nalogSumm315.value +
                                         nalogSumm318.value +
@@ -1068,6 +1255,22 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '321',
                                   nalogSumm: nalogSumm321,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c169,
+                                      c2: c259,
+                                      c3: c319,
+                                      c4summ: c59,
+                                      n1: nalogSumm171,
+                                      n2: nalogSumm261,
+                                      n3: nalogSumm321,
+                                      nalogSumm: nalogSumm061,
+                                      miniSumm: () {
+                                        nalogSumm065.value =
+                                            nalogSumm058.value +
+                                                nalogSumm061.value +
+                                                nalogSumm064.value;
+                                      },
+                                    );
                                     nalogSumm325.value = nalogSumm312.value +
                                         nalogSumm315.value +
                                         nalogSumm318.value +
@@ -1088,6 +1291,22 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '324',
                                   nalogSumm: nalogSumm324,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c172,
+                                      c2: c262,
+                                      c3: c322,
+                                      c4summ: c62,
+                                      n1: nalogSumm174,
+                                      n2: nalogSumm264,
+                                      n3: nalogSumm324,
+                                      nalogSumm: nalogSumm064,
+                                      miniSumm: () {
+                                        nalogSumm065.value =
+                                            nalogSumm058.value +
+                                                nalogSumm061.value +
+                                                nalogSumm064.value;
+                                      },
+                                    );
                                     nalogSumm325.value = nalogSumm312.value +
                                         nalogSumm315.value +
                                         nalogSumm318.value +
@@ -1183,6 +1402,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '178',
                                   nalogSumm: nalogSumm178,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c176,
+                                      c2: c266,
+                                      c3: c326,
+                                      c4summ: c66,
+                                      n1: nalogSumm178,
+                                      n2: nalogSumm268,
+                                      n3: nalogSumm328,
+                                      nalogSumm: nalogSumm068,
+                                      miniSumm: () {
+                                        nalogSumm072.value =
+                                            nalogSumm068.value +
+                                                nalogSumm071.value;
+                                      },
+                                    );
                                     nalogSumm182.value =
                                         nalogSumm178.value + nalogSumm181.value;
                                     allSumm215();
@@ -1201,6 +1435,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '181',
                                   nalogSumm: nalogSumm181,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c179,
+                                      c2: c269,
+                                      c3: c329,
+                                      c4summ: c69,
+                                      n1: nalogSumm181,
+                                      n2: nalogSumm271,
+                                      n3: nalogSumm331,
+                                      nalogSumm: nalogSumm071,
+                                      miniSumm: () {
+                                        nalogSumm072.value =
+                                            nalogSumm068.value +
+                                                nalogSumm071.value;
+                                      },
+                                    );
                                     nalogSumm182.value =
                                         nalogSumm178.value + nalogSumm181.value;
                                     allSumm215();
@@ -1236,6 +1485,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '268',
                                   nalogSumm: nalogSumm268,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c176,
+                                      c2: c266,
+                                      c3: c326,
+                                      c4summ: c66,
+                                      n1: nalogSumm178,
+                                      n2: nalogSumm268,
+                                      n3: nalogSumm328,
+                                      nalogSumm: nalogSumm068,
+                                      miniSumm: () {
+                                        nalogSumm072.value =
+                                            nalogSumm068.value +
+                                                nalogSumm071.value;
+                                      },
+                                    );
                                     nalogSumm272.value =
                                         nalogSumm268.value + nalogSumm271.value;
                                     allSumm305();
@@ -1254,6 +1518,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '271',
                                   nalogSumm: nalogSumm271,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c179,
+                                      c2: c269,
+                                      c3: c329,
+                                      c4summ: c69,
+                                      n1: nalogSumm181,
+                                      n2: nalogSumm271,
+                                      n3: nalogSumm331,
+                                      nalogSumm: nalogSumm071,
+                                      miniSumm: () {
+                                        nalogSumm072.value =
+                                            nalogSumm068.value +
+                                                nalogSumm071.value;
+                                      },
+                                    );
                                     nalogSumm272.value =
                                         nalogSumm268.value + nalogSumm271.value;
                                     allSumm305();
@@ -1290,6 +1569,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '328',
                                   nalogSumm: nalogSumm328,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c176,
+                                      c2: c266,
+                                      c3: c326,
+                                      c4summ: c66,
+                                      n1: nalogSumm178,
+                                      n2: nalogSumm268,
+                                      n3: nalogSumm328,
+                                      nalogSumm: nalogSumm068,
+                                      miniSumm: () {
+                                        nalogSumm072.value =
+                                            nalogSumm068.value +
+                                                nalogSumm071.value;
+                                      },
+                                    );
                                     nalogSumm332.value =
                                         nalogSumm328.value + nalogSumm331.value;
                                     allSumm365();
@@ -1308,6 +1602,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '331',
                                   nalogSumm: nalogSumm331,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c179,
+                                      c2: c269,
+                                      c3: c329,
+                                      c4summ: c69,
+                                      n1: nalogSumm181,
+                                      n2: nalogSumm271,
+                                      n3: nalogSumm331,
+                                      nalogSumm: nalogSumm071,
+                                      miniSumm: () {
+                                        nalogSumm072.value =
+                                            nalogSumm068.value +
+                                                nalogSumm071.value;
+                                      },
+                                    );
                                     nalogSumm332.value =
                                         nalogSumm328.value + nalogSumm331.value;
                                     allSumm365();
@@ -1400,6 +1709,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '185',
                                   nalogSumm: nalogSumm185,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c183,
+                                      c2: c273,
+                                      c3: c333,
+                                      c4summ: c73,
+                                      n1: nalogSumm185,
+                                      n2: nalogSumm275,
+                                      n3: nalogSumm335,
+                                      nalogSumm: nalogSumm075,
+                                      miniSumm: () {
+                                        nalogSumm079.value =
+                                            nalogSumm075.value +
+                                                nalogSumm078.value;
+                                      },
+                                    );
                                     nalogSumm189.value =
                                         nalogSumm185.value + nalogSumm188.value;
                                     allSumm215();
@@ -1418,6 +1742,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '188',
                                   nalogSumm: nalogSumm188,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c186,
+                                      c2: c276,
+                                      c3: c336,
+                                      c4summ: c76,
+                                      n1: nalogSumm188,
+                                      n2: nalogSumm278,
+                                      n3: nalogSumm338,
+                                      nalogSumm: nalogSumm078,
+                                      miniSumm: () {
+                                        nalogSumm079.value =
+                                            nalogSumm075.value +
+                                                nalogSumm078.value;
+                                      },
+                                    );
                                     nalogSumm189.value =
                                         nalogSumm185.value + nalogSumm188.value;
                                     allSumm215();
@@ -1454,6 +1793,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '275',
                                   nalogSumm: nalogSumm275,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c183,
+                                      c2: c273,
+                                      c3: c333,
+                                      c4summ: c73,
+                                      n1: nalogSumm185,
+                                      n2: nalogSumm275,
+                                      n3: nalogSumm335,
+                                      nalogSumm: nalogSumm075,
+                                      miniSumm: () {
+                                        nalogSumm079.value =
+                                            nalogSumm075.value +
+                                                nalogSumm078.value;
+                                      },
+                                    );
                                     nalogSumm279.value =
                                         nalogSumm275.value + nalogSumm278.value;
                                     allSumm305();
@@ -1472,6 +1826,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '278',
                                   nalogSumm: nalogSumm278,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c186,
+                                      c2: c276,
+                                      c3: c336,
+                                      c4summ: c76,
+                                      n1: nalogSumm188,
+                                      n2: nalogSumm278,
+                                      n3: nalogSumm338,
+                                      nalogSumm: nalogSumm078,
+                                      miniSumm: () {
+                                        nalogSumm079.value =
+                                            nalogSumm075.value +
+                                                nalogSumm078.value;
+                                      },
+                                    );
                                     nalogSumm279.value =
                                         nalogSumm275.value + nalogSumm278.value;
                                     allSumm305();
@@ -1508,6 +1877,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '335',
                                   nalogSumm: nalogSumm335,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c183,
+                                      c2: c273,
+                                      c3: c333,
+                                      c4summ: c73,
+                                      n1: nalogSumm185,
+                                      n2: nalogSumm275,
+                                      n3: nalogSumm335,
+                                      nalogSumm: nalogSumm075,
+                                      miniSumm: () {
+                                        nalogSumm079.value =
+                                            nalogSumm075.value +
+                                                nalogSumm078.value;
+                                      },
+                                    );
                                     nalogSumm339.value =
                                         nalogSumm335.value + nalogSumm338.value;
                                     allSumm365();
@@ -1526,6 +1910,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '338',
                                   nalogSumm: nalogSumm338,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c186,
+                                      c2: c276,
+                                      c3: c336,
+                                      c4summ: c76,
+                                      n1: nalogSumm188,
+                                      n2: nalogSumm278,
+                                      n3: nalogSumm338,
+                                      nalogSumm: nalogSumm078,
+                                      miniSumm: () {
+                                        nalogSumm079.value =
+                                            nalogSumm075.value +
+                                                nalogSumm078.value;
+                                      },
+                                    );
                                     nalogSumm339.value =
                                         nalogSumm335.value + nalogSumm338.value;
                                     allSumm365();
@@ -1618,6 +2017,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '192',
                                   nalogSumm: nalogSumm192,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c190,
+                                      c2: c280,
+                                      c3: c340,
+                                      c4summ: c80,
+                                      n1: nalogSumm192,
+                                      n2: nalogSumm282,
+                                      n3: nalogSumm342,
+                                      nalogSumm: nalogSumm082,
+                                      miniSumm: () {
+                                        nalogSumm086.value =
+                                            nalogSumm082.value +
+                                                nalogSumm085.value;
+                                      },
+                                    );
                                     nalogSumm196.value =
                                         nalogSumm192.value + nalogSumm195.value;
                                     allSumm215();
@@ -1636,6 +2050,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '195',
                                   nalogSumm: nalogSumm195,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c193,
+                                      c2: c283,
+                                      c3: c343,
+                                      c4summ: c83,
+                                      n1: nalogSumm195,
+                                      n2: nalogSumm285,
+                                      n3: nalogSumm345,
+                                      nalogSumm: nalogSumm085,
+                                      miniSumm: () {
+                                        nalogSumm086.value =
+                                            nalogSumm082.value +
+                                                nalogSumm085.value;
+                                      },
+                                    );
                                     nalogSumm196.value =
                                         nalogSumm192.value + nalogSumm195.value;
                                     allSumm215();
@@ -1672,6 +2101,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '282',
                                   nalogSumm: nalogSumm282,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c190,
+                                      c2: c280,
+                                      c3: c340,
+                                      c4summ: c80,
+                                      n1: nalogSumm192,
+                                      n2: nalogSumm282,
+                                      n3: nalogSumm342,
+                                      nalogSumm: nalogSumm082,
+                                      miniSumm: () {
+                                        nalogSumm086.value =
+                                            nalogSumm082.value +
+                                                nalogSumm085.value;
+                                      },
+                                    );
                                     nalogSumm286.value =
                                         nalogSumm282.value + nalogSumm285.value;
                                     allSumm305();
@@ -1690,6 +2134,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '285',
                                   nalogSumm: nalogSumm285,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c193,
+                                      c2: c283,
+                                      c3: c343,
+                                      c4summ: c83,
+                                      n1: nalogSumm195,
+                                      n2: nalogSumm285,
+                                      n3: nalogSumm345,
+                                      nalogSumm: nalogSumm085,
+                                      miniSumm: () {
+                                        nalogSumm086.value =
+                                            nalogSumm082.value +
+                                                nalogSumm085.value;
+                                      },
+                                    );
                                     nalogSumm286.value =
                                         nalogSumm282.value + nalogSumm285.value;
                                     allSumm305();
@@ -1726,6 +2185,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '342',
                                   nalogSumm: nalogSumm342,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c190,
+                                      c2: c280,
+                                      c3: c340,
+                                      c4summ: c80,
+                                      n1: nalogSumm192,
+                                      n2: nalogSumm282,
+                                      n3: nalogSumm342,
+                                      nalogSumm: nalogSumm082,
+                                      miniSumm: () {
+                                        nalogSumm086.value =
+                                            nalogSumm082.value +
+                                                nalogSumm085.value;
+                                      },
+                                    );
                                     nalogSumm346.value =
                                         nalogSumm342.value + nalogSumm345.value;
                                     allSumm365();
@@ -1744,6 +2218,21 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '345',
                                   nalogSumm: nalogSumm345,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c193,
+                                      c2: c283,
+                                      c3: c343,
+                                      c4summ: c83,
+                                      n1: nalogSumm195,
+                                      n2: nalogSumm285,
+                                      n3: nalogSumm345,
+                                      nalogSumm: nalogSumm085,
+                                      miniSumm: () {
+                                        nalogSumm086.value =
+                                            nalogSumm082.value +
+                                                nalogSumm085.value;
+                                      },
+                                    );
                                     nalogSumm346.value =
                                         nalogSumm342.value + nalogSumm345.value;
                                     allSumm365();
@@ -1836,6 +2325,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '199',
                                   nalogSumm: nalogSumm199,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c197,
+                                      c2: c287,
+                                      c3: c347,
+                                      c4summ: c130,
+                                      n1: nalogSumm199,
+                                      n2: nalogSumm289,
+                                      n3: nalogSumm349,
+                                      nalogSumm: nalogSumm132,
+                                    );
                                     allSumm215();
                                   },
                                 ),
@@ -1857,6 +2356,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '289',
                                   nalogSumm: nalogSumm289,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c197,
+                                      c2: c287,
+                                      c3: c347,
+                                      c4summ: c130,
+                                      n1: nalogSumm199,
+                                      n2: nalogSumm289,
+                                      n3: nalogSumm349,
+                                      nalogSumm: nalogSumm132,
+                                    );
                                     allSumm305();
                                   },
                                 ),
@@ -1878,6 +2387,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '349',
                                   nalogSumm: nalogSumm349,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c197,
+                                      c2: c287,
+                                      c3: c347,
+                                      c4summ: c130,
+                                      n1: nalogSumm199,
+                                      n2: nalogSumm289,
+                                      n3: nalogSumm349,
+                                      nalogSumm: nalogSumm132,
+                                    );
                                     allSumm365();
                                   },
                                 ),
@@ -1955,6 +2474,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '202',
                                   nalogSumm: nalogSumm202,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c200,
+                                      c2: c290,
+                                      c3: c350,
+                                      c4summ: c136,
+                                      n1: nalogSumm202,
+                                      n2: nalogSumm292,
+                                      n3: nalogSumm352,
+                                      nalogSumm: nalogSumm138,
+                                    );
                                     allSumm215();
                                   },
                                 ),
@@ -1976,6 +2505,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '292',
                                   nalogSumm: nalogSumm292,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c200,
+                                      c2: c290,
+                                      c3: c350,
+                                      c4summ: c136,
+                                      n1: nalogSumm202,
+                                      n2: nalogSumm292,
+                                      n3: nalogSumm352,
+                                      nalogSumm: nalogSumm138,
+                                    );
                                     allSumm305();
                                   },
                                 ),
@@ -1997,6 +2536,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '352',
                                   nalogSumm: nalogSumm352,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c200,
+                                      c2: c290,
+                                      c3: c350,
+                                      c4summ: c136,
+                                      n1: nalogSumm202,
+                                      n2: nalogSumm292,
+                                      n3: nalogSumm352,
+                                      nalogSumm: nalogSumm138,
+                                    );
                                     allSumm365();
                                   },
                                 ),
@@ -2074,6 +2623,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '205',
                                   nalogSumm: nalogSumm205,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c203,
+                                      c2: c293,
+                                      c3: c353,
+                                      c4summ: c139,
+                                      n1: nalogSumm205,
+                                      n2: nalogSumm295,
+                                      n3: nalogSumm355,
+                                      nalogSumm: nalogSumm141,
+                                    );
                                     allSumm215();
                                   },
                                 ),
@@ -2095,6 +2654,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '295',
                                   nalogSumm: nalogSumm295,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c203,
+                                      c2: c293,
+                                      c3: c353,
+                                      c4summ: c139,
+                                      n1: nalogSumm205,
+                                      n2: nalogSumm295,
+                                      n3: nalogSumm355,
+                                      nalogSumm: nalogSumm141,
+                                    );
                                     allSumm305();
                                   },
                                 ),
@@ -2116,6 +2685,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '355',
                                   nalogSumm: nalogSumm355,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c203,
+                                      c2: c293,
+                                      c3: c353,
+                                      c4summ: c139,
+                                      n1: nalogSumm205,
+                                      n2: nalogSumm295,
+                                      n3: nalogSumm355,
+                                      nalogSumm: nalogSumm141,
+                                    );
                                     allSumm365();
                                   },
                                 ),
@@ -2193,6 +2772,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '208',
                                   nalogSumm: nalogSumm208,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c206,
+                                      c2: c296,
+                                      c3: c356,
+                                      c4summ: c142,
+                                      n1: nalogSumm208,
+                                      n2: nalogSumm298,
+                                      n3: nalogSumm358,
+                                      nalogSumm: nalogSumm144,
+                                    );
                                     allSumm215();
                                   },
                                 ),
@@ -2214,6 +2803,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '298',
                                   nalogSumm: nalogSumm298,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c206,
+                                      c2: c296,
+                                      c3: c356,
+                                      c4summ: c142,
+                                      n1: nalogSumm208,
+                                      n2: nalogSumm298,
+                                      n3: nalogSumm358,
+                                      nalogSumm: nalogSumm144,
+                                    );
                                     allSumm305();
                                   },
                                 ),
@@ -2235,6 +2834,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '358',
                                   nalogSumm: nalogSumm358,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c206,
+                                      c2: c296,
+                                      c3: c356,
+                                      c4summ: c142,
+                                      n1: nalogSumm208,
+                                      n2: nalogSumm298,
+                                      n3: nalogSumm358,
+                                      nalogSumm: nalogSumm144,
+                                    );
                                     allSumm365();
                                   },
                                 ),
@@ -2312,6 +2921,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '211',
                                   nalogSumm: nalogSumm211,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c209,
+                                      c2: c299,
+                                      c3: c359,
+                                      c4summ: c145,
+                                      n1: nalogSumm211,
+                                      n2: nalogSumm301,
+                                      n3: nalogSumm361,
+                                      nalogSumm: nalogSumm147,
+                                    );
                                     allSumm215();
                                   },
                                 ),
@@ -2333,6 +2952,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '301',
                                   nalogSumm: nalogSumm301,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c209,
+                                      c2: c299,
+                                      c3: c359,
+                                      c4summ: c145,
+                                      n1: nalogSumm211,
+                                      n2: nalogSumm301,
+                                      n3: nalogSumm361,
+                                      nalogSumm: nalogSumm147,
+                                    );
                                     allSumm305();
                                   },
                                 ),
@@ -2354,6 +2983,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '361',
                                   nalogSumm: nalogSumm361,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c209,
+                                      c2: c299,
+                                      c3: c359,
+                                      c4summ: c145,
+                                      n1: nalogSumm211,
+                                      n2: nalogSumm301,
+                                      n3: nalogSumm361,
+                                      nalogSumm: nalogSumm147,
+                                    );
                                     allSumm365();
                                   },
                                 ),
@@ -2437,6 +3076,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '214',
                                   nalogSumm: nalogSumm214,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c212,
+                                      c2: c302,
+                                      c3: c362,
+                                      c4summ: c148,
+                                      n1: nalogSumm214,
+                                      n2: nalogSumm304,
+                                      n3: nalogSumm364,
+                                      nalogSumm: nalogSumm150,
+                                    );
                                     allSumm215();
                                   },
                                 ),
@@ -2471,6 +3120,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '304',
                                   nalogSumm: nalogSumm304,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c212,
+                                      c2: c302,
+                                      c3: c362,
+                                      c4summ: c148,
+                                      n1: nalogSumm214,
+                                      n2: nalogSumm304,
+                                      n3: nalogSumm364,
+                                      nalogSumm: nalogSumm150,
+                                    );
                                     allSumm305();
                                   },
                                 ),
@@ -2505,6 +3164,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   numberSumma: '364',
                                   nalogSumm: nalogSumm364,
                                   onChanged: (summa) {
+                                    controllerChanger(
+                                      c1: c212,
+                                      c2: c302,
+                                      c3: c362,
+                                      c4summ: c148,
+                                      n1: nalogSumm214,
+                                      n2: nalogSumm304,
+                                      n3: nalogSumm364,
+                                      nalogSumm: nalogSumm150,
+                                    );
                                     allSumm365();
                                   },
                                 ),
