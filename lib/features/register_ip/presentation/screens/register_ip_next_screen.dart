@@ -290,7 +290,7 @@ class _RegisterIPNextScreenState extends State<RegisterIPNextScreen> {
                               userCase.taxMode = int.parse(
                                   model.nalogTypes[selectedIndex!].id);
                               userCase.entrepreneurType =
-                                  widget.isPatent ? 0 : 1;
+                                  widget.isPatent ? 1 : 0;
                               userCase.selectedModes = nalogTypeIds
                                   .map((e) => int.parse(e))
                                   .toList();
