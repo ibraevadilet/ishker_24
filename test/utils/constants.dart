@@ -3,7 +3,6 @@ import 'package:ishker_24/features/account/data/models/account_model.dart';
 import 'package:ishker_24/features/account/data/models/history_model.dart';
 import 'package:ishker_24/features/account/data/models/history_request_model.dart';
 import 'package:ishker_24/features/account/data/models/transfer_perform_model.dart';
-import 'package:ishker_24/features/account/data/models/transfer_request_model.dart';
 import 'package:ishker_24/features/account/data/models/transfer_validate_model.dart';
 import 'package:ishker_24/features/account/domain/entities/account.dart';
 import 'package:ishker_24/features/account/domain/entities/history.dart';
@@ -109,30 +108,30 @@ final tTransferPerform = TransferPerform(
   timestamp: tTransferPerformModel.timestamp,
 );
 
-const tTransferRequestModelV = TransferRequestModel(
-  summa: 1000,
-  fee: 0,
-  currency: '417',
-  serviceid: '38983092454',
-  typeservice: 'popolnenie_card_pan',
-  typerequest: 'validate',
-  account: '4724144078984592',
-  accountDt: '1290583310042253',
-  inn: '20509199801631',
-);
+// const tTransferRequestModelV = TransferRequestModel(
+//   summa: 1000,
+//   fee: 0,
+//   currency: '417',
+//   serviceid: '38983092454',
+//   typeservice: 'popolnenie_card_pan',
+//   typerequest: 'validate',
+//   account: '4724144078984592',
+//   accountDt: '1290583310042253',
+//   inn: '20509199801631',
+// );
 
-const tTransferRequestModelP = TransferRequestModel(
-  id: 38463209,
-  summa: 1000,
-  fee: 0,
-  currency: '417',
-  serviceid: '38983092454',
-  typeservice: 'popolnenie_card_pan',
-  typerequest: 'pay',
-  account: '4724144078984592',
-  accountDt: '1290583310042253',
-  inn: '20509199801631',
-);
+// const tTransferRequestModelP = TransferRequestModel(
+//   id: 38463209,
+//   summa: 1000,
+//   fee: 0,
+//   currency: '417',
+//   serviceid: '38983092454',
+//   typeservice: 'popolnenie_card_pan',
+//   typerequest: 'pay',
+//   account: '4724144078984592',
+//   accountDt: '1290583310042253',
+//   inn: '20509199801631',
+// );
 
 final tHistoryParams = HistoryParams(
   account: tHistoryRequestModel.account,

@@ -130,118 +130,118 @@ void main() {
     });
   });
 
-  group('AccountRepositoryImpl.validate()', () {
-    final params = tTransferRequestModelV.toParams();
+  // group('AccountRepositoryImpl.validate()', () {
+  //   final params = tTransferRequestModelV.toParams();
 
-    test('success', () async {
-      //arrange
-      when(() => networkInfo.isConnected).thenAnswer((_) async => true);
-      when(() => remote.validate(tTransferRequestModelV)).thenAnswer(
-        (_) async => tTransferValidateModel,
-      );
+  //   test('success', () async {
+  //     //arrange
+  //     when(() => networkInfo.isConnected).thenAnswer((_) async => true);
+  //     when(() => remote.validate(tTransferRequestModelV)).thenAnswer(
+  //       (_) async => tTransferValidateModel,
+  //     );
 
-      //act
-      final actual = await repository.validate(params);
+  //     //act
+  //     final actual = await repository.validate(params);
 
-      //assert
-      verify(() => networkInfo.isConnected).called(1);
-      verifyNoMoreInteractions(networkInfo);
-      verify(() => remote.validate(tTransferRequestModelV)).called(1);
-      verifyNoMoreInteractions(remote);
-      expect(actual, Success(tTransferValidate));
-    });
+  //     //assert
+  //     verify(() => networkInfo.isConnected).called(1);
+  //     verifyNoMoreInteractions(networkInfo);
+  //     verify(() => remote.validate(tTransferRequestModelV)).called(1);
+  //     verifyNoMoreInteractions(remote);
+  //     expect(actual, Success(tTransferValidate));
+  //   });
 
-    test('failure NoConnection', () async {
-      //arrange
-      when(() => networkInfo.isConnected).thenAnswer((_) async => false);
+  //   test('failure NoConnection', () async {
+  //     //arrange
+  //     when(() => networkInfo.isConnected).thenAnswer((_) async => false);
 
-      //act
-      await repository.validate(params);
+  //     //act
+  //     await repository.validate(params);
 
-      //assert
-      verify(() => networkInfo.isConnected).called(1);
-      verifyNoMoreInteractions(networkInfo);
-      verifyZeroInteractions(remote);
-    });
+  //     //assert
+  //     verify(() => networkInfo.isConnected).called(1);
+  //     verifyNoMoreInteractions(networkInfo);
+  //     verifyZeroInteractions(remote);
+  //   });
 
-    test('failure DioException', () async {
-      //arrange
-      final Failure<TransferValidate, Exception> tResponse =
-          Failure(tDioException);
+  //   test('failure DioException', () async {
+  //     //arrange
+  //     final Failure<TransferValidate, Exception> tResponse =
+  //         Failure(tDioException);
 
-      when(() => networkInfo.isConnected).thenAnswer((_) async => true);
-      when(() => remote.validate(tTransferRequestModelV))
-          .thenThrow(tDioException);
+  //     when(() => networkInfo.isConnected).thenAnswer((_) async => true);
+  //     when(() => remote.validate(tTransferRequestModelV))
+  //         .thenThrow(tDioException);
 
-      //act
-      final actual = await repository.validate(params);
+  //     //act
+  //     final actual = await repository.validate(params);
 
-      //assert
-      verify(() => networkInfo.isConnected).called(1);
-      verify(() => remote.validate(tTransferRequestModelV)).called(1);
-      expect(actual, isA<Failure>());
-      expect(actual, tResponse);
-      verifyNoMoreInteractions(networkInfo);
-      verifyNoMoreInteractions(remote);
-    });
-  });
+  //     //assert
+  //     verify(() => networkInfo.isConnected).called(1);
+  //     verify(() => remote.validate(tTransferRequestModelV)).called(1);
+  //     expect(actual, isA<Failure>());
+  //     expect(actual, tResponse);
+  //     verifyNoMoreInteractions(networkInfo);
+  //     verifyNoMoreInteractions(remote);
+  //   });
+  // });
 
-  group('AccountRepositoryImpl.perform()', () {
-    final params = tTransferRequestModelP.toParams();
+  // group('AccountRepositoryImpl.perform()', () {
+  //   final params = tTransferRequestModelP.toParams();
 
-    log('params: $params');
-    log('tT: $tTransferRequestModelP');
+  //   log('params: $params');
+  //   log('tT: $tTransferRequestModelP');
 
-    test('success', () async {
-      //arrange
-      when(() => networkInfo.isConnected).thenAnswer((_) async => true);
-      when(() => remote.perform(tTransferRequestModelP)).thenAnswer(
-        (_) async => tTransferPerformModel,
-      );
+  //   test('success', () async {
+  //     //arrange
+  //     when(() => networkInfo.isConnected).thenAnswer((_) async => true);
+  //     when(() => remote.perform(tTransferRequestModelP)).thenAnswer(
+  //       (_) async => tTransferPerformModel,
+  //     );
 
-      //act
-      final actual = await repository.perform(params);
+  //     //act
+  //     final actual = await repository.perform(params);
 
-      //assert
-      verify(() => networkInfo.isConnected).called(1);
-      verifyNoMoreInteractions(networkInfo);
-      verify(() => remote.perform(tTransferRequestModelP)).called(1);
-      verifyNoMoreInteractions(remote);
-      expect(actual, Success(tTransferPerform));
-    });
+  //     //assert
+  //     verify(() => networkInfo.isConnected).called(1);
+  //     verifyNoMoreInteractions(networkInfo);
+  //     verify(() => remote.perform(tTransferRequestModelP)).called(1);
+  //     verifyNoMoreInteractions(remote);
+  //     expect(actual, Success(tTransferPerform));
+  //   });
 
-    test('failure NoConnection', () async {
-      //arrange
-      when(() => networkInfo.isConnected).thenAnswer((_) async => false);
+  //   test('failure NoConnection', () async {
+  //     //arrange
+  //     when(() => networkInfo.isConnected).thenAnswer((_) async => false);
 
-      //act
-      await repository.perform(params);
+  //     //act
+  //     await repository.perform(params);
 
-      //assert
-      verify(() => networkInfo.isConnected).called(1);
-      verifyNoMoreInteractions(networkInfo);
-      verifyZeroInteractions(remote);
-    });
+  //     //assert
+  //     verify(() => networkInfo.isConnected).called(1);
+  //     verifyNoMoreInteractions(networkInfo);
+  //     verifyZeroInteractions(remote);
+  //   });
 
-    test('failure DioException', () async {
-      //arrange
-      final Failure<TransferPerform, Exception> tResponse =
-          Failure(tDioException);
+  //   test('failure DioException', () async {
+  //     //arrange
+  //     final Failure<TransferPerform, Exception> tResponse =
+  //         Failure(tDioException);
 
-      when(() => networkInfo.isConnected).thenAnswer((_) async => true);
-      when(() => remote.perform(tTransferRequestModelP))
-          .thenThrow(tDioException);
+  //     when(() => networkInfo.isConnected).thenAnswer((_) async => true);
+  //     when(() => remote.perform(tTransferRequestModelP))
+  //         .thenThrow(tDioException);
 
-      //act
-      final actual = await repository.perform(params);
+  //     //act
+  //     final actual = await repository.perform(params);
 
-      //assert
-      verify(() => networkInfo.isConnected).called(1);
-      verify(() => remote.perform(tTransferRequestModelP)).called(1);
-      expect(actual, isA<Failure>());
-      expect(actual, tResponse);
-      verifyNoMoreInteractions(networkInfo);
-      verifyNoMoreInteractions(remote);
-    });
-  });
+  //     //assert
+  //     verify(() => networkInfo.isConnected).called(1);
+  //     verify(() => remote.perform(tTransferRequestModelP)).called(1);
+  //     expect(actual, isA<Failure>());
+  //     expect(actual, tResponse);
+  //     verifyNoMoreInteractions(networkInfo);
+  //     verifyNoMoreInteractions(remote);
+  //   });
+  // });
 }

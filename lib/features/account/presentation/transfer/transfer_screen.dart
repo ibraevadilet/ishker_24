@@ -6,7 +6,7 @@ import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/formatters/input_formatters.dart';
 import 'package:ishker_24/core/utils/extensions.dart';
 import 'package:ishker_24/features/account/domain/entities/account.dart';
-import 'package:ishker_24/features/account/presentation/transfer/cubit/transfer_cubit.dart';
+import 'package:ishker_24/features/account/presentation/transfer/cubits/transfer_cubit/transfer_cubit.dart';
 import 'package:ishker_24/features/account/presentation/transfer/cubits/transfer_validate/transfer_validate_cubit.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';

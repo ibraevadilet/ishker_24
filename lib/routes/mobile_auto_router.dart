@@ -78,5 +78,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: HistoryRoute.page),
         AutoRoute(page: AccountInfoRoute.page),
         AutoRoute(page: TransferRoute.page),
+        AutoRoute(page: RefillRoute.page),
       ];
 }

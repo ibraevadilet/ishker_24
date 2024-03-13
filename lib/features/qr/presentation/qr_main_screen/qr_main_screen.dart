@@ -71,7 +71,7 @@ class QrMainScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                success: () => const QrWidget(),
+                success: () => const MyQrWidget(),
               );
             },
           ),

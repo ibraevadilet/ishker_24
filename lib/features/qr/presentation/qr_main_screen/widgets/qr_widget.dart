@@ -24,23 +24,57 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class QrWidget extends StatefulWidget {
-  const QrWidget({super.key});
+class MyQrWidget extends StatefulWidget {
+  const MyQrWidget({super.key});
 
   @override
-  State<QrWidget> createState() => _QrWidgetState();
+  State<MyQrWidget> createState() => _MyQrWidgetState();
 }
 
-class _QrWidgetState extends State<QrWidget> {
+class _MyQrWidgetState extends State<MyQrWidget> {
   late AccountChetModel selectedAccount;
   final _controller = TextEditingController();
   Timer? _debounce;
+
+  bool isScan = false;
 
   @override
   void dispose() {
     _controller.dispose();
     _debounce?.cancel();
     super.dispose();
+  }
+
+  Widget tabBtn({
+    required String label,
+    required VoidCallback onTap,
+    required bool isSelected,
+  }) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: Material(
+        color: isSelected ? AppColors.color54B25AMain : Colors.transparent,
+        // borderRadius: BorderRadius.circular(8),
+        child: InkWell(
+          onTap: onTap,
+          highlightColor: Colors.transparent,
+          splashColor: AppColors.esiMainBlueColor.withOpacity(.15),
+          child: SizedBox(
+            height: 36,
+            child: Center(
+              child: Text(
+                label,
+                style: AppTextStyles.s16W600(
+                  color: isSelected
+                      ? AppColors.backgroundColor
+                      : AppColors.color6B7583Grey,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -53,7 +87,7 @@ class _QrWidgetState extends State<QrWidget> {
           titleWidget: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Мой QR', style: AppTextStyles.s16W600()),
+              Text('QR', style: AppTextStyles.s16W600()),
             ],
           ),
         ),
@@ -90,6 +124,33 @@ class _QrWidgetState extends State<QrWidget> {
                   padding: const EdgeInsets.only(bottom: 50),
                   child: Column(
                     children: [
+                      Container(
+                        height: 36,
+                        decoration: BoxDecoration(
+                          color: AppColors.color6B7583Grey.withOpacity(.25),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: tabBtn(
+                                label: 'My QR',
+                                onTap: () => setState(() => isScan = false),
+                                isSelected: !isScan,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: tabBtn(
+                                label: 'Scan',
+                                onTap: () => setState(() => isScan = true),
+                                isSelected: isScan,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                       const SizedBox(height: 24),
                       const Text(
                         'Получайте переводы с банковских\nприложений или кошельков',

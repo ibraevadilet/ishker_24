@@ -209,20 +209,28 @@ class AccountActionButtons extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconTitleButton(
-                    key: const ValueKey('account_card_pay_key'),
+                    btnKey: const ValueKey('account_card_pay_key'),
                     onTap: () => AppSnackBar.showUnimplementedSnackBar(),
                     imagePath: AppImages.paymentIcon,
                     title: 'pay'.tr(context: context),
                   ),
                   IconTitleButton(
-                    key: const ValueKey('account_card_refill_key'),
-                    onTap: () => AppSnackBar.showUnimplementedSnackBar(),
+                    btnKey: const ValueKey('account_card_refill_key'),
+                    onTap: () {
+                      kDebugMode && state is AccountInfoSuccess
+                          ? AppRouting.pushFunction(
+                              RefillRoute(
+                                qr: 'https://pay.payqr.kg#00020101021132500009qr.rsk.kg010141016129900337000038812021113021233160012%D0%91%D0%90%D0%A2%D0%AB%D0%A0+%D0%A7%D0%AB%D0%9D%D0%93%D0%AB%D0%97520465385303417540105913BATYR+CHYNGYZ6304e035',
+                              ),
+                            )
+                          : AppSnackBar.showUnimplementedSnackBar();
+                    },
                     imagePath: AppImages.replenishIcon,
                     title: 'refill'.tr(context: context),
                   ),
                   IconTitleButton(
-                    key: const ValueKey('account_card_transfer_key'),
-                    onTap: () async {
+                    btnKey: const ValueKey('account_card_transfer_key'),
+                    onTap: () {
                       //TODO: позже отрефакторить auth, чтобы все необходимые значения хранились в его состоянии
                       //и все, кому ниже нужны какое-то значения из них, могли подписываться в своих кубитах
                       final inn =

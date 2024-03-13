@@ -1,4 +1,4 @@
-part of 'transfer_validate_cubit.dart';
+part of 'refill_validate_cubit.dart';
 
 sealed class TransferValidateState extends Equatable {
   const TransferValidateState();
@@ -24,7 +24,7 @@ final class TrValidateSuccess extends TransferValidateState {
   const TrValidateSuccess(this.entity, this.params);
 
   final TransferValidate entity;
-  final TransferPerformI2PParams params;
+  final TransferPerformI2IParams params;
 
   @override
   List<Object?> get props => [entity, params];

@@ -2,15 +2,18 @@ import 'package:ishker_24/core/network/rsk_service.dart';
 import 'package:ishker_24/features/account/data/models/account_model.dart';
 import 'package:ishker_24/features/account/data/models/history_model.dart';
 import 'package:ishker_24/features/account/data/models/history_request_model.dart';
+import 'package:ishker_24/features/account/data/models/transfer_perform_body.dart';
 import 'package:ishker_24/features/account/data/models/transfer_perform_model.dart';
-import 'package:ishker_24/features/account/data/models/transfer_request_model.dart';
+import 'package:ishker_24/features/account/data/models/transfer_validate_body.dart';
 import 'package:ishker_24/features/account/data/models/transfer_validate_model.dart';
 
 abstract interface class IAccountDataSource {
   Future<AccountModel> info(String account);
   Future<HistoryModel> history(HistoryRequestModel model);
-  Future<TransferValidateModel> validate(TransferRequestModel body);
-  Future<TransferPerformModel> perform(TransferRequestModel body);
+  Future<TransferValidateModel> validateI2P(TransferValidateI2PBody body);
+  Future<TransferPerformModel> performI2P(TransferPerformI2PBody body);
+  Future<TransferValidateModel> validateI2I(TransferValidateI2IBody body);
+  Future<TransferPerformModel> performI2I(TransferPerformI2IBody body);
 }
 
 final class AccountDataSourceImpl implements IAccountDataSource {
@@ -26,10 +29,22 @@ final class AccountDataSourceImpl implements IAccountDataSource {
       _service.history(model);
 
   @override
-  Future<TransferValidateModel> validate(TransferRequestModel model) async =>
-      _service.validate(model);
+  Future<TransferValidateModel> validateI2P(
+    TransferValidateI2PBody body,
+  ) async =>
+      _service.validateI2P(body);
 
   @override
-  Future<TransferPerformModel> perform(TransferRequestModel model) async =>
-      _service.perform(model);
+  Future<TransferPerformModel> performI2P(TransferPerformI2PBody body) async =>
+      _service.performI2P(body);
+
+  @override
+  Future<TransferValidateModel> validateI2I(
+    TransferValidateI2IBody body,
+  ) async =>
+      _service.validateI2I(body);
+
+  @override
+  Future<TransferPerformModel> performI2I(TransferPerformI2IBody body) async =>
+      _service.performI2I(body);
 }

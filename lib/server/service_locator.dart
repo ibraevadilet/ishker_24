@@ -11,8 +11,10 @@ import 'package:ishker_24/features/account/data/repositories/account_repository_
 import 'package:ishker_24/features/account/domain/repositories/i_account_repository.dart';
 import 'package:ishker_24/features/account/domain/usecases/account_info_usecase.dart';
 import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
-import 'package:ishker_24/features/account/domain/usecases/transfer_perform_usecase.dart';
-import 'package:ishker_24/features/account/domain/usecases/transfer_validate_usecase.dart';
+import 'package:ishker_24/features/account/domain/usecases/transfer_perform_i2i_usecase.dart';
+import 'package:ishker_24/features/account/domain/usecases/transfer_perform_i2p_usecase.dart';
+import 'package:ishker_24/features/account/domain/usecases/transfer_validate_i2i_usecase.dart';
+import 'package:ishker_24/features/account/domain/usecases/transfer_validate_i2p_usecase.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/create_account_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/get_client_passport_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/register_client_repo_impl.dart';
@@ -346,8 +348,10 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GeneratePdfReviewUseCase>(
       () => GeneratePdfReviewUseCase(repo: sl()));
   sl.registerFactory<SaveTokenUseCase>(() => SaveTokenUseCase(repo: sl()));
-  sl.registerLazySingleton(() => TransferValidateUseCase(sl()));
-  sl.registerLazySingleton(() => TransferPerformUseCase(sl()));
+  sl.registerLazySingleton(() => TransferValidateI2PUseCase(sl()));
+  sl.registerLazySingleton(() => TransferPerformI2PUseCase(sl()));
+  sl.registerLazySingleton(() => TransferValidateI2IUseCase(sl()));
+  sl.registerLazySingleton(() => TransferPerformI2IUseCase(sl()));
   sl.registerFactory<CheckOepUseCase>(() => CheckOepUseCase(repo: sl()));
 
   /// BLoCs / Cubits
