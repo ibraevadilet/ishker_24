@@ -13,7 +13,7 @@ class RegisterClientPostModel {
     required this.emailAdress,
     required this.vidDeatelnosti,
     required this.comment,
-    this.identificationType = 1,
+    this.identificationType = 3,
   });
 
   Map<String, dynamic> toJson() {
