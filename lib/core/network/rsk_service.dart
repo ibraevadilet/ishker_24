@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:ishker_24/core/errors/exceptions.dart';
 import 'package:ishker_24/features/account/data/models/account_model.dart';
@@ -38,14 +40,16 @@ class RskService {
   Future<TransferValidateModel> validateI2P(
     TransferValidateI2PBody body,
   ) async {
-    // final response = await _dio.post(
-    //   'rsk-service/payment/card/validate',
-    //   data: body.toValidateJson(),
-    // );
+    final response = await _dio.post(
+      'rsk-service/payment/card/validate',
+      data: body.toJson(),
+    );
 
-    // return response.data['data'];
+    log('res: $response');
 
-    await Future.delayed(const Duration(seconds: 2));
+    // return TransferValidateModel.fromJson(response.data['data']);
+
+    // await Future.delayed(const Duration(seconds: 2));
 
     final data = {
       "id": 38463209,
@@ -78,23 +82,23 @@ class RskService {
   }
 
   Future<TransferPerformModel> performI2P(TransferPerformI2PBody body) async {
-    // final response = await _dio.post(
-    //   'rsk-service/payment/card/perform',
-    //   data: body.toJson(),
-    // );
+    final response = await _dio.post(
+      'rsk-service/payment/card/perform',
+      data: body.toJson(),
+    );
 
     // return response.data['data'];
 
-    await Future.delayed(const Duration(seconds: 2));
+    // await Future.delayed(const Duration(seconds: 2));
 
-    final data = {
-      "id": "38463209",
-      "status": "0",
-      "message": "Операция завершена успешно",
-      "timestamp": "2024-02-28T11:38:43+06:00",
-    };
+    // final data = {
+    //   "id": "38463209",
+    //   "status": "0",
+    //   "message": "Операция завершена успешно",
+    //   "timestamp": "2024-02-28T11:38:43+06:00",
+    // };
 
-    return TransferPerformModel.fromJson(data);
+    return TransferPerformModel.fromJson(response.data['data']);
   }
 
   Future<AccountModel> info(String account) async {

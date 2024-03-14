@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -237,6 +239,7 @@ class AccountActionButtons extends StatelessWidget {
                       //и все, кому ниже нужны какое-то значения из них, могли подписываться в своих кубитах
                       final inn =
                           sl<SharedPreferences>().getString(SharedKeys.pin);
+                      log('inn: $inn');
                       if (inn.isNullOrEmpty) return;
 
                       kDebugMode && state is AccountInfoSuccess

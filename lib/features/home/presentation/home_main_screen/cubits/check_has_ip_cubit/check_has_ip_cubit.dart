@@ -1,6 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/features/home/domain/use_cases/check_has_ip_use_case.dart';
+import 'package:ishker_24/server/service_locator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'check_has_ip_cubit.freezed.dart';
 part 'check_has_ip_state.dart';
@@ -14,6 +17,10 @@ class CheckHasIpCubit extends Cubit<CheckHasIpState> {
     await Future.delayed(const Duration(microseconds: 300));
     try {
       final ipResult = await useCase.checkIp();
+      final pin = ipResult?.tin;
+      if (pin != null && pin.isNotEmpty == true) {
+        sl<SharedPreferences>().setString(SharedKeys.pin, pin);
+      }
       if (ipResult == null) {
         emit(const CheckHasIpState.emptyIp());
       } else {

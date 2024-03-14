@@ -75,12 +75,12 @@ class FullHasWidget extends StatelessWidget {
                           shrinkWrap: true,
                           itemCount: model.accountsList.length,
                           itemBuilder: (context, index) => ListTile(
-                            onTap: () => AppRouting.pushFunction(
-                              AccountInfoRoute(
-                                account:
-                                    model.accountsList[index].accountNumber,
-                              ),
-                            ),
+                            // onTap: () => AppRouting.pushFunction(
+                            //   AccountInfoRoute(
+                            //     account:
+                            //         model.accountsList[index].accountNumber,
+                            //   ),
+                            // ),
                             contentPadding: EdgeInsets.zero,
                             leading: SvgPicture.asset(
                               AppCurrencyFormatter.cuccancyIcon(
