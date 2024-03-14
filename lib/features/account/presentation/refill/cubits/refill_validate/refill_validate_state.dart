@@ -1,18 +1,18 @@
 part of 'refill_validate_cubit.dart';
 
-sealed class TransferValidateState extends Equatable {
-  const TransferValidateState();
+sealed class RefillValidateState extends Equatable {
+  const RefillValidateState();
 
   @override
   List<Object?> get props => [];
 }
 
-final class TrValidateInitial extends TransferValidateState {}
+final class RefillValidateInitial extends RefillValidateState {}
 
-final class TrValidateLoading extends TransferValidateState {}
+final class RefillValidateLoading extends RefillValidateState {}
 
-final class TrValidateFailure extends TransferValidateState {
-  const TrValidateFailure(this.e);
+final class RefillValidateFailure extends RefillValidateState {
+  const RefillValidateFailure(this.e);
 
   final Exception e;
 
@@ -20,8 +20,8 @@ final class TrValidateFailure extends TransferValidateState {
   List<Object?> get props => [e];
 }
 
-final class TrValidateSuccess extends TransferValidateState {
-  const TrValidateSuccess(this.entity, this.params);
+final class RefillValidateSuccess extends RefillValidateState {
+  const RefillValidateSuccess(this.entity, this.params);
 
   final TransferValidate entity;
   final TransferPerformI2IParams params;

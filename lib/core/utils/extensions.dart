@@ -1,6 +1,6 @@
 extension StringX on String {
   String get obscureFirstNumbers =>
-      '${'*' * (length - 4)}${substring(length - 4)}';
+      isEmpty ? '' : '${'*' * (length - 4)}${substring(length - 4)}';
 }
 
 extension StringXX on String? {

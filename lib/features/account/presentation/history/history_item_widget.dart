@@ -7,36 +7,12 @@ import 'package:ishker_24/features/account/domain/entities/history.dart';
 import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/custom_listtile.dart';
+import 'package:ishker_24/widgets/detail_row.dart';
 
 class HistoryItemWidget extends StatelessWidget {
   const HistoryItemWidget({super.key, required this.item});
 
   final HistoryItem item;
-
-  Widget detailRow(String title, String value) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 1,
-              child: Text(
-                title,
-                style: AppTextStyles.s16W500(color: AppColors.color6B7583Grey),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Text(
-                value,
-                style: AppTextStyles.s16W500(color: AppColors.color2C2C2CBlack),
-                textAlign: TextAlign.end,
-              ),
-            ),
-          ],
-        ),
-      );
 
   void showDetailsModal(BuildContext context) {
     showSheet(
@@ -57,38 +33,42 @@ class HistoryItemWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  detailRow(
-                    'sum'.tr(context: context),
-                    '${AppCurrencyFormatter.currencyCash(item.amount)} C',
+                  DetailRow(
+                    title: 'sum'.tr(context: context),
+                    value:
+                        '${AppCurrencyFormatter.currencyCash(item.amount)} C',
                   ),
-                  detailRow(
-                    'operation'.tr(context: context),
-                    item.isPrihod
+                  DetailRow(
+                    title: 'operation'.tr(context: context),
+                    value: item.isPrihod
                         ? 'prihod'.tr(context: context)
                         : 'rashod'.tr(context: context),
                   ),
-                  detailRow(
-                    item.isPrihod
+                  DetailRow(
+                    title: item.isPrihod
                         ? 'toAccount'.tr(context: context)
                         : 'fromAccount'.tr(context: context),
-                    item.receiverAccount,
+                    value: item.receiverAccount,
                   ),
-                  detailRow(
-                    'sendDate'.tr(context: context),
-                    AppDateFormats.formatDdMMYyyy.format(item.paydate),
+                  DetailRow(
+                    title: 'sendDate'.tr(context: context),
+                    value: AppDateFormats.formatDdMMYyyy.format(item.paydate),
                   ),
-                  detailRow(
-                    item.isPrihod
+                  DetailRow(
+                    title: item.isPrihod
                         ? 'prihodDate'.tr(context: context)
                         : 'rashodDate'.tr(context: context),
-                    AppDateFormats.formatDdMMYyyy.format(item.trandate),
+                    value: AppDateFormats.formatDdMMYyyy.format(item.trandate),
                   ),
-                  detailRow('sender'.tr(context: context), item.payerName),
-                  detailRow(
-                    item.isPrihod
+                  DetailRow(
+                    title: 'sender'.tr(context: context),
+                    value: item.payerName,
+                  ),
+                  DetailRow(
+                    title: item.isPrihod
                         ? 'senderBank'.tr(context: context)
                         : 'recieverBank'.tr(context: context),
-                    item.payerBankname,
+                    value: item.payerBankname,
                   ),
                 ],
               ),

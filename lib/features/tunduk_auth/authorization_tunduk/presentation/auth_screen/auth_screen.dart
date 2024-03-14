@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:ishker_24/core/constants/app_text_constants.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
+import 'package:ishker_24/features/account/domain/entities/refill_initial_data.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/esi_background_image_widget.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/top_title_widget.dart';
@@ -126,6 +128,25 @@ class AuthScreen extends StatelessWidget {
                       },
                       text: 'Получить ОЭП',
                     ),
+                    if (kDebugMode)
+                      CustomButton(
+                        borderColor: AppColors.esiMainBlueColor,
+                        color: Colors.white,
+                        textColor: AppColors.esiMainBlueColor,
+                        onPress: () {
+                          // AppRouting.pushFunction(
+                          //   RefillRoute(
+                          //     qrData: RefillInitialData.fromQr(
+                          //         'https://pay.payqr.kg#00020101021132500009qr.rsk.kg010141016129900337000038812021113021233160012%D0%91%D0%90%D0%A2%D0%AB%D0%A0+%D0%A7%D0%AB%D0%9D%D0%93%D0%AB%D0%97520465385303417540105913BATYR+CHYNGYZ6304e035'),
+                          //   ),
+
+                          // );
+
+                          // test contur qr
+                          // https://pay.payqr.kg#00020101021132500009qr.rsk.kg010141016129900337000038812021113021233160012%D0%91%D0%90%D0%A2%D0%AB%D0%A0+%D0%A7%D0%AB%D0%9D%D0%93%D0%AB%D0%97520465385303417540105913BATYR+CHYNGYZ6304e035
+                        },
+                        text: 'Qr',
+                      ),
                   ],
                 ),
               ),

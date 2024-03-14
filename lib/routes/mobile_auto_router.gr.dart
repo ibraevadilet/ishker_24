@@ -13,7 +13,9 @@ import 'package:camera/camera.dart' as _i72;
 import 'package:flutter/cupertino.dart' as _i77;
 import 'package:flutter/material.dart' as _i68;
 import 'package:ishker_24/features/account/domain/entities/account.dart'
-    as _i84;
+    as _i85;
+import 'package:ishker_24/features/account/domain/entities/refill_initial_data.dart'
+    as _i82;
 import 'package:ishker_24/features/account/presentation/history/history_screen.dart'
     as _i22;
 import 'package:ishker_24/features/account/presentation/info/account_info_screen.dart'
@@ -94,7 +96,7 @@ import 'package:ishker_24/features/megakassa/presentation/my_profile/my_profile_
 import 'package:ishker_24/features/my_ip/presentation/my_certificate_screen/my_certficate_screen.dart'
     as _i33;
 import 'package:ishker_24/features/nalog_decloration/data/models/nalog_names_model.dart'
-    as _i83;
+    as _i84;
 import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/main_screen.dart'
     as _i34;
 import 'package:ishker_24/features/nalog_decloration/presentation/nalog_main_screen/widgets/report_detail_pdf_view_screen.dart'
@@ -109,7 +111,7 @@ import 'package:ishker_24/features/pdf_view_screen.dart' as _i39;
 import 'package:ishker_24/features/register_ip/data/models/pin_code_types_model.dart'
     as _i73;
 import 'package:ishker_24/features/register_ip/data/models/tax_and_selected_modes_model.dart'
-    as _i82;
+    as _i83;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_confirm_oep_screen.dart'
     as _i54;
 import 'package:ishker_24/features/register_ip/presentation/screens/register_ip_main_screen.dart'
@@ -588,7 +590,7 @@ abstract class $AppRouter extends _i67.RootStackRouter {
         routeData: routeData,
         child: _i50.RefillScreen(
           key: args.key,
-          qr: args.qr,
+          qrData: args.qrData,
         ),
       );
     },
@@ -2092,14 +2094,14 @@ class RecoveryPinCodeEnterSmsCodeRouteArgs {
 /// [_i50.RefillScreen]
 class RefillRoute extends _i67.PageRouteInfo<RefillRouteArgs> {
   RefillRoute({
-    _i68.Key? key,
-    required String qr,
+    _i77.Key? key,
+    required _i82.RefillInitialData qrData,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           RefillRoute.name,
           args: RefillRouteArgs(
             key: key,
-            qr: qr,
+            qrData: qrData,
           ),
           initialChildren: children,
         );
@@ -2113,16 +2115,16 @@ class RefillRoute extends _i67.PageRouteInfo<RefillRouteArgs> {
 class RefillRouteArgs {
   const RefillRouteArgs({
     this.key,
-    required this.qr,
+    required this.qrData,
   });
 
-  final _i68.Key? key;
+  final _i77.Key? key;
 
-  final String qr;
+  final _i82.RefillInitialData qrData;
 
   @override
   String toString() {
-    return 'RefillRouteArgs{key: $key, qr: $qr}';
+    return 'RefillRouteArgs{key: $key, qrData: $qrData}';
   }
 }
 
@@ -2184,7 +2186,7 @@ class RegisterIPTypeOfActivityRoute
     extends _i67.PageRouteInfo<RegisterIPTypeOfActivityRouteArgs> {
   RegisterIPTypeOfActivityRoute({
     _i68.Key? key,
-    required List<_i82.TaxModel> models,
+    required List<_i83.TaxModel> models,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           RegisterIPTypeOfActivityRoute.name,
@@ -2209,7 +2211,7 @@ class RegisterIPTypeOfActivityRouteArgs {
 
   final _i68.Key? key;
 
-  final List<_i82.TaxModel> models;
+  final List<_i83.TaxModel> models;
 
   @override
   String toString() {
@@ -2237,7 +2239,7 @@ class RegisterIpSelectModesRoute
     extends _i67.PageRouteInfo<RegisterIpSelectModesRouteArgs> {
   RegisterIpSelectModesRoute({
     _i68.Key? key,
-    required List<_i82.TaxModel> models,
+    required List<_i83.TaxModel> models,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           RegisterIpSelectModesRoute.name,
@@ -2262,7 +2264,7 @@ class RegisterIpSelectModesRouteArgs {
 
   final _i68.Key? key;
 
-  final List<_i82.TaxModel> models;
+  final List<_i83.TaxModel> models;
 
   @override
   String toString() {
@@ -2328,7 +2330,7 @@ class ReportDetailPdfViewRouteArgs {
 class Route914 extends _i67.PageRouteInfo<Route914Args> {
   Route914({
     _i68.Key? key,
-    required _i83.NalogNameModel model,
+    required _i84.NalogNameModel model,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           Route914.name,
@@ -2353,7 +2355,7 @@ class Route914Args {
 
   final _i68.Key? key;
 
-  final _i83.NalogNameModel model;
+  final _i84.NalogNameModel model;
 
   @override
   String toString() {
@@ -2366,7 +2368,7 @@ class Route914Args {
 class Route9141 extends _i67.PageRouteInfo<Route9141Args> {
   Route9141({
     _i68.Key? key,
-    required _i83.NalogNameModel model,
+    required _i84.NalogNameModel model,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           Route9141.name,
@@ -2391,7 +2393,7 @@ class Route9141Args {
 
   final _i68.Key? key;
 
-  final _i83.NalogNameModel model;
+  final _i84.NalogNameModel model;
 
   @override
   String toString() {
@@ -2404,7 +2406,7 @@ class Route9141Args {
 class Route9142 extends _i67.PageRouteInfo<Route9142Args> {
   Route9142({
     _i68.Key? key,
-    required _i83.NalogNameModel model,
+    required _i84.NalogNameModel model,
     List<_i67.PageRouteInfo>? children,
   }) : super(
           Route9142.name,
@@ -2429,7 +2431,7 @@ class Route9142Args {
 
   final _i68.Key? key;
 
-  final _i83.NalogNameModel model;
+  final _i84.NalogNameModel model;
 
   @override
   String toString() {
@@ -2586,7 +2588,7 @@ class SuccessOrFailureRouteArgs {
 class TransferRoute extends _i67.PageRouteInfo<TransferRouteArgs> {
   TransferRoute({
     _i68.Key? key,
-    required _i84.Account account,
+    required _i85.Account account,
     required String inn,
     List<_i67.PageRouteInfo>? children,
   }) : super(
@@ -2614,7 +2616,7 @@ class TransferRouteArgs {
 
   final _i68.Key? key;
 
-  final _i84.Account account;
+  final _i85.Account account;
 
   final String inn;
 

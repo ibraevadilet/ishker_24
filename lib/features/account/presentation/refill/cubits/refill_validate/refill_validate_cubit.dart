@@ -8,18 +8,23 @@ import 'package:ishker_24/features/account/domain/usecases/transfer_validate_i2i
 
 part 'refill_validate_state.dart';
 
-class TransferValidateCubit extends Cubit<TransferValidateState> {
-  TransferValidateCubit({
+class RefillValidateCubit extends Cubit<RefillValidateState> {
+  RefillValidateCubit({
     required TransferValidateI2IUseCase validateUseCase,
   })  : _validateUseCase = validateUseCase,
-        super(TrValidateInitial());
+        super(RefillValidateInitial());
 
   final TransferValidateI2IUseCase _validateUseCase;
 
-  void reset() => emit(TrValidateInitial());
+  void reset() => emit(RefillValidateInitial());
 
-  void validate(String card, int summa, Account account) async {
-    emit(TrValidateLoading());
+  void validate({
+    required String card,
+    int summa = 0,
+    required String currency,
+    required String accountNum,
+  }) async {
+    emit(RefillValidateLoading());
 
     final params = TransferValidateI2IParams(
       login: 'login',
@@ -27,18 +32,18 @@ class TransferValidateCubit extends Cubit<TransferValidateState> {
       timestamp: DateTime.now(),
       summa: summa,
       fee: 0,
-      currency: account.currency,
+      currency: currency,
       serviceid: "38983092454",
       typeservice: 'popolnenie_card_pan',
       typerequest: 'validate',
       account: card,
-      accountDt: account.account,
+      accountDt: accountNum,
     );
 
     final result = await _validateUseCase.call(params);
 
     emit(switch (result) {
-      Success() => TrValidateSuccess(
+      Success() => RefillValidateSuccess(
           result.value,
           TransferPerformI2IParams(
             login: params.login,
@@ -57,7 +62,7 @@ class TransferValidateCubit extends Cubit<TransferValidateState> {
             numdoc: 'numdoc',
           ),
         ),
-      Failure() => TrValidateFailure(result.exception),
+      Failure() => RefillValidateFailure(result.exception),
     });
   }
 }

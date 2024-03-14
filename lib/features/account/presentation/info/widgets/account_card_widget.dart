@@ -10,6 +10,7 @@ import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/core/utils/extensions.dart';
 import 'package:ishker_24/core/utils/modal_bottom_sheet.dart';
+import 'package:ishker_24/features/account/domain/entities/refill_initial_data.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
 import 'package:ishker_24/theme/app_colors.dart';
@@ -220,7 +221,8 @@ class AccountActionButtons extends StatelessWidget {
                       kDebugMode && state is AccountInfoSuccess
                           ? AppRouting.pushFunction(
                               RefillRoute(
-                                qr: 'https://pay.payqr.kg#00020101021132500009qr.rsk.kg010141016129900337000038812021113021233160012%D0%91%D0%90%D0%A2%D0%AB%D0%A0+%D0%A7%D0%AB%D0%9D%D0%93%D0%AB%D0%97520465385303417540105913BATYR+CHYNGYZ6304e035',
+                                qrData: RefillInitialData.fromQr(
+                                    'https://pay.payqr.kg#00020101021132500009qr.rsk.kg010141016129900337000038812021113021233160012%D0%91%D0%90%D0%A2%D0%AB%D0%A0+%D0%A7%D0%AB%D0%9D%D0%93%D0%AB%D0%97520465385303417540105913BATYR+CHYNGYZ6304e035'),
                               ),
                             )
                           : AppSnackBar.showUnimplementedSnackBar();

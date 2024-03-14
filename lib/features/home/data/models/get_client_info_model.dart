@@ -65,6 +65,8 @@ class AccountChetModel {
     );
   }
 
+  bool get isKGZ => currency == 'KGZ' || currency == '417';
+
   @override
   bool operator ==(covariant AccountChetModel other) {
     if (identical(this, other)) return true;
