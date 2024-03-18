@@ -5,6 +5,7 @@ class ReportDoneModel {
   final String period;
   final String formType;
   final String sendDate;
+  final List<String> reason;
 
   ReportDoneModel({
     required this.reportId,
@@ -13,6 +14,7 @@ class ReportDoneModel {
     required this.period,
     required this.formType,
     required this.sendDate,
+    this.reason = const [],
   });
 
   factory ReportDoneModel.fromJson(Map<String, dynamic> json) =>
@@ -23,5 +25,8 @@ class ReportDoneModel {
         period: json["period"] ?? '',
         formType: json["formType"] ?? '',
         sendDate: json["sendDate"],
+        reason: json['reason'] != null
+            ? json['reason'].map<String>((e) => e.toString()).toList()
+            : [],
       );
 }

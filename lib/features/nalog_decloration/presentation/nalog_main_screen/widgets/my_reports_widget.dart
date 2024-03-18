@@ -83,6 +83,17 @@ class MyReportsWidget extends StatelessWidget {
                                         'Статус: ${nameByStatus(model[index].status)}',
                                         style: AppTextStyles.s16W400(),
                                       ),
+                                      ListView.builder(
+                                        itemCount: model[index].reason.length,
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemBuilder: (context, mewIndex) =>
+                                            Text(
+                                          'Причина: ${model[index].reason[mewIndex]}',
+                                          style: AppTextStyles.s16W400(),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -125,6 +136,6 @@ String nameByStatus(String status) {
     case 'REJECTED':
       return 'отказано';
     default:
-      return 'принят';
+      return 'Неизвестно';
   }
 }
