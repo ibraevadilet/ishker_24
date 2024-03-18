@@ -23,6 +23,8 @@ class Part1OfNalogScreenWidget extends StatelessWidget {
     required this.onSelectedDocument,
     this.ungKey,
     this.numbersKey,
+    required this.percent081,
+    required this.percent084,
   });
   final Map<String, dynamic> model;
   final ValueNotifier<int?> selectedUgnsIndex104;
@@ -34,6 +36,8 @@ class Part1OfNalogScreenWidget extends StatelessWidget {
   final Function(int) onSelectedDocument;
   final GlobalKey? ungKey;
   final GlobalKey? numbersKey;
+  final ValueNotifier<num?> percent081;
+  final ValueNotifier<num?> percent084;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -83,6 +87,32 @@ class Part1OfNalogScreenWidget extends StatelessWidget {
                         ),
                       ) as int?;
                       if (resultIndex != null) {
+                        switch (ugnsModels[resultIndex].id) {
+                          case '001':
+                            percent081.value = 6;
+                            percent084.value = 4;
+                            break;
+                          case '002':
+                            percent081.value = 6;
+                            percent084.value = 4;
+                            break;
+                          case '003':
+                            percent081.value = 6;
+                            percent084.value = 4;
+                            break;
+                          case '004':
+                            percent081.value = 6;
+                            percent084.value = 4;
+                            break;
+                          case '032':
+                            percent081.value = 6;
+                            percent084.value = 4;
+                            break;
+                          default:
+                            percent081.value = 4;
+                            percent084.value = 2;
+                            break;
+                        }
                         selectedUgnsIndex104.value = resultIndex;
                         isUgnsSelected.value = false;
                       }

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/custom_text_field.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/field_name_widget.dart';
 import 'package:ishker_24/features/nalog_decloration/presentation/reports_screens/components/static_container_info_widget.dart';
+import 'package:ishker_24/theme/app_text_styles.dart';
 
 class CalculateNalogSummaWidgetFor0914 extends StatelessWidget {
   const CalculateNalogSummaWidgetFor0914({
@@ -10,14 +11,14 @@ class CalculateNalogSummaWidgetFor0914 extends StatelessWidget {
     required this.numberFiled,
     required this.numberPercent,
     required this.numberSumma,
-    required this.percent,
+    this.percent,
     required this.controller,
     required this.nalogSumm,
   });
   final String numberFiled;
   final String numberPercent;
   final String numberSumma;
-  final num percent;
+  final num? percent;
   final TextEditingController controller;
   final ValueNotifier<num> nalogSumm;
 
@@ -42,6 +43,11 @@ class CalculateNalogSummaWidgetFor0914 extends StatelessWidget {
             ),
           ],
         ),
+        if (percent == null)
+          Text(
+            'Выберите код УГНС',
+            style: AppTextStyles.s14W400(color: Colors.red),
+          ),
         const SizedBox(height: 16),
         FieldNameWidget(
           number: numberPercent,
@@ -49,7 +55,7 @@ class CalculateNalogSummaWidgetFor0914 extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         StaticContainerInfoWidget(
-          title: percent.toString(),
+          title: percent != null ? percent.toString() : 'Выберите код УГНС',
         ),
         const SizedBox(height: 16),
         FieldNameWidget(

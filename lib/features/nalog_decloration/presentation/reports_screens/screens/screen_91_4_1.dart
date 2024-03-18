@@ -92,6 +92,8 @@ class _Screen9141State extends State<Screen9141> {
   ValueNotifier<num> nalogSumm082 = ValueNotifier(0);
 
   TextEditingController c83 = TextEditingController();
+  ValueNotifier<num?> percent081 = ValueNotifier(null);
+  ValueNotifier<num?> percent084 = ValueNotifier(null);
   ValueNotifier<num> nalogSumm085 = ValueNotifier(0);
   ValueNotifier<num> nalogSumm086 = ValueNotifier(0);
 
@@ -178,6 +180,8 @@ class _Screen9141State extends State<Screen9141> {
                     selectedYear.value = DateTime.now().year;
                   }
                 },
+                percent081: percent081,
+                percent084: percent084,
               ),
               const SizedBox(height: 16),
               Container(
@@ -251,6 +255,8 @@ class _Screen9141State extends State<Screen9141> {
                     ),
                     const SizedBox(height: 16),
                     Part056toPart132Widgets(
+                      percent081: percent081,
+                      percent084: percent084,
                       model: model,
                       allSumm: allSumm,
                       c56: c56,

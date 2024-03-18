@@ -111,6 +111,9 @@ class _Screen9142State extends State<Screen9142> {
 
   ValueNotifier<num> nalogSumm154 = ValueNotifier(0);
 
+  ValueNotifier<num?> percent081 = ValueNotifier(null);
+  ValueNotifier<num?> percent084 = ValueNotifier(null);
+
   void allSumm() {
     nalogSumm154.value = nalogSumm052.value +
         nalogSumm055.value +
@@ -179,6 +182,8 @@ class _Screen9142State extends State<Screen9142> {
                         selectedYear.value = DateTime.now().year;
                       }
                     },
+                    percent081: percent081,
+                    percent084: percent084,
                   ),
                   const SizedBox(height: 16),
                   Container(
@@ -221,6 +226,8 @@ class _Screen9142State extends State<Screen9142> {
                           nalogSumm055: nalogSumm055,
                         ),
                         Part056toPart132Widgets(
+                          percent081: percent081,
+                          percent084: percent084,
                           model: model,
                           allSumm: allSumm,
                           c56: c56,

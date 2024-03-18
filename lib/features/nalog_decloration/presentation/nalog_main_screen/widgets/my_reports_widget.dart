@@ -79,19 +79,43 @@ class MyReportsWidget extends StatelessWidget {
                                           'Тип документа: ${model[index].formType}',
                                           style: AppTextStyles.s16W400(),
                                         ),
-                                      Text(
-                                        'Статус: ${nameByStatus(model[index].status)}',
-                                        style: AppTextStyles.s16W400(),
+                                      RichText(
+                                        text: TextSpan(
+                                          text: 'Статус: ',
+                                          style: AppTextStyles.s16W400(),
+                                          children: [
+                                            TextSpan(
+                                              text: nameByStatus(
+                                                  model[index].status),
+                                              style: AppTextStyles.s16W400(
+                                                color: colorByStatus(
+                                                    model[index].status),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                       ListView.builder(
                                         itemCount: model[index].reason.length,
                                         shrinkWrap: true,
                                         physics:
                                             const NeverScrollableScrollPhysics(),
-                                        itemBuilder: (context, mewIndex) =>
-                                            Text(
-                                          'Причина: ${model[index].reason[mewIndex]}',
-                                          style: AppTextStyles.s16W400(),
+                                        itemBuilder: (context, newIndex) =>
+                                            RichText(
+                                          text: TextSpan(
+                                            text: 'Причина: ',
+                                            style: AppTextStyles.s16W400(),
+                                            children: [
+                                              TextSpan(
+                                                text: model[index]
+                                                    .reason[newIndex],
+                                                style: AppTextStyles.s16W400(
+                                                  color: colorByStatus(
+                                                      model[index].status),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -137,5 +161,14 @@ String nameByStatus(String status) {
       return 'отказано';
     default:
       return 'Неизвестно';
+  }
+}
+
+Color colorByStatus(String status) {
+  switch (status) {
+    case 'REJECTED':
+      return Colors.red;
+    default:
+      return Colors.black;
   }
 }

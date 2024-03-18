@@ -467,6 +467,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  ValueNotifier<num?> percent081 = ValueNotifier(null);
+  ValueNotifier<num?> percent084 = ValueNotifier(null);
   @override
   Widget build(BuildContext context) {
     return AppUnfocuser(
@@ -486,6 +488,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
               children: [
                 const SizedBox(height: 16),
                 Part1OfNalogScreenWidget(
+                  percent081: percent081,
+                  percent084: percent084,
                   numbersKey: numbersKey,
                   ungKey: ugnsKey,
                   model: model,
@@ -582,6 +586,8 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                         nalogSumm086: nalogSumm086,
                         c130: c130,
                         nalogSumm132: nalogSumm132,
+                        percent081: percent081,
+                        percent084: percent084,
                       ),
                       Part136toPart150WidgetsFor0914(
                         model: model,

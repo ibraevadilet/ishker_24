@@ -34,6 +34,8 @@ class Part056toPart132Widgets extends StatelessWidget {
     required this.nalogSumm086,
     required this.c130,
     required this.nalogSumm132,
+    required this.percent081,
+    required this.percent084,
   });
   final Map<String, dynamic> model;
   final Function allSumm;
@@ -66,6 +68,8 @@ class Part056toPart132Widgets extends StatelessWidget {
   final ValueNotifier<num> nalogSumm082;
 
   final TextEditingController c83;
+  final ValueNotifier<num?> percent081;
+  final ValueNotifier<num?> percent084;
   final ValueNotifier<num> nalogSumm085;
   final ValueNotifier<num> nalogSumm086;
 
@@ -266,34 +270,44 @@ class Part056toPart132Widgets extends StatelessWidget {
           'В наличной форме',
           style: AppTextStyles.s20W500(),
         ),
-        CalculateNalogSummaWidget(
-          numberFiled: '080',
-          controller: c80,
-          numberPercent: '081',
-          percent: model['sti081'],
-          numberSumma: '082',
-          nalogSumm: nalogSumm082,
-          onChanged: (summa) {
-            nalogSumm086.value = nalogSumm085.value + summa;
-            ///////////
-            allSumm();
+        ValueListenableBuilder(
+          valueListenable: percent081,
+          builder: (_, percent081Val, child) {
+            return CalculateNalogSummaWidget(
+              numberFiled: '080',
+              controller: c80,
+              numberPercent: '081',
+              percent: percent081Val,
+              numberSumma: '082',
+              nalogSumm: nalogSumm082,
+              onChanged: (summa) {
+                nalogSumm086.value = nalogSumm085.value + summa;
+                ///////////
+                allSumm();
+              },
+            );
           },
         ),
         Text(
           'В безналичной форме',
           style: AppTextStyles.s20W500(),
         ),
-        CalculateNalogSummaWidget(
-          numberFiled: '083',
-          controller: c83,
-          numberPercent: '084',
-          percent: model['sti084'],
-          numberSumma: '085',
-          nalogSumm: nalogSumm085,
-          onChanged: (summa) {
-            nalogSumm086.value = nalogSumm082.value + summa;
-            ///////////
-            allSumm();
+        ValueListenableBuilder(
+          valueListenable: percent084,
+          builder: (_, percent084Val, child) {
+            return CalculateNalogSummaWidget(
+              numberFiled: '083',
+              controller: c83,
+              numberPercent: '084',
+              percent: percent084Val,
+              numberSumma: '085',
+              nalogSumm: nalogSumm085,
+              onChanged: (summa) {
+                nalogSumm086.value = nalogSumm082.value + summa;
+                ///////////
+                allSumm();
+              },
+            );
           },
         ),
         const FieldNameWidget(

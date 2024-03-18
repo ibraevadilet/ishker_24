@@ -33,6 +33,8 @@ class Part056toPart132WidgetsFor0914 extends StatelessWidget {
     required this.nalogSumm086,
     required this.c130,
     required this.nalogSumm132,
+    required this.percent081,
+    required this.percent084,
   });
   final Map<String, dynamic> model;
 
@@ -69,6 +71,9 @@ class Part056toPart132WidgetsFor0914 extends StatelessWidget {
 
   final TextEditingController c130;
   final ValueNotifier<num> nalogSumm132;
+
+  final ValueNotifier<num?> percent081;
+  final ValueNotifier<num?> percent084;
 
   @override
   Widget build(BuildContext context) {
@@ -226,25 +231,35 @@ class Part056toPart132WidgetsFor0914 extends StatelessWidget {
           'В наличной форме',
           style: AppTextStyles.s20W500(),
         ),
-        CalculateNalogSummaWidgetFor0914(
-          numberFiled: '080',
-          controller: c80,
-          numberPercent: '081',
-          percent: model['sti081'],
-          numberSumma: '082',
-          nalogSumm: nalogSumm082,
+        ValueListenableBuilder(
+          valueListenable: percent081,
+          builder: (_, percent081Val, child) {
+            return CalculateNalogSummaWidgetFor0914(
+              numberFiled: '080',
+              controller: c80,
+              numberPercent: '081',
+              percent: percent081Val,
+              numberSumma: '082',
+              nalogSumm: nalogSumm082,
+            );
+          },
         ),
         Text(
           'В безналичной форме',
           style: AppTextStyles.s20W500(),
         ),
-        CalculateNalogSummaWidgetFor0914(
-          numberFiled: '083',
-          controller: c83,
-          numberPercent: '084',
-          percent: model['sti084'],
-          numberSumma: '085',
-          nalogSumm: nalogSumm085,
+        ValueListenableBuilder(
+          valueListenable: percent084,
+          builder: (_, percent084Val, child) {
+            return CalculateNalogSummaWidgetFor0914(
+              numberFiled: '083',
+              controller: c83,
+              numberPercent: '084',
+              percent: percent084Val,
+              numberSumma: '085',
+              nalogSumm: nalogSumm085,
+            );
+          },
         ),
         const FieldNameWidget(
             number: '086', title: 'Итого сумма единого налога\n(=082+085)'),
