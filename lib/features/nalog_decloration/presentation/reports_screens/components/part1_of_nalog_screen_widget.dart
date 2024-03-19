@@ -25,6 +25,7 @@ class Part1OfNalogScreenWidget extends StatelessWidget {
     this.numbersKey,
     required this.percent081,
     required this.percent084,
+    this.onSelectFor914,
   });
   final Map<String, dynamic> model;
   final ValueNotifier<int?> selectedUgnsIndex104;
@@ -38,6 +39,7 @@ class Part1OfNalogScreenWidget extends StatelessWidget {
   final GlobalKey? numbersKey;
   final ValueNotifier<num?> percent081;
   final ValueNotifier<num?> percent084;
+  final Function(num percentNal, num percentBezNal)? onSelectFor914;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -91,26 +93,44 @@ class Part1OfNalogScreenWidget extends StatelessWidget {
                           case '001':
                             percent081.value = 6;
                             percent084.value = 4;
+                            if (onSelectFor914 != null) {
+                              onSelectFor914!(6, 4);
+                            }
                             break;
                           case '002':
                             percent081.value = 6;
                             percent084.value = 4;
+                            if (onSelectFor914 != null) {
+                              onSelectFor914!(6, 4);
+                            }
                             break;
                           case '003':
                             percent081.value = 6;
                             percent084.value = 4;
+                            if (onSelectFor914 != null) {
+                              onSelectFor914!(6, 4);
+                            }
                             break;
                           case '004':
                             percent081.value = 6;
                             percent084.value = 4;
+                            if (onSelectFor914 != null) {
+                              onSelectFor914!(6, 4);
+                            }
                             break;
                           case '032':
                             percent081.value = 6;
                             percent084.value = 4;
+                            if (onSelectFor914 != null) {
+                              onSelectFor914!(6, 4);
+                            }
                             break;
                           default:
                             percent081.value = 4;
                             percent084.value = 2;
+                            if (onSelectFor914 != null) {
+                              onSelectFor914!(4, 2);
+                            }
                             break;
                         }
                         selectedUgnsIndex104.value = resultIndex;

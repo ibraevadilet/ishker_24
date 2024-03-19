@@ -469,6 +469,15 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
 
   ValueNotifier<num?> percent081 = ValueNotifier(null);
   ValueNotifier<num?> percent084 = ValueNotifier(null);
+
+  ValueNotifier<num?> percent191 = ValueNotifier(null);
+  ValueNotifier<num?> percent281 = ValueNotifier(null);
+  ValueNotifier<num?> percent341 = ValueNotifier(null);
+
+  ValueNotifier<num?> percent194 = ValueNotifier(null);
+  ValueNotifier<num?> percent284 = ValueNotifier(null);
+  ValueNotifier<num?> percent344 = ValueNotifier(null);
+
   @override
   Widget build(BuildContext context) {
     return AppUnfocuser(
@@ -488,6 +497,16 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
               children: [
                 const SizedBox(height: 16),
                 Part1OfNalogScreenWidget(
+                  onSelectFor914: (percentNal, percentBezNal) {
+                    print('$percentNal, $percentBezNal');
+                    percent191.value = percentNal;
+                    percent281.value = percentNal;
+                    percent341.value = percentNal;
+
+                    percent194.value = percentBezNal;
+                    percent284.value = percentBezNal;
+                    percent344.value = percentBezNal;
+                  },
                   percent081: percent081,
                   percent084: percent084,
                   numbersKey: numbersKey,
@@ -2003,7 +2022,7 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                         ),
                       ),
                       SizedBox(
-                        height: 910,
+                        height: 950,
                         child: TabBarView(
                           controller: _4tabController,
                           children: [
@@ -2015,32 +2034,38 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   'В наличной форме',
                                   style: AppTextStyles.s20W500(),
                                 ),
-                                CalculateNalogSummaWidget(
-                                  numberFiled: '190',
-                                  controller: c190,
-                                  numberPercent: '191',
-                                  percent: model['sti191'],
-                                  numberSumma: '192',
-                                  nalogSumm: nalogSumm192,
-                                  onChanged: (summa) {
-                                    controllerChanger(
-                                      c1: c190,
-                                      c2: c280,
-                                      c3: c340,
-                                      c4summ: c80,
-                                      n1: nalogSumm192,
-                                      n2: nalogSumm282,
-                                      n3: nalogSumm342,
-                                      nalogSumm: nalogSumm082,
-                                      miniSumm: () {
-                                        nalogSumm086.value =
-                                            nalogSumm082.value +
-                                                nalogSumm085.value;
+                                ValueListenableBuilder(
+                                  valueListenable: percent191,
+                                  builder: (_, percent191Val, child) {
+                                    return CalculateNalogSummaWidget(
+                                      numberFiled: '190',
+                                      controller: c190,
+                                      numberPercent: '191',
+                                      percent: percent191Val,
+                                      numberSumma: '192',
+                                      nalogSumm: nalogSumm192,
+                                      onChanged: (summa) {
+                                        controllerChanger(
+                                          c1: c190,
+                                          c2: c280,
+                                          c3: c340,
+                                          c4summ: c80,
+                                          n1: nalogSumm192,
+                                          n2: nalogSumm282,
+                                          n3: nalogSumm342,
+                                          nalogSumm: nalogSumm082,
+                                          miniSumm: () {
+                                            nalogSumm086.value =
+                                                nalogSumm082.value +
+                                                    nalogSumm085.value;
+                                          },
+                                        );
+                                        nalogSumm196.value =
+                                            nalogSumm192.value +
+                                                nalogSumm195.value;
+                                        allSumm215();
                                       },
                                     );
-                                    nalogSumm196.value =
-                                        nalogSumm192.value + nalogSumm195.value;
-                                    allSumm215();
                                   },
                                 ),
                                 Text(
@@ -2048,32 +2073,38 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   style: AppTextStyles.s20W500(),
                                 ),
                                 const SizedBox(height: 16),
-                                CalculateNalogSummaWidget(
-                                  numberFiled: '193',
-                                  controller: c193,
-                                  numberPercent: '194',
-                                  percent: model['sti194'],
-                                  numberSumma: '195',
-                                  nalogSumm: nalogSumm195,
-                                  onChanged: (summa) {
-                                    controllerChanger(
-                                      c1: c193,
-                                      c2: c283,
-                                      c3: c343,
-                                      c4summ: c83,
-                                      n1: nalogSumm195,
-                                      n2: nalogSumm285,
-                                      n3: nalogSumm345,
-                                      nalogSumm: nalogSumm085,
-                                      miniSumm: () {
-                                        nalogSumm086.value =
-                                            nalogSumm082.value +
-                                                nalogSumm085.value;
+                                ValueListenableBuilder(
+                                  valueListenable: percent194,
+                                  builder: (_, percent194Val, child) {
+                                    return CalculateNalogSummaWidget(
+                                      numberFiled: '193',
+                                      controller: c193,
+                                      numberPercent: '194',
+                                      percent: percent194Val,
+                                      numberSumma: '195',
+                                      nalogSumm: nalogSumm195,
+                                      onChanged: (summa) {
+                                        controllerChanger(
+                                          c1: c193,
+                                          c2: c283,
+                                          c3: c343,
+                                          c4summ: c83,
+                                          n1: nalogSumm195,
+                                          n2: nalogSumm285,
+                                          n3: nalogSumm345,
+                                          nalogSumm: nalogSumm085,
+                                          miniSumm: () {
+                                            nalogSumm086.value =
+                                                nalogSumm082.value +
+                                                    nalogSumm085.value;
+                                          },
+                                        );
+                                        nalogSumm196.value =
+                                            nalogSumm192.value +
+                                                nalogSumm195.value;
+                                        allSumm215();
                                       },
                                     );
-                                    nalogSumm196.value =
-                                        nalogSumm192.value + nalogSumm195.value;
-                                    allSumm215();
                                   },
                                 ),
                                 const FieldNameWidget(
@@ -2099,32 +2130,38 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   'В наличной форме',
                                   style: AppTextStyles.s20W500(),
                                 ),
-                                CalculateNalogSummaWidget(
-                                  numberFiled: '280',
-                                  controller: c280,
-                                  numberPercent: '281',
-                                  percent: model['sti281'],
-                                  numberSumma: '282',
-                                  nalogSumm: nalogSumm282,
-                                  onChanged: (summa) {
-                                    controllerChanger(
-                                      c1: c190,
-                                      c2: c280,
-                                      c3: c340,
-                                      c4summ: c80,
-                                      n1: nalogSumm192,
-                                      n2: nalogSumm282,
-                                      n3: nalogSumm342,
-                                      nalogSumm: nalogSumm082,
-                                      miniSumm: () {
-                                        nalogSumm086.value =
-                                            nalogSumm082.value +
-                                                nalogSumm085.value;
+                                ValueListenableBuilder(
+                                  valueListenable: percent281,
+                                  builder: (_, percent281Val, child) {
+                                    return CalculateNalogSummaWidget(
+                                      numberFiled: '280',
+                                      controller: c280,
+                                      numberPercent: '281',
+                                      percent: percent281Val,
+                                      numberSumma: '282',
+                                      nalogSumm: nalogSumm282,
+                                      onChanged: (summa) {
+                                        controllerChanger(
+                                          c1: c190,
+                                          c2: c280,
+                                          c3: c340,
+                                          c4summ: c80,
+                                          n1: nalogSumm192,
+                                          n2: nalogSumm282,
+                                          n3: nalogSumm342,
+                                          nalogSumm: nalogSumm082,
+                                          miniSumm: () {
+                                            nalogSumm086.value =
+                                                nalogSumm082.value +
+                                                    nalogSumm085.value;
+                                          },
+                                        );
+                                        nalogSumm286.value =
+                                            nalogSumm282.value +
+                                                nalogSumm285.value;
+                                        allSumm305();
                                       },
                                     );
-                                    nalogSumm286.value =
-                                        nalogSumm282.value + nalogSumm285.value;
-                                    allSumm305();
                                   },
                                 ),
                                 Text(
@@ -2132,32 +2169,38 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   style: AppTextStyles.s20W500(),
                                 ),
                                 const SizedBox(height: 16),
-                                CalculateNalogSummaWidget(
-                                  numberFiled: '283',
-                                  controller: c283,
-                                  numberPercent: '284',
-                                  percent: model['sti284'],
-                                  numberSumma: '285',
-                                  nalogSumm: nalogSumm285,
-                                  onChanged: (summa) {
-                                    controllerChanger(
-                                      c1: c193,
-                                      c2: c283,
-                                      c3: c343,
-                                      c4summ: c83,
-                                      n1: nalogSumm195,
-                                      n2: nalogSumm285,
-                                      n3: nalogSumm345,
-                                      nalogSumm: nalogSumm085,
-                                      miniSumm: () {
-                                        nalogSumm086.value =
-                                            nalogSumm082.value +
-                                                nalogSumm085.value;
+                                ValueListenableBuilder(
+                                  valueListenable: percent284,
+                                  builder: (_, percent284Val, child) {
+                                    return CalculateNalogSummaWidget(
+                                      numberFiled: '283',
+                                      controller: c283,
+                                      numberPercent: '284',
+                                      percent: percent284Val,
+                                      numberSumma: '285',
+                                      nalogSumm: nalogSumm285,
+                                      onChanged: (summa) {
+                                        controllerChanger(
+                                          c1: c193,
+                                          c2: c283,
+                                          c3: c343,
+                                          c4summ: c83,
+                                          n1: nalogSumm195,
+                                          n2: nalogSumm285,
+                                          n3: nalogSumm345,
+                                          nalogSumm: nalogSumm085,
+                                          miniSumm: () {
+                                            nalogSumm086.value =
+                                                nalogSumm082.value +
+                                                    nalogSumm085.value;
+                                          },
+                                        );
+                                        nalogSumm286.value =
+                                            nalogSumm282.value +
+                                                nalogSumm285.value;
+                                        allSumm305();
                                       },
                                     );
-                                    nalogSumm286.value =
-                                        nalogSumm282.value + nalogSumm285.value;
-                                    allSumm305();
                                   },
                                 ),
                                 const FieldNameWidget(
@@ -2183,32 +2226,38 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   'В наличной форме',
                                   style: AppTextStyles.s20W500(),
                                 ),
-                                CalculateNalogSummaWidget(
-                                  numberFiled: '340',
-                                  controller: c340,
-                                  numberPercent: '341',
-                                  percent: model['sti341'],
-                                  numberSumma: '342',
-                                  nalogSumm: nalogSumm342,
-                                  onChanged: (summa) {
-                                    controllerChanger(
-                                      c1: c190,
-                                      c2: c280,
-                                      c3: c340,
-                                      c4summ: c80,
-                                      n1: nalogSumm192,
-                                      n2: nalogSumm282,
-                                      n3: nalogSumm342,
-                                      nalogSumm: nalogSumm082,
-                                      miniSumm: () {
-                                        nalogSumm086.value =
-                                            nalogSumm082.value +
-                                                nalogSumm085.value;
+                                ValueListenableBuilder(
+                                  valueListenable: percent341,
+                                  builder: (_, percent341Val, child) {
+                                    return CalculateNalogSummaWidget(
+                                      numberFiled: '340',
+                                      controller: c340,
+                                      numberPercent: '341',
+                                      percent: percent341Val,
+                                      numberSumma: '342',
+                                      nalogSumm: nalogSumm342,
+                                      onChanged: (summa) {
+                                        controllerChanger(
+                                          c1: c190,
+                                          c2: c280,
+                                          c3: c340,
+                                          c4summ: c80,
+                                          n1: nalogSumm192,
+                                          n2: nalogSumm282,
+                                          n3: nalogSumm342,
+                                          nalogSumm: nalogSumm082,
+                                          miniSumm: () {
+                                            nalogSumm086.value =
+                                                nalogSumm082.value +
+                                                    nalogSumm085.value;
+                                          },
+                                        );
+                                        nalogSumm346.value =
+                                            nalogSumm342.value +
+                                                nalogSumm345.value;
+                                        allSumm365();
                                       },
                                     );
-                                    nalogSumm346.value =
-                                        nalogSumm342.value + nalogSumm345.value;
-                                    allSumm365();
                                   },
                                 ),
                                 Text(
@@ -2216,32 +2265,38 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
                                   style: AppTextStyles.s20W500(),
                                 ),
                                 const SizedBox(height: 16),
-                                CalculateNalogSummaWidget(
-                                  numberFiled: '343',
-                                  controller: c343,
-                                  numberPercent: '344',
-                                  percent: model['sti344'],
-                                  numberSumma: '345',
-                                  nalogSumm: nalogSumm345,
-                                  onChanged: (summa) {
-                                    controllerChanger(
-                                      c1: c193,
-                                      c2: c283,
-                                      c3: c343,
-                                      c4summ: c83,
-                                      n1: nalogSumm195,
-                                      n2: nalogSumm285,
-                                      n3: nalogSumm345,
-                                      nalogSumm: nalogSumm085,
-                                      miniSumm: () {
-                                        nalogSumm086.value =
-                                            nalogSumm082.value +
-                                                nalogSumm085.value;
+                                ValueListenableBuilder(
+                                  valueListenable: percent344,
+                                  builder: (_, percent344Val, child) {
+                                    return CalculateNalogSummaWidget(
+                                      numberFiled: '343',
+                                      controller: c343,
+                                      numberPercent: '344',
+                                      percent: percent344Val,
+                                      numberSumma: '345',
+                                      nalogSumm: nalogSumm345,
+                                      onChanged: (summa) {
+                                        controllerChanger(
+                                          c1: c193,
+                                          c2: c283,
+                                          c3: c343,
+                                          c4summ: c83,
+                                          n1: nalogSumm195,
+                                          n2: nalogSumm285,
+                                          n3: nalogSumm345,
+                                          nalogSumm: nalogSumm085,
+                                          miniSumm: () {
+                                            nalogSumm086.value =
+                                                nalogSumm082.value +
+                                                    nalogSumm085.value;
+                                          },
+                                        );
+                                        nalogSumm346.value =
+                                            nalogSumm342.value +
+                                                nalogSumm345.value;
+                                        allSumm365();
                                       },
                                     );
-                                    nalogSumm346.value =
-                                        nalogSumm342.value + nalogSumm345.value;
-                                    allSumm365();
                                   },
                                 ),
                                 const FieldNameWidget(
@@ -3355,10 +3410,10 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         "sti078": nalogSumm078.value,
         "sti079": nalogSumm079.value,
         "sti080": c80.text,
-        "sti081": model['sti081'],
+        "sti081": percent281.value,
         "sti082": nalogSumm082.value,
         "sti083": c83.text,
-        "sti084": model['sti084'],
+        "sti084": percent281.value,
         "sti085": nalogSumm085.value,
         "sti086": nalogSumm086.value,
         "sti130": c130.text,
@@ -3411,10 +3466,10 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         "sti188": nalogSumm188.value,
         "sti189": nalogSumm189.value,
         "sti190": c190.text,
-        "sti191": model['sti191'],
+        "sti191": percent191.value,
         "sti192": nalogSumm192.value,
         "sti193": c193.text,
-        "sti194": model['sti194'],
+        "sti194": percent194.value,
         "sti195": nalogSumm195.value,
         "sti196": nalogSumm196.value,
         "sti197": c197.text,
@@ -3467,10 +3522,10 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         "sti278": nalogSumm278.value,
         "sti279": nalogSumm279.value,
         "sti280": c280.text,
-        "sti281": model['sti281'],
+        "sti281": percent281.value,
         "sti282": nalogSumm282.value,
         "sti283": c283.text,
-        "sti284": model['sti284'],
+        "sti284": percent284.value,
         "sti285": nalogSumm285.value,
         "sti286": nalogSumm286.value,
         "sti287": c287.text,
@@ -3523,10 +3578,10 @@ class _Screen914State extends State<Screen914> with TickerProviderStateMixin {
         "sti338": nalogSumm338.value,
         "sti339": nalogSumm339.value,
         "sti340": c340.text,
-        "sti341": model['sti341'],
+        "sti341": percent341.value,
         "sti342": nalogSumm342.value,
         "sti343": c343.text,
-        "sti344": model['sti344'],
+        "sti344": percent344.value,
         "sti345": nalogSumm345.value,
         "sti346": nalogSumm346.value,
         "sti347": c347.text,
