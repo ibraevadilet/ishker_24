@@ -2,8 +2,8 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ishker_24/core/utils/request_status.dart';
 import 'package:ishker_24/core/utils/result.dart';
-import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
-import 'package:ishker_24/features/account/presentation/history/cubit/history_cubit.dart';
+import 'package:ishker_24/features/rsk/account/domain/usecases/history_usecase.dart';
+import 'package:ishker_24/features/rsk/account/presentation/history/cubit/history_cubit.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../../../../mocks.dart';

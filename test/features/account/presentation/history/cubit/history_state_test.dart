@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ishker_24/core/utils/extensions.dart';
 import 'package:ishker_24/core/utils/request_status.dart';
-import 'package:ishker_24/features/account/domain/entities/history.dart';
-import 'package:ishker_24/features/account/presentation/history/cubit/history_cubit.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/history.dart';
+import 'package:ishker_24/features/rsk/account/presentation/history/cubit/history_cubit.dart';
 
 import '../../../../../utils/constants.dart';
 

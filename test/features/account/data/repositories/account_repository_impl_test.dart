@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ishker_24/core/utils/result.dart';
-import 'package:ishker_24/features/account/data/repositories/account_repository_impl.dart';
-import 'package:ishker_24/features/account/domain/entities/account.dart';
-import 'package:ishker_24/features/account/domain/entities/history.dart';
-import 'package:ishker_24/features/account/domain/entities/transfer_perform.dart';
-import 'package:ishker_24/features/account/domain/entities/transfer_validate.dart';
+import 'package:ishker_24/features/rsk/account/data/repositories/account_repository_impl.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/account.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/history.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/transfer_perform.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/transfer_validate.dart';
 import 'package:mockingjay/mockingjay.dart';
 
 import '../../../../mocks.dart';

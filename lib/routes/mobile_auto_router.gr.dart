@@ -12,13 +12,13 @@ import 'package:auto_route/auto_route.dart' as _i66;
 import 'package:camera/camera.dart' as _i71;
 import 'package:flutter/cupertino.dart' as _i76;
 import 'package:flutter/material.dart' as _i67;
-import 'package:ishker_24/features/account/domain/entities/account.dart'
+import 'package:ishker_24/features/rsk/account/domain/entities/account.dart'
     as _i83;
-import 'package:ishker_24/features/account/presentation/history/history_screen.dart'
+import 'package:ishker_24/features/rsk/account/presentation/history/history_screen.dart'
     as _i22;
-import 'package:ishker_24/features/account/presentation/info/account_info_screen.dart'
+import 'package:ishker_24/features/rsk/account/presentation/info/account_info_screen.dart'
     as _i2;
-import 'package:ishker_24/features/account/presentation/transfer/transfer_screen.dart'
+import 'package:ishker_24/features/rsk/account/presentation/transfer/transfer_screen.dart'
     as _i65;
 import 'package:ishker_24/features/bank/presentation/account_detail_screen/account_detail_screen.dart'
     as _i1;

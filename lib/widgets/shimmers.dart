@@ -47,3 +47,7 @@ AnimatedSwitcher defaultAnimatedSwitcher(Widget child) => AnimatedSwitcher(
       switchOutCurve: Curves.easeOut,
       child: child,
     );
+
+CustomScrollView shimmerCustomScrollView(Widget child) => CustomScrollView(
+      slivers: [SliverFillRemaining(hasScrollBody: false, child: child)],
+    );

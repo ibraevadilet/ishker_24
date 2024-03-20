@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ishker_24/core/constants/shared_keys.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
+import 'package:ishker_24/features/rsk/client/view/main_page.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/exit_cubit/exit_cubit.dart';
 import 'package:ishker_24/routes/mobile_auto_router.gr.dart';
 import 'package:ishker_24/server/service_locator.dart';
@@ -12,6 +14,7 @@ import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/settings_expanded_list.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsMainScreen extends StatefulWidget {
   const SettingsMainScreen({super.key});
@@ -268,6 +271,48 @@ class _SettingsMainScreenState extends State<SettingsMainScreen> {
                           ),
                   );
                 }),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                height: 64,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(
+                    10,
+                  ),
+                ),
+                child: ListTile(
+                  shape: const CircleBorder(),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => MainPage(
+                          pin: sl<SharedPreferences>()
+                                  .getString(SharedKeys.pin) ??
+                              'unsupportedpin',
+                        ),
+                      ),
+                    );
+                  },
+                  leading: SvgPicture.asset(
+                    AppImages.securityIcon,
+                  ),
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          'MainPage',
+                          style: AppTextStyles.s16W600(),
+                        ),
+                      ),
+                      SvgPicture.asset(
+                        AppImages.arrowForwardIcon,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

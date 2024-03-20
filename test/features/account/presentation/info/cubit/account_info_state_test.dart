@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ishker_24/features/account/presentation/info/cubit/account_info_cubit.dart';
+import 'package:ishker_24/features/rsk/account/presentation/info/cubit/account_info_cubit.dart';
 
 import '../../../../../utils/constants.dart';
 

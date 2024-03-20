@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ishker_24/core/utils/extensions.dart';
 import 'package:ishker_24/core/utils/request_status.dart';
-import 'package:ishker_24/features/account/domain/entities/history.dart';
-import 'package:ishker_24/features/account/presentation/history/cubit/history_cubit.dart';
-import 'package:ishker_24/features/account/presentation/history/history_item_widget.dart';
-import 'package:ishker_24/features/account/presentation/history/history_screen.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/history.dart';
+import 'package:ishker_24/features/rsk/account/presentation/history/cubit/history_cubit.dart';
+import 'package:ishker_24/features/rsk/account/presentation/history/history_item_widget.dart';
+import 'package:ishker_24/features/rsk/account/presentation/history/history_screen.dart';
 import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:mocktail/mocktail.dart';
 

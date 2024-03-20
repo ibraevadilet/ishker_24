@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ishker_24/features/account/domain/entities/history.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/history.dart';
 
 import '../../../../utils/constants.dart';
 

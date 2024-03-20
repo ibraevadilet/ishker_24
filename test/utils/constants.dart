@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:ishker_24/features/account/data/models/account_model.dart';
-import 'package:ishker_24/features/account/data/models/history_model.dart';
-import 'package:ishker_24/features/account/data/models/history_request_model.dart';
-import 'package:ishker_24/features/account/data/models/transfer_perform_model.dart';
-import 'package:ishker_24/features/account/data/models/transfer_request_model.dart';
-import 'package:ishker_24/features/account/data/models/transfer_validate_model.dart';
-import 'package:ishker_24/features/account/domain/entities/account.dart';
-import 'package:ishker_24/features/account/domain/entities/history.dart';
-import 'package:ishker_24/features/account/domain/entities/transfer_perform.dart';
-import 'package:ishker_24/features/account/domain/entities/transfer_validate.dart';
-import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
+import 'package:ishker_24/features/rsk/account/data/models/account_model.dart';
+import 'package:ishker_24/features/rsk/account/data/models/history_model.dart';
+import 'package:ishker_24/features/rsk/account/data/models/history_request_model.dart';
+import 'package:ishker_24/features/rsk/account/data/models/transfer_perform_model.dart';
+import 'package:ishker_24/features/rsk/account/data/models/transfer_request_model.dart';
+import 'package:ishker_24/features/rsk/account/data/models/transfer_validate_model.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/account.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/history.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/transfer_perform.dart';
+import 'package:ishker_24/features/rsk/account/domain/entities/transfer_validate.dart';
+import 'package:ishker_24/features/rsk/account/domain/usecases/history_usecase.dart';
 
 final tDioException = DioException(
   requestOptions: RequestOptions(),

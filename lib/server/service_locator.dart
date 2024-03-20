@@ -4,15 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:ishker_24/core/app_helpers/app_device_info.dart';
+import 'package:ishker_24/core/network/gns_service.dart';
 import 'package:ishker_24/core/network/netrowk_info.dart';
 import 'package:ishker_24/core/network/rsk_service.dart';
-import 'package:ishker_24/features/account/data/datasources/account_datasource.dart';
-import 'package:ishker_24/features/account/data/repositories/account_repository_impl.dart';
-import 'package:ishker_24/features/account/domain/repositories/i_account_repository.dart';
-import 'package:ishker_24/features/account/domain/usecases/account_info_usecase.dart';
-import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
-import 'package:ishker_24/features/account/domain/usecases/transfer_perform_usecase.dart';
-import 'package:ishker_24/features/account/domain/usecases/transfer_validate_usecase.dart';
+import 'package:ishker_24/features/rsk/account/data/datasources/account_datasource.dart';
+import 'package:ishker_24/features/rsk/account/data/repositories/account_repository_impl.dart';
+import 'package:ishker_24/features/rsk/account/domain/repositories/i_account_repository.dart';
+import 'package:ishker_24/features/rsk/account/domain/usecases/account_info_usecase.dart';
+import 'package:ishker_24/features/rsk/account/domain/usecases/history_usecase.dart';
+import 'package:ishker_24/features/rsk/account/domain/usecases/transfer_perform_usecase.dart';
+import 'package:ishker_24/features/rsk/account/domain/usecases/transfer_validate_usecase.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/create_account_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/get_client_passport_repo_impl.dart';
 import 'package:ishker_24/features/bank/data/repo_implements/register_client_repo_impl.dart';
@@ -137,6 +139,13 @@ import 'package:ishker_24/features/register_oep/domain/use_cases/get_terms_useca
 import 'package:ishker_24/features/register_oep/domain/use_cases/register_oep_use_case.dart';
 import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/cubits/get_terms_cubit/get_terms_cubit.dart';
 import 'package:ishker_24/features/register_oep/presentation/oep_register_screen/cubits/register_oep_cubit/register_oep_cubit.dart';
+import 'package:ishker_24/features/rsk/client/data/datasources/gns_datasource.dart';
+import 'package:ishker_24/features/rsk/client/data/datasources/rsk_datasource.dart';
+import 'package:ishker_24/features/rsk/client/data/repositories/rsk_repository_impl.dart';
+import 'package:ishker_24/features/rsk/client/domain/repositories/i_rsk_reposiitory.dart';
+import 'package:ishker_24/features/rsk/client/domain/usecases/client_info_usecase.dart';
+import 'package:ishker_24/features/rsk/client/domain/usecases/has_bank_usecase.dart';
+import 'package:ishker_24/features/rsk/client/domain/usecases/has_ip_usecase.dart';
 import 'package:ishker_24/features/splash/data/repo_implements/exists_user_repo_impl.dart';
 import 'package:ishker_24/features/splash/domain/repositories/exists_user_repository.dart';
 import 'package:ishker_24/features/splash/domain/use_cases/exists_user_usecase.dart';
@@ -202,6 +211,10 @@ Future<void> initServiceLocator() async {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]),
   ]);
 
+  final appInfo = AppDeviceInfoX();
+  await appInfo.init();
+  sl.registerLazySingleton<AppDeviceInfoX>(() => appInfo);
+
   final sharedPreferences = await SharedPreferences.getInstance();
 
   /// Other Services
@@ -210,17 +223,20 @@ Future<void> initServiceLocator() async {
   final dioBaseAuth = DioBaseAuth().dio;
   sl.registerSingleton<AppRouter>(AppRouter());
 
-  final rskService = RskService(sl());
   sl.registerLazySingleton<INetworkInfo>(
     () => NetworkInfoImpl(
       internetConnectionChecker: InternetConnectionChecker(),
     ),
   );
+  final rskService = RskService(sl());
+  final gnsService = GnsService(sl());
 
   /// Data sources
   sl.registerLazySingleton<IAccountDataSource>(
     () => AccountDataSourceImpl(rskService),
   );
+  sl.registerLazySingleton<RskDataSource>(() => RskDataSource(rskService));
+  sl.registerLazySingleton<GnsDataSource>(() => GnsDataSource(gnsService));
 
   /// Repository
   sl.registerFactory<RegisterOEPRepo>(
@@ -263,9 +279,6 @@ Future<void> initServiceLocator() async {
   sl.registerFactory<GetClientPassportRepo>(
       () => GetClientPassportRepoImpl(dio: sl()));
   sl.registerFactory<CheckGrnpRepo>(() => CheckGrnpRepoImpl(dio: sl()));
-  sl.registerFactory<IAccountRepository>(
-    () => AccountRepositoryImpl(sl(), sl()),
-  );
   sl.registerFactory<GetStaticFieldsRepo>(
       () => GetStaticFieldsRepoImpl(dio: sl()));
   sl.registerFactory<GetNalogNamesRepo>(() => GetNalogNamesRepoImpl(dio: sl()));
@@ -279,6 +292,13 @@ Future<void> initServiceLocator() async {
       () => GeneratePdfReviewRepoImpl(dio: sl()));
   sl.registerFactory<SaveTokenRepo>(() => SaveTokenRepoImpl(dio: sl()));
   sl.registerFactory<CheckOepRepo>(() => CheckOepRepoImpl(dio: sl()));
+
+  sl.registerLazySingleton<IAccountRepository>(
+    () => AccountRepositoryImpl(sl(), sl()),
+  );
+  sl.registerLazySingleton<IRskRepository>(
+    () => RskRepositoryImpl(sl(), sl(), sl()),
+  );
 
   /// UseCases
   sl.registerLazySingleton<RegisterOEPUseCase>(
@@ -349,6 +369,9 @@ Future<void> initServiceLocator() async {
   sl.registerLazySingleton(() => TransferValidateUseCase(sl()));
   sl.registerLazySingleton(() => TransferPerformUseCase(sl()));
   sl.registerFactory<CheckOepUseCase>(() => CheckOepUseCase(repo: sl()));
+  sl.registerLazySingleton(() => ClientInfoUseCase(sl()));
+  sl.registerLazySingleton(() => HasIpUseCase(sl()));
+  sl.registerLazySingleton(() => HasBankUseCase(sl()));
 
   /// BLoCs / Cubits
 

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ishker_24/features/account/data/datasources/account_datasource.dart';
+import 'package:ishker_24/features/rsk/account/data/datasources/account_datasource.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../../../mocks.dart';

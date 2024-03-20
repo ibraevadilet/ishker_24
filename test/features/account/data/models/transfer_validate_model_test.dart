@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ishker_24/features/account/data/models/transfer_validate_model.dart';
+import 'package:ishker_24/features/rsk/account/data/models/transfer_validate_model.dart';
 
 import '../../../../utils/constants.dart';
 

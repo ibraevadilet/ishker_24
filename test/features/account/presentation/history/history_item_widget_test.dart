@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/formatters/date_format.dart';
-import 'package:ishker_24/features/account/presentation/history/history_item_widget.dart';
+import 'package:ishker_24/features/rsk/account/presentation/history/history_item_widget.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../../utils/ui_test_helper.dart';

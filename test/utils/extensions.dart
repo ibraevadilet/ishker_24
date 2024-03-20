@@ -1,7 +1,7 @@
-import 'package:ishker_24/features/account/data/models/history_request_model.dart';
-import 'package:ishker_24/features/account/data/models/transfer_request_model.dart';
-import 'package:ishker_24/features/account/domain/usecases/history_usecase.dart';
-import 'package:ishker_24/features/account/domain/usecases/transfer_perform_usecase.dart';
+import 'package:ishker_24/features/rsk/account/data/models/history_request_model.dart';
+import 'package:ishker_24/features/rsk/account/data/models/transfer_request_model.dart';
+import 'package:ishker_24/features/rsk/account/domain/usecases/history_usecase.dart';
+import 'package:ishker_24/features/rsk/account/domain/usecases/transfer_perform_usecase.dart';
 
 extension TransferRequestModelX on TransferRequestModel {
   TransferParams toParams() => TransferParams(
