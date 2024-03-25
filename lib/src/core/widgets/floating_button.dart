@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ishker_24/src/features/auth/view/widgets/custom_button.dart';
-import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:ishker_24/src/features/widgets/custom_button.dart';
+import 'package:ishker_24/src/theme/app_text_styles.dart';
 
 class FloatingButton extends StatelessWidget {
   const FloatingButton({

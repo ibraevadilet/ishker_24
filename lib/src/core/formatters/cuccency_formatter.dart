@@ -1,4 +1,7 @@
+import 'package:intl/intl.dart';
 import 'package:ishker_24/src/core/images/app_images.dart';
+
+final currencyDisplayFormat = NumberFormat('#,##0.00', 'RU');
 
 class AppCurrencyFormatter {
   static String cuccancyIcon(String currancy) {
@@ -14,7 +17,7 @@ class AppCurrencyFormatter {
 
   static String cuccancyType(String currancy) {
     switch (currancy) {
-      case 'KGZ':
+      case 'KGZ' || '417':
         return 'С';
       case 'Dollar':
         return '\$';
@@ -22,4 +25,10 @@ class AppCurrencyFormatter {
         return 'C';
     }
   }
+
+  static String currencyName(String currancy) =>
+      switch (currancy) { '417' => 'Сом', _ => '' };
+
+  static String currencyCash(num value) =>
+      currencyDisplayFormat.format(value).replaceAll(',', '.');
 }

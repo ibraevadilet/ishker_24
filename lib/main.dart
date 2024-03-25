@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/src/app.dart';
 import 'src/core/utils/bloc_observer.dart';
 import 'src/di.dart' as locator;
-import 'translations/codegen_loader.g.dart';
 
 final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 // final appRouter = sl<AppRouter>();
@@ -39,9 +38,8 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      assetLoader: const CodegenLoader(),
-      path: 'assets/translations',
-      supportedLocales: const [Locale('ru'), Locale('ky')],
+      path: 'resources/langs',
+      supportedLocales: const [Locale('ru'), Locale('ky'), Locale('en')],
       fallbackLocale: const Locale('ru'),
       child: const App(),
       // child: MultiBlocProvider(

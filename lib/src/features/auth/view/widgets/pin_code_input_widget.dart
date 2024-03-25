@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ishker_24/theme/app_colors.dart';
-import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:ishker_24/src/theme/app_colors.dart';
+import 'package:ishker_24/src/theme/app_text_styles.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class PinCodeInputWidget extends StatelessWidget {

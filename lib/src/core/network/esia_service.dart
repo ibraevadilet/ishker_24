@@ -5,7 +5,7 @@ import 'package:ishker_24/src/features/auth/data/models/auth_model.dart';
 import 'package:ishker_24/src/features/auth/data/models/auth_request_model.dart';
 import 'package:ishker_24/src/features/auth/data/models/get_confirm_code_model.dart';
 import 'package:ishker_24/src/features/auth/data/models/send_confirm_code_model.dart';
-import 'package:ishker_24/src/features/recovery/data/models/reset_pass_token_model.dart';
+import 'package:ishker_24/src/features/auth/recovery/data/models/reset_pass_token_model.dart';
 
 class EsiaService {
   EsiaService(this._dio);

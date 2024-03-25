@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ishker_24/theme/app_colors.dart';
+import 'package:ishker_24/src/theme/app_colors.dart';
 
 class InputBorders {
   static OutlineInputBorder esiBorder = OutlineInputBorder(

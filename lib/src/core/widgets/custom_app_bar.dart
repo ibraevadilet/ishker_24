@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ishker_24/theme/app_colors.dart';
-import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:ishker_24/src/theme/app_colors.dart';
+import 'package:ishker_24/src/theme/app_text_styles.dart';
 
 class CustomSliverAppbar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -11,7 +11,7 @@ class CustomSliverAppbar extends StatelessWidget
     this.titleWidget,
     this.centerTitle = true,
     this.actions,
-    this.backgroundColor,
+    this.backgroundColor = AppColors.backgroundColor,
     this.titleTextStyle,
     this.iconColor,
   });
@@ -31,6 +31,8 @@ class CustomSliverAppbar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      pinned: true,
+      surfaceTintColor: AppColors.backgroundColor,
       title: titleWidget ?? Text(title ?? ''),
       titleTextStyle: titleTextStyle ?? AppTextStyles.s20W700(),
       elevation: 0,

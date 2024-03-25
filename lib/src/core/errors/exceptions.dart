@@ -2,7 +2,16 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ishker_24/translations/locale_keys.g.dart';
+import 'package:ishker_24/generated/locale_keys.g.dart';
+
+class MessageException implements Exception {
+  MessageException(this.msg);
+
+  final String msg;
+
+  @override
+  String toString() => msg;
+}
 
 class NoConnectionException implements Exception {}
 

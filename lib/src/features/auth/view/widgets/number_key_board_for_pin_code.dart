@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/src/core/images/app_images.dart';
 import 'package:ishker_24/src/features/auth/view/widgets/exit_button.dart';
-import 'package:ishker_24/theme/app_colors.dart';
-import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:ishker_24/src/theme/app_colors.dart';
+import 'package:ishker_24/src/theme/app_text_styles.dart';
 import 'package:local_auth/local_auth.dart';
 
 const List<int> pinNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];

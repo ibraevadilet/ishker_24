@@ -2,12 +2,12 @@
 
 import 'dart:io';
 
-import 'package:auto_route/auto_route.dart';
+// import 'package:auto_route/auto_route.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishker_24/src/core/images/app_images.dart';
-import 'package:ishker_24/theme/app_text_styles.dart';
+import 'package:ishker_24/src/theme/app_text_styles.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key, required this.description});
@@ -56,7 +56,7 @@ class _CameraPageState extends State<CameraPage>
     if (state == AppLifecycleState.inactive ||
         state == AppLifecycleState.resumed) {
       _controller.dispose();
-      AutoRouter.of(context).pop();
+      Navigator.of(context).pop();
     }
   }
 

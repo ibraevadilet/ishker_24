@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:ishker_24/src/features/auth/domain/entity/auth_entity.dart';
 import 'package:ishker_24/src/features/auth/domain/entity/confirm_code_entity.dart';
 import 'package:ishker_24/src/features/auth/view/grnp/grnp_screen.dart';
-import 'package:ishker_24/src/features/signup/view/oep_signup_page.dart';
+import 'package:ishker_24/src/features/auth/view/oep_signup_page.dart';
+import 'package:ishker_24/src/features/client/view/main_page.dart';
 
-import 'features/auth/view/confirm/confirm_page.dart';
 import 'core/widgets/camera_page.dart';
+import 'features/auth/view/confirm/confirm_page.dart';
 import 'features/auth/view/grnp/grnp_create/grnp_create_page.dart';
 import 'features/auth/view/login/login_page.dart';
-import 'features/auth/view/pincode/enter/pincode_enter_page.dart';
 import 'features/auth/view/pincode/create/pincode_create_page.dart';
+import 'features/auth/view/pincode/enter/pincode_enter_page.dart';
 import 'features/auth/view/splash/splash_page.dart';
 import 'features/auth/view/widgets/pdf_view_screen.dart';
-import 'features/home/home_page.dart';
 
 //routes
 const String initialRoute = '/';
@@ -58,7 +58,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const PinCodeEnterPage());
 
       case homeRoute:
-        return MaterialPageRoute(builder: (_) => const HomePage());
+        return MaterialPageRoute(builder: (_) => const MainPage());
 
       case grnpRoute:
         return MaterialPageRoute(builder: (_) => const CheckGrnpPage());

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:ishker_24/src/core/constants/constants.dart';
 import 'package:ishker_24/src/core/utils/dio_header.dart';
-import 'package:ishker_24/src/features/signup/data/models/oep_register_model.dart';
+import 'package:ishker_24/src/features/auth/data/models/oep_register_model.dart';
 
 class OepService {
   OepService(this._dio);
@@ -16,7 +16,7 @@ class OepService {
       options: AppDioHeader.dioHeader(),
       data: model.toJson(),
     );
-    print(response.data['code'] != null && response.data['code'] == 409);
+
     if (response.data['code'] != null && response.data['code'] == 409) {
       result = response.data['message'];
     }
