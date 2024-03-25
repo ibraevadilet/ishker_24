@@ -680,9 +680,14 @@ abstract class $AppRouter extends _i66.RootStackRouter {
       );
     },
     SettingsAboutRoute.name: (routeData) {
+      final args = routeData.argsAs<SettingsAboutRouteArgs>();
       return _i66.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i61.SettingsAboutScreen(),
+        child: _i61.SettingsAboutScreen(
+          key: args.key,
+          version: args.version,
+          buildNumber: args.buildNumber,
+        ),
       );
     },
     SettingsHelpRoute.name: (routeData) {
@@ -2432,16 +2437,45 @@ class SelfiePreviewRouteArgs {
 
 /// generated route for
 /// [_i61.SettingsAboutScreen]
-class SettingsAboutRoute extends _i66.PageRouteInfo<void> {
-  const SettingsAboutRoute({List<_i66.PageRouteInfo>? children})
-      : super(
+class SettingsAboutRoute extends _i66.PageRouteInfo<SettingsAboutRouteArgs> {
+  SettingsAboutRoute({
+    _i67.Key? key,
+    required String version,
+    required String buildNumber,
+    List<_i66.PageRouteInfo>? children,
+  }) : super(
           SettingsAboutRoute.name,
+          args: SettingsAboutRouteArgs(
+            key: key,
+            version: version,
+            buildNumber: buildNumber,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'SettingsAboutRoute';
 
-  static const _i66.PageInfo<void> page = _i66.PageInfo<void>(name);
+  static const _i66.PageInfo<SettingsAboutRouteArgs> page =
+      _i66.PageInfo<SettingsAboutRouteArgs>(name);
+}
+
+class SettingsAboutRouteArgs {
+  const SettingsAboutRouteArgs({
+    this.key,
+    required this.version,
+    required this.buildNumber,
+  });
+
+  final _i67.Key? key;
+
+  final String version;
+
+  final String buildNumber;
+
+  @override
+  String toString() {
+    return 'SettingsAboutRouteArgs{key: $key, version: $version, buildNumber: $buildNumber}';
+  }
 }
 
 /// generated route for

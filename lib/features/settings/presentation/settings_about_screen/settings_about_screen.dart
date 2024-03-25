@@ -5,19 +5,34 @@ import 'package:ishker_24/widgets/custom_app_bar.dart';
 
 @RoutePage()
 class SettingsAboutScreen extends StatelessWidget {
-  const SettingsAboutScreen({super.key});
+  const SettingsAboutScreen({
+    super.key,
+    required this.version,
+    required this.buildNumber,
+  });
+  final String version;
+  final String buildNumber;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        appBar: CustomAppBar(
-          backgroundColor: AppColors.backgroundColor,
-          title: 'О приложении',
-          centerTitle: false,
+    return Scaffold(
+      appBar: const CustomAppBar(
+        backgroundColor: AppColors.backgroundColor,
+        title: 'О приложении',
+        centerTitle: false,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Версия приложения: $version',
+            ),
+            Text(
+              'Номер сборки: $buildNumber',
+            ),
+          ],
         ),
-        body: Center(
-          child: Text(
-            'О приложении',
-          ),
-        ));
+      ),
+    );
   }
 }

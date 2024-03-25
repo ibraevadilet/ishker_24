@@ -11,6 +11,7 @@ class CheckHasIPRepoImpl implements CheckHasIPRepo {
   @override
   Future<CheckHasIPModel?> checkHasIP() async {
     final deviceId = await AppDeviceInfo.deviceId();
+    // const deviceId = 'cd304f22a4721094';
     try {
       final response = await dio.get(
         'gns/get/registration-status',

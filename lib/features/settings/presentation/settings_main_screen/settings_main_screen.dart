@@ -12,6 +12,7 @@ import 'package:ishker_24/theme/app_colors.dart';
 import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/settings_expanded_list.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingsMainScreen extends StatefulWidget {
   const SettingsMainScreen({super.key});
@@ -139,39 +140,47 @@ class _SettingsMainScreenState extends State<SettingsMainScreen> {
                   ),
                 ],
               ),
-              // const SizedBox(height: 8),
-              // Container(
-              //   height: 64,
-              //   decoration: BoxDecoration(
-              //     color: Colors.white,
-              //     borderRadius: BorderRadius.circular(
-              //       10,
-              //     ),
-              //   ),
-              //   child: ListTile(
-              //     shape: const CircleBorder(),
-              //     onTap: () {
-              //       AppRouting.pushFunction(const SettingsAboutRoute());
-              //     },
-              //     leading: SvgPicture.asset(
-              //       AppImages.aboutIcon,
-              //     ),
-              //     title: Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         Flexible(
-              //           child: Text(
-              //             'О приложении',
-              //             style: AppTextStyles.s16W600(),
-              //           ),
-              //         ),
-              //         SvgPicture.asset(
-              //           AppImages.arrowForwardIcon,
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
+              const SizedBox(height: 8),
+              Container(
+                height: 64,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(
+                    10,
+                  ),
+                ),
+                child: ListTile(
+                  shape: const CircleBorder(),
+                  onTap: () async {
+                    final packageInfo = await PackageInfo.fromPlatform();
+                    final version = packageInfo.version;
+                    final buildNumber = packageInfo.buildNumber;
+                    AppRouting.pushFunction(
+                      SettingsAboutRoute(
+                        version: version,
+                        buildNumber: buildNumber,
+                      ),
+                    );
+                  },
+                  leading: SvgPicture.asset(
+                    AppImages.aboutIcon,
+                  ),
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          'О приложении',
+                          style: AppTextStyles.s16W600(),
+                        ),
+                      ),
+                      SvgPicture.asset(
+                        AppImages.arrowForwardIcon,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(height: 8),
               Container(
                 height: 64,
