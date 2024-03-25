@@ -1,10 +1,12 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/src/features/auth/domain/entity/auth_entity.dart';
 import 'package:ishker_24/src/features/auth/domain/entity/confirm_code_entity.dart';
 import 'package:ishker_24/src/features/auth/view/grnp/grnp_screen.dart';
 import 'package:ishker_24/src/features/auth/view/oep_signup_page.dart';
-import 'package:ishker_24/src/features/client/view/main_page.dart';
+import 'package:ishker_24/src/features/rsk/account/view/history/cubit/history_cubit.dart';
+import 'package:ishker_24/src/features/rsk/account/view/history/history_page.dart';
 
 import 'core/widgets/camera_page.dart';
 import 'features/auth/view/confirm/confirm_page.dart';
@@ -14,6 +16,7 @@ import 'features/auth/view/pincode/create/pincode_create_page.dart';
 import 'features/auth/view/pincode/enter/pincode_enter_page.dart';
 import 'features/auth/view/splash/splash_page.dart';
 import 'features/auth/view/widgets/pdf_view_screen.dart';
+import 'features/client/view/has_ip_widget.dart';
 
 //routes
 const String initialRoute = '/';
@@ -27,6 +30,7 @@ const String confirmRoute = '/confirm';
 const String grnpRoute = '/grnp';
 const String grnpCreateRoute = '/grnpCreate';
 const String cameraRoute = '/grnpCamera';
+const String accountHistoryRoute = '/accountHistory';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -58,7 +62,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const PinCodeEnterPage());
 
       case homeRoute:
-        return MaterialPageRoute(builder: (_) => const MainPage());
+        return MaterialPageRoute(builder: (_) => const HasIpWidget());
 
       case grnpRoute:
         return MaterialPageRoute(builder: (_) => const CheckGrnpPage());
@@ -71,6 +75,16 @@ class AppRouter {
 
         return MaterialPageRoute(
           builder: (_) => CameraPage(description: description),
+        );
+
+      case accountHistoryRoute:
+        final cubit = settings.arguments as HistoryCubit;
+
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: cubit,
+            child: const HistoryPage(),
+          ),
         );
 
       default:

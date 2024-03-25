@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ishker_24/src/core/images/app_images.dart';
 import 'package:ishker_24/src/core/utils/extensions.dart';
 import 'package:ishker_24/src/features/widgets/custom_button.dart';
 import 'package:ishker_24/src/theme/app_text_styles.dart';
@@ -8,7 +9,7 @@ class BlankScaffold extends StatelessWidget {
   const BlankScaffold({
     super.key,
     required this.text,
-    required this.assetPath,
+    this.assetPath = AppImages.empyListIconSvg,
     this.onPressed,
     this.btnLabel,
     this.sliverAppBar,

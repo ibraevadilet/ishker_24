@@ -40,11 +40,6 @@
 // class _AccountInfoViewState extends State<AccountInfoView> {
 //   String get account => widget.account;
 
-//   Widget get _shimmerTile => Padding(
-//         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-//         child: shimmerTile(),
-//       );
-
 //   @override
 //   Widget build(BuildContext context) {
 //     return RefreshIndicator(

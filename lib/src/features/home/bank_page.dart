@@ -4,13 +4,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/src/core/errors/exceptions.dart';
+import 'package:ishker_24/src/core/utils/extensions.dart';
 import 'package:ishker_24/src/core/widgets/custom_app_bar.dart';
 import 'package:ishker_24/src/di.dart';
 import 'package:ishker_24/src/features/client/view/client_info/client_info_cubit.dart';
 import 'package:ishker_24/src/features/home/widgets/empty_account_widget.dart';
-import 'package:ishker_24/src/features/rsk/account/view/card_buttons.dart';
-import 'package:ishker_24/src/features/rsk/account/view/card_wodget.dart';
-import 'package:ishker_24/src/features/rsk/account/view/cubit/account_info_cubit.dart';
+import 'package:ishker_24/src/features/rsk/account/view/history/cubit/history_cubit.dart';
+import 'package:ishker_24/src/features/rsk/account/view/history/history_list.dart';
+import 'package:ishker_24/src/features/rsk/account/view/info/card_buttons.dart';
+import 'package:ishker_24/src/features/rsk/account/view/info/card_widget.dart';
+import 'package:ishker_24/src/features/rsk/account/view/info/cubit/account_info_cubit.dart';
 import 'package:ishker_24/src/features/widgets/app_error_text.dart';
 import 'package:ishker_24/src/features/widgets/app_indicator.dart';
 import 'package:ishker_24/src/features/widgets/transformer_page_view.dart';
@@ -21,8 +24,13 @@ class BankPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => AccountInfoCubit(sl()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => AccountInfoCubit(sl())),
+        BlocProvider(
+          create: (_) => HistoryCubit(historyUseCase: sl()),
+        ),
+      ],
       child: const FullHasWidget(),
     );
   }
@@ -42,11 +50,26 @@ class _FullHasWidgetState extends State<FullHasWidget> {
   void initState() {
     super.initState();
 
-    final state = context.read<ClientInfoCubit>().state;
+    WidgetsBinding.instance.addPostFrameCallback((_) => load());
+  }
+
+  Future<void> load() async {
+    final infoCubit = context.read<ClientInfoCubit>();
+    final accInfoCubit = context.read<AccountInfoCubit>();
+    final historyCubit = context.read<HistoryCubit>();
+
+    final state = infoCubit.state;
     if (state is ClientInfoSuccess && state.info.accountsList.isNotEmpty) {
       final acc = state.info.accountsList.first;
 
-      context.read<AccountInfoCubit>().load(acc.accountNumber);
+      accInfoCubit.load(acc.accountNumber);
+      historyCubit.load(
+        account: acc.accountNumber,
+        start: DateTime.now().days90,
+        size: 5,
+      );
+
+      return;
     }
   }
 
@@ -54,9 +77,7 @@ class _FullHasWidgetState extends State<FullHasWidget> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       key: _refreshKey,
-      onRefresh: () async {
-        // context.read<ClientInfoCubit>().init();
-      },
+      onRefresh: () async => load(),
       child: CustomScrollView(
         slivers: [
           CustomSliverAppbar(
@@ -116,11 +137,7 @@ class _FullHasWidgetState extends State<FullHasWidget> {
               child: CardButtons(),
             ),
           ),
-          SliverToBoxAdapter(
-            child: Column(
-              children: [],
-            ),
-          ),
+          const SliverToBoxAdapter(child: HistoryListWidget()),
         ],
       ),
     );
