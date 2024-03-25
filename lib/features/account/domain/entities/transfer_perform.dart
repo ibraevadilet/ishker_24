@@ -4,16 +4,16 @@ class TransferPerform extends Equatable {
   const TransferPerform({
     required this.id,
     required this.status,
-    required this.message,
+    this.message,
     this.timestamp,
   });
 
-  final String id;
-  final String status;
-  final String message;
+  final int id;
+  final int status;
+  final String? message;
   final DateTime? timestamp;
 
-  static const empty = TransferPerform(id: '', status: '', message: '');
+  static const empty = TransferPerform(id: -1, status: -1, message: '');
 
   @override
   List<Object?> get props => [id, status, message, timestamp];
