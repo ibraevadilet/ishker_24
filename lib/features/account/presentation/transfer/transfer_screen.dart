@@ -263,7 +263,8 @@ class _PayScreenViewState extends State<PayScreenView> {
                     final isValid = _formKey.currentState?.validate();
                     if (isValid == false) return;
 
-                    final card = _cardController.text.trim();
+                    final card =
+                        AppInputFormatters.cardFormatter.getUnmaskedText();
                     final amount = _sumController.text.trim();
 
                     final dv = double.tryParse(amount) ?? 0.0;

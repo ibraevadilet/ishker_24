@@ -27,14 +27,14 @@ class TransferValidateCubit extends Cubit<TransferValidateState> {
     emit(TrValidateLoading());
 
     final params = TransferValidateI2PParams(
-      login: 'login',
-      password: 'password',
+      login: 'ishker',
+      password: 'ishker',
       timestamp: DateTime.now(),
       summa: summa,
       fee: 0,
       currency: account.currency,
       serviceid: "38983092454",
-      typeservice: 'popolnenie_card_pan',
+      typeservice: 'ishker2pan',
       typerequest: 'validate',
       account: card,
       accountDt: account.account,

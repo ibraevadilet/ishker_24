@@ -47,18 +47,18 @@ class RskService {
 
     log('res: $response');
 
-    // return TransferValidateModel.fromJson(response.data['data']);
+    return TransferValidateModel.fromJson(response.data['data']);
 
     // await Future.delayed(const Duration(seconds: 2));
 
-    final data = {
-      "id": 38463209,
-      "status": 0,
-      "fio": "И.А.Н.",
-      "account": "4724144078984592"
-    };
+    // final data = {
+    //   "id": 38463209,
+    //   "status": 0,
+    //   "fio": "И.А.Н.",
+    //   "account": "4724144078984592"
+    // };
 
-    return TransferValidateModel.fromJson(data);
+    // return TransferValidateModel.fromJson(data);
   }
 
   Future<TransferPerformModel> performI2I(TransferPerformI2IBody body) async {

@@ -27,14 +27,14 @@ class RefillValidateCubit extends Cubit<RefillValidateState> {
     emit(RefillValidateLoading());
 
     final params = TransferValidateI2IParams(
-      login: 'login',
-      password: 'password',
+      login: 'ishker',
+      password: 'ishker',
       timestamp: DateTime.now(),
       summa: summa,
       fee: 0,
       currency: currency,
       serviceid: "38983092454",
-      typeservice: 'popolnenie_card_pan',
+      typeservice: 'ishker2pan',
       typerequest: 'validate',
       account: card,
       accountDt: accountNum,

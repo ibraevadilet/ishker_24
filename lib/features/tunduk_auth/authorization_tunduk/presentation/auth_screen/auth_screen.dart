@@ -128,25 +128,6 @@ class AuthScreen extends StatelessWidget {
                       },
                       text: 'Получить ОЭП',
                     ),
-                    if (kDebugMode)
-                      CustomButton(
-                        borderColor: AppColors.esiMainBlueColor,
-                        color: Colors.white,
-                        textColor: AppColors.esiMainBlueColor,
-                        onPress: () {
-                          // AppRouting.pushFunction(
-                          //   RefillRoute(
-                          //     qrData: RefillInitialData.fromQr(
-                          //         'https://pay.payqr.kg#00020101021132500009qr.rsk.kg010141016129900337000038812021113021233160012%D0%91%D0%90%D0%A2%D0%AB%D0%A0+%D0%A7%D0%AB%D0%9D%D0%93%D0%AB%D0%97520465385303417540105913BATYR+CHYNGYZ6304e035'),
-                          //   ),
-
-                          // );
-
-                          // test contur qr
-                          // https://pay.payqr.kg#00020101021132500009qr.rsk.kg010141016129900337000038812021113021233160012%D0%91%D0%90%D0%A2%D0%AB%D0%A0+%D0%A7%D0%AB%D0%9D%D0%93%D0%AB%D0%97520465385303417540105913BATYR+CHYNGYZ6304e035
-                        },
-                        text: 'Qr',
-                      ),
                   ],
                 ),
               ),
