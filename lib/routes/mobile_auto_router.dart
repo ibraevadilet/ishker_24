@@ -76,7 +76,7 @@ class AppRouter extends $AppRouter {
 
         ///Account
         AutoRoute(page: HistoryRoute.page),
-        AutoRoute(page: AccountInfoRoute.page),
+        // AutoRoute(page: AccountInfoRoute.page),
         AutoRoute(page: TransferRoute.page),
         AutoRoute(page: RefillRoute.page),
       ];

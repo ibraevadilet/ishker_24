@@ -246,6 +246,8 @@ class AccountActionButtons extends StatelessWidget {
                           ? AppRouting.pushFunction(TransferRoute(
                               account: state.account,
                               inn: inn!,
+                              accountInfoCubit:
+                                  context.read<AccountInfoCubit>(),
                             ))
                           : AppSnackBar.showUnimplementedSnackBar();
                     },

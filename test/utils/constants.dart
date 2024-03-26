@@ -96,8 +96,8 @@ final tTransferValidate = TransferValidate(
 );
 
 final tTransferPerformModel = TransferPerformModel(
-  id: "38463209",
-  status: "0",
+  id: 38463209,
+  status: 200,
   message: "Операция завершена успешно",
   timestamp: DateTime.parse("2024-02-28T11:38:43+06:00"),
 );
