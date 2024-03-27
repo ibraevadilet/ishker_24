@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/utils/result.dart';
-import 'package:ishker_24/features/account/domain/entities/account.dart';
 import 'package:ishker_24/features/account/domain/entities/transfer_validate.dart';
 import 'package:ishker_24/features/account/domain/usecases/transfer_perform_i2i_usecase.dart';
 import 'package:ishker_24/features/account/domain/usecases/transfer_validate_i2i_usecase.dart';
@@ -27,15 +26,9 @@ class RefillValidateCubit extends Cubit<RefillValidateState> {
     emit(RefillValidateLoading());
 
     final params = TransferValidateI2IParams(
-      login: 'ishker',
-      password: 'ishker',
-      timestamp: DateTime.now(),
       summa: summa,
       fee: 0,
       currency: currency,
-      serviceid: "38983092454",
-      typeservice: 'ishker2pan',
-      typerequest: 'validate',
       account: card,
       accountDt: accountNum,
     );
@@ -46,20 +39,12 @@ class RefillValidateCubit extends Cubit<RefillValidateState> {
       Success() => RefillValidateSuccess(
           result.value,
           TransferPerformI2IParams(
-            login: params.login,
-            password: params.password,
-            timestamp: params.timestamp,
             summa: summa,
             fee: params.fee,
             currency: params.currency,
-            serviceid: params.serviceid,
-            typeservice: params.typeservice,
-            typerequest: params.typerequest,
             account: params.account,
             accountDt: params.accountDt,
             id: result.value.id,
-            //??
-            numdoc: 'numdoc',
           ),
         ),
       Failure() => RefillValidateFailure(result.exception),

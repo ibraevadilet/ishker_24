@@ -7,10 +7,10 @@ class RefillState extends Equatable {
   });
 
   final RequestStatus status;
-  final RefillInitialData qrData;
+  final QrData qrData;
 
   RefillState copyWith({
-    RefillInitialData? qrData,
+    QrData? qrData,
     RequestStatus? status,
   }) =>
       RefillState(

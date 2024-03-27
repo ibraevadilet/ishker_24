@@ -22,40 +22,25 @@ class TransferPerformI2IUseCase
 
 final class TransferPerformI2IParams extends BaseTransferParams {
   const TransferPerformI2IParams({
-    required super.login,
-    required super.password,
-    required super.timestamp,
     required super.summa,
     required super.fee,
     required super.currency,
-    required super.serviceid,
-    required super.typeservice,
-    required super.typerequest,
     required super.account,
     required super.accountDt,
     required this.id,
-    required this.numdoc,
   });
 
   final int id;
-  final String numdoc;
 
   TransferPerformI2IBody toRequestBody() => TransferPerformI2IBody(
-        login: login,
-        password: password,
-        timestamp: timestamp,
         summa: summa,
         fee: fee,
         currency: currency,
-        serviceid: serviceid,
-        typeservice: typeservice,
-        typerequest: typerequest,
         account: account,
         accountDt: accountDt,
         id: id,
-        numdoc: numdoc,
       );
 
   @override
-  List<Object?> get props => [id, numdoc];
+  List<Object?> get props => [id];
 }

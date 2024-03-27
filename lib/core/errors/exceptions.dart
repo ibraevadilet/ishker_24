@@ -21,6 +21,7 @@ extension ExceptionX on Exception {
   String get message => switch (this) {
         MessageException(msg: String msg) => msg,
         NoConnectionException() => LocaleKeys.catchExNoInternet.tr(),
+        FormatException() => 'Ошибка формата ответа сервера',
         UnsupportedPlatformException() => 'UnsupportedPlatformException',
         DioException() => _dioMessage,
         _ => LocaleKeys.catchExSystemError.tr(),

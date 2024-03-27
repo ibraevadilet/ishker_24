@@ -104,6 +104,7 @@ PODS:
     - GTMSessionFetcher/Core (< 3.0, >= 1.1)
     - MLImage (= 1.0.0-beta4)
     - MLKitCommon (~> 9.0)
+  - MTBBarcodeScanner (5.0.11)
   - nanopb (2.30909.1):
     - nanopb/decode (= 2.30909.1)
     - nanopb/encode (= 2.30909.1)
@@ -122,6 +123,9 @@ PODS:
   - permission_handler_apple (9.1.1):
     - Flutter
   - PromisesObjC (2.3.1)
+  - qr_code_scanner (0.2.0):
+    - Flutter
+    - MTBBarcodeScanner
   - SDWebImage (5.18.8):
     - SDWebImage/Core (= 5.18.8)
   - SDWebImage/Core (5.18.8)
@@ -156,6 +160,7 @@ DEPENDENCIES:
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - pdfx (from `.symlinks/plugins/pdfx/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - qr_code_scanner (from `.symlinks/plugins/qr_code_scanner/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/darwin`)
@@ -177,6 +182,7 @@ SPEC REPOS:
     - MLKitCommon
     - MLKitFaceDetection
     - MLKitVision
+    - MTBBarcodeScanner
     - nanopb
     - OrderedSet
     - PromisesObjC
@@ -212,6 +218,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/pdfx/ios"
   permission_handler_apple:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
+  qr_code_scanner:
+    :path: ".symlinks/plugins/qr_code_scanner/ios"
   share_plus:
     :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_foundation:
@@ -247,6 +255,7 @@ SPEC CHECKSUMS:
   MLKitCommon: c1b791c3e667091918d91bda4bba69a91011e390
   MLKitFaceDetection: 4981488f71ea8ed718cda692a29ab562637d9ae5
   MLKitVision: 8baa5f46ee3352614169b85250574fde38c36f49
+  MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   open_filex: 6e26e659846ec990262224a12ef1c528bb4edbe4
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
@@ -255,6 +264,7 @@ SPEC CHECKSUMS:
   pdfx: 7b876b09de8b7a0bf444a4f82b439ffcff4ee1ec
   permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
+  qr_code_scanner: bb67d64904c3b9658ada8c402e8b4d406d5d796e
   SDWebImage: a81bbb3ba4ea5f810f4069c68727cb118467a04a
   share_plus: c3fef564749587fc939ef86ffb283ceac0baf9f5
   shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695

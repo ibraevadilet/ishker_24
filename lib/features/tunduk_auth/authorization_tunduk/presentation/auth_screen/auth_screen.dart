@@ -8,7 +8,7 @@ import 'package:ishker_24/core/constants/app_text_constants.dart';
 import 'package:ishker_24/core/formatters/validators.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
 import 'package:ishker_24/core/images/app_images.dart';
-import 'package:ishker_24/features/account/domain/entities/refill_initial_data.dart';
+import 'package:ishker_24/features/account/domain/entities/qr_data.dart';
 import 'package:ishker_24/features/tunduk_auth/authorization_tunduk/presentation/auth_screen/cubits/auth_cubit/auth_cubit.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/esi_background_image_widget.dart';
 import 'package:ishker_24/features/tunduk_auth/widgets_general/top_title_widget.dart';

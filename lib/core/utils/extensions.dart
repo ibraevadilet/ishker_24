@@ -1,6 +1,8 @@
 extension StringX on String {
   String get obscureFirstNumbers =>
       isEmpty ? '' : '${'*' * (length - 4)}${substring(length - 4)}';
+
+  bool get isSvg => endsWith('.svg');
 }
 
 extension StringXX on String? {

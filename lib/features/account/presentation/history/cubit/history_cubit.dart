@@ -22,7 +22,7 @@ class HistoryCubit extends Cubit<HistoryState> {
   final String _account;
   final HistoryUseCase _historyUseCase;
 
-  void load({DateTime? start, DateTime? end}) async {
+  void load({DateTime? start, DateTime? end, int size = 10}) async {
     emit(HistoryState(start: start ?? state.start, end: end ?? state.end));
     await Future.delayed(Duration.zero);
 
@@ -33,6 +33,7 @@ class HistoryCubit extends Cubit<HistoryState> {
       startDate: start ?? state.start,
       endDate: end ?? state.end,
       page: 1,
+      size: size,
     ));
 
     emit(switch (result) {

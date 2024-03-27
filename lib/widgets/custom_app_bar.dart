@@ -75,7 +75,7 @@ class CustomSliverAppBar extends StatelessWidget
       title: titleWidget ?? Text(title ?? ''),
       titleTextStyle: titleTextStyle ?? AppTextStyles.s20W700(),
       elevation: 0,
-      backgroundColor: backgroundColor,
+      backgroundColor: backgroundColor ?? AppColors.backgroundColor,
       centerTitle: centerTitle,
       iconTheme: IconThemeData(
         color: iconColor ?? AppColors.color727D8DGrey,

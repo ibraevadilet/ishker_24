@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class RefillInitialData extends Equatable {
-  const RefillInitialData({
+class QrData extends Equatable {
+  const QrData({
     required this.link,
     required this.sum,
     required this.currency,
@@ -15,7 +15,7 @@ class RefillInitialData extends Equatable {
   final String account;
   final String name;
 
-  factory RefillInitialData.fromQr(String qr) {
+  factory QrData.fromQr(String qr) {
     final decoded = Uri.decodeFull(qr);
 
     var map = <String, String>{};
@@ -33,7 +33,7 @@ class RefillInitialData extends Equatable {
     final currency = map['53'] as String;
     final name = map33['00'] as String;
 
-    return RefillInitialData(
+    return QrData(
       link: url,
       sum: int.tryParse(sum ?? '0') ?? 0,
       currency: currency,

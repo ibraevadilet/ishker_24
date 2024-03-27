@@ -24,3 +24,21 @@ void showSheet(BuildContext context, Widget child) async {
     ),
   );
 }
+
+final botttomSheetChertochka = Column(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    const SizedBox(height: 12),
+    Center(
+      child: Container(
+        height: 4,
+        width: 32,
+        decoration: BoxDecoration(
+          color: AppColors.color617796Grey,
+          borderRadius: BorderRadius.circular(4),
+        ),
+      ),
+    ),
+    const SizedBox(height: 12),
+  ],
+);

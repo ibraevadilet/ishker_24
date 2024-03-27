@@ -22,29 +22,17 @@ class TransferValidateI2IUseCase
 
 class TransferValidateI2IParams extends BaseTransferParams {
   const TransferValidateI2IParams({
-    required super.login,
-    required super.password,
-    required super.timestamp,
     required super.summa,
     required super.fee,
     required super.currency,
-    required super.serviceid,
-    required super.typeservice,
-    required super.typerequest,
     required super.account,
     required super.accountDt,
   });
 
   TransferValidateI2IBody toRequestBody() => TransferValidateI2IBody(
-        login: login,
-        password: password,
-        timestamp: timestamp,
         summa: summa,
         fee: fee,
         currency: currency,
-        serviceid: serviceid,
-        typeservice: typeservice,
-        typerequest: typerequest,
         account: account,
         accountDt: accountDt,
       );

@@ -22,15 +22,9 @@ class TransferValidateI2PUseCase
 
 class TransferValidateI2PParams extends BaseTransferParams {
   const TransferValidateI2PParams({
-    required super.login,
-    required super.password,
-    required super.timestamp,
     required super.summa,
     required super.fee,
     required super.currency,
-    required super.serviceid,
-    required super.typeservice,
-    required super.typerequest,
     required super.account,
     required super.accountDt,
     required this.inn,
@@ -39,15 +33,9 @@ class TransferValidateI2PParams extends BaseTransferParams {
   final String inn;
 
   TransferValidateI2PBody toRequestBody() => TransferValidateI2PBody(
-        login: login,
-        password: password,
-        timestamp: timestamp,
         summa: summa,
         fee: fee,
         currency: currency,
-        serviceid: serviceid,
-        typeservice: typeservice,
-        typerequest: typerequest,
         account: account,
         accountDt: accountDt,
         inn: inn,

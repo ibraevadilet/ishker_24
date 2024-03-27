@@ -17,64 +17,61 @@ class HistoryItemWidget extends StatelessWidget {
   void showDetailsModal(BuildContext context) {
     showSheet(
       context,
-      Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              'historyDetails'.tr(context: context),
-              style: AppTextStyles.s16W500(color: AppColors.color2C2C2CBlack),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          botttomSheetChertochka,
+          Text(
+            'historyDetails'.tr(context: context),
+            style: AppTextStyles.s16W500(color: AppColors.color2C2C2CBlack),
+          ),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                DetailRow(
+                  title: 'sum'.tr(context: context),
+                  value: '${AppCurrencyFormatter.currencyCash(item.amount)} C',
+                ),
+                DetailRow(
+                  title: 'operation'.tr(context: context),
+                  value: item.isPrihod
+                      ? 'prihod'.tr(context: context)
+                      : 'rashod'.tr(context: context),
+                ),
+                DetailRow(
+                  title: item.isPrihod
+                      ? 'toAccount'.tr(context: context)
+                      : 'fromAccount'.tr(context: context),
+                  value: item.receiverAccount,
+                ),
+                DetailRow(
+                  title: 'sendDate'.tr(context: context),
+                  value: AppDateFormats.formatDdMMYyyy.format(item.paydate),
+                ),
+                DetailRow(
+                  title: item.isPrihod
+                      ? 'prihodDate'.tr(context: context)
+                      : 'rashodDate'.tr(context: context),
+                  value: AppDateFormats.formatDdMMYyyy.format(item.trandate),
+                ),
+                DetailRow(
+                  title: 'sender'.tr(context: context),
+                  value: item.payerName,
+                ),
+                DetailRow(
+                  title: item.isPrihod
+                      ? 'senderBank'.tr(context: context)
+                      : 'recieverBank'.tr(context: context),
+                  value: item.payerBankname,
+                ),
+              ],
             ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DetailRow(
-                    title: 'sum'.tr(context: context),
-                    value:
-                        '${AppCurrencyFormatter.currencyCash(item.amount)} C',
-                  ),
-                  DetailRow(
-                    title: 'operation'.tr(context: context),
-                    value: item.isPrihod
-                        ? 'prihod'.tr(context: context)
-                        : 'rashod'.tr(context: context),
-                  ),
-                  DetailRow(
-                    title: item.isPrihod
-                        ? 'toAccount'.tr(context: context)
-                        : 'fromAccount'.tr(context: context),
-                    value: item.receiverAccount,
-                  ),
-                  DetailRow(
-                    title: 'sendDate'.tr(context: context),
-                    value: AppDateFormats.formatDdMMYyyy.format(item.paydate),
-                  ),
-                  DetailRow(
-                    title: item.isPrihod
-                        ? 'prihodDate'.tr(context: context)
-                        : 'rashodDate'.tr(context: context),
-                    value: AppDateFormats.formatDdMMYyyy.format(item.trandate),
-                  ),
-                  DetailRow(
-                    title: 'sender'.tr(context: context),
-                    value: item.payerName,
-                  ),
-                  DetailRow(
-                    title: item.isPrihod
-                        ? 'senderBank'.tr(context: context)
-                        : 'recieverBank'.tr(context: context),
-                    value: item.payerBankname,
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

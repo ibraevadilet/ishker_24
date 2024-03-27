@@ -20,6 +20,7 @@ import 'package:ishker_24/widgets/app_indicator.dart';
 import 'package:ishker_24/widgets/custom_app_bar.dart';
 import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/custom_text_fields.dart';
+import 'package:ishker_24/widgets/tab_button.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -43,38 +44,6 @@ class _MyQrWidgetState extends State<MyQrWidget> {
     _controller.dispose();
     _debounce?.cancel();
     super.dispose();
-  }
-
-  Widget tabBtn({
-    required String label,
-    required VoidCallback onTap,
-    required bool isSelected,
-  }) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Material(
-        color: isSelected ? AppColors.color54B25AMain : Colors.transparent,
-        // borderRadius: BorderRadius.circular(8),
-        child: InkWell(
-          onTap: onTap,
-          highlightColor: Colors.transparent,
-          splashColor: AppColors.esiMainBlueColor.withOpacity(.15),
-          child: SizedBox(
-            height: 36,
-            child: Center(
-              child: Text(
-                label,
-                style: AppTextStyles.s16W600(
-                  color: isSelected
-                      ? AppColors.backgroundColor
-                      : AppColors.color6B7583Grey,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 
   @override
@@ -134,7 +103,7 @@ class _MyQrWidgetState extends State<MyQrWidget> {
                           children: [
                             Expanded(
                               flex: 1,
-                              child: tabBtn(
+                              child: TabButton(
                                 label: 'My QR',
                                 onTap: () => setState(() => isScan = false),
                                 isSelected: !isScan,
@@ -142,7 +111,7 @@ class _MyQrWidgetState extends State<MyQrWidget> {
                             ),
                             Expanded(
                               flex: 1,
-                              child: tabBtn(
+                              child: TabButton(
                                 label: 'Scan',
                                 onTap: () => setState(() => isScan = true),
                                 isSelected: isScan,

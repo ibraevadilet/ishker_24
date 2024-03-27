@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:auto_route/annotations.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -11,7 +12,7 @@ import 'package:ishker_24/core/formatters/cuccency_formatter.dart';
 import 'package:ishker_24/core/formatters/input_formatters.dart';
 import 'package:ishker_24/core/images/app_images.dart';
 import 'package:ishker_24/core/utils/extensions.dart';
-import 'package:ishker_24/features/account/domain/entities/refill_initial_data.dart';
+import 'package:ishker_24/features/account/domain/entities/qr_data.dart';
 import 'package:ishker_24/features/account/presentation/refill/refill_button.dart';
 import 'package:ishker_24/features/home/data/models/get_client_info_model.dart';
 import 'package:ishker_24/features/home/presentation/home_main_screen/cubits/get_client_info_cubit/get_client_info_cubit.dart';
@@ -25,10 +26,46 @@ import 'package:ishker_24/widgets/custom_button.dart';
 import 'package:ishker_24/widgets/custom_text_fields.dart';
 import 'package:ishker_24/widgets/detail_row.dart';
 import 'package:ishker_24/widgets/styled_toasts.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'cubits/refill_cubit/refill_cubit.dart';
 import 'cubits/refill_validate/refill_validate_cubit.dart';
+
+@RoutePage()
+class TransferI2IScreen extends StatefulWidget {
+  const TransferI2IScreen({super.key});
+
+  @override
+  State<TransferI2IScreen> createState() => _TransferI2IScreenState();
+}
+
+class _TransferI2IScreenState extends State<TransferI2IScreen> {
+  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  Barcode? result;
+  QRViewController? controller;
+
+  // In order to get hot reload to work we need to pause the camera if the platform
+  // is android, or resume the camera if the platform is iOS.
+  @override
+  void reassemble() {
+    super.reassemble();
+    if (Platform.isAndroid) {
+      controller!.pauseCamera();
+    } else if (Platform.isIOS) {
+      controller!.resumeCamera();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [SliverToBoxAdapter()],
+      ),
+    );
+  }
+}
 
 @RoutePage()
 class RefillScreen extends StatelessWidget {
@@ -37,7 +74,7 @@ class RefillScreen extends StatelessWidget {
     required this.qrData,
   });
 
-  final RefillInitialData qrData;
+  final QrData qrData;
 
   @override
   Widget build(BuildContext context) {
@@ -59,14 +96,14 @@ class RefillScreen extends StatelessWidget {
 class RefillView extends StatefulWidget {
   const RefillView({super.key, required this.qrData});
 
-  final RefillInitialData qrData;
+  final QrData qrData;
 
   @override
   State<RefillView> createState() => _RefillViewState();
 }
 
 class _RefillViewState extends State<RefillView> {
-  RefillInitialData get qrData => widget.qrData;
+  QrData get qrData => widget.qrData;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _controller = TextEditingController();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishker_24/core/functions/push_router_func.dart';
+import 'package:ishker_24/core/utils/extensions.dart';
 import 'package:ishker_24/core/utils/request_status.dart';
 import 'package:ishker_24/features/account/presentation/history/cubit/history_cubit.dart';
 import 'package:ishker_24/features/account/presentation/info/widgets/amount_unfree_widget.dart';
@@ -12,6 +13,7 @@ import 'package:ishker_24/theme/app_text_styles.dart';
 import 'package:ishker_24/widgets/shimmers.dart';
 
 import '../history/history_item_widget.dart';
+import 'widgets/account_action_buttons.dart';
 import 'widgets/account_card_widget.dart';
 
 class AccountInfoScreen extends StatelessWidget {
@@ -30,7 +32,7 @@ class AccountInfoScreen extends StatelessWidget {
           create: (_) => HistoryCubit(
             historyUseCase: sl(),
             account: account,
-          )..load(),
+          )..load(start: DateTime.now().days90, size: 3),
         ),
       ],
       child: AccountInfoView(account: account),
@@ -61,7 +63,7 @@ class _AccountInfoViewState extends State<AccountInfoView> {
       color: AppColors.color54B25AMain,
       onRefresh: () async {
         context.read<AccountInfoCubit>().load(account);
-        context.read<HistoryCubit>().load();
+        context.read<HistoryCubit>().load(size: 3);
       },
       child: CustomScrollView(
         slivers: [

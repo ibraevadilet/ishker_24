@@ -6,6 +6,7 @@ import 'app_colors.dart';
 
 final lightTheme = ThemeData.light().copyWith(
   useMaterial3: true,
+  scaffoldBackgroundColor: AppColors.backgroundColor,
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.white,
   ),
@@ -25,4 +26,6 @@ final lightTheme = ThemeData.light().copyWith(
     todayForegroundColor:
         const MaterialStatePropertyAll(AppColors.color54B25AMain),
   ),
+  splashColor: AppColors.color54B25AMain.withOpacity(.3),
+  highlightColor: Colors.transparent,
 );
